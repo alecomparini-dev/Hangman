@@ -19,6 +19,7 @@
 		026B64AA2B03A39200F6DD99 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64A92B03A39200F6DD99 /* NavigationController.swift */; };
 		026B64AC2B03A3AF00F6DD99 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64AB2B03A3AF00F6DD99 /* Coordinator.swift */; };
 		026B64AE2B03A4CD00F6DD99 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */; };
+		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		026B64A92B03A39200F6DD99 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		026B64AB2B03A3AF00F6DD99 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		026B64812B038A0300F6DD99 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				02C4AB342B03B5AD00991633 /* CustomViews */,
 				026B64822B038A0F00F6DD99 /* Home */,
 			);
 			path = ViewController;
@@ -192,6 +195,22 @@
 				026B64A92B03A39200F6DD99 /* NavigationController.swift */,
 			);
 			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		02C4AB342B03B5AD00991633 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB352B03B5B400991633 /* GallowsView */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		02C4AB352B03B5B400991633 /* GallowsView */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB362B03B5CE00991633 /* GallowsView.swift */,
+			);
+			path = GallowsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				026B64A12B03A29200F6DD99 /* HomeViewController.swift in Sources */,
+				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

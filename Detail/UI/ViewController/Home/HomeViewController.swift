@@ -14,7 +14,7 @@ public class HomeViewController: UIViewController {
     }
     
     lazy var screen: HomeView = {
-        let comp = HomeView()
+        let comp = HomeView(frame: .zero)
         return comp
     }()
     
@@ -22,7 +22,7 @@ public class HomeViewController: UIViewController {
 //  MARK: - LIFE CICLE
     
     public override func loadView() {
-        view = screen.get
+        view = screen
     }
     
     public override func viewDidLoad() {
