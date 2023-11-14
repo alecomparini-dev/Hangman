@@ -20,6 +20,13 @@
 		026B64AC2B03A3AF00F6DD99 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64AB2B03A3AF00F6DD99 /* Coordinator.swift */; };
 		026B64AE2B03A4CD00F6DD99 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
+		02C4AB3B2B03C65800991633 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3A2B03C65800991633 /* Constants.swift */; };
+		02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */; };
+		02C4AB412B03DA3400991633 /* HangmanKeyboardLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB402B03DA3400991633 /* HangmanKeyboardLetterView.swift */; };
+		02C4AB442B03DB2B00991633 /* DefaultViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB432B03DB2B00991633 /* DefaultViewButton.swift */; };
+		02C4AB472B03E40400991633 /* ButtonInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB462B03E40400991633 /* ButtonInteractionView.swift */; };
+		02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB492B04057600991633 /* HangmanWordView.swift */; };
+		02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB4C2B0407CA00991633 /* HangmanLetterInWordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +67,13 @@
 		026B64AB2B03A3AF00F6DD99 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
+		02C4AB3A2B03C65800991633 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanKeyboardView.swift; sourceTree = "<group>"; };
+		02C4AB402B03DA3400991633 /* HangmanKeyboardLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanKeyboardLetterView.swift; sourceTree = "<group>"; };
+		02C4AB432B03DB2B00991633 /* DefaultViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewButton.swift; sourceTree = "<group>"; };
+		02C4AB462B03E40400991633 /* ButtonInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonInteractionView.swift; sourceTree = "<group>"; };
+		02C4AB492B04057600991633 /* HangmanWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanWordView.swift; sourceTree = "<group>"; };
+		02C4AB4C2B0407CA00991633 /* HangmanLetterInWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanLetterInWordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				026B64802B0389F000F6DD99 /* UI */,
+				02C4AB382B03C63300991633 /* Handler */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -200,7 +215,11 @@
 		02C4AB342B03B5AD00991633 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				02C4AB452B03E3EE00991633 /* ButtonInteractionView */,
+				02C4AB422B03DB0D00991633 /* DefaultViewButton */,
 				02C4AB352B03B5B400991633 /* GallowsView */,
+				02C4AB3C2B03D94900991633 /* HangmanKeyboardView */,
+				02C4AB482B04052000991633 /* HangmanWordView */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -211,6 +230,72 @@
 				02C4AB362B03B5CE00991633 /* GallowsView.swift */,
 			);
 			path = GallowsView;
+			sourceTree = "<group>";
+		};
+		02C4AB382B03C63300991633 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB392B03C64400991633 /* Constants */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		02C4AB392B03C64400991633 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB3A2B03C65800991633 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		02C4AB3C2B03D94900991633 /* HangmanKeyboardView */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB3F2B03DA2600991633 /* Letter */,
+				02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */,
+			);
+			path = HangmanKeyboardView;
+			sourceTree = "<group>";
+		};
+		02C4AB3F2B03DA2600991633 /* Letter */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB402B03DA3400991633 /* HangmanKeyboardLetterView.swift */,
+			);
+			path = Letter;
+			sourceTree = "<group>";
+		};
+		02C4AB422B03DB0D00991633 /* DefaultViewButton */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB432B03DB2B00991633 /* DefaultViewButton.swift */,
+			);
+			path = DefaultViewButton;
+			sourceTree = "<group>";
+		};
+		02C4AB452B03E3EE00991633 /* ButtonInteractionView */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB462B03E40400991633 /* ButtonInteractionView.swift */,
+			);
+			path = ButtonInteractionView;
+			sourceTree = "<group>";
+		};
+		02C4AB482B04052000991633 /* HangmanWordView */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB4B2B0407BB00991633 /* Word */,
+				02C4AB492B04057600991633 /* HangmanWordView.swift */,
+			);
+			path = HangmanWordView;
+			sourceTree = "<group>";
+		};
+		02C4AB4B2B0407BB00991633 /* Word */ = {
+			isa = PBXGroup;
+			children = (
+				02C4AB4C2B0407CA00991633 /* HangmanLetterInWordView.swift */,
+			);
+			path = Word;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,7 +418,14 @@
 			files = (
 				026B64A12B03A29200F6DD99 /* HomeViewController.swift in Sources */,
 				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
+				02C4AB442B03DB2B00991633 /* DefaultViewButton.swift in Sources */,
+				02C4AB412B03DA3400991633 /* HangmanKeyboardLetterView.swift in Sources */,
+				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
+				02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */,
+				02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */,
+				02C4AB472B03E40400991633 /* ButtonInteractionView.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
+				02C4AB3B2B03C65800991633 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +675,6 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -615,7 +706,6 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
