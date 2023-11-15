@@ -13,7 +13,6 @@ class HangmanKeyboardLetterView: ViewBuilder {
     
     private let color: UIColor
     private(set) var text: String
-    private(set) var buttonInteration: ButtonInteractionView?
     
     init(_ text: String, _ color: UIColor) {
         self.text = text
@@ -26,7 +25,12 @@ class HangmanKeyboardLetterView: ViewBuilder {
 //  MARK: - LAZY AREA
     
     lazy var gallowsLetter: DefaultViewButton = {
-        let button = createLetter()
+        let button = DefaultViewButton(self.color, self.text)
+            .setConstraints { build in
+                build
+                    .setPin.equalToSuperView
+            }
+        button.button.get.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
         return button
     }()
 
@@ -35,7 +39,6 @@ class HangmanKeyboardLetterView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
-        configButtonInteraction()
     }
     
     private func addElements() {
@@ -44,20 +47,6 @@ class HangmanKeyboardLetterView: ViewBuilder {
     
     private func configConstraints() {
         gallowsLetter.applyConstraint()
-    }
-    
-    private func configButtonInteraction() {
-        self.buttonInteration = ButtonInteractionView(self.gallowsLetter.outlineView)
-    }
-    
-    private func createLetter() -> DefaultViewButton{
-        let button = DefaultViewButton(self.color, self.text)
-            .setConstraints { build in
-                build
-                    .setPin.equalToSuperView
-            }
-        button.button.get.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
-        return button
     }
     
 

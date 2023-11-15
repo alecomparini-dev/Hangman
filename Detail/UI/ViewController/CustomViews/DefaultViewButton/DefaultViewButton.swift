@@ -82,13 +82,17 @@ class DefaultViewButton: ViewBuilder {
             .setTitleSize(16)
             .setImageSize(12)
             .setTitleWeight(.regular)
+            .setBorder({ build in
+                build
+                    .setCornerRadius(cornerRadiusOutline)
+            })
             .setConstraints { build in
                 build
                     .setPin.equalToSuperView
             }
         return btn
     }()
-    
+        
     
 //  MARK: - PRIVATE Area
     private func addElements() {

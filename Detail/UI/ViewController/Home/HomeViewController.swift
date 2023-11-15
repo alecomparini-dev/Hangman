@@ -7,9 +7,11 @@ import UIKit
 
 public class HomeViewController: UIViewController {
 
-    private var lastPlayedWord: String = "arbitrio"
-    
+    private var lastPlayedWord: String = ""
     private var lettersInWord: [HangmanLetterInWordView] = []
+    
+    
+    
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -51,13 +53,12 @@ public class HomeViewController: UIViewController {
     
     private func positionLetters() {
         let indexToBreakLine = calculateIndexToBreakLine()
+        
         self.lettersInWord.enumerated().forEach { index,letter in
-            if index < indexToBreakLine {
-                addLetterStackHorizontal1(letter)
-                return
-            }
+            if index < indexToBreakLine { return addLetterStackHorizontal1(letter) }
             addLetterStackHorizontal2(letter)
         }
+        
     }
     
     private func calculateIndexToBreakLine() -> Int {
