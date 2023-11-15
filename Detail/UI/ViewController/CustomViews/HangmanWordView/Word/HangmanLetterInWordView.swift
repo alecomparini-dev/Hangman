@@ -25,7 +25,7 @@ class HangmanLetterInWordView: ViewBuilder {
     
     lazy var label: LabelBuilder = {
         let label = LabelBuilder(letter)
-            .setHidden(true)
+            .setHidden(false)
             .setSize(20)
             .setColor(Theme.shared.currentTheme.onSurface)
             .setTextAlignment(.center)
