@@ -6,17 +6,17 @@ import UIKit
 import CustomComponentsSDK
 
 protocol HangmanKeyboardViewDelegate: AnyObject {
+    func letterButtonTapped(_ button: UIButton)
     func moreTipTapped()
 }
 
 class HangmanKeyboardView: ViewBuilder {
     weak var delegate: HangmanKeyboardViewDelegate?
     
-    private let sizeLetter: CGFloat = 16
     private let spacingVertical: CGFloat = 10
     private let spacingHorizontal: CGFloat = 12
     private let lettersOfKeyboard: [String] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",""]
-    private var letterViewOfKeyboard: [HangmanKeyboardLetterView] = []
+    private var letterViewOfKeyboard: [ButtonImageBuilder]? = []
     
     override init() {
         super.init()
@@ -108,24 +108,18 @@ class HangmanKeyboardView: ViewBuilder {
     
 
 //  MARK: - LAZY MORE TIP
-    lazy var moreTipButton: DefaultViewButton = {
-        let img = ImageViewBuilder(systemName: "lightbulb.fill")
-        let comp = DefaultViewButton(Theme.shared.currentTheme.secondary, String(repeating: " ", count: 8) + "Dicas")
-        comp.button.setTitleColor(Theme.shared.currentTheme.onSurface)
+    lazy var moreTipButton: ButtonImageBuilder = {
+        let img = ImageViewBuilder(systemName: K.Images.moreTipButton).setContentMode(.center)
+        var comp = createButtonDefault(K.String.tips)
             .setImageButton(img)
+            .setImagePlacement(.trailing)
             .setImageSize(12)
-            .setTitleAlignment(.left)
-            .setTitleSize(sizeLetter)
-        comp.button.get.addTarget(self, action: #selector(moreTipTapped), for: .touchUpInside)
-        comp.button.get.imageEdgeInsets = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
+        addNeumorphismDefault(comp, color: Theme.shared.currentTheme.secondary)
+        comp.get.addTarget(self, action: #selector(moreTipTapped), for: .touchUpInside)
         return comp
     }()
     
-    @objc private func moreTipTapped() {
-        delegate?.moreTipTapped()
-    }
-    
-    
+
 //  MARK: - PRIVATE AREA
     private func configure() {
         addElements()
@@ -175,15 +169,9 @@ class HangmanKeyboardView: ViewBuilder {
     }
     
     private func addLetterToHorizontalStack(_ letter: String, stack: StackViewBuilder) {
-        let letterView = createGallowsLetterView(letter)
-        letterView.add(insideTo: stack.get)
-        self.letterViewOfKeyboard.append(letterView)
-    }
-    
-    private func createGallowsLetterView(_ text: String) -> HangmanKeyboardLetterView {
-        let letter = HangmanKeyboardLetterView(text, Theme.shared.currentTheme.surfaceContainer)
-        letter.gallowsLetter.button.setTitleSize(sizeLetter)
-        return letter
+        let letterButton = createButtonLetter(title: letter)
+        letterButton.add(insideTo: stack.get)
+        letterViewOfKeyboard?.append(letterButton)
     }
     
     private func addSpaceToLeftHorizontalStack1() {
@@ -196,6 +184,49 @@ class HangmanKeyboardView: ViewBuilder {
     
     private func configConstraints() {
         verticalStack.applyConstraint()
+    }
+    
+    private func createButtonLetter(title: String) -> ButtonImageBuilder {
+        let button = createButtonDefault(title)
+        addNeumorphismDefault(button, color: Theme.shared.currentTheme.surfaceContainer)
+        button.get.addTarget(self, action: #selector(letterButtonTapped), for: .touchUpInside)
+        return button
+    }
+    
+    private func createButtonDefault(_ title: String) -> ButtonImageBuilder {
+        return ButtonImageBuilder()
+            .setTitle(title)
+            .setTitleAlignment(.center)
+            .setTitleColor(Theme.shared.currentTheme.onSurface)
+            .setTintColor(Theme.shared.currentTheme.onSurface.adjustBrightness(-20))
+            .setTitleSize(16)
+            .setBorder({ build in
+                build
+                    .setCornerRadius(8)
+            })
+    }
+    
+    private func addNeumorphismDefault(_ component: ButtonImageBuilder, color: UIColor) {
+        _ = NeumorphismBuilder(component)
+            .setReferenceColor(color)
+            .setShape(.concave)
+            .setLightPosition(.leftTop)
+            .setIntensity(percent: 80)
+            .setBlur(to: .light, percent: 3)
+            .setBlur(to: .dark, percent: 5)
+            .setDistance(to: .light, percent: 5)
+            .setDistance(to: .dark, percent: 10)
+            .apply()
+    }
+    
+
+//  MARK: - OBJEC FUNCTIONS AREA
+    @objc private func moreTipTapped() {
+        delegate?.moreTipTapped()
+    }
+    
+    @objc private func letterButtonTapped(_ button: UIButton) {
+        delegate?.letterButtonTapped(button)
     }
     
 }

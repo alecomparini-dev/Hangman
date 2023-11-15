@@ -4,16 +4,14 @@
 
 import UIKit
 
+import Presenter
 
 public class HomeViewController: UIViewController {
 
-    private var lastPlayedWord: String = ""
-    private var lettersInWord: [HangmanLetterInWordView] = []
+    private let homePresenter: HomePresenter
     
-    
-    
-    
-    public init() {
+    public init(homePresenter: HomePresenter) {
+        self.homePresenter = homePresenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -47,14 +45,13 @@ public class HomeViewController: UIViewController {
 //  MARK: - PRIVATE AREA
     
     private func createNextWord() {
-        self.lettersInWord = screen.gallowsWordView.createWord("ALESSANDRO LUIZ PEIXOTO")
         positionLetters()
     }
     
     private func positionLetters() {
         let indexToBreakLine = calculateIndexToBreakLine()
         
-        self.lettersInWord.enumerated().forEach { index,letter in
+        screen.gallowsWordView.createWord("ALESSANDRO LUIZ PEIXOTO").enumerated().forEach { index,letter in
             if index < indexToBreakLine { return addLetterStackHorizontal1(letter) }
             addLetterStackHorizontal2(letter)
         }
@@ -92,4 +89,6 @@ public class HomeViewController: UIViewController {
     }
     
 }
+
+
 

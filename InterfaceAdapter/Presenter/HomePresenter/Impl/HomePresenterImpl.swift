@@ -5,7 +5,7 @@ import Foundation
 
 public class HomePresenterImpl: HomePresenter {
     
-    
+    public init() {}
     
     public func fetchNextWords(_ lastPlayedWord: String, quantityWords: Int = 20) -> [String] {
         

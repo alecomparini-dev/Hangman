@@ -97,6 +97,7 @@ class HangmanWordView: ViewBuilder {
     
     
 //  MARK: - RETIRAR DAQUI E PASSAR PARA VIEWCONTROLLER OU ATÉ MESMO PRESENTER
+    
     func createWord(_ word: String) -> [HangmanLetterInWordView] {
         var letters: [HangmanLetterInWordView] = []
         word.forEach { letter in
