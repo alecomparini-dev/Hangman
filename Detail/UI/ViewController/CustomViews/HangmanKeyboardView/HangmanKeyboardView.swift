@@ -6,7 +6,6 @@ import UIKit
 import CustomComponentsSDK
 
 protocol HangmanKeyboardViewDelegate: AnyObject {
-    func letterKeyboardTapped(_ letter: HangmanKeyboardLetterView)
     func moreTipTapped()
 }
 
@@ -109,7 +108,6 @@ class HangmanKeyboardView: ViewBuilder {
     
 
 //  MARK: - LAZY MORE TIP
-
     lazy var moreTipButton: DefaultViewButton = {
         let img = ImageViewBuilder(systemName: "lightbulb.fill")
         let comp = DefaultViewButton(Theme.shared.currentTheme.secondary, String(repeating: " ", count: 8) + "Dicas")
@@ -157,7 +155,7 @@ class HangmanKeyboardView: ViewBuilder {
             switch index {
                 case 0...5:
                     addLetterToHorizontalStack(letter, stack: horizontalStack5)
-
+                
                 case 6...11:
                     addLetterToHorizontalStack(letter, stack: horizontalStack4)
 
@@ -179,7 +177,6 @@ class HangmanKeyboardView: ViewBuilder {
     private func addLetterToHorizontalStack(_ letter: String, stack: StackViewBuilder) {
         let letterView = createGallowsLetterView(letter)
         letterView.add(insideTo: stack.get)
-        letterView.delegate = self
         self.letterViewOfKeyboard.append(letterView)
     }
     
@@ -203,13 +200,3 @@ class HangmanKeyboardView: ViewBuilder {
     
 }
 
-
-//  MARK: - EXTENSION HangmanKeyboardLetterViewDelegate
-
-extension HangmanKeyboardView: HangmanKeyboardLetterViewDelegate{
-    
-    func letterKeyboardTapped(_ letter: HangmanKeyboardLetterView) {
-        delegate?.letterKeyboardTapped(letter)
-    }
-        
-}
