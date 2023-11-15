@@ -1,9 +1,15 @@
 //  Created by Alessandro Comparini on 14/11/23.
 //
 
+
 import UIKit
 
+
 public class HomeViewController: UIViewController {
+
+    private var lastPlayedWord: String = "arbitrio"
+    
+    private var lettersInWord: [HangmanLetterInWordView] = []
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -29,6 +35,60 @@ public class HomeViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        createNextWord()
+    }
+    
+    
+    
+//  MARK: - PRIVATE AREA
+    
+    private func createNextWord() {
+        self.lettersInWord = screen.gallowsWordView.createWord("ALESSANDRO LUIZ PEIXOTO")
+        positionLetters()
+    }
+    
+    private func positionLetters() {
+        let indexToBreakLine = calculateIndexToBreakLine()
+        self.lettersInWord.enumerated().forEach { index,letter in
+            if index < indexToBreakLine {
+                addLetterStackHorizontal1(letter)
+                return
+            }
+            addLetterStackHorizontal2(letter)
+        }
+    }
+    
+    private func calculateIndexToBreakLine() -> Int {
+//        if getCurrentWord().word.count <= quantityLetterByLine {return quantityLetterByLine}
+//        let syllabesWord = getCurrentWord().syllables
+        let syllabesWord = ["A","L","E","A","A","A","A","A","A","A", "", "A","A","A","A","A","A", "" ]
+        
+        let indexToBreakLine = syllabesWord.reduce(0) { partialResult, syllabe in
+            let result = partialResult + syllabe.count
+            guard result <= K.quantityLetterByLine else {
+                return partialResult
+            }
+            return result
+        }
+        return indexToBreakLine
+    }
+    
+//    private func getCurrentWord() -> HangmanWord {
+//        return hangmanWords[currentIndexPlayedWord]
+//    }
+    
+    private func addLetterStackHorizontal1(_ letter: HangmanLetterInWordView) {
+        screen.gallowsWordView.insertLetterInStack(letter, screen.gallowsWordView.horizontalStack1)
+    }
+    
+    private func addLetterStackHorizontal2(_ letter: HangmanLetterInWordView) {
+        if screen.gallowsWordView.horizontalStack2.get.isHidden {
+            screen.gallowsWordView.horizontalStack2.setHidden(false)
+        }
+        screen.gallowsWordView.insertLetterInStack(letter, screen.gallowsWordView.horizontalStack2)
+    }
     
 }
 
