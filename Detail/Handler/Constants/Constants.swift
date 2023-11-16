@@ -30,6 +30,7 @@ struct K {
         static let seven = "7"
         static let eight = "8"
         static let nine = "9"
+        static let tips = "Dicas"
     }
     
     struct Service {
@@ -46,6 +47,7 @@ struct K {
     
     struct Images {
         static let nextWordButton = "chevron.forward"
+        static let moreTipButton = "lightbulb.fill"
     }
     
     struct ErrorLetters {

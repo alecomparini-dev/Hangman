@@ -4,6 +4,7 @@
 import Foundation
 
 import Detail
+import Presenter
 
 class HomeCoordinator: Coordinator {
     var childCoordinator: Coordinator?
@@ -16,10 +17,13 @@ class HomeCoordinator: Coordinator {
     
     func start() {
         childCoordinator = self
-        var controller = HomeViewController()
+        var controller = makeHomeViewController()
         controller = navigationController.pushViewController(controller)
     }
-    
  
+    private func makeHomeViewController() -> HomeViewController {
+        let homePresenter = HomePresenterImpl()
+        return HomeViewController(homePresenter: homePresenter)
+    }
     
 }
