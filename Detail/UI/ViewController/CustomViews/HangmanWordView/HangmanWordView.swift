@@ -10,8 +10,6 @@ class HangmanWordView: ViewBuilder {
     private let spacingHorizontal: CGFloat = 2
     private let spacingVertical: CGFloat = 0
     
-    private var word: [String] = []
-    
     override init() {
         super.init()
         configure()
@@ -21,6 +19,7 @@ class HangmanWordView: ViewBuilder {
     //  MARK: - LAZY Area
     lazy var verticalStack: StackViewBuilder = {
         let stack = StackViewBuilder()
+            .setBackgroundColor(.red)
             .setAxis(.vertical)
             .setAlignment(.center)
             .setSpacing(spacingVertical)
@@ -58,7 +57,6 @@ class HangmanWordView: ViewBuilder {
         configConstraints()
     }
     
-    
     private func addElements() {
         addStacks()
     }
@@ -73,7 +71,17 @@ class HangmanWordView: ViewBuilder {
         verticalStack.applyConstraint()
     }
     
-    private func createLetter(_ text: String) -> HangmanLetterInWordView {
+    private func space() -> ViewBuilder {
+        let space = ViewBuilder()
+            .setConstraints { build in
+                build
+                    .setWidth.equalToConstant(8)
+                    .setHeight.equalToConstant(26)
+            }
+        return space
+    }
+    
+    func createLetter(_ text: String) -> HangmanLetterInWordView {
         let letter = HangmanLetterInWordView(text)
             .setConstraints { build in
                 build
@@ -82,21 +90,11 @@ class HangmanWordView: ViewBuilder {
             }
         return letter
     }
-
-    private func space() -> ViewBuilder {
-        let space = ViewBuilder()
-            .setConstraints { build in
-                build
-                    .setWidth.equalToConstant(8)
-                    .setHeight.equalToConstant(28)
-            }
-        return space
-    }
-    
-    
     
     
 //  MARK: - RETIRAR DAQUI E PASSAR PARA VIEWCONTROLLER OU ATÉ MESMO PRESENTER
+    
+    
     
     func createWord(_ word: String) -> [HangmanLetterInWordView] {
         var letters: [HangmanLetterInWordView] = []
@@ -105,6 +103,8 @@ class HangmanWordView: ViewBuilder {
         }
         return letters
     }
+    
+    
     
     func insertLetterInStack(_ letter: HangmanLetterInWordView, _ horizontalStack: StackViewBuilder) {
         letter.add(insideTo: horizontalStack.get)
@@ -131,7 +131,7 @@ class HangmanWordView: ViewBuilder {
     }
     
     private func revealLetterInWordAnimation(_ letter: HangmanLetterInWordView) {
-        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: {
             letter.label.get.alpha = 1
             letter.underlineLetter.get.alpha = 1
         })

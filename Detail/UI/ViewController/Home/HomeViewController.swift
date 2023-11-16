@@ -47,15 +47,10 @@ public class HomeViewController: UIViewController {
     
     private func configure() {
         configDelegate()
-        configKeyboard()
     }
     
     private func configDelegate() {
         screen.gallowsKeyboardView.delegate = self
-    }
-    
-    private func configKeyboard() {
-        
     }
     
     private func createNextWord() {
@@ -64,6 +59,7 @@ public class HomeViewController: UIViewController {
     
     private func positionLetters() {
         let indexToBreakLine = calculateIndexToBreakLine()
+        
         screen.gallowsWordView.createWord("ALESSAND").enumerated().forEach { index,letter in
             if index < indexToBreakLine { return addLetterStackHorizontal1(letter) }
             addLetterStackHorizontal2(letter)

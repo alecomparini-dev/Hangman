@@ -249,9 +249,7 @@ class HomeView: UIView {
     private func configGallowsWordViewContraints() {
         gallowsWordView.applyConstraint()
     }
-
     
-//  MARK: - PRIVATE Area
     private func createHangmanGallowsView() -> GallowsView {
         let view = GallowsView(frame: .zero)
             .setConstraints { build in
