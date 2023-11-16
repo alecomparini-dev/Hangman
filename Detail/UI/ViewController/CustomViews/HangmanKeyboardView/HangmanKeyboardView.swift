@@ -15,13 +15,15 @@ class HangmanKeyboardView: ViewBuilder {
     
     private let spacingVertical: CGFloat = 10
     private let spacingHorizontal: CGFloat = 12
-    private let lettersOfKeyboard: [String] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",""]
-    private var letterViewOfKeyboard: [ButtonImageBuilder]? = []
     
-    override init() {
-        super.init()
+    private var lettersKeyboard: [String]
+    
+    init(_ lettersKeyboard: [String]) {
+        self.lettersKeyboard = lettersKeyboard
+        super.init(frame: .zero)
         configure()
     }
+    
     
 //  MARK: - LAZY Area
 
@@ -124,6 +126,7 @@ class HangmanKeyboardView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
+        configLetterKeyboard()
     }
     
     private func addElements() {
@@ -144,8 +147,22 @@ class HangmanKeyboardView: ViewBuilder {
         rightHorizontalStack1.add(insideTo: horizontalStack1.get)
     }
     
+    private func addSpaceToLeftHorizontalStack1() {
+        space.add(insideTo: leftHorizontalStack1.get)
+    }
+
+    private func addHintToRightHorizontalStack1() {
+        moreTipButton.add(insideTo: rightHorizontalStack1.get)
+    }
+    
+    private func configConstraints() {
+        verticalStack.applyConstraint()
+    }
+    
+    
     private func addLetterToHorizontalStacks() {
-        lettersOfKeyboard.enumerated().forEach { index,letter in
+        
+        lettersKeyboard.enumerated().forEach { index,letter in
             switch index {
                 case 0...5:
                     addLetterToHorizontalStack(letter, stack: horizontalStack5)
@@ -169,28 +186,16 @@ class HangmanKeyboardView: ViewBuilder {
     }
     
     private func addLetterToHorizontalStack(_ letter: String, stack: StackViewBuilder) {
-        let letterButton = createButtonLetter(title: letter)
-        letterButton.add(insideTo: stack.get)
-        letterViewOfKeyboard?.append(letterButton)
+        if let letterButton = createButtonLetter(title: letter) {
+            letterButton.add(insideTo: stack.get)
+        }
     }
     
-    private func addSpaceToLeftHorizontalStack1() {
-        space.add(insideTo: leftHorizontalStack1.get)
-    }
-
-    private func addHintToRightHorizontalStack1() {
-        moreTipButton.add(insideTo: rightHorizontalStack1.get)
-    }
-    
-    private func configConstraints() {
-        verticalStack.applyConstraint()
-    }
-    
-    private func createButtonLetter(title: String) -> ButtonImageBuilder {
-        let button = createButtonDefault(title)
-        addNeumorphismDefault(button, color: Theme.shared.currentTheme.surfaceContainer)
-        button.get.addTarget(self, action: #selector(letterButtonTapped), for: .touchUpInside)
-        return button
+    private func createButtonLetter(title: String) -> ButtonImageBuilder? {
+        let buttonDefault = createButtonDefault(title)
+        addNeumorphismDefault(buttonDefault, color: Theme.shared.currentTheme.surfaceContainer)
+        buttonDefault.get.addTarget(self, action: #selector(letterButtonTapped), for: .touchUpInside)
+        return buttonDefault
     }
     
     private func createButtonDefault(_ title: String) -> ButtonImageBuilder {
@@ -217,6 +222,11 @@ class HangmanKeyboardView: ViewBuilder {
             .setDistance(to: .light, percent: 5)
             .setDistance(to: .dark, percent: 10)
             .apply()
+    }
+    
+    
+    private func configLetterKeyboard() {
+        
     }
     
 

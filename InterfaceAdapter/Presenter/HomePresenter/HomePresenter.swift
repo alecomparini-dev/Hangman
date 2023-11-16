@@ -3,7 +3,11 @@
 
 import Foundation
 
+
 public protocol HomePresenter {
-    func fetchNextWords(_ lastPlayedWord: String, quantityWords: Int) -> [String] 
+    
+    func getLettersKeyboard() -> [String]
+    
+    func fetchNextWords(_ lastPlayedWord: String, quantityWords: Int) -> [String]
     
 }

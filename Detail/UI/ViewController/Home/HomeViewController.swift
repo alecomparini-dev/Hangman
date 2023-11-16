@@ -3,6 +3,7 @@
 
 
 import UIKit
+import CustomComponentsSDK
 
 import Presenter
 
@@ -20,7 +21,7 @@ public class HomeViewController: UIViewController {
     }
     
     lazy var screen: HomeView = {
-        let comp = HomeView(frame: .zero)
+        let comp = HomeView(homePresenter.getLettersKeyboard())
         return comp
     }()
     
@@ -29,6 +30,7 @@ public class HomeViewController: UIViewController {
     
     public override func loadView() {
         view = screen
+        configure()
     }
     
     public override func viewDidLoad() {
@@ -41,8 +43,20 @@ public class HomeViewController: UIViewController {
     }
     
     
-    
 //  MARK: - PRIVATE AREA
+    
+    private func configure() {
+        configDelegate()
+        configKeyboard()
+    }
+    
+    private func configDelegate() {
+        screen.gallowsKeyboardView.delegate = self
+    }
+    
+    private func configKeyboard() {
+        
+    }
     
     private func createNextWord() {
         positionLetters()
@@ -50,8 +64,7 @@ public class HomeViewController: UIViewController {
     
     private func positionLetters() {
         let indexToBreakLine = calculateIndexToBreakLine()
-        
-        screen.gallowsWordView.createWord("ALESSANDRO LUIZ PEIXOTO").enumerated().forEach { index,letter in
+        screen.gallowsWordView.createWord("ALESSAND").enumerated().forEach { index,letter in
             if index < indexToBreakLine { return addLetterStackHorizontal1(letter) }
             addLetterStackHorizontal2(letter)
         }
@@ -61,16 +74,15 @@ public class HomeViewController: UIViewController {
     private func calculateIndexToBreakLine() -> Int {
 //        if getCurrentWord().word.count <= quantityLetterByLine {return quantityLetterByLine}
 //        let syllabesWord = getCurrentWord().syllables
-        let syllabesWord = ["A","L","E","A","A","A","A","A","A","A", "", "A","A","A","A","A","A", "" ]
-        
-        let indexToBreakLine = syllabesWord.reduce(0) { partialResult, syllabe in
-            let result = partialResult + syllabe.count
-            guard result <= K.quantityLetterByLine else {
-                return partialResult
-            }
-            return result
-        }
-        return indexToBreakLine
+//        let indexToBreakLine = syllabesWord.reduce(0) { partialResult, syllabe in
+//            let result = partialResult + syllabe.count
+//            guard result <= K.quantityLetterByLine else {
+//                return partialResult
+//            }
+//            return result
+//        }
+//        return indexToBreakLine
+        return 0
     }
     
 //    private func getCurrentWord() -> HangmanWord {
@@ -92,3 +104,19 @@ public class HomeViewController: UIViewController {
 
 
 
+
+
+
+//  MARK: - EXTENSION - HangmanKeyboardViewDelegate
+
+extension HomeViewController: HangmanKeyboardViewDelegate {
+    func letterButtonTapped(_ button: UIButton) {
+        print(button.titleLabel?.text ?? "")
+    }
+    
+    func moreTipTapped() {
+        print("MAIS DICASSSSS")
+    }
+    
+    
+}

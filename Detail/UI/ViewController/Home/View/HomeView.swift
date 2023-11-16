@@ -15,8 +15,11 @@ protocol HangmanViewDelegate: AnyObject {
 class HomeView: UIView {
     weak var delegate: HangmanViewDelegate?
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    private let lettersKeyboard: [String]
+    
+    init(_ lettersKeyboard: [String]) {
+        self.lettersKeyboard = lettersKeyboard
+        super.init(frame: .zero)
         configure()
     }
     
@@ -69,7 +72,6 @@ class HomeView: UIView {
         return comp
     }()
 
-    
     lazy var scoreView: ViewBuilder = {
         let comp = ViewBuilder()
             .setConstraints { build in
@@ -155,13 +157,17 @@ class HomeView: UIView {
         return comp
     }()
     
+    
+    //  MARK: - DISCOVERY WORD
     lazy var gallowsWordView: HangmanWordView = {
         let view = createHangmanWordView()
         return view
     }()
     
+    
+    //  MARK: - KEYBOARD
     lazy var gallowsKeyboardView: HangmanKeyboardView = {
-        let comp = HangmanKeyboardView()
+        let comp = HangmanKeyboardView(lettersKeyboard)
             .setConstraints { build in
                 build
                     .setTop.equalToSafeArea(8)

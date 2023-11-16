@@ -20,7 +20,6 @@ class HomeCoordinator: Coordinator {
         var controller = makeHomeViewController()
         controller = navigationController.pushViewController(controller)
     }
-    
  
     private func makeHomeViewController() -> HomeViewController {
         let homePresenter = HomePresenterImpl()
