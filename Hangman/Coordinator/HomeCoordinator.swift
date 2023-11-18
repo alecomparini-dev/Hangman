@@ -17,13 +17,9 @@ class HomeCoordinator: Coordinator {
     
     func start() {
         childCoordinator = self
-        var controller = makeHomeViewController()
+        var controller = HomeViewControllerFactory.make()
         controller = navigationController.pushViewController(controller)
     }
  
-    private func makeHomeViewController() -> HomeViewController {
-        let homePresenter = HomePresenterImpl()
-        return HomeViewController(homePresenter: homePresenter)
-    }
     
 }
