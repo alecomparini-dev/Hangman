@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02507B992B07EEAC0098B708 /* NetworkSDKMain in Frameworks */ = {isa = PBXBuildFile; productRef = 02507B982B07EEAC0098B708 /* NetworkSDKMain */; };
-		02507B9C2B07EEF00098B708 /* AuthenticationSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 02507B9B2B07EEF00098B708 /* AuthenticationSDK */; };
-		026938C22B08FFB90023073B /* DataStorageSDKMain in Frameworks */ = {isa = PBXBuildFile; productRef = 026938C12B08FFB90023073B /* DataStorageSDKMain */; };
 		026938C52B0900FA0023073B /* HangmanDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938C42B0900FA0023073B /* HangmanDataStorage.swift */; };
 		026938CB2B0907FD0023073B /* DataStorageSDKMain in Frameworks */ = {isa = PBXBuildFile; productRef = 026938CA2B0907FD0023073B /* DataStorageSDKMain */; };
 		026938CD2B0908610023073B /* HangmanCustomDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938CC2B0908610023073B /* HangmanCustomDataStorageProvider.swift */; };
@@ -17,8 +14,21 @@
 		026938DD2B090A310023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026938E12B090A440023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; };
 		026938E22B090A450023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		026938E82B090C5B0023073B /* GetNextWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938E72B090C5B0023073B /* GetNextWords.swift */; };
+		026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */; };
 		026938EA2B090CBC0023073B /* WordGallowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938E92B090CBC0023073B /* WordGallowModel.swift */; };
+		026938EC2B0912E10023073B /* ResultWordGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938EB2B0912E10023073B /* ResultWordGame.swift */; };
+		026938ED2B0914100023073B /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
+		026938EE2B0914100023073B /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		026938F42B0935CA0023073B /* GetNextWordsUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F32B0935CA0023073B /* GetNextWordsUseCaseDTO.swift */; };
+		026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */; };
+		026939072B0937480023073B /* FirebaseGetNexWordsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F92B0936490023073B /* FirebaseGetNexWordsUseCaseGateway.swift */; };
+		0269390F2B09394A0023073B /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
+		026939102B09394A0023073B /* UseCaseGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		026939252B093AD10023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; };
+		026939262B093AD10023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0269392A2B093AF60023073B /* FetchDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269390D2B09387F0023073B /* FetchDataStorageProvider.swift */; };
+		0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269392B2B09528E0023073B /* GetNextWordsUseCaseImpl.swift */; };
+		026939322B0954B90023073B /* HomeViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026939312B0954B90023073B /* HomeViewControllerFactory.swift */; };
 		026B647F2B0389E000F6DD99 /* CustomComponentsSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 026B647E2B0389E000F6DD99 /* CustomComponentsSDK */; };
 		026B648A2B03A1ED00F6DD99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64892B03A1ED00F6DD99 /* AppDelegate.swift */; };
 		026B648C2B03A1ED00F6DD99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B648B2B03A1ED00F6DD99 /* SceneDelegate.swift */; };
@@ -33,7 +43,6 @@
 		0290B6402B0685D6000667E5 /* Detail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026B64762B0389C900F6DD99 /* Detail.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0290B6412B06868F000667E5 /* Detail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B64762B0389C900F6DD99 /* Detail.framework */; platformFilter = ios; };
 		0290B6422B06868F000667E5 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; platformFilter = ios; };
-		0290B6462B0688AA000667E5 /* CustomComponentsSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 0290B6452B0688AA000667E5 /* CustomComponentsSDK */; };
 		0290B64C2B06AC28000667E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 		02C4AB3B2B03C65800991633 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3A2B03C65800991633 /* Constants.swift */; };
@@ -42,8 +51,6 @@
 		02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB4C2B0407CA00991633 /* HangmanLetterInWordView.swift */; };
 		02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB692B04F33800991633 /* HomePresenterImpl.swift */; };
 		02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB662B04F2A200991633 /* HomePresenter.swift */; };
-		02C4AB792B057BA000991633 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; platformFilter = ios; };
-		02C4AB7A2B057BA000991633 /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +62,27 @@
 			remoteInfo = Domain;
 		};
 		026938E32B090A450023073B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 026938D22B0909E10023073B;
+			remoteInfo = Domain;
+		};
+		026938EF2B0914100023073B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02C4AB6F2B057B4100991633;
+			remoteInfo = Presenter;
+		};
+		026939112B09394A0023073B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 026938FF2B09371C0023073B;
+			remoteInfo = UseCaseGateway;
+		};
+		026939272B093AD10023073B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
 			proxyType = 1;
@@ -75,13 +103,6 @@
 			remoteGlobalIDString = 02C4AB6F2B057B4100991633;
 			remoteInfo = Presenter;
 		};
-		02C4AB7B2B057BA000991633 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 02C4AB6F2B057B4100991633;
-			remoteInfo = Presenter;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -92,6 +113,29 @@
 			dstSubfolderSpec = 10;
 			files = (
 				026938DD2B090A310023073B /* Domain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		026938F12B0914100023073B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				026938EE2B0914100023073B /* Presenter.framework in Embed Frameworks */,
+				026939102B09394A0023073B /* UseCaseGateway.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		026939292B093AD10023073B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				026939262B093AD10023073B /* Domain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,25 +153,22 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		02C4AB7D2B057BA000991633 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				02C4AB7A2B057BA000991633 /* Presenter.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		026938C42B0900FA0023073B /* HangmanDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanDataStorage.swift; sourceTree = "<group>"; };
 		026938CC2B0908610023073B /* HangmanCustomDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanCustomDataStorageProvider.swift; sourceTree = "<group>"; };
 		026938D32B0909E10023073B /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		026938E72B090C5B0023073B /* GetNextWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWords.swift; sourceTree = "<group>"; };
+		026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCase.swift; sourceTree = "<group>"; };
 		026938E92B090CBC0023073B /* WordGallowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGallowModel.swift; sourceTree = "<group>"; };
+		026938EB2B0912E10023073B /* ResultWordGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWordGame.swift; sourceTree = "<group>"; };
+		026938F32B0935CA0023073B /* GetNextWordsUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseDTO.swift; sourceTree = "<group>"; };
+		026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseGateway.swift; sourceTree = "<group>"; };
+		026938F92B0936490023073B /* FirebaseGetNexWordsUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseGetNexWordsUseCaseGateway.swift; sourceTree = "<group>"; };
+		026939002B09371C0023073B /* UseCaseGateway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UseCaseGateway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0269390D2B09387F0023073B /* FetchDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataStorageProvider.swift; sourceTree = "<group>"; };
+		0269392B2B09528E0023073B /* GetNextWordsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseImpl.swift; sourceTree = "<group>"; };
+		026939312B0954B90023073B /* HomeViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFactory.swift; sourceTree = "<group>"; };
 		026B64762B0389C900F6DD99 /* Detail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Detail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		026B64872B03A1ED00F6DD99 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		026B64892B03A1ED00F6DD99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -159,13 +200,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		026938FD2B09371C0023073B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				026939252B093AD10023073B /* Domain.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		026B64732B0389C900F6DD99 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				026938CB2B0907FD0023073B /* DataStorageSDKMain in Frameworks */,
 				026B647F2B0389E000F6DD99 /* CustomComponentsSDK in Frameworks */,
-				02C4AB792B057BA000991633 /* Presenter.framework in Frameworks */,
+				026938ED2B0914100023073B /* Presenter.framework in Frameworks */,
+				0269390F2B09394A0023073B /* UseCaseGateway.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,12 +223,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026938C22B08FFB90023073B /* DataStorageSDKMain in Frameworks */,
 				0290B6412B06868F000667E5 /* Detail.framework in Frameworks */,
 				0290B6422B06868F000667E5 /* Presenter.framework in Frameworks */,
-				02507B992B07EEAC0098B708 /* NetworkSDKMain in Frameworks */,
-				02507B9C2B07EEF00098B708 /* AuthenticationSDK in Frameworks */,
-				0290B6462B0688AA000667E5 /* CustomComponentsSDK in Frameworks */,
 				026938E12B090A440023073B /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,14 +249,6 @@
 			path = DataStorage;
 			sourceTree = "<group>";
 		};
-		026938C62B0903A90023073B /* UseCaseGateway */ = {
-			isa = PBXGroup;
-			children = (
-				026938C72B0903D00023073B /* _Interfaces */,
-			);
-			path = UseCaseGateway;
-			sourceTree = "<group>";
-		};
 		026938C72B0903D00023073B /* _Interfaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +268,7 @@
 		026938C92B0903E40023073B /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				0269390D2B09387F0023073B /* FetchDataStorageProvider.swift */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -246,7 +285,7 @@
 		026938DA2B0909F30023073B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				026938E52B090C3B0023073B /* GetNextWords */,
+				026938E52B090C3B0023073B /* GetNextWordsUseCase */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -255,24 +294,77 @@
 			isa = PBXGroup;
 			children = (
 				026938E92B090CBC0023073B /* WordGallowModel.swift */,
+				026938EB2B0912E10023073B /* ResultWordGame.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		026938E52B090C3B0023073B /* GetNextWords */ = {
+		026938E52B090C3B0023073B /* GetNextWordsUseCase */ = {
 			isa = PBXGroup;
 			children = (
+				026938F22B0935C00023073B /* DTO */,
 				026938E62B090C500023073B /* Impl */,
-				026938E72B090C5B0023073B /* GetNextWords.swift */,
+				026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */,
+				026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */,
 			);
-			path = GetNextWords;
+			path = GetNextWordsUseCase;
 			sourceTree = "<group>";
 		};
 		026938E62B090C500023073B /* Impl */ = {
 			isa = PBXGroup;
 			children = (
+				0269392B2B09528E0023073B /* GetNextWordsUseCaseImpl.swift */,
 			);
 			path = Impl;
+			sourceTree = "<group>";
+		};
+		026938F22B0935C00023073B /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				026938F32B0935CA0023073B /* GetNextWordsUseCaseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		026938F72B09362B0023073B /* GetNextWordsUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				026938F92B0936490023073B /* FirebaseGetNexWordsUseCaseGateway.swift */,
+			);
+			path = GetNextWordsUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		026939012B09371C0023073B /* UseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				026938C72B0903D00023073B /* _Interfaces */,
+				026938F72B09362B0023073B /* GetNextWordsUseCaseGateway */,
+			);
+			path = UseCaseGateway;
+			sourceTree = "<group>";
+		};
+		0269392D2B09548C0023073B /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				0269392E2B0954980023073B /* ViewControllers */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		0269392E2B0954980023073B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0269392F2B0954A00023073B /* HomeViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0269392F2B0954A00023073B /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				026939312B0954B90023073B /* HomeViewControllerFactory.swift */,
+			);
+			path = HomeViewController;
 			sourceTree = "<group>";
 		};
 		026B645C2B03893400F6DD99 = {
@@ -294,6 +386,7 @@
 				026B64872B03A1ED00F6DD99 /* Hangman.app */,
 				02C4AB702B057B4100991633 /* Presenter.framework */,
 				026938D32B0909E10023073B /* Domain.framework */,
+				026939002B09371C0023073B /* UseCaseGateway.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -345,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				026B64A62B03A34400F6DD99 /* Coordinator */,
+				0269392D2B09548C0023073B /* Factories */,
 				026B64A52B03A33900F6DD99 /* Resources */,
 			);
 			path = Hangman;
@@ -485,7 +579,7 @@
 			isa = PBXGroup;
 			children = (
 				02C4AB712B057B4100991633 /* Presenter */,
-				026938C62B0903A90023073B /* UseCaseGateway */,
+				026939012B09371C0023073B /* UseCaseGateway */,
 			);
 			path = InterfaceAdapter;
 			sourceTree = "<group>";
@@ -494,6 +588,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		026938CE2B0909E10023073B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		026938FB2B09371C0023073B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -535,6 +636,26 @@
 			productReference = 026938D32B0909E10023073B /* Domain.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		026938FF2B09371C0023073B /* UseCaseGateway */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 026939042B09371C0023073B /* Build configuration list for PBXNativeTarget "UseCaseGateway" */;
+			buildPhases = (
+				026938FB2B09371C0023073B /* Headers */,
+				026938FC2B09371C0023073B /* Sources */,
+				026938FD2B09371C0023073B /* Frameworks */,
+				026938FE2B09371C0023073B /* Resources */,
+				026939292B093AD10023073B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				026939282B093AD10023073B /* PBXTargetDependency */,
+			);
+			name = UseCaseGateway;
+			productName = UseCaseGateway;
+			productReference = 026939002B09371C0023073B /* UseCaseGateway.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		026B64752B0389C900F6DD99 /* Detail */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 026B647A2B0389C900F6DD99 /* Build configuration list for PBXNativeTarget "Detail" */;
@@ -543,12 +664,13 @@
 				026B64722B0389C900F6DD99 /* Sources */,
 				026B64732B0389C900F6DD99 /* Frameworks */,
 				026B64742B0389C900F6DD99 /* Resources */,
-				02C4AB7D2B057BA000991633 /* Embed Frameworks */,
+				026938F12B0914100023073B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				02C4AB7C2B057BA000991633 /* PBXTargetDependency */,
+				026938F02B0914100023073B /* PBXTargetDependency */,
+				026939122B09394A0023073B /* PBXTargetDependency */,
 			);
 			name = Detail;
 			packageProductDependencies = (
@@ -578,10 +700,6 @@
 			);
 			name = Hangman;
 			packageProductDependencies = (
-				0290B6452B0688AA000667E5 /* CustomComponentsSDK */,
-				02507B982B07EEAC0098B708 /* NetworkSDKMain */,
-				02507B9B2B07EEF00098B708 /* AuthenticationSDK */,
-				026938C12B08FFB90023073B /* DataStorageSDKMain */,
 			);
 			productName = Hangman;
 			productReference = 026B64872B03A1ED00F6DD99 /* Hangman.app */;
@@ -621,6 +739,9 @@
 						CreatedOnToolsVersion = 15.0.1;
 						LastSwiftMigration = 1500;
 					};
+					026938FF2B09371C0023073B = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 					026B64752B0389C900F6DD99 = {
 						CreatedOnToolsVersion = 15.0.1;
 						LastSwiftMigration = 1500;
@@ -654,6 +775,7 @@
 			targets = (
 				026938D22B0909E10023073B /* Domain */,
 				02C4AB6F2B057B4100991633 /* Presenter */,
+				026938FF2B09371C0023073B /* UseCaseGateway */,
 				026B64752B0389C900F6DD99 /* Detail */,
 				026B64862B03A1ED00F6DD99 /* Hangman */,
 			);
@@ -662,6 +784,13 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		026938D12B0909E10023073B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		026938FE2B09371C0023073B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -722,8 +851,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026938E82B090C5B0023073B /* GetNextWords.swift in Sources */,
+				026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */,
+				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
+				026938F42B0935CA0023073B /* GetNextWordsUseCaseDTO.swift in Sources */,
+				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
+				026938EC2B0912E10023073B /* ResultWordGame.swift in Sources */,
 				026938EA2B090CBC0023073B /* WordGallowModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		026938FC2B09371C0023073B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0269392A2B093AF60023073B /* FetchDataStorageProvider.swift in Sources */,
+				026939072B0937480023073B /* FirebaseGetNexWordsUseCaseGateway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +891,7 @@
 			files = (
 				026B64AC2B03A3AF00F6DD99 /* Coordinator.swift in Sources */,
 				026B648A2B03A1ED00F6DD99 /* AppDelegate.swift in Sources */,
+				026939322B0954B90023073B /* HomeViewControllerFactory.swift in Sources */,
 				026B64AE2B03A4CD00F6DD99 /* HomeCoordinator.swift in Sources */,
 				026B64AA2B03A39200F6DD99 /* NavigationController.swift in Sources */,
 				026B648C2B03A1ED00F6DD99 /* SceneDelegate.swift in Sources */,
@@ -779,6 +922,21 @@
 			target = 026938D22B0909E10023073B /* Domain */;
 			targetProxy = 026938E32B090A450023073B /* PBXContainerItemProxy */;
 		};
+		026938F02B0914100023073B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 02C4AB6F2B057B4100991633 /* Presenter */;
+			targetProxy = 026938EF2B0914100023073B /* PBXContainerItemProxy */;
+		};
+		026939122B09394A0023073B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 026938FF2B09371C0023073B /* UseCaseGateway */;
+			targetProxy = 026939112B09394A0023073B /* PBXContainerItemProxy */;
+		};
+		026939282B093AD10023073B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 026938D22B0909E10023073B /* Domain */;
+			targetProxy = 026939272B093AD10023073B /* PBXContainerItemProxy */;
+		};
 		0290B6272B06817A000667E5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -790,12 +948,6 @@
 			platformFilter = ios;
 			target = 02C4AB6F2B057B4100991633 /* Presenter */;
 			targetProxy = 0290B63A2B06854F000667E5 /* PBXContainerItemProxy */;
-		};
-		02C4AB7C2B057BA000991633 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = 02C4AB6F2B057B4100991633 /* Presenter */;
-			targetProxy = 02C4AB7B2B057BA000991633 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -839,7 +991,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -878,7 +1030,82 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		026939052B09371C0023073B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2HCBZJR5K3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.UseCaseGateway;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		026939062B09371C0023073B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2HCBZJR5K3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.UseCaseGateway;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -948,6 +1175,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-no_warn_duplicate_libraries",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1111,6 +1342,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-no_warn_duplicate_libraries",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.Hangman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1241,6 +1476,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		026939042B09371C0023073B /* Build configuration list for PBXNativeTarget "UseCaseGateway" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				026939052B09371C0023073B /* Debug */,
+				026939062B09371C0023073B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		026B64602B03893400F6DD99 /* Build configuration list for PBXProject "Hangman" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1315,32 +1559,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		02507B982B07EEAC0098B708 /* NetworkSDKMain */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02507B972B07EEAC0098B708 /* XCRemoteSwiftPackageReference "NetworkSDK" */;
-			productName = NetworkSDKMain;
-		};
-		02507B9B2B07EEF00098B708 /* AuthenticationSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02507B9A2B07EEF00098B708 /* XCRemoteSwiftPackageReference "AuthenticationSDK" */;
-			productName = AuthenticationSDK;
-		};
-		026938C12B08FFB90023073B /* DataStorageSDKMain */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 026938C02B08FFB90023073B /* XCRemoteSwiftPackageReference "DataStorageSDK" */;
-			productName = DataStorageSDKMain;
-		};
 		026938CA2B0907FD0023073B /* DataStorageSDKMain */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 026938C02B08FFB90023073B /* XCRemoteSwiftPackageReference "DataStorageSDK" */;
 			productName = DataStorageSDKMain;
 		};
 		026B647E2B0389E000F6DD99 /* CustomComponentsSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 026B64702B03899C00F6DD99 /* XCRemoteSwiftPackageReference "CustomComponentsSDK" */;
-			productName = CustomComponentsSDK;
-		};
-		0290B6452B0688AA000667E5 /* CustomComponentsSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 026B64702B03899C00F6DD99 /* XCRemoteSwiftPackageReference "CustomComponentsSDK" */;
 			productName = CustomComponentsSDK;
