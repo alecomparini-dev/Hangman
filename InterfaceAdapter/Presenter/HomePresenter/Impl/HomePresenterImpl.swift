@@ -7,7 +7,10 @@ public class HomePresenterImpl: HomePresenter {
     
     public init() {}
     
-    
+    public func fetchNextWords(_ lastPlayedWord: String, quantityWords: Int = 20) -> [String] {
+        
+        return []
+    }
     
     
     public func getLettersKeyboard() -> [String] {
@@ -15,12 +18,6 @@ public class HomePresenterImpl: HomePresenter {
                 "I","J","K","L","M","N","O","P",
                 "Q","R","S","T","U","V","W","X",
                 "Y","Z",""]
-    }
-    
-    
-    public func fetchNextWords(_ lastPlayedWord: String, quantityWords: Int = 20) -> [String] {
-        
-        return []
     }
     
     
