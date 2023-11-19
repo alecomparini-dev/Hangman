@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		026938C52B0900FA0023073B /* HangmanDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938C42B0900FA0023073B /* HangmanDataStorage.swift */; };
+		026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */; };
 		026938CB2B0907FD0023073B /* DataStorageSDKMain in Frameworks */ = {isa = PBXBuildFile; productRef = 026938CA2B0907FD0023073B /* DataStorageSDKMain */; };
-		026938CD2B0908610023073B /* HangmanCustomDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938CC2B0908610023073B /* HangmanCustomDataStorageProvider.swift */; };
+		026938CD2B0908610023073B /* FirebaseDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */; };
 		026938DC2B090A310023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; };
 		026938DD2B090A310023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026938E12B090A440023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; };
@@ -21,7 +21,7 @@
 		026938EE2B0914100023073B /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026938F42B0935CA0023073B /* GetNextWordsUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F32B0935CA0023073B /* GetNextWordsUseCaseDTO.swift */; };
 		026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */; };
-		026939072B0937480023073B /* FirebaseGetNexWordsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F92B0936490023073B /* FirebaseGetNexWordsUseCaseGateway.swift */; };
+		026939072B0937480023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F92B0936490023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift */; };
 		0269390F2B09394A0023073B /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
 		026939102B09394A0023073B /* UseCaseGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026939252B093AD10023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; };
@@ -29,6 +29,8 @@
 		0269392A2B093AF60023073B /* FetchDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269390D2B09387F0023073B /* FetchDataStorageProvider.swift */; };
 		0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269392B2B09528E0023073B /* GetNextWordsUseCaseImpl.swift */; };
 		026939322B0954B90023073B /* HomeViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026939312B0954B90023073B /* HomeViewControllerFactory.swift */; };
+		026939352B0A41B90023073B /* HangmanAuthenticationSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026939342B0A41B90023073B /* HangmanAuthenticationSDK.swift */; };
+		026939372B0A41DD0023073B /* AuthenticationSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 026939362B0A41DD0023073B /* AuthenticationSDK */; };
 		026B647F2B0389E000F6DD99 /* CustomComponentsSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 026B647E2B0389E000F6DD99 /* CustomComponentsSDK */; };
 		026B648A2B03A1ED00F6DD99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64892B03A1ED00F6DD99 /* AppDelegate.swift */; };
 		026B648C2B03A1ED00F6DD99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B648B2B03A1ED00F6DD99 /* SceneDelegate.swift */; };
@@ -156,19 +158,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		026938C42B0900FA0023073B /* HangmanDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanDataStorage.swift; sourceTree = "<group>"; };
-		026938CC2B0908610023073B /* HangmanCustomDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanCustomDataStorageProvider.swift; sourceTree = "<group>"; };
+		026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanDataStorageSDK.swift; sourceTree = "<group>"; };
+		026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataStorageProvider.swift; sourceTree = "<group>"; };
 		026938D32B0909E10023073B /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCase.swift; sourceTree = "<group>"; };
 		026938E92B090CBC0023073B /* WordGallowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGallowModel.swift; sourceTree = "<group>"; };
 		026938EB2B0912E10023073B /* ResultWordGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWordGame.swift; sourceTree = "<group>"; };
 		026938F32B0935CA0023073B /* GetNextWordsUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseDTO.swift; sourceTree = "<group>"; };
 		026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseGateway.swift; sourceTree = "<group>"; };
-		026938F92B0936490023073B /* FirebaseGetNexWordsUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseGetNexWordsUseCaseGateway.swift; sourceTree = "<group>"; };
+		026938F92B0936490023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		026939002B09371C0023073B /* UseCaseGateway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UseCaseGateway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0269390D2B09387F0023073B /* FetchDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataStorageProvider.swift; sourceTree = "<group>"; };
 		0269392B2B09528E0023073B /* GetNextWordsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseImpl.swift; sourceTree = "<group>"; };
 		026939312B0954B90023073B /* HomeViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFactory.swift; sourceTree = "<group>"; };
+		026939342B0A41B90023073B /* HangmanAuthenticationSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanAuthenticationSDK.swift; sourceTree = "<group>"; };
 		026B64762B0389C900F6DD99 /* Detail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Detail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		026B64872B03A1ED00F6DD99 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		026B64892B03A1ED00F6DD99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				026939372B0A41DD0023073B /* AuthenticationSDK in Frameworks */,
 				026938CB2B0907FD0023073B /* DataStorageSDKMain in Frameworks */,
 				026B647F2B0389E000F6DD99 /* CustomComponentsSDK in Frameworks */,
 				026938ED2B0914100023073B /* Presenter.framework in Frameworks */,
@@ -240,29 +244,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		026938C32B08FFC60023073B /* DataStorage */ = {
+		026938C32B08FFC60023073B /* DataStorageProvider */ = {
 			isa = PBXGroup;
 			children = (
-				026938C42B0900FA0023073B /* HangmanDataStorage.swift */,
-				026938CC2B0908610023073B /* HangmanCustomDataStorageProvider.swift */,
+				026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */,
+				026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */,
 			);
-			path = DataStorage;
+			path = DataStorageProvider;
 			sourceTree = "<group>";
 		};
 		026938C72B0903D00023073B /* _Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				026938C82B0903DB0023073B /* Infrastructure */,
-			);
-			path = _Interfaces;
-			sourceTree = "<group>";
-		};
-		026938C82B0903DB0023073B /* Infrastructure */ = {
-			isa = PBXGroup;
-			children = (
+				026939382B0A457B0023073B /* Authentication */,
 				026938C92B0903E40023073B /* DataStorage */,
 			);
-			path = Infrastructure;
+			path = _Interfaces;
 			sourceTree = "<group>";
 		};
 		026938C92B0903E40023073B /* DataStorage */ = {
@@ -329,7 +326,7 @@
 		026938F72B09362B0023073B /* GetNextWordsUseCaseGateway */ = {
 			isa = PBXGroup;
 			children = (
-				026938F92B0936490023073B /* FirebaseGetNexWordsUseCaseGateway.swift */,
+				026938F92B0936490023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift */,
 			);
 			path = GetNextWordsUseCaseGateway;
 			sourceTree = "<group>";
@@ -367,6 +364,21 @@
 			path = HomeViewController;
 			sourceTree = "<group>";
 		};
+		026939332B0A41920023073B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				026939342B0A41B90023073B /* HangmanAuthenticationSDK.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		026939382B0A457B0023073B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		026B645C2B03893400F6DD99 = {
 			isa = PBXGroup;
 			children = (
@@ -395,7 +407,8 @@
 			isa = PBXGroup;
 			children = (
 				026B64802B0389F000F6DD99 /* UI */,
-				026938C32B08FFC60023073B /* DataStorage */,
+				026939332B0A41920023073B /* Authentication */,
+				026938C32B08FFC60023073B /* DataStorageProvider */,
 				02C4AB382B03C63300991633 /* Handler */,
 			);
 			path = Detail;
@@ -676,6 +689,7 @@
 			packageProductDependencies = (
 				026B647E2B0389E000F6DD99 /* CustomComponentsSDK */,
 				026938CA2B0907FD0023073B /* DataStorageSDKMain */,
+				026939362B0A41DD0023073B /* AuthenticationSDK */,
 			);
 			productName = Detail;
 			productReference = 026B64762B0389C900F6DD99 /* Detail.framework */;
@@ -865,7 +879,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0269392A2B093AF60023073B /* FetchDataStorageProvider.swift in Sources */,
-				026939072B0937480023073B /* FirebaseGetNexWordsUseCaseGateway.swift in Sources */,
+				026939072B0937480023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,14 +887,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026938CD2B0908610023073B /* HangmanCustomDataStorageProvider.swift in Sources */,
+				026938CD2B0908610023073B /* FirebaseDataStorageProvider.swift in Sources */,
 				026B64A12B03A29200F6DD99 /* HomeViewController.swift in Sources */,
 				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
 				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
 				02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */,
 				02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */,
-				026938C52B0900FA0023073B /* HangmanDataStorage.swift in Sources */,
+				026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
+				026939352B0A41B90023073B /* HangmanAuthenticationSDK.swift in Sources */,
 				02C4AB3B2B03C65800991633 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1563,6 +1578,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 026938C02B08FFB90023073B /* XCRemoteSwiftPackageReference "DataStorageSDK" */;
 			productName = DataStorageSDKMain;
+		};
+		026939362B0A41DD0023073B /* AuthenticationSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02507B9A2B07EEF00098B708 /* XCRemoteSwiftPackageReference "AuthenticationSDK" */;
+			productName = AuthenticationSDK;
 		};
 		026B647E2B0389E000F6DD99 /* CustomComponentsSDK */ = {
 			isa = XCSwiftPackageProductDependency;

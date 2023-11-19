@@ -14,13 +14,10 @@ class HomeViewControllerFactory: UIViewController {
     
     static func make() -> HomeViewController {
         
-        let dataProvider = FirebaseStorageProvider(collection: "hangmanWords" )
         
-        let dataStorageSDK = DataStorageMain(dataProvider: dataProvider )
+        let fetchAtIDDataStorage = FirebaseDataStorageProvider(collection: "hangmanWords")
         
-        let fetchStorageProvider = HangmanDataStorage(dataStorage: dataStorageSDK)
-        
-        let nextWordsGateway = FirebaseGetNexWordsUseCaseGatewayImpl(fetchStorageProvider: fetchStorageProvider)
+        let nextWordsGateway = DataStorageFetchAtIDNexWordsUseCaseGatewayImpl(fetchAtIDDataStorage: fetchAtIDDataStorage)
         
         let getNextWordsUseCase = GetNextWordsUseCaseImpl(nextWordsGateway: nextWordsGateway)
         

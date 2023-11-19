@@ -54,7 +54,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func createNextWord() {
-        homePresenter.fetchNextWords("", quantityWords: 20)
+        homePresenter.fetchNextWords()
         positionLetters()
     }
     
