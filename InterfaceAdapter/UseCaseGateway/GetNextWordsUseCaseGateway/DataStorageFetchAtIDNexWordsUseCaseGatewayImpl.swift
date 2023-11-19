@@ -8,9 +8,9 @@ import Domain
 
 public class DataStorageFetchAtIDNexWordsUseCaseGatewayImpl: GetNextWordsUseCaseGateway {
     
-    private let fetchAtIDDataStorage: FetchAtIDDataStorageProvider
+    private let fetchAtIDDataStorage: FetchAtDataStorageProvider
     
-    public init(fetchAtIDDataStorage: FetchAtIDDataStorageProvider) {
+    public init(fetchAtIDDataStorage: FetchAtDataStorageProvider) {
         self.fetchAtIDDataStorage = fetchAtIDDataStorage
     }
     

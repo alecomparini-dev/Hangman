@@ -5,12 +5,14 @@ import Foundation
 import Domain
 
 public protocol ProfileSummaryPresenterOutput: AnyObject {
+    func successSignInAnonymous()
     func successFetchNextWords()
     func errorFetchNextWords(title: String, message: String)
 }
 
 
 public class HomePresenterImpl: HomePresenter {
+    weak public var delegateOutput: ProfileSummaryPresenterOutput?
     
     private let quantityWords: Int = 2
     private var lastIDPlayedWord: Int = 5
@@ -19,9 +21,11 @@ public class HomePresenterImpl: HomePresenter {
     
 //  MARK: - INITIALIZERS
     
+    private let signInAnonymousUseCase: SignInAnonymousUseCase
     private let getNextWordsUseCase: GetNextWordsUseCase
     
-    public init(getNextWordsUseCase: GetNextWordsUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase) {
+        self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
     }
     
@@ -51,6 +55,21 @@ public class HomePresenterImpl: HomePresenter {
         
     }
     
+    public func signInAnonymously() {
+        
+        Task {
+            do {
+                let userID = try await signInAnonymousUseCase.signInAnonymosly()
+                print("\nuserID: ", userID ?? "", "\n")
+                successSignInAnonymous()
+            } catch let error {
+                debugPrint(error.localizedDescription)
+            }
+            
+        }
+        
+    }
+    
     
     public func getLettersKeyboard() -> [String] {
         return ["A","B","C","D","E","F","G","H",
@@ -59,5 +78,12 @@ public class HomePresenterImpl: HomePresenter {
                 "Y","Z",""]
     }
     
+    
+//  MARK: - PRIVATE AREA
+    private func successSignInAnonymous() {
+        DispatchQueue.main.async { [weak self] in
+            self?.delegateOutput?.successSignInAnonymous()
+        }
+    }
     
 }

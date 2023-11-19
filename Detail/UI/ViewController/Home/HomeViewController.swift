@@ -1,7 +1,6 @@
 //  Created by Alessandro Comparini on 14/11/23.
 //
 
-
 import UIKit
 
 import CustomComponentsSDK
@@ -9,7 +8,7 @@ import Presenter
 
 public class HomeViewController: UIViewController {
 
-    private let homePresenter: HomePresenter
+    private var homePresenter: HomePresenter
     
     public init(homePresenter: HomePresenter) {
         self.homePresenter = homePresenter
@@ -35,7 +34,6 @@ public class HomeViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        createNextWord()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -47,10 +45,16 @@ public class HomeViewController: UIViewController {
     
     private func configure() {
         configDelegate()
+        configSignInUserAnonymous()
     }
     
     private func configDelegate() {
         screen.gallowsKeyboardView.delegate = self
+        homePresenter.delegateOutput = self
+    }
+    
+    private func configSignInUserAnonymous() {
+        homePresenter.signInAnonymously()
     }
     
     private func createNextWord() {
@@ -102,8 +106,6 @@ public class HomeViewController: UIViewController {
 
 
 
-
-
 //  MARK: - EXTENSION - HangmanKeyboardViewDelegate
 
 extension HomeViewController: HangmanKeyboardViewDelegate {
@@ -113,6 +115,25 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
     
     func moreTipTapped() {
         print("MAIS DICASSSSS")
+    }
+    
+    
+}
+
+
+//  MARK: - EXTENSION - ProfileSummaryPresenterOutput
+
+extension HomeViewController: ProfileSummaryPresenterOutput {
+    public func successSignInAnonymous() {
+        createNextWord()
+    }
+    
+    public func successFetchNextWords() {
+        
+    }
+    
+    public func errorFetchNextWords(title: String, message: String) {
+        
     }
     
     

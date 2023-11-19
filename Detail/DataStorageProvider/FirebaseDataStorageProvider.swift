@@ -31,7 +31,7 @@ public class FirebaseDataStorageProvider {
 
 
 //  MARK: - EXTENSION - FetchAtIDDataStorageProvider
-extension FirebaseDataStorageProvider: FetchAtIDDataStorageProvider {
+extension FirebaseDataStorageProvider: FetchAtDataStorageProvider {
     
     public func fetchAt<T>(id: Int = 0) async throws -> T? {
         let querySnapshot: QuerySnapshot = try await db.collection(collection)
@@ -47,7 +47,7 @@ extension FirebaseDataStorageProvider: FetchAtIDDataStorageProvider {
         let querySnapshot: QuerySnapshot = try await db.collection(collection)
             .limit(to: limit)
             .whereField("id", isGreaterThanOrEqualTo: id)
-            .getDocuments()
+            .getDocuments()        
         
         let data: [QueryDocumentSnapshot] = querySnapshot.documents
         
