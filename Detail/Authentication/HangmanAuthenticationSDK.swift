@@ -14,5 +14,14 @@ public class HangmanAuthenticationSDK {
         self.authenticateMain = authenticateMain
     }
     
+}
+
+
+//  MARK: - AuthenticateAnonymous
+extension HangmanAuthenticationSDK: AuthenticateAnonymous {
+    
+    public func signInAnonymosly() async throws -> UserID? {
+        return try await authenticateMain.signInAnonymous()
+    }
     
 }

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020216512B0A9682003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202164E2B0A963F003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift */; };
+		020216532B0A9699003E2B07 /* AuthenticateAnonymous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */; };
+		020216542B0AA367003E2B07 /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
+		020216552B0AA367003E2B07 /* UseCaseGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
+		026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */; };
+		026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */; };
+		026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800862B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift */; };
+		026800892B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800882B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift */; };
 		026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */; };
 		026938CB2B0907FD0023073B /* DataStorageSDKMain in Frameworks */ = {isa = PBXBuildFile; productRef = 026938CA2B0907FD0023073B /* DataStorageSDKMain */; };
 		026938CD2B0908610023073B /* FirebaseDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */; };
@@ -26,7 +35,7 @@
 		026939102B09394A0023073B /* UseCaseGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026939252B093AD10023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; };
 		026939262B093AD10023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0269392A2B093AF60023073B /* FetchDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269390D2B09387F0023073B /* FetchDataStorageProvider.swift */; };
+		0269392A2B093AF60023073B /* FetchAtDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269390D2B09387F0023073B /* FetchAtDataStorageProvider.swift */; };
 		0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269392B2B09528E0023073B /* GetNextWordsUseCaseImpl.swift */; };
 		026939322B0954B90023073B /* HomeViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026939312B0954B90023073B /* HomeViewControllerFactory.swift */; };
 		026939352B0A41B90023073B /* HangmanAuthenticationSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026939342B0A41B90023073B /* HangmanAuthenticationSDK.swift */; };
@@ -56,6 +65,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		020216562B0AA367003E2B07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 026938FF2B09371C0023073B;
+			remoteInfo = UseCaseGateway;
+		};
 		026938DE2B090A310023073B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
@@ -151,6 +167,7 @@
 				026938E22B090A450023073B /* Domain.framework in Embed Frameworks */,
 				0290B63D2B0685D4000667E5 /* Presenter.framework in Embed Frameworks */,
 				0290B6402B0685D6000667E5 /* Detail.framework in Embed Frameworks */,
+				020216552B0AA367003E2B07 /* UseCaseGateway.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +175,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateAnonymous.swift; sourceTree = "<group>"; };
+		0202164E2B0A963F003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
+		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
+		0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchByDataStorageProvider.swift; sourceTree = "<group>"; };
+		026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCase.swift; sourceTree = "<group>"; };
+		026800862B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseImpl.swift; sourceTree = "<group>"; };
+		026800882B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseGateway.swift; sourceTree = "<group>"; };
 		026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanDataStorageSDK.swift; sourceTree = "<group>"; };
 		026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataStorageProvider.swift; sourceTree = "<group>"; };
 		026938D32B0909E10023073B /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,7 +192,7 @@
 		026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseGateway.swift; sourceTree = "<group>"; };
 		026938F92B0936490023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		026939002B09371C0023073B /* UseCaseGateway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UseCaseGateway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0269390D2B09387F0023073B /* FetchDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataStorageProvider.swift; sourceTree = "<group>"; };
+		0269390D2B09387F0023073B /* FetchAtDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAtDataStorageProvider.swift; sourceTree = "<group>"; };
 		0269392B2B09528E0023073B /* GetNextWordsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseImpl.swift; sourceTree = "<group>"; };
 		026939312B0954B90023073B /* HomeViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFactory.swift; sourceTree = "<group>"; };
 		026939342B0A41B90023073B /* HangmanAuthenticationSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanAuthenticationSDK.swift; sourceTree = "<group>"; };
@@ -230,6 +254,7 @@
 				0290B6412B06868F000667E5 /* Detail.framework in Frameworks */,
 				0290B6422B06868F000667E5 /* Presenter.framework in Frameworks */,
 				026938E12B090A440023073B /* Domain.framework in Frameworks */,
+				020216542B0AA367003E2B07 /* UseCaseGateway.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +269,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0202164B2B0A95EA003E2B07 /* FetchDataStorageProvider */ = {
+			isa = PBXGroup;
+			children = (
+				0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */,
+				0269390D2B09387F0023073B /* FetchAtDataStorageProvider.swift */,
+				0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */,
+			);
+			path = FetchDataStorageProvider;
+			sourceTree = "<group>";
+		};
+		0202164C2B0A960C003E2B07 /* AuthenticationUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				0202164D2B0A962C003E2B07 /* SignInAnonymousUseCaseGateway */,
+			);
+			path = AuthenticationUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		0202164D2B0A962C003E2B07 /* SignInAnonymousUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				0202164E2B0A963F003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift */,
+			);
+			path = SignInAnonymousUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		026800812B0A945A00B30C26 /* AuthenticateUseCases */ = {
+			isa = PBXGroup;
+			children = (
+				026800822B0A947900B30C26 /* SignInAnonymousUseCase */,
+			);
+			path = AuthenticateUseCases;
+			sourceTree = "<group>";
+		};
+		026800822B0A947900B30C26 /* SignInAnonymousUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				026800832B0A949300B30C26 /* Impl */,
+				026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */,
+				026800882B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift */,
+			);
+			path = SignInAnonymousUseCase;
+			sourceTree = "<group>";
+		};
+		026800832B0A949300B30C26 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				026800862B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
 		026938C32B08FFC60023073B /* DataStorageProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,19 +330,19 @@
 			path = DataStorageProvider;
 			sourceTree = "<group>";
 		};
-		026938C72B0903D00023073B /* _Interfaces */ = {
+		026938C72B0903D00023073B /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
 				026939382B0A457B0023073B /* Authentication */,
 				026938C92B0903E40023073B /* DataStorage */,
 			);
-			path = _Interfaces;
+			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		026938C92B0903E40023073B /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
-				0269390D2B09387F0023073B /* FetchDataStorageProvider.swift */,
+				0202164B2B0A95EA003E2B07 /* FetchDataStorageProvider */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -282,6 +359,7 @@
 		026938DA2B0909F30023073B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				026800812B0A945A00B30C26 /* AuthenticateUseCases */,
 				026938E52B090C3B0023073B /* GetNextWordsUseCase */,
 			);
 			path = UseCase;
@@ -334,7 +412,8 @@
 		026939012B09371C0023073B /* UseCaseGateway */ = {
 			isa = PBXGroup;
 			children = (
-				026938C72B0903D00023073B /* _Interfaces */,
+				026938C72B0903D00023073B /* Interfaces */,
+				0202164C2B0A960C003E2B07 /* AuthenticationUseCaseGateway */,
 				026938F72B09362B0023073B /* GetNextWordsUseCaseGateway */,
 			);
 			path = UseCaseGateway;
@@ -375,6 +454,7 @@
 		026939382B0A457B0023073B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -711,6 +791,7 @@
 				0290B6272B06817A000667E5 /* PBXTargetDependency */,
 				0290B63B2B06854F000667E5 /* PBXTargetDependency */,
 				026938E42B090A450023073B /* PBXTargetDependency */,
+				020216572B0AA367003E2B07 /* PBXTargetDependency */,
 			);
 			name = Hangman;
 			packageProductDependencies = (
@@ -866,10 +947,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */,
+				026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */,
 				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
+				026800892B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift in Sources */,
 				026938F42B0935CA0023073B /* GetNextWordsUseCaseDTO.swift in Sources */,
 				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
 				026938EC2B0912E10023073B /* ResultWordGame.swift in Sources */,
+				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
 				026938EA2B090CBC0023073B /* WordGallowModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -878,7 +962,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0269392A2B093AF60023073B /* FetchDataStorageProvider.swift in Sources */,
+				020216532B0A9699003E2B07 /* AuthenticateAnonymous.swift in Sources */,
+				0269392A2B093AF60023073B /* FetchAtDataStorageProvider.swift in Sources */,
+				020216512B0A9682003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift in Sources */,
+				026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */,
+				0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */,
 				026939072B0937480023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -925,6 +1013,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		020216572B0AA367003E2B07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 026938FF2B09371C0023073B /* UseCaseGateway */;
+			targetProxy = 020216562B0AA367003E2B07 /* PBXContainerItemProxy */;
+		};
 		026938DF2B090A310023073B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;

@@ -7,8 +7,12 @@ import Domain
 
 
 public protocol HomePresenter {
+    var delegateOutput: ProfileSummaryPresenterOutput? { get set }
     
     func getLettersKeyboard() -> [String]
+    
+    func signInAnonymously()
+    
     func fetchNextWords()
     
 }
