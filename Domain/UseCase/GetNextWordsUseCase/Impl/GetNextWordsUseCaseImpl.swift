@@ -12,8 +12,8 @@ public class GetNextWordsUseCaseImpl: GetNextWordsUseCase {
     }
     
     
-    public func nextWords(at: Int, limit: Int?) async throws -> [GetNextWordsUseCaseDTO] {
-        return try await nextWordsGateway.nextWords(at: at, limit: limit)
+    public func nextWords(atID: Int, limit: Int?) async throws -> [GetNextWordsUseCaseDTO] {
+        return try await nextWordsGateway.nextWords(atID: atID, limit: limit)
     }
     
     

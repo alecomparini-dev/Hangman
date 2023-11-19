@@ -33,7 +33,7 @@
       "location" : "https://github.com/alecomparini-dev/AuthenticationSDK.git",
       "state" : {
         "branch" : "develop",
-        "revision" : "52661a4a0fe02af73fd7624922ef571a56788eb6"
+        "revision" : "7840dca9226d4c157db5ca802177617376d58779"
       }
     },
     {
@@ -51,7 +51,7 @@
       "location" : "https://github.com/alecomparini-dev/DataStorageSDK.git",
       "state" : {
         "branch" : "develop",
-        "revision" : "cb9a415f2ab1a4c56cc996bd5adf85bcbd9f601f"
+        "revision" : "3ecb000689a961609acb2617b33a5151364f41dd"
       }
     },
     {
@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "branch" : "10.18.0",
-        "revision" : "5de0369ee79ad096c164eb3afeb7921d92a43b58"
+        "revision" : "5de0369ee79ad096c164eb3afeb7921d92a43b58",
+        "version" : "10.18.0"
       }
     },
     {

@@ -6,23 +6,23 @@ import Foundation
 import Domain
 
 
-public class FirebaseGetNexWordsUseCaseGatewayImpl: GetNextWordsUseCaseGateway {
+public class DataStorageFetchAtIDNexWordsUseCaseGatewayImpl: GetNextWordsUseCaseGateway {
     
-    private let fetchStorageProvider: FetchDataStorageProvider
+    private let fetchAtIDDataStorage: FetchAtIDDataStorageProvider
     
-    public init(fetchStorageProvider: FetchDataStorageProvider) {
-        self.fetchStorageProvider = fetchStorageProvider
+    public init(fetchAtIDDataStorage: FetchAtIDDataStorageProvider) {
+        self.fetchAtIDDataStorage = fetchAtIDDataStorage
     }
     
     
-    public func nextWords(at: Int, limit: Int?) async throws -> [GetNextWordsUseCaseDTO] {
+    public func nextWords(atID: Int, limit: Int?) async throws -> [GetNextWordsUseCaseDTO] {
         
         var fetchWords: [[String: Any]]?
         
         if let limit {
-            fetchWords = try await fetchStorageProvider.fetch(limit: limit)
+            fetchWords = try await fetchAtIDDataStorage.fetchAt(id: atID, limit: limit)
         } else {
-            fetchWords = try await fetchStorageProvider.fetch()
+            fetchWords = try await fetchAtIDDataStorage.fetchAt(id: atID)
         }
         
         guard let fetchWords else {return []}
@@ -34,6 +34,7 @@ public class FirebaseGetNexWordsUseCaseGatewayImpl: GetNextWordsUseCaseGateway {
                 syllables: $0["syllables"] as? [String],
                 category: $0["category"] as? String,
                 initialTip: $0["initialTip"] as? String,
+                level: $0["level"] as? Int,
                 tips: $0["tips"] as? [String]
             )
         }

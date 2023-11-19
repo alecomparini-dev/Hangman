@@ -8,9 +8,7 @@ import Domain
 
 public protocol HomePresenter {
     
-    
     func getLettersKeyboard() -> [String]
-    
-    func fetchNextWords(_ lastPlayedWord: String, quantityWords: Int)
+    func fetchNextWords()
     
 }

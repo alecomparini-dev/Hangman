@@ -4,9 +4,20 @@
 import Foundation
 import Domain
 
+public protocol ProfileSummaryPresenterOutput: AnyObject {
+    func successFetchNextWords()
+    func errorFetchNextWords(title: String, message: String)
+}
+
+
 public class HomePresenterImpl: HomePresenter {
     
+    private let quantityWords: Int = 2
+    private var lastIDPlayedWord: Int = 5
     private var nextWords: [GetNextWordsUseCaseDTO]?
+    
+    
+//  MARK: - INITIALIZERS
     
     private let getNextWordsUseCase: GetNextWordsUseCase
     
@@ -14,17 +25,20 @@ public class HomePresenterImpl: HomePresenter {
         self.getNextWordsUseCase = getNextWordsUseCase
     }
     
-    public func fetchNextWords(_ lastPlayedWord: String, quantityWords: Int = 20) {
+    
+//  MARK: - PUBLIC AREA
+    public func fetchNextWords() {
         
         Task {
             do {
-                nextWords = try await getNextWordsUseCase.nextWords(at: 0, limit: quantityWords)
+                nextWords = try await getNextWordsUseCase.nextWords(atID: lastIDPlayedWord + 1, limit: quantityWords)
                 nextWords?.forEach( { word in
                     print("id:", word.id ?? "")
                     print("word:", word.word ?? "")
                     print("category:", word.category ?? "")
                     print("syllables:", word.syllables ?? "")
                     print("initalTip:", word.initialTip ?? "")
+                    print("level:", word.level ?? "")
                     print("tips:", word.tips ?? "")
                     
                     print("\n---------------------------------\n")
