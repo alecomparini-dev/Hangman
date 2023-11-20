@@ -15,4 +15,5 @@ public protocol HomePresenter {
     
     func fetchNextWord()
     
+    func countWordsPlayed()
 }

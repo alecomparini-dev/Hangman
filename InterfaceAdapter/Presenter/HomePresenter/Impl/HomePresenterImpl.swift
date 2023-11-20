@@ -7,6 +7,7 @@ import Domain
 public protocol ProfileSummaryPresenterOutput: AnyObject {
     func successFetchNextWord(_ nextWord: NextWordPresenterDTO)
     func nextWordIsOver(title: String, message: String)
+    func successCountWordsPlayed(_ count: Int)
     func errorFetchNextWords(title: String, message: String)
     func successSignInAnonymous()
 }
@@ -15,6 +16,7 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: ProfileSummaryPresenterOutput?
     
+    private var userID: String?
     private var lastIDPlayedWord: Int = 0
     private let quantityWords: Int = 3
     private var nextWords: [NextWordsUseCaseDTO]?
@@ -24,16 +26,20 @@ public class HomePresenterImpl: HomePresenter {
     
     private let signInAnonymousUseCase: SignInAnonymousUseCase
     private let getNextWordsUseCase: GetNextWordsUseCase
+    private let countWordsPlayedUseCase: CountWordsPlayedUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
+        self.countWordsPlayedUseCase = countWordsPlayedUseCase
     }
     
     
     
 //  MARK: - PUBLIC AREA
     public func fetchNextWord() {
+        
+        countWordsPlayed()
         
         if let word = getNextWord() {
             successFetchNextWord(word)
@@ -44,15 +50,15 @@ public class HomePresenterImpl: HomePresenter {
             do {
                 nextWords = try await getNextWordsUseCase.nextWords(atID: lastIDPlayedWord + 1, limit: quantityWords)
                 nextWords?.forEach( { word in
-                    print("id:", word.id )
-                    print("word:", word.word ?? "")
-                    print("category:", word.category ?? "")
-                    print("syllables:", word.syllables ?? "")
-                    print("initalTip:", word.initialTip ?? "")
-                    print("level:", word.level ?? "")
-                    print("tips:", word.tips ?? "")
-                    
-                    print("\n---------------------------------\n")
+//                    print("id:", word.id )
+//                    print("word:", word.word ?? "")
+//                    print("category:", word.category ?? "")
+//                    print("syllables:", word.syllables ?? "")
+//                    print("initalTip:", word.initialTip ?? "")
+//                    print("level:", word.level ?? "")
+//                    print("tips:", word.tips ?? "")
+//                    
+//                    print("\n---------------------------------\n")
                 })
                 
                 if let nextWords {
@@ -72,9 +78,21 @@ public class HomePresenterImpl: HomePresenter {
     public func signInAnonymously() {
         Task {
             do {
-                let userID = try await signInAnonymousUseCase.signInAnonymosly()
+                userID = try await signInAnonymousUseCase.signInAnonymosly()
                 print("\nuserID: ", userID ?? "", "\n")
                 successSignInAnonymous()
+            } catch let error {
+                debugPrint(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func countWordsPlayed() {
+        guard let userID else { return }
+        Task {
+            do {
+                let count = try await countWordsPlayedUseCase.count(userID: userID)
+                return successCountWordsPlayed(count)
             } catch let error {
                 debugPrint(error.localizedDescription)
             }
@@ -122,6 +140,12 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
 
+    private func successCountWordsPlayed(_ count: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.delegateOutput?.successCountWordsPlayed(count)
+        }
+    }
+    
 
 //  MARK: - PRIVATE AREA
     

@@ -29,8 +29,19 @@ class HomeViewControllerFactory: UIViewController {
         
         let signInAnonymousUseCase = SignInAnonymousUseCaseImpl(signInAnonymousGateway: signInAnonymousGateway)
         
+        let dataProvider = FirebaseStorageProvider(collection: "users")
+        
+        let dataStorageMain = DataStorageMain(dataProvider: dataProvider)
+        
+        let fetchCountDataStorage = HangmanDataStorageSDK(dataStorage: dataStorageMain)
+        
+        let countWordsPlayedGateway = CountWordsPlayedUseCaseGatewayImpl(fetchCountDataStorage: fetchCountDataStorage)
+        
+        let countWordsPlayedUseCase = CountWordsPlayedUseCaseImpl(countWordsPlayedGateway: countWordsPlayedGateway)
+        
         let homePresenter = HomePresenterImpl(signInAnonymousUseCase: signInAnonymousUseCase,
-                                              getNextWordsUseCase: getNextWordsUseCase)
+                                              getNextWordsUseCase: getNextWordsUseCase, 
+                                              countWordsPlayedUseCase: countWordsPlayedUseCase)
         
         return HomeViewController(homePresenter: homePresenter)
         
