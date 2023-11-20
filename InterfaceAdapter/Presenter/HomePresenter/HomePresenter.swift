@@ -13,6 +13,7 @@ public protocol HomePresenter {
     
     func signInAnonymously()
     
-    func fetchNextWords()
+    func fetchNextWord()
     
+    func countWordsPlayed()
 }

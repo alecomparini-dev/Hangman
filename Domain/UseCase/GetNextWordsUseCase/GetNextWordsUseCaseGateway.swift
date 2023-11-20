@@ -4,5 +4,5 @@
 import Foundation
 
 public protocol GetNextWordsUseCaseGateway {
-    func nextWords(atID: Int, limit: Int?) async throws -> [GetNextWordsUseCaseDTO]
+    func nextWords(atID: Int, limit: Int?) async throws -> [NextWordsUseCaseDTO]
 }

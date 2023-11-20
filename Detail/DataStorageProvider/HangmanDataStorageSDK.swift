@@ -26,6 +26,10 @@ extension HangmanDataStorageSDK: FetchByDataStorageProvider {
 
 //  MARK: - EXTENSION - FetchCountDataStorageProvider
 extension HangmanDataStorageSDK: FetchCountDataStorageProvider {
+    public func fetchCount(_ document: String) async throws -> Int {
+        return try await dataStorage.fetchCount(document)
+    }
+    
     public func fetchCount() async throws -> Int {
         return try await dataStorage.fetchCount()
     }

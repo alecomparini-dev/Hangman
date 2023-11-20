@@ -12,7 +12,7 @@ public class GetNextWordsUseCaseImpl: GetNextWordsUseCase {
     }
     
     
-    public func nextWords(atID: Int, limit: Int?) async throws -> [GetNextWordsUseCaseDTO] {
+    public func nextWords(atID: Int, limit: Int?) async throws -> [NextWordsUseCaseDTO] {
         return try await nextWordsGateway.nextWords(atID: atID, limit: limit)
     }
     
