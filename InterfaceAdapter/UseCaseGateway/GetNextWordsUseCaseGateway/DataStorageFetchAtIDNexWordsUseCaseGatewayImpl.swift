@@ -15,7 +15,7 @@ public class DataStorageFetchAtIDNexWordsUseCaseGatewayImpl: GetNextWordsUseCase
     }
     
     
-    public func nextWords(atID: Int, limit: Int?) async throws -> [GetNextWordsUseCaseDTO] {
+    public func nextWords(atID: Int, limit: Int?) async throws -> [NextWordsUseCaseDTO] {
         
         var fetchWords: [[String: Any]]?
         
@@ -28,13 +28,13 @@ public class DataStorageFetchAtIDNexWordsUseCaseGatewayImpl: GetNextWordsUseCase
         guard let fetchWords else {return []}
         
         return fetchWords.map {
-            return GetNextWordsUseCaseDTO(
-                id: $0["id"] as? Int,
+            return NextWordsUseCaseDTO(
+                id: $0["id"] as? Int ?? 0,
                 word: $0["word"] as? String,
                 syllables: $0["syllables"] as? [String],
                 category: $0["category"] as? String,
                 initialTip: $0["initialTip"] as? String,
-                level: $0["level"] as? Int,
+                level: $0["level"] as? Level,
                 tips: $0["tips"] as? [String]
             )
         }

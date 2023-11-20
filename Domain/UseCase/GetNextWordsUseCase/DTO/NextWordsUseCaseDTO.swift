@@ -3,16 +3,22 @@
 
 import Foundation
 
-public struct GetNextWordsUseCaseDTO {
-    public var id: Int?
+public enum Level: Int {
+    case easy = 0
+    case normal = 1
+    case hard = 2
+}
+
+public struct NextWordsUseCaseDTO {
+    public var id: Int
     public var word: String?
     public var syllables: [String]?
     public var category: String?
     public var initialTip: String?
-    public var level: Int?
+    public var level: Level?
     public var tips: [String]?
     
-    public init(id: Int? = nil, word: String? = nil, syllables: [String]? = nil, category: String? = nil, initialTip: String? = nil, level: Int? = nil, tips: [String]? = nil) {
+    public init(id: Int, word: String? = nil, syllables: [String]? = nil, category: String? = nil, initialTip: String? = nil, level: Level? = nil, tips: [String]? = nil) {
         self.id = id
         self.word = word
         self.syllables = syllables

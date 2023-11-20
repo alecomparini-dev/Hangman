@@ -58,8 +58,9 @@ public class HomeViewController: UIViewController {
     }
     
     private func createNextWord() {
-        homePresenter.fetchNextWords()
-        positionLetters()
+        homePresenter.fetchNextWord() 
+        
+//        positionLetters()
     }
     
     private func positionLetters() {
@@ -110,7 +111,7 @@ public class HomeViewController: UIViewController {
 
 extension HomeViewController: HangmanKeyboardViewDelegate {
     func letterButtonTapped(_ button: UIButton) {
-        print(button.titleLabel?.text ?? "")
+        createNextWord()
     }
     
     func moreTipTapped() {
@@ -124,13 +125,20 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
+    
+    public func successFetchNextWord(_ nextWord: NextWordPresenterDTO) {
+        print(nextWord)
+        print()
+    }
+    
+    public func nextWordIsOver(title: String, message: String) {
+        print(message)
+    }
+    
     public func successSignInAnonymous() {
         createNextWord()
     }
     
-    public func successFetchNextWords() {
-        
-    }
     
     public func errorFetchNextWords(title: String, message: String) {
         

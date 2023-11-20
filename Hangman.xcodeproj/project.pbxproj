@@ -11,6 +11,7 @@
 		020216532B0A9699003E2B07 /* AuthenticateAnonymous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */; };
 		020216542B0AA367003E2B07 /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
 		020216552B0AA367003E2B07 /* UseCaseGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0202165B2B0B9D08003E2B07 /* NextWordPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216592B0B9C59003E2B07 /* NextWordPresenterDTO.swift */; };
 		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
 		026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */; };
 		026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */; };
@@ -28,7 +29,7 @@
 		026938EC2B0912E10023073B /* ResultWordGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938EB2B0912E10023073B /* ResultWordGame.swift */; };
 		026938ED2B0914100023073B /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
 		026938EE2B0914100023073B /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		026938F42B0935CA0023073B /* GetNextWordsUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F32B0935CA0023073B /* GetNextWordsUseCaseDTO.swift */; };
+		026938F42B0935CA0023073B /* NextWordsUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F32B0935CA0023073B /* NextWordsUseCaseDTO.swift */; };
 		026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */; };
 		026939072B0937480023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938F92B0936490023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift */; };
 		0269390F2B09394A0023073B /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
@@ -177,6 +178,7 @@
 /* Begin PBXFileReference section */
 		020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateAnonymous.swift; sourceTree = "<group>"; };
 		0202164E2B0A963F003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
+		020216592B0B9C59003E2B07 /* NextWordPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextWordPresenterDTO.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
 		0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchByDataStorageProvider.swift; sourceTree = "<group>"; };
 		026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCase.swift; sourceTree = "<group>"; };
@@ -188,7 +190,7 @@
 		026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCase.swift; sourceTree = "<group>"; };
 		026938E92B090CBC0023073B /* WordGallowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGallowModel.swift; sourceTree = "<group>"; };
 		026938EB2B0912E10023073B /* ResultWordGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWordGame.swift; sourceTree = "<group>"; };
-		026938F32B0935CA0023073B /* GetNextWordsUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseDTO.swift; sourceTree = "<group>"; };
+		026938F32B0935CA0023073B /* NextWordsUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextWordsUseCaseDTO.swift; sourceTree = "<group>"; };
 		026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseGateway.swift; sourceTree = "<group>"; };
 		026938F92B0936490023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		026939002B09371C0023073B /* UseCaseGateway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UseCaseGateway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,6 +297,14 @@
 			path = SignInAnonymousUseCaseGateway;
 			sourceTree = "<group>";
 		};
+		020216582B0B9C42003E2B07 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				020216592B0B9C59003E2B07 /* NextWordPresenterDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		026800812B0A945A00B30C26 /* AuthenticateUseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,7 +406,7 @@
 		026938F22B0935C00023073B /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				026938F32B0935CA0023073B /* GetNextWordsUseCaseDTO.swift */,
+				026938F32B0935CA0023073B /* NextWordsUseCaseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -646,6 +656,7 @@
 		02C4AB652B04F25C00991633 /* HomePresenter */ = {
 			isa = PBXGroup;
 			children = (
+				020216582B0B9C42003E2B07 /* DTO */,
 				02C4AB682B04F32A00991633 /* Impl */,
 				02C4AB662B04F2A200991633 /* HomePresenter.swift */,
 			);
@@ -950,7 +961,7 @@
 				026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */,
 				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
 				026800892B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift in Sources */,
-				026938F42B0935CA0023073B /* GetNextWordsUseCaseDTO.swift in Sources */,
+				026938F42B0935CA0023073B /* NextWordsUseCaseDTO.swift in Sources */,
 				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
 				026938EC2B0912E10023073B /* ResultWordGame.swift in Sources */,
 				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
@@ -1005,6 +1016,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0202165B2B0B9D08003E2B07 /* NextWordPresenterDTO.swift in Sources */,
 				02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */,
 				02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */,
 			);
