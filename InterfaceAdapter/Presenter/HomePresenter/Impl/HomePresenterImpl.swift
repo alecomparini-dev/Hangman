@@ -27,30 +27,33 @@ public class HomePresenterImpl: HomePresenter {
     private let signInAnonymousUseCase: SignInAnonymousUseCase
     private let getNextWordsUseCase: GetNextWordsUseCase
     private let countWordsPlayedUseCase: CountWordsPlayedUseCase
+    private let saveWordPlayedUseCase: SaveWordPlayedUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
+        self.saveWordPlayedUseCase = saveWordPlayedUseCase
     }
     
     
     
 //  MARK: - PUBLIC AREA
     public func fetchNextWord() {
-        
-        countWordsPlayed()
-        
+
         if let word = getNextWord() {
             successFetchNextWord(word)
             return
         }
         
         Task {
+            
+            countWordsPlayed()
+            
             do {
                 nextWords = try await getNextWordsUseCase.nextWords(atID: lastIDPlayedWord + 1, limit: quantityWords)
                 nextWords?.forEach( { word in
-//                    print("id:", word.id )
+                    print("id:", word.id )
 //                    print("word:", word.word ?? "")
 //                    print("category:", word.category ?? "")
 //                    print("syllables:", word.syllables ?? "")
@@ -81,6 +84,26 @@ public class HomePresenterImpl: HomePresenter {
                 userID = try await signInAnonymousUseCase.signInAnonymosly()
                 print("\nuserID: ", userID ?? "", "\n")
                 successSignInAnonymous()
+            } catch let error {
+                debugPrint(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func saveWordPlayed() {
+        guard let userID else { return }
+        Task {
+            do {
+                try await saveWordPlayedUseCase.save(
+                    userID: userID,
+                    WordPlayedUseCaseDTO(
+                        wordID: getCurrentWord()?.id ?? 0,
+                        success: true,
+                        quantityCorrectLetters: 10,
+                        quantityErrorLetters: 3,
+                        timeConclusion: nil)
+                )
+                
             } catch let error {
                 debugPrint(error.localizedDescription)
             }
@@ -148,10 +171,23 @@ public class HomePresenterImpl: HomePresenter {
     
 
 //  MARK: - PRIVATE AREA
+
+    private func getIndexLastIDPlayedWord() -> Int? {
+        return nextWords?.firstIndex(where: { $0.id == lastIDPlayedWord })
+    }
+    
+    
+    private func getCurrentWord() -> NextWordsUseCaseDTO? {
+        if let indexLastIDPlayed = getIndexLastIDPlayedWord() {
+            return nextWords?[indexLastIDPlayed]
+        }
+        return nil
+    }
+    
     
     private func getNextWord() -> NextWordsUseCaseDTO? {
         if let nextWords {
-            if let indexLastIDPlayed = nextWords.firstIndex(where: { $0.id == lastIDPlayedWord }) {
+            if let indexLastIDPlayed = getIndexLastIDPlayedWord() {
                 if indexLastIDPlayed < nextWords.endIndex - 1 {
                     let word = nextWords[indexLastIDPlayed + 1]
                     setLastIDPlayedWord(word.id)

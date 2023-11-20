@@ -58,8 +58,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func createNextWord() {
-        homePresenter.fetchNextWord() 
-        
+        homePresenter.fetchNextWord()
 //        positionLetters()
     }
     
@@ -131,8 +130,8 @@ extension HomeViewController: ProfileSummaryPresenterOutput {
     
     
     public func successFetchNextWord(_ nextWord: NextWordPresenterDTO) {
-//        print(nextWord)
-//        print()
+        print(nextWord)
+        homePresenter.saveWordPlayed()
     }
     
     public func nextWordIsOver(title: String, message: String) {

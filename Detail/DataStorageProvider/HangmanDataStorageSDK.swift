@@ -24,6 +24,8 @@ extension HangmanDataStorageSDK: FetchByDataStorageProvider {
     }
 }
 
+
+
 //  MARK: - EXTENSION - FetchCountDataStorageProvider
 extension HangmanDataStorageSDK: FetchCountDataStorageProvider {
     public func fetchCount(_ document: String) async throws -> Int {
@@ -32,5 +34,19 @@ extension HangmanDataStorageSDK: FetchCountDataStorageProvider {
     
     public func fetchCount() async throws -> Int {
         return try await dataStorage.fetchCount()
+    }
+}
+
+
+
+//  MARK: - EXTENSION - InsertDataStorageProvider
+extension HangmanDataStorageSDK: InsertDataStorageProvider {
+
+    public func insert<T>(_ document: String, _ value: T) async throws -> T? {
+        return try await dataStorage.insert(document, value)
+    }
+
+    public func insert<T>(_ value: T) async throws -> T? {
+        return try await dataStorage.insert(value)
     }
 }

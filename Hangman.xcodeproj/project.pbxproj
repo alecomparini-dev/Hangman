@@ -16,6 +16,15 @@
 		020216642B0BC540003E2B07 /* CountWordsPlayedUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216632B0BC540003E2B07 /* CountWordsPlayedUseCaseGateway.swift */; };
 		020216662B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216652B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift */; };
 		0202166B2B0BC605003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216692B0BC5F9003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift */; };
+		0202166E2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166D2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift */; };
+		020216702B0BE855003E2B07 /* WordPlayedPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */; };
+		020216722B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216712B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift */; };
+		020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216732B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift */; };
+		020216762B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216752B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift */; };
+		0202167A2B0BE906003E2B07 /* SaveWordPlayedUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216782B0BE8F4003E2B07 /* SaveWordPlayedUseCaseGatewayImpl.swift */; };
+		0202167E2B0BE9E4003E2B07 /* InsertDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202167C2B0BE9DB003E2B07 /* InsertDataStorageProvider.swift */; };
+		020216862B0C044C003E2B07 /* SaveWordPlayedCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216812B0C01DA003E2B07 /* SaveWordPlayedCodable.swift */; };
+		020216872B0C0452003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */; };
 		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
 		026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */; };
 		026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */; };
@@ -187,6 +196,15 @@
 		020216632B0BC540003E2B07 /* CountWordsPlayedUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWordsPlayedUseCaseGateway.swift; sourceTree = "<group>"; };
 		020216652B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWordsPlayedUseCaseImpl.swift; sourceTree = "<group>"; };
 		020216692B0BC5F9003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWordsPlayedUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
+		0202166D2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlayedUseCaseDTO.swift; sourceTree = "<group>"; };
+		0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlayedPresenterDTO.swift; sourceTree = "<group>"; };
+		020216712B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedUseCase.swift; sourceTree = "<group>"; };
+		020216732B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedUseCaseGateway.swift; sourceTree = "<group>"; };
+		020216752B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedUseCaseImpl.swift; sourceTree = "<group>"; };
+		020216782B0BE8F4003E2B07 /* SaveWordPlayedUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
+		0202167C2B0BE9DB003E2B07 /* InsertDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertDataStorageProvider.swift; sourceTree = "<group>"; };
+		020216812B0C01DA003E2B07 /* SaveWordPlayedCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedCodable.swift; sourceTree = "<group>"; };
+		020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
 		0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchByDataStorageProvider.swift; sourceTree = "<group>"; };
 		026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCase.swift; sourceTree = "<group>"; };
@@ -309,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				020216592B0B9C59003E2B07 /* NextWordPresenterDTO.swift */,
+				0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -317,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				0202165D2B0BC33D003E2B07 /* Impl */,
+				020216712B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift */,
+				020216732B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift */,
 			);
 			path = SaveWordPlayedUseCase;
 			sourceTree = "<group>";
@@ -324,6 +345,7 @@
 		0202165D2B0BC33D003E2B07 /* Impl */ = {
 			isa = PBXGroup;
 			children = (
+				020216752B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -331,7 +353,9 @@
 		0202165E2B0BC36F003E2B07 /* WordsPlayedUseCases */ = {
 			isa = PBXGroup;
 			children = (
+				0202166C2B0BE748003E2B07 /* DTO */,
 				0202165F2B0BC51B003E2B07 /* CountWordsPlayedUseCase */,
+				0202165C2B0BC327003E2B07 /* SaveWordPlayedUseCase */,
 			);
 			path = WordsPlayedUseCases;
 			sourceTree = "<group>";
@@ -357,6 +381,7 @@
 		020216672B0BC5D0003E2B07 /* WordsPlayedUseCaseGateways */ = {
 			isa = PBXGroup;
 			children = (
+				020216772B0BE8E5003E2B07 /* SaveWordPlayedUseCaseGateway */,
 				020216682B0BC5EF003E2B07 /* CountWordsPlayedUseCaseGateway */,
 			);
 			path = WordsPlayedUseCaseGateways;
@@ -368,6 +393,48 @@
 				020216692B0BC5F9003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift */,
 			);
 			path = CountWordsPlayedUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		0202166C2B0BE748003E2B07 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				0202166D2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		020216772B0BE8E5003E2B07 /* SaveWordPlayedUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				020216802B0C01B6003E2B07 /* Codable */,
+				020216832B0C03B5003E2B07 /* Mapper */,
+				020216782B0BE8F4003E2B07 /* SaveWordPlayedUseCaseGatewayImpl.swift */,
+			);
+			path = SaveWordPlayedUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		0202167B2B0BE973003E2B07 /* InsertDataStorageProvider */ = {
+			isa = PBXGroup;
+			children = (
+				0202167C2B0BE9DB003E2B07 /* InsertDataStorageProvider.swift */,
+			);
+			path = InsertDataStorageProvider;
+			sourceTree = "<group>";
+		};
+		020216802B0C01B6003E2B07 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				020216812B0C01DA003E2B07 /* SaveWordPlayedCodable.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
+		020216832B0C03B5003E2B07 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		026800812B0A945A00B30C26 /* AuthenticateUseCases */ = {
@@ -417,6 +484,7 @@
 		026938C92B0903E40023073B /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				0202167B2B0BE973003E2B07 /* InsertDataStorageProvider */,
 				0202164B2B0A95EA003E2B07 /* FetchDataStorageProvider */,
 			);
 			path = DataStorage;
@@ -435,7 +503,6 @@
 			isa = PBXGroup;
 			children = (
 				026800812B0A945A00B30C26 /* AuthenticateUseCases */,
-				0202165C2B0BC327003E2B07 /* SaveWordPlayedUseCase */,
 				026938E52B090C3B0023073B /* GetNextWordsUseCase */,
 				0202165E2B0BC36F003E2B07 /* WordsPlayedUseCases */,
 			);
@@ -1026,13 +1093,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				020216622B0BC537003E2B07 /* CountWordsPlayedUseCase.swift in Sources */,
+				0202166E2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift in Sources */,
 				026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */,
 				020216642B0BC540003E2B07 /* CountWordsPlayedUseCaseGateway.swift in Sources */,
 				026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */,
 				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
 				026800892B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift in Sources */,
+				020216762B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift in Sources */,
 				020216662B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift in Sources */,
 				026938F42B0935CA0023073B /* NextWordsUseCaseDTO.swift in Sources */,
+				020216722B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift in Sources */,
+				020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */,
+				020216702B0BE855003E2B07 /* WordPlayedPresenterDTO.swift in Sources */,
 				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
 				026938EC2B0912E10023073B /* ResultWordGame.swift in Sources */,
 				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
@@ -1044,11 +1116,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0202167A2B0BE906003E2B07 /* SaveWordPlayedUseCaseGatewayImpl.swift in Sources */,
 				020216532B0A9699003E2B07 /* AuthenticateAnonymous.swift in Sources */,
 				0269392A2B093AF60023073B /* FetchAtDataStorageProvider.swift in Sources */,
 				020216512B0A9682003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift in Sources */,
 				026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */,
 				0202166B2B0BC605003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift in Sources */,
+				020216862B0C044C003E2B07 /* SaveWordPlayedCodable.swift in Sources */,
+				0202167E2B0BE9E4003E2B07 /* InsertDataStorageProvider.swift in Sources */,
+				020216872B0C0452003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift in Sources */,
 				0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */,
 				026939072B0937480023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift in Sources */,
 			);
