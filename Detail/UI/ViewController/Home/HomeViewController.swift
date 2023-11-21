@@ -130,12 +130,8 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
-    public func successCountWordsPlayed(_ count: Int) {
-//        print("COUNNT:" , count)
-    }
     
     public func successFetchNextWord(nextWord: NextWordPresenterDTO?) {
-//        print(nextWord ?? "")
         print("WORD ID: ", homePresenter.getCurrentWord()?.id ?? "" )
     }
     

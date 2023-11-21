@@ -7,7 +7,6 @@ import Domain
 public protocol ProfileSummaryPresenterOutput: AnyObject {
     func successFetchNextWord(nextWord: NextWordPresenterDTO?)
     func nextWordIsOver(title: String, message: String)
-    func successCountWordsPlayed(_ count: Int)
     func errorFetchNextWords(title: String, message: String)
 }
 
@@ -186,11 +185,5 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
 
-    private func successCountWordsPlayed(_ count: Int) {
-        DispatchQueue.main.async { [weak self] in
-            self?.delegateOutput?.successCountWordsPlayed(count)
-        }
-    }
-    
     
 }
