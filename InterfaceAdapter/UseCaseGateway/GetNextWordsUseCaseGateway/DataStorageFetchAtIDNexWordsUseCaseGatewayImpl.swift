@@ -33,7 +33,7 @@ public class DataStorageFetchAtIDNexWordsUseCaseGatewayImpl: GetNextWordsUseCase
                 word: $0["word"] as? String,
                 syllables: $0["syllables"] as? [String],
                 category: $0["category"] as? String,
-                initialTip: $0["initialTip"] as? String,
+                initialQuestion: $0["initialQuestion"] as? String,
                 level: $0["level"] as? Level,
                 tips: $0["tips"] as? [String]
             )

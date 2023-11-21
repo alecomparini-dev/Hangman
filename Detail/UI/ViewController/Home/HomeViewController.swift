@@ -52,10 +52,28 @@ public class HomeViewController: UIViewController {
         screen.gallowsKeyboardView.delegate = self
         homePresenter.delegateOutput = self
     }
-        
-    private func createNextWord() {
-//        positionLetters()
+    
+    private func configNextWord(_ word: NextWordPresenterDTO?) {
+        configCategory(word?.category)
+        configInitialQuestion(word?.initialQuestion)
+        configPositionLettersOfWord(word)
     }
+    
+    private func configCategory(_ category: String?) {
+        guard let category else { return }
+    }
+    
+    
+    private func configInitialQuestion(_ question: String?) {
+        guard let question else { return }
+        
+    }
+    
+    private func configPositionLettersOfWord(_ word: NextWordPresenterDTO?) {
+        guard let word else { return }
+        
+    }
+    
     
     private func positionLetters() {
         let indexToBreakLine = calculateIndexToBreakLine()
@@ -66,6 +84,12 @@ public class HomeViewController: UIViewController {
         }
         
     }
+    
+    
+    
+    
+    
+    
     
     private func calculateIndexToBreakLine() -> Int {
 //        if getCurrentWord().word.count <= quantityLetterByLine {return quantityLetterByLine}
@@ -132,7 +156,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 extension HomeViewController: ProfileSummaryPresenterOutput {
     
     public func successFetchNextWord(nextWord: NextWordPresenterDTO?) {
-        print("WORD ID: ", homePresenter.getCurrentWord()?.id ?? "" )
+        
     }
     
     public func nextWordIsOver(title: String, message: String) {

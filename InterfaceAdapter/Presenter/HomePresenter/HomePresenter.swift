@@ -12,13 +12,9 @@ public protocol HomePresenter {
     
     func getLettersKeyboard() -> [String]
     
-    func signInAnonymously() async
-    
     func getNextWord()
     
     func countWordsPlayed() async
-    
-    func saveWordPlayed() async
     
     func getCurrentWord() -> NextWordPresenterDTO?
 }

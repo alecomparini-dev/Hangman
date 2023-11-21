@@ -51,32 +51,6 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    public func signInAnonymously() async {
-        do {
-            userID = try await signInAnonymousUseCase.signInAnonymosly()
-            print("\nuserID: ", userID ?? "", "\n")
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
-    public func saveWordPlayed() async {
-        guard let userID else { return }
-        do {
-            try await saveWordPlayedUseCase.save(
-                userID: userID,
-                WordPlayedUseCaseDTO(
-                    wordID: getCurrentWord()?.id ?? 0,
-                    success: true,
-                    quantityCorrectLetters: 10,
-                    quantityErrorLetters: 3,
-                    timeConclusion: nil)
-            )
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
     public func countWordsPlayed() async {
         guard let userID else { return }
         do {
@@ -96,7 +70,7 @@ public class HomePresenterImpl: HomePresenter {
                                     word: wordPlaying.word,
                                     syllables: wordPlaying.syllables,
                                     category: wordPlaying.category,
-                                    initialTip: wordPlaying.initialTip,
+                                    initialQuestion: wordPlaying.initialQuestion,
                                     level: convertLevel(wordPlaying.level),
                                     tips: wordPlaying.tips)
     }
@@ -117,6 +91,15 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
+    private func signInAnonymously() async {
+        do {
+            userID = try await signInAnonymousUseCase.signInAnonymosly()
+            print("\nuserID: ", userID ?? "", "\n")
+        } catch let error {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
     private func fetchNextWord() async {
         nextWords = nil
         do {
@@ -132,6 +115,23 @@ public class HomePresenterImpl: HomePresenter {
         } catch let error {
             debugPrint(error.localizedDescription)
             errorFetchNextWords("Aviso", "Não foi possível carregar as próximas palavras. Favor tentar novamente mais tarde")
+        }
+    }
+    
+    private func saveWordPlayed() async {
+        guard let userID else { return }
+        do {
+            try await saveWordPlayedUseCase.save(
+                userID: userID,
+                WordPlayedUseCaseDTO(
+                    wordID: getCurrentWord()?.id ?? 0,
+                    success: true,
+                    quantityCorrectLetters: 10,
+                    quantityErrorLetters: 3,
+                    timeConclusion: nil)
+            )
+        } catch let error {
+            debugPrint(error.localizedDescription)
         }
     }
     
