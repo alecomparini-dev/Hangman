@@ -45,20 +45,15 @@ public class HomeViewController: UIViewController {
     
     private func configure() {
         configDelegate()
-        configSignInUserAnonymous()
     }
     
     private func configDelegate() {
+        screen.delegate = self
         screen.gallowsKeyboardView.delegate = self
         homePresenter.delegateOutput = self
     }
-    
-    private func configSignInUserAnonymous() {
-        homePresenter.signInAnonymously()
-    }
-    
+        
     private func createNextWord() {
-        homePresenter.fetchNextWord()
 //        positionLetters()
     }
     
@@ -105,16 +100,27 @@ public class HomeViewController: UIViewController {
 
 
 
+//  MARK: - EXTENSION - HangmanKeyboardViewDelegate
+
+extension HomeViewController: HangmanViewDelegate {
+    
+    func nextWordButtonTapped() {
+        homePresenter.getNextWord()
+    }
+    
+}
+
 
 //  MARK: - EXTENSION - HangmanKeyboardViewDelegate
 
 extension HomeViewController: HangmanKeyboardViewDelegate {
+    
     func letterButtonTapped(_ button: UIButton) {
-        createNextWord()
+        print(#function)
     }
     
     func moreTipTapped() {
-        print("MAIS DICASSSSS")
+        print(#function)
     }
     
     
@@ -125,26 +131,20 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
     public func successCountWordsPlayed(_ count: Int) {
-        print("COUNNT:" , count)
+//        print("COUNNT:" , count)
     }
     
-    
-    public func successFetchNextWord(_ nextWord: NextWordPresenterDTO) {
-        print(nextWord)
-        homePresenter.saveWordPlayed()
+    public func successFetchNextWord(nextWord: NextWordPresenterDTO?) {
+//        print(nextWord ?? "")
+        print("WORD ID: ", homePresenter.getCurrentWord()?.id ?? "" )
     }
     
     public func nextWordIsOver(title: String, message: String) {
         print(message)
     }
     
-    public func successSignInAnonymous() {
-        createNextWord()
-    }
-    
-    
     public func errorFetchNextWords(title: String, message: String) {
-        
+        print(message)
     }
     
     
