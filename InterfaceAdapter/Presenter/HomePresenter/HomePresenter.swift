@@ -7,15 +7,18 @@ import Domain
 
 
 public protocol HomePresenter {
+    typealias UserID = String
     var delegateOutput: ProfileSummaryPresenterOutput? { get set }
     
     func getLettersKeyboard() -> [String]
     
-    func signInAnonymously()
+    func signInAnonymously() async
     
-    func fetchNextWord()
+    func getNextWord()
     
-    func countWordsPlayed()
+    func countWordsPlayed() async
     
-    func saveWordPlayed()
+    func saveWordPlayed() async
+    
+    func getCurrentWord() -> NextWordPresenterDTO?
 }

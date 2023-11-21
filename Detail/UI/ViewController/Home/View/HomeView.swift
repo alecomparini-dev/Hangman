@@ -6,9 +6,7 @@ import UIKit
 import CustomComponentsSDK
 
 protocol HangmanViewDelegate: AnyObject {
-    func closeWindow()
-    func minimizeWindow()
-    func nextWord()
+    func nextWordButtonTapped()
 }
 
 
@@ -135,7 +133,7 @@ class HomeView: UIView {
                     .setWidth.equalToConstant(50)
                     .setHeight.equalToConstant(35)
             }
-        comp.get.addTarget(self, action: #selector(nextWord), for: .touchUpInside)
+        comp.get.addTarget(self, action: #selector(nextWordButtonTapped), for: .touchUpInside)
         return comp
     }()
     
@@ -180,16 +178,8 @@ class HomeView: UIView {
     
     
 //  MARK: - @OBJC Area
-    @objc private func minimizeWindow() {
-        delegate?.minimizeWindow()
-    }
-    
-    @objc private func closeWindow() {
-        delegate?.closeWindow()
-    }
-    
-    @objc private func nextWord() {
-        delegate?.nextWord()
+    @objc private func nextWordButtonTapped() {
+        delegate?.nextWordButtonTapped()
     }
 
     
