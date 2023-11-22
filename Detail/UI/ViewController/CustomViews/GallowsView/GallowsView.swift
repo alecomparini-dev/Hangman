@@ -5,8 +5,6 @@ import UIKit
 
 import CustomComponentsSDK
 
-
-
 class GallowsView: ViewBuilder {
     
     private let gallowColor: UIColor = Theme.shared.currentTheme.primary

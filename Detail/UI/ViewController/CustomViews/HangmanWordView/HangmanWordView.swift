@@ -17,7 +17,7 @@ class HangmanWordView: ViewBuilder {
     
     
     //  MARK: - LAZY Area
-    lazy var verticalStack: StackViewBuilder = {
+    lazy var stackView: StackViewBuilder = {
         let stack = StackViewBuilder()
             .setAxis(.vertical)
             .setAlignment(.center)
@@ -49,6 +49,20 @@ class HangmanWordView: ViewBuilder {
             .setDistribution(.equalCentering)
         return stack
     }()
+
+
+//  MARK: - PUBLIC AREA
+    func resetStackView() {
+        for subview in horizontalStack1.get.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        for subview in horizontalStack2.get.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        horizontalStack2.setHidden(true)
+    }
     
     
 //  MARK: - PRIVATE AREA
@@ -62,41 +76,36 @@ class HangmanWordView: ViewBuilder {
     }
     
     private func addStacks() {
-        verticalStack.add(insideTo: self.get)
-        horizontalStack1.add(insideTo: verticalStack.get)
-        horizontalStack2.add(insideTo: verticalStack.get)
+        stackView.add(insideTo: self.get)
+        horizontalStack1.add(insideTo: stackView.get)
+        horizontalStack2.add(insideTo: stackView.get)
     }
     
     private func configConstraints() {
-        verticalStack.applyConstraint()
+        stackView.applyConstraint()
     }
     
-    private func space() -> ViewBuilder {
-        let space = ViewBuilder()
-            .setConstraints { build in
-                build
-                    .setWidth.equalToConstant(8)
-                    .setHeight.equalToConstant(26)
-            }
-        return space
-    }
     
-    func createLetter(_ text: String) -> HangmanLetterInWordView {
-        let letter = HangmanLetterInWordView(text)
-            .setConstraints { build in
-                build
-                    .setWidth.equalToConstant(22)
-                    .setHeight.equalToConstant(24)
-            }
-        return letter
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 //  MARK: - RETIRAR DAQUI E PASSAR PARA VIEWCONTROLLER OU ATÉ MESMO PRESENTER
     
     
-    
-
     func revealLetterInWord(_ letter: HangmanLetterInWordView, _ color: UIColor = Theme.shared.currentTheme.primary) {
         configLetterForAnimation(letter, color)
         revealLetterInWordAnimation(letter)

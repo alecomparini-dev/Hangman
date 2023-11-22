@@ -7,15 +7,16 @@ import CustomComponentsSDK
 
 class HangmanLetterInWordView: ViewBuilder {
     
+    private var gradient: GradientBuilder?
     private let letter: String
     
     init(_ letter: String) {
         self.letter = letter
         super.init()
-        initialization()
+        configure()
     }
     
-    private func initialization() {
+    private func configure() {
         addElements()
         configConstraints()
     }
@@ -25,8 +26,9 @@ class HangmanLetterInWordView: ViewBuilder {
     
     lazy var label: LabelBuilder = {
         let label = LabelBuilder(letter)
-            .setHidden(true)
-            .setSize(20)
+            .setHidden(false)
+            .setSize(22)
+            .setWeight(.medium)
             .setColor(Theme.shared.currentTheme.onSurface)
             .setTextAlignment(.center)
             .setConstraints { build in
@@ -38,13 +40,7 @@ class HangmanLetterInWordView: ViewBuilder {
     
     lazy var underlineLetter: ViewBuilder = {
         let view = ViewBuilder()
-            .setGradient({ build in
-                build
-                    .setGradientColors([Theme.shared.currentTheme.surfaceContainerHigh, Theme.shared.currentTheme.surfaceContainerHighest])
-//                    .setGradientColors([Theme.shared.currentTheme.surfaceContainerLow, Theme.shared.currentTheme.surfaceContainerLowest])
-                    .setAxialGradient(.leftToRight)
-                    .apply()
-            })
+            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest)
             .setBorder({ build in
                 build.setCornerRadius(2)
             })
@@ -54,11 +50,17 @@ class HangmanLetterInWordView: ViewBuilder {
                     .setColor(.black)
                     .setOpacity(1)
                     .setRadius(3)
-                    .apply()
+                    .applyLayer(size: CGSize(width: 22, height: 2))
+            })
+            .setGradient({ build in
+                build
+                    .setGradientColors([Theme.shared.currentTheme.surfaceContainerHigh, Theme.shared.currentTheme.surfaceContainerHighest])
+                    .setAxialGradient(.leftToRight)
+                    .apply(size: CGSize(width: 22, height: 2))
             })
             .setConstraints { build in
                 build
-                    .setBottom.setWidth.equalToSuperView
+                    .setBottom.setLeading.setTrailing.equalToSuperView
                     .setHeight.equalToConstant(2)
             }
        return view
