@@ -12,7 +12,8 @@ struct K {
     
     static let cornerRadius: CGFloat = 15
     static let errorCountToEndGame: Int8 = 6
-    static let quantityLetterByLine: Int = 14
+//    static let quantityLetterByLine: Int = 14
+    static let quantityLetterByLine: Int = 7
     static let angleDollFailure: Double = 75
     
     struct String {

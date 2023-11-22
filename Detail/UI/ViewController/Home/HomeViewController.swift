@@ -29,11 +29,11 @@ public class HomeViewController: UIViewController {
     
     public override func loadView() {
         view = screen
-        configure()
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +45,7 @@ public class HomeViewController: UIViewController {
     
     private func configure() {
         configDelegate()
+        homePresenter.startGame()
     }
     
     private func configDelegate() {
@@ -52,48 +53,91 @@ public class HomeViewController: UIViewController {
         screen.gallowsKeyboardView.delegate = self
         homePresenter.delegateOutput = self
     }
-        
-    private func createNextWord() {
-//        positionLetters()
+    
+    private func configNextWord(_ word: NextWordPresenterDTO?) {
+        configCategory(word?.category)
+        configInitialQuestion(word?.initialQuestion)
+        configPositionLettersOfWord(word)
     }
     
-    private func positionLetters() {
-        let indexToBreakLine = calculateIndexToBreakLine()
+    private func configCategory(_ category: String?) {
+        screen.categoryLabel.setText(category)
+    }
+    
+    private func configInitialQuestion(_ question: String?) {
+        screen.initialQuestionLabel.setText(question)
+    }
+    
+    private func configPositionLettersOfWord(_ word: NextWordPresenterDTO?) {
+        guard let word else { return }
         
-        screen.gallowsWordView.createWord("ALESSAND").enumerated().forEach { index,letter in
-            if index < indexToBreakLine { return addLetterStackHorizontal1(letter) }
-            addLetterStackHorizontal2(letter)
+        let indexBreakLine = identifierBreakLine(word)
+        
+        word.syllables?.enumerated().forEach({ index, syllable in
+            if index <= indexBreakLine {
+                addLetterStackHorizontal1(syllable)
+                return
+            }
+            addLetterStackHorizontal2(syllable)
+        })
+        
+        
+    }
+    
+    private func identifierBreakLine(_ word: NextWordPresenterDTO?) -> Int {
+        var indexBreakLine = K.quantityLetterByLine
+        
+        guard let word, let syllables = word.syllables else { return indexBreakLine }
+        
+        if word.word?.count ?? 0 <= K.quantityLetterByLine { return indexBreakLine }
+    
+        var acumulator = ""
+        for (index, syllable) in syllables.enumerated() {
+            acumulator += syllable
+            if acumulator.count > K.quantityLetterByLine {
+                indexBreakLine = index - 1
+                break
+            }
         }
-        
+        return indexBreakLine
     }
     
-    private func calculateIndexToBreakLine() -> Int {
-//        if getCurrentWord().word.count <= quantityLetterByLine {return quantityLetterByLine}
-//        let syllabesWord = getCurrentWord().syllables
-//        let indexToBreakLine = syllabesWord.reduce(0) { partialResult, syllabe in
-//            let result = partialResult + syllabe.count
-//            guard result <= K.quantityLetterByLine else {
-//                return partialResult
-//            }
-//            return result
-//        }
-//        return indexToBreakLine
-        return 0
+    private func addLetterStackHorizontal1(_ letters: String) {
+        letters.uppercased().forEach { letter in
+            insertLetterInStack(createLetter(letter.description), screen.gallowsWordView.horizontalStack1)
+        }
     }
     
-//    private func getCurrentWord() -> HangmanWord {
-//        return hangmanWords[currentIndexPlayedWord]
-//    }
-    
-    private func addLetterStackHorizontal1(_ letter: HangmanLetterInWordView) {
-        screen.gallowsWordView.insertLetterInStack(letter, screen.gallowsWordView.horizontalStack1)
-    }
-    
-    private func addLetterStackHorizontal2(_ letter: HangmanLetterInWordView) {
+    private func addLetterStackHorizontal2(_ letters: String) {
         if screen.gallowsWordView.horizontalStack2.get.isHidden {
             screen.gallowsWordView.horizontalStack2.setHidden(false)
         }
-        screen.gallowsWordView.insertLetterInStack(letter, screen.gallowsWordView.horizontalStack2)
+        letters.uppercased().forEach { letter in
+            insertLetterInStack(createLetter(letter.description), screen.gallowsWordView.horizontalStack2)
+        }
+    }
+    
+    private func insertLetterInStack(_ letter: HangmanLetterInWordView, _ horizontalStack: StackViewBuilder) {
+        letter.add(insideTo: horizontalStack.get)
+        letter.applyConstraint()
+    }
+    
+    private func createLetter(_ text: String) -> HangmanLetterInWordView {
+        let letter = HangmanLetterInWordView(text)
+            .setConstraints { build in
+                build
+                    .setWidth.equalToConstant(22)
+                    .setHeight.equalToConstant(26)
+            }
+        return letter
+    }
+    
+    private func resetElements() {
+        resetGallowsWordView()
+    }
+    
+    func resetGallowsWordView() {
+        screen.resetGallowsWordView()
     }
     
 }
@@ -105,6 +149,7 @@ public class HomeViewController: UIViewController {
 extension HomeViewController: HangmanViewDelegate {
     
     func nextWordButtonTapped() {
+        resetElements()
         homePresenter.getNextWord()
     }
     
@@ -132,7 +177,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 extension HomeViewController: ProfileSummaryPresenterOutput {
     
     public func successFetchNextWord(nextWord: NextWordPresenterDTO?) {
-        print("WORD ID: ", homePresenter.getCurrentWord()?.id ?? "" )
+        configNextWord(nextWord)
     }
     
     public func nextWordIsOver(title: String, message: String) {

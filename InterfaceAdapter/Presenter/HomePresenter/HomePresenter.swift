@@ -10,15 +10,11 @@ public protocol HomePresenter {
     typealias UserID = String
     var delegateOutput: ProfileSummaryPresenterOutput? { get set }
     
+    func startGame()
+    
     func getLettersKeyboard() -> [String]
     
-    func signInAnonymously() async
-    
     func getNextWord()
-    
-    func countWordsPlayed() async
-    
-    func saveWordPlayed() async
-    
+        
     func getCurrentWord() -> NextWordPresenterDTO?
 }

@@ -34,7 +34,6 @@ public class HomePresenterImpl: HomePresenter {
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
-        configure()
     }
     
     
@@ -51,41 +50,6 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    public func signInAnonymously() async {
-        do {
-            userID = try await signInAnonymousUseCase.signInAnonymosly()
-            print("\nuserID: ", userID ?? "", "\n")
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
-    public func saveWordPlayed() async {
-        guard let userID else { return }
-        do {
-            try await saveWordPlayedUseCase.save(
-                userID: userID,
-                WordPlayedUseCaseDTO(
-                    wordID: getCurrentWord()?.id ?? 0,
-                    success: true,
-                    quantityCorrectLetters: 10,
-                    quantityErrorLetters: 3,
-                    timeConclusion: nil)
-            )
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
-    public func countWordsPlayed() async {
-        guard let userID else { return }
-        do {
-            countWordPlayed = try await countWordsPlayedUseCase.count(userID: userID)
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
     private func addCountWordPlayed(_ value: Int?) {
         countWordPlayed = value ?? 0
     }
@@ -96,9 +60,13 @@ public class HomePresenterImpl: HomePresenter {
                                     word: wordPlaying.word,
                                     syllables: wordPlaying.syllables,
                                     category: wordPlaying.category,
-                                    initialTip: wordPlaying.initialTip,
+                                    initialQuestion: wordPlaying.initialQuestion,
                                     level: convertLevel(wordPlaying.level),
                                     tips: wordPlaying.tips)
+    }
+    
+    public func startGame() {
+        startGameAsync()
     }
     
     public func getLettersKeyboard() -> [String] {
@@ -109,11 +77,28 @@ public class HomePresenterImpl: HomePresenter {
 
 //  MARK: - PRIVATE AREA
 
-    private func configure() {
+    private func startGameAsync() {
         Task {
             await signInAnonymously()
             await countWordsPlayed()
             await fetchNextWord()
+        }
+    }
+    
+    private func signInAnonymously() async {
+        do {
+            userID = try await signInAnonymousUseCase.signInAnonymosly()
+        } catch let error {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    private func countWordsPlayed() async {
+        guard let userID else { return }
+        do {
+            countWordPlayed = try await countWordsPlayedUseCase.count(userID: userID)
+        } catch let error {
+            debugPrint(error.localizedDescription)
         }
     }
     
@@ -132,6 +117,23 @@ public class HomePresenterImpl: HomePresenter {
         } catch let error {
             debugPrint(error.localizedDescription)
             errorFetchNextWords("Aviso", "Não foi possível carregar as próximas palavras. Favor tentar novamente mais tarde")
+        }
+    }
+    
+    private func saveWordPlayed() async {
+        guard let userID else { return }
+        do {
+            try await saveWordPlayedUseCase.save(
+                userID: userID,
+                WordPlayedUseCaseDTO(
+                    wordID: getCurrentWord()?.id ?? 0,
+                    success: true,
+                    quantityCorrectLetters: 10,
+                    quantityErrorLetters: 3,
+                    timeConclusion: nil)
+            )
+        } catch let error {
+            debugPrint(error.localizedDescription)
         }
     }
     
