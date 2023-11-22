@@ -142,15 +142,28 @@ class HomeView: UIView {
         return comp
     }()
     
-    lazy var tipDescriptionLabel: LabelBuilder = {
+    lazy var categoryLabel: LabelBuilder = {
         let comp = LabelBuilder()
-            .setText("Política")
-            .setSize(18)
-            .setColor(Theme.shared.currentTheme.onSurfaceVariant)
+            .setSize(20)
+            .setColor(Theme.shared.currentTheme.onSurface)
             .setTextAlignment(.center)
             .setConstraints { build in
                 build
                     .setTop.equalToSafeArea(4)
+                    .setLeading.setTrailing.equalToSuperView(16)
+            }
+        return comp
+    }()
+    
+    lazy var initialQuestionLabel: LabelBuilder = {
+        let comp = LabelBuilder()
+            .setColor(Theme.shared.currentTheme.onSurfaceVariant)
+            .setSize(14)
+            .setNumberOfLines(-1)
+            .setTextAlignment(.center)
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(categoryLabel.get, .bottom, 6)
                     .setLeading.setTrailing.equalToSuperView(16)
             }
         return comp
@@ -183,6 +196,17 @@ class HomeView: UIView {
     }
 
     
+    
+//  MARK: - PUBLIC AREA
+    
+    func resetGallowsWordView() {
+        gallowsWordView.get.removeFromSuperview()
+        gallowsWordView = createHangmanWordView()
+        addGallowsWordView()
+        configGallowsWordViewContraints()
+    }
+    
+    
 //  MARK: - PRIVATE AREA
     private func configure() {
         addElements()
@@ -195,7 +219,8 @@ class HomeView: UIView {
         painelGallowsView.add(insideTo: painelView.get)
         addGallowsView()
         nextWordButton.add(insideTo: self)
-        tipDescriptionLabel.add(insideTo: wordsToStack.get)
+        categoryLabel.add(insideTo: wordsToStack.get)
+        initialQuestionLabel.add(insideTo: wordsToStack.get)
         addGallowsWordView()
         gallowsKeyboardView.add(insideTo: keyboardToStack.get)
     }
@@ -215,7 +240,8 @@ class HomeView: UIView {
         painelGallowsView.applyConstraint()
         gallowsView.applyConstraint()
         nextWordButton.applyConstraint()
-        tipDescriptionLabel.applyConstraint()
+        categoryLabel.applyConstraint()
+        initialQuestionLabel.applyConstraint()
         configGallowsWordViewContraints()
         gallowsKeyboardView.applyConstraint()
     }
@@ -237,7 +263,7 @@ class HomeView: UIView {
         stackView.applyConstraint()
     }
     
-    private func configGallowsWordViewContraints() {
+    public func configGallowsWordViewContraints() {
         gallowsWordView.applyConstraint()
     }
     

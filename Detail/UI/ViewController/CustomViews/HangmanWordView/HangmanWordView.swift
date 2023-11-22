@@ -19,7 +19,6 @@ class HangmanWordView: ViewBuilder {
     //  MARK: - LAZY Area
     lazy var verticalStack: StackViewBuilder = {
         let stack = StackViewBuilder()
-            .setBackgroundColor(.red)
             .setAxis(.vertical)
             .setAlignment(.center)
             .setSpacing(spacingVertical)
@@ -96,26 +95,6 @@ class HangmanWordView: ViewBuilder {
     
     
     
-    func createWord(_ word: String) -> [HangmanLetterInWordView] {
-        var letters: [HangmanLetterInWordView] = []
-        word.forEach { letter in
-            letters.append(createLetter(String(letter)))
-        }
-        return letters
-    }
-    
-    
-    
-    func insertLetterInStack(_ letter: HangmanLetterInWordView, _ horizontalStack: StackViewBuilder) {
-        letter.add(insideTo: horizontalStack.get)
-        letter.applyConstraint()
-    }
-    
-    func insertSpaceInStack(_ horizontalStack: StackViewBuilder) {
-        let space = space()
-        space.add(insideTo: horizontalStack.get)
-        space.applyConstraint()
-    }
 
     func revealLetterInWord(_ letter: HangmanLetterInWordView, _ color: UIColor = Theme.shared.currentTheme.primary) {
         configLetterForAnimation(letter, color)

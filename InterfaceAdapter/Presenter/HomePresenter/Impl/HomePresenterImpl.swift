@@ -34,7 +34,6 @@ public class HomePresenterImpl: HomePresenter {
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
-        configure()
     }
     
     
@@ -48,15 +47,6 @@ public class HomePresenterImpl: HomePresenter {
                 return
             }
             await fetchNextWord()
-        }
-    }
-    
-    public func countWordsPlayed() async {
-        guard let userID else { return }
-        do {
-            countWordPlayed = try await countWordsPlayedUseCase.count(userID: userID)
-        } catch let error {
-            debugPrint(error.localizedDescription)
         }
     }
     
@@ -75,6 +65,10 @@ public class HomePresenterImpl: HomePresenter {
                                     tips: wordPlaying.tips)
     }
     
+    public func startGame() {
+        startGameAsync()
+    }
+    
     public func getLettersKeyboard() -> [String] {
         return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
                 "Q","R","S","T","U","V","W","X","Y","Z",""]
@@ -83,7 +77,7 @@ public class HomePresenterImpl: HomePresenter {
 
 //  MARK: - PRIVATE AREA
 
-    private func configure() {
+    private func startGameAsync() {
         Task {
             await signInAnonymously()
             await countWordsPlayed()
@@ -94,7 +88,15 @@ public class HomePresenterImpl: HomePresenter {
     private func signInAnonymously() async {
         do {
             userID = try await signInAnonymousUseCase.signInAnonymosly()
-            print("\nuserID: ", userID ?? "", "\n")
+        } catch let error {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    private func countWordsPlayed() async {
+        guard let userID else { return }
+        do {
+            countWordPlayed = try await countWordsPlayedUseCase.count(userID: userID)
         } catch let error {
             debugPrint(error.localizedDescription)
         }
