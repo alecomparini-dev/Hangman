@@ -66,6 +66,11 @@ public class HomeViewController: UIViewController {
         screen.initialQuestionLabel.setText(word?.initialQuestion)
         configHangmanLettersInWord(word)
         configPositionLettersOfWord(word)
+        configQuantityLetter(word?.word?.count)
+    }
+    
+    private func configQuantityLetter(_ qtd: Int?) {
+        screen.quantityLettersLabel.setText("0/\(qtd ?? 0)")
     }
         
     private func configHangmanLettersInWord(_ word: NextWordPresenterDTO?) {
