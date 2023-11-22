@@ -649,6 +649,7 @@
 		026B64802B0389F000F6DD99 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				02C4AB342B03B5AD00991633 /* CustomViews */,
 				026B64812B038A0300F6DD99 /* ViewController */,
 			);
 			path = UI;
@@ -657,7 +658,6 @@
 		026B64812B038A0300F6DD99 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				02C4AB342B03B5AD00991633 /* CustomViews */,
 				026B64822B038A0F00F6DD99 /* Home */,
 			);
 			path = ViewController;

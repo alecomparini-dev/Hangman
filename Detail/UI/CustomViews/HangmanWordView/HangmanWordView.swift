@@ -25,8 +25,8 @@ class HangmanWordView: ViewBuilder {
             .setDistribution(.fillEqually)
             .setConstraints { build in
                 build
-                    .setTop.setTrailing.setLeading.equalToSuperView
-                    .setBottom.equalToSuperView(-6)
+                    .setTop.setTrailing.setLeading.equalToSuperView(4)
+                    .setBottom.equalToSuperView(-12)
             }
         return stack
     }()

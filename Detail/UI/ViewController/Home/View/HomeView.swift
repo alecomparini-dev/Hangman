@@ -184,6 +184,49 @@ class HomeView: UIView {
     
     
     //  MARK: - DISCOVERY WORD
+    
+    lazy var quantityLettersView: ViewBuilder = {
+        let comp = ViewBuilder()
+            .setBorder { build in
+                build
+                    .setCornerRadius(8)
+            }
+            .setGradient { build in
+                build
+                    .setGradientColors(Theme.shared.currentTheme.primaryGradient)
+                    .setAxialGradient(.leftToRight)
+                    .apply()
+            }
+            .setShadow { build in
+                build
+                    .setColor(.black)
+                    .setRadius(5)
+                    .setOpacity(1)
+                    .setOffset(width: 3, height: 3)
+                    .apply()
+            }
+            .setConstraints { build in
+                build
+                    .setBottom.equalTo(gallowsWordView.get, .bottom, 10)
+                    .setTrailing.equalTo(gallowsWordView.get, .trailing, 10)
+                    .setWidth.equalToConstant(40)
+                    .setHeight.equalToConstant(22)
+            }
+        return comp
+    }()
+    
+    lazy var quantityLettersLabel: LabelBuilder = {
+        let comp = LabelBuilder()
+            .setSize(12)
+            .setWeight(.regular)
+            .setColor(Theme.shared.currentTheme.onPrimary)
+            .setTextAlignment(.center)
+            .setConstraints { build in
+                build.setPin.equalToSuperView
+            }
+        return comp
+    }()
+    
     lazy var gallowsWordView: HangmanWordView = {
         let view = createHangmanWordView()
         return view
@@ -258,6 +301,8 @@ class HomeView: UIView {
     
     private func addGallowsWordView() {
         gallowsWordView.add(insideTo: wordsToStack.get)
+        quantityLettersView.add(insideTo: wordsToStack.get)
+        quantityLettersLabel.add(insideTo: quantityLettersView.get)
     }
     
     private func configStackViewConstraints() {
@@ -271,6 +316,8 @@ class HomeView: UIView {
     
     public func configGallowsWordViewContraints() {
         gallowsWordView.applyConstraint()
+        quantityLettersView.applyConstraint()
+        quantityLettersLabel.applyConstraint()
     }
     
     private func createHangmanGallowsView() -> GallowsView {
