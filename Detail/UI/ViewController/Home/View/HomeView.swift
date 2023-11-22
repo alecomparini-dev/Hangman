@@ -142,6 +142,8 @@ class HomeView: UIView {
         return comp
     }()
     
+    
+//  MARK: - CATEGORY and INITIAL QUESTION
     lazy var categoryLabel: LabelBuilder = {
         let comp = LabelBuilder()
             .setSize(20)
@@ -181,15 +183,9 @@ class HomeView: UIView {
     }()
     
     
-    
     //  MARK: - DISCOVERY WORD
     lazy var gallowsWordView: HangmanWordView = {
         let view = createHangmanWordView()
-            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.1))
-//            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest)
-            .setBorder { build in
-                build.setCornerRadius(8)
-            }
         return view
     }()
     
@@ -213,15 +209,6 @@ class HomeView: UIView {
     }
 
     
-    
-//  MARK: - PUBLIC AREA
-    
-    func resetGallowsWordView() {
-        gallowsWordView.get.removeFromSuperview()
-        gallowsWordView = createHangmanWordView()
-        addGallowsWordView()
-        configGallowsWordViewContraints()
-    }
     
     
 //  MARK: - PRIVATE AREA
@@ -299,6 +286,10 @@ class HomeView: UIView {
 
     private func createHangmanWordView() -> HangmanWordView {
         let view = HangmanWordView()
+            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.1))
+            .setBorder { build in
+                build.setCornerRadius(8)
+            }
             .setConstraints { build in
                 build
                     .setBottom.equalTo(keyboardToStack.get, .top, -8)

@@ -18,7 +18,7 @@ public class HomePresenterImpl: HomePresenter {
     
     private var countWordPlayed: Int = 0
     private var userID: String?
-    private let quantityWords: Int = 1
+    private let quantityWords: Int = 3
     private var nextWords: [NextWordsUseCaseDTO]?
     
     
