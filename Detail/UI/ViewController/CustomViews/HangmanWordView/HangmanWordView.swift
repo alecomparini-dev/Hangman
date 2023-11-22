@@ -7,7 +7,7 @@ import CustomComponentsSDK
 
 class HangmanWordView: ViewBuilder {
     
-    private let spacingHorizontal: CGFloat = 2
+    private let spacingHorizontal: CGFloat = 4
     private let spacingVertical: CGFloat = 0
     
     override init() {
@@ -25,7 +25,8 @@ class HangmanWordView: ViewBuilder {
             .setDistribution(.fillEqually)
             .setConstraints { build in
                 build
-                    .setPin.equalToSuperView
+                    .setTop.setTrailing.setLeading.equalToSuperView
+                    .setBottom.equalToSuperView(-6)
             }
         return stack
     }()
@@ -85,7 +86,7 @@ class HangmanWordView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setWidth.equalToConstant(22)
-                    .setHeight.equalToConstant(26)
+                    .setHeight.equalToConstant(24)
             }
         return letter
     }

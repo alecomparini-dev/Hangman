@@ -155,24 +155,41 @@ class HomeView: UIView {
         return comp
     }()
     
+    lazy var initialQuestionView: ViewBuilder = {
+        let comp = ViewBuilder()
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(categoryLabel.get, .bottom)
+                    .setLeading.setTrailing.equalToSuperView(16)
+                    .setBottom.equalTo(gallowsWordView.get, .top, -4)
+            }
+        return comp
+    }()
+    
     lazy var initialQuestionLabel: LabelBuilder = {
         let comp = LabelBuilder()
             .setColor(Theme.shared.currentTheme.onSurfaceVariant)
             .setSize(14)
-            .setNumberOfLines(-1)
+            .setNumberOfLines(2)
             .setTextAlignment(.center)
             .setConstraints { build in
                 build
-                    .setTop.equalTo(categoryLabel.get, .bottom, 6)
-                    .setLeading.setTrailing.equalToSuperView(16)
+                    .setPin.equalToSuperView
+                    .setAlignmentCenterXY.equalToSuperView
             }
         return comp
     }()
     
     
+    
     //  MARK: - DISCOVERY WORD
     lazy var gallowsWordView: HangmanWordView = {
         let view = createHangmanWordView()
+            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.1))
+//            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest)
+            .setBorder { build in
+                build.setCornerRadius(8)
+            }
         return view
     }()
     
@@ -184,7 +201,7 @@ class HomeView: UIView {
                 build
                     .setTop.equalToSafeArea(8)
                     .setBottom.equalToSafeArea(-16)
-                    .setLeading.setTrailing.equalToSafeArea(32)
+                    .setLeading.setTrailing.equalToSafeArea(24)
             }
         return comp
     }()
@@ -220,7 +237,8 @@ class HomeView: UIView {
         addGallowsView()
         nextWordButton.add(insideTo: self)
         categoryLabel.add(insideTo: wordsToStack.get)
-        initialQuestionLabel.add(insideTo: wordsToStack.get)
+        initialQuestionView.add(insideTo: wordsToStack.get)
+        initialQuestionLabel.add(insideTo: initialQuestionView.get)
         addGallowsWordView()
         gallowsKeyboardView.add(insideTo: keyboardToStack.get)
     }
@@ -241,6 +259,7 @@ class HomeView: UIView {
         gallowsView.applyConstraint()
         nextWordButton.applyConstraint()
         categoryLabel.applyConstraint()
+        initialQuestionView.applyConstraint()
         initialQuestionLabel.applyConstraint()
         configGallowsWordViewContraints()
         gallowsKeyboardView.applyConstraint()
@@ -283,7 +302,7 @@ class HomeView: UIView {
             .setConstraints { build in
                 build
                     .setBottom.equalTo(keyboardToStack.get, .top, -8)
-                    .setLeading.setTrailing.equalToSuperView(16)
+                    .setLeading.setTrailing.equalToSuperView(24)
                     .setHeight.equalToConstant(80)
             }
         return view

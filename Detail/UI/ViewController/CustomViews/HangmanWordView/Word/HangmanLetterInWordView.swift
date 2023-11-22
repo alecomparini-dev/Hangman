@@ -25,7 +25,7 @@ class HangmanLetterInWordView: ViewBuilder {
     
     lazy var label: LabelBuilder = {
         let label = LabelBuilder(letter)
-            .setHidden(false)
+            .setHidden(true)
             .setSize(20)
             .setColor(Theme.shared.currentTheme.onSurface)
             .setTextAlignment(.center)
@@ -41,6 +41,7 @@ class HangmanLetterInWordView: ViewBuilder {
             .setGradient({ build in
                 build
                     .setGradientColors([Theme.shared.currentTheme.surfaceContainerHigh, Theme.shared.currentTheme.surfaceContainerHighest])
+//                    .setGradientColors([Theme.shared.currentTheme.surfaceContainerLow, Theme.shared.currentTheme.surfaceContainerLowest])
                     .setAxialGradient(.leftToRight)
                     .apply()
             })
@@ -50,7 +51,7 @@ class HangmanLetterInWordView: ViewBuilder {
             .setShadow({ build in
                 build
                     .setOffset(width: 3, height: 3)
-                    .setColor(.black.withAlphaComponent(0.8))
+                    .setColor(.black)
                     .setOpacity(1)
                     .setRadius(3)
                     .apply()
