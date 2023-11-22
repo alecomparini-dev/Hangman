@@ -157,10 +157,9 @@ class HomeView: UIView {
     
     lazy var initialQuestionView: ViewBuilder = {
         let comp = ViewBuilder()
-            .setBackgroundColor(.yellow)
             .setConstraints { build in
                 build
-                    .setTop.equalTo(categoryLabel.get, .bottom, 6)
+                    .setTop.equalTo(categoryLabel.get, .bottom)
                     .setLeading.setTrailing.equalToSuperView(16)
                     .setBottom.equalTo(gallowsWordView.get, .top, -4)
             }
@@ -171,7 +170,7 @@ class HomeView: UIView {
         let comp = LabelBuilder()
             .setColor(Theme.shared.currentTheme.onSurfaceVariant)
             .setSize(14)
-            .setNumberOfLines(-1)
+            .setNumberOfLines(2)
             .setTextAlignment(.center)
             .setConstraints { build in
                 build
@@ -186,7 +185,8 @@ class HomeView: UIView {
     //  MARK: - DISCOVERY WORD
     lazy var gallowsWordView: HangmanWordView = {
         let view = createHangmanWordView()
-            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.8))
+            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.1))
+//            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest)
             .setBorder { build in
                 build.setCornerRadius(8)
             }
@@ -200,7 +200,7 @@ class HomeView: UIView {
             .setConstraints { build in
                 build
                     .setTop.equalToSafeArea(8)
-                    .setBottom.equalToSafeArea(-24)
+                    .setBottom.equalToSafeArea(-16)
                     .setLeading.setTrailing.equalToSafeArea(24)
             }
         return comp

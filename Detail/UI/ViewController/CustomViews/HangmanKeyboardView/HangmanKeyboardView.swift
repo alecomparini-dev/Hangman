@@ -218,9 +218,9 @@ class HangmanKeyboardView: ViewBuilder {
             .setLightPosition(.leftTop)
             .setIntensity(to: .light, percent: 100)
             .setIntensity(to: .dark, percent: 80)
-            .setBlur(to: .light, percent: 2)
+            .setBlur(to: .light, percent: 3)
             .setBlur(to: .dark, percent: 5)
-            .setDistance(to: .light, percent: 5)
+            .setDistance(to: .light, percent: 3)
             .setDistance(to: .dark, percent: 10)
             .apply()
     }
