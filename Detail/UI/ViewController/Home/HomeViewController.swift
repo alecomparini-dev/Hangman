@@ -56,7 +56,6 @@ public class HomeViewController: UIViewController {
         homePresenter.delegateOutput = self
     }
     
-    
     private func configNextWord(_ word: NextWordPresenterDTO?) {
         configGallowsWord(word)
     }
@@ -70,7 +69,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func configQuantityLetter(_ qtd: Int?) {
-        screen.quantityLettersLabel.setText("0/\(qtd ?? 0)")
+        screen.countCorrectLetterLabel.setText("0/\(qtd ?? 0)")
     }
         
     private func configPositionLettersOfWord(_ word: NextWordPresenterDTO?) {
@@ -200,7 +199,7 @@ extension HomeViewController: HangmanViewDelegate {
 extension HomeViewController: HangmanKeyboardViewDelegate {
     
     func letterButtonTapped(_ button: UIButton) {
-        print(#function)
+        homePresenter.verifyMatchInWord(button.titleLabel?.text)
     }
     
     func moreTipTapped() {
@@ -214,6 +213,9 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
+    public func updateCountCorrectLetters(_ count: String) {
+        screen.countCorrectLetterLabel.setText(count)
+    }
     
     public func successFetchNextWord(nextWord: NextWordPresenterDTO?) {
         configNextWord(nextWord)

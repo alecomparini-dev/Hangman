@@ -17,4 +17,9 @@ public protocol HomePresenter {
     func getNextWord()
         
     func getCurrentWord() -> NextWordPresenterDTO?
+    
+    
+    func verifyMatchInWord(_ char: String?)
+    
+    func resetGame()
 }

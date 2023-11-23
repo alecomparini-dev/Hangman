@@ -8,6 +8,8 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
     func successFetchNextWord(nextWord: NextWordPresenterDTO?)
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
+    
+    func updateCountCorrectLetters(_ count: String )
 }
 
 
@@ -15,10 +17,13 @@ public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: ProfileSummaryPresenterOutput?
     
     private var wordPlaying: NextWordsUseCaseDTO?
+    private var joinedWordPlaying: String?
+    private var successLetterIndex: Set<Int> = []
     
-    private var countWordPlayed: Int = 0
+    
     private var userID: String?
-    private let quantityWords: Int = 3
+    private var countWordPlayed: Int = 0
+    private let quantityWordsToFetch: Int = 10
     private var nextWords: [NextWordsUseCaseDTO]?
     
     
@@ -40,6 +45,7 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - PUBLIC AREA
     
     public func getNextWord() {
+        resetGame()
         Task {
             if nextWord() != nil {
                 addCountWordPlayed(wordPlaying?.id)
@@ -74,6 +80,21 @@ public class HomePresenterImpl: HomePresenter {
                 "Q","R","S","T","U","V","W","X","Y","Z",""]
     }
     
+    public func verifyMatchInWord(_ letter: String?) {
+        guard let letter, let joinedWordPlaying else {return}
+        let indexMatchInWordFromChosenLetter = joinedWordPlaying.enumerated().compactMap { index, char in
+            return (char == Character(letter.lowercased())) ? index : nil
+        }
+        successLetterIndex.formUnion(indexMatchInWordFromChosenLetter)
+        updateCountCorrectLetters()
+    }
+    
+    public func resetGame() {
+        joinedWordPlaying = nil
+        successLetterIndex.removeAll()
+    }
+
+
 
 //  MARK: - PRIVATE AREA
 
@@ -105,7 +126,7 @@ public class HomePresenterImpl: HomePresenter {
     private func fetchNextWord() async {
         nextWords = nil
         do {
-            nextWords = try await getNextWordsUseCase.nextWords(atID: countWordPlayed + 1, limit: quantityWords)
+            nextWords = try await getNextWordsUseCase.nextWords(atID: countWordPlayed + 1, limit: quantityWordsToFetch)
 
             if let nextWords {
                 if nextWords.isEmpty { return nextWordIsOver() }
@@ -169,6 +190,7 @@ public class HomePresenterImpl: HomePresenter {
     
 //  MARK: - PRIVATE OUTPUT AREA
     private func successFetchNextWord() {
+        joinedWordPlaying = wordPlaying?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
         DispatchQueue.main.async { [weak self] in
             guard let self else {return}
             delegateOutput?.successFetchNextWord(nextWord: getCurrentWord())
@@ -184,6 +206,13 @@ public class HomePresenterImpl: HomePresenter {
     private func errorFetchNextWords(_ title: String, _ message: String) {
         DispatchQueue.main.async { [weak self] in
             self?.delegateOutput?.errorFetchNextWords(title: title, message: message)
+        }
+    }
+    
+    private func updateCountCorrectLetters() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            delegateOutput?.updateCountCorrectLetters("\(successLetterIndex.count)/\(wordPlaying?.word?.count ?? 0)")
         }
     }
 

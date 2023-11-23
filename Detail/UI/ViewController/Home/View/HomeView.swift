@@ -215,7 +215,7 @@ class HomeView: UIView {
         return comp
     }()
     
-    lazy var quantityLettersLabel: LabelBuilder = {
+    lazy var countCorrectLetterLabel: LabelBuilder = {
         let comp = LabelBuilder()
             .setSize(12)
             .setWeight(.regular)
@@ -302,7 +302,7 @@ class HomeView: UIView {
     private func addGallowsWordView() {
         gallowsWordView.add(insideTo: wordsToStack.get)
         quantityLettersView.add(insideTo: wordsToStack.get)
-        quantityLettersLabel.add(insideTo: quantityLettersView.get)
+        countCorrectLetterLabel.add(insideTo: quantityLettersView.get)
     }
     
     private func configStackViewConstraints() {
@@ -317,7 +317,7 @@ class HomeView: UIView {
     public func configGallowsWordViewContraints() {
         gallowsWordView.applyConstraint()
         quantityLettersView.applyConstraint()
-        quantityLettersLabel.applyConstraint()
+        countCorrectLetterLabel.applyConstraint()
     }
     
     private func createHangmanGallowsView() -> GallowsView {
