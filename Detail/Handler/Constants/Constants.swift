@@ -31,6 +31,7 @@ struct K {
         static let eight = "8"
         static let nine = "9"
         static let tips = "Dicas"
+        static let hifen = "-"
     }
     
     struct Service {

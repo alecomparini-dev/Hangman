@@ -8,7 +8,7 @@ import Presenter
 
 public class HomeViewController: UIViewController {
 
-    private var lettersInWord: [HangmanLetterInWordView] = []
+    private var lettersInWord: [HangmanLetterInWordView?] = []
     
     private var homePresenter: HomePresenter
     
@@ -73,13 +73,6 @@ public class HomeViewController: UIViewController {
         screen.quantityLettersLabel.setText("0/\(qtd ?? 0)")
     }
         
-    private func configHangmanLettersInWord(_ word: NextWordPresenterDTO?) {
-        guard let syllables = word?.syllables else {return}
-        syllables.joined().uppercased().forEach { letter in
-            lettersInWord.append(createHangmanLetterInWordView(letter.description))
-        }
-    }
-
     private func configPositionLettersOfWord(_ word: NextWordPresenterDTO?) {
         guard let word else { return }
         
@@ -87,9 +80,11 @@ public class HomeViewController: UIViewController {
         
         lettersInWord.enumerated().forEach({ index, letter in
             if index <= indexBreakLine {
+                guard let letter else { return insertSpaceInStack(screen.gallowsWordView.horizontalStack1) }
                 addLetterStackHorizontal1(letter)
                 return
             }
+            guard let letter else { return insertSpaceInStack(screen.gallowsWordView.horizontalStack2) }
             addLetterStackHorizontal2(letter)
         })
     }
@@ -123,9 +118,34 @@ public class HomeViewController: UIViewController {
         insertLetterInStack(letter, screen.gallowsWordView.horizontalStack2)
     }
     
+    private func insertSpaceInStack(_ horizontalStack: StackViewBuilder) {
+        let space = space()
+        space.add(insideTo: horizontalStack.get)
+        space.applyConstraint()
+    }
+    
+    private func space() -> ViewBuilder {
+        let space = ViewBuilder()
+            .setConstraints { build in
+                build.setSize.equalToConstant(2)
+            }
+        return space
+    }
+    
     private func insertLetterInStack(_ letter: HangmanLetterInWordView, _ horizontalStack: StackViewBuilder) {
         letter.add(insideTo: horizontalStack.get)
         letter.applyConstraint()
+    }
+    
+    private func configHangmanLettersInWord(_ word: NextWordPresenterDTO?) {
+        guard let syllables = word?.syllables else {return}
+        syllables.joined().uppercased().forEach { letter in
+            if letter.isWhitespace {
+                lettersInWord.append(nil)
+                return
+            }
+            lettersInWord.append(createHangmanLetterInWordView(letter.description))
+        }
     }
     
     private func createHangmanLetterInWordView(_ text: String) -> HangmanLetterInWordView {
@@ -135,7 +155,15 @@ public class HomeViewController: UIViewController {
                     .setWidth.equalToConstant(22)
                     .setHeight.equalToConstant(28)
             }
+        configHifen(text, letter)
         return letter
+    }
+    
+    private func configHifen(_ text: String, _ letter: HangmanLetterInWordView) {
+        if text == K.String.hifen {
+            letter.label.setHidden(false)
+            letter.underlineLetter.setHidden(true)
+        }
     }
     
     
