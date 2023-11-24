@@ -18,8 +18,24 @@ class HomeCoordinator: Coordinator {
     func start() {
         childCoordinator = self
         var controller = HomeViewControllerFactory.make()
+        controller.setDataTransfer(dataTransfer)
         controller = navigationController.pushViewController(controller)
+        controller.coordinator = self
+        removeLastViewController()
     }
  
+    private func removeLastViewController() {
+        navigationController.viewControllers = Array(navigationController.viewControllers.dropFirst(navigationController.viewControllers.count - 1))
+    }
     
+}
+
+
+extension HomeCoordinator: HomeViewControllerCoordinator {
+    func gotoHomeNextWord(_ dataTransfer: DataTransferDTO) {
+        let coordinator = HomeCoordinator(navigationController)
+        coordinator.dataTransfer = dataTransfer
+        coordinator.start()
+        childCoordinator = nil
+    }
 }

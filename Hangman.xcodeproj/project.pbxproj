@@ -17,7 +17,6 @@
 		020216662B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216652B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift */; };
 		0202166B2B0BC605003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216692B0BC5F9003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift */; };
 		0202166E2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166D2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift */; };
-		020216702B0BE855003E2B07 /* WordPlayedPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */; };
 		020216722B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216712B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift */; };
 		020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216732B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift */; };
 		020216762B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216752B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift */; };
@@ -25,6 +24,8 @@
 		0202167E2B0BE9E4003E2B07 /* InsertDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202167C2B0BE9DB003E2B07 /* InsertDataStorageProvider.swift */; };
 		020216862B0C044C003E2B07 /* SaveWordPlayedCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216812B0C01DA003E2B07 /* SaveWordPlayedCodable.swift */; };
 		020216872B0C0452003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */; };
+		021B63162B1133E4002498DA /* DataTransferDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B63142B11328E002498DA /* DataTransferDTO.swift */; };
+		021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */; };
 		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
 		026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */; };
 		026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */; };
@@ -235,6 +236,7 @@
 		0202167C2B0BE9DB003E2B07 /* InsertDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertDataStorageProvider.swift; sourceTree = "<group>"; };
 		020216812B0C01DA003E2B07 /* SaveWordPlayedCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedCodable.swift; sourceTree = "<group>"; };
 		020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift; sourceTree = "<group>"; };
+		021B63142B11328E002498DA /* DataTransferDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDTO.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
 		0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchByDataStorageProvider.swift; sourceTree = "<group>"; };
 		026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCase.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			children = (
 				020216592B0B9C59003E2B07 /* NextWordPresenterDTO.swift */,
 				0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */,
+				021B63142B11328E002498DA /* DataTransferDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1185,7 +1188,6 @@
 				026938F42B0935CA0023073B /* NextWordsUseCaseDTO.swift in Sources */,
 				020216722B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift in Sources */,
 				020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */,
-				020216702B0BE855003E2B07 /* WordPlayedPresenterDTO.swift in Sources */,
 				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
 				026938EC2B0912E10023073B /* ResultWordGame.swift in Sources */,
 				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
@@ -1254,7 +1256,9 @@
 			files = (
 				0202165B2B0B9D08003E2B07 /* NextWordPresenterDTO.swift in Sources */,
 				02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */,
+				021B63162B1133E4002498DA /* DataTransferDTO.swift in Sources */,
 				02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */,
+				021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

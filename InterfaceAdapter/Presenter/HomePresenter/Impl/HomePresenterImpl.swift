@@ -20,16 +20,14 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: ProfileSummaryPresenterOutput?
     
-    private struct Control {
-        static public var isEndGame = false
-    }
-    
-    private var wordPlaying: NextWordsUseCaseDTO?
+    private var _isEndGame = false
+        
     private var joinedWordPlaying: String?
     private var successLetterIndex: Set<Int> = []
     private var errorLetters: Set<String> = []
     
     private var userID: String?
+    private var wordPlaying: NextWordsUseCaseDTO?
     private var nextWords: [NextWordsUseCaseDTO]?
     
     
@@ -50,7 +48,21 @@ public class HomePresenterImpl: HomePresenter {
     
     
 //  MARK: - GET PROPERTIES
-    public var isEndGame: Bool { Control.isEndGame  }
+    public var isEndGame: Bool { _isEndGame  }
+    
+    public var dataTransfer: DataTransferDTO? {
+        get {
+            guard let userID, let wordPlaying else { return nil }
+            return DataTransferDTO(userID: userID,
+                                   wordPlaying: wordPlaying,
+                                   nextWords: nextWords)
+        }
+        set {
+            self.userID = newValue?.userID
+            self.wordPlaying = newValue?.wordPlaying
+            self.nextWords = newValue?.nextWords
+        }
+    }
     
     
 //  MARK: - PUBLIC AREA
@@ -65,7 +77,6 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     public func getNextWord() {
-        resetGame()
         Task {
             if nextWord() != nil {
                 successFetchNextWord()
@@ -108,12 +119,12 @@ public class HomePresenterImpl: HomePresenter {
         checkEndGame()
     }
     
-    public func resetGame() {
-        joinedWordPlaying = nil
-        Control.isEndGame = false
-        errorLetters.removeAll()
-        successLetterIndex.removeAll()
-    }
+//    public func resetGame() {
+//        joinedWordPlaying = nil
+//        _isEndGame = false
+//        errorLetters.removeAll()
+//        successLetterIndex.removeAll()
+//    }
 
 
 //  MARK: - PRIVATE AREA
@@ -156,7 +167,7 @@ public class HomePresenterImpl: HomePresenter {
     
     private func isEndGameFailure() -> Bool {
         if errorLetters.count == K.errorCountToEndGame {
-            Control.isEndGame = true
+            _isEndGame = true
             return true
         }
         return false
@@ -165,7 +176,7 @@ public class HomePresenterImpl: HomePresenter {
     public func isEndGameSuccess() -> Bool {
         guard let word = wordPlaying?.word else { return true}
         if successLetterIndex.count == word.count {
-            Control.isEndGame = true
+            _isEndGame = true
             return true
         }
         return false

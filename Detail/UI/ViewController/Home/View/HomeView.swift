@@ -81,6 +81,7 @@ class HomeView: UIView {
         return comp
     }()
     
+    
     lazy var painelView: ViewBuilder = {
         let comp = ViewBuilder()
             .setConstraints { build in
@@ -117,6 +118,23 @@ class HomeView: UIView {
                     .setTrailing.equalToSafeArea(-27)
                     .setHeight.equalToConstant(200)
                     .setVerticalAlignmentY.equalTo(painelView.get)
+            }
+        return comp
+    }()
+    
+    lazy var backgroundImage: ImageViewBuilder = {
+        let img = UIImage(named: "stickman2")
+        let comp = ImageViewBuilder(img)
+            .setContentMode(.scaleAspectFill)
+            .setBorder({ build in
+                build.setCornerRadius(10)
+            })
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(painelGallowsView.get, .top, 35)
+                    .setHorizontalAlignmentX.equalTo(painelGallowsView.get)
+                    .setWidth.equalToConstant(100)
+                    .setHeight.equalToConstant(150)
             }
         return comp
     }()
@@ -269,6 +287,7 @@ class HomeView: UIView {
         backgroundView.add(insideTo: self)
         addStackViewElements()
         painelGallowsView.add(insideTo: painelView.get)
+        backgroundImage.add(insideTo: painelGallowsView.get)
         addGallowsView()
         nextWordButton.add(insideTo: self)
         categoryLabel.add(insideTo: wordsToStack.get)
@@ -291,6 +310,7 @@ class HomeView: UIView {
         backgroundView.applyConstraint()
         configStackViewConstraints()
         painelGallowsView.applyConstraint()
+        backgroundImage.applyConstraint()
         gallowsView.applyConstraint()
         nextWordButton.applyConstraint()
         categoryLabel.applyConstraint()
