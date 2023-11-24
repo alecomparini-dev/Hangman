@@ -70,9 +70,11 @@ public struct K {
         public struct Delay {
             public static let standard : Double = 0
         }
+        
         public struct Duration {
             public static let revealLetter: Double = 1
             public static let standard: Double = 0.5
+            public static let increment: Double = 0.5
             public static let hide: Double = 0.3
         }
     }
