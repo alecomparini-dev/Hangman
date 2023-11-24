@@ -192,15 +192,42 @@ public class HomeViewController: UIViewController {
         buttonInteration.pressed
     }
     
-    private func revealLetters(_ indexes: [Int], color: UIColor) {
+    private func revealLetters(_ indexes: [Int], color: UIColor, isCorrectLetters: Bool = true) {
+        var duration = K.Animation.Duration.standard
+
         indexes.forEach { index in
-            lettersInWord[index]?.label.setHidden(false)
-            lettersInWord[index]?.gradient?.setReferenceColor(color, percentageGradient: 10)
-                .setAxialGradient(.rightToLeft)
-                .apply()
+            guard let letter = lettersInWord[index] else { return }
+            
+            letter.setHidden(false)
+            
+            if isCorrectLetters { return configLetterForAnimation(letter, color) }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(duration)) { [weak self] in
+                guard let self else {return}
+                configLetterForAnimation(letter, color)
+            }
+            duration += K.Animation.Duration.increment
         }
     }
+    
+    private func configLetterForAnimation(_ letter: HangmanLetterInWordView, _ color: UIColor = Theme.shared.currentTheme.primary) {
+        letter.label.setHidden(false)
+        letter.label.setAlpha(0)
+        letter.gradient?.setReferenceColor(color, percentageGradient: -20)
+            .apply()
+        letter.underlineLetter.setAlpha(0)
+        revealLetterInWordAnimation(letter)
+    }
+    
+    private func revealLetterInWordAnimation(_ letter: HangmanLetterInWordView) {
+        UIView.animate(withDuration: K.Animation.Duration.revealLetter, delay: K.Animation.Delay.standard, options: .curveEaseInOut, animations: {
+            letter.label.get.alpha = 1
+            letter.underlineLetter.get.alpha = 1
+        })
+    }
 
+    
+    
         
 //  MARK: - RESET ELEMENTS
     
@@ -247,6 +274,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
+    
     public func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String) {
         let tag = K.Keyboard.letter[keyboardLetter.uppercased()] ?? 0
         guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
@@ -258,12 +286,12 @@ extension HomeViewController: ProfileSummaryPresenterOutput {
         updateKeyboardLetterError(button)
     }
     
-    public func revealCorrectLetter(_ indexes: [Int]) {
+    public func revealCorrectLetters(_ indexes: [Int]) {
         revealLetters(indexes, color: Theme.shared.currentTheme.primary.withAlphaComponent(0.4))
     }
     
-    public func revealLetterEndGame(_ indexes: [Int]) {
-        revealLetters(indexes, color: Theme.shared.currentTheme.error.withAlphaComponent(0.5))
+    public func revealErrorLetters(_ indexes: [Int]) {
+        revealLetters(indexes, color: Theme.shared.currentTheme.error.withAlphaComponent(0.8), isCorrectLetters: false)
     }
         
     public func updateCountCorrectLetters(_ count: String) {

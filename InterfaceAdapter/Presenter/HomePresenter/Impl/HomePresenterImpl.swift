@@ -12,8 +12,8 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
     
     func updateCountCorrectLetters(_ count: String)
     func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String)
-    func revealCorrectLetter(_ indexes: [Int])
-    func revealLetterEndGame(_ indexes: [Int])
+    func revealCorrectLetters(_ indexes: [Int])
+    func revealErrorLetters(_ indexes: [Int])
 }
 
 
@@ -287,7 +287,7 @@ public class HomePresenterImpl: HomePresenter {
     private func revealCorrectLetter(_ indexes: [Int]) {
         DispatchQueue.main.async { [weak self] in
             guard let self else {return}
-            delegateOutput?.revealCorrectLetter(indexes)
+            delegateOutput?.revealCorrectLetters(indexes)
         }
     }
     
@@ -301,7 +301,7 @@ public class HomePresenterImpl: HomePresenter {
     private func revealLetterEndGame(_ indexes: [Int]) {
         DispatchQueue.main.async { [weak self] in
             guard let self else {return}
-            delegateOutput?.revealLetterEndGame(indexes)
+            delegateOutput?.revealErrorLetters(indexes)
         }
     }
 
