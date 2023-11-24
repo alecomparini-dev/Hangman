@@ -236,15 +236,19 @@ class HomeView: UIView {
     
     //  MARK: - KEYBOARD
     lazy var gallowsKeyboardView: HangmanKeyboardView = {
-        let comp = HangmanKeyboardView(lettersKeyboard)
+        let comp = createHangmanKeyboardView()
+        return comp
+    }()
+    
+    public func createHangmanKeyboardView() -> HangmanKeyboardView {
+        return HangmanKeyboardView(lettersKeyboard)
             .setConstraints { build in
                 build
                     .setTop.equalToSafeArea(8)
                     .setBottom.equalToSafeArea(-16)
                     .setLeading.setTrailing.equalToSafeArea(24)
             }
-        return comp
-    }()
+    }
     
     
 //  MARK: - @OBJC Area
