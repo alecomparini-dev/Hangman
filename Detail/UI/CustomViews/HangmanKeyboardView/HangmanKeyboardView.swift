@@ -127,7 +127,6 @@ class HangmanKeyboardView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
-        configLetterKeyboard()
     }
     
     private func addElements() {
@@ -160,9 +159,7 @@ class HangmanKeyboardView: ViewBuilder {
         verticalStack.applyConstraint()
     }
     
-    
     private func addLetterToHorizontalStacks() {
-        
         lettersKeyboard.enumerated().forEach { index,letter in
             switch index {
                 case 0...5:
@@ -227,11 +224,7 @@ class HangmanKeyboardView: ViewBuilder {
             .apply()
     }
     
-    
-    private func configLetterKeyboard() {
-        
-    }
-    
+
 
 //  MARK: - OBJEC FUNCTIONS AREA
     @objc private func moreTipTapped() {

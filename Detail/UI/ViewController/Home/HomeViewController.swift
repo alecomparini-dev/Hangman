@@ -232,7 +232,19 @@ public class HomeViewController: UIViewController {
 //  MARK: - RESET ELEMENTS
     
     private func resetElements() {
+        resetKeyboardView()
         resetGallowsWordView()
+    }
+    
+    private func resetKeyboardView() {
+        screen.gallowsKeyboardView.get.removeFromSuperview()
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            screen.gallowsKeyboardView = screen.createHangmanKeyboardView()
+            screen.gallowsKeyboardView.add(insideTo: screen.keyboardToStack.get)
+            screen.gallowsKeyboardView.applyConstraint()
+            screen.gallowsKeyboardView.delegate = self
+        }
     }
     
     private func resetGallowsWordView() {
