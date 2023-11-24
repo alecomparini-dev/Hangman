@@ -7,10 +7,17 @@ import CustomComponentsSDK
 import Handler
 import Presenter
 
+public protocol HomeViewControllerCoordinator: AnyObject {
+    func gotoHomeNextWord(_ dataTransfer: DataTransferDTO)
+}
+
 
 public class HomeViewController: UIViewController {
+    public weak var coordinator: HomeViewControllerCoordinator?
 
     private var lettersInWord: [HangmanLetterInWordView?] = []
+    
+    private var dataTransfer: DataTransferDTO?
     
     private var homePresenter: HomePresenter
     
@@ -37,20 +44,29 @@ public class HomeViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configDelegate()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let dataTransfer {
+            homePresenter.dataTransfer = dataTransfer
+            homePresenter.getNextWord()
+        }
+    }
+    
+    
+//  MARK: - SET DATA TRANSFER
+    public func setDataTransfer(_ data: Any?) {
+        if let dataTransfer = data as? DataTransferDTO {
+            self.dataTransfer = dataTransfer
+            return
+        }
+        homePresenter.startGame()
     }
     
     
 //  MARK: - PRIVATE AREA
-    
-    private func configure() {
-        configDelegate()
-        homePresenter.startGame()
-    }
     
     private func configDelegate() {
         screen.delegate = self
@@ -227,30 +243,6 @@ public class HomeViewController: UIViewController {
     }
 
     
-    
-        
-//  MARK: - RESET ELEMENTS
-    
-    private func resetElements() {
-        resetKeyboardView()
-        resetGallowsWordView()
-    }
-    
-    private func resetKeyboardView() {
-        screen.gallowsKeyboardView.get.removeFromSuperview()
-        DispatchQueue.main.async { [weak self] in
-            guard let self else {return}
-            screen.gallowsKeyboardView = screen.createHangmanKeyboardView()
-            screen.gallowsKeyboardView.add(insideTo: screen.keyboardToStack.get)
-            screen.gallowsKeyboardView.applyConstraint()
-            screen.gallowsKeyboardView.delegate = self
-        }
-    }
-    
-    private func resetGallowsWordView() {
-        screen.gallowsWordView.resetStackView()
-        lettersInWord.removeAll()
-    }
    
 }
 
@@ -260,8 +252,9 @@ public class HomeViewController: UIViewController {
 extension HomeViewController: HangmanViewDelegate {
     
     func nextWordButtonTapped() {
-        resetElements()
-        homePresenter.getNextWord()
+        if let dataTransferDTO = homePresenter.dataTransfer {
+            coordinator?.gotoHomeNextWord(dataTransferDTO)
+        }
     }
     
 }

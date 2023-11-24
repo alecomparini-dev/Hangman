@@ -5,10 +5,12 @@ import Foundation
 
 import Domain
 
-
 public protocol HomePresenter {
     typealias UserID = String
     var delegateOutput: ProfileSummaryPresenterOutput? { get set }
+    
+    var dataTransfer: DataTransferDTO? { get set }
+    
     var isEndGame: Bool { get }
     
     func startGame()
@@ -21,7 +23,5 @@ public protocol HomePresenter {
     
     func verifyMatchInWord(_ letter: String?)
         
-    func resetGame()
-    
     
 }
