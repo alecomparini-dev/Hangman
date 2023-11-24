@@ -9,6 +9,7 @@ import Domain
 public protocol HomePresenter {
     typealias UserID = String
     var delegateOutput: ProfileSummaryPresenterOutput? { get set }
+    var isEndGame: Bool { get }
     
     func startGame()
     
@@ -17,4 +18,10 @@ public protocol HomePresenter {
     func getNextWord()
         
     func getCurrentWord() -> NextWordPresenterDTO?
+    
+    func verifyMatchInWord(_ letter: String?)
+        
+    func resetGame()
+    
+    
 }

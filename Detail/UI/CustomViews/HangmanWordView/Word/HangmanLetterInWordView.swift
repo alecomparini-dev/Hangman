@@ -7,7 +7,7 @@ import CustomComponentsSDK
 
 class HangmanLetterInWordView: ViewBuilder {
     
-    private var gradient: GradientBuilder?
+    private var _gradient: GradientBuilder?
     private let letter: String
     
     init(_ letter: String) {
@@ -19,9 +19,14 @@ class HangmanLetterInWordView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
+        configUnderlineGradient()
     }
     
     
+//  MARK: - GET PROPERTIES
+    var gradient: GradientBuilder? { _gradient }
+
+        
 //  MARK: - LAZY Area
     
     lazy var label: LabelBuilder = {
@@ -52,12 +57,6 @@ class HangmanLetterInWordView: ViewBuilder {
                     .setRadius(3)
                     .applyLayer(size: CGSize(width: 22, height: 2))
             })
-            .setGradient({ build in
-                build
-                    .setGradientColors([Theme.shared.currentTheme.surfaceContainerHigh, Theme.shared.currentTheme.surfaceContainerHighest])
-                    .setAxialGradient(.leftToRight)
-                    .apply(size: CGSize(width: 22, height: 2))
-            })
             .setConstraints { build in
                 build
                     .setBottom.setLeading.setTrailing.equalToSuperView
@@ -78,5 +77,12 @@ class HangmanLetterInWordView: ViewBuilder {
         underlineLetter.applyConstraint()
     }
     
+    private func configUnderlineGradient() {
+        _gradient = GradientBuilder(underlineLetter.get)
+            .setGradientColors([Theme.shared.currentTheme.surfaceContainerHigh, Theme.shared.currentTheme.surfaceContainerHighest])
+            .setAxialGradient(.leftToRight)
+            .apply(size: CGSize(width: 22, height: 2))
+
+    }
     
 }

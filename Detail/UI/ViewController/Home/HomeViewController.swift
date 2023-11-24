@@ -4,11 +4,13 @@
 import UIKit
 
 import CustomComponentsSDK
+import Handler
 import Presenter
+
 
 public class HomeViewController: UIViewController {
 
-    private var lettersInWord: [HangmanLetterInWordView] = []
+    private var lettersInWord: [HangmanLetterInWordView?] = []
     
     private var homePresenter: HomePresenter
     
@@ -56,7 +58,6 @@ public class HomeViewController: UIViewController {
         homePresenter.delegateOutput = self
     }
     
-    
     private func configNextWord(_ word: NextWordPresenterDTO?) {
         configGallowsWord(word)
     }
@@ -70,16 +71,9 @@ public class HomeViewController: UIViewController {
     }
     
     private func configQuantityLetter(_ qtd: Int?) {
-        screen.quantityLettersLabel.setText("0/\(qtd ?? 0)")
+        screen.countCorrectLetterLabel.setText("0/\(qtd ?? 0)")
     }
         
-    private func configHangmanLettersInWord(_ word: NextWordPresenterDTO?) {
-        guard let syllables = word?.syllables else {return}
-        syllables.joined().uppercased().forEach { letter in
-            lettersInWord.append(createHangmanLetterInWordView(letter.description))
-        }
-    }
-
     private func configPositionLettersOfWord(_ word: NextWordPresenterDTO?) {
         guard let word else { return }
         
@@ -87,9 +81,11 @@ public class HomeViewController: UIViewController {
         
         lettersInWord.enumerated().forEach({ index, letter in
             if index <= indexBreakLine {
+                guard let letter else { return insertSpaceInStack(screen.gallowsWordView.horizontalStack1) }
                 addLetterStackHorizontal1(letter)
                 return
             }
+            guard let letter else { return insertSpaceInStack(screen.gallowsWordView.horizontalStack2) }
             addLetterStackHorizontal2(letter)
         })
     }
@@ -123,9 +119,34 @@ public class HomeViewController: UIViewController {
         insertLetterInStack(letter, screen.gallowsWordView.horizontalStack2)
     }
     
+    private func insertSpaceInStack(_ horizontalStack: StackViewBuilder) {
+        let space = space()
+        space.add(insideTo: horizontalStack.get)
+        space.applyConstraint()
+    }
+    
+    private func space() -> ViewBuilder {
+        let space = ViewBuilder()
+            .setConstraints { build in
+                build.setSize.equalToConstant(2)
+            }
+        return space
+    }
+    
     private func insertLetterInStack(_ letter: HangmanLetterInWordView, _ horizontalStack: StackViewBuilder) {
         letter.add(insideTo: horizontalStack.get)
         letter.applyConstraint()
+    }
+    
+    private func configHangmanLettersInWord(_ word: NextWordPresenterDTO?) {
+        guard let syllables = word?.syllables else {return}
+        syllables.joined().uppercased().forEach { letter in
+            if letter.isWhitespace {
+                lettersInWord.append(nil)
+                return
+            }
+            lettersInWord.append(createHangmanLetterInWordView(letter.description))
+        }
     }
     
     private func createHangmanLetterInWordView(_ text: String) -> HangmanLetterInWordView {
@@ -135,12 +156,54 @@ public class HomeViewController: UIViewController {
                     .setWidth.equalToConstant(22)
                     .setHeight.equalToConstant(28)
             }
+        configHifen(text, letter)
         return letter
     }
     
+    private func configHifen(_ text: String, _ letter: HangmanLetterInWordView) {
+        if text == K.String.hifen {
+            letter.label.setHidden(false)
+            letter.underlineLetter.setHidden(true)
+        }
+    }
     
+    private func updateKeyboardLetterSuccess(_ button: UIButton) {
+        let color = Theme.shared.currentTheme.primary
+        setButtonPressed(button: button, color )
+        setBorderButton(button, color)
+        button.setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest)
+    }
     
+    private func updateKeyboardLetterError(_ button: UIButton) {
+        let color = Theme.shared.currentTheme.error
+        setButtonPressed(button: button, color )
+        setBorderButton(button, color)
+        button.setBackgroundColor(Theme.shared.currentTheme.surfaceContainerLow)
+    }
+
+    private func setBorderButton(_ button: UIButton, _ color: UIColor) {
+        BorderBuilder(button)
+            .setColor(color.withAlphaComponent(0.5))
+            .setWidth(1)
+    }
+
+    private func setButtonPressed(button: UIButton, _ color: UIColor) {
+        let buttonInteration = ButtonInteractionBuilder(button: button).setColor(color)
+        buttonInteration.pressed
+    }
+    
+    private func revealLetters(_ indexes: [Int], color: UIColor) {
+        indexes.forEach { index in
+            lettersInWord[index]?.label.setHidden(false)
+            lettersInWord[index]?.gradient?.setReferenceColor(color, percentageGradient: 10)
+                .setAxialGradient(.rightToLeft)
+                .apply()
+        }
+    }
+
+        
 //  MARK: - RESET ELEMENTS
+    
     private func resetElements() {
         resetGallowsWordView()
     }
@@ -149,10 +212,8 @@ public class HomeViewController: UIViewController {
         screen.gallowsWordView.resetStackView()
         lettersInWord.removeAll()
     }
-
-    
+   
 }
-
 
 
 //  MARK: - EXTENSION - HangmanKeyboardViewDelegate
@@ -172,7 +233,7 @@ extension HomeViewController: HangmanViewDelegate {
 extension HomeViewController: HangmanKeyboardViewDelegate {
     
     func letterButtonTapped(_ button: UIButton) {
-        print(#function)
+        homePresenter.verifyMatchInWord(button.titleLabel?.text)
     }
     
     func moreTipTapped() {
@@ -186,6 +247,28 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
+    public func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String) {
+        let tag = K.Keyboard.letter[keyboardLetter.uppercased()] ?? 0
+        guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
+        button.removeNeumorphism()
+        if isCorrect {
+            updateKeyboardLetterSuccess(button)
+            return
+        }
+        updateKeyboardLetterError(button)
+    }
+    
+    public func revealCorrectLetter(_ indexes: [Int]) {
+        revealLetters(indexes, color: Theme.shared.currentTheme.primary.withAlphaComponent(0.4))
+    }
+    
+    public func revealLetterEndGame(_ indexes: [Int]) {
+        revealLetters(indexes, color: Theme.shared.currentTheme.error.withAlphaComponent(0.5))
+    }
+        
+    public func updateCountCorrectLetters(_ count: String) {
+        screen.countCorrectLetterLabel.setText(count)
+    }
     
     public func successFetchNextWord(nextWord: NextWordPresenterDTO?) {
         configNextWord(nextWord)
