@@ -4,6 +4,7 @@
 import UIKit
 
 import CustomComponentsSDK
+import Handler
 
 protocol HangmanKeyboardViewDelegate: AnyObject {
     func letterButtonTapped(_ button: UIButton)
@@ -200,6 +201,7 @@ class HangmanKeyboardView: ViewBuilder {
     
     private func createButtonDefault(_ title: String) -> ButtonImageBuilder {
         return ButtonImageBuilder()
+            .setTag(K.Keyboard.letter[title.uppercased()] ?? 0)
             .setTitle(title)
             .setTitleAlignment(.center)
             .setTitleColor(Theme.shared.currentTheme.onSurface)

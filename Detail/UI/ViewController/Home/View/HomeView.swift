@@ -4,6 +4,7 @@
 import UIKit
 
 import CustomComponentsSDK
+import Handler
 
 protocol HangmanViewDelegate: AnyObject {
     func nextWordButtonTapped()

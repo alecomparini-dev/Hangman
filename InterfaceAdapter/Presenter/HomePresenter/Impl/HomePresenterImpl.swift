@@ -3,27 +3,33 @@
 
 import Foundation
 import Domain
+import Handler
 
 public protocol ProfileSummaryPresenterOutput: AnyObject {
     func successFetchNextWord(nextWord: NextWordPresenterDTO?)
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
     
-    func updateCountCorrectLetters(_ count: String )
+    func updateCountCorrectLetters(_ count: String)
+    func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String)
+    func revealCorrectLetter(_ indexes: [Int])
+    func revealLetterEndGame(_ indexes: [Int])
 }
 
 
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: ProfileSummaryPresenterOutput?
     
+    private struct Control {
+        static public var isEndGame = false
+    }
+    
     private var wordPlaying: NextWordsUseCaseDTO?
     private var joinedWordPlaying: String?
     private var successLetterIndex: Set<Int> = []
-    
+    private var errorLetters: Set<String> = []
     
     private var userID: String?
-    private var countWordPlayed: Int = 0
-    private let quantityWordsToFetch: Int = 10
     private var nextWords: [NextWordsUseCaseDTO]?
     
     
@@ -42,22 +48,31 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     
+    
+//  MARK: - GET PROPERTIES
+    public var isEndGame: Bool { Control.isEndGame  }
+    
+    
 //  MARK: - PUBLIC AREA
+    
+    public func startGame() {
+        startGameAsync()
+    }
+    
+    public func getLettersKeyboard() -> [String] {
+        return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
+                "Q","R","S","T","U","V","W","X","Y","Z",""]
+    }
     
     public func getNextWord() {
         resetGame()
         Task {
             if nextWord() != nil {
-                addCountWordPlayed(wordPlaying?.id)
                 successFetchNextWord()
                 return
             }
             await fetchNextWord()
         }
-    }
-    
-    private func addCountWordPlayed(_ value: Int?) {
-        countWordPlayed = value ?? 0
     }
     
     public func getCurrentWord() -> NextWordPresenterDTO? {
@@ -71,39 +86,89 @@ public class HomePresenterImpl: HomePresenter {
                                     tips: wordPlaying.tips)
     }
     
-    public func startGame() {
-        startGameAsync()
-    }
-    
-    public func getLettersKeyboard() -> [String] {
-        return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
-                "Q","R","S","T","U","V","W","X","Y","Z",""]
+
+    private func isLetterKeyboardInteractionValid(_ letter: String, _ indexMatch: [Int]) -> Bool {
+        if indexMatch.contains(where: successLetterIndex.contains(_:)) { return false }
+        if errorLetters.contains(where: { $0 == letter } ) { return false }
+        return true
     }
     
     public func verifyMatchInWord(_ letter: String?) {
+        if isEndGame { return }
         guard let letter, let joinedWordPlaying else {return}
         let indexMatchInWordFromChosenLetter = joinedWordPlaying.enumerated().compactMap { index, char in
             return (char == Character(letter.lowercased())) ? index : nil
         }
-        successLetterIndex.formUnion(indexMatchInWordFromChosenLetter)
+        if !isLetterKeyboardInteractionValid(letter, indexMatchInWordFromChosenLetter) { return }
+        addSuccessLetter(indexMatchInWordFromChosenLetter)
+        revealCorrectLetter(indexMatchInWordFromChosenLetter)
+        addErrorLetter(indexMatchInWordFromChosenLetter, letter)
+        statusChosenLetter(indexMatchInWordFromChosenLetter, letter)
         updateCountCorrectLetters()
+        checkEndGame()
     }
     
     public func resetGame() {
         joinedWordPlaying = nil
+        Control.isEndGame = false
+        errorLetters.removeAll()
         successLetterIndex.removeAll()
     }
 
 
-
 //  MARK: - PRIVATE AREA
 
+    private func addErrorLetter(_ indexMatch: [Int], _ letter: String) {
+        if indexMatch.isEmpty {
+            errorLetters.insert(letter)
+        }
+    }
+    
+    private func addSuccessLetter(_ indexMatch: [Int]) {
+        successLetterIndex.formUnion(indexMatch)
+    }
+    
     private func startGameAsync() {
         Task {
             await signInAnonymously()
-            await countWordsPlayed()
             await fetchNextWord()
         }
+    }
+    
+    private func checkEndGame() {
+        if isEndGameFailure() {
+            revealLetterEndGame(indexesEndGameToReveal())
+        }
+        
+        if isEndGameSuccess() {
+            print("WINS !!!")
+        }
+    }
+    
+    private func indexesEndGameToReveal() -> [Int] {
+        var indexTotal: Set<Int> = []
+        joinedWordPlaying?.enumerated().forEach({ index, char in
+            if char.isWhitespace || char.description == K.String.hifen { return }
+            indexTotal.insert(index)
+        })
+        return indexTotal.subtracting(successLetterIndex).sorted()
+    }
+    
+    private func isEndGameFailure() -> Bool {
+        if errorLetters.count == K.errorCountToEndGame {
+            Control.isEndGame = true
+            return true
+        }
+        return false
+    }
+    
+    public func isEndGameSuccess() -> Bool {
+        guard let word = wordPlaying?.word else { return true}
+        if successLetterIndex.count == word.count {
+            Control.isEndGame = true
+            return true
+        }
+        return false
     }
     
     private func signInAnonymously() async {
@@ -114,24 +179,27 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func countWordsPlayed() async {
-        guard let userID else { return }
+    private func countWordsPlayed() async -> Int {
+        guard let userID else { return 0}
         do {
-            countWordPlayed = try await countWordsPlayedUseCase.count(userID: userID)
+            return try await countWordsPlayedUseCase.count(userID: userID)
         } catch let error {
             debugPrint(error.localizedDescription)
         }
+        return 0
     }
     
     private func fetchNextWord() async {
         nextWords = nil
+        
+        let countWordPlayed = await countWordsPlayed()
+        
         do {
-            nextWords = try await getNextWordsUseCase.nextWords(atID: countWordPlayed + 1, limit: quantityWordsToFetch)
+            nextWords = try await getNextWordsUseCase.nextWords(atID: countWordPlayed + 1, limit: K.quantityWordsToFetch)
 
             if let nextWords {
                 if nextWords.isEmpty { return nextWordIsOver() }
                 wordPlaying = nextWords[0]
-                addCountWordPlayed(wordPlaying?.id)
                 successFetchNextWord()
             }
             
@@ -213,6 +281,27 @@ public class HomePresenterImpl: HomePresenter {
         DispatchQueue.main.async { [weak self] in
             guard let self else {return}
             delegateOutput?.updateCountCorrectLetters("\(successLetterIndex.count)/\(wordPlaying?.word?.count ?? 0)")
+        }
+    }
+    
+    private func revealCorrectLetter(_ indexes: [Int]) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            delegateOutput?.revealCorrectLetter(indexes)
+        }
+    }
+    
+    private func statusChosenLetter(_ indexCorrect: [Int], _ keyboardLetter: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            delegateOutput?.statusChosenLetter(isCorrect: !indexCorrect.isEmpty, keyboardLetter)
+        }
+    }
+    
+    private func revealLetterEndGame(_ indexes: [Int]) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            delegateOutput?.revealLetterEndGame(indexes)
         }
     }
 

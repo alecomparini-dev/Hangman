@@ -4,7 +4,9 @@
 import UIKit
 
 import CustomComponentsSDK
+import Handler
 import Presenter
+
 
 public class HomeViewController: UIViewController {
 
@@ -165,9 +167,43 @@ public class HomeViewController: UIViewController {
         }
     }
     
+    private func updateKeyboardLetterSuccess(_ button: UIButton) {
+        let color = Theme.shared.currentTheme.primary
+        setButtonPressed(button: button, color )
+        setBorderButton(button, color)
+        button.setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest)
+    }
     
+    private func updateKeyboardLetterError(_ button: UIButton) {
+        let color = Theme.shared.currentTheme.error
+        setButtonPressed(button: button, color )
+        setBorderButton(button, color)
+        button.setBackgroundColor(Theme.shared.currentTheme.surfaceContainerLow)
+    }
+
+    private func setBorderButton(_ button: UIButton, _ color: UIColor) {
+        BorderBuilder(button)
+            .setColor(color.withAlphaComponent(0.5))
+            .setWidth(1)
+    }
+
+    private func setButtonPressed(button: UIButton, _ color: UIColor) {
+        let buttonInteration = ButtonInteractionBuilder(button: button).setColor(color)
+        buttonInteration.pressed
+    }
     
+    private func revealLetters(_ indexes: [Int], color: UIColor) {
+        indexes.forEach { index in
+            lettersInWord[index]?.label.setHidden(false)
+            lettersInWord[index]?.gradient?.setReferenceColor(color, percentageGradient: 10)
+                .setAxialGradient(.rightToLeft)
+                .apply()
+        }
+    }
+
+        
 //  MARK: - RESET ELEMENTS
+    
     private func resetElements() {
         resetGallowsWordView()
     }
@@ -176,10 +212,8 @@ public class HomeViewController: UIViewController {
         screen.gallowsWordView.resetStackView()
         lettersInWord.removeAll()
     }
-
-    
+   
 }
-
 
 
 //  MARK: - EXTENSION - HangmanKeyboardViewDelegate
@@ -213,6 +247,25 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
+    public func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String) {
+        let tag = K.Keyboard.letter[keyboardLetter.uppercased()] ?? 0
+        guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
+        button.removeNeumorphism()
+        if isCorrect {
+            updateKeyboardLetterSuccess(button)
+            return
+        }
+        updateKeyboardLetterError(button)
+    }
+    
+    public func revealCorrectLetter(_ indexes: [Int]) {
+        revealLetters(indexes, color: Theme.shared.currentTheme.primary.withAlphaComponent(0.4))
+    }
+    
+    public func revealLetterEndGame(_ indexes: [Int]) {
+        revealLetters(indexes, color: Theme.shared.currentTheme.error.withAlphaComponent(0.5))
+    }
+        
     public func updateCountCorrectLetters(_ count: String) {
         screen.countCorrectLetterLabel.setText(count)
     }
