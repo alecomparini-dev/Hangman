@@ -122,22 +122,10 @@ class HomeView: UIView {
         return comp
     }()
     
-    lazy var backgroundImage: ImageViewBuilder = {
-        let img = UIImage(named: "stickman2")
-        let comp = ImageViewBuilder(img)
-            .setContentMode(.scaleAspectFill)
-            .setBorder({ build in
-                build.setCornerRadius(10)
-            })
-            .setConstraints { build in
-                build
-                    .setTop.equalTo(painelGallowsView.get, .top, 35)
-                    .setHorizontalAlignmentX.equalTo(painelGallowsView.get)
-                    .setWidth.equalToConstant(100)
-                    .setHeight.equalToConstant(150)
-            }
-        return comp
-    }()
+        
+    
+    
+    
     
     lazy var nextWordButton: ButtonImageBuilder = {
         let img = ImageViewBuilder(UIImage(systemName: K.Images.nextWordButton))
@@ -287,7 +275,6 @@ class HomeView: UIView {
         backgroundView.add(insideTo: self)
         addStackViewElements()
         painelGallowsView.add(insideTo: painelView.get)
-        backgroundImage.add(insideTo: painelGallowsView.get)
         addGallowsView()
         nextWordButton.add(insideTo: self)
         categoryLabel.add(insideTo: wordsToStack.get)
@@ -310,7 +297,6 @@ class HomeView: UIView {
         backgroundView.applyConstraint()
         configStackViewConstraints()
         painelGallowsView.applyConstraint()
-        backgroundImage.applyConstraint()
         gallowsView.applyConstraint()
         nextWordButton.applyConstraint()
         categoryLabel.applyConstraint()
