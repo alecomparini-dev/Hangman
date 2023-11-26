@@ -80,7 +80,7 @@ class GallowsView: ViewBuilder {
     }()
     
     lazy var ropeCircleGallows: ImageViewBuilder = {
-        let img = UIImage(systemName: "transmission")
+        let img = UIImage(systemName: "")
         var view = ImageViewBuilder(img)
             .setHidden(false)
             .setContentMode(.redraw)
@@ -145,6 +145,44 @@ class GallowsView: ViewBuilder {
         return view
     }()
     
+    
+    
+    
+    
+    lazy var headImage: ImageViewBuilder = {
+        let img = UIImage(named: "fail")
+        let comp = ImageViewBuilder(img)
+            .setContentMode(.scaleToFill)
+            .setBorder({ build in
+                build.setCornerRadius(10)
+            })
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(ropeGallows.get, .top, 10)
+                    .setHorizontalAlignmentX.equalTo(ropeGallows.get)
+                    .setWidth.equalToConstant(65)
+                    .setHeight.equalToConstant(110)
+            }
+        return comp
+    }()
+    
+    lazy var bodyImage: ImageViewBuilder = {
+        let img = UIImage(named: "")
+        let comp = ImageViewBuilder(img)
+            .setContentMode(.scaleToFill)
+            .setBorder({ build in
+                build.setCornerRadius(10)
+            })
+            .setConstraints { build in
+                build
+                    .setPin.equalTo(headImage.get)
+            }
+        return comp
+    }()
+
+    
+    
+    
 //  MARK: - PRIVATE AREA
     
     private func configure() {
@@ -159,6 +197,8 @@ class GallowsView: ViewBuilder {
         topGallows.add(insideTo: self.get)
         rodGallows.add(insideTo: self.get)
         gallowsBase.add(insideTo: self.get)
+        headImage.add(insideTo: self.get)
+        bodyImage.add(insideTo: self.get)
     }
     
     private func configConstraints() {
@@ -168,6 +208,8 @@ class GallowsView: ViewBuilder {
         ropeCircleGallows.applyConstraint()
         rodGallows.applyConstraint()
         supportGallows.applyConstraint()
+        headImage.applyConstraint()
+        bodyImage.applyConstraint()
     }
     
 }
