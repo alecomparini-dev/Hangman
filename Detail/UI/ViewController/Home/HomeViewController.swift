@@ -83,10 +83,10 @@ public class HomeViewController: UIViewController {
         screen.initialQuestionLabel.setText(word?.initialQuestion)
         configHangmanLettersInWord(word)
         configPositionLettersOfWord(word)
-        configQuantityLetter(word?.word?.count)
+        setQuantityCorrectLetter(word?.word?.count)
     }
     
-    private func configQuantityLetter(_ qtd: Int?) {
+    private func setQuantityCorrectLetter(_ qtd: Int?) {
         screen.countCorrectLetterLabel.setText("0/\(qtd ?? 0)")
     }
         
