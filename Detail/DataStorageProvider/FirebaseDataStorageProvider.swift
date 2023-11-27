@@ -56,3 +56,41 @@ extension FirebaseDataStorageProvider: FetchAtDataStorageProvider {
 
 }
 
+
+//  MARK: - EXTENSION - FetchInDataStorageProvider
+extension FirebaseDataStorageProvider: FetchInDataStorageProvider {
+    
+    public func fetchIn<T>(id: [Int]) async throws -> T? {
+        let querySnapshot: QuerySnapshot = try await db.collection(collection)
+            .whereField("id", in: id)
+            .getDocuments()
+        
+        let data: [QueryDocumentSnapshot] = querySnapshot.documents
+        
+        return data.map { $0.data() } as? T
+    }
+    
+    
+    public func fetchNotIn<T>(id: [Int]) async throws -> T? {
+        let querySnapshot: QuerySnapshot = try await db.collection(collection)
+            .whereField("id", notIn: id)
+            .getDocuments()
+        
+        let data: [QueryDocumentSnapshot] = querySnapshot.documents
+        
+        return data.map { $0.data() } as? T
+    }
+    
+    
+    public func fetchIn<D,T>(column: String, _ values: [D]) async throws -> T? {
+        let querySnapshot: QuerySnapshot = try await db.collection(collection)
+            .whereField(column, in: values)
+            .getDocuments()
+        
+        let data: [QueryDocumentSnapshot] = querySnapshot.documents
+        
+        return data.map { $0.data() } as? T
+    }
+
+}
+

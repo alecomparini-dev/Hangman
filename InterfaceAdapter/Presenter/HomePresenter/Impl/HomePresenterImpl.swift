@@ -14,12 +14,14 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
     func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String)
     func revealCorrectLetters(_ indexes: [Int])
     func revealErrorLetters(_ indexes: [Int])
+    func revealDoll(_ imageBase64: String)
 }
 
 
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: ProfileSummaryPresenterOutput?
     
+    private var dolls: [DollUseCaseDTO]?
     private var countDolls = 1
     private var _isEndGame = false
     private var joinedWordPlaying: String?
@@ -37,14 +39,14 @@ public class HomePresenterImpl: HomePresenter {
     private let getNextWordsUseCase: GetNextWordsUseCase
     private let countWordsPlayedUseCase: CountWordsPlayedUseCase
     private let saveWordPlayedUseCase: SaveWordPlayedUseCase
-    private let countDollsUseCase: CountDollsUseCase
+    private let getDollsRandomUseCase: GetDollsRandomUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, countDollsUseCase: CountDollsUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
-        self.countDollsUseCase = countDollsUseCase
+        self.getDollsRandomUseCase = getDollsRandomUseCase
     }
     
     
@@ -57,12 +59,14 @@ public class HomePresenterImpl: HomePresenter {
             guard let userID, let wordPlaying else { return nil }
             return DataTransferDTO(userID: userID,
                                    wordPlaying: wordPlaying,
-                                   nextWords: nextWords)
+                                   nextWords: nextWords,
+                                   dolls: dolls)
         }
         set {
             self.userID = newValue?.userID
             self.wordPlaying = newValue?.wordPlaying
             self.nextWords = newValue?.nextWords
+            self.dolls = newValue?.dolls
         }
     }
     
@@ -121,13 +125,6 @@ public class HomePresenterImpl: HomePresenter {
         checkEndGame()
     }
     
-//    public func resetGame() {
-//        joinedWordPlaying = nil
-//        _isEndGame = false
-//        errorLetters.removeAll()
-//        successLetterIndex.removeAll()
-//    }
-
 
 //  MARK: - PRIVATE AREA
 
@@ -143,24 +140,25 @@ public class HomePresenterImpl: HomePresenter {
     
     private func startGameAsync() {
         Task {
-            await countDolls()
+            await getRandomDolls()
             await signInAnonymously()
             await fetchNextWord()
         }
     }
     
-    private func countDolls() async {
+    private func getRandomDolls() async {
         do {
-            let count = try await countDollsUseCase.count()
-            print("countDolls:", count)
+            dolls = try await getDollsRandomUseCase.getDollsRandom(quantity: 5)
         } catch let error {
             debugPrint(error.localizedDescription)
         }
     }
     
     private func checkEndGame() {
+        
         if isEndGameFailure() {
             revealLetterEndGame(indexesEndGameToReveal())
+            revealDoll(dolls?[0].success?.randomElement())
         }
         
         if isEndGameSuccess() {
@@ -325,6 +323,14 @@ public class HomePresenterImpl: HomePresenter {
         DispatchQueue.main.async { [weak self] in
             guard let self else {return}
             delegateOutput?.revealErrorLetters(indexes)
+        }
+    }
+    
+    private func revealDoll(_ doll: String?) {
+        guard let doll else {return}
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            delegateOutput?.revealDoll(doll)
         }
     }
 

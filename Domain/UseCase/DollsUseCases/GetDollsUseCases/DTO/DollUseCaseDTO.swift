@@ -3,7 +3,7 @@
 
 import Foundation
 
-public struct Doll {
+public struct DollUseCaseDTO {
     public var head: [String]?
     public var body: [String]?
     public var success: [String]?
@@ -15,4 +15,5 @@ public struct Doll {
         self.success = success
         self.fail = fail
     }
+    
 }

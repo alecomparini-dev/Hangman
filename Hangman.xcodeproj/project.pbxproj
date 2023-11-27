@@ -31,6 +31,13 @@
 		0235E5CC2B14CCBB00829489 /* GenericCountModelGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5CB2B14CCBB00829489 /* GenericCountModelGateway.swift */; };
 		0235E5D02B14D3E100829489 /* CountDollsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5CF2B14D3E100829489 /* CountDollsUseCase.swift */; };
 		0235E5D22B14D41700829489 /* CountDollsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5D12B14D41700829489 /* CountDollsUseCaseImpl.swift */; };
+		0235E5D62B14F50500829489 /* GetDollsRandomUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5D52B14F50500829489 /* GetDollsRandomUseCase.swift */; };
+		0235E5D82B14F51100829489 /* GetDollsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5D72B14F51100829489 /* GetDollsUseCaseGateway.swift */; };
+		0235E5DB2B14F56D00829489 /* DollUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5DA2B14F56D00829489 /* DollUseCaseDTO.swift */; };
+		0235E5DF2B14F75800829489 /* GetDollsUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5DD2B14F74700829489 /* GetDollsUseCaseGatewayImpl.swift */; };
+		0235E5E22B14FBF700829489 /* FetchInDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5E02B14FADF00829489 /* FetchInDataStorageProvider.swift */; };
+		0235E5E62B14FE6E00829489 /* MapperDictDollsToListDollUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5E42B14FE4900829489 /* MapperDictDollsToListDollUseCaseDTO.swift */; };
+		0235E5E82B1500A800829489 /* GetDollsRandomUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5E72B1500A800829489 /* GetDollsRandomUseCaseImpl.swift */; };
 		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
 		026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */; };
 		026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */; };
@@ -247,6 +254,13 @@
 		0235E5CB2B14CCBB00829489 /* GenericCountModelGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCountModelGateway.swift; sourceTree = "<group>"; };
 		0235E5CF2B14D3E100829489 /* CountDollsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDollsUseCase.swift; sourceTree = "<group>"; };
 		0235E5D12B14D41700829489 /* CountDollsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDollsUseCaseImpl.swift; sourceTree = "<group>"; };
+		0235E5D52B14F50500829489 /* GetDollsRandomUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDollsRandomUseCase.swift; sourceTree = "<group>"; };
+		0235E5D72B14F51100829489 /* GetDollsUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDollsUseCaseGateway.swift; sourceTree = "<group>"; };
+		0235E5DA2B14F56D00829489 /* DollUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollUseCaseDTO.swift; sourceTree = "<group>"; };
+		0235E5DD2B14F74700829489 /* GetDollsUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDollsUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
+		0235E5E02B14FADF00829489 /* FetchInDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchInDataStorageProvider.swift; sourceTree = "<group>"; };
+		0235E5E42B14FE4900829489 /* MapperDictDollsToListDollUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperDictDollsToListDollUseCaseDTO.swift; sourceTree = "<group>"; };
+		0235E5E72B1500A800829489 /* GetDollsRandomUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDollsRandomUseCaseImpl.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
 		0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchByDataStorageProvider.swift; sourceTree = "<group>"; };
 		026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCase.swift; sourceTree = "<group>"; };
@@ -356,6 +370,7 @@
 				0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */,
 				0269390D2B09387F0023073B /* FetchAtDataStorageProvider.swift */,
 				0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */,
+				0235E5E02B14FADF00829489 /* FetchInDataStorageProvider.swift */,
 			);
 			path = FetchDataStorageProvider;
 			sourceTree = "<group>";
@@ -511,7 +526,7 @@
 		0235E5C32B14CA9B00829489 /* DollsUseCases */ = {
 			isa = PBXGroup;
 			children = (
-				0235E5C42B14CB3700829489 /* GetDollsUseCase */,
+				0235E5EB2B15023000829489 /* GetDollsUseCases */,
 				0235E5CD2B14CF2300829489 /* CountDollsUseCase */,
 			);
 			path = DollsUseCases;
@@ -563,6 +578,66 @@
 				0235E5D12B14D41700829489 /* CountDollsUseCaseImpl.swift */,
 			);
 			path = Impl;
+			sourceTree = "<group>";
+		};
+		0235E5D32B14F4F200829489 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5E72B1500A800829489 /* GetDollsRandomUseCaseImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		0235E5D92B14F55600829489 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5DA2B14F56D00829489 /* DollUseCaseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		0235E5DC2B14F72C00829489 /* GetDollsUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5DD2B14F74700829489 /* GetDollsUseCaseGatewayImpl.swift */,
+			);
+			path = GetDollsUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		0235E5E32B14FE0700829489 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5E42B14FE4900829489 /* MapperDictDollsToListDollUseCaseDTO.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		0235E5EA2B15020D00829489 /* GetDollsRandomUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5D32B14F4F200829489 /* Impl */,
+				0235E5D52B14F50500829489 /* GetDollsRandomUseCase.swift */,
+			);
+			path = GetDollsRandomUseCase;
+			sourceTree = "<group>";
+		};
+		0235E5EB2B15023000829489 /* GetDollsUseCases */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5D92B14F55600829489 /* DTO */,
+				0235E5EC2B15024100829489 /* Interface */,
+				0235E5EA2B15020D00829489 /* GetDollsRandomUseCase */,
+				0235E5C42B14CB3700829489 /* GetDollsUseCase */,
+			);
+			path = GetDollsUseCases;
+			sourceTree = "<group>";
+		};
+		0235E5EC2B15024100829489 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5D72B14F51100829489 /* GetDollsUseCaseGateway.swift */,
+			);
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		026800812B0A945A00B30C26 /* AuthenticateUseCases */ = {
@@ -678,6 +753,7 @@
 		026938F72B09362B0023073B /* GetNextWordsUseCaseGateway */ = {
 			isa = PBXGroup;
 			children = (
+				0235E5E32B14FE0700829489 /* Mapper */,
 				026938F92B0936490023073B /* DataStorageFetchAtIDNexWordsUseCaseGatewayImpl.swift */,
 			);
 			path = GetNextWordsUseCaseGateway;
@@ -688,6 +764,7 @@
 			children = (
 				026938C72B0903D00023073B /* Interfaces */,
 				0202164C2B0A960C003E2B07 /* AuthenticationUseCaseGateway */,
+				0235E5DC2B14F72C00829489 /* GetDollsUseCaseGateway */,
 				026938F72B09362B0023073B /* GetNextWordsUseCaseGateway */,
 				020216672B0BC5D0003E2B07 /* WordsPlayedUseCaseGateways */,
 				0235E5C52B14CBA600829489 /* GenericCountModelGateway */,
@@ -1271,14 +1348,18 @@
 				0235E5D02B14D3E100829489 /* CountDollsUseCase.swift in Sources */,
 				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
 				0235E5C22B14CA0900829489 /* Doll.swift in Sources */,
+				0235E5D82B14F51100829489 /* GetDollsUseCaseGateway.swift in Sources */,
 				026800892B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift in Sources */,
 				020216762B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift in Sources */,
+				0235E5DB2B14F56D00829489 /* DollUseCaseDTO.swift in Sources */,
 				020216662B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift in Sources */,
+				0235E5E82B1500A800829489 /* GetDollsRandomUseCaseImpl.swift in Sources */,
 				026938F42B0935CA0023073B /* NextWordsUseCaseDTO.swift in Sources */,
 				0235E5D22B14D41700829489 /* CountDollsUseCaseImpl.swift in Sources */,
 				020216722B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift in Sources */,
 				020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */,
 				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
+				0235E5D62B14F50500829489 /* GetDollsRandomUseCase.swift in Sources */,
 				0235E5CC2B14CCBB00829489 /* GenericCountModelGateway.swift in Sources */,
 				026938EC2B0912E10023073B /* ResultWordGameModel.swift in Sources */,
 				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
@@ -1294,9 +1375,12 @@
 				020216532B0A9699003E2B07 /* AuthenticateAnonymous.swift in Sources */,
 				0235E5CA2B14CC9800829489 /* GenericCountModelGateway.swift in Sources */,
 				0269392A2B093AF60023073B /* FetchAtDataStorageProvider.swift in Sources */,
+				0235E5E22B14FBF700829489 /* FetchInDataStorageProvider.swift in Sources */,
 				020216512B0A9682003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift in Sources */,
+				0235E5E62B14FE6E00829489 /* MapperDictDollsToListDollUseCaseDTO.swift in Sources */,
 				026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */,
 				0202166B2B0BC605003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift in Sources */,
+				0235E5DF2B14F75800829489 /* GetDollsUseCaseGatewayImpl.swift in Sources */,
 				020216862B0C044C003E2B07 /* SaveWordPlayedCodable.swift in Sources */,
 				0202167E2B0BE9E4003E2B07 /* InsertDataStorageProvider.swift in Sources */,
 				020216872B0C0452003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift in Sources */,
