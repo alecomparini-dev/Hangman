@@ -74,13 +74,13 @@ class GallowsView: ViewBuilder {
                     .setTop.equalTo(topGallows.get, .bottom, -2)
                     .setHorizontalAlignmentX.equalTo(gallowsBase.get, 10)
                     .setWidth.equalToConstant(3)
-                    .setHeight.equalToConstant(23)
+                    .setHeight.equalToConstant(24)
             }
         return view
     }()
     
     lazy var ropeCircleGallows: ImageViewBuilder = {
-        let img = UIImage(systemName: "")
+        let img = UIImage(systemName: "transmission")
         var view = ImageViewBuilder(img)
             .setHidden(false)
             .setContentMode(.redraw)
@@ -93,6 +93,47 @@ class GallowsView: ViewBuilder {
                     .setHeight.equalToConstant(20)
             }
         return view
+    }()
+    
+    lazy var headImage: ImageViewBuilder = {
+        var img = UIImage(named: "success")
+//        img = img?.resizeImage(targetSize: CGSize(width: 171, height: 292))
+        let png = img?.pngData()
+        let base64 = png?.base64EncodedString()
+        print(base64?.count ?? "" )
+        
+        
+        let imgDataBase64 = Data(base64Encoded: base64!, options: .ignoreUnknownCharacters)
+        let imgBase64 = UIImage(data: imgDataBase64!)
+        
+        let comp = ImageViewBuilder(imgBase64)
+//        let comp = ImageViewBuilder(img)
+            .setContentMode(.scaleToFill)
+            .setBorder({ build in
+                build.setCornerRadius(10)
+            })
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(ropeGallows.get, .top, 10)
+                    .setHorizontalAlignmentX.equalTo(ropeGallows.get)
+                    .setWidth.equalToConstant(65)
+                    .setHeight.equalToConstant(110)
+            }
+        return comp
+    }()
+    
+    lazy var bodyImage: ImageViewBuilder = {
+        let img = UIImage(named: "0")
+        let comp = ImageViewBuilder(img)
+            .setContentMode(.scaleToFill)
+            .setBorder({ build in
+                build.setCornerRadius(10)
+            })
+            .setConstraints { build in
+                build
+                    .setPin.equalTo(headImage.get)
+            }
+        return comp
     }()
     
     lazy var rodGallows: ViewBuilder = {
@@ -147,38 +188,6 @@ class GallowsView: ViewBuilder {
     
     
     
-    
-    
-    lazy var headImage: ImageViewBuilder = {
-        let img = UIImage(named: "fail")
-        let comp = ImageViewBuilder(img)
-            .setContentMode(.scaleToFill)
-            .setBorder({ build in
-                build.setCornerRadius(10)
-            })
-            .setConstraints { build in
-                build
-                    .setTop.equalTo(ropeGallows.get, .top, 10)
-                    .setHorizontalAlignmentX.equalTo(ropeGallows.get)
-                    .setWidth.equalToConstant(65)
-                    .setHeight.equalToConstant(110)
-            }
-        return comp
-    }()
-    
-    lazy var bodyImage: ImageViewBuilder = {
-        let img = UIImage(named: "")
-        let comp = ImageViewBuilder(img)
-            .setContentMode(.scaleToFill)
-            .setBorder({ build in
-                build.setCornerRadius(10)
-            })
-            .setConstraints { build in
-                build
-                    .setPin.equalTo(headImage.get)
-            }
-        return comp
-    }()
 
     
     
