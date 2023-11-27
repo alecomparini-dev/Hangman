@@ -113,8 +113,7 @@ class GallowsView: ViewBuilder {
         let imgBase64Data = Data(base64Encoded: imgBase64String!, options: .ignoreUnknownCharacters)
         let imgBase64 = UIImage(data: imgBase64Data!)
         
-        let comp = ImageViewBuilder(imgBase64)
-//        let comp = ImageViewBuilder(img)
+        let comp = ImageViewBuilder()
             .setContentMode(.scaleToFill)
             .setBorder({ build in
                 build.setCornerRadius(10)
@@ -130,8 +129,7 @@ class GallowsView: ViewBuilder {
     }()
     
     lazy var bodyImage: ImageViewBuilder = {
-        let img = UIImage(named: "0")
-        let comp = ImageViewBuilder(img)
+        let comp = ImageViewBuilder()
             .setContentMode(.scaleToFill)
             .setBorder({ build in
                 build.setCornerRadius(10)

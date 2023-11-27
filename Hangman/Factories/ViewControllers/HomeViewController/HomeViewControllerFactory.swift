@@ -56,17 +56,27 @@ class HomeViewControllerFactory: UIViewController {
         
         let dataStorageMainDolls = DataStorageMain(dataProvider: dataProviderDolls)
         
-        let fetchCountDataStorageDolls = HangmanDataStorageSDK(dataStorage: dataStorageMainDolls)
+        let fetchDataStorageDolls = HangmanDataStorageSDK(dataStorage: dataStorageMainDolls)
         
-        let countModelGateway = GenericCountModelGatewayImpl(fetchCountDataStorage: fetchCountDataStorageDolls)
+        let countModelGateway = GenericCountModelGatewayImpl(fetchCountDataStorage: fetchDataStorageDolls)
         
         let countDollsUseCase = CountDollsUseCaseImpl(countModelGateway: countModelGateway)
+        
+        
+        //MARK: - getDollsRandomUseCase
+
+        let fetchInDataStorage = FirebaseDataStorageProvider(collection: "dolls")
+          
+        let getDollsGateway = GetDollsUseCaseGatewayImpl(fetchInDataStorage: fetchInDataStorage)
+        
+        let getDollsRandomUseCase = GetDollsRandomUseCaseImpl(countDollsUseCase: countDollsUseCase,
+                                                              getDollsGateway: getDollsGateway)
         
         let homePresenter = HomePresenterImpl(signInAnonymousUseCase: signInAnonymousUseCase,
                                               getNextWordsUseCase: getNextWordsUseCase, 
                                               countWordsPlayedUseCase: countWordsPlayedUseCase, 
-                                              saveWordPlayedUseCase: saveWordPlayedUseCase, 
-                                              countDollsUseCase: countDollsUseCase)
+                                              saveWordPlayedUseCase: saveWordPlayedUseCase,
+                                              getDollsRandomUseCase: getDollsRandomUseCase)
         
         return HomeViewController(homePresenter: homePresenter)
         

@@ -280,6 +280,13 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
     
+    public func revealDoll(_ imageBase64: String) {
+        if let imgData = Data(base64Encoded: imageBase64) {
+            screen.gallowsView.headImage.setImage(image: UIImage(data: imgData))
+        }
+    }
+    
+    
     public func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String) {
         let tag = K.Keyboard.letter[keyboardLetter.uppercased()] ?? 0
         guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
