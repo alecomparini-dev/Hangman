@@ -20,8 +20,8 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: ProfileSummaryPresenterOutput?
     
+    private var countDolls = 1
     private var _isEndGame = false
-        
     private var joinedWordPlaying: String?
     private var successLetterIndex: Set<Int> = []
     private var errorLetters: Set<String> = []
@@ -37,12 +37,14 @@ public class HomePresenterImpl: HomePresenter {
     private let getNextWordsUseCase: GetNextWordsUseCase
     private let countWordsPlayedUseCase: CountWordsPlayedUseCase
     private let saveWordPlayedUseCase: SaveWordPlayedUseCase
+    private let countDollsUseCase: CountDollsUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, countDollsUseCase: CountDollsUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
+        self.countDollsUseCase = countDollsUseCase
     }
     
     
@@ -141,8 +143,18 @@ public class HomePresenterImpl: HomePresenter {
     
     private func startGameAsync() {
         Task {
+            await countDolls()
             await signInAnonymously()
             await fetchNextWord()
+        }
+    }
+    
+    private func countDolls() async {
+        do {
+            let count = try await countDollsUseCase.count()
+            print("countDolls:", count)
+        } catch let error {
+            debugPrint(error.localizedDescription)
         }
     }
     

@@ -10,9 +10,9 @@ public struct WordGallowModel {
     public var category: String?
     public var initalTip: String?
     public var tips: [String]?
-    public var resultWordGame: ResultWordGame?
+    public var resultWordGame: ResultWordGameModel?
     
-    public init(id: Int, word: String, syllables: [String], category: String? = nil, initalTip: String? = nil, tips: [String]? = nil, resultWordGame: ResultWordGame? = nil) {
+    public init(id: Int, word: String, syllables: [String], category: String? = nil, initalTip: String? = nil, tips: [String]? = nil, resultWordGame: ResultWordGameModel? = nil) {
         self.id = id
         self.word = word
         self.syllables = syllables

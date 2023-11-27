@@ -3,7 +3,7 @@
 
 import Foundation
 
-public struct ResultWordGame {
+public struct ResultWordGameModel {
     public var success: Bool?
     public var correctWords: Int?
     public var wrongWords: Int?

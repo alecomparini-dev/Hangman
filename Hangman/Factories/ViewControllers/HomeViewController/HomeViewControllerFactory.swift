@@ -32,7 +32,6 @@ class HomeViewControllerFactory: UIViewController {
         
         let dataProvider = FirebaseStorageProvider(collection: "users")
         
-        
         //MARK: - CountWordsPlayedUseCaseImpl
         let dataStorageMain = DataStorageMain(dataProvider: dataProvider)
         
@@ -42,6 +41,7 @@ class HomeViewControllerFactory: UIViewController {
         
         let countWordsPlayedUseCase = CountWordsPlayedUseCaseImpl(countWordsPlayedGateway: countWordsPlayedGateway)
         
+        
         //MARK: - saveWordPlayedUseCase
         let insertDataStorage = HangmanDataStorageSDK(dataStorage: dataStorageMain)
         
@@ -49,10 +49,24 @@ class HomeViewControllerFactory: UIViewController {
         
         let saveWordPlayedUseCase = SaveWordPlayedUseCaseImpl(saveWordPlayedGateway: saveWordPlayedGateway)
         
+        
+        //MARK: - countDollsUseCase
+
+        let dataProviderDolls = FirebaseStorageProvider(collection: "dolls")
+        
+        let dataStorageMainDolls = DataStorageMain(dataProvider: dataProviderDolls)
+        
+        let fetchCountDataStorageDolls = HangmanDataStorageSDK(dataStorage: dataStorageMainDolls)
+        
+        let countModelGateway = GenericCountModelGatewayImpl(fetchCountDataStorage: fetchCountDataStorageDolls)
+        
+        let countDollsUseCase = CountDollsUseCaseImpl(countModelGateway: countModelGateway)
+        
         let homePresenter = HomePresenterImpl(signInAnonymousUseCase: signInAnonymousUseCase,
                                               getNextWordsUseCase: getNextWordsUseCase, 
                                               countWordsPlayedUseCase: countWordsPlayedUseCase, 
-                                              saveWordPlayedUseCase: saveWordPlayedUseCase)
+                                              saveWordPlayedUseCase: saveWordPlayedUseCase, 
+                                              countDollsUseCase: countDollsUseCase)
         
         return HomeViewController(homePresenter: homePresenter)
         
