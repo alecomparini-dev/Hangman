@@ -286,7 +286,6 @@ extension HomeViewController: ProfileSummaryPresenterOutput {
         }
     }
     
-    
     public func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String) {
         let tag = K.Keyboard.letter[keyboardLetter.uppercased()] ?? 0
         guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
