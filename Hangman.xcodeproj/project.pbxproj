@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,8 +30,6 @@
 		022188DA2B16860700440761 /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
 		022188DB2B16860700440761 /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		022188DF2B16861300440761 /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		022188E32B1686E900440761 /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
-		022188E42B1686EA00440761 /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		022188E52B1686F900440761 /* Detail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B64762B0389C900F6DD99 /* Detail.framework */; };
 		022188E62B1686F900440761 /* Detail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026B64762B0389C900F6DD99 /* Detail.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0235E5C22B14CA0900829489 /* Doll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5C12B14CA0900829489 /* Doll.swift */; };
@@ -59,8 +57,6 @@
 		026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */; };
 		026938CB2B0907FD0023073B /* DataStorageSDKMain in Frameworks */ = {isa = PBXBuildFile; productRef = 026938CA2B0907FD0023073B /* DataStorageSDKMain */; };
 		026938CD2B0908610023073B /* FirebaseDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */; };
-		026938DC2B090A310023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; };
-		026938DD2B090A310023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026938E12B090A440023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; };
 		026938E22B090A450023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */; };
@@ -90,6 +86,11 @@
 		026B64AA2B03A39200F6DD99 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64A92B03A39200F6DD99 /* NavigationController.swift */; };
 		026B64AC2B03A3AF00F6DD99 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64AB2B03A3AF00F6DD99 /* Coordinator.swift */; };
 		026B64AE2B03A4CD00F6DD99 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */; };
+		0274EB042B1689EC00C40EFA /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; };
+		0274EB052B1689EC00C40EFA /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0274EB062B1689ED00C40EFA /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
+		0274EB072B1689ED00C40EFA /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0274EB0F2B16967C00C40EFA /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274EB0E2B16967C00C40EFA /* Double+Extension.swift */; };
 		0279269F2B0FD28900035BCF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3A2B03C65800991633 /* Constants.swift */; };
 		0290B63D2B0685D4000667E5 /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0290B6422B06868F000667E5 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
@@ -111,13 +112,6 @@
 			remoteInfo = UseCaseGateway;
 		};
 		022188DC2B16860700440761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0279268B2B0FD1B200035BCF;
-			remoteInfo = Handler;
-		};
-		022188E02B16861300440761 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
 			proxyType = 1;
@@ -166,13 +160,6 @@
 			remoteGlobalIDString = 0279268B2B0FD1B200035BCF;
 			remoteInfo = Handler;
 		};
-		027926992B0FD1D000035BCF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0279268B2B0FD1B200035BCF;
-			remoteInfo = Handler;
-		};
 		0279269D2B0FD1E100035BCF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
@@ -203,8 +190,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				026938DD2B090A310023073B /* Domain.framework in Embed Frameworks */,
-				022188E42B1686EA00440761 /* Handler.framework in Embed Frameworks */,
+				0274EB052B1689EC00C40EFA /* Domain.framework in Embed Frameworks */,
+				0274EB072B1689ED00C40EFA /* Handler.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,11 +226,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				022188DB2B16860700440761 /* Handler.framework in Embed Frameworks */,
 				026938E22B090A450023073B /* Domain.framework in Embed Frameworks */,
 				0290B63D2B0685D4000667E5 /* Presenter.framework in Embed Frameworks */,
-				022188DB2B16860700440761 /* Handler.framework in Embed Frameworks */,
-				022188E62B1686F900440761 /* Detail.framework in Embed Frameworks */,
 				020216552B0AA367003E2B07 /* UseCaseGateway.framework in Embed Frameworks */,
+				022188E62B1686F900440761 /* Detail.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +303,7 @@
 		026B64A92B03A39200F6DD99 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		026B64AB2B03A3AF00F6DD99 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		0274EB0E2B16967C00C40EFA /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		0279268C2B0FD1B200035BCF /* Handler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Handler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
@@ -362,9 +350,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0290B6422B06868F000667E5 /* Presenter.framework in Frameworks */,
-				022188DA2B16860700440761 /* Handler.framework in Frameworks */,
 				026938E12B090A440023073B /* Domain.framework in Frameworks */,
 				022188E52B1686F900440761 /* Detail.framework in Frameworks */,
+				022188DA2B16860700440761 /* Handler.framework in Frameworks */,
 				020216542B0AA367003E2B07 /* UseCaseGateway.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,8 +368,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026938DC2B090A310023073B /* Domain.framework in Frameworks */,
-				022188E32B1686E900440761 /* Handler.framework in Frameworks */,
+				0274EB042B1689EC00C40EFA /* Domain.framework in Frameworks */,
+				0274EB062B1689ED00C40EFA /* Handler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,10 +970,19 @@
 			path = NavigationController;
 			sourceTree = "<group>";
 		};
+		0274EB0C2B16966400C40EFA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0274EB0E2B16967C00C40EFA /* Double+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0279268D2B0FD1B200035BCF /* Handler */ = {
 			isa = PBXGroup;
 			children = (
 				02C4AB392B03C64400991633 /* Constants */,
+				0274EB0C2B16966400C40EFA /* Extensions */,
 				0235E5F12B152CFC00829489 /* Utils */,
 			);
 			path = Handler;
@@ -1170,9 +1167,8 @@
 			);
 			dependencies = (
 				026938F02B0914100023073B /* PBXTargetDependency */,
-				026939122B09394A0023073B /* PBXTargetDependency */,
 				0279269E2B0FD1E100035BCF /* PBXTargetDependency */,
-				022188E12B16861300440761 /* PBXTargetDependency */,
+				026939122B09394A0023073B /* PBXTargetDependency */,
 			);
 			name = Detail;
 			packageProductDependencies = (
@@ -1197,12 +1193,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				0279269A2B0FD1D000035BCF /* PBXTargetDependency */,
-				0290B6272B06817A000667E5 /* PBXTargetDependency */,
-				0290B63B2B06854F000667E5 /* PBXTargetDependency */,
-				026938E42B090A450023073B /* PBXTargetDependency */,
-				020216572B0AA367003E2B07 /* PBXTargetDependency */,
 				022188DD2B16860700440761 /* PBXTargetDependency */,
+				026938E42B090A450023073B /* PBXTargetDependency */,
+				0290B63B2B06854F000667E5 /* PBXTargetDependency */,
+				020216572B0AA367003E2B07 /* PBXTargetDependency */,
+				0290B6272B06817A000667E5 /* PBXTargetDependency */,
 			);
 			name = Hangman;
 			packageProductDependencies = (
@@ -1244,8 +1239,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				026938DF2B090A310023073B /* PBXTargetDependency */,
 				027926962B0FD1C800035BCF /* PBXTargetDependency */,
+				026938DF2B090A310023073B /* PBXTargetDependency */,
 			);
 			name = Presenter;
 			productName = Presenter;
@@ -1285,7 +1280,7 @@
 				};
 			};
 			buildConfigurationList = 026B64602B03893400F6DD99 /* Build configuration list for PBXProject "Hangman" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1304,8 +1299,8 @@
 			projectRoot = "";
 			targets = (
 				026938D22B0909E10023073B /* Domain */,
-				02C4AB6F2B057B4100991633 /* Presenter */,
 				0279268B2B0FD1B200035BCF /* Handler */,
+				02C4AB6F2B057B4100991633 /* Presenter */,
 				026938FF2B09371C0023073B /* UseCaseGateway */,
 				026B64752B0389C900F6DD99 /* Detail */,
 				026B64862B03A1ED00F6DD99 /* Hangman */,
@@ -1474,6 +1469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0274EB0F2B16967C00C40EFA /* Double+Extension.swift in Sources */,
 				0235E5FA2B157B6600829489 /* AnimationHandler.swift in Sources */,
 				0235E5F02B152CF100829489 /* MainThread.swift in Sources */,
 				0279269F2B0FD28900035BCF /* Constants.swift in Sources */,
@@ -1505,11 +1501,6 @@
 			target = 0279268B2B0FD1B200035BCF /* Handler */;
 			targetProxy = 022188DC2B16860700440761 /* PBXContainerItemProxy */;
 		};
-		022188E12B16861300440761 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0279268B2B0FD1B200035BCF /* Handler */;
-			targetProxy = 022188E02B16861300440761 /* PBXContainerItemProxy */;
-		};
 		026938DF2B090A310023073B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -1540,11 +1531,6 @@
 			isa = PBXTargetDependency;
 			target = 0279268B2B0FD1B200035BCF /* Handler */;
 			targetProxy = 027926952B0FD1C800035BCF /* PBXContainerItemProxy */;
-		};
-		0279269A2B0FD1D000035BCF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0279268B2B0FD1B200035BCF /* Handler */;
-			targetProxy = 027926992B0FD1D000035BCF /* PBXContainerItemProxy */;
 		};
 		0279269E2B0FD1E100035BCF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1597,6 +1583,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -1636,6 +1623,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -1674,6 +1662,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -1711,6 +1700,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -1782,6 +1772,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -1847,6 +1838,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1879,6 +1871,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -1917,6 +1910,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -1951,7 +1945,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
@@ -1988,7 +1984,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.Hangman;
@@ -2025,6 +2023,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -2061,6 +2060,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -2096,6 +2096,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -2132,6 +2133,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
+					"@rpath/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
