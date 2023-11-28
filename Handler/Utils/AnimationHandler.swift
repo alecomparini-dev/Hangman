@@ -3,8 +3,6 @@
 
 import UIKit
 
-//import CustomComponentsSDK
-
 public struct AnimationHandler {
     
     static public func transitionImage(_ currentImageView: UIImageView, _ newImage: UIImage?, _ duration: Double = 1) {
@@ -27,8 +25,7 @@ public struct AnimationHandler {
     
     static public func rotation(component: UIView, rotationAngle: Double, duration: Double = 1, delay: Double = 0) {
         UIView.animate(withDuration: duration, delay: delay, options: .curveEaseInOut, animations: {
-//            component.transform = CGAffineTransform(rotationAngle: rotationAngle.degreesToPI)
-            component.transform = CGAffineTransform(rotationAngle: rotationAngle)
+            component.transform = CGAffineTransform(rotationAngle: rotationAngle.degreesToPI)
         })
     }
     
