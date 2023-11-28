@@ -17,14 +17,15 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
     
     func revealHeadDoll(_ imageBase64: String)
     func revealBodyDoll(_ imageBase64: String)
-    func revealSuccessDoll(_ imageBase64: String)
-    func revealFailureDoll(_ imageBase64: String)
+    func revealDollEndGameSuccess(_ imageBase64: String)
+    func revealDollEndGameFailure(_ imageBase64: String)
 }
 
 
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: ProfileSummaryPresenterOutput?
     
+    private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
     private var countDolls = 1
     private var _isEndGame = false
@@ -54,8 +55,8 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     
-    
 //  MARK: - GET PROPERTIES
+    
     public var isEndGame: Bool { _isEndGame  }
     
     public var dataTransfer: DataTransferDTO? {
@@ -81,12 +82,30 @@ public class HomePresenterImpl: HomePresenter {
         startGameAsync()
     }
     
-    public func getLettersKeyboard() -> [String] {
-        return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
-                "Q","R","S","T","U","V","W","X","Y","Z",""]
+    public func verifyMatchInWord(_ letter: String?) {
+        if isEndGame { return }
+        
+        guard let letter else { return }
+        
+        let indexMatchInWordFromChosenLetter: [Int] = checkMatchInWordFromChosenLetter(letter)
+        
+        if !isLetterKeyboardInteractionValid(letter, indexMatchInWordFromChosenLetter) { return }
+        
+        addSuccessLetter(indexMatchInWordFromChosenLetter)
+        
+        addErrorLetter(indexMatchInWordFromChosenLetter, letter)
+        
+        revealCorrectLetter(indexMatchInWordFromChosenLetter)
+        
+        revealChosenKeyboardLetter(indexMatchInWordFromChosenLetter, letter)
+        
+        updateCountCorrectLetters()
+        
+        checkEndGame()
     }
     
     public func getNextWord() {
+        getRandomDoll()
         Task {
             if nextWord() != nil {
                 successFetchNextWord()
@@ -107,50 +126,29 @@ public class HomePresenterImpl: HomePresenter {
                                     tips: wordPlaying.tips)
     }
     
-
-    private func isLetterKeyboardInteractionValid(_ letter: String, _ indexMatch: [Int]) -> Bool {
-        if indexMatch.contains(where: successLetterIndex.contains(_:)) { return false }
-        if errorLetters.contains(where: { $0 == letter } ) { return false }
-        return true
-    }
-    
-    public func verifyMatchInWord(_ letter: String?) {
-        if isEndGame { return }
-        guard let letter, let joinedWordPlaying else {return}
-        
-        let indexMatchInWordFromChosenLetter = joinedWordPlaying.enumerated().compactMap { index, char in
-            return (char == Character(letter.lowercased())) ? index : nil
-        }
-        
-        if !isLetterKeyboardInteractionValid(letter, indexMatchInWordFromChosenLetter) { return }
-        
-        addSuccessLetter(indexMatchInWordFromChosenLetter)
-        
-        addErrorLetter(indexMatchInWordFromChosenLetter, letter)
-        
-        revealCorrectLetter(indexMatchInWordFromChosenLetter)
-        
-        revealChosenKeyboardLetter(indexMatchInWordFromChosenLetter, letter)
-        
-        updateCountCorrectLetters()
-        
-        checkEndGame()
-    }
-    
-
-    private func revealPartOfBodyDollIfError() {
-        revealHeadDoll()
-        switch errorLetters.count {
-            case 2...5:
-                return revealBodyDoll()
-            default:
-                break
-        }
+    public func getLettersKeyboard() -> [String] {
+        return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
+                "Q","R","S","T","U","V","W","X","Y","Z",""]
     }
     
     
 //  MARK: - PRIVATE AREA
-
+    
+    private func startGameAsync() {
+        Task {
+            await fetchRandomDolls()
+            await signInAnonymously()
+            await fetchNextWord()
+        }
+    }
+    
+    private func checkMatchInWordFromChosenLetter(_ letter: String) -> [Int] {
+        guard let joinedWordPlaying else { return [] }
+        return joinedWordPlaying.enumerated().compactMap { index, char in
+            return (char == Character(letter.lowercased())) ? index : nil
+        }
+    }
+    
     private func addSuccessLetter(_ indexMatch: [Int]) {
         successLetterIndex.formUnion(indexMatch)
     }
@@ -162,32 +160,45 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func startGameAsync() {
-        Task {
-            await getRandomDolls()
-            await signInAnonymously()
-            await fetchNextWord()
+    private func isLetterKeyboardInteractionValid(_ letter: String, _ indexMatch: [Int]) -> Bool {
+        if indexMatch.contains(where: successLetterIndex.contains(_:)) { return false }
+        if errorLetters.contains(where: { $0 == letter } ) { return false }
+        return true
+    }
+    
+    private func revealPartOfBodyDollIfError() {
+        revealHeadDoll()
+        switch errorLetters.count {
+            case 2...5:
+                return revealBodyDoll()
+            default:
+                break
         }
     }
     
-    private func getRandomDolls() async {
+    private func fetchRandomDolls() async {
         do {
             dolls = try await getDollsRandomUseCase.getDollsRandom(quantity: 5)
+            getRandomDoll()
         } catch let error {
             debugPrint(error.localizedDescription)
         }
+    }
+    
+    private func getRandomDoll() {
+        guard let dolls else { return }
+        randomDoll = dolls[(0..<dolls.count).randomElement() ?? 0]
     }
     
     private func checkEndGame() {
 
         if isEndGameFailure() {
             revealLetterEndGame(indexesEndGameToReveal())
-            revealFailureDoll()
+            revealDollEndGameFailure()
         }
         
         if isEndGameSuccess() {
-            print("WINS !!!")
-            revealSuccessDoll()
+            revealDollEndGameSuccess()
         }
     }
     
@@ -208,7 +219,7 @@ public class HomePresenterImpl: HomePresenter {
         return false
     }
     
-    public func isEndGameSuccess() -> Bool {
+    private func isEndGameSuccess() -> Bool {
         guard let word = wordPlaying?.word else { return true}
         if successLetterIndex.count == word.count {
             _isEndGame = true
@@ -302,6 +313,9 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     
+
+    
+    
 //  MARK: - PRIVATE OUTPUT AREA
     private func successFetchNextWord() {
         joinedWordPlaying = wordPlaying?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
@@ -354,7 +368,7 @@ public class HomePresenterImpl: HomePresenter {
     private func revealHeadDoll() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            if let imgBase64 = dolls?[0].head?.randomElement() {
+            if let imgBase64 = randomDoll?.head?.randomElement() {
                 delegateOutput?.revealHeadDoll(imgBase64)
             }
         }
@@ -363,26 +377,26 @@ public class HomePresenterImpl: HomePresenter {
     private func revealBodyDoll() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            if let imgBase64 = dolls?[0].body?[errorLetters.count - 2] {
+            if let imgBase64 = randomDoll?.body?[errorLetters.count - 2] {
                 delegateOutput?.revealBodyDoll(imgBase64)
             }
         }
     }
     
-    private func revealFailureDoll() {
+    private func revealDollEndGameFailure() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            if let imgBase64 = dolls?[0].fail?.randomElement() {
-                delegateOutput?.revealFailureDoll(imgBase64)
+            if let imgBase64 = randomDoll?.fail?.randomElement() {
+                delegateOutput?.revealDollEndGameFailure(imgBase64)
             }
         }
     }
     
-    private func revealSuccessDoll() {
+    private func revealDollEndGameSuccess() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            if let imgBase64 = dolls?[0].success?.randomElement() {
-                delegateOutput?.revealSuccessDoll(imgBase64)
+            if let imgBase64 = randomDoll?.success?.randomElement() {
+                delegateOutput?.revealDollEndGameSuccess(imgBase64)
             }
         }
     }

@@ -8,6 +8,8 @@ import CustomComponentsSDK
 class GallowsView: ViewBuilder {
     
     private let gallowColor: UIColor = Theme.shared.currentTheme.primary
+    public var topGallowsNeumorphism: NeumorphismBuilder?
+    public var rodGallowsNeumorphism: NeumorphismBuilder?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -18,19 +20,6 @@ class GallowsView: ViewBuilder {
 //  MARK: - LAZY AREA
     lazy var topGallows: ViewBuilder = {
        var view = ViewBuilder()
-            .setNeumorphism({ build in
-                build
-                    .setReferenceColor(gallowColor)
-                    .setShape(.concave)
-                    .setLightPosition(.leftTop)
-                    .setIntensity(to:.light,percent: 50)
-                    .setIntensity(to:.dark,percent: 100)
-                    .setBlur(to:.light, percent: 0)
-                    .setBlur(to:.dark, percent: 5)
-                    .setDistance(to:.light, percent: 3)
-                    .setDistance(to:.dark, percent: 10)
-                    .apply()
-            })
             .setConstraints { build in
                 build
                     .setTop.equalTo(rodGallows.get, .top, 8)
@@ -57,18 +46,7 @@ class GallowsView: ViewBuilder {
     
     lazy var ropeGallows: ViewBuilder = {
         var view = ViewBuilder()
-            .setNeumorphism({ build in
-                build
-                    .setReferenceColor(Theme.shared.currentTheme.tertiary)
-                    .setShape(.concave)
-                    .setLightPosition(.leftTop)
-                    .setIntensity(to:.light,percent: 0)
-                    .setBlur(to:.light, percent: 0)
-                    .setBlur(to:.dark, percent: 5)
-                    .setDistance(to:.light, percent: 0)
-                    .setDistance(to:.dark, percent: 10)
-                    .apply()
-            })
+            .setBackgroundColor(Theme.shared.currentTheme.primary.adjustBrightness(30))
             .setConstraints { build in
                 build
                     .setTop.equalTo(topGallows.get, .bottom, -2)
@@ -84,7 +62,7 @@ class GallowsView: ViewBuilder {
         var view = ImageViewBuilder(img)
             .setHidden(false)
             .setContentMode(.redraw)
-            .setTintColor(Theme.shared.currentTheme.primary)
+            .setTintColor(Theme.shared.currentTheme.primary.adjustBrightness(30))
             .setConstraints { build in
                 build
                     .setTop.equalTo(ropeGallows.get, .bottom, -2)
@@ -96,17 +74,14 @@ class GallowsView: ViewBuilder {
     }()
     
     lazy var headImage: ImageViewBuilder = {
-        var named = "success1"
-        var img = UIImage(named: named)
-        img = img?.resizeImage(targetSize: CGSize(width: 171, height: 292))
-        var imgBase64String = img!.pngData()!.base64EncodedString()
-//        var imgBase64String =
-//           print(imgBase64String?.count ?? "" )
-        print(imgBase64String)
-//        
-        let imgBase64Data = Data(base64Encoded: imgBase64String, options: .ignoreUnknownCharacters)
-        let imgBase64 = UIImage(data: imgBase64Data!)
-        
+//        var named = "head3"
+//        var img = UIImage(named: named)
+//        img = img?.resizeImage(targetSize: CGSize(width: 171, height: 292))
+//        var imgBase64String = img!.pngData()!.base64EncodedString()
+//        print(imgBase64String)
+//        let imgBase64Data = Data(base64Encoded: imgBase64String, options: .ignoreUnknownCharacters)
+//        let imgBase64 = UIImage(data: imgBase64Data!)
+
         let comp = ImageViewBuilder()
             .setContentMode(.scaleToFill)
             .setBorder({ build in
@@ -137,19 +112,6 @@ class GallowsView: ViewBuilder {
     
     lazy var rodGallows: ViewBuilder = {
        var view = ViewBuilder()
-            .setNeumorphism({ build in
-                build
-                    .setReferenceColor(gallowColor)
-                    .setShape(.concave)
-                    .setLightPosition(.leftTop)
-                    .setIntensity(to: .light, percent: 50)
-                    .setIntensity(to: .dark, percent: 100)
-                    .setBlur(to: .light, percent: 0)
-                    .setBlur(to: .dark, percent: 5)
-                    .setDistance(to: .light, percent: 3)
-                    .setDistance(to: .dark, percent: 10)
-                    .apply()
-            })
             .setConstraints { build in
                 build
                     .setTop.equalToSuperView
@@ -187,15 +149,12 @@ class GallowsView: ViewBuilder {
     
     
     
-
-    
-    
-    
 //  MARK: - PRIVATE AREA
     
     private func configure() {
         addElements()
         configConstraints()
+        configNeumorphism()
     }
     
     private func addElements() {
@@ -219,5 +178,33 @@ class GallowsView: ViewBuilder {
         headImage.applyConstraint()
         bodyImage.applyConstraint()
     }
+    
+    private func configNeumorphism() {
+        configTopGallowNeumorphism()
+        configRodGallowsNeumorphism()
+    }
+    
+    private func configTopGallowNeumorphism() {
+        topGallowsNeumorphism = createNeumosphismGallow(topGallows)
+    }
+    
+    private func configRodGallowsNeumorphism() {
+        rodGallowsNeumorphism = createNeumosphismGallow(rodGallows)
+    }
+    
+    private func createNeumosphismGallow(_ component: ViewBuilder) -> NeumorphismBuilder {
+        return NeumorphismBuilder(component)
+            .setReferenceColor(gallowColor)
+            .setShape(.concave)
+            .setLightPosition(.leftTop)
+            .setIntensity(to:.light,percent: 50)
+            .setIntensity(to:.dark,percent: 100)
+            .setBlur(to:.light, percent: 0)
+            .setBlur(to:.dark, percent: 5)
+            .setDistance(to:.light, percent: 3)
+            .setDistance(to:.dark, percent: 10)
+            .apply()
+    }
+    
     
 }

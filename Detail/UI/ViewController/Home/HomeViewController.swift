@@ -236,14 +236,33 @@ public class HomeViewController: UIViewController {
     }
     
     private func revealLetterInWordAnimation(_ letter: HangmanLetterInWordView) {
-        UIView.animate(withDuration: K.Animation.Duration.revealLetter, delay: K.Animation.Delay.standard, options: .curveEaseInOut, animations: {
-            letter.label.get.alpha = 1
-            letter.underlineLetter.get.alpha = 1
-        })
+        AnimationHandler.fadeIn(components: [letter.label.get, letter.underlineLetter.get])
+    }
+    
+    private func revealDollFailure(_ imageBase64: String)  {
+        if let imgData = Data(base64Encoded: imageBase64) {
+            var currentImage = screen.gallowsView.bodyImage.get
+            AnimationHandler.transitionImage(currentImage, UIImage())
+            
+            currentImage = screen.gallowsView.headImage.get
+            AnimationHandler.transitionImage(currentImage, UIImage(data: imgData))
+        }
+    }
+    
+    private func changeGallowsColorEndGameFailure() {
+        let color = Theme.shared.currentTheme.error
+        screen.gallowsView.topGallowsNeumorphism?.setReferenceColor(color).apply()
+        screen.gallowsView.rodGallowsNeumorphism?.setReferenceColor(color).apply()
+        screen.gallowsView.supportGallows.setBackgroundColor(color)
+        screen.gallowsView.ropeGallows.setBackgroundColor(color)
+        screen.gallowsView.ropeCircleGallows.setBackgroundColor(color)
     }
 
+    private func animateDollFailureToGround() {
+        AnimationHandler.moveVertical(component: screen.gallowsView.headImage.get, position: 58, delay: 0.5 )
+        AnimationHandler.rotation(component: screen.gallowsView.headImage.get, rotationAngle: 75, delay: 0.6)
+    }
     
-   
 }
 
 
@@ -284,32 +303,29 @@ extension HomeViewController: ProfileSummaryPresenterOutput {
         screen.gallowsView.ropeCircleGallows.setHidden(true)
         if let imgData = Data(base64Encoded: imageBase64) {
             let currentImage = screen.gallowsView.headImage.get
-            ImageAnimation.transition(currentImage, UIImage(data: imgData))
+            AnimationHandler.transitionImage(currentImage, UIImage(data: imgData))
         }
     }
     
     public func revealBodyDoll(_ imageBase64: String) {
         if let imgData = Data(base64Encoded: imageBase64) {
             let currentImage = screen.gallowsView.bodyImage.get
-            ImageAnimation.transition(currentImage, UIImage(data: imgData))
+            AnimationHandler.transitionImage(currentImage, UIImage(data: imgData))
         }
     }
     
-    public func revealSuccessDoll(_ imageBase64: String) {
+    public func revealDollEndGameSuccess(_ imageBase64: String) {
         if let imgData = Data(base64Encoded: imageBase64) {
             screen.gallowsView.bodyImage.setHidden(true)
             screen.gallowsView.headImage.setImage(image: UIImage(data: imgData))
+            AnimationHandler.moveVertical(component: screen.gallowsView.headImage.get, position: 35, delay: 0.5)
         }
     }
     
-    public func revealFailureDoll(_ imageBase64: String) {
-        if let imgData = Data(base64Encoded: imageBase64) {
-            var currentImage = screen.gallowsView.bodyImage.get
-            ImageAnimation.transition(currentImage, UIImage())
-            
-            currentImage = screen.gallowsView.headImage.get
-            ImageAnimation.transition(currentImage, UIImage(data: imgData))
-        }
+    public func revealDollEndGameFailure(_ imageBase64: String) {
+        revealDollFailure(imageBase64)
+        changeGallowsColorEndGameFailure()
+        animateDollFailureToGround()
     }
     
     public func revealCorrectLetters(_ indexes: [Int]) {
