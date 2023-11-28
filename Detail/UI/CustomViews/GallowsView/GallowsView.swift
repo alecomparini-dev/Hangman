@@ -96,21 +96,15 @@ class GallowsView: ViewBuilder {
     }()
     
     lazy var headImage: ImageViewBuilder = {
-        var named = "success"
-        var imgBase64String = UIImage(named: named)?.pngData()?.base64EncodedString()
-//        print(named, imgBase64String ?? "" )
-        print("\n-----------------------------------\n")
-        
-        named = "success1"
-        imgBase64String = UIImage(named: named)?.pngData()?.base64EncodedString()
-//        print(named, imgBase64String ?? "" )
-        print("\n-----------------------------------\n")
-        
-        named = "fail"
-        imgBase64String = UIImage(named: named)?.pngData()?.base64EncodedString()
-//        print(named, imgBase64String ?? "" )
-        
-        let imgBase64Data = Data(base64Encoded: imgBase64String!, options: .ignoreUnknownCharacters)
+        var named = "success1"
+        var img = UIImage(named: named)
+        img = img?.resizeImage(targetSize: CGSize(width: 171, height: 292))
+        var imgBase64String = img!.pngData()!.base64EncodedString()
+//        var imgBase64String =
+//           print(imgBase64String?.count ?? "" )
+        print(imgBase64String)
+//        
+        let imgBase64Data = Data(base64Encoded: imgBase64String, options: .ignoreUnknownCharacters)
         let imgBase64 = UIImage(data: imgBase64Data!)
         
         let comp = ImageViewBuilder()

@@ -38,6 +38,11 @@
 		0235E5E22B14FBF700829489 /* FetchInDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5E02B14FADF00829489 /* FetchInDataStorageProvider.swift */; };
 		0235E5E62B14FE6E00829489 /* MapperDictDollsToListDollUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5E42B14FE4900829489 /* MapperDictDollsToListDollUseCaseDTO.swift */; };
 		0235E5E82B1500A800829489 /* GetDollsRandomUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5E72B1500A800829489 /* GetDollsRandomUseCaseImpl.swift */; };
+		0235E5F02B152CF100829489 /* MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5EF2B152CF100829489 /* MainThread.swift */; };
+		0235E5F42B15449400829489 /* BodyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F32B15449400829489 /* BodyCodable.swift */; };
+		0235E5F62B1544A000829489 /* HeadCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F52B1544A000829489 /* HeadCodable.swift */; };
+		0235E5F82B1544B600829489 /* DollCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F72B1544B600829489 /* DollCodable.swift */; };
+		0235E5FA2B157B6600829489 /* TransitionImageAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F92B157B6600829489 /* TransitionImageAnimation.swift */; };
 		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
 		026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */; };
 		026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */; };
@@ -261,6 +266,11 @@
 		0235E5E02B14FADF00829489 /* FetchInDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchInDataStorageProvider.swift; sourceTree = "<group>"; };
 		0235E5E42B14FE4900829489 /* MapperDictDollsToListDollUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperDictDollsToListDollUseCaseDTO.swift; sourceTree = "<group>"; };
 		0235E5E72B1500A800829489 /* GetDollsRandomUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDollsRandomUseCaseImpl.swift; sourceTree = "<group>"; };
+		0235E5EF2B152CF100829489 /* MainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThread.swift; sourceTree = "<group>"; };
+		0235E5F32B15449400829489 /* BodyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyCodable.swift; sourceTree = "<group>"; };
+		0235E5F52B1544A000829489 /* HeadCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadCodable.swift; sourceTree = "<group>"; };
+		0235E5F72B1544B600829489 /* DollCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollCodable.swift; sourceTree = "<group>"; };
+		0235E5F92B157B6600829489 /* TransitionImageAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionImageAnimation.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
 		0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchByDataStorageProvider.swift; sourceTree = "<group>"; };
 		026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCase.swift; sourceTree = "<group>"; };
@@ -599,6 +609,7 @@
 		0235E5DC2B14F72C00829489 /* GetDollsUseCaseGateway */ = {
 			isa = PBXGroup;
 			children = (
+				0235E5F22B15448600829489 /* Codable */,
 				0235E5DD2B14F74700829489 /* GetDollsUseCaseGatewayImpl.swift */,
 			);
 			path = GetDollsUseCaseGateway;
@@ -638,6 +649,25 @@
 				0235E5D72B14F51100829489 /* GetDollsUseCaseGateway.swift */,
 			);
 			path = Interface;
+			sourceTree = "<group>";
+		};
+		0235E5F12B152CFC00829489 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5EF2B152CF100829489 /* MainThread.swift */,
+				0235E5F92B157B6600829489 /* TransitionImageAnimation.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0235E5F22B15448600829489 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				0235E5F32B15449400829489 /* BodyCodable.swift */,
+				0235E5F52B1544A000829489 /* HeadCodable.swift */,
+				0235E5F72B1544B600829489 /* DollCodable.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 		026800812B0A945A00B30C26 /* AuthenticateUseCases */ = {
@@ -942,6 +972,7 @@
 			isa = PBXGroup;
 			children = (
 				02C4AB392B03C64400991633 /* Constants */,
+				0235E5F12B152CFC00829489 /* Utils */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -1422,6 +1453,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0235E5F62B1544A000829489 /* HeadCodable.swift in Sources */,
+				0235E5FA2B157B6600829489 /* TransitionImageAnimation.swift in Sources */,
+				0235E5F02B152CF100829489 /* MainThread.swift in Sources */,
+				0235E5F42B15449400829489 /* BodyCodable.swift in Sources */,
+				0235E5F82B1544B600829489 /* DollCodable.swift in Sources */,
 				0279269F2B0FD28900035BCF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
