@@ -280,21 +280,36 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 
 extension HomeViewController: ProfileSummaryPresenterOutput {
     
-    public func revealDoll(_ imageBase64: String) {
+    public func revealHeadDoll(_ imageBase64: String) {
+        screen.gallowsView.ropeCircleGallows.setHidden(true)
         if let imgData = Data(base64Encoded: imageBase64) {
+            let currentImage = screen.gallowsView.headImage.get
+            ImageAnimation.transition(currentImage, UIImage(data: imgData))
+        }
+    }
+    
+    public func revealBodyDoll(_ imageBase64: String) {
+        if let imgData = Data(base64Encoded: imageBase64) {
+            let currentImage = screen.gallowsView.bodyImage.get
+            ImageAnimation.transition(currentImage, UIImage(data: imgData))
+        }
+    }
+    
+    public func revealSuccessDoll(_ imageBase64: String) {
+        if let imgData = Data(base64Encoded: imageBase64) {
+            screen.gallowsView.bodyImage.setHidden(true)
             screen.gallowsView.headImage.setImage(image: UIImage(data: imgData))
         }
     }
     
-    public func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String) {
-        let tag = K.Keyboard.letter[keyboardLetter.uppercased()] ?? 0
-        guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
-        button.removeNeumorphism()
-        if isCorrect {
-            updateKeyboardLetterSuccess(button)
-            return
+    public func revealFailureDoll(_ imageBase64: String) {
+        if let imgData = Data(base64Encoded: imageBase64) {
+            var currentImage = screen.gallowsView.bodyImage.get
+            ImageAnimation.transition(currentImage, UIImage())
+            
+            currentImage = screen.gallowsView.headImage.get
+            ImageAnimation.transition(currentImage, UIImage(data: imgData))
         }
-        updateKeyboardLetterError(button)
     }
     
     public func revealCorrectLetters(_ indexes: [Int]) {
@@ -304,7 +319,18 @@ extension HomeViewController: ProfileSummaryPresenterOutput {
     public func revealErrorLetters(_ indexes: [Int]) {
         revealLetters(indexes, color: Theme.shared.currentTheme.error.withAlphaComponent(0.8), isCorrectLetters: false)
     }
-        
+
+    public func revealChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String) {
+        guard let tag = K.Keyboard.letter[keyboardLetter.uppercased()] else { return }
+        guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
+        button.removeNeumorphism()
+        if isCorrect {
+            updateKeyboardLetterSuccess(button)
+            return
+        }
+        updateKeyboardLetterError(button)
+    }
+
     public func updateCountCorrectLetters(_ count: String) {
         screen.countCorrectLetterLabel.setText(count)
     }

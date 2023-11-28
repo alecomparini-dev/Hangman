@@ -11,10 +11,14 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
     func errorFetchNextWords(title: String, message: String)
     
     func updateCountCorrectLetters(_ count: String)
-    func statusChosenLetter(isCorrect: Bool, _ keyboardLetter: String)
+    func revealChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String)
     func revealCorrectLetters(_ indexes: [Int])
     func revealErrorLetters(_ indexes: [Int])
-    func revealDoll(_ imageBase64: String)
+    
+    func revealHeadDoll(_ imageBase64: String)
+    func revealBodyDoll(_ imageBase64: String)
+    func revealSuccessDoll(_ imageBase64: String)
+    func revealFailureDoll(_ imageBase64: String)
 }
 
 
@@ -113,29 +117,49 @@ public class HomePresenterImpl: HomePresenter {
     public func verifyMatchInWord(_ letter: String?) {
         if isEndGame { return }
         guard let letter, let joinedWordPlaying else {return}
+        
         let indexMatchInWordFromChosenLetter = joinedWordPlaying.enumerated().compactMap { index, char in
             return (char == Character(letter.lowercased())) ? index : nil
         }
+        
         if !isLetterKeyboardInteractionValid(letter, indexMatchInWordFromChosenLetter) { return }
+        
         addSuccessLetter(indexMatchInWordFromChosenLetter)
-        revealCorrectLetter(indexMatchInWordFromChosenLetter)
+        
         addErrorLetter(indexMatchInWordFromChosenLetter, letter)
-        statusChosenLetter(indexMatchInWordFromChosenLetter, letter)
+        
+        revealCorrectLetter(indexMatchInWordFromChosenLetter)
+        
+        revealChosenKeyboardLetter(indexMatchInWordFromChosenLetter, letter)
+        
         updateCountCorrectLetters()
+        
         checkEndGame()
     }
     
 
-//  MARK: - PRIVATE AREA
-
-    private func addErrorLetter(_ indexMatch: [Int], _ letter: String) {
-        if indexMatch.isEmpty {
-            errorLetters.insert(letter)
+    private func revealPartOfBodyDollIfError() {
+        revealHeadDoll()
+        switch errorLetters.count {
+            case 2...5:
+                return revealBodyDoll()
+            default:
+                break
         }
     }
     
+    
+//  MARK: - PRIVATE AREA
+
     private func addSuccessLetter(_ indexMatch: [Int]) {
         successLetterIndex.formUnion(indexMatch)
+    }
+    
+    private func addErrorLetter(_ indexMatch: [Int], _ letter: String) {
+        if indexMatch.isEmpty {
+            errorLetters.insert(letter)
+            revealPartOfBodyDollIfError()
+        }
     }
     
     private func startGameAsync() {
@@ -155,14 +179,15 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func checkEndGame() {
-        
+
         if isEndGameFailure() {
             revealLetterEndGame(indexesEndGameToReveal())
-            revealDoll(dolls?[0].success?.randomElement())
+            revealFailureDoll()
         }
         
         if isEndGameSuccess() {
             print("WINS !!!")
+            revealSuccessDoll()
         }
     }
     
@@ -280,57 +305,85 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - PRIVATE OUTPUT AREA
     private func successFetchNextWord() {
         joinedWordPlaying = wordPlaying?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
-        DispatchQueue.main.async { [weak self] in
+        MainThread.exec { [weak self] in
             guard let self else {return}
             delegateOutput?.successFetchNextWord(nextWord: getCurrentWord())
         }
     }
 
     private func nextWordIsOver() {
-        DispatchQueue.main.async { [weak self] in
+        MainThread.exec { [weak self] in
             self?.delegateOutput?.nextWordIsOver(title: "Aviso", message: "Banco de palavras chegou ao fim.\nEstamos trabalhando para incluir novas palavras. Muito obrigado pela compreensão")
         }
     }
     
     private func errorFetchNextWords(_ title: String, _ message: String) {
-        DispatchQueue.main.async { [weak self] in
+        MainThread.exec { [weak self] in
             self?.delegateOutput?.errorFetchNextWords(title: title, message: message)
         }
     }
     
     private func updateCountCorrectLetters() {
-        DispatchQueue.main.async { [weak self] in
+        MainThread.exec { [weak self] in
             guard let self else {return}
             delegateOutput?.updateCountCorrectLetters("\(successLetterIndex.count)/\(wordPlaying?.word?.count ?? 0)")
         }
     }
     
     private func revealCorrectLetter(_ indexes: [Int]) {
-        DispatchQueue.main.async { [weak self] in
+        MainThread.exec { [weak self] in
             guard let self else {return}
             delegateOutput?.revealCorrectLetters(indexes)
         }
     }
     
-    private func statusChosenLetter(_ indexCorrect: [Int], _ keyboardLetter: String) {
-        DispatchQueue.main.async { [weak self] in
+    private func revealChosenKeyboardLetter(_ indexCorrect: [Int], _ keyboardLetter: String) {
+        MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.statusChosenLetter(isCorrect: !indexCorrect.isEmpty, keyboardLetter)
+            delegateOutput?.revealChosenKeyboardLetter(isCorrect: !indexCorrect.isEmpty, keyboardLetter)
         }
     }
     
     private func revealLetterEndGame(_ indexes: [Int]) {
-        DispatchQueue.main.async { [weak self] in
+        MainThread.exec { [weak self] in
             guard let self else {return}
             delegateOutput?.revealErrorLetters(indexes)
         }
     }
     
-    private func revealDoll(_ doll: String?) {
-        guard let doll else {return}
-        DispatchQueue.main.async { [weak self] in
+    private func revealHeadDoll() {
+        MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.revealDoll(doll)
+            if let imgBase64 = dolls?[0].head?.randomElement() {
+                delegateOutput?.revealHeadDoll(imgBase64)
+            }
+        }
+    }
+    
+    private func revealBodyDoll() {
+        MainThread.exec { [weak self] in
+            guard let self else {return}
+            if let imgBase64 = dolls?[0].body?[errorLetters.count - 2] {
+                delegateOutput?.revealBodyDoll(imgBase64)
+            }
+        }
+    }
+    
+    private func revealFailureDoll() {
+        MainThread.exec { [weak self] in
+            guard let self else {return}
+            if let imgBase64 = dolls?[0].fail?.randomElement() {
+                delegateOutput?.revealFailureDoll(imgBase64)
+            }
+        }
+    }
+    
+    private func revealSuccessDoll() {
+        MainThread.exec { [weak self] in
+            guard let self else {return}
+            if let imgBase64 = dolls?[0].success?.randomElement() {
+                delegateOutput?.revealSuccessDoll(imgBase64)
+            }
         }
     }
 
