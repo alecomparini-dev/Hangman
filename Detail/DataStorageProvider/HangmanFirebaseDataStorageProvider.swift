@@ -8,7 +8,7 @@ import FirebaseFirestore
 import UseCaseGateway
 import DataStorageSDKMain
 
-public class FirebaseDataStorageProvider {
+public class HangmanFirebaseDataStorageProvider {
         
     private var db: Firestore!
     
@@ -31,7 +31,7 @@ public class FirebaseDataStorageProvider {
 
 
 //  MARK: - EXTENSION - FetchAtIDDataStorageProvider
-extension FirebaseDataStorageProvider: FetchAtDataStorageProvider {
+extension HangmanFirebaseDataStorageProvider: FetchAtDataStorageProvider {
     
     public func fetchAt<T>(id: Int = 0) async throws -> T? {
         let querySnapshot: QuerySnapshot = try await db.collection(collection)
@@ -58,7 +58,7 @@ extension FirebaseDataStorageProvider: FetchAtDataStorageProvider {
 
 
 //  MARK: - EXTENSION - FetchInDataStorageProvider
-extension FirebaseDataStorageProvider: FetchInDataStorageProvider {
+extension HangmanFirebaseDataStorageProvider: FetchInDataStorageProvider {
     
     public func fetchIn<T>(id: [Int]) async throws -> T? {
         let querySnapshot: QuerySnapshot = try await db.collection(collection)

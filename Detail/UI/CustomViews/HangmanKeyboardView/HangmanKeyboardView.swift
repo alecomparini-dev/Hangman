@@ -112,7 +112,10 @@ class HangmanKeyboardView: ViewBuilder {
 
 //  MARK: - LAZY MORE TIP
     lazy var moreTipButton: ButtonImageBuilder = {
-        let img = ImageViewBuilder(systemName: K.Images.moreTipButton).setContentMode(.center)
+        let img = ImageViewBuilder()
+            .setImage(systemName: K.Images.light)
+            .setContentMode(.center)
+        
         var comp = createButtonDefault(K.String.tips)
             .setImageButton(img)
             .setImagePlacement(.trailing)
@@ -211,7 +214,7 @@ class HangmanKeyboardView: ViewBuilder {
     }
     
     private func addNeumorphismDefault(_ component: ButtonImageBuilder, color: UIColor) {
-        _ = NeumorphismBuilder(component)
+        _ = NeumorphismBuilder(component.get)
             .setReferenceColor(color)
             .setShape(.concave)
             .setLightPosition(.leftTop)

@@ -7,7 +7,7 @@ import Domain
 
 public protocol HomePresenter {
     typealias UserID = String
-    var delegateOutput: ProfileSummaryPresenterOutput? { get set }
+    var delegateOutput: HomePresenterOutput? { get set }
     
     var dataTransfer: DataTransferDTO? { get set }
     

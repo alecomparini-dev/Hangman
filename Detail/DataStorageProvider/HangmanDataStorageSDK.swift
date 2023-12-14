@@ -8,9 +8,9 @@ import DataStorageSDKMain
 
 public class HangmanDataStorageSDK {
     
-    private let dataStorage: DataStorageMain
+    private let dataStorage: DataStorageProviderStrategy
 
-    public init(dataStorage: DataStorageMain) {
+    public init(dataStorage: DataStorageProviderStrategy) {
         self.dataStorage = dataStorage
     }
         
@@ -43,10 +43,10 @@ extension HangmanDataStorageSDK: FetchCountDataStorageProvider {
 extension HangmanDataStorageSDK: InsertDataStorageProvider {
 
     public func insert<T>(_ document: String, _ value: T) async throws -> T? {
-        return try await dataStorage.insert(document, value)
+        return try await dataStorage.create(document, value)
     }
 
     public func insert<T>(_ value: T) async throws -> T? {
-        return try await dataStorage.insert(value)
+        return try await dataStorage.create(value)
     }
 }

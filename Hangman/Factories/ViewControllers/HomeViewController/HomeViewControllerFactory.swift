@@ -9,13 +9,13 @@ import Domain
 import Presenter
 import UseCaseGateway
 import DataStorageSDKMain
-import DataStorageDetail
+
 
 class HomeViewControllerFactory: UIViewController {
     
     static func make() -> HomeViewController {
         
-        let fetchAtIDDataStorage = FirebaseDataStorageProvider(collection: "hangmanWords")
+        let fetchAtIDDataStorage = HangmanFirebaseDataStorageProvider(collection: "hangmanWords")
         
         let nextWordsGateway = DataStorageFetchAtIDNexWordsUseCaseGatewayImpl(fetchAtIDDataStorage: fetchAtIDDataStorage)
         
@@ -30,12 +30,11 @@ class HomeViewControllerFactory: UIViewController {
         let signInAnonymousUseCase = SignInAnonymousUseCaseImpl(signInAnonymousGateway: signInAnonymousGateway)
         
         
-        let dataProvider = FirebaseStorageProvider(collection: "users")
+        let firebaseDataProvider = FirebaseDataStorageProvider(collection: "users")
         
         //MARK: - CountWordsPlayedUseCaseImpl
-        let dataStorageMain = DataStorageMain(dataProvider: dataProvider)
         
-        let fetchCountDataStorage = HangmanDataStorageSDK(dataStorage: dataStorageMain)
+        let fetchCountDataStorage = HangmanDataStorageSDK(dataStorage: firebaseDataProvider)
         
         let countWordsPlayedGateway = CountWordsPlayedUseCaseGatewayImpl(fetchCountDataStorage: fetchCountDataStorage)
         
@@ -43,7 +42,7 @@ class HomeViewControllerFactory: UIViewController {
         
         
         //MARK: - saveWordPlayedUseCase
-        let insertDataStorage = HangmanDataStorageSDK(dataStorage: dataStorageMain)
+        let insertDataStorage = HangmanDataStorageSDK(dataStorage: firebaseDataProvider)
         
         let saveWordPlayedGateway = SaveWordPlayedUseCaseGatewayImpl(insertDataStorage: insertDataStorage)
         
@@ -52,11 +51,9 @@ class HomeViewControllerFactory: UIViewController {
         
         //MARK: - countDollsUseCase
 
-        let dataProviderDolls = FirebaseStorageProvider(collection: "dolls")
-        
-        let dataStorageMainDolls = DataStorageMain(dataProvider: dataProviderDolls)
-        
-        let fetchDataStorageDolls = HangmanDataStorageSDK(dataStorage: dataStorageMainDolls)
+        let dataProviderDolls = FirebaseDataStorageProvider(collection: "dolls")
+                
+        let fetchDataStorageDolls = HangmanDataStorageSDK(dataStorage: dataProviderDolls)
         
         let countModelGateway = GenericCountModelGatewayImpl(fetchCountDataStorage: fetchDataStorageDolls)
         
@@ -65,7 +62,7 @@ class HomeViewControllerFactory: UIViewController {
         
         //MARK: - getDollsRandomUseCase
 
-        let fetchInDataStorage = FirebaseDataStorageProvider(collection: "dolls")
+        let fetchInDataStorage = HangmanFirebaseDataStorageProvider(collection: "dolls")
           
         let getDollsGateway = GetDollsUseCaseGatewayImpl(fetchInDataStorage: fetchInDataStorage)
         

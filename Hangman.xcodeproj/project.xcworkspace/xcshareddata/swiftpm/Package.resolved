@@ -42,7 +42,7 @@
       "location" : "https://github.com/alecomparini-dev/CustomComponentsSDK.git",
       "state" : {
         "branch" : "develop",
-        "revision" : "450185280d0f0e50a1355642750060f927fa98c4"
+        "revision" : "d5004766b453a0768f0d580842319c3ff6065e46"
       }
     },
     {
@@ -51,7 +51,7 @@
       "location" : "https://github.com/alecomparini-dev/DataStorageSDK.git",
       "state" : {
         "branch" : "develop",
-        "revision" : "1cfa19991828f9bcd28c9497368d7f5d149be0d6"
+        "revision" : "0e5f8d9a3d69320fbc0532c1d1aad18bb8c2e630"
       }
     },
     {
@@ -151,6 +151,24 @@
       "state" : {
         "revision" : "e70e889c0196c76d22759eb50d6a0270ca9f1d9e",
         "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "c569bec4d04da84030d94f376437bc4efda3686b",
+        "version" : "13.23.1"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "revision" : "fd199ce07edb4db69e862f74151b95602aad3b43",
+        "version" : "10.44.0"
       }
     },
     {

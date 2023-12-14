@@ -56,7 +56,7 @@
 		026800892B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800882B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift */; };
 		026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */; };
 		026938CB2B0907FD0023073B /* DataStorageSDKMain in Frameworks */ = {isa = PBXBuildFile; productRef = 026938CA2B0907FD0023073B /* DataStorageSDKMain */; };
-		026938CD2B0908610023073B /* FirebaseDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */; };
+		026938CD2B0908610023073B /* HangmanFirebaseDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938CC2B0908610023073B /* HangmanFirebaseDataStorageProvider.swift */; };
 		026938E12B090A440023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; };
 		026938E22B090A450023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */; };
@@ -101,6 +101,15 @@
 		02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB4C2B0407CA00991633 /* HangmanLetterInWordView.swift */; };
 		02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB692B04F33800991633 /* HomePresenterImpl.swift */; };
 		02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB662B04F2A200991633 /* HomePresenter.swift */; };
+		02C500DB2B2A66CE009C546A /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DA2B2A66CE009C546A /* TipsViewController.swift */; };
+		02C500DD2B2A66D9009C546A /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DC2B2A66D9009C546A /* TipsView.swift */; };
+		02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */; };
+		02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E02B2A7F46009C546A /* QuantityLettersView.swift */; };
+		02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E22B2A81F8009C546A /* PainelGallowsView.swift */; };
+		02C500E82B2B4575009C546A /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E72B2B4575009C546A /* ScoreView.swift */; };
+		02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EA2B2B5561009C546A /* CountLifeView.swift */; };
+		02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* CountTipsView.swift */; };
+		02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,7 +287,7 @@
 		026800862B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseImpl.swift; sourceTree = "<group>"; };
 		026800882B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseGateway.swift; sourceTree = "<group>"; };
 		026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanDataStorageSDK.swift; sourceTree = "<group>"; };
-		026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataStorageProvider.swift; sourceTree = "<group>"; };
+		026938CC2B0908610023073B /* HangmanFirebaseDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanFirebaseDataStorageProvider.swift; sourceTree = "<group>"; };
 		026938D32B0909E10023073B /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCase.swift; sourceTree = "<group>"; };
 		026938E92B090CBC0023073B /* WordGallowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGallowModel.swift; sourceTree = "<group>"; };
@@ -314,6 +323,15 @@
 		02C4AB662B04F2A200991633 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		02C4AB692B04F33800991633 /* HomePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterImpl.swift; sourceTree = "<group>"; };
 		02C4AB702B057B4100991633 /* Presenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02C500DA2B2A66CE009C546A /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
+		02C500DC2B2A66D9009C546A /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
+		02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCoordinator.swift; sourceTree = "<group>"; };
+		02C500E02B2A7F46009C546A /* QuantityLettersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityLettersView.swift; sourceTree = "<group>"; };
+		02C500E22B2A81F8009C546A /* PainelGallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainelGallowsView.swift; sourceTree = "<group>"; };
+		02C500E72B2B4575009C546A /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		02C500EA2B2B5561009C546A /* CountLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLifeView.swift; sourceTree = "<group>"; };
+		02C500EC2B2B5CDB009C546A /* CountTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTipsView.swift; sourceTree = "<group>"; };
+		02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountRevealLetterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -702,7 +720,7 @@
 			isa = PBXGroup;
 			children = (
 				026938C42B0900FA0023073B /* HangmanDataStorageSDK.swift */,
-				026938CC2B0908610023073B /* FirebaseDataStorageProvider.swift */,
+				026938CC2B0908610023073B /* HangmanFirebaseDataStorageProvider.swift */,
 			);
 			path = DataStorageProvider;
 			sourceTree = "<group>";
@@ -900,6 +918,7 @@
 			isa = PBXGroup;
 			children = (
 				026B64822B038A0F00F6DD99 /* Home */,
+				02C500D82B2A6632009C546A /* Tips */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -907,6 +926,7 @@
 		026B64822B038A0F00F6DD99 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				02C500E42B2B447C009C546A /* ComponentsView */,
 				026B64A42B03A2A000F6DD99 /* View */,
 				026B64A02B03A29200F6DD99 /* HomeViewController.swift */,
 			);
@@ -950,6 +970,7 @@
 				026B64A82B03A37800F6DD99 /* NavigationController */,
 				026B64A72B03A36D00F6DD99 /* Protocol */,
 				026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */,
+				02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -991,6 +1012,7 @@
 		02C4AB342B03B5AD00991633 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				02C500E52B2B44BB009C546A /* ScoreView */,
 				02C4AB352B03B5B400991633 /* GallowsView */,
 				02C4AB482B04052000991633 /* HangmanWordView */,
 				02C4AB3C2B03D94900991633 /* HangmanKeyboardView */,
@@ -1061,6 +1083,7 @@
 			isa = PBXGroup;
 			children = (
 				02C4AB652B04F25C00991633 /* HomePresenter */,
+				02C500E62B2B454C009C546A /* ScorePresenter */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1072,6 +1095,58 @@
 				026939012B09371C0023073B /* UseCaseGateway */,
 			);
 			path = InterfaceAdapter;
+			sourceTree = "<group>";
+		};
+		02C500D82B2A6632009C546A /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				02C500D92B2A6661009C546A /* Views */,
+				02C500DA2B2A66CE009C546A /* TipsViewController.swift */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
+		02C500D92B2A6661009C546A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02C500DC2B2A66D9009C546A /* TipsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02C500E42B2B447C009C546A /* ComponentsView */ = {
+			isa = PBXGroup;
+			children = (
+				02C500E02B2A7F46009C546A /* QuantityLettersView.swift */,
+				02C500E22B2A81F8009C546A /* PainelGallowsView.swift */,
+			);
+			path = ComponentsView;
+			sourceTree = "<group>";
+		};
+		02C500E52B2B44BB009C546A /* ScoreView */ = {
+			isa = PBXGroup;
+			children = (
+				02C500E92B2B5537009C546A /* ComponentsView */,
+				02C500E72B2B4575009C546A /* ScoreView.swift */,
+			);
+			path = ScoreView;
+			sourceTree = "<group>";
+		};
+		02C500E62B2B454C009C546A /* ScorePresenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScorePresenter;
+			sourceTree = "<group>";
+		};
+		02C500E92B2B5537009C546A /* ComponentsView */ = {
+			isa = PBXGroup;
+			children = (
+				02C500EA2B2B5561009C546A /* CountLifeView.swift */,
+				02C500EC2B2B5CDB009C546A /* CountTipsView.swift */,
+				02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */,
+			);
+			path = ComponentsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1440,15 +1515,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026938CD2B0908610023073B /* FirebaseDataStorageProvider.swift in Sources */,
+				026938CD2B0908610023073B /* HangmanFirebaseDataStorageProvider.swift in Sources */,
 				026B64A12B03A29200F6DD99 /* HomeViewController.swift in Sources */,
 				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
 				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
+				02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */,
 				02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */,
+				02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */,
+				02C500DD2B2A66D9009C546A /* TipsView.swift in Sources */,
 				02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */,
+				02C500DB2B2A66CE009C546A /* TipsViewController.swift in Sources */,
+				02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */,
+				02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */,
 				026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
+				02C500E82B2B4575009C546A /* ScoreView.swift in Sources */,
 				026939352B0A41B90023073B /* HangmanAuthenticationSDK.swift in Sources */,
+				02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1457,6 +1540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				026B64AC2B03A3AF00F6DD99 /* Coordinator.swift in Sources */,
+				02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */,
 				026B648A2B03A1ED00F6DD99 /* AppDelegate.swift in Sources */,
 				026939322B0954B90023073B /* HomeViewControllerFactory.swift in Sources */,
 				026B64AE2B03A4CD00F6DD99 /* HomeCoordinator.swift in Sources */,
@@ -1941,7 +2025,7 @@
 				INFOPLIST_FILE = Hangman/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1980,7 +2064,7 @@
 				INFOPLIST_FILE = Hangman/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
