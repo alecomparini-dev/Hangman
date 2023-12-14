@@ -27,7 +27,7 @@ class TipsCoordinator: Coordinator {
                 build
                     .setDetents([.medium, .large])
                     .setCornerRadius(24)
-                    .setGrabbervisible(false)
+                    .setGrabbervisible(true)
                     .setScrollingExpandsWhenScrolledToEdge(false)
             })
         }
