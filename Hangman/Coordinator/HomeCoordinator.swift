@@ -32,10 +32,16 @@ class HomeCoordinator: Coordinator {
 
 
 extension HomeCoordinator: HomeViewControllerCoordinator {
+    
     func gotoHomeNextWord(_ dataTransfer: DataTransferDTO) {
         let coordinator = HomeCoordinator(navigationController)
         coordinator.dataTransfer = dataTransfer
         coordinator.start()
         childCoordinator = nil
+    }
+    
+    func gotoTips() {
+        let coordinator = TipsCoordinator(navigationController)
+        coordinator.start()
     }
 }

@@ -5,7 +5,7 @@ import Foundation
 import Domain
 import Handler
 
-public protocol ProfileSummaryPresenterOutput: AnyObject {
+public protocol HomePresenterOutput: AnyObject {
     func successFetchNextWord(nextWord: NextWordPresenterDTO?)
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
@@ -23,7 +23,7 @@ public protocol ProfileSummaryPresenterOutput: AnyObject {
 
 
 public class HomePresenterImpl: HomePresenter {
-    weak public var delegateOutput: ProfileSummaryPresenterOutput?
+    weak public var delegateOutput: HomePresenterOutput?
     
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?

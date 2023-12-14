@@ -9,6 +9,7 @@ import Presenter
 
 public protocol HomeViewControllerCoordinator: AnyObject {
     func gotoHomeNextWord(_ dataTransfer: DataTransferDTO)
+    func gotoTips()
 }
 
 
@@ -288,7 +289,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
     }
     
     func moreTipTapped() {
-        print(#function)
+        coordinator?.gotoTips()
     }
     
     
@@ -297,7 +298,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
-extension HomeViewController: ProfileSummaryPresenterOutput {
+extension HomeViewController: HomePresenterOutput {
     
     public func revealHeadDoll(_ imageBase64: String) {
         screen.gallowsView.ropeCircleGallows.setHidden(true)

@@ -193,7 +193,7 @@ class GallowsView: ViewBuilder {
     }
     
     private func createNeumosphismGallow(_ component: ViewBuilder) -> NeumorphismBuilder {
-        return NeumorphismBuilder(component)
+        return NeumorphismBuilder(component.get)
             .setReferenceColor(gallowColor)
             .setShape(.concave)
             .setLightPosition(.leftTop)
