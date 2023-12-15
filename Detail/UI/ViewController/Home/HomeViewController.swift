@@ -74,6 +74,7 @@ public class HomeViewController: UIViewController {
     
     private func configDelegate() {
         screen.delegate = self
+        screen.scoreView.delegate = self
         screen.gallowsKeyboardView.delegate = self
         homePresenter.delegateOutput = self
     }
@@ -281,6 +282,27 @@ extension HomeViewController: HangmanViewDelegate {
     }
     
 }
+
+
+//  MARK: - EXTENSION - ScoreViewDelegate
+
+extension HomeViewController: ScoreViewDelegate {
+    func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+        
+    }
+    
+    func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+        coordinator?.gotoTips()
+    }
+    
+    func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+        
+    }
+    
+    
+}
+
+
 
 
 //  MARK: - EXTENSION - HangmanKeyboardViewDelegate

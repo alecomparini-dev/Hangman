@@ -6,18 +6,16 @@ import CustomComponentsSDK
 
 class PainelGallowsView: ViewBuilder {
     
-    private let painelView: UIView
+    private let scoreView: UIView
     
-    init(_ painelView: UIView) {
-        self.painelView = painelView
+    init(_ scoreView: UIView) {
+        self.scoreView = scoreView
         super.init()
         configure()
     }
     
-    
-//  MARK: - PRIVATE AREA
-    private func configure() {
-        self
+    lazy var painelView: ViewBuilder = {
+        let comp = ViewBuilder()
             .setBorder({ build in
                 build
                     .setCornerRadius(10)
@@ -40,8 +38,26 @@ class PainelGallowsView: ViewBuilder {
                     .setLeading.equalToSafeArea(32)
                     .setTrailing.equalToSafeArea(-27)
                     .setHeight.equalToConstant(200)
-                    .setVerticalAlignmentY.equalTo(painelView)
+                    .setVerticalAlignmentY.equalTo(self.get)
             }
+        return comp
+    }()
+    
+    
+//  MARK: - PRIVATE AREA
+    private func configure() {
+        self
+            .setBackgroundColor(.yellow)
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(scoreView, .bottom)
+                    .setLeading.setTrailing.equalTo(scoreView)
+                    .setBottom.equalToSafeArea
+            }
+        
+        painelView.add(insideTo: self.get)
+        painelView.applyConstraint()
+            
     }
     
     

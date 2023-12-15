@@ -44,33 +44,11 @@ class HomeView: UIView {
         return comp
     }()
 
-    lazy var stackView: StackViewBuilder = {
-        let comp = StackViewBuilder()
-            .setAxis(.vertical)
-            .setAlignment(.fill)
-            .setDistribution(.fill)
-            .setConstraints { build in
-                build
-                    .setPin.equalToSafeArea
-            }
+    lazy var stackView: StackView = {
+        let comp = StackView()
         return comp
     }()
     
-    lazy var gallowsToStack: ViewBuilder = {
-        let comp = ViewBuilder()
-        return comp
-    }()
-    
-    lazy var wordsToStack: ViewBuilder = {
-        let comp = ViewBuilder()
-        return comp
-    }()
-    
-    lazy var keyboardToStack: ViewBuilder = {
-        let comp = ViewBuilder()
-        return comp
-    }()
-
     lazy var scoreView: ScoreView = {
         let comp = ScoreView()
             .setConstraints { build in
@@ -81,21 +59,15 @@ class HomeView: UIView {
         return comp
     }()
     
-    lazy var painelView: ViewBuilder = {
-        let comp = ViewBuilder()
-            .setConstraints { build in
-                build
-                    .setTop.equalTo(scoreView.get, .bottom)
-                    .setLeading.setTrailing.equalTo(scoreView.get)
-                    .setBottom.equalToSafeArea
-            }
+    lazy var painelGallowsView: PainelGallowsView = {
+        let comp = PainelGallowsView(scoreView.get)
         return comp
     }()
     
-    lazy var painelGallowsView: ViewBuilder = {
-        let comp = PainelGallowsView(painelView.get)
-        return comp
-    }()
+//    lazy var painelGallowsView: ViewBuilder = {
+//        let comp = PainelGallowsView(painelView.get)
+//        return comp
+//    }()
     
     lazy var nextWordButton: ButtonImageBuilder = {
         let img = ImageViewBuilder(UIImage(systemName: K.Images.nextWordButton))
@@ -105,8 +77,8 @@ class HomeView: UIView {
             .setImageSize(22)
             .setConstraints { build in
                 build
-                    .setVerticalAlignmentY.equalTo(painelGallowsView.get)
-                    .setTrailing.equalTo(painelGallowsView.get, .trailing, -14)
+                    .setVerticalAlignmentY.equalTo(painelGallowsView.painelView.get)
+                    .setTrailing.equalTo(painelGallowsView.painelView.get, .trailing, -14)
                     .setWidth.equalToConstant(50)
                     .setHeight.equalToConstant(35)
             }
@@ -207,23 +179,20 @@ class HomeView: UIView {
     private func addElements() {
         backgroundView.add(insideTo: self)
         addStackViewElements()
-        painelGallowsView.add(insideTo: painelView.get)
+//        painelGallowsView.add(insideTo: painelView.get)
         addGallowsView()
         nextWordButton.add(insideTo: self)
-        categoryLabel.add(insideTo: wordsToStack.get)
-        initialQuestionView.add(insideTo: wordsToStack.get)
+        categoryLabel.add(insideTo: stackView.wordsToStack.get)
+        initialQuestionView.add(insideTo: stackView.wordsToStack.get)
         initialQuestionLabel.add(insideTo: initialQuestionView.get)
         addGallowsWordView()
-        gallowsKeyboardView.add(insideTo: keyboardToStack.get)
+        gallowsKeyboardView.add(insideTo: stackView.keyboardToStack.get)
     }
     
     private func addStackViewElements() {
         stackView.add(insideTo: self)
-        scoreView.add(insideTo: gallowsToStack.get)
-        painelView.add(insideTo: gallowsToStack.get)
-        gallowsToStack.add(insideTo: stackView.get)
-        wordsToStack.add(insideTo: stackView.get)
-        keyboardToStack.add(insideTo: stackView.get)
+        scoreView.add(insideTo: stackView.gallowsToStack.get)
+        painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
     }
     
     private func configConstraints() {
@@ -240,21 +209,21 @@ class HomeView: UIView {
     }
     
     private func addGallowsView() {
-        gallowsView.add(insideTo: painelGallowsView.get)
+        gallowsView.add(insideTo: painelGallowsView.painelView.get)
     }
     
     private func addGallowsWordView() {
-        gallowsWordView.add(insideTo: wordsToStack.get)
-        quantityLettersView.add(insideTo: wordsToStack.get)
+        gallowsWordView.add(insideTo: stackView.wordsToStack.get)
+        quantityLettersView.add(insideTo: stackView.wordsToStack.get)
         countCorrectLetterLabel.add(insideTo: quantityLettersView.get)
     }
     
     private func configStackViewConstraints() {
         scoreView.applyConstraint()
-        painelView.applyConstraint()
-        gallowsToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.40).isActive = true
-        wordsToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.24).isActive = true
-        keyboardToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.36).isActive = true
+        painelGallowsView.applyConstraint()
+        stackView.gallowsToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.40).isActive = true
+        stackView.wordsToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.24).isActive = true
+        stackView.keyboardToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.36).isActive = true
         stackView.applyConstraint()
     }
     
@@ -283,7 +252,7 @@ class HomeView: UIView {
             }
             .setConstraints { build in
                 build
-                    .setBottom.equalTo(keyboardToStack.get, .top, -8)
+                    .setBottom.equalTo(stackView.keyboardToStack.get, .top, -8)
                     .setLeading.setTrailing.equalToSuperView(24)
                     .setHeight.equalToConstant(80)
             }

@@ -110,6 +110,7 @@
 		02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EA2B2B5561009C546A /* CountLifeView.swift */; };
 		02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* CountTipsView.swift */; };
 		02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */; };
+		02C500F12B2C791C009C546A /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500F02B2C791C009C546A /* StackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,6 +333,7 @@
 		02C500EA2B2B5561009C546A /* CountLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLifeView.swift; sourceTree = "<group>"; };
 		02C500EC2B2B5CDB009C546A /* CountTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTipsView.swift; sourceTree = "<group>"; };
 		02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountRevealLetterView.swift; sourceTree = "<group>"; };
+		02C500F02B2C791C009C546A /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1119,6 +1121,7 @@
 			children = (
 				02C500E02B2A7F46009C546A /* QuantityLettersView.swift */,
 				02C500E22B2A81F8009C546A /* PainelGallowsView.swift */,
+				02C500F02B2C791C009C546A /* StackView.swift */,
 			);
 			path = ComponentsView;
 			sourceTree = "<group>";
@@ -1520,6 +1523,7 @@
 				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
 				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
 				02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */,
+				02C500F12B2C791C009C546A /* StackView.swift in Sources */,
 				02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */,
 				02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */,
 				02C500DD2B2A66D9009C546A /* TipsView.swift in Sources */,
