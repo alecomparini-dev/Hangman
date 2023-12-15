@@ -64,11 +64,6 @@ class HomeView: UIView {
         return comp
     }()
     
-//    lazy var painelGallowsView: ViewBuilder = {
-//        let comp = PainelGallowsView(painelView.get)
-//        return comp
-//    }()
-    
     lazy var nextWordButton: ButtonImageBuilder = {
         let img = ImageViewBuilder(UIImage(systemName: K.Images.nextWordButton))
         let comp = ButtonImageBuilder(img)
@@ -87,7 +82,13 @@ class HomeView: UIView {
     }()
     
     lazy var gallowsView: GallowsView = {
-        let comp = createHangmanGallowsView()
+        let comp = GallowsView(frame: .zero)
+            .setConstraints { build in
+                build
+                    .setTop.equalToSuperView(13)
+                    .setBottom.equalToSuperView(-18)
+                    .setLeading.setTrailing.equalToSuperView
+            }
         return comp
     }()
     
@@ -112,7 +113,7 @@ class HomeView: UIView {
                 build
                     .setTop.equalTo(categoryLabel.get, .bottom)
                     .setLeading.setTrailing.equalToSuperView(16)
-                    .setBottom.equalTo(gallowsWordView.get, .top, -4)
+                    .setBottom.equalTo(hangmanWordView.get, .top, -4)
             }
         return comp
     }()
@@ -134,33 +135,36 @@ class HomeView: UIView {
     
     //  MARK: - DISCOVERY WORD
     
-    lazy var quantityLettersView: ViewBuilder = {
-        let comp = QuantityLettersView(gallowsWordView.get)
-        return comp
-    }()
-    
-    lazy var countCorrectLetterLabel: LabelBuilder = {
-        let comp = LabelBuilder()
-            .setSize(12)
-            .setWeight(.regular)
-            .setColor(Theme.shared.currentTheme.onPrimary)
-            .setTextAlignment(.center)
-            .setConstraints { build in
-                build.setPin.equalToSuperView
+    lazy var hangmanWordView: HangmanWordView = {
+        let view = HangmanWordView()
+            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.1))
+            .setBorder { build in
+                build.setCornerRadius(8)
             }
-        return comp
+            .setConstraints { build in
+                build
+                    .setBottom.equalTo(stackView.keyboardToStack.get, .top, -8)
+                    .setLeading.setTrailing.equalToSuperView(24)
+                    .setHeight.equalToConstant(80)
+            }
+        return view
     }()
     
-    lazy var gallowsWordView: HangmanWordView = {
-        let view = createHangmanWordView()
-        return view
+    lazy var quantityLettersView: QuantityLettersView = {
+        let comp = QuantityLettersView(hangmanWordView.get)
+        return comp
     }()
     
     
     //  MARK: - KEYBOARD
-    
     lazy var gallowsKeyboardView: HangmanKeyboardView = {
-        let comp = createHangmanKeyboardView()
+        let comp = HangmanKeyboardView(lettersKeyboard)
+            .setConstraints { build in
+                build
+                    .setTop.equalToSafeArea(8)
+                    .setBottom.equalToSafeArea(-16)
+                    .setLeading.setTrailing.equalToSafeArea(24)
+            }
         return comp
     }()
     
@@ -212,9 +216,8 @@ class HomeView: UIView {
     }
     
     private func addGallowsWordView() {
-        gallowsWordView.add(insideTo: stackView.wordsToStack.get)
+        hangmanWordView.add(insideTo: stackView.wordsToStack.get)
         quantityLettersView.add(insideTo: stackView.wordsToStack.get)
-        countCorrectLetterLabel.add(insideTo: quantityLettersView.get)
     }
     
     private func configStackViewConstraints() {
@@ -227,46 +230,10 @@ class HomeView: UIView {
     }
     
     public func configGallowsWordViewContraints() {
-        gallowsWordView.applyConstraint()
+        hangmanWordView.applyConstraint()
         quantityLettersView.applyConstraint()
-        countCorrectLetterLabel.applyConstraint()
     }
     
-    private func createHangmanGallowsView() -> GallowsView {
-        let view = GallowsView(frame: .zero)
-            .setConstraints { build in
-                build
-                    .setTop.equalToSuperView(13)
-                    .setBottom.equalToSuperView(-18)
-                    .setLeading.setTrailing.equalToSuperView
-            }
-        return view
-    }
-
-    private func createHangmanWordView() -> HangmanWordView {
-        let view = HangmanWordView()
-            .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.1))
-            .setBorder { build in
-                build.setCornerRadius(8)
-            }
-            .setConstraints { build in
-                build
-                    .setBottom.equalTo(stackView.keyboardToStack.get, .top, -8)
-                    .setLeading.setTrailing.equalToSuperView(24)
-                    .setHeight.equalToConstant(80)
-            }
-        return view
-    }
-    
-    private func createHangmanKeyboardView() -> HangmanKeyboardView {
-        return HangmanKeyboardView(lettersKeyboard)
-            .setConstraints { build in
-                build
-                    .setTop.equalToSafeArea(8)
-                    .setBottom.equalToSafeArea(-16)
-                    .setLeading.setTrailing.equalToSafeArea(24)
-            }
-    }
     
 }
 

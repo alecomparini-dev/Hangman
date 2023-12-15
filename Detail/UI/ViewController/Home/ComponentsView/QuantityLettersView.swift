@@ -6,17 +6,35 @@ import CustomComponentsSDK
 
 class QuantityLettersView: ViewBuilder {
     
-    private let gallowsWordView: UIView
+    private let hangmanWordView: UIView
     
-    init(_ gallowsWordView: UIView) {
-        self.gallowsWordView = gallowsWordView
+    init(_ hangmanWordView: UIView) {
+        self.hangmanWordView = hangmanWordView
         super.init()
         configure()
     }
     
+    lazy var countCorrectLetterLabel: LabelBuilder = {
+        let comp = LabelBuilder()
+            .setSize(12)
+            .setWeight(.regular)
+            .setColor(Theme.shared.currentTheme.onPrimary)
+            .setTextAlignment(.center)
+            .setConstraints { build in
+                build.setPin.equalToSuperView
+            }
+        return comp
+    }()
+    
     
 //  MARK: - PRIVATE AREA
     private func configure() {
+        configPainelGallowsView()
+        addElements()
+        configConstraints()
+    }
+    
+    private func configPainelGallowsView() {
         self
             .setBorder { build in
                 build
@@ -38,11 +56,19 @@ class QuantityLettersView: ViewBuilder {
             }
             .setConstraints { build in
                 build
-                    .setBottom.equalTo(gallowsWordView, .bottom, 10)
-                    .setTrailing.equalTo(gallowsWordView, .trailing, 10)
+                    .setBottom.equalTo(hangmanWordView, .bottom, 10)
+                    .setTrailing.equalTo(hangmanWordView, .trailing, 10)
                     .setWidth.equalToConstant(40)
                     .setHeight.equalToConstant(22)
             }
+    }
+    
+    private func addElements() {
+        countCorrectLetterLabel.add(insideTo: self.get)
+    }
+    
+    private func configConstraints() {
+        countCorrectLetterLabel.applyConstraint()
     }
     
 }

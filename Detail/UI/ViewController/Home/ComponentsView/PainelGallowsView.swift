@@ -53,7 +53,6 @@ class PainelGallowsView: ViewBuilder {
 
     private func configPainelGallowsView() {
         self
-            .setBackgroundColor(.yellow)
             .setConstraints { build in
                 build
                     .setTop.equalTo(scoreView, .bottom)

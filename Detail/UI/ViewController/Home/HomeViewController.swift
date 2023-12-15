@@ -92,7 +92,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func setQuantityCorrectLetter(_ qtd: Int?) {
-        screen.countCorrectLetterLabel.setText("0/\(qtd ?? 0)")
+        screen.quantityLettersView.countCorrectLetterLabel.setText("0/\(qtd ?? 0)")
     }
         
     private func configPositionLettersOfWord(_ word: NextWordPresenterDTO?) {
@@ -102,11 +102,11 @@ public class HomeViewController: UIViewController {
         
         lettersInWord.enumerated().forEach({ index, letter in
             if index <= indexBreakLine {
-                guard let letter else { return insertSpaceInStack(screen.gallowsWordView.horizontalStack1) }
+                guard let letter else { return insertSpaceInStack(screen.hangmanWordView.horizontalStack1) }
                 addLetterStackHorizontal1(letter)
                 return
             }
-            guard let letter else { return insertSpaceInStack(screen.gallowsWordView.horizontalStack2) }
+            guard let letter else { return insertSpaceInStack(screen.hangmanWordView.horizontalStack2) }
             addLetterStackHorizontal2(letter)
         })
     }
@@ -130,14 +130,14 @@ public class HomeViewController: UIViewController {
     }
     
     private func addLetterStackHorizontal1(_ letter: HangmanLetterInWordView) {
-        insertLetterInStack(letter, screen.gallowsWordView.horizontalStack1)
+        insertLetterInStack(letter, screen.hangmanWordView.horizontalStack1)
     }
     
     private func addLetterStackHorizontal2(_ letter: HangmanLetterInWordView) {
-        if screen.gallowsWordView.horizontalStack2.get.isHidden {
-            screen.gallowsWordView.horizontalStack2.setHidden(false)
+        if screen.hangmanWordView.horizontalStack2.get.isHidden {
+            screen.hangmanWordView.horizontalStack2.setHidden(false)
         }
-        insertLetterInStack(letter, screen.gallowsWordView.horizontalStack2)
+        insertLetterInStack(letter, screen.hangmanWordView.horizontalStack2)
     }
     
     private func insertSpaceInStack(_ horizontalStack: StackViewBuilder) {
@@ -374,7 +374,7 @@ extension HomeViewController: HomePresenterOutput {
     }
 
     public func updateCountCorrectLetters(_ count: String) {
-        screen.countCorrectLetterLabel.setText(count)
+        screen.quantityLettersView.countCorrectLetterLabel.setText(count)
     }
     
     public func successFetchNextWord(nextWord: NextWordPresenterDTO?) {
