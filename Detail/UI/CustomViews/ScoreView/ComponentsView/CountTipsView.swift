@@ -6,7 +6,9 @@ import CustomComponentsSDK
 import Handler
 
 class CountTipsView: ViewBuilder {
-        
+    
+    private var tapTips: TapGestureBuilder?
+    
     override init() {
         super.init()
         configure()
@@ -29,6 +31,7 @@ class CountTipsView: ViewBuilder {
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalTo(tipsLabel.get, .leading, -6)
             }
+        
         return comp
     }()
     
@@ -76,4 +79,6 @@ class CountTipsView: ViewBuilder {
         tipsShadowImage.applyConstraint()
         tipsLabel.applyConstraint()
     }
+    
+    
 }
