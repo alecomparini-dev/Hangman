@@ -45,7 +45,7 @@ public class HomeViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        configDelegate()
+        configure()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +68,9 @@ public class HomeViewController: UIViewController {
     
     
 //  MARK: - PRIVATE AREA
+    private func configure() {
+        configDelegate()
+    }
     
     private func configDelegate() {
         screen.delegate = self

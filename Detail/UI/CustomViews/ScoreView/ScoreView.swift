@@ -31,13 +31,12 @@ class ScoreView: ViewBuilder {
         return comp
     }()
     
-    
     lazy var countTipsView: CountTipsView = {
         let comp = CountTipsView()
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalTo(countLifeView.lifeImage.get, .leading, -15)
+                    .setTrailing.equalTo(countLifeView.lifeImage.get, .leading, -18)
                     .setTop.setBottom.equalToSafeArea
             }
         return comp
@@ -48,7 +47,7 @@ class ScoreView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalTo(countTipsView.tipsImage.get, .leading, -18)
+                    .setTrailing.equalTo(countTipsView.tipsImage.get, .leading, -21)
                     .setTop.setBottom.equalToSafeArea
             }
         return comp
@@ -60,6 +59,8 @@ class ScoreView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
+        
+        configTapGesture()
     }
     
     
@@ -73,6 +74,30 @@ class ScoreView: ViewBuilder {
         countLifeView.applyConstraint()
         countTipsView.applyConstraint()
         revealLetterView.applyConstraint()
+    }
+    
+
+    
+    
+    private func configTapGesture() {
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        
+        // Configurar a suaImageView para interagir com gestos
+        countTipsView.get.isUserInteractionEnabled = true
+        
+        // Adicionar o gesto à suaImageView
+        countTipsView.get.addGestureRecognizer(tapGesture)
+        
+        
+//        TapGestureBuilder(countTipsView.get)
+//            .setTap { tapGesture in
+//                print("clicouuuu caralhooo")
+//            }
+    }
+    
+    @objc func imageTapped() {
+        print("A imagem foi tocada!")
     }
     
     
