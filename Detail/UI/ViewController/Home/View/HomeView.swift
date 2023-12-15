@@ -179,7 +179,6 @@ class HomeView: UIView {
     private func addElements() {
         backgroundView.add(insideTo: self)
         addStackViewElements()
-//        painelGallowsView.add(insideTo: painelView.get)
         addGallowsView()
         nextWordButton.add(insideTo: self)
         categoryLabel.add(insideTo: stackView.wordsToStack.get)

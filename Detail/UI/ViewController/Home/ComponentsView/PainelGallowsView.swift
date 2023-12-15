@@ -46,6 +46,12 @@ class PainelGallowsView: ViewBuilder {
     
 //  MARK: - PRIVATE AREA
     private func configure() {
+        configPainelGallowsView()
+        addElements()
+        configConstraints()
+    }
+
+    private func configPainelGallowsView() {
         self
             .setBackgroundColor(.yellow)
             .setConstraints { build in
@@ -54,10 +60,14 @@ class PainelGallowsView: ViewBuilder {
                     .setLeading.setTrailing.equalTo(scoreView)
                     .setBottom.equalToSafeArea
             }
-        
+    }
+    
+    private func addElements() {
         painelView.add(insideTo: self.get)
+    }
+    
+    private func configConstraints() {
         painelView.applyConstraint()
-            
     }
     
     
