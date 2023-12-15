@@ -6,7 +6,16 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
+
+protocol ScoreViewDelegate: AnyObject {
+    func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
+    func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
+    func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
+}
+
+
 class ScoreView: ViewBuilder {
+    weak var delegate: ScoreViewDelegate?
     
     override init() {
         super.init(frame: .zero)
@@ -27,6 +36,7 @@ class ScoreView: ViewBuilder {
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea(-48)
                     .setTop.setBottom.equalToSafeArea
+                    .setWidth.equalToConstant(50)
             }
         return comp
     }()
@@ -38,6 +48,7 @@ class ScoreView: ViewBuilder {
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalTo(countLifeView.lifeImage.get, .leading, -18)
                     .setTop.setBottom.equalToSafeArea
+                    .setWidth.equalToConstant(50)
             }
         return comp
     }()
@@ -49,6 +60,7 @@ class ScoreView: ViewBuilder {
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalTo(countTipsView.tipsImage.get, .leading, -21)
                     .setTop.setBottom.equalToSafeArea
+                    .setWidth.equalToConstant(50)
             }
         return comp
     }()
@@ -59,10 +71,8 @@ class ScoreView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
-        
         configTapGesture()
     }
-    
     
     private func addElements() {
         countLifeView.add(insideTo: self.get)
@@ -76,28 +86,24 @@ class ScoreView: ViewBuilder {
         revealLetterView.applyConstraint()
     }
     
-
-    
-    
     private func configTapGesture() {
+        TapGestureBuilder(countLifeView.get)
+            .setTap { [weak self] tapGesture in
+                guard let self else { return }
+                delegate?.countLifeViewTapped(tapGesture, countLifeView)
+            }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        TapGestureBuilder(countTipsView.get)
+            .setTap { [weak self] tapGesture in
+                guard let self else { return }
+                delegate?.countTipsViewTapped(tapGesture, countTipsView)
+            }
         
-        // Configurar a suaImageView para interagir com gestos
-        countTipsView.get.isUserInteractionEnabled = true
-        
-        // Adicionar o gesto à suaImageView
-        countTipsView.get.addGestureRecognizer(tapGesture)
-        
-        
-//        TapGestureBuilder(countTipsView.get)
-//            .setTap { tapGesture in
-//                print("clicouuuu caralhooo")
-//            }
-    }
-    
-    @objc func imageTapped() {
-        print("A imagem foi tocada!")
+        TapGestureBuilder(revealLetterView.get)
+            .setTap { [weak self] tapGesture in
+                guard let self else { return }
+                delegate?.revealLetterViewTapped(tapGesture, revealLetterView)
+            }
     }
     
     
