@@ -40,8 +40,9 @@ extension HomeCoordinator: HomeViewControllerCoordinator {
         childCoordinator = nil
     }
     
-    func gotoTips() {
+    func gotoTips(_ word: WordPresenterDTO?) {
         let coordinator = TipsCoordinator(navigationController)
+        coordinator.dataTransfer = word
         coordinator.start()
     }
 }

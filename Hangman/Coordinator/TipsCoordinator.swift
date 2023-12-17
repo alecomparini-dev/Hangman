@@ -17,6 +17,7 @@ class TipsCoordinator: Coordinator {
     func start() {
         childCoordinator = self
         let controller = TipsViewController()
+        controller.setDataTransfer(dataTransfer)
         controller.coordinator = self
         
         guard let currentScene = CurrentWindow.get else { return }

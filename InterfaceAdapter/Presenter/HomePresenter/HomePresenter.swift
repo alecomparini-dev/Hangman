@@ -19,7 +19,7 @@ public protocol HomePresenter {
     
     func getNextWord()
         
-    func getCurrentWord() -> NextWordPresenterDTO?
+    func getCurrentWord() -> WordPresenterDTO?
     
     func verifyMatchInWord(_ letter: String?)
         

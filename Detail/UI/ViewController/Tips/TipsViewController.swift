@@ -3,14 +3,17 @@
 
 import UIKit
 import CustomComponentsSDK
+import Presenter
 
 public protocol TipsViewControllerCoordinator: AnyObject {
-    
+
 }
 
 
 public class TipsViewController: UIViewController {
     public weak var coordinator: TipsViewControllerCoordinator?
+    
+    private var word: WordPresenterDTO?
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,13 +42,20 @@ public class TipsViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        screen.configCardsTips()
     }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
+    
+//  MARK: - DATA TRANSFER
+    public func setDataTransfer(_ data: Any?) {
+        if let word = data as? WordPresenterDTO {
+            self.word = word
+            screen.cardsTipsDock.reload()
+        }
+    }
     
 //  MARK: - PRIVATE AREA
     private func configure() {
@@ -67,11 +77,11 @@ public class TipsViewController: UIViewController {
     }
     
     private func configCardTipsDelegate() {
-        screen.cardsTips.setDelegate(self)
+        screen.cardsTipsDock.setDelegate(self)
     }
     
     private func configCardTipsShow() {
-        screen.cardsTips.show()
+        screen.cardsTipsDock.show()
     }
 }
 
@@ -82,11 +92,8 @@ extension TipsViewController: UISheetPresentationControllerDelegate {
     @available(iOS 15.0, *)
     public func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
         if sheetPresentationController.selectedDetentIdentifier == .medium {
-            print("diminiuiu")
             return
         }
-        print("ficou grandao")
-        
     }
     
 }
@@ -95,17 +102,28 @@ extension TipsViewController: UISheetPresentationControllerDelegate {
 //  MARK: - EXTENSION - DockDelegate
 extension TipsViewController: DockDelegate {
     public func numberOfItemsCallback(_ dockBuilder: DockBuilder) -> Int {
-        return 6
+        return word?.tips?.count ?? 0
     }
     
     public func cellCallback(_ dockBuilder: DockBuilder, _ index: Int) -> UIView {
-        return ViewBuilder()
+        return LabelBuilder(word?.tips?[index] ?? "" )
             .setBorder { build in
                 build
                     .setCornerRadius(12)
-                    .setColor(.black)
-                    .setWidth(1)
             }
+            .setNeumorphism({ build in
+                build
+                    .setReferenceColor(Theme.shared.currentTheme.secondary)
+                    .setShape(.concave)
+                    .setLightPosition(.rightTop)
+                    .setIntensity(to: .light, percent: 100)
+                    .setIntensity(to: .dark, percent: 80)
+                    .setBlur(to: .light, percent: 3)
+                    .setBlur(to: .dark, percent: 5)
+                    .setDistance(to: .light, percent: 3)
+                    .setDistance(to: .dark, percent: 10)
+                    .apply()
+            })
             .get
     }
     

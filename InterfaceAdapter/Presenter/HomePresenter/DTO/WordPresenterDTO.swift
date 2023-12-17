@@ -9,7 +9,7 @@ public enum LevelPresenter: String {
     case hard = "Difícil"
 }
 
-public struct NextWordPresenterDTO {
+public struct WordPresenterDTO {
     public var id: Int
     public var word: String?
     public var syllables: [String]?
@@ -17,7 +17,6 @@ public struct NextWordPresenterDTO {
     public var initialQuestion: String?
     public var level: LevelPresenter?
     public var tips: [String]?
-//    public var resultGame:
     
     
     public init(id: Int, word: String? = nil, syllables: [String]? = nil, category: String? = nil, initialQuestion: String? = nil, level: LevelPresenter? = nil, tips: [String]? = nil) {
