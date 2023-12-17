@@ -6,7 +6,7 @@ import Domain
 import Handler
 
 public protocol HomePresenterOutput: AnyObject {
-    func successFetchNextWord(nextWord: NextWordPresenterDTO?)
+    func successFetchNextWord(word: WordPresenterDTO?)
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
     
@@ -115,9 +115,9 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    public func getCurrentWord() -> NextWordPresenterDTO? {
+    public func getCurrentWord() -> WordPresenterDTO? {
         guard let wordPlaying else { return nil }
-        return NextWordPresenterDTO(id: wordPlaying.id,
+        return WordPresenterDTO(id: wordPlaying.id,
                                     word: wordPlaying.word,
                                     syllables: wordPlaying.syllables,
                                     category: wordPlaying.category,
@@ -319,9 +319,10 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - PRIVATE OUTPUT AREA
     private func successFetchNextWord() {
         joinedWordPlaying = wordPlaying?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
+        
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.successFetchNextWord(nextWord: getCurrentWord())
+            delegateOutput?.successFetchNextWord(word: getCurrentWord())
         }
     }
 

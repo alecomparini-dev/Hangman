@@ -24,8 +24,10 @@ class TipsView: UIView {
         let comp = ViewBuilder()
             .setGradient({ build in
                 build
-                    .setReferenceColor(Theme.shared.currentTheme.secondary, percentageGradient: 80)
-                    .setAxialGradient(.rightBottomToLeftTop)
+                    .setGradientColors(Theme.shared.currentTheme.backgroundColorGradient)
+                    .setAxialGradient(.leftTopToRightBottom)
+//                    .setAxialGradient(.rightBottomToLeftTop)
+//                    .setReferenceColor(Theme.shared.currentTheme.secondary, percentageGradient: 80)
                     .apply(size: CurrentWindow.get?.frame.size ?? CGSize())
             })
             .setConstraints { build in
@@ -35,37 +37,28 @@ class TipsView: UIView {
         return comp
     }()
     
-    lazy var cardsTips: DockBuilder = {
+    lazy var cardsTipsDock: DockBuilder = {
         let comp = DockBuilder()
             .setBackgroundColor(.clear)
-            .setCellsSize(CGSize(width: 140, height: 150))
+            .setCellsSize(CGSize(width: 330, height: 100))
             .setScrollDirection(.vertical)
             .setShowsVerticalScrollIndicator(false)
             .setMinimumInteritemSpacing(0)
-            .setMinimumLineSpacing(25)
-            .setPadding(top: 0, left: 10, bottom: 0, rigth: 10)
+            .setMinimumLineSpacing(16)
+            .setContentInset(top: 0, left: 0, bottom: 48, rigth: 0)
+            .setPadding(top: 0, left: 0, bottom: 0, rigth: 0)
             .setBorder({ build in
                 build
                     .setCornerRadius(24)
             })
             .setConstraints { build in
                 build
-                    .setTop.equalToSafeArea(48)
-                    .setLeading.setTrailing.equalToSafeArea(32)
+                    .setTop.equalToSafeArea(80)
+                    .setLeading.setTrailing.equalToSafeArea(16)
+                    .setBottom.equalToSuperView
             }
         return comp
     }()
-    
-    
-//  MARK: - PUBLIC AREA
-    
-    public func configCardsTips() {
-        configCardsTipsHeightAnchor()
-    }
-    
-    private func configCardsTipsHeightAnchor() {
-        cardsTipsHeightAnchor?.constant = frame.height - 72
-    }
     
     
 //  MARK: - PRIVATE AREA
@@ -76,18 +69,13 @@ class TipsView: UIView {
     
     private func addElements() {
         backgroundView.add(insideTo: self)
-        cardsTips.add(insideTo: self)
+        cardsTipsDock.add(insideTo: self)
     }
 
     private func configConstraints() {
         backgroundView.applyConstraint()
-        configCardsTipsContraints()
+        cardsTipsDock.applyConstraint()
     }
     
-    private func configCardsTipsContraints() {
-        cardsTips.applyConstraint()
-        cardsTipsHeightAnchor = cardsTips.get.heightAnchor.constraint(equalToConstant: 300)
-        cardsTipsHeightAnchor?.isActive = true
-    }
     
 }

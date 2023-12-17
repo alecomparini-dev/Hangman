@@ -9,7 +9,7 @@ import Presenter
 
 public protocol HomeViewControllerCoordinator: AnyObject {
     func gotoHomeNextWord(_ dataTransfer: DataTransferDTO)
-    func gotoTips()
+    func gotoTips(_ word: WordPresenterDTO?)
 }
 
 
@@ -79,11 +79,11 @@ public class HomeViewController: UIViewController {
         homePresenter.delegateOutput = self
     }
     
-    private func configNextWord(_ word: NextWordPresenterDTO?) {
+    private func configNextWord(_ word: WordPresenterDTO?) {
         configGallowsWord(word)
     }
     
-    private func configGallowsWord(_ word: NextWordPresenterDTO?) {
+    private func configGallowsWord(_ word: WordPresenterDTO?) {
         screen.categoryLabel.setText(word?.category)
         screen.initialQuestionLabel.setText(word?.initialQuestion)
         configHangmanLettersInWord(word)
@@ -95,7 +95,7 @@ public class HomeViewController: UIViewController {
         screen.quantityLettersView.countCorrectLetterLabel.setText("0/\(qtd ?? 0)")
     }
         
-    private func configPositionLettersOfWord(_ word: NextWordPresenterDTO?) {
+    private func configPositionLettersOfWord(_ word: WordPresenterDTO?) {
         guard let word else { return }
         
         let indexBreakLine = identifierBreakLine(word)
@@ -111,7 +111,7 @@ public class HomeViewController: UIViewController {
         })
     }
     
-    private func identifierBreakLine(_ word: NextWordPresenterDTO?) -> Int {
+    private func identifierBreakLine(_ word: WordPresenterDTO?) -> Int {
         var indexBreakLine = K.quantityLetterByLine
         
         guard let word, let syllables = word.syllables else { return indexBreakLine }
@@ -159,7 +159,7 @@ public class HomeViewController: UIViewController {
         letter.applyConstraint()
     }
     
-    private func configHangmanLettersInWord(_ word: NextWordPresenterDTO?) {
+    private func configHangmanLettersInWord(_ word: WordPresenterDTO?) {
         guard let syllables = word?.syllables else {return}
         syllables.joined().uppercased().forEach { letter in
             if letter.isWhitespace {
@@ -292,7 +292,7 @@ extension HomeViewController: ScoreViewDelegate {
     }
     
     func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        coordinator?.gotoTips()
+        coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     
     func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
@@ -314,7 +314,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
     }
     
     func moreTipTapped() {
-        coordinator?.gotoTips()
+        coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     
     
@@ -377,8 +377,8 @@ extension HomeViewController: HomePresenterOutput {
         screen.quantityLettersView.countCorrectLetterLabel.setText(count)
     }
     
-    public func successFetchNextWord(nextWord: NextWordPresenterDTO?) {
-        configNextWord(nextWord)
+    public func successFetchNextWord(word: WordPresenterDTO?) {
+        configNextWord(word)
     }
     
     public func nextWordIsOver(title: String, message: String) {
