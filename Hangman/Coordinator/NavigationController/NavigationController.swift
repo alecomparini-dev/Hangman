@@ -20,7 +20,6 @@ public final class NavigationController: UINavigationController {
     
     @discardableResult
     public func pushViewController<T>(_ viewController: UIViewController) -> T {
-        
         let transition = CATransition()
         transition.duration = 0.3
         transition.type = CATransitionType.fade

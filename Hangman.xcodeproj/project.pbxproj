@@ -111,6 +111,9 @@
 		02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* CountTipsView.swift */; };
 		02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */; };
 		02C500F12B2C791C009C546A /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500F02B2C791C009C546A /* StackView.swift */; };
+		02FCA7032B307BAA00B45892 /* TipsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7022B307BAA00B45892 /* TipsPresenter.swift */; };
+		02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */; };
+		02FCA7072B30B53300B45892 /* CardTipsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7062B30B53300B45892 /* CardTipsViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -334,6 +337,9 @@
 		02C500EC2B2B5CDB009C546A /* CountTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTipsView.swift; sourceTree = "<group>"; };
 		02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountRevealLetterView.swift; sourceTree = "<group>"; };
 		02C500F02B2C791C009C546A /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		02FCA7022B307BAA00B45892 /* TipsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsPresenter.swift; sourceTree = "<group>"; };
+		02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsPresenterImpl.swift; sourceTree = "<group>"; };
+		02FCA7062B30B53300B45892 /* CardTipsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTipsViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1085,7 +1091,7 @@
 			isa = PBXGroup;
 			children = (
 				02C4AB652B04F25C00991633 /* HomePresenter */,
-				02C500E62B2B454C009C546A /* ScorePresenter */,
+				02C500E62B2B454C009C546A /* TipsPresenter */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1102,6 +1108,7 @@
 		02C500D82B2A6632009C546A /* Tips */ = {
 			isa = PBXGroup;
 			children = (
+				02FCA7002B307B3D00B45892 /* Cells */,
 				02C500D92B2A6661009C546A /* Views */,
 				02C500DA2B2A66CE009C546A /* TipsViewController.swift */,
 			);
@@ -1135,11 +1142,13 @@
 			path = ScoreView;
 			sourceTree = "<group>";
 		};
-		02C500E62B2B454C009C546A /* ScorePresenter */ = {
+		02C500E62B2B454C009C546A /* TipsPresenter */ = {
 			isa = PBXGroup;
 			children = (
+				02FCA7012B307B9C00B45892 /* Impl */,
+				02FCA7022B307BAA00B45892 /* TipsPresenter.swift */,
 			);
-			path = ScorePresenter;
+			path = TipsPresenter;
 			sourceTree = "<group>";
 		};
 		02C500E92B2B5537009C546A /* ComponentsView */ = {
@@ -1150,6 +1159,22 @@
 				02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */,
 			);
 			path = ComponentsView;
+			sourceTree = "<group>";
+		};
+		02FCA7002B307B3D00B45892 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				02FCA7062B30B53300B45892 /* CardTipsViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		02FCA7012B307B9C00B45892 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1477,6 +1502,7 @@
 				020216662B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift in Sources */,
 				0235E5E82B1500A800829489 /* GetDollsRandomUseCaseImpl.swift in Sources */,
 				026938F42B0935CA0023073B /* NextWordsUseCaseDTO.swift in Sources */,
+				02FCA7032B307BAA00B45892 /* TipsPresenter.swift in Sources */,
 				0235E5D22B14D41700829489 /* CountDollsUseCaseImpl.swift in Sources */,
 				020216722B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift in Sources */,
 				020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */,
@@ -1485,6 +1511,7 @@
 				0235E5CC2B14CCBB00829489 /* GenericCountModelGateway.swift in Sources */,
 				026938EC2B0912E10023073B /* ResultWordGameModel.swift in Sources */,
 				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
+				02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */,
 				026938EA2B090CBC0023073B /* WordGallowModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1530,6 +1557,7 @@
 				02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */,
 				02C500DB2B2A66CE009C546A /* TipsViewController.swift in Sources */,
 				02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */,
+				02FCA7072B30B53300B45892 /* CardTipsViewCell.swift in Sources */,
 				02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */,
 				026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,

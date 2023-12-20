@@ -29,6 +29,7 @@ public class TipsViewController: UIViewController {
     }()
     
     
+    
 //  MARK: - LIFE CICLE
     
     public override func loadView() {
@@ -61,28 +62,28 @@ public class TipsViewController: UIViewController {
     private func configure() {
         configDelegate()
         configCardTipsShow()
+        configBottomSheet()
     }
     
     private func configDelegate() {
-        configBottomSheetDelegate()
-        configCardTipsDelegate()
-    }
-    
-    private func configBottomSheetDelegate() {
-        if #available(iOS 15.0, *) {
-            if let sheet = self.sheetPresentationController {
-                sheet.delegate = self
-            }
-        }
-    }
-    
-    private func configCardTipsDelegate() {
         screen.cardsTipsDock.setDelegate(self)
     }
-    
+
     private func configCardTipsShow() {
         screen.cardsTipsDock.show()
     }
+
+    private func configBottomSheet() {
+        self.setBottomSheet({ build in
+            build
+                .setDelegate(self)
+                .setDetents([.medium, .large])
+                .setCornerRadius(16)
+                .setGrabbervisible(true)
+                .setScrollingExpandsWhenScrolledToEdge(false)
+        })
+    }
+
 }
 
 
@@ -106,37 +107,11 @@ extension TipsViewController: DockDelegate {
     }
     
     public func cellCallback(_ dockBuilder: DockBuilder, _ index: Int) -> UIView {
-        return LabelBuilder(word?.tips?[index] ?? "" )
-            .setBorder { build in
-                build
-                    .setCornerRadius(12)
-            }
-            .setNeumorphism({ build in
-                build
-                    .setReferenceColor(Theme.shared.currentTheme.secondary)
-                    .setShape(.concave)
-                    .setLightPosition(.rightTop)
-                    .setIntensity(to: .light, percent: 100)
-                    .setIntensity(to: .dark, percent: 80)
-                    .setBlur(to: .light, percent: 3)
-                    .setBlur(to: .dark, percent: 5)
-                    .setDistance(to: .light, percent: 3)
-                    .setDistance(to: .dark, percent: 10)
-                    .apply()
-            })
-            .get
+        return CardTipsViewCell(word)
     }
     
     public func customCellActiveCallback(_ dockBuilder: DockBuilder, _ cell: UIView) -> UIView? {
-        return ViewBuilder()
-            .setBorder { build in
-                build
-                    .setCornerRadius(12)
-                    .setColor(.black)
-                    .setWidth(1)
-            }
-            .setBackgroundColor(.yellow)
-            .get
+        return nil
     }
     
 }
