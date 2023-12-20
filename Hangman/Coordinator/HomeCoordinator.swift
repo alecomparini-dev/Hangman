@@ -6,6 +6,7 @@ import Foundation
 import Detail
 import Presenter
 
+
 class HomeCoordinator: Coordinator {
     var childCoordinator: Coordinator?
     unowned let navigationController: NavigationController
@@ -30,6 +31,8 @@ class HomeCoordinator: Coordinator {
     
 }
 
+
+//  MARK: - EXTENSION - HomeViewControllerCoordinator
 
 extension HomeCoordinator: HomeViewControllerCoordinator {
     

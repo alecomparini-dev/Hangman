@@ -22,13 +22,14 @@ class TipsView: UIView {
     
     lazy var backgroundView: ViewBuilder = {
         let comp = ViewBuilder()
+            .setBackgroundColor(Theme.shared.currentTheme.secondary.adjustBrightness(50))
             .setGradient({ build in
                 build
-                    .setGradientColors(Theme.shared.currentTheme.backgroundColorGradient)
+//                    .setGradientColors(Theme.shared.currentTheme.backgroundColorGradient)
                     .setAxialGradient(.leftTopToRightBottom)
 //                    .setAxialGradient(.rightBottomToLeftTop)
-//                    .setReferenceColor(Theme.shared.currentTheme.secondary, percentageGradient: 80)
-                    .apply(size: CurrentWindow.get?.frame.size ?? CGSize())
+                    .setReferenceColor(Theme.shared.currentTheme.secondary, percentageGradient: 80)
+//                    .apply(size: CurrentWindow.get?.frame.size ?? CGSize())
             })
             .setConstraints { build in
                 build
@@ -37,9 +38,24 @@ class TipsView: UIView {
         return comp
     }()
     
+    lazy var upDownButton: ImageViewBuilder = {
+        let img = UIImage(systemName: "chevron.down")
+        let comp = ImageViewBuilder(img)
+            .setTintColor(Theme.shared.currentTheme.onSecondary)
+            .setContentMode(.center)
+            .setConstraints { build in
+                build
+                    .setTop.setTrailing.equalToSafeArea(16)
+                    .setSize.equalToConstant(40)
+            }
+        return comp
+    }()
+
+    
     lazy var cardsTipsDock: DockBuilder = {
         let comp = DockBuilder()
             .setBackgroundColor(.clear)
+            .setDisableUserInteraction(true)
             .setCellsSize(CGSize(width: 330, height: 100))
             .setScrollDirection(.vertical)
             .setShowsVerticalScrollIndicator(false)
@@ -65,16 +81,24 @@ class TipsView: UIView {
     private func configure() {
         addElements()
         configConstraints()
+        configBlur()
     }
-    
+
     private func addElements() {
         backgroundView.add(insideTo: self)
+        upDownButton.add(insideTo: self)
         cardsTipsDock.add(insideTo: self)
     }
 
     private func configConstraints() {
         backgroundView.applyConstraint()
+        upDownButton.applyConstraint()
         cardsTipsDock.applyConstraint()
+    }
+    
+    private func configBlur() {
+        BlurBuilder(cardsTipsDock.get, style: .systemUltraThinMaterialDark)
+            .apply()
     }
     
     
