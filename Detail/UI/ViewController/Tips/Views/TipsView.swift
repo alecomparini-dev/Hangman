@@ -4,6 +4,7 @@
 import UIKit
 
 import CustomComponentsSDK
+import Handler
 
 class TipsView: UIView {
     var cardsTipsHeightAnchor: NSLayoutConstraint?
@@ -22,14 +23,15 @@ class TipsView: UIView {
     
     lazy var backgroundView: ViewBuilder = {
         let comp = ViewBuilder()
-            .setBackgroundColor(Theme.shared.currentTheme.secondary.adjustBrightness(50))
+//            .setBackgroundColor(Theme.shared.currentTheme.secondary.adjustBrightness(50))
             .setGradient({ build in
                 build
 //                    .setGradientColors(Theme.shared.currentTheme.backgroundColorGradient)
-                    .setAxialGradient(.leftTopToRightBottom)
+//                    .setAxialGradient(.leftTopToRightBottom)
 //                    .setAxialGradient(.rightBottomToLeftTop)
+                    .setAxialGradient(.rightToLeft)
                     .setReferenceColor(Theme.shared.currentTheme.secondary, percentageGradient: 80)
-//                    .apply(size: CurrentWindow.get?.frame.size ?? CGSize())
+                    .apply(size: CurrentWindow.get?.frame.size ?? CGSize())
             })
             .setConstraints { build in
                 build
@@ -37,39 +39,57 @@ class TipsView: UIView {
             }
         return comp
     }()
+
+    lazy var titleTipLabel: LabelBuilder = {
+        let comp = LabelBuilder()
+            .setTextAttributed({ build in
+                build
+                    .setText(text: "Selecione uma")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+                    .setText(text: " dica")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 20, weight: .bold))
+                    .setText(text: " para abrir")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+            })
+            .setColor(Theme.shared.currentTheme.onSecondary)
+            .setConstraints { build in
+                build
+                    .setTop.equalToSafeArea(30)
+                    .setLeading.equalToSafeArea(24)
+            }
+        return comp
+    }()
     
-    lazy var upDownButton: ImageViewBuilder = {
-        let img = UIImage(systemName: "chevron.down")
+    lazy var downButton: ImageViewBuilder = {
+        let img = UIImage(systemName: K.Images.downButton)
         let comp = ImageViewBuilder(img)
             .setTintColor(Theme.shared.currentTheme.onSecondary)
             .setContentMode(.center)
             .setConstraints { build in
                 build
-                    .setTop.setTrailing.equalToSafeArea(16)
+                    .setVerticalAlignmentY.equalTo(titleTipLabel.get, -2)
+                    .setTrailing.equalToSafeArea(-16)
                     .setSize.equalToConstant(40)
             }
         return comp
     }()
 
-    
     lazy var cardsTipsDock: DockBuilder = {
         let comp = DockBuilder()
             .setBackgroundColor(.clear)
             .setDisableUserInteraction(true)
-            .setCellsSize(CGSize(width: 330, height: 100))
+            .setCellsSize(CGSize(width: 345, height: 100))
             .setScrollDirection(.vertical)
             .setShowsVerticalScrollIndicator(false)
-            .setMinimumInteritemSpacing(0)
-            .setMinimumLineSpacing(16)
+            .setMinimumLineSpacing(8)
             .setContentInset(top: 0, left: 0, bottom: 48, rigth: 0)
-            .setPadding(top: 0, left: 0, bottom: 0, rigth: 0)
             .setBorder({ build in
                 build
-                    .setCornerRadius(24)
+                    .setCornerRadius(8)
             })
             .setConstraints { build in
                 build
-                    .setTop.equalToSafeArea(80)
+                    .setTop.equalTo(titleTipLabel.get, .bottom, 16)
                     .setLeading.setTrailing.equalToSafeArea(16)
                     .setBottom.equalToSuperView
             }
@@ -81,24 +101,20 @@ class TipsView: UIView {
     private func configure() {
         addElements()
         configConstraints()
-        configBlur()
     }
 
     private func addElements() {
         backgroundView.add(insideTo: self)
-        upDownButton.add(insideTo: self)
+        titleTipLabel.add(insideTo: self)
+        downButton.add(insideTo: self)
         cardsTipsDock.add(insideTo: self)
     }
 
     private func configConstraints() {
         backgroundView.applyConstraint()
-        upDownButton.applyConstraint()
+        titleTipLabel.applyConstraint()
+        downButton.applyConstraint()
         cardsTipsDock.applyConstraint()
-    }
-    
-    private func configBlur() {
-        BlurBuilder(cardsTipsDock.get, style: .systemUltraThinMaterialDark)
-            .apply()
     }
     
     

@@ -78,7 +78,7 @@ public class TipsViewController: UIViewController {
             build
                 .setDelegate(self)
                 .setDetents([.medium, .large])
-                .setCornerRadius(16)
+                .setCornerRadius(24)
                 .setGrabbervisible(true)
                 .setScrollingExpandsWhenScrolledToEdge(false)
         })
@@ -107,7 +107,7 @@ extension TipsViewController: DockDelegate {
     }
     
     public func cellCallback(_ dockBuilder: DockBuilder, _ index: Int) -> UIView {
-        return CardTipsViewCell(word)
+        return CardTipsViewCell(word?.tips?[index] ?? "")
     }
     
     public func customCellActiveCallback(_ dockBuilder: DockBuilder, _ cell: UIView) -> UIView? {

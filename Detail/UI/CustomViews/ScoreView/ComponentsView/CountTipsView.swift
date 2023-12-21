@@ -23,7 +23,7 @@ class CountTipsView: ViewBuilder {
     
     lazy var tipsImage: ImageViewBuilder = {
         let comp = ImageViewBuilder()
-            .setImage(systemName: K.Images.light)
+            .setImage(systemName: K.Images.tip)
             .setTintColor(hexColor: K.ExtraColor.lightTips)
             .setSize(17)
             .setConstraints { build in
@@ -37,7 +37,7 @@ class CountTipsView: ViewBuilder {
     
     lazy var tipsShadowImage: ImageViewBuilder = {
         let comp = ImageViewBuilder()
-            .setImage(systemName: K.Images.light)
+            .setImage(systemName: K.Images.tip)
             .setTintColor(hexColor: K.ExtraColor.heartShadow)
             .setSize(20)
             .setConstraints { build in

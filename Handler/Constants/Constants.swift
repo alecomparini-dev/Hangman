@@ -48,7 +48,10 @@ public struct K {
     
     public struct Images {
         public static let nextWordButton = "chevron.forward"
-        public static let light = ["lightbulb.max.fill", "lightbulb.fill"]
+        public static let downButton = "chevron.down"
+        public static let tip = ["lightbulb.max.fill", "lightbulb.fill"]
+        public static let tipClose = ["lightbulb.max", "lightbulb"]
+        public static let tipLocked = "lock.fill"
         public static let heartFill = "suit.heart.fill"
         public static let eyeFill = "eye.fill"
     }
