@@ -209,7 +209,7 @@ public class HomeViewController: UIViewController {
     }
 
     private func setButtonPressed(button: UIButton, _ color: UIColor) {
-        let buttonInteration = ButtonInteractionBuilder(button: button).setColor(color)
+        let buttonInteration = ButtonInteractionBuilder(component: button).setColor(color)
         buttonInteration.pressed
     }
     

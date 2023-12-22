@@ -6,7 +6,8 @@ import CustomComponentsSDK
 import Presenter
 
 public protocol TipsViewControllerCoordinator: AnyObject {
-
+    func freeMemoryCoordinator()
+    func gotoHome(_ vc: UIViewController)
 }
 
 
@@ -28,8 +29,7 @@ public class TipsViewController: UIViewController {
         return comp
     }()
     
-    
-    
+        
 //  MARK: - LIFE CICLE
     
     public override func loadView() {
@@ -49,6 +49,11 @@ public class TipsViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.freeMemoryCoordinator()
+    }
+    
     
 //  MARK: - DATA TRANSFER
     public func setDataTransfer(_ data: Any?) {
@@ -58,6 +63,7 @@ public class TipsViewController: UIViewController {
         }
     }
     
+    
 //  MARK: - PRIVATE AREA
     private func configure() {
         configDelegate()
@@ -66,6 +72,7 @@ public class TipsViewController: UIViewController {
     }
     
     private func configDelegate() {
+        screen.delegate = self
         screen.cardsTipsDock.setDelegate(self)
     }
 
@@ -84,6 +91,18 @@ public class TipsViewController: UIViewController {
         })
     }
 
+}
+
+
+//  MARK: - EXTENSION - TipsViewDelegate
+extension TipsViewController: TipsViewDelegate {
+    
+    func downButtonTapped() {
+        print("clicou nessa merda só que agora na porra do sei lá o que")
+        coordinator?.gotoHome(self)
+    }
+    
+    
 }
 
 
