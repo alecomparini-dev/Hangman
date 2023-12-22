@@ -8,7 +8,7 @@ import Presenter
 
 
 class HomeCoordinator: Coordinator {
-    var childCoordinator: Coordinator?
+    var coordinator: Coordinator?
     unowned let navigationController: NavigationController
     var dataTransfer: Any?
     
@@ -17,7 +17,7 @@ class HomeCoordinator: Coordinator {
     }
     
     func start() {
-        childCoordinator = self
+        coordinator = self
         var controller = HomeViewControllerFactory.make()
         controller.setDataTransfer(dataTransfer)
         controller = navigationController.pushViewController(controller)
@@ -37,15 +37,15 @@ class HomeCoordinator: Coordinator {
 extension HomeCoordinator: HomeViewControllerCoordinator {
     
     func gotoHomeNextWord(_ dataTransfer: DataTransferDTO) {
-        let coordinator = HomeCoordinator(navigationController)
-        coordinator.dataTransfer = dataTransfer
-        coordinator.start()
-        childCoordinator = nil
+        let homeCoordinator = HomeCoordinator(navigationController)
+        homeCoordinator.dataTransfer = dataTransfer
+        homeCoordinator.start()
+        coordinator = nil
     }
     
     func gotoTips(_ word: WordPresenterDTO?) {
-        let coordinator = TipsCoordinator(navigationController)
-        coordinator.dataTransfer = word
-        coordinator.start()
+        let tipsCoordinator = TipsCoordinator(navigationController)
+        tipsCoordinator.dataTransfer = word
+        tipsCoordinator.start()
     }
 }

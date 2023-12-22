@@ -63,6 +63,12 @@ class CardTipsViewCell: UIView {
                     .setWidth.equalToConstant(50)
                     .setHeight.equalToConstant(50)
             }
+            .setActions { build in
+                build
+                    .setTap ({ component, tapGesture in
+                        print("clicou aqui que se exploda")
+                    })
+            }
         return comp
     }()
     
@@ -118,6 +124,12 @@ class CardTipsViewCell: UIView {
                 build
                     .setTop.setTrailing.setBottom.equalTo(backgroundView.get, 16)
                     .setLeading.equalTo(tipLabel.get, .leading)
+            }
+            .setActions { build in
+                build
+                    .setTap ({ component, tapGesture in
+                        print("clicou aqui que se exploda")
+                    })
             }
         return comp
     }()

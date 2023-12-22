@@ -6,7 +6,13 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
+protocol TipsViewDelegate: AnyObject {
+    func downButtonTapped()
+}
+
 class TipsView: UIView {
+    weak var delegate: TipsViewDelegate?
+    
     var cardsTipsHeightAnchor: NSLayoutConstraint?
     
     init() {
@@ -40,11 +46,26 @@ class TipsView: UIView {
         return comp
     }()
 
+    lazy var handImage: ImageViewBuilder = {
+        let img = UIImage(systemName: "hand.tap.fill")
+        let comp = ImageViewBuilder(img)
+            .setTintColor(Theme.shared.currentTheme.onSecondary)
+            .setContentMode(.center)
+            .setSize(18)
+            .setConstraints { build in
+                build
+                    .setVerticalAlignmentY.equalTo(titleTipLabel.get, -4)
+                    .setLeading.equalTo(titleTipLabel.get, .leading, 78)
+            }
+        return comp
+    }()
+    
+    
     lazy var titleTipLabel: LabelBuilder = {
         let comp = LabelBuilder()
             .setTextAttributed({ build in
                 build
-                    .setText(text: "Selecione uma")
+                    .setText(text: "Selecione      uma")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
                     .setText(text: " dica")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 20, weight: .bold))
@@ -71,13 +92,19 @@ class TipsView: UIView {
                     .setTrailing.equalToSafeArea(-16)
                     .setSize.equalToConstant(40)
             }
+            .setActions { build in
+                build
+                    .setTap { [weak self] component, tapGesture in
+                        self?.delegate?.downButtonTapped()
+                    }
+            }
         return comp
     }()
 
     lazy var cardsTipsDock: DockBuilder = {
         let comp = DockBuilder()
             .setBackgroundColor(.clear)
-            .setDisableUserInteraction(true)
+//            .setDisableUserInteraction(true)
             .setCellsSize(CGSize(width: 345, height: 100))
             .setScrollDirection(.vertical)
             .setShowsVerticalScrollIndicator(false)
@@ -106,6 +133,7 @@ class TipsView: UIView {
     private func addElements() {
         backgroundView.add(insideTo: self)
         titleTipLabel.add(insideTo: self)
+        handImage.add(insideTo: self)
         downButton.add(insideTo: self)
         cardsTipsDock.add(insideTo: self)
     }
@@ -113,6 +141,7 @@ class TipsView: UIView {
     private func configConstraints() {
         backgroundView.applyConstraint()
         titleTipLabel.applyConstraint()
+        handImage.applyConstraint()
         downButton.applyConstraint()
         cardsTipsDock.applyConstraint()
     }
