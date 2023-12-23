@@ -98,7 +98,6 @@ public class TipsViewController: UIViewController {
 extension TipsViewController: TipsViewDelegate {
     
     func downButtonTapped() {
-        print("clicou nessa merda só que agora na porra do sei lá o que")
         coordinator?.gotoHome(self)
     }
     
@@ -126,11 +125,23 @@ extension TipsViewController: DockDelegate {
     }
     
     public func cellCallback(_ dockBuilder: DockBuilder, _ index: Int) -> UIView {
-        return CardTipsViewCell(word?.tips?[index] ?? "")
+        let cardTipsViewCell = CardTipsViewCell(word?.tips?[index] ?? "")
+        cardTipsViewCell.delegate = self
+        return cardTipsViewCell
     }
     
     public func customCellActiveCallback(_ dockBuilder: DockBuilder, _ cell: UIView) -> UIView? {
         return nil
     }
+    
+}
+
+//  MARK: - EXTENSION - CardTipsViewCellDelegate
+extension TipsViewController: CardTipsViewCellDelegate {
+    
+    func openTip(_ cardTipsViewCell: CardTipsViewCell) {
+        
+    }
+    
     
 }

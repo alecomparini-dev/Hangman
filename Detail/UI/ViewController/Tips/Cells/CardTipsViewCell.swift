@@ -6,7 +6,12 @@ import CustomComponentsSDK
 import Handler
 import Presenter
 
+protocol CardTipsViewCellDelegate: AnyObject {
+    func openTip(_ cardTipsViewCell: CardTipsViewCell)
+}
+
 class CardTipsViewCell: UIView {
+    weak var delegate: CardTipsViewCellDelegate?
     
     private let word: String
     
@@ -19,7 +24,7 @@ class CardTipsViewCell: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
 //  MARK: - LAZY AREA
     lazy var backgroundView: ViewBuilder = {
@@ -65,8 +70,9 @@ class CardTipsViewCell: UIView {
             }
             .setActions { build in
                 build
-                    .setTap ({ component, tapGesture in
-                        print("clicou aqui que se exploda")
+                    .setTap ({ [weak self] component, tapGesture in
+                        guard let self else {return}
+                        delegate?.openTip(self)
                     })
             }
         return comp
@@ -127,8 +133,9 @@ class CardTipsViewCell: UIView {
             }
             .setActions { build in
                 build
-                    .setTap ({ component, tapGesture in
-                        print("clicou aqui que se exploda")
+                    .setTap ({ [weak self] component, tapGesture in
+                        guard let self else {return}
+                        delegate?.openTip(self)
                     })
             }
         return comp

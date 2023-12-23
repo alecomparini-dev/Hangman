@@ -382,11 +382,11 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     public func nextWordIsOver(title: String, message: String) {
-        print(message)
+        print(#function,message)
     }
     
     public func errorFetchNextWords(title: String, message: String) {
-        print(message)
+        print(#function,message)
     }
     
     
