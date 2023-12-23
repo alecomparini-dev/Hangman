@@ -29,12 +29,8 @@ class TipsView: UIView {
     
     lazy var backgroundView: ViewBuilder = {
         let comp = ViewBuilder()
-//            .setBackgroundColor(Theme.shared.currentTheme.secondary.adjustBrightness(50))
             .setGradient({ build in
                 build
-//                    .setGradientColors(Theme.shared.currentTheme.backgroundColorGradient)
-//                    .setAxialGradient(.leftTopToRightBottom)
-//                    .setAxialGradient(.rightBottomToLeftTop)
                     .setAxialGradient(.rightToLeft)
                     .setReferenceColor(Theme.shared.currentTheme.secondary, percentageGradient: 80)
                     .apply(size: CurrentWindow.get?.frame.size ?? CGSize())
@@ -51,11 +47,11 @@ class TipsView: UIView {
         let comp = ImageViewBuilder(img)
             .setTintColor(Theme.shared.currentTheme.onSecondary)
             .setContentMode(.center)
-            .setSize(18)
+            .setSize(16)
             .setConstraints { build in
                 build
-                    .setVerticalAlignmentY.equalTo(titleTipLabel.get, -4)
-                    .setLeading.equalTo(titleTipLabel.get, .leading, 78)
+                    .setVerticalAlignmentY.equalTo(titleTipLabel.get)
+                    .setLeading.equalTo(titleTipLabel.get, .leading, 79)
             }
         return comp
     }()
@@ -104,7 +100,7 @@ class TipsView: UIView {
     lazy var cardsTipsDock: DockBuilder = {
         let comp = DockBuilder()
             .setBackgroundColor(.clear)
-//            .setDisableUserInteraction(true)
+            .setDisableUserInteraction(true)
             .setCellsSize(CGSize(width: 345, height: 100))
             .setScrollDirection(.vertical)
             .setShowsVerticalScrollIndicator(false)
