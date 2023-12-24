@@ -101,7 +101,7 @@ class TipsView: UIView {
         let comp = DockBuilder()
             .setBackgroundColor(.clear)
             .setDisableUserInteraction(true)
-            .setCellsSize(CGSize(width: 345, height: 100))
+            .setCellsSize(CGSize(width: 350, height: 100))
             .setScrollDirection(.vertical)
             .setShowsVerticalScrollIndicator(false)
             .setMinimumLineSpacing(8)
