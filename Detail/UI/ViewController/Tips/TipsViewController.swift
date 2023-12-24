@@ -3,6 +3,7 @@
 
 import UIKit
 import CustomComponentsSDK
+import Handler
 import Presenter
 
 public protocol TipsViewControllerCoordinator: AnyObject {
@@ -90,6 +91,56 @@ public class TipsViewController: UIViewController {
                 .setScrollingExpandsWhenScrolledToEdge(false)
         })
     }
+    
+    private func setOpenedTipViewCell(_ card: CardTipsViewCell) {
+        card.imageTip.setImage(systemName: K.Images.tip)
+        
+        card.lockedImageTip.setHidden(true)
+
+        card.tipImageView.get.removeNeumorphism()
+        
+        card.tipImageView.setBackgroundColor(Theme.shared.currentTheme.secondary)
+        
+        card.tipImageView
+            .setBorder { build in
+                build
+                    .setColor(Theme.shared.currentTheme.primary)
+                    .setWidth(1)
+            }
+        
+        let shadow = ShadowBuilder(card.tipImageView.get)
+            .setColor(Theme.shared.currentTheme.primary)
+            .setRadius(6)
+            .setOffset(width: 0, height: 0)
+            .setOpacity(1)
+            .apply()
+        
+        let interaction = ButtonInteractionBuilder(component: card.tipImageView.get)
+            .setShadowPressed(shadow)
+        interaction.pressed
+        
+        let x = card.blurHideTip.get.get.layer.frame.maxX
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseIn , animations: {
+            card.blurHideTip.get.get.layer.frame.size.width = 0
+            card.blurHideTip.get.get.layer.frame.origin.x = x
+        })
+        
+        card.minusOneLabel.setAlpha(1)
+        let minusY = card.minusOneLabel.get.layer.frame.origin.y - 24
+        let minusX = card.minusOneLabel.get.layer.frame.origin.x + 20
+        UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut , animations: {
+            card.minusOneLabel.get.layer.frame.origin.y = minusY
+            card.minusOneLabel.get.layer.frame.origin.x = minusX
+            card.minusOneLabel.get.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }) { _ in
+            UIView.animate(withDuration: 0.5) {
+                card.minusOneLabel.get.transform = .identity
+                card.minusOneLabel.get.alpha = 0
+            }
+        }
+            
+
+    }
 
 }
 
@@ -140,7 +191,7 @@ extension TipsViewController: DockDelegate {
 extension TipsViewController: CardTipsViewCellDelegate {
     
     func openTip(_ cardTipsViewCell: CardTipsViewCell) {
-        
+        setOpenedTipViewCell(cardTipsViewCell)
     }
     
     

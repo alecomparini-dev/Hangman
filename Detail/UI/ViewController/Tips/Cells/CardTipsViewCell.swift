@@ -64,7 +64,7 @@ class CardTipsViewCell: UIView {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setLeading.equalTo(backgroundView.get, .leading)
+                    .setLeading.equalTo(backgroundView.get, .leading, 8)
                     .setWidth.equalToConstant(50)
                     .setHeight.equalToConstant(50)
             }
@@ -109,6 +109,7 @@ class CardTipsViewCell: UIView {
     lazy var tipLabel: LabelBuilder = {
         let comp = LabelBuilder(word)
             .setColor(.white)
+            .setWeight(.bold)
             .setSize(15)
             .setNumberOfLines(3)
             .setConstraints { build in
@@ -141,6 +142,19 @@ class CardTipsViewCell: UIView {
         return comp
     }()
     
+    lazy var minusOneLabel: LabelBuilder = {
+        let comp = LabelBuilder("-1")
+            .setAlpha(0)
+            .setColor(Theme.shared.currentTheme.onSurface)
+            .setWeight(.semibold)
+            .setSize(18)
+            .setConstraints { build in
+                build
+                    .setTop.setTrailing.equalTo(tipImageView.get)
+            }
+        return comp
+    }()
+    
     
 //  MARK: - PRIVATE AREA
     private func configure() {
@@ -155,6 +169,7 @@ class CardTipsViewCell: UIView {
         lockedImageTip.add(insideTo: tipImageView.get)
         tipLabel.add(insideTo: self)
         blurHideTip.add(insideTo: self)
+        minusOneLabel.add(insideTo: self)
     }
     
     private func configConstraints() {
@@ -164,5 +179,6 @@ class CardTipsViewCell: UIView {
         lockedImageTip.applyConstraint()
         tipLabel.applyConstraint()
         blurHideTip.applyConstraint()
+        minusOneLabel.applyConstraint()
     }
 }

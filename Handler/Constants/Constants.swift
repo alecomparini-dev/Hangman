@@ -1,7 +1,3 @@
-//
-//  Constants.swift
-//  Detail
-//
 //  Created by Alessandro Comparini on 14/11/23.
 //
 
