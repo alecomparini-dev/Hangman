@@ -129,9 +129,10 @@ public class TipsViewController: UIViewController {
         let minusY = card.minusOneLabel.get.layer.frame.origin.y - 24
         let minusX = card.minusOneLabel.get.layer.frame.origin.x + 20
         UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut , animations: {
+//            card.minusOneLabel.setAlpha(1)
             card.minusOneLabel.get.layer.frame.origin.y = minusY
             card.minusOneLabel.get.layer.frame.origin.x = minusX
-            card.minusOneLabel.get.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            card.minusOneLabel.get.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
         }) { _ in
             UIView.animate(withDuration: 0.5) {
                 card.minusOneLabel.get.transform = .identity
@@ -139,7 +140,6 @@ public class TipsViewController: UIViewController {
             }
         }
             
-
     }
 
 }
