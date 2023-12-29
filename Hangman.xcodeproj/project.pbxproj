@@ -95,6 +95,7 @@
 		0290B63D2B0685D4000667E5 /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0290B6422B06868F000667E5 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
 		0290B64C2B06AC28000667E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */; };
+		0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 		02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */; };
 		02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB492B04057600991633 /* HangmanWordView.swift */; };
@@ -319,6 +320,7 @@
 		0274EB0E2B16967C00C40EFA /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		0279268C2B0FD1B200035BCF /* Handler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Handler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterOutput.swift; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
 		02C4AB3A2B03C65800991633 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanKeyboardView.swift; sourceTree = "<group>"; };
@@ -1075,6 +1077,7 @@
 				020216582B0B9C42003E2B07 /* DTO */,
 				02C4AB682B04F32A00991633 /* Impl */,
 				02C4AB662B04F2A200991633 /* HomePresenter.swift */,
+				0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */,
 			);
 			path = HomePresenter;
 			sourceTree = "<group>";
@@ -1600,6 +1603,7 @@
 				02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */,
 				021B63162B1133E4002498DA /* DataTransferDTO.swift in Sources */,
 				02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */,
+				0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */,
 				021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

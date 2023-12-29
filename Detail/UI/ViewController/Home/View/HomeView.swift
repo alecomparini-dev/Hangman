@@ -99,10 +99,17 @@ class HomeView: UIView {
             .setSize(20)
             .setColor(Theme.shared.currentTheme.onSurface)
             .setTextAlignment(.center)
+            .setSkeleton({ build in
+                build
+                    .setCornerRadius(8)
+                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
+            })
             .setConstraints { build in
                 build
                     .setTop.equalToSafeArea(4)
-                    .setLeading.setTrailing.equalToSuperView(16)
+                    .setHorizontalAlignmentX.equalToSuperView
+                    .setHeight.equalToConstant(30)
+                    .setWidth.greaterThanOrEqualToConstant(180)
             }
         return comp
     }()
@@ -124,6 +131,12 @@ class HomeView: UIView {
             .setSize(14)
             .setNumberOfLines(2)
             .setTextAlignment(.center)
+            .setSkeleton({ build in
+                build
+                    .setCornerRadius(8)
+                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
+                    .setPadding(top: 12, left: 8, bottom: 8, rigth: 8)
+            })
             .setConstraints { build in
                 build
                     .setPin.equalToSuperView
@@ -141,6 +154,10 @@ class HomeView: UIView {
             .setBorder { build in
                 build.setCornerRadius(8)
             }
+            .setSkeleton({ build in
+                build
+                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerLow.adjustBrightness(30))
+            })
             .setConstraints { build in
                 build
                     .setBottom.equalTo(stackView.keyboardToStack.get, .top, -8)
@@ -149,9 +166,13 @@ class HomeView: UIView {
             }
         return view
     }()
-    
+
     lazy var quantityLettersView: QuantityLettersView = {
         let comp = QuantityLettersView(hangmanWordView.get)
+            .setSkeleton({ build in
+                build
+                    .setColorSkeleton(Theme.shared.currentTheme.tertiary)
+            })
         return comp
     }()
     
@@ -178,6 +199,7 @@ class HomeView: UIView {
     private func configure() {
         addElements()
         configConstraints()
+        configShowSkeleton()
     }
     
     private func addElements() {
@@ -209,6 +231,13 @@ class HomeView: UIView {
         initialQuestionLabel.applyConstraint()
         configGallowsWordViewContraints()
         gallowsKeyboardView.applyConstraint()
+    }
+    
+    private func configShowSkeleton() {
+        categoryLabel.skeleton?.showSkeleton()
+        initialQuestionLabel.skeleton?.showSkeleton()
+        hangmanWordView.skeleton?.showSkeleton()
+        quantityLettersView.skeleton?.showSkeleton()
     }
     
     private func addGallowsView() {
