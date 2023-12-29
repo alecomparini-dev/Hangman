@@ -227,6 +227,7 @@ public class HomeViewController: UIViewController {
                 guard let self else {return}
                 configLetterForAnimation(letter, color)
             }
+            
             duration += K.Animation.Duration.increment
         }
     }
@@ -268,6 +269,12 @@ public class HomeViewController: UIViewController {
         AnimationHandler.rotation(component: screen.gallowsView.headImage.get, rotationAngle: 75, delay: 0.6)
     }
     
+    private func hideSkeleton() {
+        screen.categoryLabel.skeleton?.hideSkeleton()
+        screen.initialQuestionLabel.skeleton?.hideSkeleton()
+        screen.hangmanWordView.skeleton?.hideSkeleton()
+        screen.quantityLettersView.skeleton?.hideSkeleton()
+    }
 }
 
 
@@ -288,7 +295,7 @@ extension HomeViewController: HangmanViewDelegate {
 
 extension HomeViewController: ScoreViewDelegate {
     func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        
+        debugPrint("Open Suspend MenuLife")
     }
     
     func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
@@ -296,7 +303,7 @@ extension HomeViewController: ScoreViewDelegate {
     }
     
     func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        
+        debugPrint("Open Suspend MenuRevealLetter")
     }
     
     
@@ -378,15 +385,24 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     public func successFetchNextWord(word: WordPresenterDTO?) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+            self?.hideSkeleton()
+        })
         configNextWord(word)
     }
     
     public func nextWordIsOver(title: String, message: String) {
-        print(#function,message)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     public func errorFetchNextWords(title: String, message: String) {
-        print(#function,message)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     
