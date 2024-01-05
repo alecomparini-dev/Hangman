@@ -6,10 +6,10 @@ import CustomComponentsSDK
 
 class PainelGallowsView: ViewBuilder {
     
-    private let scoreView: UIView
+    private let gamePainelView: UIView
     
-    init(_ scoreView: UIView) {
-        self.scoreView = scoreView
+    init(_ gamePainelView: UIView) {
+        self.gamePainelView = gamePainelView
         super.init()
         configure()
     }
@@ -55,8 +55,8 @@ class PainelGallowsView: ViewBuilder {
         self
             .setConstraints { build in
                 build
-                    .setTop.equalTo(scoreView, .bottom)
-                    .setLeading.setTrailing.equalTo(scoreView)
+                    .setTop.equalTo(gamePainelView, .bottom)
+                    .setLeading.setTrailing.equalTo(gamePainelView)
                     .setBottom.equalToSafeArea
             }
     }

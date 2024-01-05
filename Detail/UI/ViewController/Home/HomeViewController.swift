@@ -74,7 +74,7 @@ public class HomeViewController: UIViewController {
     
     private func configDelegate() {
         screen.delegate = self
-        screen.scoreView.delegate = self
+        screen.gamePainelView.delegate = self
         screen.gallowsKeyboardView.delegate = self
         homePresenter.delegateOutput = self
     }
@@ -291,9 +291,9 @@ extension HomeViewController: HangmanViewDelegate {
 }
 
 
-//  MARK: - EXTENSION - ScoreViewDelegate
+//  MARK: - EXTENSION - GamePainelViewDelegate
 
-extension HomeViewController: ScoreViewDelegate {
+extension HomeViewController: GamePainelViewDelegate {
     func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
         debugPrint("Open Suspend MenuLife")
     }

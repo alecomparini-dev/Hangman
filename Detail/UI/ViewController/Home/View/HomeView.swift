@@ -49,8 +49,8 @@ class HomeView: UIView {
         return comp
     }()
     
-    lazy var scoreView: ScoreView = {
-        let comp = ScoreView()
+    lazy var gamePainelView: GamePainelView = {
+        let comp = GamePainelView()
             .setConstraints { build in
                 build
                     .setPinTop.equalToSafeArea
@@ -60,7 +60,7 @@ class HomeView: UIView {
     }()
     
     lazy var painelGallowsView: PainelGallowsView = {
-        let comp = PainelGallowsView(scoreView.get)
+        let comp = PainelGallowsView(gamePainelView.get)
         return comp
     }()
     
@@ -216,7 +216,7 @@ class HomeView: UIView {
     
     private func addStackViewElements() {
         stackView.add(insideTo: self)
-        scoreView.add(insideTo: stackView.gallowsToStack.get)
+        gamePainelView.add(insideTo: stackView.gallowsToStack.get)
         painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
     }
     
@@ -250,7 +250,7 @@ class HomeView: UIView {
     }
     
     private func configStackViewConstraints() {
-        scoreView.applyConstraint()
+        gamePainelView.applyConstraint()
         painelGallowsView.applyConstraint()
         stackView.gallowsToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.40).isActive = true
         stackView.wordsToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.24).isActive = true

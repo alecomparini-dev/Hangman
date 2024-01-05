@@ -109,7 +109,7 @@
 		02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */; };
 		02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E02B2A7F46009C546A /* QuantityLettersView.swift */; };
 		02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E22B2A81F8009C546A /* PainelGallowsView.swift */; };
-		02C500E82B2B4575009C546A /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E72B2B4575009C546A /* ScoreView.swift */; };
+		02C500E82B2B4575009C546A /* GamePainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E72B2B4575009C546A /* GamePainelView.swift */; };
 		02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EA2B2B5561009C546A /* CountLifeView.swift */; };
 		02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* CountTipsView.swift */; };
 		02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */; };
@@ -338,7 +338,7 @@
 		02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCoordinator.swift; sourceTree = "<group>"; };
 		02C500E02B2A7F46009C546A /* QuantityLettersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityLettersView.swift; sourceTree = "<group>"; };
 		02C500E22B2A81F8009C546A /* PainelGallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainelGallowsView.swift; sourceTree = "<group>"; };
-		02C500E72B2B4575009C546A /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		02C500E72B2B4575009C546A /* GamePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePainelView.swift; sourceTree = "<group>"; };
 		02C500EA2B2B5561009C546A /* CountLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLifeView.swift; sourceTree = "<group>"; };
 		02C500EC2B2B5CDB009C546A /* CountTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTipsView.swift; sourceTree = "<group>"; };
 		02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountRevealLetterView.swift; sourceTree = "<group>"; };
@@ -1017,10 +1017,18 @@
 			path = Handler;
 			sourceTree = "<group>";
 		};
+		0293A8C02B48902200E7730C /* DropdownLife */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DropdownLife;
+			sourceTree = "<group>";
+		};
 		02C4AB342B03B5AD00991633 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				02C500E52B2B44BB009C546A /* ScoreView */,
+				0293A8C02B48902200E7730C /* DropdownLife */,
+				02C500E52B2B44BB009C546A /* GamePainelView */,
 				02C4AB352B03B5B400991633 /* GallowsView */,
 				02C4AB482B04052000991633 /* HangmanWordView */,
 				02C4AB3C2B03D94900991633 /* HangmanKeyboardView */,
@@ -1134,13 +1142,13 @@
 			path = ComponentsView;
 			sourceTree = "<group>";
 		};
-		02C500E52B2B44BB009C546A /* ScoreView */ = {
+		02C500E52B2B44BB009C546A /* GamePainelView */ = {
 			isa = PBXGroup;
 			children = (
 				02C500E92B2B5537009C546A /* ComponentsView */,
-				02C500E72B2B4575009C546A /* ScoreView.swift */,
+				02C500E72B2B4575009C546A /* GamePainelView.swift */,
 			);
-			path = ScoreView;
+			path = GamePainelView;
 			sourceTree = "<group>";
 		};
 		02C500E62B2B454C009C546A /* TipsPresenter */ = {
@@ -1562,7 +1570,7 @@
 				02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */,
 				026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
-				02C500E82B2B4575009C546A /* ScoreView.swift in Sources */,
+				02C500E82B2B4575009C546A /* GamePainelView.swift in Sources */,
 				026939352B0A41B90023073B /* HangmanAuthenticationSDK.swift in Sources */,
 				02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */,
 			);

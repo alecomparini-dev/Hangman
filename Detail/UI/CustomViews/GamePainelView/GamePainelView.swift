@@ -7,15 +7,15 @@ import CustomComponentsSDK
 import Handler
 
 
-protocol ScoreViewDelegate: AnyObject {
+protocol GamePainelViewDelegate: AnyObject {
     func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
     func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
     func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
 }
 
 
-class ScoreView: ViewBuilder {
-    weak var delegate: ScoreViewDelegate?
+class GamePainelView: ViewBuilder {
+    weak var delegate: GamePainelViewDelegate?
     
     override init() {
         super.init(frame: .zero)
