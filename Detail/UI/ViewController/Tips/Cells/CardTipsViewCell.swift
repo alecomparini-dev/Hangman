@@ -122,7 +122,7 @@ class CardTipsViewCell: UIView {
     }()
 
     lazy var blurHideTip: BlurBuilder = {
-        let comp = BlurBuilder(style: .regular)
+        let comp = BlurBuilder(style: .light)
             .setBorder({ build in
                 build
                     .setCornerRadius(8)
