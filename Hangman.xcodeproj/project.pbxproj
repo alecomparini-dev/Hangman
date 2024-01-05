@@ -96,6 +96,8 @@
 		0290B6422B06868F000667E5 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
 		0290B64C2B06AC28000667E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */; };
 		0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */; };
+		0293A8BD2B4869FC00E7730C /* LoadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */; };
+		0293A8BF2B486C7900E7730C /* LoadScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 		02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */; };
 		02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB492B04057600991633 /* HangmanWordView.swift */; };
@@ -321,6 +323,8 @@
 		0279268C2B0FD1B200035BCF /* Handler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Handler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterOutput.swift; sourceTree = "<group>"; };
+		0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadScreenViewController.swift; path = ../../../MentoriaCodandoComMoa/Mentoria/Resources/LoadScreenViewController.swift; sourceTree = "<group>"; };
+		0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadScreenCoordinator.swift; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
 		02C4AB3A2B03C65800991633 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanKeyboardView.swift; sourceTree = "<group>"; };
@@ -572,13 +576,6 @@
 			path = DollsUseCases;
 			sourceTree = "<group>";
 		};
-		0235E5C42B14CB3700829489 /* GetDollsUseCase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GetDollsUseCase;
-			sourceTree = "<group>";
-		};
 		0235E5C52B14CBA600829489 /* GenericCountModelGateway */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,7 +665,6 @@
 				0235E5D92B14F55600829489 /* DTO */,
 				0235E5EC2B15024100829489 /* Interface */,
 				0235E5EA2B15020D00829489 /* GetDollsRandomUseCase */,
-				0235E5C42B14CB3700829489 /* GetDollsUseCase */,
 			);
 			path = GetDollsUseCases;
 			sourceTree = "<group>";
@@ -968,6 +964,7 @@
 				026B648B2B03A1ED00F6DD99 /* SceneDelegate.swift */,
 				026B64922B03A1EF00F6DD99 /* Assets.xcassets */,
 				026B64942B03A1EF00F6DD99 /* LaunchScreen.storyboard */,
+				0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */,
 				0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */,
 				026B64972B03A1EF00F6DD99 /* Info.plist */,
 			);
@@ -979,6 +976,7 @@
 			children = (
 				026B64A82B03A37800F6DD99 /* NavigationController */,
 				026B64A72B03A36D00F6DD99 /* Protocol */,
+				0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */,
 				026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */,
 				02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */,
 			);
@@ -1574,6 +1572,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0293A8BD2B4869FC00E7730C /* LoadScreenViewController.swift in Sources */,
+				0293A8BF2B486C7900E7730C /* LoadScreenCoordinator.swift in Sources */,
 				026B64AC2B03A3AF00F6DD99 /* Coordinator.swift in Sources */,
 				02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */,
 				026B648A2B03A1ED00F6DD99 /* AppDelegate.swift in Sources */,

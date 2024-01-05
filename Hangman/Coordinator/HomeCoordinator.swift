@@ -26,7 +26,7 @@ class HomeCoordinator: Coordinator {
     }
  
     private func removeLastViewController() {
-        navigationController.viewControllers = Array(navigationController.viewControllers.dropFirst(navigationController.viewControllers.count - 1))
+        navigationController.viewControllers = Array(navigationController.viewControllers.dropFirst(1))
     }
     
 }
