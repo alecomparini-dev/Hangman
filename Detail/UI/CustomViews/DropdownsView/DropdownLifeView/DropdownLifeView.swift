@@ -16,10 +16,10 @@ class DropdownLifeView: ViewBuilder {
 //  MARK: - LAZY AREA
     
     lazy var overlay: BlurBuilder = {
-        let overlay = BlurBuilder(style: .extraLight)
+        let overlay = BlurBuilder(style: .dark)
             .setConstraints { build in
                 build
-                    .setPin.equalToSafeArea
+                    .setPin.equalTo(self.get)
             }
         return overlay
     }()

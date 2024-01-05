@@ -59,6 +59,16 @@ class HomeView: UIView {
         return comp
     }()
     
+    lazy var dropdownLifeView: DropdownLifeView = {
+        let comp = DropdownLifeView()
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(gamePainelView.get, .bottom, 4)
+                    .setPinBottom.equalToSuperView
+            }
+        return comp
+    }()
+    
     lazy var painelGallowsView: PainelGallowsView = {
         let comp = PainelGallowsView(gamePainelView.get)
         return comp
@@ -204,26 +214,24 @@ class HomeView: UIView {
     
     private func addElements() {
         backgroundView.add(insideTo: self)
-        addStackViewElements()
-        addGallowsView()
+        stackView.add(insideTo: self)
+        gamePainelView.add(insideTo: stackView.gallowsToStack.get)
+        painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
+        gallowsView.add(insideTo: painelGallowsView.painelView.get)
         nextWordButton.add(insideTo: self)
         categoryLabel.add(insideTo: stackView.wordsToStack.get)
         initialQuestionView.add(insideTo: stackView.wordsToStack.get)
         initialQuestionLabel.add(insideTo: initialQuestionView.get)
         addGallowsWordView()
         gallowsKeyboardView.add(insideTo: stackView.keyboardToStack.get)
-    }
-    
-    private func addStackViewElements() {
-        stackView.add(insideTo: self)
-        gamePainelView.add(insideTo: stackView.gallowsToStack.get)
-        painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
+        dropdownLifeView.add(insideTo: self)
     }
     
     private func configConstraints() {
         backgroundView.applyConstraint()
         configStackViewConstraints()
         painelGallowsView.applyConstraint()
+        dropdownLifeView.applyConstraint()
         gallowsView.applyConstraint()
         nextWordButton.applyConstraint()
         categoryLabel.applyConstraint()
@@ -240,9 +248,6 @@ class HomeView: UIView {
         quantityLettersView.skeleton?.showSkeleton()
     }
     
-    private func addGallowsView() {
-        gallowsView.add(insideTo: painelGallowsView.painelView.get)
-    }
     
     private func addGallowsWordView() {
         hangmanWordView.add(insideTo: stackView.wordsToStack.get)
