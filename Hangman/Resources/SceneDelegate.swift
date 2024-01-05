@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         win.rootViewController = nav
         win.makeKeyAndVisible()
         window = win
-        let coordinator = HomeCoordinator(nav)
+        let coordinator = LoadScreenCoordinator(nav)
         coordinator.start()
     }
 

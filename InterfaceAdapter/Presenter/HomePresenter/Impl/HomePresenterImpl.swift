@@ -177,7 +177,6 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func checkEndGame() {
-
         if isEndGameFailure() {
             revealLetterEndGame(indexesEndGameToReveal())
             revealDollEndGameFailure()
