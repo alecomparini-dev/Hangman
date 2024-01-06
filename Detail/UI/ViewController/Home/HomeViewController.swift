@@ -76,6 +76,8 @@ public class HomeViewController: UIViewController {
         screen.delegate = self
         screen.gamePainelView.delegate = self
         screen.gallowsKeyboardView.delegate = self
+        screen.dropdownLifeView.delegate = self
+        screen.dropdownRevealLetterView.delegate = self
         homePresenter.delegateOutput = self
     }
     
@@ -275,6 +277,18 @@ public class HomeViewController: UIViewController {
         screen.hangmanWordView.skeleton?.hideSkeleton()
         screen.quantityLettersView.skeleton?.hideSkeleton()
     }
+    
+    private func setHideDropdownAnimation(dropdown: UIView, _ flag: Bool) {
+        UIView.animate(withDuration: 0.3, animations: {
+            dropdown.alpha = flag ? 0 : 1
+        })
+    }
+    
+    private func toggleDropdown(dropdown: UIView) {
+        setHideDropdownAnimation(dropdown: dropdown, !(dropdown.alpha == 0.0))
+    }
+    
+    
 }
 
 
@@ -295,17 +309,42 @@ extension HomeViewController: HangmanViewDelegate {
 
 extension HomeViewController: GamePainelViewDelegate {
     func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        debugPrint("Open Suspend MenuLife")
+        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get, true)
+        toggleDropdown(dropdown: screen.dropdownLifeView.get)
     }
     
     func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get, true)
+        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get, true)
         coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     
     func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        debugPrint("Open Suspend MenuRevealLetter")
+        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get, true)
+        toggleDropdown(dropdown: screen.dropdownRevealLetterView.get)
     }
     
+    
+}
+
+
+
+//  MARK: - EXTENSION - DropdownLifeViewDelegate
+extension HomeViewController: DropdownLifeViewDelegate {
+    
+    func closeDropDown() {
+        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get , true)
+    }
+    
+}
+
+
+//  MARK: - EXTENSION - DropdownRevealLetterViewDelegate
+extension HomeViewController: DropdownRevealLetterViewDelegate {
+    
+    func closeDropDownRevealLetter() {
+        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get , true)
+    }
     
 }
 

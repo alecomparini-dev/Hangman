@@ -59,18 +59,30 @@ class HomeView: UIView {
         return comp
     }()
     
+    lazy var painelGallowsView: PainelGallowsView = {
+        let comp = PainelGallowsView(gamePainelView.get)
+        return comp
+    }()
+    
     lazy var dropdownLifeView: DropdownLifeView = {
         let comp = DropdownLifeView()
+            .setAlpha(0)
             .setConstraints { build in
                 build
-                    .setTop.equalTo(gamePainelView.get, .bottom, 4)
+                    .setTop.equalTo(gamePainelView.get, .bottom)
                     .setPinBottom.equalToSuperView
             }
         return comp
     }()
     
-    lazy var painelGallowsView: PainelGallowsView = {
-        let comp = PainelGallowsView(gamePainelView.get)
+    lazy var dropdownRevealLetterView: DropdownRevealLetterView = {
+        let comp = DropdownRevealLetterView()
+            .setAlpha(0)
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(gamePainelView.get, .bottom)
+                    .setPinBottom.equalToSuperView
+            }
         return comp
     }()
     
@@ -225,6 +237,8 @@ class HomeView: UIView {
         addGallowsWordView()
         gallowsKeyboardView.add(insideTo: stackView.keyboardToStack.get)
         dropdownLifeView.add(insideTo: self)
+        dropdownRevealLetterView.add(insideTo: self)
+
     }
     
     private func configConstraints() {
@@ -232,6 +246,7 @@ class HomeView: UIView {
         configStackViewConstraints()
         painelGallowsView.applyConstraint()
         dropdownLifeView.applyConstraint()
+        dropdownRevealLetterView.applyConstraint()
         gallowsView.applyConstraint()
         nextWordButton.applyConstraint()
         categoryLabel.applyConstraint()

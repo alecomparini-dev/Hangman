@@ -28,6 +28,8 @@ public struct K {
         public static let nine = "9"
         public static let tips = "Dicas"
         public static let hifen = "-"
+        public static let life = "Vidas"
+        public static let revealLetter = "Revelar Letra"
     }
     
     public struct Service {
@@ -50,6 +52,7 @@ public struct K {
         public static let tipLocked = "lock.fill"
         public static let heartFill = "suit.heart.fill"
         public static let eyeFill = "eye.fill"
+        public static let triangleFill = "eject.fill"
     }
     
     public struct ExtraColor {

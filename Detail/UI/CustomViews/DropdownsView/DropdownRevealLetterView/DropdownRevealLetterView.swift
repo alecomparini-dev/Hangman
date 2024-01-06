@@ -6,12 +6,13 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-protocol DropdownLifeViewDelegate: AnyObject {
-    func closeDropDown()
+protocol DropdownRevealLetterViewDelegate: AnyObject {
+    func closeDropDownRevealLetter()
 }
 
-class DropdownLifeView: ViewBuilder {
-    weak var delegate: DropdownLifeViewDelegate?
+
+class DropdownRevealLetterView: ViewBuilder {
+    weak var delegate: DropdownRevealLetterViewDelegate?
     
     override init() {
         super.init()
@@ -30,7 +31,7 @@ class DropdownLifeView: ViewBuilder {
             .setActions { build in
                 build
                     .setTap { [weak self] component, tapGesture in
-                        self?.delegate?.closeDropDown()
+                        self?.delegate?.closeDropDownRevealLetter()
                     }
             }
         return overlay
@@ -44,7 +45,7 @@ class DropdownLifeView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setTop.equalTo(painelView.get, .top, -24)
-                    .setTrailing.equalTo(painelView.get, .trailing, -30)
+                    .setTrailing.equalTo(painelView.get, .trailing, -156)
             }
         return comp
     }()
@@ -79,7 +80,7 @@ class DropdownLifeView: ViewBuilder {
     }()
     
     lazy var titleLabel: LabelBuilder = {
-        let comp = LabelBuilder(K.String.life)
+        let comp = LabelBuilder(K.String.revealLetter)
             .setSize(22)
             .setColor(Theme.shared.currentTheme.onSurface)
             .setWeight(.semibold)
@@ -98,7 +99,7 @@ class DropdownLifeView: ViewBuilder {
         return comp
     }()
     
-    lazy var stackLifeHeart: StackViewBuilder = {
+    lazy var stackEyes: StackViewBuilder = {
         let comp = StackViewBuilder()
             .setAxis(.horizontal)
             .setSpacing(8)
@@ -113,7 +114,7 @@ class DropdownLifeView: ViewBuilder {
         return comp
     }()
     
-    lazy var restartLifeLabel: LabelBuilder = {
+    lazy var restartRevealLetterLabel: LabelBuilder = {
         let comp = LabelBuilder()
             .setColor(Theme.shared.currentTheme.onSurface)
             .setNumberOfLines(2)
@@ -122,9 +123,9 @@ class DropdownLifeView: ViewBuilder {
                 build
                     .setText(text: "As ")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
-                    .setText(text: "vidas ")
-                    .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.error.adjustBrightness(30))
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 22, weight: .light))
+                    .setText(text: "revelações ")
+                    .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.primary)
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17, weight: .light))
                     .setText(text: "reiniciam às ")
                     .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.onSurface)
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
@@ -135,7 +136,7 @@ class DropdownLifeView: ViewBuilder {
             }
             .setConstraints { build in
                 build
-                    .setTop.equalTo(stackLifeHeart.get, .bottom, 4)
+                    .setTop.equalTo(stackEyes.get, .bottom, 4)
                     .setLeading.setTrailing.equalTo(painelView.get, 4)
             }
         return comp
@@ -153,9 +154,9 @@ class DropdownLifeView: ViewBuilder {
         arrowUpImage.add(insideTo: self.get)
         painelView.add(insideTo: self.get)
         titleLabel.add(insideTo: painelView.get)
-        stackLifeHeart.add(insideTo: painelView.get)
-        addHeartImage()
-        restartLifeLabel.add(insideTo: painelView.get)
+        stackEyes.add(insideTo: painelView.get)
+        addEyeImage()
+        restartRevealLetterLabel.add(insideTo: painelView.get)
     }
     
     private func configConstraints() {
@@ -163,20 +164,20 @@ class DropdownLifeView: ViewBuilder {
         arrowUpImage.applyConstraint()
         painelView.applyConstraint()
         titleLabel.applyConstraint()
-        stackLifeHeart.applyConstraint()
-        restartLifeLabel.applyConstraint()
+        stackEyes.applyConstraint()
+        restartRevealLetterLabel.applyConstraint()
     }
     
-    private func addHeartImage() {
+    private func addEyeImage() {
         (0...4).forEach { _ in
-            let heart = makeHeartImage()
-            heart.add(insideTo: stackLifeHeart.get)
+            let heart = makeEyeImage()
+            heart.add(insideTo: stackEyes.get)
         }
     }
     
-    private func makeHeartImage() -> ImageViewBuilder {
-        return ImageViewBuilder(systemName: K.Images.heartFill)
-            .setSize(32)
+    private func makeEyeImage() -> ImageViewBuilder {
+        return ImageViewBuilder(systemName: K.Images.eyeFill)
+            .setSize(26)
             .setContentMode(.center)
             .setWeight(.bold)
             .setTintColor(Theme.shared.currentTheme.onSurfaceVariant)
