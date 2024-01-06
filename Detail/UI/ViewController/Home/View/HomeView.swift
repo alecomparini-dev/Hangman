@@ -49,8 +49,8 @@ class HomeView: UIView {
         return comp
     }()
     
-    lazy var scoreView: ScoreView = {
-        let comp = ScoreView()
+    lazy var gamePainelView: GamePainelView = {
+        let comp = GamePainelView()
             .setConstraints { build in
                 build
                     .setPinTop.equalToSafeArea
@@ -60,7 +60,29 @@ class HomeView: UIView {
     }()
     
     lazy var painelGallowsView: PainelGallowsView = {
-        let comp = PainelGallowsView(scoreView.get)
+        let comp = PainelGallowsView(gamePainelView.get)
+        return comp
+    }()
+    
+    lazy var dropdownLifeView: DropdownLifeView = {
+        let comp = DropdownLifeView()
+            .setAlpha(0)
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(gamePainelView.get, .bottom)
+                    .setPinBottom.equalToSuperView
+            }
+        return comp
+    }()
+    
+    lazy var dropdownRevealLetterView: DropdownRevealLetterView = {
+        let comp = DropdownRevealLetterView()
+            .setAlpha(0)
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(gamePainelView.get, .bottom)
+                    .setPinBottom.equalToSuperView
+            }
         return comp
     }()
     
@@ -204,26 +226,27 @@ class HomeView: UIView {
     
     private func addElements() {
         backgroundView.add(insideTo: self)
-        addStackViewElements()
-        addGallowsView()
+        stackView.add(insideTo: self)
+        gamePainelView.add(insideTo: stackView.gallowsToStack.get)
+        painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
+        gallowsView.add(insideTo: painelGallowsView.painelView.get)
         nextWordButton.add(insideTo: self)
         categoryLabel.add(insideTo: stackView.wordsToStack.get)
         initialQuestionView.add(insideTo: stackView.wordsToStack.get)
         initialQuestionLabel.add(insideTo: initialQuestionView.get)
         addGallowsWordView()
         gallowsKeyboardView.add(insideTo: stackView.keyboardToStack.get)
-    }
-    
-    private func addStackViewElements() {
-        stackView.add(insideTo: self)
-        scoreView.add(insideTo: stackView.gallowsToStack.get)
-        painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
+        dropdownLifeView.add(insideTo: self)
+        dropdownRevealLetterView.add(insideTo: self)
+
     }
     
     private func configConstraints() {
         backgroundView.applyConstraint()
         configStackViewConstraints()
         painelGallowsView.applyConstraint()
+        dropdownLifeView.applyConstraint()
+        dropdownRevealLetterView.applyConstraint()
         gallowsView.applyConstraint()
         nextWordButton.applyConstraint()
         categoryLabel.applyConstraint()
@@ -240,9 +263,6 @@ class HomeView: UIView {
         quantityLettersView.skeleton?.showSkeleton()
     }
     
-    private func addGallowsView() {
-        gallowsView.add(insideTo: painelGallowsView.painelView.get)
-    }
     
     private func addGallowsWordView() {
         hangmanWordView.add(insideTo: stackView.wordsToStack.get)
@@ -250,7 +270,7 @@ class HomeView: UIView {
     }
     
     private func configStackViewConstraints() {
-        scoreView.applyConstraint()
+        gamePainelView.applyConstraint()
         painelGallowsView.applyConstraint()
         stackView.gallowsToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.40).isActive = true
         stackView.wordsToStack.get.heightAnchor.constraint(equalTo: stackView.get.heightAnchor, multiplier: 0.24).isActive = true

@@ -32,6 +32,7 @@
 		022188DF2B16861300440761 /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		022188E52B1686F900440761 /* Detail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B64762B0389C900F6DD99 /* Detail.framework */; };
 		022188E62B1686F900440761 /* Detail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026B64762B0389C900F6DD99 /* Detail.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0222DDA02B48C47F009EE10C /* DropdownRevealLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DD9F2B48C47F009EE10C /* DropdownRevealLetterView.swift */; };
 		0235E5C22B14CA0900829489 /* Doll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5C12B14CA0900829489 /* Doll.swift */; };
 		0235E5CA2B14CC9800829489 /* GenericCountModelGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5C62B14CBE800829489 /* GenericCountModelGateway.swift */; };
 		0235E5CC2B14CCBB00829489 /* GenericCountModelGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5CB2B14CCBB00829489 /* GenericCountModelGateway.swift */; };
@@ -98,6 +99,7 @@
 		0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */; };
 		0293A8BD2B4869FC00E7730C /* LoadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */; };
 		0293A8BF2B486C7900E7730C /* LoadScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */; };
+		0293A8C42B4893EF00E7730C /* DropdownLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 		02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */; };
 		02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB492B04057600991633 /* HangmanWordView.swift */; };
@@ -109,7 +111,7 @@
 		02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */; };
 		02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E02B2A7F46009C546A /* QuantityLettersView.swift */; };
 		02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E22B2A81F8009C546A /* PainelGallowsView.swift */; };
-		02C500E82B2B4575009C546A /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E72B2B4575009C546A /* ScoreView.swift */; };
+		02C500E82B2B4575009C546A /* GamePainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E72B2B4575009C546A /* GamePainelView.swift */; };
 		02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EA2B2B5561009C546A /* CountLifeView.swift */; };
 		02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* CountTipsView.swift */; };
 		02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */; };
@@ -271,6 +273,7 @@
 		020216812B0C01DA003E2B07 /* SaveWordPlayedCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedCodable.swift; sourceTree = "<group>"; };
 		020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift; sourceTree = "<group>"; };
 		021B63142B11328E002498DA /* DataTransferDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDTO.swift; sourceTree = "<group>"; };
+		0222DD9F2B48C47F009EE10C /* DropdownRevealLetterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownRevealLetterView.swift; sourceTree = "<group>"; };
 		0235E5C12B14CA0900829489 /* Doll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doll.swift; sourceTree = "<group>"; };
 		0235E5C62B14CBE800829489 /* GenericCountModelGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCountModelGateway.swift; sourceTree = "<group>"; };
 		0235E5CB2B14CCBB00829489 /* GenericCountModelGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCountModelGateway.swift; sourceTree = "<group>"; };
@@ -325,6 +328,7 @@
 		0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterOutput.swift; sourceTree = "<group>"; };
 		0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadScreenViewController.swift; path = ../../../MentoriaCodandoComMoa/Mentoria/Resources/LoadScreenViewController.swift; sourceTree = "<group>"; };
 		0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadScreenCoordinator.swift; sourceTree = "<group>"; };
+		0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownLifeView.swift; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
 		02C4AB3A2B03C65800991633 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanKeyboardView.swift; sourceTree = "<group>"; };
@@ -338,7 +342,7 @@
 		02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCoordinator.swift; sourceTree = "<group>"; };
 		02C500E02B2A7F46009C546A /* QuantityLettersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityLettersView.swift; sourceTree = "<group>"; };
 		02C500E22B2A81F8009C546A /* PainelGallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainelGallowsView.swift; sourceTree = "<group>"; };
-		02C500E72B2B4575009C546A /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		02C500E72B2B4575009C546A /* GamePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePainelView.swift; sourceTree = "<group>"; };
 		02C500EA2B2B5561009C546A /* CountLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLifeView.swift; sourceTree = "<group>"; };
 		02C500EC2B2B5CDB009C546A /* CountTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTipsView.swift; sourceTree = "<group>"; };
 		02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountRevealLetterView.swift; sourceTree = "<group>"; };
@@ -1017,10 +1021,36 @@
 			path = Handler;
 			sourceTree = "<group>";
 		};
+		0293A8C02B48902200E7730C /* DropdownLifeView */ = {
+			isa = PBXGroup;
+			children = (
+				0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */,
+			);
+			path = DropdownLifeView;
+			sourceTree = "<group>";
+		};
+		0293A8C12B48936100E7730C /* DropdownRevealLetterView */ = {
+			isa = PBXGroup;
+			children = (
+				0222DD9F2B48C47F009EE10C /* DropdownRevealLetterView.swift */,
+			);
+			path = DropdownRevealLetterView;
+			sourceTree = "<group>";
+		};
+		0293A8C22B4893C300E7730C /* DropdownsView */ = {
+			isa = PBXGroup;
+			children = (
+				0293A8C02B48902200E7730C /* DropdownLifeView */,
+				0293A8C12B48936100E7730C /* DropdownRevealLetterView */,
+			);
+			path = DropdownsView;
+			sourceTree = "<group>";
+		};
 		02C4AB342B03B5AD00991633 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				02C500E52B2B44BB009C546A /* ScoreView */,
+				0293A8C22B4893C300E7730C /* DropdownsView */,
+				02C500E52B2B44BB009C546A /* GamePainelView */,
 				02C4AB352B03B5B400991633 /* GallowsView */,
 				02C4AB482B04052000991633 /* HangmanWordView */,
 				02C4AB3C2B03D94900991633 /* HangmanKeyboardView */,
@@ -1134,13 +1164,13 @@
 			path = ComponentsView;
 			sourceTree = "<group>";
 		};
-		02C500E52B2B44BB009C546A /* ScoreView */ = {
+		02C500E52B2B44BB009C546A /* GamePainelView */ = {
 			isa = PBXGroup;
 			children = (
 				02C500E92B2B5537009C546A /* ComponentsView */,
-				02C500E72B2B4575009C546A /* ScoreView.swift */,
+				02C500E72B2B4575009C546A /* GamePainelView.swift */,
 			);
-			path = ScoreView;
+			path = GamePainelView;
 			sourceTree = "<group>";
 		};
 		02C500E62B2B454C009C546A /* TipsPresenter */ = {
@@ -1547,6 +1577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				026938CD2B0908610023073B /* HangmanFirebaseDataStorageProvider.swift in Sources */,
+				0293A8C42B4893EF00E7730C /* DropdownLifeView.swift in Sources */,
 				026B64A12B03A29200F6DD99 /* HomeViewController.swift in Sources */,
 				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
 				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
@@ -1560,9 +1591,10 @@
 				02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */,
 				02FCA7072B30B53300B45892 /* CardTipsViewCell.swift in Sources */,
 				02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */,
+				0222DDA02B48C47F009EE10C /* DropdownRevealLetterView.swift in Sources */,
 				026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
-				02C500E82B2B4575009C546A /* ScoreView.swift in Sources */,
+				02C500E82B2B4575009C546A /* GamePainelView.swift in Sources */,
 				026939352B0A41B90023073B /* HangmanAuthenticationSDK.swift in Sources */,
 				02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */,
 			);

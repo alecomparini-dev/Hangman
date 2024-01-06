@@ -12,10 +12,6 @@ class CountLifeView: ViewBuilder {
         configure()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
 //  MARK: - LAZY AREA
     
@@ -59,7 +55,7 @@ class CountLifeView: ViewBuilder {
     }()
         
     
-//  MARK: - Title
+//  MARK: - PRIVATE AREA
     private func configure() {
         addElements()
         configConstraints()
