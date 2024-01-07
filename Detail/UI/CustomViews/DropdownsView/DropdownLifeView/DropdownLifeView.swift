@@ -73,16 +73,16 @@ class DropdownLifeView: ViewBuilder {
                     .setTop.equalTo(self.get, .top, 16)
                     .setLeading.equalTo(self.get, .leading, 40)
                     .setTrailing.equalTo(self.get, .trailing, -16)
-                    .setHeight.equalToConstant(250)
+                    .setHeight.equalToConstant(350)
             }
         return comp
     }()
     
     lazy var titleLabel: LabelBuilder = {
         let comp = LabelBuilder(K.String.life)
-            .setSize(22)
+            .setSize(26)
             .setColor(Theme.shared.currentTheme.onSurface)
-            .setWeight(.semibold)
+            .setWeight(.thin)
             .setShadow { build in
                 build
                     .setColor(Theme.shared.currentTheme.onPrimary)
@@ -106,9 +106,8 @@ class DropdownLifeView: ViewBuilder {
             .setDistribution(.equalSpacing)
             .setConstraints { build in
                 build
-                    .setTop.equalTo(titleLabel.get, .bottom, 8)
+                    .setTop.equalTo(titleLabel.get, .bottom, 12)
                     .setHorizontalAlignmentX.equalToSuperView
-                    .setHeight.equalToConstant(60)
             }
         return comp
     }()
@@ -121,25 +120,68 @@ class DropdownLifeView: ViewBuilder {
             .setTextAttributed { build in
                 build
                     .setText(text: "As ")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
                     .setText(text: "vidas ")
                     .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.error.adjustBrightness(30))
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 22, weight: .light))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 20, weight: .light))
                     .setText(text: "reiniciam às ")
                     .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.onSurface)
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
                     .setText(text: "00:00 ")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17, weight: .black))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15, weight: .black))
                     .setText(text: "horas")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
             }
             .setConstraints { build in
                 build
-                    .setTop.equalTo(stackLifeHeart.get, .bottom, 4)
+                    .setTop.equalTo(stackLifeHeart.get, .bottom, 12)
                     .setLeading.setTrailing.equalTo(painelView.get, 4)
             }
         return comp
     }()
+    
+    
+    
+    lazy var adLifePainel: ViewBuilder = {
+        let comp = ViewBuilder()
+            .setBorder({ build in
+                build
+                    .setCornerRadius(4)
+            })
+            .setNeumorphism { build in
+                build
+                    .setReferenceColor(Theme.shared.currentTheme.surfaceContainerHighest)
+                    .setShape(.flat)
+                    .setLightPosition(.leftTop)
+                    .setIntensity(to: .light, percent: 80)
+                    .setIntensity(to: .dark, percent: 100)
+                    .setBlur(to: .light, percent: 3)
+                    .setBlur(to: .dark, percent: 8)
+                    .setDistance(to: .light, percent: 3)
+                    .setDistance(to: .dark, percent: 10)
+                    .apply()
+            }
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(restartLifeLabel.get, .bottom, 24)
+                    .setLeading.setTrailing.equalToSuperView(16)
+                    .setHeight.equalToConstant(68)
+            }
+        return comp
+    }()
+    
+    
+    lazy var buyLifePainel: BuyLifePainelView = {
+        let comp = BuyLifePainelView()
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(adLifePainel.get, .bottom, 20)
+                    .setLeading.setTrailing.equalToSuperView(16)
+                    .setHeight.equalToConstant(68)
+            }
+        return comp
+    }()
+    
     
     
 //  MARK: - PRIVATE AREA
@@ -156,6 +198,8 @@ class DropdownLifeView: ViewBuilder {
         stackLifeHeart.add(insideTo: painelView.get)
         addHeartImage()
         restartLifeLabel.add(insideTo: painelView.get)
+        adLifePainel.add(insideTo: painelView.get)
+        buyLifePainel.add(insideTo: painelView.get)
     }
     
     private func configConstraints() {
@@ -165,11 +209,15 @@ class DropdownLifeView: ViewBuilder {
         titleLabel.applyConstraint()
         stackLifeHeart.applyConstraint()
         restartLifeLabel.applyConstraint()
+        adLifePainel.applyConstraint()
+        buyLifePainel.applyConstraint()
     }
     
     private func addHeartImage() {
-        (0...4).forEach { _ in
+        let tagsHearts = (1...5)
+        tagsHearts.forEach { tag in
             let heart = makeHeartImage()
+            heart.setTag(tag)
             heart.add(insideTo: stackLifeHeart.get)
         }
     }
