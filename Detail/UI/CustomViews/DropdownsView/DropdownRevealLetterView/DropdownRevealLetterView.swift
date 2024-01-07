@@ -81,9 +81,9 @@ class DropdownRevealLetterView: ViewBuilder {
     
     lazy var titleLabel: LabelBuilder = {
         let comp = LabelBuilder(K.String.revealLetter)
-            .setSize(22)
+            .setSize(24)
             .setColor(Theme.shared.currentTheme.onSurface)
-            .setWeight(.semibold)
+            .setWeight(.thin)
             .setShadow { build in
                 build
                     .setColor(Theme.shared.currentTheme.onPrimary)
@@ -122,17 +122,17 @@ class DropdownRevealLetterView: ViewBuilder {
             .setTextAttributed { build in
                 build
                     .setText(text: "As ")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
                     .setText(text: "revelações ")
                     .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.primary)
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17, weight: .light))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
                     .setText(text: "reiniciam às ")
                     .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.onSurface)
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
                     .setText(text: "00:00 ")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17, weight: .black))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15, weight: .black))
                     .setText(text: "horas")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
             }
             .setConstraints { build in
                 build
@@ -169,9 +169,11 @@ class DropdownRevealLetterView: ViewBuilder {
     }
     
     private func addEyeImage() {
-        (0...4).forEach { _ in
-            let heart = makeEyeImage()
-            heart.add(insideTo: stackEyes.get)
+        let tagsEyes = (1...5)
+        tagsEyes.forEach { tag in
+            let eye = makeEyeImage()
+            eye.setTag(tag)
+            eye.add(insideTo: stackEyes.get)
         }
     }
     

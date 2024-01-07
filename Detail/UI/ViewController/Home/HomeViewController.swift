@@ -70,6 +70,59 @@ public class HomeViewController: UIViewController {
 //  MARK: - PRIVATE AREA
     private func configure() {
         configDelegate()
+//
+//        // Crie uma label para exibir o valor monetário
+//        let currencyLabel = UILabel()
+//        currencyLabel.textColor = .red
+//        currencyLabel.textAlignment = .center
+//        currencyLabel.numberOfLines = 1
+//
+//        // Defina o valor monetário (por exemplo, 1234567.89)
+//        let valor = 1234567.89
+//
+//        // Separe a parte inteira e a parte decimal
+//        let parteInteira = Int(valor)
+//        let parteDecimal = Int((valor - Double(parteInteira)) * 100)
+//
+//        // Crie atributos de texto para cada parte com tamanhos de fonte diferentes
+//        let parteInteiraAttributes: [NSAttributedString.Key: Any] = [
+//            .font: UIFont.systemFont(ofSize: 18)
+//        ]
+//
+//        let parteDecimalAttributes: [NSAttributedString.Key: Any] = [
+//            .font: UIFont.systemFont(ofSize: 12),
+//            .baselineOffset: 8, // Ajuste para alinhar no topo
+//            .paragraphStyle: {
+//                let style = NSMutableParagraphStyle()
+//                style.alignment = .center
+//                return style
+//            }()
+//        ]
+//
+//        // Crie NSAttributedString para cada parte
+//        let parteInteiraString = NSAttributedString(string: "\(parteInteira)", attributes: parteInteiraAttributes)
+//        let parteDecimalString = NSAttributedString(string: String(format: "%02d", parteDecimal), attributes: parteDecimalAttributes)
+//
+//        // Crie uma NSMutableAttributedString combinando as partes
+//        let combinedString = NSMutableAttributedString()
+//        combinedString.append(parteInteiraString)
+//        combinedString.append(NSAttributedString(string: ","))
+//        combinedString.append(parteDecimalString)
+//
+//        // Atribua a NSMutableAttributedString à label
+//        currencyLabel.attributedText = combinedString
+//
+//        // Adicione a label à sua view
+//        view.addSubview(currencyLabel)
+//        currencyLabel.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            currencyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            currencyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//        ])
+            
+    
+        
+        
     }
     
     private func configDelegate() {
@@ -308,9 +361,15 @@ extension HomeViewController: HangmanViewDelegate {
 //  MARK: - EXTENSION - GamePainelViewDelegate
 
 extension HomeViewController: GamePainelViewDelegate {
+    
     func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get, true)
         toggleDropdown(dropdown: screen.dropdownLifeView.get)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
+            if let dropdown = self?.screen.dropdownRevealLetterView.get {
+                self?.setHideDropdownAnimation(dropdown: dropdown, true)
+            }
+        })
     }
     
     func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
@@ -320,10 +379,14 @@ extension HomeViewController: GamePainelViewDelegate {
     }
     
     func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get, true)
         toggleDropdown(dropdown: screen.dropdownRevealLetterView.get)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
+            if let dropdown = self?.screen.dropdownLifeView.get {
+                self?.setHideDropdownAnimation(dropdown: dropdown, true)
+            }
+        })
     }
-    
     
 }
 
