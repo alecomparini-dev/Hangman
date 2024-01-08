@@ -68,7 +68,7 @@ class AdLifePainelView: ViewBuilder {
                 build
                     .setText(text: "Assista o vídeo e")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17))
-                    .setText(text: "\n    ganhe ")
+                    .setText(text: "\n       ganhe ")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17))
                     .setText(text: " +1")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17, weight: .bold))
@@ -85,7 +85,6 @@ class AdLifePainelView: ViewBuilder {
     }()
     
     lazy var adPlayImage: ImageViewBuilder = {
-//        let comp = ImageViewBuilder(systemName: "play.rectangle.fill")
         let comp = ImageViewBuilder(systemName: "play.circle.fill")
             .setTintColor(Theme.shared.currentTheme.onPrimaryContainer)
             .setWeight(.bold)
@@ -94,7 +93,7 @@ class AdLifePainelView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSuperView
-                    .setTrailing.equalToSuperView(-32)
+                    .setTrailing.equalToSuperView(-26)
             }
         return comp
     }()

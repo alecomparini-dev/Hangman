@@ -43,7 +43,7 @@ class TipsView: UIView {
     }()
 
     lazy var handImage: ImageViewBuilder = {
-        let img = UIImage(systemName: "hand.tap.fill")
+        let img = UIImage(systemName: K.Images.handTapFill)
         let comp = ImageViewBuilder(img)
             .setTintColor(Theme.shared.currentTheme.onSecondary)
             .setContentMode(.center)

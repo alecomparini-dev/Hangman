@@ -36,14 +36,7 @@ public struct K {
         public static let fileNameJson = "HangmanWordsData"
         public static let extensionJson = "json"
     }
-    
-    public struct FloatView {
-        public static let x: CGFloat = 30
-        public static let y: CGFloat = 30
-        public static let width: CGFloat = 290
-        public static let height: CGFloat = 550
-    }
-    
+        
     public struct Images {
         public static let nextWordButton = "chevron.forward"
         public static let downButton = "chevron.down"
@@ -52,7 +45,9 @@ public struct K {
         public static let tipLocked = "lock.fill"
         public static let heartFill = "suit.heart.fill"
         public static let eyeFill = "eye.fill"
+        public static let eyeSlashFill = "eye.slash.fill"
         public static let triangleFill = "eject.fill"
+        public static let handTapFill = "hand.tap.fill"
     }
     
     public struct ExtraColor {

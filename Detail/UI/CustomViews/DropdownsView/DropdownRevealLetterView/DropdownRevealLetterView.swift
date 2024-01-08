@@ -14,9 +14,15 @@ protocol DropdownRevealLetterViewDelegate: AnyObject {
 class DropdownRevealLetterView: ViewBuilder {
     weak var delegate: DropdownRevealLetterViewDelegate?
     
+    private var eyes: [ViewBuilder]? = []
+    
     override init() {
         super.init()
         configure()
+    }
+    
+    deinit {
+        eyes = nil
     }
 
     
@@ -44,7 +50,7 @@ class DropdownRevealLetterView: ViewBuilder {
             .setSize(32)
             .setConstraints { build in
                 build
-                    .setTop.equalTo(painelView.get, .top, -24)
+                    .setTop.equalTo(painelView.get, .top, -22)
                     .setTrailing.equalTo(painelView.get, .trailing, -156)
             }
         return comp
@@ -74,7 +80,7 @@ class DropdownRevealLetterView: ViewBuilder {
                     .setTop.equalTo(self.get, .top, 16)
                     .setLeading.equalTo(self.get, .leading, 40)
                     .setTrailing.equalTo(self.get, .trailing, -16)
-                    .setHeight.equalToConstant(350)
+                    .setHeight.equalToConstant(440)
             }
         return comp
     }()
@@ -93,23 +99,52 @@ class DropdownRevealLetterView: ViewBuilder {
             }
             .setConstraints { build in
                 build
-                    .setTop.equalTo(painelView.get, .top, 10)
+                    .setTop.equalTo(painelView.get, .top, 12)
                     .setHorizontalAlignmentX.equalTo(painelView.get)
             }
         return comp
     }()
     
-    lazy var stackEyes: StackViewBuilder = {
-        let comp = StackViewBuilder()
-            .setAxis(.horizontal)
-            .setSpacing(8)
-            .setAlignment(.center)
-            .setDistribution(.equalSpacing)
+    
+    lazy var useRevealLetterLabel: LabelBuilder = {
+        let comp = LabelBuilder()
+            .setNumberOfLines(2)
+            .setTextAlignment(.center)
+            .setTextAttributed { build in
+                build
+                    .setText(text: "Toque ")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
+                    .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.onSurface)
+                    .setImage(systemName: K.Images.handTapFill, color: Theme.shared.currentTheme.onSurface)
+                    .setText(text: " para ")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
+                    .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.onSurface)
+                    .setText(text: "revelar")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .bold))
+                    .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.primary)
+                    .setText(text: " 1 letra")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.onSurface)
+            }
             .setConstraints { build in
                 build
-                    .setTop.equalTo(titleLabel.get, .bottom, 12)
-                    .setHorizontalAlignmentX.equalToSuperView
-                    .setHeight.equalToConstant(42)
+                    .setTop.equalTo(titleLabel.get, .bottom, 20)
+                    .setLeading.setTrailing.equalTo(painelView.get, 4)
+            }
+        return comp
+    }()
+    
+    lazy var stackEyes: StackViewBuilder = {
+        let stack: UIStackView
+        let comp = StackViewBuilder()
+            .setAxis(.horizontal)
+            .setSpacing(12)
+            .setDistribution(.fillEqually)
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(useRevealLetterLabel.get, .bottom, 12)
+                    .setLeading.setTrailing.equalTo(painelView.get, 24)
+                    .setHeight.equalToConstant(55)
             }
         return comp
     }()
@@ -125,7 +160,7 @@ class DropdownRevealLetterView: ViewBuilder {
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
                     .setText(text: "revelações ")
                     .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.primary)
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .light))
                     .setText(text: "reiniciam às ")
                     .setAttributed(key: .foregroundColor, value: Theme.shared.currentTheme.onSurface)
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
@@ -136,18 +171,45 @@ class DropdownRevealLetterView: ViewBuilder {
             }
             .setConstraints { build in
                 build
-                    .setTop.equalTo(stackEyes.get, .bottom, 12)
+                    .setTop.equalTo(stackEyes.get, .bottom, 20)
                     .setLeading.setTrailing.equalTo(painelView.get, 4)
             }
         return comp
     }()
     
+    lazy var underLineView: ViewBuilder = {
+        return ViewBuilder()
+            .setGradient({ build in
+                build
+                    .setGradientColors(Theme.shared.currentTheme.primaryGradient)
+                    .setAxialGradient(.leftToRight)
+                    .apply()
+            })
+            .setBorder({ build in
+                build.setCornerRadius(2)
+            })
+            .setShadow({ build in
+                build
+                    .setOffset(width: 3, height: 3)
+                    .setColor(.black.withAlphaComponent(0.8))
+                    .setOpacity(1)
+                    .setRadius(3)
+                    .applyLayer()
+            })
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(restartRevealLetterLabel.get, .bottom, 24)
+                    .setHorizontalAlignmentX.equalTo(painelView.get)
+                    .setHeight.equalToConstant(2)
+                    .setWidth.equalToConstant(160)
+            }
+    }()
     
     lazy var adRevealLetterPainel: AdRevealLetterPainelView = {
         let comp = AdRevealLetterPainelView()
             .setConstraints { build in
                 build
-                    .setTop.equalTo(restartRevealLetterLabel.get, .bottom, 40)
+                    .setTop.equalTo(underLineView.get, .bottom, 32)
                     .setLeading.setTrailing.equalToSuperView(16)
                     .setHeight.equalToConstant(68)
             }
@@ -178,9 +240,11 @@ class DropdownRevealLetterView: ViewBuilder {
         arrowUpImage.add(insideTo: self.get)
         painelView.add(insideTo: self.get)
         titleLabel.add(insideTo: painelView.get)
+        useRevealLetterLabel.add(insideTo: painelView.get)
         stackEyes.add(insideTo: painelView.get)
         addEyeImage()
         restartRevealLetterLabel.add(insideTo: painelView.get)
+        underLineView.add(insideTo: painelView.get)
         adRevealLetterPainel.add(insideTo: painelView.get)
         buyRevealLetterPainel.add(insideTo: painelView.get)
     }
@@ -190,8 +254,10 @@ class DropdownRevealLetterView: ViewBuilder {
         arrowUpImage.applyConstraint()
         painelView.applyConstraint()
         titleLabel.applyConstraint()
+        useRevealLetterLabel.applyConstraint()
         stackEyes.applyConstraint()
         restartRevealLetterLabel.applyConstraint()
+        underLineView.applyConstraint()
         adRevealLetterPainel.applyConstraint()
         buyRevealLetterPainel.applyConstraint()
     }
@@ -201,16 +267,52 @@ class DropdownRevealLetterView: ViewBuilder {
         tagsEyes.forEach { tag in
             let eye = makeEyeImage()
             eye.setTag(tag)
+            .setActions { build in
+                build
+                    .setTap ({ component, tapGesture in
+                        print(component.tag)
+                    }, false)
+            }
             eye.add(insideTo: stackEyes.get)
+            eyes?.append(eye)
         }
     }
     
-    private func makeEyeImage() -> ImageViewBuilder {
-        return ImageViewBuilder(systemName: K.Images.eyeFill)
-            .setSize(26)
+    private func makeEyeImage() -> ViewBuilder {
+        let view = ViewBuilder()
+            .setNeumorphism({ build in
+                build
+                    .setReferenceColor(Theme.shared.currentTheme.primary)
+                    .setShape(.convex)
+                    .setDistance(to: .light, percent: 2)
+                    .setDistance(to: .dark, percent: 10)
+                    .setBlur(to: .light, percent: 3)
+                    .setBlur(to: .dark, percent: 10)
+                    .setIntensity(to: .light, percent: 50)
+                    .setIntensity(to: .dark, percent: 100)
+                    .apply()
+            })
+            .setBorder({ build in
+                build
+                    .setCornerRadius(8)
+                    .setWidth(1)
+                    .setColor(Theme.shared.currentTheme.primary)
+            })
+            
+        let img = ImageViewBuilder(systemName: K.Images.eyeSlashFill)
+            .setSize(22)
             .setContentMode(.center)
             .setWeight(.bold)
-            .setTintColor(Theme.shared.currentTheme.onSurfaceVariant)
+            .setTintColor(Theme.shared.currentTheme.onSurfaceInverse.withAlphaComponent(0.6))
+            .setConstraints { build in
+                build
+                    .setAlignmentCenterXY.equalToSuperView
+            }
+        
+        img.add(insideTo: view.get)
+        img.applyConstraint()
+        
+        return view
     }
     
     

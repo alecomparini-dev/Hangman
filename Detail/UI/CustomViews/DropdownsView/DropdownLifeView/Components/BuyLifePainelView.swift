@@ -36,7 +36,7 @@ class BuyLifePainelView: ViewBuilder {
                 build
                     .setText(text: "Recupere suas")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17))
-                    .setText(text: "\n         VIDAS !")
+                    .setText(text: "\n          VIDAS !")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 21, weight: .bold))
             })
             .setConstraints { build in
