@@ -217,6 +217,7 @@ class HomeView: UIView {
         delegate?.nextWordButtonTapped()
     }
     
+    
 //  MARK: - PRIVATE AREA
     private func configure() {
         addElements()

@@ -63,9 +63,9 @@ class DropdownRevealLetterView: ViewBuilder {
                     .setLightPosition(.leftTop)
                     .setIntensity(to: .light, percent: 80)
                     .setIntensity(to: .dark, percent: 100)
-                    .setBlur(to: .light, percent: 5)
+                    .setBlur(to: .light, percent: 3)
                     .setBlur(to: .dark, percent: 10)
-                    .setDistance(to: .light, percent: 5)
+                    .setDistance(to: .light, percent: 3)
                     .setDistance(to: .dark, percent: 10)
                     .apply()
             }
@@ -74,7 +74,7 @@ class DropdownRevealLetterView: ViewBuilder {
                     .setTop.equalTo(self.get, .top, 16)
                     .setLeading.equalTo(self.get, .leading, 40)
                     .setTrailing.equalTo(self.get, .trailing, -16)
-                    .setHeight.equalToConstant(250)
+                    .setHeight.equalToConstant(350)
             }
         return comp
     }()
@@ -93,7 +93,7 @@ class DropdownRevealLetterView: ViewBuilder {
             }
             .setConstraints { build in
                 build
-                    .setTop.equalTo(painelView.get, .top, 16)
+                    .setTop.equalTo(painelView.get, .top, 10)
                     .setHorizontalAlignmentX.equalTo(painelView.get)
             }
         return comp
@@ -107,9 +107,9 @@ class DropdownRevealLetterView: ViewBuilder {
             .setDistribution(.equalSpacing)
             .setConstraints { build in
                 build
-                    .setTop.equalTo(titleLabel.get, .bottom, 8)
+                    .setTop.equalTo(titleLabel.get, .bottom, 12)
                     .setHorizontalAlignmentX.equalToSuperView
-                    .setHeight.equalToConstant(60)
+                    .setHeight.equalToConstant(42)
             }
         return comp
     }()
@@ -136,11 +136,35 @@ class DropdownRevealLetterView: ViewBuilder {
             }
             .setConstraints { build in
                 build
-                    .setTop.equalTo(stackEyes.get, .bottom, 4)
+                    .setTop.equalTo(stackEyes.get, .bottom, 12)
                     .setLeading.setTrailing.equalTo(painelView.get, 4)
             }
         return comp
     }()
+    
+    
+    lazy var adRevealLetterPainel: AdRevealLetterPainelView = {
+        let comp = AdRevealLetterPainelView()
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(restartRevealLetterLabel.get, .bottom, 40)
+                    .setLeading.setTrailing.equalToSuperView(16)
+                    .setHeight.equalToConstant(68)
+            }
+        return comp
+    }()
+    
+    lazy var buyRevealLetterPainel: BuyRevealLetterPainelView = {
+        let comp = BuyRevealLetterPainelView()
+            .setConstraints { build in
+                build
+                    .setTop.equalTo(adRevealLetterPainel.get, .bottom, 24)
+                    .setLeading.setTrailing.equalToSuperView(16)
+                    .setHeight.equalToConstant(68)
+            }
+        return comp
+    }()
+    
     
     
 //  MARK: - PRIVATE AREA
@@ -157,6 +181,8 @@ class DropdownRevealLetterView: ViewBuilder {
         stackEyes.add(insideTo: painelView.get)
         addEyeImage()
         restartRevealLetterLabel.add(insideTo: painelView.get)
+        adRevealLetterPainel.add(insideTo: painelView.get)
+        buyRevealLetterPainel.add(insideTo: painelView.get)
     }
     
     private func configConstraints() {
@@ -166,6 +192,8 @@ class DropdownRevealLetterView: ViewBuilder {
         titleLabel.applyConstraint()
         stackEyes.applyConstraint()
         restartRevealLetterLabel.applyConstraint()
+        adRevealLetterPainel.applyConstraint()
+        buyRevealLetterPainel.applyConstraint()
     }
     
     private func addEyeImage() {
