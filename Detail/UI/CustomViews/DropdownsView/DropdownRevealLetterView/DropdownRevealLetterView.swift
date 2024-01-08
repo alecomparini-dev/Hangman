@@ -39,12 +39,12 @@ class DropdownRevealLetterView: ViewBuilder {
     
     lazy var arrowUpImage: ImageViewBuilder = {
         let comp = ImageViewBuilder(systemName: K.Images.triangleFill)
-            .setTintColor(Theme.shared.currentTheme.surfaceContainerHigh)
+            .setTintColor(Theme.shared.currentTheme.surfaceContainerHighest)
             .setContentMode(.center)
             .setSize(32)
             .setConstraints { build in
                 build
-                    .setTop.equalTo(painelView.get, .top, -24)
+                    .setTop.equalTo(painelView.get, .top, -22)
                     .setTrailing.equalTo(painelView.get, .trailing, -156)
             }
         return comp
@@ -59,7 +59,7 @@ class DropdownRevealLetterView: ViewBuilder {
             .setNeumorphism { build in
                 build
                     .setReferenceColor(Theme.shared.currentTheme.surfaceContainer)
-                    .setShape(.concave)
+                    .setShape(.convex)
                     .setLightPosition(.leftTop)
                     .setIntensity(to: .light, percent: 80)
                     .setIntensity(to: .dark, percent: 100)
@@ -141,7 +141,6 @@ class DropdownRevealLetterView: ViewBuilder {
             }
         return comp
     }()
-    
     
     lazy var adRevealLetterPainel: AdRevealLetterPainelView = {
         let comp = AdRevealLetterPainelView()

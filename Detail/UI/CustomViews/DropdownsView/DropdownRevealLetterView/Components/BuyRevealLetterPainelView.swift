@@ -3,6 +3,7 @@
 
 import UIKit
 import CustomComponentsSDK
+import Handler
 
 class BuyRevealLetterPainelView: ViewBuilder {
     
@@ -15,11 +16,11 @@ class BuyRevealLetterPainelView: ViewBuilder {
 //  MARK: - LAZY AREA
     
     lazy var heartImage: ImageViewBuilder = {
-        let comp = ImageViewBuilder(systemName: "arrow.clockwise.heart")
+        let comp = ImageViewBuilder(systemName: K.Images.eyeFill)
             .setTintColor(.white)
             .setWeight(.thin)
             .setContentMode(.center)
-            .setSize(38)
+            .setSize(32)
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSuperView(-2)
@@ -36,8 +37,8 @@ class BuyRevealLetterPainelView: ViewBuilder {
                 build
                     .setText(text: "Recupere suas")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17))
-                    .setText(text: "\n         VIDAS !")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 21, weight: .bold))
+                    .setText(text: "\n  REVELAÇÕES !")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16, weight: .bold))
             })
             .setConstraints { build in
                 build
@@ -58,7 +59,7 @@ class BuyRevealLetterPainelView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setTop.setBottom.equalToSuperView(8)
-                    .setLeading.equalTo(recoverLifeLabel.get, .trailing, 14)
+                    .setLeading.equalTo(recoverLifeLabel.get, .trailing, 10)
             }
         return comp
     }()
@@ -92,7 +93,7 @@ class BuyRevealLetterPainelView: ViewBuilder {
             .setColor(Theme.shared.currentTheme.onError)
             .setTextAttributed({ build in
                 build
-                    .setText(text: "9,")
+                    .setText(text: "5,")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 15))
                     .setAttributed(key: .strikethroughStyle, value: NSUnderlineStyle.single.rawValue)
                     .setText(text: "99")
@@ -134,7 +135,7 @@ class BuyRevealLetterPainelView: ViewBuilder {
             .setColor(Theme.shared.currentTheme.onPrimaryContainer)
             .setTextAttributed({ build in
                 build
-                    .setText(text: "4,")
+                    .setText(text: "2,")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 22, weight: .bold))
                     .setText(text: "99")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
@@ -213,6 +214,7 @@ class BuyRevealLetterPainelView: ViewBuilder {
             .setNeumorphism { build in
                 build
                     .setReferenceColor(UIColor.HEX("#ba4949"))
+                    .setReferenceColor(Theme.shared.currentTheme.tertiary)
                     .setShape(.convex)
                     .setIntensity(to: .light, percent: 80)
                     .setIntensity(to: .dark, percent: 100)

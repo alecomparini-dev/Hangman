@@ -15,12 +15,12 @@ class AdRevealLetterPainelView: ViewBuilder {
     
     //  MARK: - LAZY AREA
     
-    lazy var heartImage: ImageViewBuilder = {
+    lazy var eyesImage: ImageViewBuilder = {
         let comp = ImageViewBuilder(systemName: K.Images.eyeFill)
             .setTintColor(Theme.shared.currentTheme.primary)
             .setWeight(.thin)
             .setContentMode(.center)
-            .setSize(32)
+            .setSize(34)
             .setConstraints { build in
                 build
                     .setTop.equalToSuperView(-18)
@@ -29,7 +29,7 @@ class AdRevealLetterPainelView: ViewBuilder {
         return comp
     }()
     
-    lazy var containerHeartBackgroundView: ViewBuilder = {
+    lazy var containerEyeBackgroundView: ViewBuilder = {
         let comp = ViewBuilder()
             .setConstraints { build in
                 build
@@ -40,7 +40,7 @@ class AdRevealLetterPainelView: ViewBuilder {
         return comp
     }()
     
-    lazy var heartBackgroundImage: ImageViewBuilder = {
+    lazy var eyeBackgroundImage: ImageViewBuilder = {
         let comp = ImageViewBuilder(systemName: K.Images.eyeFill)
             .setTintColor(Theme.shared.currentTheme.surfaceContainerHighest.adjustBrightness(40))
             .setWeight(.thin)
@@ -67,34 +67,33 @@ class AdRevealLetterPainelView: ViewBuilder {
             .setTextAttributed({ build in
                 build
                     .setText(text: "Assista o vídeo e")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17))
-                    .setText(text: "\n    ganhe ")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17))
-                    .setText(text: " +1")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setText(text: "\n ganhe ")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
+                    .setText(text: "+1")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17, weight: .bold))
-                    .setText(text: " vida")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 26, weight: .bold))
+                    .setText(text: " revelação")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 22, weight: .bold))
                     .setAttributed(key: .shadow, value: shadow )
             })
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSuperView(-2)
-                    .setLeading.equalTo(heartImage.get, .trailing, 12)
+                    .setLeading.equalTo(eyesImage.get, .trailing, 4)
             }
         return overlay
     }()
     
     lazy var adPlayImage: ImageViewBuilder = {
-//        let comp = ImageViewBuilder(systemName: "play.rectangle.fill")
-        let comp = ImageViewBuilder(systemName: "play.circle.fill")
+        let comp = ImageViewBuilder(systemName: "play.rectangle.fill")
             .setTintColor(Theme.shared.currentTheme.onPrimaryContainer)
             .setWeight(.bold)
             .setContentMode(.center)
-            .setSize(40)
+            .setSize(32)
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSuperView
-                    .setTrailing.equalToSuperView(-32)
+                    .setTrailing.equalToSuperView(-24)
             }
         return comp
     }()
@@ -108,17 +107,17 @@ class AdRevealLetterPainelView: ViewBuilder {
     }
     
     private func addElements() {
-        heartImage.add(insideTo: self.get)
-        containerHeartBackgroundView.add(insideTo: self.get)
-        heartBackgroundImage.add(insideTo: containerHeartBackgroundView.get)
+        eyesImage.add(insideTo: self.get)
+        containerEyeBackgroundView.add(insideTo: self.get)
+        eyeBackgroundImage.add(insideTo: containerEyeBackgroundView.get)
         descriptionLabel.add(insideTo: self.get)
         adPlayImage.add(insideTo: self.get)
     }
     
     private func configConstraints() {
-        heartImage.applyConstraint()
-        containerHeartBackgroundView.applyConstraint()
-        heartBackgroundImage.applyConstraint()
+        eyesImage.applyConstraint()
+        containerEyeBackgroundView.applyConstraint()
+        eyeBackgroundImage.applyConstraint()
         descriptionLabel.applyConstraint()
         adPlayImage.applyConstraint()
     }
@@ -153,11 +152,5 @@ class AdRevealLetterPainelView: ViewBuilder {
             }
     }
     
-//    private func sendHeartToBack() {
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self else {return}
-//            self.get.sendSubviewToBack(heartImage.get)
-//        }
-//    }
     
 }

@@ -43,7 +43,7 @@ class DropdownLifeView: ViewBuilder {
             .setSize(32)
             .setConstraints { build in
                 build
-                    .setTop.equalTo(painelView.get, .top, -24)
+                    .setTop.equalTo(painelView.get, .top, -22)
                     .setTrailing.equalTo(painelView.get, .trailing, -30)
             }
         return comp
