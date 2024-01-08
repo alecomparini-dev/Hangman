@@ -34,6 +34,9 @@
 		022188E62B1686F900440761 /* Detail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026B64762B0389C900F6DD99 /* Detail.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0222DDA02B48C47F009EE10C /* DropdownRevealLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DD9F2B48C47F009EE10C /* DropdownRevealLetterView.swift */; };
 		0222DDA32B49D657009EE10C /* BuyLifePainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DDA22B49D657009EE10C /* BuyLifePainelView.swift */; };
+		0222DDA52B4AF3EA009EE10C /* AdLifePainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DDA42B4AF3EA009EE10C /* AdLifePainelView.swift */; };
+		0222DDA82B4B360F009EE10C /* BuyRevealLetterPainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DDA72B4B360F009EE10C /* BuyRevealLetterPainelView.swift */; };
+		0222DDAA2B4B363A009EE10C /* AdRevealLetterPainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DDA92B4B363A009EE10C /* AdRevealLetterPainelView.swift */; };
 		0235E5C22B14CA0900829489 /* Doll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5C12B14CA0900829489 /* Doll.swift */; };
 		0235E5CA2B14CC9800829489 /* GenericCountModelGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5C62B14CBE800829489 /* GenericCountModelGateway.swift */; };
 		0235E5CC2B14CCBB00829489 /* GenericCountModelGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5CB2B14CCBB00829489 /* GenericCountModelGateway.swift */; };
@@ -276,6 +279,9 @@
 		021B63142B11328E002498DA /* DataTransferDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDTO.swift; sourceTree = "<group>"; };
 		0222DD9F2B48C47F009EE10C /* DropdownRevealLetterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownRevealLetterView.swift; sourceTree = "<group>"; };
 		0222DDA22B49D657009EE10C /* BuyLifePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyLifePainelView.swift; sourceTree = "<group>"; };
+		0222DDA42B4AF3EA009EE10C /* AdLifePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdLifePainelView.swift; sourceTree = "<group>"; };
+		0222DDA72B4B360F009EE10C /* BuyRevealLetterPainelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyRevealLetterPainelView.swift; sourceTree = "<group>"; };
+		0222DDA92B4B363A009EE10C /* AdRevealLetterPainelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRevealLetterPainelView.swift; sourceTree = "<group>"; };
 		0235E5C12B14CA0900829489 /* Doll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doll.swift; sourceTree = "<group>"; };
 		0235E5C62B14CBE800829489 /* GenericCountModelGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCountModelGateway.swift; sourceTree = "<group>"; };
 		0235E5CB2B14CCBB00829489 /* GenericCountModelGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCountModelGateway.swift; sourceTree = "<group>"; };
@@ -559,7 +565,17 @@
 		0222DDA12B49D640009EE10C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0222DDA42B4AF3EA009EE10C /* AdLifePainelView.swift */,
 				0222DDA22B49D657009EE10C /* BuyLifePainelView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0222DDA62B4B35F1009EE10C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0222DDA92B4B363A009EE10C /* AdRevealLetterPainelView.swift */,
+				0222DDA72B4B360F009EE10C /* BuyRevealLetterPainelView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1043,6 +1059,7 @@
 		0293A8C12B48936100E7730C /* DropdownRevealLetterView */ = {
 			isa = PBXGroup;
 			children = (
+				0222DDA62B4B35F1009EE10C /* Components */,
 				0222DD9F2B48C47F009EE10C /* DropdownRevealLetterView.swift */,
 			);
 			path = DropdownRevealLetterView;
@@ -1594,6 +1611,7 @@
 				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
 				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
 				02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */,
+				0222DDA52B4AF3EA009EE10C /* AdLifePainelView.swift in Sources */,
 				02C500F12B2C791C009C546A /* StackView.swift in Sources */,
 				02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */,
 				02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */,
@@ -1601,12 +1619,14 @@
 				02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */,
 				02C500DB2B2A66CE009C546A /* TipsViewController.swift in Sources */,
 				02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */,
+				0222DDAA2B4B363A009EE10C /* AdRevealLetterPainelView.swift in Sources */,
 				02FCA7072B30B53300B45892 /* CardTipsViewCell.swift in Sources */,
 				02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */,
 				0222DDA02B48C47F009EE10C /* DropdownRevealLetterView.swift in Sources */,
 				026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
 				02C500E82B2B4575009C546A /* GamePainelView.swift in Sources */,
+				0222DDA82B4B360F009EE10C /* BuyRevealLetterPainelView.swift in Sources */,
 				026939352B0A41B90023073B /* HangmanAuthenticationSDK.swift in Sources */,
 				02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */,
 			);

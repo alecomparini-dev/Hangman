@@ -4,7 +4,7 @@
 import UIKit
 import CustomComponentsSDK
 
-class BuyLifePainelView: ViewBuilder {
+class BuyRevealLetterPainelView: ViewBuilder {
     
     override init() {
         super.init(frame: .zero)

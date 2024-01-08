@@ -62,9 +62,9 @@ class DropdownLifeView: ViewBuilder {
                     .setLightPosition(.leftTop)
                     .setIntensity(to: .light, percent: 80)
                     .setIntensity(to: .dark, percent: 100)
-                    .setBlur(to: .light, percent: 5)
+                    .setBlur(to: .light, percent: 3)
                     .setBlur(to: .dark, percent: 10)
-                    .setDistance(to: .light, percent: 5)
+                    .setDistance(to: .light, percent: 3)
                     .setDistance(to: .dark, percent: 10)
                     .apply()
             }
@@ -92,7 +92,7 @@ class DropdownLifeView: ViewBuilder {
             }
             .setConstraints { build in
                 build
-                    .setTop.equalTo(painelView.get, .top, 16)
+                    .setTop.equalTo(painelView.get, .top, 10)
                     .setHorizontalAlignmentX.equalTo(painelView.get)
             }
         return comp
@@ -140,42 +140,22 @@ class DropdownLifeView: ViewBuilder {
         return comp
     }()
     
-    
-    
-    lazy var adLifePainel: ViewBuilder = {
-        let comp = ViewBuilder()
-            .setBorder({ build in
-                build
-                    .setCornerRadius(4)
-            })
-            .setNeumorphism { build in
-                build
-                    .setReferenceColor(Theme.shared.currentTheme.surfaceContainerHighest)
-                    .setShape(.flat)
-                    .setLightPosition(.leftTop)
-                    .setIntensity(to: .light, percent: 80)
-                    .setIntensity(to: .dark, percent: 100)
-                    .setBlur(to: .light, percent: 3)
-                    .setBlur(to: .dark, percent: 8)
-                    .setDistance(to: .light, percent: 3)
-                    .setDistance(to: .dark, percent: 10)
-                    .apply()
-            }
+    lazy var adLifePainel: AdLifePainelView = {
+        let comp = AdLifePainelView()
             .setConstraints { build in
                 build
-                    .setTop.equalTo(restartLifeLabel.get, .bottom, 24)
+                    .setTop.equalTo(restartLifeLabel.get, .bottom, 40)
                     .setLeading.setTrailing.equalToSuperView(16)
                     .setHeight.equalToConstant(68)
             }
         return comp
     }()
     
-    
     lazy var buyLifePainel: BuyLifePainelView = {
         let comp = BuyLifePainelView()
             .setConstraints { build in
                 build
-                    .setTop.equalTo(adLifePainel.get, .bottom, 20)
+                    .setTop.equalTo(adLifePainel.get, .bottom, 24)
                     .setLeading.setTrailing.equalToSuperView(16)
                     .setHeight.equalToConstant(68)
             }
