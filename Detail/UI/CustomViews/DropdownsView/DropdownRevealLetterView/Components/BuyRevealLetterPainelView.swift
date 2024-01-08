@@ -135,7 +135,7 @@ class BuyRevealLetterPainelView: ViewBuilder {
             .setColor(Theme.shared.currentTheme.onPrimaryContainer)
             .setTextAttributed({ build in
                 build
-                    .setText(text: "2,")
+                    .setText(text: "1,")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 22, weight: .bold))
                     .setText(text: "99")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))

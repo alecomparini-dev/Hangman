@@ -8,9 +8,9 @@ import Handler
 
 
 protocol GamePainelViewDelegate: AnyObject {
-    func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
+    func countLifeDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
     func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
-    func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
+    func countRevealLetterDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
 }
 
 
@@ -90,7 +90,7 @@ class GamePainelView: ViewBuilder {
         TapGestureBuilder(countLifeView.get)
             .setTap { [weak self] tapGesture in
                 guard let self else { return }
-                delegate?.countLifeViewTapped(tapGesture, countLifeView)
+                delegate?.countLifeDropdownViewTapped(tapGesture, countLifeView)
             }
         
         TapGestureBuilder(countTipsView.get)
@@ -102,7 +102,7 @@ class GamePainelView: ViewBuilder {
         TapGestureBuilder(revealLetterView.get)
             .setTap { [weak self] tapGesture in
                 guard let self else { return }
-                delegate?.revealLetterViewTapped(tapGesture, revealLetterView)
+                delegate?.countRevealLetterDropdownViewTapped(tapGesture, revealLetterView)
             }
     }
     
