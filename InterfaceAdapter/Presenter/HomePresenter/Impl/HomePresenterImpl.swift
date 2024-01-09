@@ -132,6 +132,10 @@ public class HomePresenterImpl: HomePresenter {
         guard let word = wordPlaying?.word else {return nil}
         let wordPlaying: Set<String> = Set(word.map({ String($0) }))
         
+        gameScorePresenterDTO?.reveal -= 1
+        
+        updateCountReveal()
+        
         return wordPlaying.subtracting(letterSuccess).randomElement()
         
     }
@@ -273,8 +277,8 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func fetchGameScore() async {
-        gameScorePresenterDTO = GameScorePresenterDTO(life: 6, tips: 11, reveal: 6)
-        successFetchGameScore()
+        gameScorePresenterDTO = GameScorePresenterDTO(life: 5, tips: 20, reveal: 5)
+        fetchSuccessGameScore()
     }
     
     private func saveWordPlayed() async {
@@ -414,14 +418,33 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func successFetchGameScore() {
+    private func fetchSuccessGameScore() {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.updateCountLife(gameScorePresenterDTO?.life.description ?? "0")
-            delegateOutput?.updateCountTip(gameScorePresenterDTO?.tip.description ?? "0")
-            delegateOutput?.updateCountReveal(gameScorePresenterDTO?.reveal.description ?? "0")
+            guard let self, let gameScore = gameScorePresenterDTO else {return}
+            delegateOutput?.fetchSuccessGameScore(gameScore)
         }
     }
     
+    
+    private func updateCountLife() {
+        MainThread.exec { [weak self] in
+            guard let self else {return}
+            delegateOutput?.updateCountLife(gameScorePresenterDTO?.life.description ?? "0")
+        }
+    }
+    
+    private func updateCountTip() {
+        MainThread.exec { [weak self] in
+            guard let self else {return}
+            delegateOutput?.updateCountTip(gameScorePresenterDTO?.tip.description ?? "0")
+        }
+    }
+    
+    private func updateCountReveal() {
+        MainThread.exec { [weak self] in
+            guard let self else {return}
+            delegateOutput?.updateCountReveal(gameScorePresenterDTO?.reveal.description ?? "0")
+        }
+    }
     
 }

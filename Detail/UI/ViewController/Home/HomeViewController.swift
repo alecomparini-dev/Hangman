@@ -436,6 +436,12 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: HomePresenterOutput {
+    public func fetchSuccessGameScore(_ gameScore: GameScorePresenterDTO) {
+        screen.gamePainelView.countLifeView.lifeLabel.get.text = gameScore.life.description
+        screen.gamePainelView.countTipsView.tipsLabel.get.text = gameScore.tip.description
+        screen.gamePainelView.countRevealLetterView.revealLabel.get.text = gameScore.reveal.description
+    }
+    
     public func updateCountLife(_ count: String) {
         screen.gamePainelView.countLifeView.lifeLabel.get.text = count
     }
@@ -445,7 +451,31 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     public func updateCountReveal(_ count: String) {
-        screen.gamePainelView.countRevealLetterView.revealLabel.get.text = count
+        let minusYOri = screen.minusOneRevealLabel.get.layer.frame.origin.y
+        let minusXOri = screen.minusOneRevealLabel.get.layer.frame.origin.x
+        
+        //TODO: - CALCULATE POSITION
+        let toY = screen.minusOneRevealLabel.get.layer.frame.origin.y - 80
+        let toX = screen.minusOneRevealLabel.get.layer.frame.origin.x + 50
+        
+        UIView.animate(withDuration: 1.5, delay: 0.3, options: .curveEaseInOut , animations: { [weak self] in
+            guard let self else {return}
+            screen.minusOneRevealLabel.get.alpha = 1
+            screen.minusOneRevealLabel.get.layer.frame.origin.y = toY
+            screen.minusOneRevealLabel.get.layer.frame.origin.x = toX
+            screen.minusOneRevealLabel.get.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+        }) { _ in
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+                guard let self else {return}
+                screen.minusOneRevealLabel.get.transform = .identity
+                screen.minusOneRevealLabel.get.alpha = 0
+            }) { [weak self] _ in
+                guard let self else {return}
+                self.screen.gamePainelView.countRevealLetterView.revealLabel.get.text = count
+                screen.minusOneRevealLabel.get.layer.frame.origin.y = minusYOri
+                screen.minusOneRevealLabel.get.layer.frame.origin.x = minusXOri
+            }
+        }
     }
     
     public func revealHeadDoll(_ imageBase64: String) {

@@ -8,6 +8,7 @@ public protocol HomePresenterOutput: AnyObject {
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
     
+    func fetchSuccessGameScore(_ gameScore: GameScorePresenterDTO)
     func updateCountLife(_ count: String)
     func updateCountTip(_ count: String)
     func updateCountReveal(_ count: String)

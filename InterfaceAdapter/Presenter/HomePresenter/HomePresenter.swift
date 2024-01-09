@@ -25,5 +25,4 @@ public protocol HomePresenter {
     
     func revealLetterGameRandom() -> String?
     
-    
 }
