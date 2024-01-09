@@ -12,9 +12,8 @@ public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: HomePresenterOutput?
     
     private var revealLetterGame: Set<String> = []
-    private var gameScorePresenterDTO: GameScorePresenterDTO?
         
-    
+    private var gameScore: GameScoreModel?
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
     private var _isEndGame = false
@@ -54,13 +53,15 @@ public class HomePresenterImpl: HomePresenter {
             return DataTransferDTO(userID: userID,
                                    wordPlaying: wordPlaying,
                                    nextWords: nextWords,
-                                   dolls: dolls)
+                                   dolls: dolls,
+                                   gameScore: gameScore)
         }
         set {
             self.userID = newValue?.userID
             self.wordPlaying = newValue?.wordPlaying
             self.nextWords = newValue?.nextWords
             self.dolls = newValue?.dolls
+            self.gameScore = newValue?.gameScore
         }
     }
     
@@ -95,6 +96,7 @@ public class HomePresenterImpl: HomePresenter {
     
     public func getNextWord() {
         getRandomDoll()
+        updateGameScore()
         Task {
             if nextWord() != nil {
                 successFetchNextWord()
@@ -120,8 +122,12 @@ public class HomePresenterImpl: HomePresenter {
                 "Q","R","S","T","U","V","W","X","Y","Z",""]
     }
     
-    public func revealLetterGameRandom() -> String? {
-        guard let joinedWordPlaying else {return nil}
+    public func revealLetterGameRandom(_ duration: CGFloat = 1) {
+        if isEndGame { return }
+        
+        if countReveal() == 0 { return }
+        
+        guard let joinedWordPlaying else { return }
         
         let letterSuccess: Set<String> = Set( successLetterIndex.map { index in
             let index = joinedWordPlaying.index(joinedWordPlaying.startIndex, offsetBy: index)
@@ -129,17 +135,39 @@ public class HomePresenterImpl: HomePresenter {
             return String(letter)
         } )
 
-        guard let word = wordPlaying?.word else {return nil}
-        let wordPlaying: Set<String> = Set(word.map({ String($0) }))
+        guard let word = wordPlaying?.word else { return }
         
-        gameScorePresenterDTO?.reveal -= 1
+        let wordPlaying: Set<String> = Set( word.map({ String($0) }) )
+        
+        gameScore?.revealLetterScore?.freeReveal -= 1
         
         updateCountReveal()
         
-        return wordPlaying.subtracting(letterSuccess).randomElement()
+        let letterRandom = wordPlaying.subtracting(letterSuccess).randomElement()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: {
+            self.verifyMatchInWord(letterRandom)
+        })
         
     }
     
+    
+    public func countLife() -> Int8 {
+        return (gameScore?.lifeScore?.freeLife ?? 0) +
+        (gameScore?.lifeScore?.adLife ?? 0) +
+        (gameScore?.lifeScore?.buyLife ?? 0)
+    }
+    
+    public func countTips() -> Int8 {
+        return (gameScore?.tipScore?.freeTip ?? 0) + (gameScore?.tipScore?.adTip ?? 0)
+    }
+    
+    public func countReveal() -> Int8 {
+        return (gameScore?.revealLetterScore?.freeReveal ?? 0) +
+        (gameScore?.revealLetterScore?.adReveal ?? 0) +
+        (gameScore?.revealLetterScore?.buyReveal ?? 0)
+    }
+
     
     
 //  MARK: - PRIVATE AREA
@@ -277,8 +305,10 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func fetchGameScore() async {
-        gameScorePresenterDTO = GameScorePresenterDTO(life: 5, tips: 20, reveal: 5)
-        fetchSuccessGameScore()
+        gameScore = GameScoreModel(lifeScore: LifeScoreModel(freeLife: 5, buyLife: 0, adLife: 0),
+                                   tipScore: TipScoreModel(freeTip: 15, adTip: 0),
+                                   revealLetterScore: RevealLetterScoreModel(freeReveal: 5, buyReveal: 0, adReveal: 0))
+        updateGameScore()
     }
     
     private func saveWordPlayed() async {
@@ -326,9 +356,6 @@ public class HomePresenterImpl: HomePresenter {
             return .easy
         }
     }
-    
-    
-
     
     
 //  MARK: - PRIVATE OUTPUT AREA
@@ -418,33 +445,36 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func fetchSuccessGameScore() {
+    private func updateGameScore() {
         MainThread.exec { [weak self] in
-            guard let self, let gameScore = gameScorePresenterDTO else {return}
-            delegateOutput?.fetchSuccessGameScore(gameScore)
+            guard let self else {return}
+            let gameScorePresenterDTO = GameScorePresenterDTO(life: countLife(),
+                                                              tips: countTips(),
+                                                              reveal: countReveal())
+            delegateOutput?.updateGameScore(gameScorePresenterDTO)
         }
     }
-    
     
     private func updateCountLife() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountLife(gameScorePresenterDTO?.life.description ?? "0")
+            delegateOutput?.updateCountLife(countLife().description)
         }
     }
     
     private func updateCountTip() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountTip(gameScorePresenterDTO?.tip.description ?? "0")
+            delegateOutput?.updateCountTip(countTips().description)
         }
     }
     
     private func updateCountReveal() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountReveal(gameScorePresenterDTO?.reveal.description ?? "0")
+            delegateOutput?.updateCountReveal(countReveal().description)
         }
     }
+    
     
 }
