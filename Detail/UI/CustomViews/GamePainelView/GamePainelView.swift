@@ -53,7 +53,7 @@ class GamePainelView: ViewBuilder {
         return comp
     }()
     
-    lazy var revealLetterView: CountRevealLetterView = {
+    lazy var countRevealLetterView: CountRevealLetterView = {
         let comp = CountRevealLetterView()
             .setConstraints { build in
                 build
@@ -77,13 +77,13 @@ class GamePainelView: ViewBuilder {
     private func addElements() {
         countLifeView.add(insideTo: self.get)
         countTipsView.add(insideTo: self.get)
-        revealLetterView.add(insideTo: self.get)
+        countRevealLetterView.add(insideTo: self.get)
     }
     
     private func configConstraints() {
         countLifeView.applyConstraint()
         countTipsView.applyConstraint()
-        revealLetterView.applyConstraint()
+        countRevealLetterView.applyConstraint()
     }
     
     private func configTapGesture() {
@@ -99,10 +99,10 @@ class GamePainelView: ViewBuilder {
                 delegate?.countTipsViewTapped(tapGesture, countTipsView)
             }
         
-        TapGestureBuilder(revealLetterView.get)
+        TapGestureBuilder(countRevealLetterView.get)
             .setTap { [weak self] tapGesture in
                 guard let self else { return }
-                delegate?.countRevealLetterDropdownViewTapped(tapGesture, revealLetterView)
+                delegate?.countRevealLetterDropdownViewTapped(tapGesture, countRevealLetterView)
             }
     }
     

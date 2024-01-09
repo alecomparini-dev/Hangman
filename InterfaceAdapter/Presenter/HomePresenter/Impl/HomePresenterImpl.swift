@@ -11,14 +11,16 @@ import Handler
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: HomePresenterOutput?
     
+    private var revealLetterGame: Set<String> = []
+    private var gameScorePresenterDTO: GameScorePresenterDTO?
+        
+    
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
-    private var countDolls = 1
     private var _isEndGame = false
     private var joinedWordPlaying: String?
     private var successLetterIndex: Set<Int> = []
     private var errorLetters: Set<String> = []
-    private var revealLetterGame: Set<String> = []
     
     private var userID: String?
     private var wordPlaying: NextWordsUseCaseDTO?
@@ -143,6 +145,7 @@ public class HomePresenterImpl: HomePresenter {
             await fetchRandomDolls()
             await signInAnonymously()
             await fetchNextWord()
+            await fetchGameScore()
         }
     }
     
@@ -269,6 +272,11 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
+    private func fetchGameScore() async {
+        gameScorePresenterDTO = GameScorePresenterDTO(life: 6, tips: 11, reveal: 6)
+        successFetchGameScore()
+    }
+    
     private func saveWordPlayed() async {
         guard let userID else { return }
         do {
@@ -320,6 +328,7 @@ public class HomePresenterImpl: HomePresenter {
     
     
 //  MARK: - PRIVATE OUTPUT AREA
+    
     private func successFetchNextWord() {
         joinedWordPlaying = wordPlaying?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
         
@@ -404,6 +413,15 @@ public class HomePresenterImpl: HomePresenter {
             }
         }
     }
-
+    
+    private func successFetchGameScore() {
+        MainThread.exec { [weak self] in
+            guard let self else {return}
+            delegateOutput?.updateCountLife(gameScorePresenterDTO?.life.description ?? "0")
+            delegateOutput?.updateCountTip(gameScorePresenterDTO?.tip.description ?? "0")
+            delegateOutput?.updateCountReveal(gameScorePresenterDTO?.reveal.description ?? "0")
+        }
+    }
+    
     
 }

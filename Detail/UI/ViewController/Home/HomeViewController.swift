@@ -408,7 +408,6 @@ extension HomeViewController: DropdownRevealLetterViewDelegate {
         })
     }
     
-    
     func closeDropDownRevealLetter() {
         setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get , true)
     }
@@ -437,6 +436,17 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: HomePresenterOutput {
+    public func updateCountLife(_ count: String) {
+        screen.gamePainelView.countLifeView.lifeLabel.get.text = count
+    }
+    
+    public func updateCountTip(_ count: String) {
+        screen.gamePainelView.countTipsView.tipsLabel.get.text = count
+    }
+    
+    public func updateCountReveal(_ count: String) {
+        screen.gamePainelView.countRevealLetterView.revealLabel.get.text = count
+    }
     
     public func revealHeadDoll(_ imageBase64: String) {
         screen.gallowsView.ropeCircleGallows.setHidden(true)

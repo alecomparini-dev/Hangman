@@ -54,6 +54,7 @@
 		0235E5FD2B167FB900829489 /* BodyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F32B15449400829489 /* BodyCodable.swift */; };
 		0235E5FE2B167FBC00829489 /* HeadCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F52B1544A000829489 /* HeadCodable.swift */; };
 		0235E5FF2B167FC200829489 /* DollCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F72B1544B600829489 /* DollCodable.swift */; };
+		024154082B4D84490016450C /* GameScorePresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154072B4D84490016450C /* GameScorePresenterDTO.swift */; };
 		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
 		026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */; };
 		026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */; };
@@ -299,6 +300,7 @@
 		0235E5F52B1544A000829489 /* HeadCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadCodable.swift; sourceTree = "<group>"; };
 		0235E5F72B1544B600829489 /* DollCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollCodable.swift; sourceTree = "<group>"; };
 		0235E5F92B157B6600829489 /* AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHandler.swift; sourceTree = "<group>"; };
+		024154072B4D84490016450C /* GameScorePresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScorePresenterDTO.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
 		0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchByDataStorageProvider.swift; sourceTree = "<group>"; };
 		026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCase.swift; sourceTree = "<group>"; };
@@ -450,9 +452,10 @@
 		020216582B0B9C42003E2B07 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				021B63142B11328E002498DA /* DataTransferDTO.swift */,
 				020216592B0B9C59003E2B07 /* WordPresenterDTO.swift */,
 				0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */,
-				021B63142B11328E002498DA /* DataTransferDTO.swift */,
+				024154072B4D84490016450C /* GameScorePresenterDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1667,6 +1670,7 @@
 				02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */,
 				021B63162B1133E4002498DA /* DataTransferDTO.swift in Sources */,
 				02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */,
+				024154082B4D84490016450C /* GameScorePresenterDTO.swift in Sources */,
 				0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */,
 				021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */,
 			);
