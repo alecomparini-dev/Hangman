@@ -470,7 +470,6 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
         coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     
-    
 }
 
 
