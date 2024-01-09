@@ -207,7 +207,7 @@ class DropdownLifeView: ViewBuilder {
             .setSize(32)
             .setContentMode(.center)
             .setWeight(.bold)
-            .setTintColor(Theme.shared.currentTheme.onSurfaceVariant)
+            .setTintColor(hexColor: K.ExtraColor.heartFill)
     }
     
     
