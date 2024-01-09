@@ -54,7 +54,6 @@ class CountLifeView: ViewBuilder {
         return comp
     }()
     
-    
     lazy var minusHeartImage: ImageViewBuilder = {
         let comp = ImageViewBuilder()
             .setAlpha(0)

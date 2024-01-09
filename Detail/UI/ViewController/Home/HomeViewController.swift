@@ -57,10 +57,11 @@ public class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         if let dataTransfer {
             homePresenter.dataTransfer = dataTransfer
-            updateMarkUsedButtonRevealLetter()
+            updateMarkGameScore()
             homePresenter.getNextWord()
         }
     }
+    
     
     
 //  MARK: - SET DATA TRANSFER
@@ -99,11 +100,25 @@ public class HomeViewController: UIViewController {
         setQuantityCorrectLetter(word?.word?.count)
     }
     
+    private func updateMarkGameScore() {
+        updateMarkUsedButtonRevealLetter()
+        updateMarkUsedLife()
+    }
+    
     private func updateMarkUsedButtonRevealLetter() {
         let countReveal = homePresenter.countReveal() + 1
         (countReveal..<6).forEach { index in
             let comp = screen.dropdownRevealLetterView.stackEyes.get.viewWithTag(Int(index))
             markUsedButtonRevealLetter(comp)
+        }
+    }
+    
+    private func updateMarkUsedLife() {
+        let countLife = homePresenter.countLife() + 1
+        (countLife..<6).forEach { index in
+            if let comp = screen.dropdownLifeView.stackLifeHeart.get.viewWithTag(Int(index)) as? UIImageView {
+                comp.tintColor = Theme.shared.currentTheme.onSurfaceVariant
+            }
         }
     }
     
@@ -469,6 +484,7 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     public func updateCountLife(_ count: String) {
+        updateMarkUsedLife()
         UIView.animate(withDuration: 2, delay: 1, options: .curveEaseInOut , animations: { [weak self] in
             guard let self else {return}
             screen.gamePainelView.countLifeView.minusHeartImage.get.alpha = 1
