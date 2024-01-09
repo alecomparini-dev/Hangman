@@ -147,10 +147,8 @@ public class HomePresenterImpl: HomePresenter {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: {
             self.verifyMatchInWord(letterRandom)
-        })
-        
+        })   
     }
-    
     
     public func countLife() -> Int8 {
         return (gameScore?.lifeScore?.freeLife ?? 0) +

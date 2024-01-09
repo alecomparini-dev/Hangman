@@ -4,11 +4,13 @@
 import Foundation
 
 public struct GameScoreModel {
+    public var dateRenew: Date?
     public var lifeScore: LifeScoreModel?
     public var tipScore: TipScoreModel?
     public var revealLetterScore: RevealLetterScoreModel?
     
-    public init(lifeScore: LifeScoreModel? = nil, tipScore: TipScoreModel? = nil, revealLetterScore: RevealLetterScoreModel? = nil) {
+    public init(dateRenew: Date? = nil, lifeScore: LifeScoreModel? = nil, tipScore: TipScoreModel? = nil, revealLetterScore: RevealLetterScoreModel? = nil) {
+        self.dateRenew = dateRenew
         self.lifeScore = lifeScore
         self.tipScore = tipScore
         self.revealLetterScore = revealLetterScore
