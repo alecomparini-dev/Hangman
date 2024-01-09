@@ -44,6 +44,7 @@ public struct K {
         public static let tipClose = ["lightbulb.max", "lightbulb"]
         public static let tipLocked = "lock.fill"
         public static let heartFill = "suit.heart.fill"
+        public static let heartSlashFill = "heart.slash.fill"
         public static let eyeFill = "eye.fill"
         public static let eyeSlashFill = "eye.slash.fill"
         public static let triangleFill = "eject.fill"

@@ -231,11 +231,17 @@ public class HomePresenterImpl: HomePresenter {
         if isEndGameFailure() {
             revealLetterEndGame(indexesEndGameToReveal())
             revealDollEndGameFailure()
+            decreaseLife()
         }
         
         if isEndGameSuccess() {
             revealDollEndGameSuccess()
         }
+    }
+    
+    private func decreaseLife() {
+        gameScore?.lifeScore?.freeLife -= 1
+        updateCountLife()
     }
     
     private func indexesEndGameToReveal() -> [Int] {

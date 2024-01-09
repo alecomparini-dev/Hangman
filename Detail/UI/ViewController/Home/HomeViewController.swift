@@ -338,6 +338,34 @@ public class HomeViewController: UIViewController {
         }
     }
     
+    private func animateMinusRevealLetter(_ count: String) {
+        let minusYOri = screen.minusOneRevealLabel.get.layer.frame.origin.y
+        let minusXOri = screen.minusOneRevealLabel.get.layer.frame.origin.x
+        
+        //TODO: - CALCULATE POSITION
+        let toY = screen.minusOneRevealLabel.get.layer.frame.origin.y - 80
+        let toX = screen.minusOneRevealLabel.get.layer.frame.origin.x + 50
+        
+        UIView.animate(withDuration: 1.5, delay: 0.3, options: .curveEaseInOut , animations: { [weak self] in
+            guard let self else {return}
+            screen.minusOneRevealLabel.get.alpha = 1
+            screen.minusOneRevealLabel.get.layer.frame.origin.y = toY
+            screen.minusOneRevealLabel.get.layer.frame.origin.x = toX
+            screen.minusOneRevealLabel.get.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+        }) { _ in
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+                guard let self else {return}
+                screen.minusOneRevealLabel.get.transform = .identity
+                screen.minusOneRevealLabel.get.alpha = 0
+            }) { [weak self] _ in
+                guard let self else {return}
+                self.screen.gamePainelView.countRevealLetterView.revealLabel.get.text = count
+                screen.minusOneRevealLabel.get.layer.frame.origin.y = minusYOri
+                screen.minusOneRevealLabel.get.layer.frame.origin.x = minusXOri
+            }
+        }
+    }
+    
 }
 
 
@@ -441,7 +469,18 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     public func updateCountLife(_ count: String) {
-        screen.gamePainelView.countLifeView.lifeLabel.get.text = count
+        UIView.animate(withDuration: 2, delay: 1, options: .curveEaseInOut , animations: { [weak self] in
+            guard let self else {return}
+            screen.gamePainelView.countLifeView.minusHeartImage.get.alpha = 1
+            screen.gamePainelView.countLifeView.minusHeartImage.get.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
+        }) { _ in
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+                guard let self else {return}
+                screen.gamePainelView.countLifeView.minusHeartImage.get.transform = .identity
+                screen.gamePainelView.countLifeView.minusHeartImage.get.alpha = 0
+                screen.gamePainelView.countLifeView.lifeLabel.get.text = count
+            })
+        }
     }
     
     public func updateCountTip(_ count: String) {
@@ -455,32 +494,7 @@ extension HomeViewController: HomePresenterOutput {
 
         pulseAnimationRevealingImage()
 
-
-        let minusYOri = screen.minusOneRevealLabel.get.layer.frame.origin.y
-        let minusXOri = screen.minusOneRevealLabel.get.layer.frame.origin.x
-        
-        //TODO: - CALCULATE POSITION
-        let toY = screen.minusOneRevealLabel.get.layer.frame.origin.y - 80
-        let toX = screen.minusOneRevealLabel.get.layer.frame.origin.x + 50
-        
-        UIView.animate(withDuration: 1.5, delay: 0.3, options: .curveEaseInOut , animations: { [weak self] in
-            guard let self else {return}
-            screen.minusOneRevealLabel.get.alpha = 1
-            screen.minusOneRevealLabel.get.layer.frame.origin.y = toY
-            screen.minusOneRevealLabel.get.layer.frame.origin.x = toX
-            screen.minusOneRevealLabel.get.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
-        }) { _ in
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-                guard let self else {return}
-                screen.minusOneRevealLabel.get.transform = .identity
-                screen.minusOneRevealLabel.get.alpha = 0
-            }) { [weak self] _ in
-                guard let self else {return}
-                self.screen.gamePainelView.countRevealLetterView.revealLabel.get.text = count
-                screen.minusOneRevealLabel.get.layer.frame.origin.y = minusYOri
-                screen.minusOneRevealLabel.get.layer.frame.origin.x = minusXOri
-            }
-        }
+        animateMinusRevealLetter(count)
     }
     
     public func revealHeadDoll(_ imageBase64: String) {

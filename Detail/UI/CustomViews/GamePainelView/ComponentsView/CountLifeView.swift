@@ -53,6 +53,21 @@ class CountLifeView: ViewBuilder {
             }
         return comp
     }()
+    
+    
+    lazy var minusHeartImage: ImageViewBuilder = {
+        let comp = ImageViewBuilder()
+            .setAlpha(0)
+            .setImage(systemName: K.Images.heartSlashFill)
+            .setTintColor(Theme.shared.currentTheme.onSurface)
+            .setTintColor(hexColor: K.ExtraColor.heartFill)
+            .setSize(22)
+            .setConstraints { build in
+                build
+                    .setAlignmentCenterXY.equalTo(lifeImage.get)
+            }
+        return comp
+    }()
         
     
 //  MARK: - PRIVATE AREA
@@ -65,11 +80,13 @@ class CountLifeView: ViewBuilder {
         lifeShadowImage.add(insideTo: self.get)
         lifeImage.add(insideTo: self.get)
         lifeLabel.add(insideTo: self.get)
+        minusHeartImage.add(insideTo: self.get)
     }
     
     private func configConstraints() {
         lifeImage.applyConstraint()
         lifeShadowImage.applyConstraint()
         lifeLabel.applyConstraint()
+        minusHeartImage.applyConstraint()
     }
 }
