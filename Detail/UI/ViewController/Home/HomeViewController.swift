@@ -304,19 +304,19 @@ public class HomeViewController: UIViewController {
     }
     
     private func pulseAnimationRevealingImage(completion: @escaping () -> Void) {
-        UIView.animate(withDuration: 1, animations: { [weak self] in
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
             guard let self else {return}
             screen.revealingImage.get.alpha = 1
             let pulseAnimation = CABasicAnimation(keyPath: "transform.scale")
-            pulseAnimation.duration = 0.8
+            pulseAnimation.duration = 0.5
             pulseAnimation.fromValue = NSNumber(value: 1.0)
             pulseAnimation.toValue = NSNumber(value: 1.2)
             pulseAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
             pulseAnimation.autoreverses = true
             pulseAnimation.repeatCount = .greatestFiniteMagnitude
-            screen.revealingImage.get.layer.add(pulseAnimation, forKey: "revealing")
+            screen.revealingImage.get.layer.add(pulseAnimation, forKey: nil)
         }) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { 
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 completion()
             })
         }
@@ -395,16 +395,16 @@ extension HomeViewController: DropdownLifeViewDelegate {
 extension HomeViewController: DropdownRevealLetterViewDelegate {
     
     func revealLetterButtonTapped(component: UIView) {
+        if homePresenter.isEndGame { return }
+        
         setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get , true)
+        
+        let wordPlaying = homePresenter.revealLetterGameRandom()
         
         markUsedButtonRevealLetter(component)
         
         pulseAnimationRevealingImage(completion: { [weak self] in
-            self?.homePresenter.verifyMatchInWord("A")
-        })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { [weak self] in
-            self?.stopPulseAnimationRevealingImage()
+            self?.homePresenter.verifyMatchInWord(wordPlaying)
         })
     }
     
@@ -426,6 +426,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
     }
     
     func moreTipTapped() {
+        if homePresenter.isEndGame { return }
         coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     

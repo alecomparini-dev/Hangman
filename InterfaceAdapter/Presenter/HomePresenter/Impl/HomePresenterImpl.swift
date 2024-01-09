@@ -18,6 +18,7 @@ public class HomePresenterImpl: HomePresenter {
     private var joinedWordPlaying: String?
     private var successLetterIndex: Set<Int> = []
     private var errorLetters: Set<String> = []
+    private var revealLetterGame: Set<String> = []
     
     private var userID: String?
     private var wordPlaying: NextWordsUseCaseDTO?
@@ -116,6 +117,23 @@ public class HomePresenterImpl: HomePresenter {
         return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
                 "Q","R","S","T","U","V","W","X","Y","Z",""]
     }
+    
+    public func revealLetterGameRandom() -> String? {
+        guard let joinedWordPlaying else {return nil}
+        
+        let letterSuccess: Set<String> = Set( successLetterIndex.map { index in
+            let index = joinedWordPlaying.index(joinedWordPlaying.startIndex, offsetBy: index)
+            let letter = joinedWordPlaying[index]
+            return String(letter)
+        } )
+
+        guard let word = wordPlaying?.word else {return nil}
+        let wordPlaying: Set<String> = Set(word.map({ String($0) }))
+        
+        return wordPlaying.subtracting(letterSuccess).randomElement()
+        
+    }
+    
     
     
 //  MARK: - PRIVATE AREA
