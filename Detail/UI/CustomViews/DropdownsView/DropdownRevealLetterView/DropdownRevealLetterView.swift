@@ -8,12 +8,14 @@ import Handler
 
 protocol DropdownRevealLetterViewDelegate: AnyObject {
     func closeDropDownRevealLetter()
+    func revealLetterButtonTapped(component: UIView)
 }
 
 
 class DropdownRevealLetterView: ViewBuilder {
     weak var delegate: DropdownRevealLetterViewDelegate?
     
+    private let tagImage = 10
     private var eyes: [ViewBuilder]? = []
     
     override init() {
@@ -104,7 +106,6 @@ class DropdownRevealLetterView: ViewBuilder {
             }
         return comp
     }()
-    
     
     lazy var useRevealLetterLabel: LabelBuilder = {
         let comp = LabelBuilder()
@@ -265,20 +266,19 @@ class DropdownRevealLetterView: ViewBuilder {
     private func addEyeImage() {
         let tagsEyes = (1...5)
         tagsEyes.forEach { tag in
-            let eye = makeEyeImage()
-            eye.setTag(tag)
+            let eye = makeEyeImage(tag)
             .setActions { build in
                 build
-                    .setTap ({ component, tapGesture in
-                        print(component.tag)
-                    }, false)
+                    .setTap { [weak self] component, tapGesture in
+                        self?.delegate?.revealLetterButtonTapped(component: component)
+                    }
             }
             eye.add(insideTo: stackEyes.get)
             eyes?.append(eye)
         }
     }
     
-    private func makeEyeImage() -> ViewBuilder {
+    private func makeEyeImage(_ tag: Int) -> ViewBuilder {
         let view = ViewBuilder()
             .setNeumorphism({ build in
                 build
@@ -296,14 +296,16 @@ class DropdownRevealLetterView: ViewBuilder {
                 build
                     .setCornerRadius(8)
                     .setWidth(1)
-                    .setColor(Theme.shared.currentTheme.primary)
+                    .setColor(Theme.shared.currentTheme.primary.withAlphaComponent(0.4))
             })
+            .setTag(tag)
             
         let img = ImageViewBuilder(systemName: K.Images.eyeSlashFill)
             .setSize(22)
             .setContentMode(.center)
             .setWeight(.bold)
-            .setTintColor(Theme.shared.currentTheme.onSurfaceInverse.withAlphaComponent(0.6))
+            .setTintColor(Theme.shared.currentTheme.onSurfaceInverse.withAlphaComponent(0.8))
+            .setTag(tag + tagImage)
             .setConstraints { build in
                 build
                     .setAlignmentCenterXY.equalToSuperView

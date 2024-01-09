@@ -170,6 +170,20 @@ class HomeView: UIView {
     
     //  MARK: - DISCOVERY WORD
     
+    lazy var revealingImage: ImageViewBuilder = {
+        let img = UIImage(systemName: K.Images.eyeFill)
+        let comp = ImageViewBuilder(img)
+            .setAlpha(0)
+            .setTintColor(Theme.shared.currentTheme.primary)
+            .setSize(14)
+            .setContentMode(.center)
+            .setConstraints { build in
+                build
+                    .setTop.setLeading.equalTo(hangmanWordView.get, -8)
+            }
+        return comp
+    }()
+    
     lazy var hangmanWordView: HangmanWordView = {
         let view = HangmanWordView()
             .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.1))
@@ -230,6 +244,7 @@ class HomeView: UIView {
         stackView.add(insideTo: self)
         gamePainelView.add(insideTo: stackView.gallowsToStack.get)
         painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
+        painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
         gallowsView.add(insideTo: painelGallowsView.painelView.get)
         nextWordButton.add(insideTo: self)
         categoryLabel.add(insideTo: stackView.wordsToStack.get)
@@ -267,7 +282,14 @@ class HomeView: UIView {
     
     private func addGallowsWordView() {
         hangmanWordView.add(insideTo: stackView.wordsToStack.get)
+        revealingImage.add(insideTo: stackView.wordsToStack.get)
         quantityLettersView.add(insideTo: stackView.wordsToStack.get)
+    }
+    
+    public func configGallowsWordViewContraints() {
+        hangmanWordView.applyConstraint()
+        revealingImage.applyConstraint()
+        quantityLettersView.applyConstraint()
     }
     
     private func configStackViewConstraints() {
@@ -279,10 +301,7 @@ class HomeView: UIView {
         stackView.applyConstraint()
     }
     
-    public func configGallowsWordViewContraints() {
-        hangmanWordView.applyConstraint()
-        quantityLettersView.applyConstraint()
-    }
+    
     
     
 }

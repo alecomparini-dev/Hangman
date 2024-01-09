@@ -16,9 +16,13 @@ public protocol HomeViewControllerCoordinator: AnyObject {
 public class HomeViewController: UIViewController {
     public weak var coordinator: HomeViewControllerCoordinator?
 
-    private var lettersInWord: [HangmanLetterInWordView?] = []
+    private let tagImage = 10
     
+    private var lettersInWord: [HangmanLetterInWordView?] = []
     private var dataTransfer: DataTransferDTO?
+    
+    
+//  MARK: - INITIALIZERS
     
     private var homePresenter: HomePresenter
     
@@ -121,6 +125,7 @@ public class HomeViewController: UIViewController {
         if word.syllables?.joined().count ?? 0 <= K.quantityLetterByLine { return indexBreakLine }
     
         var acumulator = ""
+        
         for (index, syllable) in syllables.enumerated() {
             acumulator += syllable
             if acumulator.count > K.quantityLetterByLine {
@@ -128,6 +133,7 @@ public class HomeViewController: UIViewController {
                 break
             }
         }
+        
         return indexBreakLine
     }
     
@@ -139,21 +145,17 @@ public class HomeViewController: UIViewController {
         if screen.hangmanWordView.horizontalStack2.get.isHidden {
             screen.hangmanWordView.horizontalStack2.setHidden(false)
         }
+        
         insertLetterInStack(letter, screen.hangmanWordView.horizontalStack2)
     }
     
     private func insertSpaceInStack(_ horizontalStack: StackViewBuilder) {
-        let space = space()
-        space.add(insideTo: horizontalStack.get)
-        space.applyConstraint()
-    }
-    
-    private func space() -> ViewBuilder {
         let space = ViewBuilder()
             .setConstraints { build in
                 build.setSize.equalToConstant(2)
             }
-        return space
+        space.add(insideTo: horizontalStack.get)
+        space.applyConstraint()
     }
     
     private func insertLetterInStack(_ letter: HangmanLetterInWordView, _ horizontalStack: StackViewBuilder) {
@@ -288,6 +290,46 @@ public class HomeViewController: UIViewController {
         setHideDropdownAnimation(dropdown: dropdown, !(dropdown.alpha == 0.0))
     }
     
+    private func markUsedButtonRevealLetter(_ component: UIView) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
+            guard let self else { return }
+            component.removeNeumorphism()
+            component.isUserInteractionEnabled = false
+            if let img = component.viewWithTag(component.tag + tagImage) as? UIImageView {
+                img.image = UIImage(systemName: K.Images.eyeFill)
+                img.image = img.image?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 22))
+                img.tintColor = Theme.shared.currentTheme.onSurfaceVariant
+            }
+        })
+    }
+    
+    private func pulseAnimationRevealingImage(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            guard let self else {return}
+            screen.revealingImage.get.alpha = 1
+            let pulseAnimation = CABasicAnimation(keyPath: "transform.scale")
+            pulseAnimation.duration = 0.5
+            pulseAnimation.fromValue = NSNumber(value: 1.0)
+            pulseAnimation.toValue = NSNumber(value: 1.2)
+            pulseAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            pulseAnimation.autoreverses = true
+            pulseAnimation.repeatCount = .greatestFiniteMagnitude
+            screen.revealingImage.get.layer.add(pulseAnimation, forKey: nil)
+        }) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                completion()
+            })
+        }
+    }
+    
+    private func stopPulseAnimationRevealingImage() {
+        if screen.revealingImage.get.alpha == 0 { return }
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.screen.revealingImage.get.alpha = 0
+        }) { [weak self] _ in
+            self?.screen.revealingImage.get.layer.removeAllAnimations()
+        }
+    }
     
 }
 
@@ -309,10 +351,10 @@ extension HomeViewController: HangmanViewDelegate {
 
 extension HomeViewController: GamePainelViewDelegate {
     
-    func countLifeViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+    func countLifeDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
         toggleDropdown(dropdown: screen.dropdownLifeView.get)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
             if let dropdown = self?.screen.dropdownRevealLetterView.get {
                 self?.setHideDropdownAnimation(dropdown: dropdown, true)
             }
@@ -325,10 +367,10 @@ extension HomeViewController: GamePainelViewDelegate {
         coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     
-    func revealLetterViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+    func countRevealLetterDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
         toggleDropdown(dropdown: screen.dropdownRevealLetterView.get)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
             if let dropdown = self?.screen.dropdownLifeView.get {
                 self?.setHideDropdownAnimation(dropdown: dropdown, true)
             }
@@ -352,6 +394,21 @@ extension HomeViewController: DropdownLifeViewDelegate {
 //  MARK: - EXTENSION - DropdownRevealLetterViewDelegate
 extension HomeViewController: DropdownRevealLetterViewDelegate {
     
+    func revealLetterButtonTapped(component: UIView) {
+        if homePresenter.isEndGame { return }
+        
+        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get , true)
+        
+        let wordPlaying = homePresenter.revealLetterGameRandom()
+        
+        markUsedButtonRevealLetter(component)
+        
+        pulseAnimationRevealingImage(completion: { [weak self] in
+            self?.homePresenter.verifyMatchInWord(wordPlaying)
+        })
+    }
+    
+    
     func closeDropDownRevealLetter() {
         setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get , true)
     }
@@ -369,6 +426,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
     }
     
     func moreTipTapped() {
+        if homePresenter.isEndGame { return }
         coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     
@@ -423,6 +481,9 @@ extension HomeViewController: HomePresenterOutput {
         button.removeNeumorphism()
         if isCorrect {
             updateKeyboardLetterSuccess(button)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+                self?.stopPulseAnimationRevealingImage()
+            })
             return
         }
         updateKeyboardLetterError(button)

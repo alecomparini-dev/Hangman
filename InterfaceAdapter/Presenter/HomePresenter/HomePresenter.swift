@@ -22,6 +22,7 @@ public protocol HomePresenter {
     func getCurrentWord() -> WordPresenterDTO?
     
     func verifyMatchInWord(_ letter: String?)
-        
+    
+    func revealLetterGameRandom() -> String?
     
 }
