@@ -8,6 +8,11 @@ public protocol HomePresenterOutput: AnyObject {
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
     
+    func updateGameScore(_ gameScore: GameScorePresenterDTO)
+    func updateCountLife(_ count: String)
+    func updateCountTip(_ count: String)
+    func updateCountReveal(_ count: String)
+    
     func updateCountCorrectLetters(_ count: String)
     func revealChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String)
     func revealCorrectLetters(_ indexes: [Int])

@@ -184,6 +184,19 @@ class HomeView: UIView {
         return comp
     }()
     
+    lazy var minusOneRevealLabel: LabelBuilder = {
+        let comp = LabelBuilder("-1")
+            .setAlpha(0)
+            .setColor(Theme.shared.currentTheme.onSurface)
+            .setWeight(.semibold)
+            .setSize(18)
+            .setConstraints { build in
+                build
+                    .setTop.setTrailing.equalTo(revealingImage.get)
+            }
+        return comp
+    }()
+    
     lazy var hangmanWordView: HangmanWordView = {
         let view = HangmanWordView()
             .setBackgroundColor(Theme.shared.currentTheme.surfaceContainerHighest.withAlphaComponent(0.1))
@@ -283,12 +296,14 @@ class HomeView: UIView {
     private func addGallowsWordView() {
         hangmanWordView.add(insideTo: stackView.wordsToStack.get)
         revealingImage.add(insideTo: stackView.wordsToStack.get)
+        minusOneRevealLabel.add(insideTo: stackView.wordsToStack.get)
         quantityLettersView.add(insideTo: stackView.wordsToStack.get)
     }
     
     public func configGallowsWordViewContraints() {
         hangmanWordView.applyConstraint()
         revealingImage.applyConstraint()
+        minusOneRevealLabel.applyConstraint()
         quantityLettersView.applyConstraint()
     }
     

@@ -14,7 +14,7 @@ public protocol HomePresenter {
     var isEndGame: Bool { get }
     
     func startGame()
-    
+
     func getLettersKeyboard() -> [String]
     
     func getNextWord()
@@ -23,6 +23,9 @@ public protocol HomePresenter {
     
     func verifyMatchInWord(_ letter: String?)
     
-    func revealLetterGameRandom() -> String?
+    func revealLetterGameRandom(_ duration: CGFloat)
     
+    func countLife() -> Int8
+    func countTips() -> Int8
+    func countReveal() -> Int8
 }
