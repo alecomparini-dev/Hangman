@@ -71,6 +71,7 @@ public class HomeViewController: UIViewController {
             return
         }
         homePresenter.startGame()
+        showSkeletonGameScore()
     }
     
     
@@ -305,14 +306,32 @@ public class HomeViewController: UIViewController {
         screen.quantityLettersView.skeleton?.hideSkeleton()
     }
     
-    private func setHideDropdownAnimation(dropdown: UIView, _ flag: Bool) {
+    private func hideSkeletonGameScore() {
+        screen.gamePainelView.countLifeView.lifeLabel.skeleton?.hideSkeleton()
+        screen.gamePainelView.countTipsView.tipsLabel.skeleton?.hideSkeleton()
+        screen.gamePainelView.countRevealLetterView.revealLabel.skeleton?.hideSkeleton()
+    }
+    
+    private func showSkeletonGameScore() {
+        screen.gamePainelView.countLifeView.lifeLabel.skeleton?.showSkeleton()
+        screen.gamePainelView.countTipsView.tipsLabel.skeleton?.showSkeleton()
+        screen.gamePainelView.countRevealLetterView.revealLabel.skeleton?.showSkeleton()
+    }
+    
+    private func setHideDropdownAnimation(dropdown: UIView) {
+        dropdown.alpha = 1
         UIView.animate(withDuration: 0.3, animations: {
-            dropdown.alpha = flag ? 0 : 1
+            dropdown.alpha = 0
+        }, completion: { bool in
+            if bool { dropdown.isHidden = true }
         })
     }
     
-    private func toggleDropdown(dropdown: UIView) {
-        setHideDropdownAnimation(dropdown: dropdown, !(dropdown.alpha == 0.0))
+    private func setShowDropdownAnimation(dropdown: UIView) {
+        dropdown.isHidden = false
+        UIView.animate(withDuration: 0.3, animations: {
+            dropdown.alpha = 1
+        })
     }
     
     private func markUsedButtonRevealLetter(_ component: UIView?) {
@@ -348,8 +367,8 @@ public class HomeViewController: UIViewController {
         if screen.revealingImage.get.alpha == 0 { return }
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
             self?.screen.revealingImage.get.alpha = 0
-        }) { [weak self] _ in
-            self?.screen.revealingImage.get.layer.removeAllAnimations()
+        }) { [weak self] bool in
+            if bool {self?.screen.revealingImage.get.layer.removeAllAnimations()}
         }
     }
     
@@ -402,29 +421,39 @@ extension HomeViewController: HangmanViewDelegate {
 extension HomeViewController: GamePainelViewDelegate {
     
     func countLifeDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        toggleDropdown(dropdown: screen.dropdownLifeView.get)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
+        if !screen.dropdownLifeView.get.isHidden {
+            setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
+            return
+        }
+        
+        setShowDropdownAnimation(dropdown: screen.dropdownLifeView.get)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
             if let dropdown = self?.screen.dropdownRevealLetterView.get {
-                self?.setHideDropdownAnimation(dropdown: dropdown, true)
+                self?.setHideDropdownAnimation(dropdown: dropdown)
             }
         })
     }
     
     func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get, true)
-        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get, true)
+        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
+        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
         coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     
     func countRevealLetterDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        toggleDropdown(dropdown: screen.dropdownRevealLetterView.get)
+        if !screen.dropdownRevealLetterView.get.isHidden {
+            setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
+            return
+        }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
+        setShowDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
             if let dropdown = self?.screen.dropdownLifeView.get {
-                self?.setHideDropdownAnimation(dropdown: dropdown, true)
+                self?.setHideDropdownAnimation(dropdown: dropdown)
             }
         })
-        
     }
     
 }
@@ -435,7 +464,7 @@ extension HomeViewController: GamePainelViewDelegate {
 extension HomeViewController: DropdownLifeViewDelegate {
     
     func closeDropDown() {
-        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get , true)
+        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
     }
     
 }
@@ -450,7 +479,7 @@ extension HomeViewController: DropdownRevealLetterViewDelegate {
     }
     
     func closeDropDownRevealLetter() {
-        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get , true)
+        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
     }
     
 }
@@ -480,6 +509,7 @@ extension HomeViewController: HomePresenterOutput {
         screen.gamePainelView.countLifeView.lifeLabel.get.text = gameScore.life.description
         screen.gamePainelView.countTipsView.tipsLabel.get.text = gameScore.tip.description
         screen.gamePainelView.countRevealLetterView.revealLabel.get.text = gameScore.reveal.description
+        hideSkeletonGameScore()
     }
     
     public func updateCountLife(_ count: String) {
@@ -503,7 +533,7 @@ extension HomeViewController: HomePresenterOutput {
     }
     
     public func updateCountReveal(_ count: String) {
-        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get , true)
+        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
 
         markUsedButtonRevealLetter(buttonRevealLetter)
 

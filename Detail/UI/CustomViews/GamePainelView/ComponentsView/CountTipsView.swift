@@ -50,13 +50,19 @@ class CountTipsView: ViewBuilder {
     
     lazy var tipsLabel: LabelBuilder = {
         let comp = LabelBuilder("10")
-            .setTextAlignment(.center)
+            .setTextAlignment(.left)
             .setSize(16)
             .setColor(Theme.shared.currentTheme.onSurface)
+            .setSkeleton({ build in
+                build
+                    .setCornerRadius(4)
+                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
+            })
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea
+                    .setWidth.equalToConstant(25)
             }
         return comp
     }()

@@ -11,7 +11,6 @@ protocol DropdownRevealLetterViewDelegate: AnyObject {
     func revealLetterButtonTapped(component: UIView)
 }
 
-
 class DropdownRevealLetterView: ViewBuilder {
     weak var delegate: DropdownRevealLetterViewDelegate?
     
@@ -21,6 +20,7 @@ class DropdownRevealLetterView: ViewBuilder {
     override init() {
         super.init()
         configure()
+        self.setHidden(true)
     }
     
     deinit {
@@ -34,7 +34,7 @@ class DropdownRevealLetterView: ViewBuilder {
         let overlay = BlurBuilder(style: .dark)
             .setConstraints { build in
                 build
-                    .setPin.equalTo(self.get)
+                    .setPin.equalToSuperView(0.5)
             }
             .setActions { build in
                 build
@@ -53,7 +53,7 @@ class DropdownRevealLetterView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setTop.equalTo(painelView.get, .top, -22)
-                    .setTrailing.equalTo(painelView.get, .trailing, -156)
+                    .setTrailing.equalTo(painelView.get, .trailing, -150)
             }
         return comp
     }()

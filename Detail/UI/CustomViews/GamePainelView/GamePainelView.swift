@@ -29,42 +29,41 @@ class GamePainelView: ViewBuilder {
     
 //  MARK: - LAZY AREA
     
-    lazy var countLifeView: CountLifeView = {
-        let comp = CountLifeView()
-            .setConstraints { build in
-                build
-                    .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalToSafeArea(-48)
-                    .setTop.setBottom.equalToSafeArea
-                    .setWidth.equalToConstant(50)
-            }
-        return comp
-    }()
-    
-    lazy var countTipsView: CountTipsView = {
-        let comp = CountTipsView()
-            .setConstraints { build in
-                build
-                    .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalTo(countLifeView.lifeImage.get, .leading, -18)
-                    .setTop.setBottom.equalToSafeArea
-                    .setWidth.equalToConstant(50)
-            }
-        return comp
-    }()
-    
     lazy var countRevealLetterView: CountRevealLetterView = {
         let comp = CountRevealLetterView()
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalTo(countTipsView.tipsImage.get, .leading, -21)
+                    .setTrailing.equalTo(countTipsView.tipsImage.get, .leading, -4)
+                    .setTop.setBottom.equalToSafeArea
+                    .setWidth.equalToConstant(45)
+            }
+        return comp
+    }()
+
+    lazy var countTipsView: CountTipsView = {
+        let comp = CountTipsView()
+            .setConstraints { build in
+                build
+                    .setVerticalAlignmentY.equalToSafeArea
+                    .setTrailing.equalTo(countLifeView.lifeImage.get, .leading, -8)
+                    .setTop.setBottom.equalToSafeArea
+                    .setWidth.equalToConstant(45)
+            }
+        return comp
+    }()
+        
+    lazy var countLifeView: CountLifeView = {
+        let comp = CountLifeView()
+            .setConstraints { build in
+                build
+                    .setVerticalAlignmentY.equalToSafeArea
+                    .setTrailing.equalToSafeArea(-36)
                     .setTop.setBottom.equalToSafeArea
                     .setWidth.equalToConstant(50)
             }
         return comp
     }()
-    
     
     
 //  MARK: - PRIVATE AREA

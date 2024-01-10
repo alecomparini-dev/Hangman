@@ -22,18 +22,18 @@ class DropdownLifeView: ViewBuilder {
 //  MARK: - LAZY AREA
     
     lazy var overlay: BlurBuilder = {
-        let overlay = BlurBuilder(style: .dark)
+        let comp = BlurBuilder(style: .dark)
             .setConstraints { build in
                 build
-                    .setPin.equalTo(self.get)
+                    .setPin.equalToSuperView(0.5)
             }
             .setActions { build in
                 build
-                    .setTap { [weak self] component, tapGesture in
+                    .setTap ({ [weak self] component, tap in
                         self?.delegate?.closeDropDown()
-                    }
+                    })
             }
-        return overlay
+        return comp
     }()
     
     lazy var arrowUpImage: ImageViewBuilder = {
