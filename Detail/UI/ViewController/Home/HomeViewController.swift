@@ -71,6 +71,7 @@ public class HomeViewController: UIViewController {
             return
         }
         homePresenter.startGame()
+        showSkeletonGameScore()
     }
     
     
@@ -305,6 +306,18 @@ public class HomeViewController: UIViewController {
         screen.quantityLettersView.skeleton?.hideSkeleton()
     }
     
+    private func hideSkeletonGameScore() {
+        screen.gamePainelView.countLifeView.lifeLabel.skeleton?.hideSkeleton()
+        screen.gamePainelView.countTipsView.tipsLabel.skeleton?.hideSkeleton()
+        screen.gamePainelView.countRevealLetterView.revealLabel.skeleton?.hideSkeleton()
+    }
+    
+    private func showSkeletonGameScore() {
+        screen.gamePainelView.countLifeView.lifeLabel.skeleton?.showSkeleton()
+        screen.gamePainelView.countTipsView.tipsLabel.skeleton?.showSkeleton()
+        screen.gamePainelView.countRevealLetterView.revealLabel.skeleton?.showSkeleton()
+    }
+    
     private func setHideDropdownAnimation(dropdown: UIView) {
         dropdown.alpha = 1
         UIView.animate(withDuration: 0.3, animations: {
@@ -496,6 +509,7 @@ extension HomeViewController: HomePresenterOutput {
         screen.gamePainelView.countLifeView.lifeLabel.get.text = gameScore.life.description
         screen.gamePainelView.countTipsView.tipsLabel.get.text = gameScore.tip.description
         screen.gamePainelView.countRevealLetterView.revealLabel.get.text = gameScore.reveal.description
+        hideSkeletonGameScore()
     }
     
     public func updateCountLife(_ count: String) {

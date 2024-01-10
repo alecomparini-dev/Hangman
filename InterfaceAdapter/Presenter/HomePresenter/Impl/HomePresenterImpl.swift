@@ -310,7 +310,7 @@ public class HomePresenterImpl: HomePresenter {
     
     private func fetchGameScore() async {
         gameScore = GameScoreModel(lifeScore: LifeScoreModel(freeLife: 5, buyLife: 0, adLife: 0),
-                                   tipScore: TipScoreModel(freeTip: 15, adTip: 0),
+                                   tipScore: TipScoreModel(freeTip: 10, adTip: 0),
                                    revealLetterScore: RevealLetterScoreModel(freeReveal: 5, buyReveal: 0, adReveal: 0))
         updateGameScore()
     }

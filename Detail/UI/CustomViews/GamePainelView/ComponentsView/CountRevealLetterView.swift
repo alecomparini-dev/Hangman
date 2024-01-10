@@ -6,7 +6,7 @@ import CustomComponentsSDK
 import Handler
 
 class CountRevealLetterView: ViewBuilder {
-        
+    
     override init() {
         super.init()
         configure()
@@ -17,7 +17,7 @@ class CountRevealLetterView: ViewBuilder {
     }
     
     
-//  MARK: - LAZY AREA
+    //  MARK: - LAZY AREA
     
     lazy var revealImage: ImageViewBuilder = {
         let comp = ImageViewBuilder()
@@ -46,21 +46,26 @@ class CountRevealLetterView: ViewBuilder {
     }()
     
     lazy var revealLabel: LabelBuilder = {
-        let comp = LabelBuilder("5")
-            .setTextAlignment(.center)
+        let comp = LabelBuilder("05")
+            .setTextAlignment(.left)
             .setSize(16)
             .setColor(Theme.shared.currentTheme.onSurface)
+            .setSkeleton({ build in
+                build
+                    .setCornerRadius(4)
+                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
+            })
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea
-//                    .setWidth.lessThanOrEqualToConstant(20)
+                    .setWidth.equalToConstant(25)
             }
         return comp
     }()
-        
     
-//  MARK: - Title
+    
+    //  MARK: - Title
     private func configure() {
         addElements()
         configConstraints()
@@ -77,5 +82,6 @@ class CountRevealLetterView: ViewBuilder {
         revealShadowImage.applyConstraint()
         revealLabel.applyConstraint()
     }
+    
 }
 

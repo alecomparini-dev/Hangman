@@ -50,19 +50,19 @@ class CountTipsView: ViewBuilder {
     
     lazy var tipsLabel: LabelBuilder = {
         let comp = LabelBuilder("10")
-            .setTextAlignment(.center)
+            .setTextAlignment(.left)
             .setSize(16)
             .setColor(Theme.shared.currentTheme.onSurface)
             .setSkeleton({ build in
                 build
                     .setCornerRadius(4)
-                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainer)
+                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
             })
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea
-//                    .setWidth.lessThanOrEqualToConstant(20)
+                    .setWidth.equalToConstant(25)
             }
         return comp
     }()
@@ -72,7 +72,6 @@ class CountTipsView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
-        configShowSkeleton()
     }
     
     private func addElements() {
@@ -87,8 +86,5 @@ class CountTipsView: ViewBuilder {
         tipsLabel.applyConstraint()
     }
     
-    private func configShowSkeleton() {
-//        tipsLabel.skeleton?.showSkeleton()
-    }
     
 }

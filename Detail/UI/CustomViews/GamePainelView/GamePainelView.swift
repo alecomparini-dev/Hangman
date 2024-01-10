@@ -34,7 +34,7 @@ class GamePainelView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalTo(countTipsView.tipsImage.get, .leading, -16)
+                    .setTrailing.equalTo(countTipsView.tipsImage.get, .leading, -4)
                     .setTop.setBottom.equalToSafeArea
                     .setWidth.equalToConstant(45)
             }
@@ -46,7 +46,7 @@ class GamePainelView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalTo(countLifeView.lifeImage.get, .leading, -16)
+                    .setTrailing.equalTo(countLifeView.lifeImage.get, .leading, -8)
                     .setTop.setBottom.equalToSafeArea
                     .setWidth.equalToConstant(45)
             }
@@ -58,7 +58,7 @@ class GamePainelView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalToSafeArea(-48)
+                    .setTrailing.equalToSafeArea(-36)
                     .setTop.setBottom.equalToSafeArea
                     .setWidth.equalToConstant(50)
             }

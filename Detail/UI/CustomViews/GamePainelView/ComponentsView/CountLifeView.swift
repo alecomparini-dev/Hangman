@@ -42,17 +42,21 @@ class CountLifeView: ViewBuilder {
     }()
     
     lazy var lifeLabel: LabelBuilder = {
-        let comp = LabelBuilder("15")
+        let comp = LabelBuilder("05")
             .setWeight(.bold)
-            .setTextAlignment(.center)
+            .setTextAlignment(.left)
             .setSize(18)
             .setColor(Theme.shared.currentTheme.onSurface)
+            .setSkeleton({ build in
+                build
+                    .setCornerRadius(4)
+                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
+            })
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea
-//                    .setWidth.equalToConstant(25)
-//                    .setWidth.lessThanOrEqualToConstant(25)
+                    .setWidth.equalToConstant(25)
             }
         return comp
     }()
@@ -91,4 +95,5 @@ class CountLifeView: ViewBuilder {
         lifeLabel.applyConstraint()
         minusHeartImage.applyConstraint()
     }
+    
 }
