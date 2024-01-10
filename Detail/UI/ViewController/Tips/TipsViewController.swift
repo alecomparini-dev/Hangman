@@ -15,6 +15,7 @@ public protocol TipsViewControllerCoordinator: AnyObject {
 public class TipsViewController: UIViewController {
     public weak var coordinator: TipsViewControllerCoordinator?
     
+    private var dataTransfer: DataTransferTipsVC?
     private var word: WordPresenterDTO?
     
     public init() {
@@ -58,8 +59,9 @@ public class TipsViewController: UIViewController {
     
 //  MARK: - DATA TRANSFER
     public func setDataTransfer(_ data: Any?) {
-        if let word = data as? WordPresenterDTO {
-            self.word = word
+        if let data = data as? DataTransferTipsVC {
+            dataTransfer = data
+            word = data.wordPresenterDTO
             screen.cardsTipsDock.reload()
         }
     }
@@ -137,6 +139,11 @@ public class TipsViewController: UIViewController {
                 card.minusOneLabel.get.transform = .identity
                 card.minusOneLabel.get.alpha = 0
             }
+        }
+        
+        dataTransfer?.gameScore?.tipScore?.freeTip -= 1
+        if let completion = dataTransfer?.updateTipCompletion {
+            completion(dataTransfer?.gameScore?.tipScore?.freeTip.description ?? "0")
         }
             
     }
