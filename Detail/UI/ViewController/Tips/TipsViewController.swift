@@ -119,10 +119,10 @@ public class TipsViewController: UIViewController {
             .setShadowPressed(shadow)
         interaction.pressed
         
-        let x = card.blurHideTip.get.get.layer.frame.maxX
+        let x = card.blurHideTip.get.layer.frame.maxX
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseIn , animations: {
-            card.blurHideTip.get.get.layer.frame.size.width = 0
-            card.blurHideTip.get.get.layer.frame.origin.x = x
+            card.blurHideTip.get.layer.frame.size.width = 0
+            card.blurHideTip.get.layer.frame.origin.x = x
         })
         
         card.minusOneLabel.setAlpha(1)

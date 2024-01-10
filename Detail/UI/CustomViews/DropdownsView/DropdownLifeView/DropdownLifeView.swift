@@ -22,12 +22,18 @@ class DropdownLifeView: ViewBuilder {
 //  MARK: - LAZY AREA
     
     lazy var overlay: BlurBuilder = {
-        let overlay = BlurBuilder(style: .dark)
+        let comp = BlurBuilder(style: .dark)
             .setConstraints { build in
                 build
-                    .setPin.equalTo(self.get)
+                    .setPin.equalToSuperView(0.5)
             }
-        return overlay
+            .setActions { build in
+                build
+                    .setTap ({ [weak self] component, tap in
+                        self?.delegate?.closeDropDown()
+                    })
+            }
+        return comp
     }()
     
     lazy var arrowUpImage: ImageViewBuilder = {
@@ -45,7 +51,6 @@ class DropdownLifeView: ViewBuilder {
     
     lazy var painelView: ViewBuilder = {
         let comp = ViewBuilder()
-            .setHidden(true)
             .setBorder({ build in
                 build
                     .setCornerRadius(10)
@@ -163,12 +168,6 @@ class DropdownLifeView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
-        
-        
-        TapGestureBuilder(overlay.get.get)
-            .setTap ({ [weak self] component in
-                self?.delegate?.closeDropDown()
-            })
     }
     
     private func addElements() {

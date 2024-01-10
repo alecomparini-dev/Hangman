@@ -78,6 +78,7 @@ class HomeView: UIView {
     
     lazy var dropdownRevealLetterView: DropdownRevealLetterView = {
         let comp = DropdownRevealLetterView()
+            .setHidden(true)
             .setAlpha(0)
             .setConstraints { build in
                 build
@@ -124,14 +125,14 @@ class HomeView: UIView {
             .setTextAlignment(.center)
             .setSkeleton({ build in
                 build
-                    .setCornerRadius(8)
+                    .setCornerRadius(4)
                     .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
             })
             .setConstraints { build in
                 build
                     .setTop.equalToSafeArea(4)
                     .setHorizontalAlignmentX.equalToSuperView
-                    .setHeight.equalToConstant(30)
+                    .setHeight.equalToConstant(22)
                     .setWidth.greaterThanOrEqualToConstant(180)
             }
         return comp
@@ -156,14 +157,15 @@ class HomeView: UIView {
             .setTextAlignment(.center)
             .setSkeleton({ build in
                 build
-                    .setCornerRadius(8)
+                    .setCornerRadius(4)
                     .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
-                    .setPadding(top: 12, left: 8, bottom: 8, rigth: 8)
+                    .setPadding(top: 6, left: 8, bottom: 2, rigth: 8)
             })
             .setConstraints { build in
                 build
-                    .setPin.equalToSuperView
-                    .setAlignmentCenterXY.equalToSuperView
+                    .setTop.setBottom.equalToSuperView
+                    .setLeading.setTrailing.equalToSuperView(4)
+//                    .setAlignmentCenterXY.equalToSuperView
             }
         return comp
     }()
@@ -275,7 +277,9 @@ class HomeView: UIView {
         backgroundView.applyConstraint()
         configStackViewConstraints()
         painelGallowsView.applyConstraint()
+       
         dropdownLifeView.applyConstraint()
+        
         dropdownRevealLetterView.applyConstraint()
         gallowsView.applyConstraint()
         nextWordButton.applyConstraint()
