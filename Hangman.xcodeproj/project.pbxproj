@@ -24,7 +24,7 @@
 		0202167E2B0BE9E4003E2B07 /* InsertDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202167C2B0BE9DB003E2B07 /* InsertDataStorageProvider.swift */; };
 		020216862B0C044C003E2B07 /* SaveWordPlayedCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216812B0C01DA003E2B07 /* SaveWordPlayedCodable.swift */; };
 		020216872B0C0452003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */; };
-		021B63162B1133E4002498DA /* DataTransferDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B63142B11328E002498DA /* DataTransferDTO.swift */; };
+		021B63162B1133E4002498DA /* DataTransferHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B63142B11328E002498DA /* DataTransferHomeVC.swift */; };
 		021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */; };
 		022188D92B1685D800440761 /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
 		022188DA2B16860700440761 /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
@@ -109,6 +109,7 @@
 		0293A8BD2B4869FC00E7730C /* LoadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */; };
 		0293A8BF2B486C7900E7730C /* LoadScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */; };
 		0293A8C42B4893EF00E7730C /* DropdownLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */; };
+		02C466A22B4F185B00516D5A /* DataTransferTipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferTipsVC.swift */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 		02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */; };
 		02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB492B04057600991633 /* HangmanWordView.swift */; };
@@ -281,7 +282,7 @@
 		0202167C2B0BE9DB003E2B07 /* InsertDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertDataStorageProvider.swift; sourceTree = "<group>"; };
 		020216812B0C01DA003E2B07 /* SaveWordPlayedCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedCodable.swift; sourceTree = "<group>"; };
 		020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift; sourceTree = "<group>"; };
-		021B63142B11328E002498DA /* DataTransferDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferDTO.swift; sourceTree = "<group>"; };
+		021B63142B11328E002498DA /* DataTransferHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHomeVC.swift; sourceTree = "<group>"; };
 		0222DD9F2B48C47F009EE10C /* DropdownRevealLetterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownRevealLetterView.swift; sourceTree = "<group>"; };
 		0222DDA22B49D657009EE10C /* BuyLifePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyLifePainelView.swift; sourceTree = "<group>"; };
 		0222DDA42B4AF3EA009EE10C /* AdLifePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdLifePainelView.swift; sourceTree = "<group>"; };
@@ -347,6 +348,7 @@
 		0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadScreenViewController.swift; path = ../../../MentoriaCodandoComMoa/Mentoria/Resources/LoadScreenViewController.swift; sourceTree = "<group>"; };
 		0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadScreenCoordinator.swift; sourceTree = "<group>"; };
 		0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownLifeView.swift; sourceTree = "<group>"; };
+		02C466A12B4F185B00516D5A /* DataTransferTipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferTipsVC.swift; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
 		02C4AB3A2B03C65800991633 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanKeyboardView.swift; sourceTree = "<group>"; };
@@ -460,10 +462,9 @@
 		020216582B0B9C42003E2B07 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				021B63142B11328E002498DA /* DataTransferDTO.swift */,
+				021B63142B11328E002498DA /* DataTransferHomeVC.swift */,
 				020216592B0B9C59003E2B07 /* WordPresenterDTO.swift */,
 				0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */,
-				024154072B4D84490016450C /* GameScorePresenterDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1113,6 +1114,22 @@
 			path = DropdownsView;
 			sourceTree = "<group>";
 		};
+		02C466A02B4F15B200516D5A /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				024154072B4D84490016450C /* GameScorePresenterDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		02C466A32B4F186F00516D5A /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				02C466A12B4F185B00516D5A /* DataTransferTipsVC.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		02C4AB342B03B5AD00991633 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1188,6 +1205,7 @@
 		02C4AB712B057B4100991633 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				02C466A02B4F15B200516D5A /* DTO */,
 				02C4AB652B04F25C00991633 /* HomePresenter */,
 				02C500E62B2B454C009C546A /* TipsPresenter */,
 			);
@@ -1243,6 +1261,7 @@
 		02C500E62B2B454C009C546A /* TipsPresenter */ = {
 			isa = PBXGroup;
 			children = (
+				02C466A32B4F186F00516D5A /* DTO */,
 				02FCA7012B307B9C00B45892 /* Impl */,
 				02FCA7022B307BAA00B45892 /* TipsPresenter.swift */,
 			);
@@ -1708,7 +1727,8 @@
 			files = (
 				0202165B2B0B9D08003E2B07 /* WordPresenterDTO.swift in Sources */,
 				02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */,
-				021B63162B1133E4002498DA /* DataTransferDTO.swift in Sources */,
+				021B63162B1133E4002498DA /* DataTransferHomeVC.swift in Sources */,
+				02C466A22B4F185B00516D5A /* DataTransferTipsVC.swift in Sources */,
 				02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */,
 				024154082B4D84490016450C /* GameScorePresenterDTO.swift in Sources */,
 				0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */,

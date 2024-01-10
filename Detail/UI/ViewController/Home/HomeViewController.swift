@@ -8,8 +8,8 @@ import Handler
 import Presenter
 
 public protocol HomeViewControllerCoordinator: AnyObject {
-    func gotoHomeNextWord(_ dataTransfer: DataTransferDTO)
-    func gotoTips(_ word: WordPresenterDTO?)
+    func gotoHomeNextWord(_ dataTransfer: DataTransferHomeVC)
+    func gotoTips(_ dataTransfer: DataTransferTipsVC?)
 }
 
 
@@ -20,7 +20,7 @@ public class HomeViewController: UIViewController {
     
     private var buttonRevealLetter: UIView?
     private var lettersInWord: [HangmanLetterInWordView?] = []
-    private var dataTransfer: DataTransferDTO?
+    private var dataTransfer: DataTransferHomeVC?
     
     
 //  MARK: - INITIALIZERS
@@ -66,7 +66,7 @@ public class HomeViewController: UIViewController {
     
 //  MARK: - SET DATA TRANSFER
     public func setDataTransfer(_ data: Any?) {
-        if let dataTransfer = data as? DataTransferDTO {
+        if let dataTransfer = data as? DataTransferHomeVC {
             self.dataTransfer = dataTransfer
             return
         }
@@ -318,6 +318,18 @@ public class HomeViewController: UIViewController {
         screen.gamePainelView.countRevealLetterView.revealLabel.skeleton?.showSkeleton()
     }
     
+    
+    private func makeDataTransferTipVC() -> DataTransferTipsVC {
+        return DataTransferTipsVC(
+            wordPresenterDTO: homePresenter.getCurrentWord(),
+            gameScore: homePresenter.gameScore,
+            updateTipCompletion: updateCountTip
+        )
+    }
+    
+    
+//  MARK: - ANIMATION AREA
+    
     private func setHideDropdownAnimation(dropdown: UIView) {
         dropdown.alpha = 1
         UIView.animate(withDuration: 0.3, animations: {
@@ -438,7 +450,7 @@ extension HomeViewController: GamePainelViewDelegate {
     func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
         setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
         setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
-        coordinator?.gotoTips(homePresenter.getCurrentWord())
+        coordinator?.gotoTips(makeDataTransferTipVC())
     }
     
     func countRevealLetterDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
@@ -485,7 +497,6 @@ extension HomeViewController: DropdownRevealLetterViewDelegate {
 }
 
 
-
 //  MARK: - EXTENSION - HangmanKeyboardViewDelegate
 
 extension HomeViewController: HangmanKeyboardViewDelegate {
@@ -496,7 +507,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
     
     func moreTipTapped() {
         if homePresenter.isEndGame { return }
-        coordinator?.gotoTips(homePresenter.getCurrentWord())
+//        coordinator?.gotoTips(homePresenter.getCurrentWord())
     }
     
 }

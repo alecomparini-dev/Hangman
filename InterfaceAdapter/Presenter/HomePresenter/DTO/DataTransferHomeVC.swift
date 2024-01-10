@@ -4,7 +4,7 @@
 import Foundation
 import Domain
 
-public struct DataTransferDTO {
+public struct DataTransferHomeVC {
     public var userID: String
     public var wordPlaying: NextWordsUseCaseDTO
     public var nextWords: [NextWordsUseCaseDTO]?

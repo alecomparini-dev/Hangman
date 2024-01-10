@@ -9,9 +9,12 @@ public protocol HomePresenter {
     typealias UserID = String
     var delegateOutput: HomePresenterOutput? { get set }
     
-    var dataTransfer: DataTransferDTO? { get set }
+    var dataTransfer: DataTransferHomeVC? { get set }
     
     var isEndGame: Bool { get }
+    
+    var gameScore: GameScoreModel? { get }
+    
     
     func startGame()
 
@@ -26,6 +29,8 @@ public protocol HomePresenter {
     func revealLetterGameRandom(_ duration: CGFloat)
     
     func countLife() -> Int8
+    
     func countTips() -> Int8
+    
     func countReveal() -> Int8
 }
