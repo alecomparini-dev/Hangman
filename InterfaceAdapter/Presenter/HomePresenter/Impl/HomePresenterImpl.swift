@@ -45,7 +45,9 @@ public class HomePresenterImpl: HomePresenter {
     
 //  MARK: - GET PROPERTIES
     
-    public var isEndGame: Bool { _isEndGame  }
+    public var isEndGame: Bool {
+        _isEndGame || (countLife() == 0)
+    }
     
     public var dataTransfer: DataTransferDTO? {
         get {
