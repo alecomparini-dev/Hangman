@@ -42,14 +42,17 @@ class CountLifeView: ViewBuilder {
     }()
     
     lazy var lifeLabel: LabelBuilder = {
-        let comp = LabelBuilder("5")
+        let comp = LabelBuilder("15")
             .setWeight(.bold)
+            .setTextAlignment(.center)
             .setSize(18)
             .setColor(Theme.shared.currentTheme.onSurface)
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea
+//                    .setWidth.equalToConstant(25)
+//                    .setWidth.lessThanOrEqualToConstant(25)
             }
         return comp
     }()

@@ -27,12 +27,6 @@ class DropdownLifeView: ViewBuilder {
                 build
                     .setPin.equalTo(self.get)
             }
-            .setActions { build in
-                build
-                    .setTap { [weak self] component, tapGesture in
-                        self?.delegate?.closeDropDown()
-                    }
-            }
         return overlay
     }()
     
@@ -51,6 +45,7 @@ class DropdownLifeView: ViewBuilder {
     
     lazy var painelView: ViewBuilder = {
         let comp = ViewBuilder()
+            .setHidden(true)
             .setBorder({ build in
                 build
                     .setCornerRadius(10)
@@ -168,6 +163,12 @@ class DropdownLifeView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
+        
+        
+        TapGestureBuilder(overlay.get.get)
+            .setTap ({ [weak self] component in
+                self?.delegate?.closeDropDown()
+            })
     }
     
     private func addElements() {

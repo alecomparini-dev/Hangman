@@ -21,6 +21,7 @@ class DropdownRevealLetterView: ViewBuilder {
     override init() {
         super.init()
         configure()
+        self.setHidden(true)
     }
     
     deinit {

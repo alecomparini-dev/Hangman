@@ -54,6 +54,7 @@ class CountRevealLetterView: ViewBuilder {
                 build
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea
+//                    .setWidth.lessThanOrEqualToConstant(20)
             }
         return comp
     }()

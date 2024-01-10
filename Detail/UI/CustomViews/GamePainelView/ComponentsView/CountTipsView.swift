@@ -53,10 +53,16 @@ class CountTipsView: ViewBuilder {
             .setTextAlignment(.center)
             .setSize(16)
             .setColor(Theme.shared.currentTheme.onSurface)
+            .setSkeleton({ build in
+                build
+                    .setCornerRadius(4)
+                    .setColorSkeleton(Theme.shared.currentTheme.surfaceContainer)
+            })
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea
+//                    .setWidth.lessThanOrEqualToConstant(20)
             }
         return comp
     }()
@@ -66,6 +72,7 @@ class CountTipsView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
+        configShowSkeleton()
     }
     
     private func addElements() {
@@ -80,5 +87,8 @@ class CountTipsView: ViewBuilder {
         tipsLabel.applyConstraint()
     }
     
+    private func configShowSkeleton() {
+//        tipsLabel.skeleton?.showSkeleton()
+    }
     
 }

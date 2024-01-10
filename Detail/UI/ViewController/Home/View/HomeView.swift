@@ -66,6 +66,7 @@ class HomeView: UIView {
     
     lazy var dropdownLifeView: DropdownLifeView = {
         let comp = DropdownLifeView()
+            .setHidden(true)
             .setAlpha(0)
             .setConstraints { build in
                 build
