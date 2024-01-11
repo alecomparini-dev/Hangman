@@ -159,7 +159,7 @@ class HomeView: UIView {
                 build
                     .setCornerRadius(4)
                     .setColorSkeleton(Theme.shared.currentTheme.surfaceContainerHigh)
-                    .setPadding(top: 6, left: 8, bottom: 2, rigth: 8)
+                    .setPadding(top: 8, left: 8, bottom: 4, rigth: 8)
             })
             .setConstraints { build in
                 build
