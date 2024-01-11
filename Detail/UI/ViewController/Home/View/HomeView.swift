@@ -49,8 +49,8 @@ class HomeView: UIView {
         return comp
     }()
     
-    lazy var gamePainelView: GamePainelView = {
-        let comp = GamePainelView()
+    lazy var gamePainelView: GameHelpPainelView = {
+        let comp = GameHelpPainelView()
             .setConstraints { build in
                 build
                     .setPinTop.equalToSafeArea
@@ -76,8 +76,8 @@ class HomeView: UIView {
         return comp
     }()
     
-    lazy var dropdownRevealLetterView: DropdownRevealLetterView = {
-        let comp = DropdownRevealLetterView()
+    lazy var dropdownRevealLetterView: DropdownRevelationsView = {
+        let comp = DropdownRevelationsView()
             .setHidden(true)
             .setAlpha(0)
             .setConstraints { build in

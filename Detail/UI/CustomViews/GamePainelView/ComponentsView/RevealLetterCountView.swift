@@ -5,7 +5,7 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-class CountRevealLetterView: ViewBuilder {
+class RevealLetterCountView: ViewBuilder {
     
     override init() {
         super.init()

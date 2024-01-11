@@ -11,7 +11,7 @@ public class HomePresenterImpl: HomePresenter {
     
     private var revealLetterGame: Set<String> = []
         
-    private var _gameScore: GameScoreModel?
+    private var _gameHelp: GameHelpModel?
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
     private var _isEndGame = false
@@ -44,10 +44,10 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - GET PROPERTIES
     
     public var isEndGame: Bool {
-        _isEndGame || (countLife() == 0)
+        _isEndGame || (countLives() == 0)
     }
     
-    public var gameScore: GameScoreModel? { _gameScore }
+    public var gameHelp: GameHelpModel? { _gameHelp }
     
     public var dataTransfer: DataTransferHomeVC? {
         get {
@@ -56,14 +56,14 @@ public class HomePresenterImpl: HomePresenter {
                                    wordPlaying: wordPlaying,
                                    nextWords: nextWords,
                                    dolls: dolls,
-                                   gameScore: _gameScore)
+                                   gameHelp: gameHelp)
         }
         set {
             self.userID = newValue?.userID
             self.wordPlaying = newValue?.wordPlaying
             self.nextWords = newValue?.nextWords
             self.dolls = newValue?.dolls
-            self._gameScore = newValue?.gameScore
+            self._gameHelp = newValue?.gameHelp
         }
     }
     
@@ -141,7 +141,7 @@ public class HomePresenterImpl: HomePresenter {
         
         let wordPlaying: Set<String> = Set( word.map({ String($0) }) )
         
-        _gameScore?.revealLetterScore?.freeReveal -= 1
+        _gameHelp?.revelations?.freeRevelations -= 1
         
         updateCountReveal()
         
@@ -152,20 +152,20 @@ public class HomePresenterImpl: HomePresenter {
         })   
     }
     
-    public func countLife() -> Int8 {
-        return (_gameScore?.lifeScore?.freeLife ?? 0) +
-        (_gameScore?.lifeScore?.adLife ?? 0) +
-        (_gameScore?.lifeScore?.buyLife ?? 0)
+    public func countLives() -> Int8 {
+        return (_gameHelp?.lives?.freeLives ?? 0) +
+        (_gameHelp?.lives?.adLives ?? 0) +
+        (_gameHelp?.lives?.buyLives ?? 0)
     }
     
     public func countTips() -> Int8 {
-        return (_gameScore?.tipScore?.freeTip ?? 0) + (_gameScore?.tipScore?.adTip ?? 0)
+        return (_gameHelp?.tips?.freeTips ?? 0) + (_gameHelp?.tips?.adTips ?? 0)
     }
     
     public func countReveal() -> Int8 {
-        return (_gameScore?.revealLetterScore?.freeReveal ?? 0) +
-        (_gameScore?.revealLetterScore?.adReveal ?? 0) +
-        (_gameScore?.revealLetterScore?.buyReveal ?? 0)
+        return (_gameHelp?.revelations?.freeRevelations ?? 0) +
+        (_gameHelp?.revelations?.adRevelations ?? 0) +
+        (_gameHelp?.revelations?.buyRevelations ?? 0)
     }
 
     
@@ -242,7 +242,7 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func decreaseLife() {
-        _gameScore?.lifeScore?.freeLife -= 1
+        _gameHelp?.lives?.freeLives -= 1
         updateCountLife()
     }
     
@@ -311,9 +311,9 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func fetchGameScore() async {
-        _gameScore = GameScoreModel(lifeScore: LifeScoreModel(freeLife: 5, buyLife: 0, adLife: 0),
-                                   tipScore: TipScoreModel(freeTip: 10, adTip: 0),
-                                   revealLetterScore: RevealLetterScoreModel(freeReveal: 5, buyReveal: 0, adReveal: 0))
+        _gameHelp = GameHelpModel(lives: GameHelpLivesModel(freeLives: 5, buyLives: 0, adLives: 0),
+                                  tips: GameHelpTipsModel(freeTips: 10, adTips: 0),
+                                  revelations: GameHelpRevelationsModel(freeRevelations: 5, buyRevelations: 0, adRevelations: 0))
         updateGameScore()
     }
     
@@ -454,17 +454,17 @@ public class HomePresenterImpl: HomePresenter {
     private func updateGameScore() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            let gameScorePresenterDTO = GameScorePresenterDTO(life: countLife(),
+            let gameScorePresenterDTO = GameHelpPresenterDTO(lives: countLives(),
                                                               tips: countTips(),
-                                                              reveal: countReveal())
-            delegateOutput?.updateGameScore(gameScorePresenterDTO)
+                                                             revelations: countReveal())
+            delegateOutput?.updateGameHelp(gameScorePresenterDTO)
         }
     }
     
     private func updateCountLife() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountLife(countLife().description)
+            delegateOutput?.updateLivesCount(countLives().description)
         }
     }
     

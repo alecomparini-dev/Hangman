@@ -5,7 +5,7 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-class CountTipsView: ViewBuilder {
+class TipsCountView: ViewBuilder {
     
     private var tapTips: TapGestureBuilder?
     
