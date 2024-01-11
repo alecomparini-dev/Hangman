@@ -57,7 +57,7 @@ public class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         if let dataTransfer {
             homePresenter.dataTransfer = dataTransfer
-            updateMarkGameScore()
+            updateMarkGameHelp()
             homePresenter.getNextWord()
         }
     }
@@ -70,8 +70,10 @@ public class HomeViewController: UIViewController {
             self.dataTransfer = dataTransfer
             return
         }
+        
         homePresenter.startGame()
-        showSkeletonGameScore()
+        
+        showSkeletonGameHelp()
     }
     
     
@@ -101,7 +103,7 @@ public class HomeViewController: UIViewController {
         setQuantityCorrectLetter(word?.word?.count)
     }
     
-    private func updateMarkGameScore() {
+    private func updateMarkGameHelp() {
         updateMarkUsedButtonRevealLetter()
         updateMarkUsedLife()
     }
@@ -312,7 +314,7 @@ public class HomeViewController: UIViewController {
         screen.gamePainelView.revelationsCountView.revealLabel.skeleton?.hideSkeleton()
     }
     
-    private func showSkeletonGameScore() {
+    private func showSkeletonGameHelp() {
         screen.gamePainelView.livesCountView.lifeLabel.skeleton?.showSkeleton()
         screen.gamePainelView.tipsCountView.tipsLabel.skeleton?.showSkeleton()
         screen.gamePainelView.revelationsCountView.revealLabel.skeleton?.showSkeleton()

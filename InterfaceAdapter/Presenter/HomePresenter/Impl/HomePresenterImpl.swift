@@ -98,7 +98,9 @@ public class HomePresenterImpl: HomePresenter {
     
     public func getNextWord() {
         getRandomDoll()
-        updateGameScore()
+        
+        updateGameHelp()
+        
         Task {
             if nextWord() != nil {
                 successFetchNextWord()
@@ -110,6 +112,7 @@ public class HomePresenterImpl: HomePresenter {
     
     public func getCurrentWord() -> WordPresenterDTO? {
         guard let wordPlaying else { return nil }
+        
         return WordPresenterDTO(id: wordPlaying.id,
                                     word: wordPlaying.word,
                                     syllables: wordPlaying.syllables,
@@ -177,7 +180,7 @@ public class HomePresenterImpl: HomePresenter {
             await fetchRandomDolls()
             await signInAnonymously()
             await fetchNextWord()
-            await fetchGameScore()
+            await fetchGameHelp()
         }
     }
     
@@ -310,11 +313,11 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func fetchGameScore() async {
+    private func fetchGameHelp() async {
         _gameHelp = GameHelpModel(lives: GameHelpLivesModel(freeLives: 5, buyLives: 0, adLives: 0),
                                   tips: GameHelpTipsModel(freeTips: 10, adTips: 0),
                                   revelations: GameHelpRevelationsModel(freeRevelations: 5, buyRevelations: 0, adRevelations: 0))
-        updateGameScore()
+        updateGameHelp()
     }
     
     private func saveWordPlayed() async {
@@ -451,13 +454,13 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func updateGameScore() {
+    private func updateGameHelp() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            let gameScorePresenterDTO = GameHelpPresenterDTO(lives: countLives(),
+            let gameHelpPresenterDTO = GameHelpPresenterDTO(lives: countLives(),
                                                               tips: countTips(),
                                                              revelations: countReveal())
-            delegateOutput?.updateGameHelp(gameScorePresenterDTO)
+            delegateOutput?.updateGameHelp(gameHelpPresenterDTO)
         }
     }
     
