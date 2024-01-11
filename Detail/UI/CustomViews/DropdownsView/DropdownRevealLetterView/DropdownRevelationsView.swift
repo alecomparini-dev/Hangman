@@ -6,13 +6,13 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-protocol DropdownRevealLetterViewDelegate: AnyObject {
+protocol DropdownRevelationsViewDelegate: AnyObject {
     func closeDropDownRevealLetter()
     func revealLetterButtonTapped(component: UIView)
 }
 
-class DropdownRevealLetterView: ViewBuilder {
-    weak var delegate: DropdownRevealLetterViewDelegate?
+class DropdownRevelationsView: ViewBuilder {
+    weak var delegate: DropdownRevelationsViewDelegate?
     
     private let tagImage = 10
     private var eyes: [ViewBuilder]? = []
@@ -206,8 +206,8 @@ class DropdownRevealLetterView: ViewBuilder {
             }
     }()
     
-    lazy var adRevealLetterPainel: AdRevealLetterPainelView = {
-        let comp = AdRevealLetterPainelView()
+    lazy var adRevealLetterPainel: AdRevelationsPainelView = {
+        let comp = AdRevelationsPainelView()
             .setConstraints { build in
                 build
                     .setTop.equalTo(underLineView.get, .bottom, 32)

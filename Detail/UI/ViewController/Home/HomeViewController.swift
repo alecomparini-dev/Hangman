@@ -322,7 +322,7 @@ public class HomeViewController: UIViewController {
     private func makeDataTransferTipVC() -> DataTransferTipsVC {
         return DataTransferTipsVC(
             wordPresenterDTO: homePresenter.getCurrentWord(),
-            gameScore: homePresenter.gameScore,
+            gameHelp: homePresenter.gameHelp,
             updateTipCompletion: updateCountTip
         )
     }
@@ -385,18 +385,14 @@ public class HomeViewController: UIViewController {
     }
     
     private func animateMinusReveal(_ count: String) {
-        let minusYOri = screen.minusOneRevealLabel.get.layer.frame.origin.y
-        let minusXOri = screen.minusOneRevealLabel.get.layer.frame.origin.x
-        
-        //TODO: - CALCULATE POSITION
-        let toY = screen.minusOneRevealLabel.get.layer.frame.origin.y - 80
-        let toX = screen.minusOneRevealLabel.get.layer.frame.origin.x + 50
+        let posOri = getPosOriginalMinusOneReveal()
+        let newPos = makeNewPositionMinusOneReveal()
         
         UIView.animate(withDuration: 1.5, delay: 0.3, options: .curveEaseInOut , animations: { [weak self] in
             guard let self else {return}
             screen.minusOneRevealLabel.get.alpha = 1
-            screen.minusOneRevealLabel.get.layer.frame.origin.y = toY
-            screen.minusOneRevealLabel.get.layer.frame.origin.x = toX
+            screen.minusOneRevealLabel.get.layer.frame.origin.y = newPos.y
+            screen.minusOneRevealLabel.get.layer.frame.origin.x = newPos.x
             screen.minusOneRevealLabel.get.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
         }) { _ in
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
@@ -406,10 +402,20 @@ public class HomeViewController: UIViewController {
             }) { [weak self] _ in
                 guard let self else {return}
                 self.screen.gamePainelView.revelationsCountView.revealLabel.get.text = count
-                screen.minusOneRevealLabel.get.layer.frame.origin.y = minusYOri
-                screen.minusOneRevealLabel.get.layer.frame.origin.x = minusXOri
+                screen.minusOneRevealLabel.get.layer.frame.origin.y = posOri.y
+                screen.minusOneRevealLabel.get.layer.frame.origin.x = posOri.x
             }
         }
+    }
+    
+    private func getPosOriginalMinusOneReveal() -> CGPoint {
+        return CGPoint(x: screen.minusOneRevealLabel.get.layer.frame.origin.x,
+                       y: screen.minusOneRevealLabel.get.layer.frame.origin.y )
+    }
+    
+    private func makeNewPositionMinusOneReveal() -> CGPoint {
+        return CGPoint(x: screen.minusOneRevealLabel.get.layer.frame.origin.x + 50,
+                       y: screen.minusOneRevealLabel.get.layer.frame.origin.y - 80 )
     }
     
 }
@@ -482,8 +488,8 @@ extension HomeViewController: DropdownLifeViewDelegate {
 }
 
 
-//  MARK: - EXTENSION - DropdownRevealLetterViewDelegate
-extension HomeViewController: DropdownRevealLetterViewDelegate {
+//  MARK: - EXTENSION - DropdownRevelationsViewDelegate
+extension HomeViewController: DropdownRevelationsViewDelegate {
     
     func revealLetterButtonTapped(component: UIView) {
         buttonReveal = component

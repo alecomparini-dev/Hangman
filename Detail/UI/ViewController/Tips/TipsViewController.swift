@@ -141,9 +141,9 @@ public class TipsViewController: UIViewController {
             }
         }
         
-        dataTransfer?.gameScore?.tipScore?.freeTip -= 1
+        dataTransfer?.gameHelp?.tips?.freeTips -= 1
         if let completion = dataTransfer?.updateTipCompletion {
-            completion(dataTransfer?.gameScore?.tipScore?.freeTip.description ?? "0")
+            completion(dataTransfer?.gameHelp?.tips?.freeTips.description ?? "0")
         }
             
     }

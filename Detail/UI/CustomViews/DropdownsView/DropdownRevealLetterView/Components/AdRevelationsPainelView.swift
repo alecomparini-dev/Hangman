@@ -5,7 +5,7 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-class AdRevealLetterPainelView: ViewBuilder {
+class AdRevelationsPainelView: ViewBuilder {
     
     override init() {
         super.init(frame: .zero)
@@ -14,21 +14,7 @@ class AdRevealLetterPainelView: ViewBuilder {
     
     
     //  MARK: - LAZY AREA
-    
-    lazy var eyesImage: ImageViewBuilder = {
-        let comp = ImageViewBuilder(systemName: K.Images.eyeFill)
-            .setTintColor(Theme.shared.currentTheme.primary)
-            .setWeight(.thin)
-            .setContentMode(.center)
-            .setSize(34)
-            .setConstraints { build in
-                build
-                    .setTop.equalToSuperView(-18)
-                    .setLeading.equalToSuperView(-16)
-            }
-        return comp
-    }()
-    
+        
     lazy var containerEyeBackgroundView: ViewBuilder = {
         let comp = ViewBuilder()
             .setConstraints { build in
@@ -68,7 +54,7 @@ class AdRevealLetterPainelView: ViewBuilder {
                 build
                     .setText(text: "Assista o vídeo e")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
-                    .setText(text: "\n ganhe ")
+                    .setText(text: "\n   ganhe ")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
                     .setText(text: "+1")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 17, weight: .bold))
@@ -79,7 +65,7 @@ class AdRevealLetterPainelView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSuperView(-2)
-                    .setLeading.equalTo(eyesImage.get, .trailing, 4)
+                    .setLeading.equalToSuperView(10)
             }
         return overlay
     }()
@@ -107,7 +93,6 @@ class AdRevealLetterPainelView: ViewBuilder {
     }
     
     private func addElements() {
-        eyesImage.add(insideTo: self.get)
         containerEyeBackgroundView.add(insideTo: self.get)
         eyeBackgroundImage.add(insideTo: containerEyeBackgroundView.get)
         descriptionLabel.add(insideTo: self.get)
@@ -115,7 +100,6 @@ class AdRevealLetterPainelView: ViewBuilder {
     }
     
     private func configConstraints() {
-        eyesImage.applyConstraint()
         containerEyeBackgroundView.applyConstraint()
         eyeBackgroundImage.applyConstraint()
         descriptionLabel.applyConstraint()

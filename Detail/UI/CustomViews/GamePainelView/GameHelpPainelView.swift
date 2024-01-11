@@ -36,7 +36,7 @@ class GameHelpPainelView: ViewBuilder {
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalTo(tipsCountView.tipsImage.get, .leading, -4)
                     .setTop.setBottom.equalToSafeArea
-                    .setWidth.equalToConstant(45)
+                    .setWidth.equalToConstant(60)
             }
             .setActions { build in
                 build
@@ -55,7 +55,7 @@ class GameHelpPainelView: ViewBuilder {
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalTo(livesCountView.lifeImage.get, .leading, -8)
                     .setTop.setBottom.equalToSafeArea
-                    .setWidth.equalToConstant(45)
+                    .setWidth.equalToConstant(55)
             }
             .setActions { build in
                 build
@@ -74,7 +74,7 @@ class GameHelpPainelView: ViewBuilder {
                     .setVerticalAlignmentY.equalToSafeArea
                     .setTrailing.equalToSafeArea(-36)
                     .setTop.setBottom.equalToSafeArea
-                    .setWidth.equalToConstant(50)
+                    .setWidth.equalToConstant(55)
             }
             .setActions { build in
                 build
