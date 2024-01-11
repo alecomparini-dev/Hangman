@@ -44,7 +44,7 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - GET PROPERTIES
     
     public var isEndGame: Bool {
-        _isEndGame || (countLife() == 0)
+        _isEndGame || (countLives() == 0)
     }
     
     public var gameScore: GameScoreModel? { _gameScore }
@@ -152,7 +152,7 @@ public class HomePresenterImpl: HomePresenter {
         })   
     }
     
-    public func countLife() -> Int8 {
+    public func countLives() -> Int8 {
         return (_gameScore?.lifeScore?.freeLife ?? 0) +
         (_gameScore?.lifeScore?.adLife ?? 0) +
         (_gameScore?.lifeScore?.buyLife ?? 0)
@@ -454,17 +454,17 @@ public class HomePresenterImpl: HomePresenter {
     private func updateGameScore() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            let gameScorePresenterDTO = GameScorePresenterDTO(life: countLife(),
+            let gameScorePresenterDTO = GameHelpPresenterDTO(lives: countLives(),
                                                               tips: countTips(),
-                                                              reveal: countReveal())
-            delegateOutput?.updateGameScore(gameScorePresenterDTO)
+                                                             revelations: countReveal())
+            delegateOutput?.updateGameHelp(gameScorePresenterDTO)
         }
     }
     
     private func updateCountLife() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountLife(countLife().description)
+            delegateOutput?.updateLivesCount(countLives().description)
         }
     }
     

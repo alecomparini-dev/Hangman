@@ -5,7 +5,7 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-class CountLifeView: ViewBuilder {
+class LivesCountView: ViewBuilder {
         
     override init() {
         super.init()

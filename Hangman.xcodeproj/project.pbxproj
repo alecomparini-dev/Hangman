@@ -54,7 +54,7 @@
 		0235E5FD2B167FB900829489 /* BodyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F32B15449400829489 /* BodyCodable.swift */; };
 		0235E5FE2B167FBC00829489 /* HeadCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F52B1544A000829489 /* HeadCodable.swift */; };
 		0235E5FF2B167FC200829489 /* DollCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F72B1544B600829489 /* DollCodable.swift */; };
-		024154082B4D84490016450C /* GameScorePresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154072B4D84490016450C /* GameScorePresenterDTO.swift */; };
+		024154082B4D84490016450C /* GameHelpPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154072B4D84490016450C /* GameHelpPresenterDTO.swift */; };
 		0241540D2B4DB7150016450C /* GameScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241540C2B4DB7150016450C /* GameScoreModel.swift */; };
 		0241540F2B4DB7580016450C /* RevealLetterScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241540E2B4DB7580016450C /* RevealLetterScoreModel.swift */; };
 		024154112B4DB76D0016450C /* TipScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154102B4DB76D0016450C /* TipScoreModel.swift */; };
@@ -121,10 +121,10 @@
 		02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */; };
 		02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E02B2A7F46009C546A /* QuantityLettersView.swift */; };
 		02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E22B2A81F8009C546A /* PainelGallowsView.swift */; };
-		02C500E82B2B4575009C546A /* GamePainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E72B2B4575009C546A /* GamePainelView.swift */; };
-		02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EA2B2B5561009C546A /* CountLifeView.swift */; };
-		02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* CountTipsView.swift */; };
-		02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */; };
+		02C500E82B2B4575009C546A /* GameHelpPainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E72B2B4575009C546A /* GameHelpPainelView.swift */; };
+		02C500EB2B2B5561009C546A /* LivesCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EA2B2B5561009C546A /* LivesCountView.swift */; };
+		02C500ED2B2B5CDC009C546A /* TipsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* TipsCountView.swift */; };
+		02C500EF2B2B7A0B009C546A /* RevealLetterCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */; };
 		02C500F12B2C791C009C546A /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500F02B2C791C009C546A /* StackView.swift */; };
 		02FCA7032B307BAA00B45892 /* TipsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7022B307BAA00B45892 /* TipsPresenter.swift */; };
 		02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */; };
@@ -305,7 +305,7 @@
 		0235E5F52B1544A000829489 /* HeadCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadCodable.swift; sourceTree = "<group>"; };
 		0235E5F72B1544B600829489 /* DollCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollCodable.swift; sourceTree = "<group>"; };
 		0235E5F92B157B6600829489 /* AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHandler.swift; sourceTree = "<group>"; };
-		024154072B4D84490016450C /* GameScorePresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScorePresenterDTO.swift; sourceTree = "<group>"; };
+		024154072B4D84490016450C /* GameHelpPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpPresenterDTO.swift; sourceTree = "<group>"; };
 		0241540C2B4DB7150016450C /* GameScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreModel.swift; sourceTree = "<group>"; };
 		0241540E2B4DB7580016450C /* RevealLetterScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealLetterScoreModel.swift; sourceTree = "<group>"; };
 		024154102B4DB76D0016450C /* TipScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipScoreModel.swift; sourceTree = "<group>"; };
@@ -362,10 +362,10 @@
 		02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCoordinator.swift; sourceTree = "<group>"; };
 		02C500E02B2A7F46009C546A /* QuantityLettersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityLettersView.swift; sourceTree = "<group>"; };
 		02C500E22B2A81F8009C546A /* PainelGallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainelGallowsView.swift; sourceTree = "<group>"; };
-		02C500E72B2B4575009C546A /* GamePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePainelView.swift; sourceTree = "<group>"; };
-		02C500EA2B2B5561009C546A /* CountLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLifeView.swift; sourceTree = "<group>"; };
-		02C500EC2B2B5CDB009C546A /* CountTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTipsView.swift; sourceTree = "<group>"; };
-		02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountRevealLetterView.swift; sourceTree = "<group>"; };
+		02C500E72B2B4575009C546A /* GameHelpPainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpPainelView.swift; sourceTree = "<group>"; };
+		02C500EA2B2B5561009C546A /* LivesCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivesCountView.swift; sourceTree = "<group>"; };
+		02C500EC2B2B5CDB009C546A /* TipsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCountView.swift; sourceTree = "<group>"; };
+		02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealLetterCountView.swift; sourceTree = "<group>"; };
 		02C500F02B2C791C009C546A /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		02FCA7022B307BAA00B45892 /* TipsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsPresenter.swift; sourceTree = "<group>"; };
 		02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsPresenterImpl.swift; sourceTree = "<group>"; };
@@ -738,12 +738,12 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
-		024154092B4DB55B0016450C /* GameScoreUseCases */ = {
+		024154092B4DB55B0016450C /* GameHelpUseCases */ = {
 			isa = PBXGroup;
 			children = (
 				0241540A2B4DB62A0016450C /* DTO */,
 			);
-			path = GameScoreUseCases;
+			path = GameHelpUseCases;
 			sourceTree = "<group>";
 		};
 		0241540A2B4DB62A0016450C /* DTO */ = {
@@ -830,7 +830,7 @@
 			isa = PBXGroup;
 			children = (
 				0235E5C82B14CC4E00829489 /* Interface */,
-				024154092B4DB55B0016450C /* GameScoreUseCases */,
+				024154092B4DB55B0016450C /* GameHelpUseCases */,
 				026800812B0A945A00B30C26 /* AuthenticateUseCases */,
 				0235E5C32B14CA9B00829489 /* DollsUseCases */,
 				026938E52B090C3B0023073B /* GetNextWordsUseCase */,
@@ -1117,7 +1117,7 @@
 		02C466A02B4F15B200516D5A /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				024154072B4D84490016450C /* GameScorePresenterDTO.swift */,
+				024154072B4D84490016450C /* GameHelpPresenterDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1253,7 +1253,7 @@
 			isa = PBXGroup;
 			children = (
 				02C500E92B2B5537009C546A /* ComponentsView */,
-				02C500E72B2B4575009C546A /* GamePainelView.swift */,
+				02C500E72B2B4575009C546A /* GameHelpPainelView.swift */,
 			);
 			path = GamePainelView;
 			sourceTree = "<group>";
@@ -1271,9 +1271,9 @@
 		02C500E92B2B5537009C546A /* ComponentsView */ = {
 			isa = PBXGroup;
 			children = (
-				02C500EA2B2B5561009C546A /* CountLifeView.swift */,
-				02C500EC2B2B5CDB009C546A /* CountTipsView.swift */,
-				02C500EE2B2B7A0B009C546A /* CountRevealLetterView.swift */,
+				02C500EA2B2B5561009C546A /* LivesCountView.swift */,
+				02C500EC2B2B5CDB009C546A /* TipsCountView.swift */,
+				02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */,
 			);
 			path = ComponentsView;
 			sourceTree = "<group>";
@@ -1672,7 +1672,7 @@
 				026B64A12B03A29200F6DD99 /* HomeViewController.swift in Sources */,
 				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
 				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
-				02C500ED2B2B5CDC009C546A /* CountTipsView.swift in Sources */,
+				02C500ED2B2B5CDC009C546A /* TipsCountView.swift in Sources */,
 				0222DDA52B4AF3EA009EE10C /* AdLifePainelView.swift in Sources */,
 				02C500F12B2C791C009C546A /* StackView.swift in Sources */,
 				02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */,
@@ -1680,14 +1680,14 @@
 				02C500DD2B2A66D9009C546A /* TipsView.swift in Sources */,
 				02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */,
 				02C500DB2B2A66CE009C546A /* TipsViewController.swift in Sources */,
-				02C500EB2B2B5561009C546A /* CountLifeView.swift in Sources */,
+				02C500EB2B2B5561009C546A /* LivesCountView.swift in Sources */,
 				0222DDAA2B4B363A009EE10C /* AdRevealLetterPainelView.swift in Sources */,
 				02FCA7072B30B53300B45892 /* CardTipsViewCell.swift in Sources */,
-				02C500EF2B2B7A0B009C546A /* CountRevealLetterView.swift in Sources */,
+				02C500EF2B2B7A0B009C546A /* RevealLetterCountView.swift in Sources */,
 				0222DDA02B48C47F009EE10C /* DropdownRevealLetterView.swift in Sources */,
 				026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
-				02C500E82B2B4575009C546A /* GamePainelView.swift in Sources */,
+				02C500E82B2B4575009C546A /* GameHelpPainelView.swift in Sources */,
 				0222DDA82B4B360F009EE10C /* BuyRevealLetterPainelView.swift in Sources */,
 				026939352B0A41B90023073B /* HangmanAuthenticationSDK.swift in Sources */,
 				02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */,
@@ -1730,7 +1730,7 @@
 				021B63162B1133E4002498DA /* DataTransferHomeVC.swift in Sources */,
 				02C466A22B4F185B00516D5A /* DataTransferTipsVC.swift in Sources */,
 				02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */,
-				024154082B4D84490016450C /* GameScorePresenterDTO.swift in Sources */,
+				024154082B4D84490016450C /* GameHelpPresenterDTO.swift in Sources */,
 				0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */,
 				021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */,
 			);

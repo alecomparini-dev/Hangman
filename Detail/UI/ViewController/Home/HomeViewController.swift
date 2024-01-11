@@ -18,7 +18,7 @@ public class HomeViewController: UIViewController {
 
     private let tagImage = 10
     
-    private var buttonRevealLetter: UIView?
+    private var buttonReveal: UIView?
     private var lettersInWord: [HangmanLetterInWordView?] = []
     private var dataTransfer: DataTransferHomeVC?
     
@@ -110,12 +110,12 @@ public class HomeViewController: UIViewController {
         let countReveal = homePresenter.countReveal() + 1
         (countReveal..<6).forEach { index in
             let comp = screen.dropdownRevealLetterView.stackEyes.get.viewWithTag(Int(index))
-            markUsedButtonRevealLetter(comp)
+            markUsedButtonReveal(comp)
         }
     }
     
     private func updateMarkUsedLife() {
-        let countLife = homePresenter.countLife() + 1
+        let countLife = homePresenter.countLives() + 1
         (countLife..<6).forEach { index in
             if let comp = screen.dropdownLifeView.stackLifeHeart.get.viewWithTag(Int(index)) as? UIImageView {
                 comp.tintColor = Theme.shared.currentTheme.onSurfaceVariant
@@ -306,16 +306,16 @@ public class HomeViewController: UIViewController {
         screen.quantityLettersView.skeleton?.hideSkeleton()
     }
     
-    private func hideSkeletonGameScore() {
-        screen.gamePainelView.countLifeView.lifeLabel.skeleton?.hideSkeleton()
-        screen.gamePainelView.countTipsView.tipsLabel.skeleton?.hideSkeleton()
-        screen.gamePainelView.countRevealLetterView.revealLabel.skeleton?.hideSkeleton()
+    private func hideSkeletonGameHelp() {
+        screen.gamePainelView.livesCountView.lifeLabel.skeleton?.hideSkeleton()
+        screen.gamePainelView.tipsCountView.tipsLabel.skeleton?.hideSkeleton()
+        screen.gamePainelView.revelationsCountView.revealLabel.skeleton?.hideSkeleton()
     }
     
     private func showSkeletonGameScore() {
-        screen.gamePainelView.countLifeView.lifeLabel.skeleton?.showSkeleton()
-        screen.gamePainelView.countTipsView.tipsLabel.skeleton?.showSkeleton()
-        screen.gamePainelView.countRevealLetterView.revealLabel.skeleton?.showSkeleton()
+        screen.gamePainelView.livesCountView.lifeLabel.skeleton?.showSkeleton()
+        screen.gamePainelView.tipsCountView.tipsLabel.skeleton?.showSkeleton()
+        screen.gamePainelView.revelationsCountView.revealLabel.skeleton?.showSkeleton()
     }
     
     
@@ -346,7 +346,7 @@ public class HomeViewController: UIViewController {
         })
     }
     
-    private func markUsedButtonRevealLetter(_ component: UIView?) {
+    private func markUsedButtonReveal(_ component: UIView?) {
         guard let component else {return}
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
             guard let self else { return }
@@ -384,7 +384,7 @@ public class HomeViewController: UIViewController {
         }
     }
     
-    private func animateMinusRevealLetter(_ count: String) {
+    private func animateMinusReveal(_ count: String) {
         let minusYOri = screen.minusOneRevealLabel.get.layer.frame.origin.y
         let minusXOri = screen.minusOneRevealLabel.get.layer.frame.origin.x
         
@@ -405,7 +405,7 @@ public class HomeViewController: UIViewController {
                 screen.minusOneRevealLabel.get.alpha = 0
             }) { [weak self] _ in
                 guard let self else {return}
-                self.screen.gamePainelView.countRevealLetterView.revealLabel.get.text = count
+                self.screen.gamePainelView.revelationsCountView.revealLabel.get.text = count
                 screen.minusOneRevealLabel.get.layer.frame.origin.y = minusYOri
                 screen.minusOneRevealLabel.get.layer.frame.origin.x = minusXOri
             }
@@ -430,9 +430,9 @@ extension HomeViewController: HangmanViewDelegate {
 
 //  MARK: - EXTENSION - GamePainelViewDelegate
 
-extension HomeViewController: GamePainelViewDelegate {
+extension HomeViewController: GameHelpPainelViewDelegate {
     
-    func countLifeDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+    func livesCountDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
         if !screen.dropdownLifeView.get.isHidden {
             setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
             return
@@ -447,13 +447,13 @@ extension HomeViewController: GamePainelViewDelegate {
         })
     }
     
-    func countTipsViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+    func tipsCountViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
         setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
         setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
         coordinator?.gotoTips(makeDataTransferTipVC())
     }
     
-    func countRevealLetterDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+    func revelationsCountDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
         if !screen.dropdownRevealLetterView.get.isHidden {
             setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
             return
@@ -486,7 +486,7 @@ extension HomeViewController: DropdownLifeViewDelegate {
 extension HomeViewController: DropdownRevealLetterViewDelegate {
     
     func revealLetterButtonTapped(component: UIView) {
-        buttonRevealLetter = component
+        buttonReveal = component
         homePresenter.revealLetterGameRandom(1)
     }
     
@@ -507,7 +507,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
     
     func moreTipTapped() {
         if homePresenter.isEndGame { return }
-//        coordinator?.gotoTips(homePresenter.getCurrentWord())
+        coordinator?.gotoTips(makeDataTransferTipVC())
     }
     
 }
@@ -516,41 +516,42 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
 //  MARK: - EXTENSION - ProfileSummaryPresenterOutput
 
 extension HomeViewController: HomePresenterOutput {
-    public func updateGameScore(_ gameScore: GameScorePresenterDTO) {
-        screen.gamePainelView.countLifeView.lifeLabel.get.text = gameScore.life.description
-        screen.gamePainelView.countTipsView.tipsLabel.get.text = gameScore.tip.description
-        screen.gamePainelView.countRevealLetterView.revealLabel.get.text = gameScore.reveal.description
-        hideSkeletonGameScore()
+    
+    public func updateGameHelp(_ gameHelp: GameHelpPresenterDTO) {
+        screen.gamePainelView.livesCountView.lifeLabel.get.text = gameHelp.lives.description
+        screen.gamePainelView.tipsCountView.tipsLabel.get.text = gameHelp.tips.description
+        screen.gamePainelView.revelationsCountView.revealLabel.get.text = gameHelp.revelations.description
+        hideSkeletonGameHelp()
     }
     
-    public func updateCountLife(_ count: String) {
+    public func updateLivesCount(_ count: String) {
         updateMarkUsedLife()
         UIView.animate(withDuration: 2, delay: 1, options: .curveEaseInOut , animations: { [weak self] in
             guard let self else {return}
-            screen.gamePainelView.countLifeView.minusHeartImage.get.alpha = 1
-            screen.gamePainelView.countLifeView.minusHeartImage.get.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
+            screen.gamePainelView.livesCountView.minusHeartImage.get.alpha = 1
+            screen.gamePainelView.livesCountView.minusHeartImage.get.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
         }) { _ in
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
                 guard let self else {return}
-                screen.gamePainelView.countLifeView.minusHeartImage.get.transform = .identity
-                screen.gamePainelView.countLifeView.minusHeartImage.get.alpha = 0
-                screen.gamePainelView.countLifeView.lifeLabel.get.text = count
+                screen.gamePainelView.livesCountView.minusHeartImage.get.transform = .identity
+                screen.gamePainelView.livesCountView.minusHeartImage.get.alpha = 0
+                screen.gamePainelView.livesCountView.lifeLabel.get.text = count
             })
         }
     }
     
     public func updateCountTip(_ count: String) {
-        screen.gamePainelView.countTipsView.tipsLabel.get.text = count
+        screen.gamePainelView.tipsCountView.tipsLabel.get.text = count
     }
     
     public func updateCountReveal(_ count: String) {
         setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
 
-        markUsedButtonRevealLetter(buttonRevealLetter)
+        markUsedButtonReveal(buttonReveal)
 
         pulseAnimationRevealingImage()
 
-        animateMinusRevealLetter(count)
+        animateMinusReveal(count)
     }
     
     public func revealHeadDoll(_ imageBase64: String) {
