@@ -106,7 +106,6 @@
 		0290B6422B06868F000667E5 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
 		0290B64C2B06AC28000667E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */; };
 		0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */; };
-		0293A8BD2B4869FC00E7730C /* LoadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */; };
 		0293A8BF2B486C7900E7730C /* LoadScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */; };
 		0293A8C42B4893EF00E7730C /* DropdownLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */; };
 		02B1E7E32B516650004ECE2C /* GameHelpManagerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E22B516650004ECE2C /* GameHelpManagerUseCase.swift */; };
@@ -132,6 +131,7 @@
 		02C500ED2B2B5CDC009C546A /* TipsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* TipsCountView.swift */; };
 		02C500EF2B2B7A0B009C546A /* RevealLetterCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */; };
 		02C500F12B2C791C009C546A /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500F02B2C791C009C546A /* StackView.swift */; };
+		02DADDC82B51879900186CE1 /* LoadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDC32B51837200186CE1 /* LoadScreenViewController.swift */; };
 		02FCA7032B307BAA00B45892 /* TipsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7022B307BAA00B45892 /* TipsPresenter.swift */; };
 		02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */; };
 		02FCA7072B30B53300B45892 /* CardTipsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7062B30B53300B45892 /* CardTipsViewCell.swift */; };
@@ -351,7 +351,6 @@
 		0279268C2B0FD1B200035BCF /* Handler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Handler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0293A8BA2B3DB0A600E7730C /* HomePresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterOutput.swift; sourceTree = "<group>"; };
-		0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadScreenViewController.swift; path = ../../../MentoriaCodandoComMoa/Mentoria/Resources/LoadScreenViewController.swift; sourceTree = "<group>"; };
 		0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadScreenCoordinator.swift; sourceTree = "<group>"; };
 		0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownLifeView.swift; sourceTree = "<group>"; };
 		02B1E7E22B516650004ECE2C /* GameHelpManagerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpManagerUseCase.swift; sourceTree = "<group>"; };
@@ -379,6 +378,7 @@
 		02C500EC2B2B5CDB009C546A /* TipsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCountView.swift; sourceTree = "<group>"; };
 		02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealLetterCountView.swift; sourceTree = "<group>"; };
 		02C500F02B2C791C009C546A /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		02DADDC32B51837200186CE1 /* LoadScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreenViewController.swift; sourceTree = "<group>"; };
 		02FCA7022B307BAA00B45892 /* TipsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsPresenter.swift; sourceTree = "<group>"; };
 		02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsPresenterImpl.swift; sourceTree = "<group>"; };
 		02FCA7062B30B53300B45892 /* CardTipsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTipsViewCell.swift; sourceTree = "<group>"; };
@@ -999,6 +999,7 @@
 		026B64812B038A0300F6DD99 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				02DADDC72B51878500186CE1 /* LoadLaunchScreen */,
 				026B64822B038A0F00F6DD99 /* Home */,
 				02C500D82B2A6632009C546A /* Tips */,
 			);
@@ -1040,7 +1041,6 @@
 				026B648B2B03A1ED00F6DD99 /* SceneDelegate.swift */,
 				026B64922B03A1EF00F6DD99 /* Assets.xcassets */,
 				026B64942B03A1EF00F6DD99 /* LaunchScreen.storyboard */,
-				0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */,
 				0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */,
 				026B64972B03A1EF00F6DD99 /* Info.plist */,
 			);
@@ -1350,6 +1350,14 @@
 				02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */,
 			);
 			path = ComponentsView;
+			sourceTree = "<group>";
+		};
+		02DADDC72B51878500186CE1 /* LoadLaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				02DADDC32B51837200186CE1 /* LoadScreenViewController.swift */,
+			);
+			path = LoadLaunchScreen;
 			sourceTree = "<group>";
 		};
 		02FCA7002B307B3D00B45892 /* Cells */ = {
@@ -1754,6 +1762,7 @@
 				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
 				02C500ED2B2B5CDC009C546A /* TipsCountView.swift in Sources */,
 				0222DDA52B4AF3EA009EE10C /* AdLifePainelView.swift in Sources */,
+				02DADDC82B51879900186CE1 /* LoadScreenViewController.swift in Sources */,
 				02C500F12B2C791C009C546A /* StackView.swift in Sources */,
 				02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */,
 				02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */,
@@ -1778,7 +1787,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0293A8BD2B4869FC00E7730C /* LoadScreenViewController.swift in Sources */,
 				0293A8BF2B486C7900E7730C /* LoadScreenCoordinator.swift in Sources */,
 				026B64AC2B03A3AF00F6DD99 /* Coordinator.swift in Sources */,
 				02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */,

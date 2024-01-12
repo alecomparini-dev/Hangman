@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HANGMAN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ege-fv-2WG">
-                                <rect key="frame" x="128.66666666666666" y="209" width="135.99999999999997" height="31.333333333333343"/>
+                                <rect key="frame" x="128.66666666666666" y="139" width="135.99999999999997" height="31.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -26,7 +26,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.074509803921568626" green="0.074509803921568626" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ege-fv-2WG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="WqT-CR-oCT"/>
+                            <constraint firstItem="ege-fv-2WG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="WqT-CR-oCT"/>
                             <constraint firstItem="ege-fv-2WG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="n3w-f0-k08"/>
                         </constraints>
                     </view>

@@ -106,7 +106,7 @@ class HomeView: UIView {
     }()
     
     lazy var gallowsView: GallowsView = {
-        let comp = GallowsView(frame: .zero)
+        let comp = GallowsView()
             .setConstraints { build in
                 build
                     .setTop.equalToSuperView(13)
@@ -259,7 +259,6 @@ class HomeView: UIView {
         backgroundView.add(insideTo: self)
         stackView.add(insideTo: self)
         gamePainelView.add(insideTo: stackView.gallowsToStack.get)
-        painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
         painelGallowsView.add(insideTo: stackView.gallowsToStack.get)
         gallowsView.add(insideTo: painelGallowsView.painelView.get)
         nextWordButton.add(insideTo: self)

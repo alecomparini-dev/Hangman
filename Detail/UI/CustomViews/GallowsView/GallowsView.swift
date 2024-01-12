@@ -11,7 +11,7 @@ class GallowsView: ViewBuilder {
     public var topGallowsNeumorphism: NeumorphismBuilder?
     public var rodGallowsNeumorphism: NeumorphismBuilder?
     
-    override init(frame: CGRect) {
+    override init() {
         super.init(frame: .zero)
         configure()
     }

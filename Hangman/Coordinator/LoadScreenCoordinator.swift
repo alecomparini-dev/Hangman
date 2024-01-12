@@ -2,6 +2,7 @@
 //
 
 import Foundation
+import Detail
 
 
 class LoadScreenCoordinator: Coordinator {
@@ -27,7 +28,7 @@ class LoadScreenCoordinator: Coordinator {
 
 //  MARK: - EXTENSION - LoadScreenViewControllerCoordinator
 extension LoadScreenCoordinator: LoadScreenViewControllerCoordinator {
-    func gotoSignIn() {
+    func gotoHome() {
         let coordinator = HomeCoordinator(navigationController)
         coordinator.start()
         self.coordinator = nil
