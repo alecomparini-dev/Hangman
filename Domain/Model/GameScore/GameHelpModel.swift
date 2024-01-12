@@ -6,13 +6,13 @@ import Foundation
 public struct GameHelpModel {
     public var dateRenew: Date?
     public var lives: GameHelpLivesModel?
-    public var tips: GameHelpTipsModel?
+    public var hints: GameHelpHintsModel?
     public var revelations: GameHelpRevelationsModel?
     
-    public init(dateRenew: Date? = nil, lives: GameHelpLivesModel? = nil, tips: GameHelpTipsModel? = nil, revelations: GameHelpRevelationsModel? = nil) {
+    public init(dateRenew: Date? = nil, lives: GameHelpLivesModel? = nil, hints: GameHelpHintsModel? = nil, revelations: GameHelpRevelationsModel? = nil) {
         self.dateRenew = dateRenew
         self.lives = lives
-        self.tips = tips
+        self.hints = hints
         self.revelations = revelations
     }
     

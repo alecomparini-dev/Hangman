@@ -6,13 +6,13 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-protocol HangmanViewDelegate: AnyObject {
+protocol HomeViewDelegate: AnyObject {
     func nextWordButtonTapped()
 }
 
 
 class HomeView: UIView {
-    weak var delegate: HangmanViewDelegate?
+    weak var delegate: HomeViewDelegate?
     
     private let lettersKeyboard: [String]
     

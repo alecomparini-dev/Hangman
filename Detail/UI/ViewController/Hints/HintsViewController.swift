@@ -6,16 +6,16 @@ import CustomComponentsSDK
 import Handler
 import Presenter
 
-public protocol TipsViewControllerCoordinator: AnyObject {
+public protocol HintsViewControllerCoordinator: AnyObject {
     func freeMemoryCoordinator()
     func gotoHome(_ vc: UIViewController)
 }
 
 
-public class TipsViewController: UIViewController {
-    public weak var coordinator: TipsViewControllerCoordinator?
+public class HintsViewController: UIViewController {
+    public weak var coordinator: HintsViewControllerCoordinator?
     
-    private var dataTransfer: DataTransferTipsVC?
+    private var dataTransfer: DataTransferHintsVC?
     private var word: WordPresenterDTO?
     
     public init() {
@@ -26,8 +26,8 @@ public class TipsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var screen: TipsView = {
-        let comp = TipsView()
+    lazy var screen: HintsView = {
+        let comp = HintsView()
         return comp
     }()
     
@@ -59,10 +59,10 @@ public class TipsViewController: UIViewController {
     
 //  MARK: - DATA TRANSFER
     public func setDataTransfer(_ data: Any?) {
-        if let data = data as? DataTransferTipsVC {
+        if let data = data as? DataTransferHintsVC {
             dataTransfer = data
             word = data.wordPresenterDTO
-            screen.cardsTipsDock.reload()
+            screen.cardsHintsDock.reload()
         }
     }
     
@@ -70,17 +70,17 @@ public class TipsViewController: UIViewController {
 //  MARK: - PRIVATE AREA
     private func configure() {
         configDelegate()
-        configCardTipsShow()
+        configCardHintsShow()
         configBottomSheet()
     }
     
     private func configDelegate() {
         screen.delegate = self
-        screen.cardsTipsDock.setDelegate(self)
+        screen.cardsHintsDock.setDelegate(self)
     }
 
-    private func configCardTipsShow() {
-        screen.cardsTipsDock.show()
+    private func configCardHintsShow() {
+        screen.cardsHintsDock.show()
     }
 
     private func configBottomSheet() {
@@ -94,7 +94,7 @@ public class TipsViewController: UIViewController {
         })
     }
     
-    private func setOpenedTipViewCell(_ card: CardTipsViewCell) {
+    private func setOpenedTipViewCell(_ card: CardHintsViewCell) {
         card.imageTip.setImage(systemName: K.Images.hint)
         
         card.lockedImageTip.setHidden(true)
@@ -141,9 +141,9 @@ public class TipsViewController: UIViewController {
             }
         }
         
-        dataTransfer?.gameHelp?.tips?.freeTips -= 1
+        dataTransfer?.gameHelp?.hints?.freeHints -= 1
         if let completion = dataTransfer?.updateTipCompletion {
-            completion(dataTransfer?.gameHelp?.tips?.freeTips.description ?? "0")
+            completion(dataTransfer?.gameHelp?.hints?.freeHints.description ?? "0")
         }
             
     }
@@ -151,8 +151,8 @@ public class TipsViewController: UIViewController {
 }
 
 
-//  MARK: - EXTENSION - TipsViewDelegate
-extension TipsViewController: TipsViewDelegate {
+//  MARK: - EXTENSION - HintsViewDelegate
+extension HintsViewController: HintsViewDelegate {
     
     func downButtonTapped() {
         coordinator?.gotoHome(self)
@@ -163,7 +163,7 @@ extension TipsViewController: TipsViewDelegate {
 
 
 //  MARK: - EXTENSION - UISheetPresentationControllerDelegate
-extension TipsViewController: UISheetPresentationControllerDelegate {
+extension HintsViewController: UISheetPresentationControllerDelegate {
     
     @available(iOS 15.0, *)
     public func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
@@ -176,15 +176,15 @@ extension TipsViewController: UISheetPresentationControllerDelegate {
 
 
 //  MARK: - EXTENSION - DockDelegate
-extension TipsViewController: DockDelegate {
+extension HintsViewController: DockDelegate {
     public func numberOfItemsCallback(_ dockBuilder: DockBuilder) -> Int {
-        return word?.tips?.count ?? 0
+        return word?.hints?.count ?? 0
     }
     
     public func cellCallback(_ dockBuilder: DockBuilder, _ index: Int) -> UIView {
-        let cardTipsViewCell = CardTipsViewCell(word?.tips?[index] ?? "")
-        cardTipsViewCell.delegate = self
-        return cardTipsViewCell
+        let cardHintsViewCell = CardHintsViewCell(word?.hints?[index] ?? "")
+        cardHintsViewCell.delegate = self
+        return cardHintsViewCell
     }
     
     public func customCellActiveCallback(_ dockBuilder: DockBuilder, _ cell: UIView) -> UIView? {
@@ -193,11 +193,11 @@ extension TipsViewController: DockDelegate {
     
 }
 
-//  MARK: - EXTENSION - CardTipsViewCellDelegate
-extension TipsViewController: CardTipsViewCellDelegate {
+//  MARK: - EXTENSION - CardHintsViewCellDelegate
+extension HintsViewController: CardHintsViewCellDelegate {
     
-    func openTip(_ cardTipsViewCell: CardTipsViewCell) {
-        setOpenedTipViewCell(cardTipsViewCell)
+    func openHints(_ cardHitsViewCell: CardHintsViewCell) {
+        setOpenedTipViewCell(cardHitsViewCell)
     }
     
     

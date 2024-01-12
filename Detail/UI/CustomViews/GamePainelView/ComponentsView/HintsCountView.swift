@@ -5,9 +5,9 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-class TipsCountView: ViewBuilder {
+class HintsCountView: ViewBuilder {
     
-    private var tapTips: TapGestureBuilder?
+    private var tapHints: TapGestureBuilder?
     
     override init() {
         super.init()
@@ -21,7 +21,7 @@ class TipsCountView: ViewBuilder {
     
 //  MARK: - LAZY AREA
     
-    lazy var tipsImage: ImageViewBuilder = {
+    lazy var hintsImage: ImageViewBuilder = {
         let comp = ImageViewBuilder()
             .setImage(systemName: K.Images.hint)
             .setTintColor(hexColor: K.ExtraColor.lightHints)
@@ -29,26 +29,26 @@ class TipsCountView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalTo(tipsLabel.get, .leading, -6)
+                    .setTrailing.equalTo(hintsLabel.get, .leading, -6)
             }
         
         return comp
     }()
     
-    lazy var tipsShadowImage: ImageViewBuilder = {
+    lazy var hintsShadowImage: ImageViewBuilder = {
         let comp = ImageViewBuilder()
             .setImage(systemName: K.Images.hint)
             .setTintColor(hexColor: K.ExtraColor.heartShadow)
             .setSize(20)
             .setConstraints { build in
                 build
-                    .setVerticalAlignmentY.equalTo(tipsImage.get, 3)
-                    .setLeading.equalTo(tipsImage.get, .leading, 2)
+                    .setVerticalAlignmentY.equalTo(hintsImage.get, 3)
+                    .setLeading.equalTo(hintsImage.get, .leading, 2)
             }
         return comp
     }()
     
-    lazy var tipsLabel: LabelBuilder = {
+    lazy var hintsLabel: LabelBuilder = {
         let comp = LabelBuilder("10")
             .setTextAlignment(.left)
             .setSize(16)
@@ -75,15 +75,15 @@ class TipsCountView: ViewBuilder {
     }
     
     private func addElements() {
-        tipsShadowImage.add(insideTo: self.get)
-        tipsImage.add(insideTo: self.get)
-        tipsLabel.add(insideTo: self.get)
+        hintsShadowImage.add(insideTo: self.get)
+        hintsImage.add(insideTo: self.get)
+        hintsLabel.add(insideTo: self.get)
     }
     
     private func configConstraints() {
-        tipsImage.applyConstraint()
-        tipsShadowImage.applyConstraint()
-        tipsLabel.applyConstraint()
+        hintsImage.applyConstraint()
+        hintsShadowImage.applyConstraint()
+        hintsLabel.applyConstraint()
     }
     
     

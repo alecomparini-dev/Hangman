@@ -16,17 +16,17 @@ public struct WordPresenterDTO {
     public var category: String?
     public var initialQuestion: String?
     public var level: LevelPresenter?
-    public var tips: [String]?
+    public var hints: [String]?
     
     
-    public init(id: Int, word: String? = nil, syllables: [String]? = nil, category: String? = nil, initialQuestion: String? = nil, level: LevelPresenter? = nil, tips: [String]? = nil) {
+    public init(id: Int, word: String? = nil, syllables: [String]? = nil, category: String? = nil, initialQuestion: String? = nil, level: LevelPresenter? = nil, hints: [String]? = nil) {
         self.id = id
         self.word = word
         self.syllables = syllables
         self.category = category
         self.initialQuestion = initialQuestion
         self.level = level
-        self.tips = tips
+        self.hints = hints
     }
     
 }

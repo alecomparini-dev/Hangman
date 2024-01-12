@@ -6,10 +6,9 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-
 protocol GameHelpPainelViewDelegate: AnyObject {
     func livesCountDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
-    func tipsCountViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
+    func hintsCountViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
     func revelationsCountDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder)
 }
 
@@ -34,7 +33,7 @@ class GameHelpPainelView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setTrailing.equalTo(tipsCountView.tipsImage.get, .leading, -4)
+                    .setTrailing.equalTo(hintsCountView.hintsImage.get, .leading, -4)
                     .setTop.setBottom.equalToSafeArea
                     .setWidth.equalToConstant(60)
             }
@@ -48,8 +47,8 @@ class GameHelpPainelView: ViewBuilder {
         return comp
     }()
 
-    lazy var tipsCountView: TipsCountView = {
-        let comp = TipsCountView()
+    lazy var hintsCountView: HintsCountView = {
+        let comp = HintsCountView()
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
@@ -61,7 +60,7 @@ class GameHelpPainelView: ViewBuilder {
                 build
                     .setTap { [weak self] _ , tapGesture  in
                         guard let self, let tapGesture else { return }
-                        delegate?.tipsCountViewTapped(tapGesture, tipsCountView)
+                        delegate?.hintsCountViewTapped(tapGesture, hintsCountView)
                     }
             }
         return comp
@@ -95,13 +94,13 @@ class GameHelpPainelView: ViewBuilder {
     
     private func addElements() {
         livesCountView.add(insideTo: self.get)
-        tipsCountView.add(insideTo: self.get)
+        hintsCountView.add(insideTo: self.get)
         revelationsCountView.add(insideTo: self.get)
     }
     
     private func configConstraints() {
         livesCountView.applyConstraint()
-        tipsCountView.applyConstraint()
+        hintsCountView.applyConstraint()
         revelationsCountView.applyConstraint()
     }
     

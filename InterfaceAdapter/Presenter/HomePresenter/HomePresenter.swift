@@ -29,7 +29,7 @@ public protocol HomePresenter {
     
     func countLives() -> Int8
     
-    func countTips() -> Int8
+    func countHints() -> Int8
     
     func countReveal() -> Int8
 }

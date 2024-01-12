@@ -5,7 +5,6 @@ import Foundation
 
 import Domain
 
-
 public class DataStorageFetchAtIDNexWordsUseCaseGatewayImpl: GetNextWordsUseCaseGateway {
     
     private let fetchAtIDDataStorage: FetchAtDataStorageProvider
@@ -35,7 +34,7 @@ public class DataStorageFetchAtIDNexWordsUseCaseGatewayImpl: GetNextWordsUseCase
                 category: $0["category"] as? String,
                 initialQuestion: $0["initialQuestion"] as? String,
                 level: $0["level"] as? Level,
-                tips: $0["hints"] as? [String]
+                hints: $0["tips"] as? [String]
             )
         }
         
