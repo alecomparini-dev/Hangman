@@ -26,7 +26,7 @@ public struct K {
         public static let seven = "7"
         public static let eight = "8"
         public static let nine = "9"
-        public static let tips = "Dicas"
+        public static let hints = "Dicas"
         public static let hifen = "-"
         public static let life = "Vidas"
         public static let revealLetter = "Revelar Letra"
@@ -40,9 +40,9 @@ public struct K {
     public struct Images {
         public static let nextWordButton = "chevron.forward"
         public static let downButton = "chevron.down"
-        public static let tip = ["lightbulb.max.fill", "lightbulb.fill"]
-        public static let tipClose = ["lightbulb.max", "lightbulb"]
-        public static let tipLocked = "lock.fill"
+        public static let hint = ["lightbulb.max.fill", "lightbulb.fill"]
+        public static let hintClose = ["lightbulb.max", "lightbulb"]
+        public static let hintLocked = "lock.fill"
         public static let heartFill = "suit.heart.fill"
         public static let heartSlashFill = "heart.slash.fill"
         public static let eyeFill = "eye.fill"
@@ -54,7 +54,7 @@ public struct K {
     public struct ExtraColor {
         public static let heartFill = "#fe3400"
         public static let heartShadow = "#050505"
-        public static let lightTips = "#68a4f0"
+        public static let lightHints = "#68a4f0"
     }
     
     public struct ErrorLetters {
@@ -66,11 +66,7 @@ public struct K {
         public static let sixthError: Int8 = 6
     }
     
-    public struct MoreTip {
-        public static let margin: CGFloat = 13
-        public static let positionX: CGFloat = 6
-        public static let positionY: CGFloat = 4
-    }
+   
     
     public struct Animation {
         public struct Delay {

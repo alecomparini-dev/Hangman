@@ -80,7 +80,7 @@ class CardTipsViewCell: UIView {
     
     lazy var imageTip: ImageViewBuilder = {
         let comp = ImageViewBuilder()
-            .setImage(systemName: K.Images.tipClose)
+            .setImage(systemName: K.Images.hintClose)
             .setTintColor(Theme.shared.currentTheme.onSecondary.withAlphaComponent(0.8))
             .setContentMode(.scaleAspectFit)
             .setConstraints { build in
@@ -94,7 +94,7 @@ class CardTipsViewCell: UIView {
     
     lazy var lockedImageTip: ImageViewBuilder = {
         let comp = ImageViewBuilder()
-            .setImage(systemName: K.Images.tipLocked)
+            .setImage(systemName: K.Images.hintLocked)
             .setTintColor(Theme.shared.currentTheme.onSecondary)
             .setContentMode(.scaleAspectFit)
             .setConstraints { build in

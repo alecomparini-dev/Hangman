@@ -109,6 +109,12 @@
 		0293A8BD2B4869FC00E7730C /* LoadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */; };
 		0293A8BF2B486C7900E7730C /* LoadScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */; };
 		0293A8C42B4893EF00E7730C /* DropdownLifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */; };
+		02B1E7E32B516650004ECE2C /* GameHelpManagerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E22B516650004ECE2C /* GameHelpManagerUseCase.swift */; };
+		02B1E7E72B516B81004ECE2C /* TypeHelpStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E62B516B81004ECE2C /* TypeHelpStrategy.swift */; };
+		02B1E7EA2B516C0B004ECE2C /* LifeHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E92B516C0B004ECE2C /* LifeHelp.swift */; };
+		02B1E7EC2B516C18004ECE2C /* HintHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7EB2B516C18004ECE2C /* HintHelp.swift */; };
+		02B1E7EE2B516C24004ECE2C /* RevelationHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7ED2B516C24004ECE2C /* RevelationHelp.swift */; };
+		02B1E7F52B517821004ECE2C /* GameHelpUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7F42B517821004ECE2C /* GameHelpUseCaseDTO.swift */; };
 		02C466A22B4F185B00516D5A /* DataTransferTipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferTipsVC.swift */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 		02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */; };
@@ -348,6 +354,12 @@
 		0293A8BC2B4869FC00E7730C /* LoadScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadScreenViewController.swift; path = ../../../MentoriaCodandoComMoa/Mentoria/Resources/LoadScreenViewController.swift; sourceTree = "<group>"; };
 		0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadScreenCoordinator.swift; sourceTree = "<group>"; };
 		0293A8C32B4893EF00E7730C /* DropdownLifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownLifeView.swift; sourceTree = "<group>"; };
+		02B1E7E22B516650004ECE2C /* GameHelpManagerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpManagerUseCase.swift; sourceTree = "<group>"; };
+		02B1E7E62B516B81004ECE2C /* TypeHelpStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHelpStrategy.swift; sourceTree = "<group>"; };
+		02B1E7E92B516C0B004ECE2C /* LifeHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeHelp.swift; sourceTree = "<group>"; };
+		02B1E7EB2B516C18004ECE2C /* HintHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintHelp.swift; sourceTree = "<group>"; };
+		02B1E7ED2B516C24004ECE2C /* RevelationHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevelationHelp.swift; sourceTree = "<group>"; };
+		02B1E7F42B517821004ECE2C /* GameHelpUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpUseCaseDTO.swift; sourceTree = "<group>"; };
 		02C466A12B4F185B00516D5A /* DataTransferTipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferTipsVC.swift; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
 		02C4AB3A2B03C65800991633 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -741,16 +753,10 @@
 		024154092B4DB55B0016450C /* GameHelpUseCases */ = {
 			isa = PBXGroup;
 			children = (
-				0241540A2B4DB62A0016450C /* DTO */,
+				02B1E7E12B516604004ECE2C /* TypesGameHelpUseCases */,
+				02B1E7F32B517734004ECE2C /* GameHelpManagerUseCase */,
 			);
 			path = GameHelpUseCases;
-			sourceTree = "<group>";
-		};
-		0241540A2B4DB62A0016450C /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DTO;
 			sourceTree = "<group>";
 		};
 		0241540B2B4DB6660016450C /* GameScore */ = {
@@ -1112,6 +1118,74 @@
 				0293A8C12B48936100E7730C /* DropdownRevealLetterView */,
 			);
 			path = DropdownsView;
+			sourceTree = "<group>";
+		};
+		02B1E7E12B516604004ECE2C /* TypesGameHelpUseCases */ = {
+			isa = PBXGroup;
+			children = (
+				02B1E7E52B516B6C004ECE2C /* Protocol */,
+				02B1E7EF2B517418004ECE2C /* LifeHelpUseCase */,
+				02B1E7F02B517424004ECE2C /* HintHelpUseCase */,
+				02B1E7F12B517433004ECE2C /* RevelationHelpUseCase */,
+			);
+			path = TypesGameHelpUseCases;
+			sourceTree = "<group>";
+		};
+		02B1E7E42B51678D004ECE2C /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		02B1E7E52B516B6C004ECE2C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				02B1E7E62B516B81004ECE2C /* TypeHelpStrategy.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		02B1E7EF2B517418004ECE2C /* LifeHelpUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				02B1E7E92B516C0B004ECE2C /* LifeHelp.swift */,
+			);
+			path = LifeHelpUseCase;
+			sourceTree = "<group>";
+		};
+		02B1E7F02B517424004ECE2C /* HintHelpUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				02B1E7EB2B516C18004ECE2C /* HintHelp.swift */,
+			);
+			path = HintHelpUseCase;
+			sourceTree = "<group>";
+		};
+		02B1E7F12B517433004ECE2C /* RevelationHelpUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				02B1E7ED2B516C24004ECE2C /* RevelationHelp.swift */,
+			);
+			path = RevelationHelpUseCase;
+			sourceTree = "<group>";
+		};
+		02B1E7F22B517720004ECE2C /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				02B1E7F42B517821004ECE2C /* GameHelpUseCaseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		02B1E7F32B517734004ECE2C /* GameHelpManagerUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				02B1E7F22B517720004ECE2C /* DTO */,
+				02B1E7E42B51678D004ECE2C /* Impl */,
+				02B1E7E22B516650004ECE2C /* GameHelpManagerUseCase.swift */,
+			);
+			path = GameHelpManagerUseCase;
 			sourceTree = "<group>";
 		};
 		02C466A02B4F15B200516D5A /* DTO */ = {
@@ -1604,12 +1678,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B1E7E32B516650004ECE2C /* GameHelpManagerUseCase.swift in Sources */,
 				020216622B0BC537003E2B07 /* CountWordsPlayedUseCase.swift in Sources */,
 				0202166E2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift in Sources */,
 				026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */,
 				020216642B0BC540003E2B07 /* CountWordsPlayedUseCaseGateway.swift in Sources */,
+				02B1E7EA2B516C0B004ECE2C /* LifeHelp.swift in Sources */,
 				026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */,
 				0235E5D02B14D3E100829489 /* CountDollsUseCase.swift in Sources */,
+				02B1E7E72B516B81004ECE2C /* TypeHelpStrategy.swift in Sources */,
 				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
 				024154112B4DB76D0016450C /* GameHelpTipsModel.swift in Sources */,
 				0235E5C22B14CA0900829489 /* Doll.swift in Sources */,
@@ -1626,13 +1703,16 @@
 				020216722B0BE87E003E2B07 /* SaveWordPlayedUseCase.swift in Sources */,
 				020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */,
 				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
+				02B1E7EE2B516C24004ECE2C /* RevelationHelp.swift in Sources */,
 				0235E5D62B14F50500829489 /* GetDollsRandomUseCase.swift in Sources */,
 				0241540F2B4DB7580016450C /* GameHelpRevelationsModel.swift in Sources */,
 				0235E5CC2B14CCBB00829489 /* GenericCountModelGateway.swift in Sources */,
 				0241540D2B4DB7150016450C /* GameHelpModel.swift in Sources */,
+				02B1E7F52B517821004ECE2C /* GameHelpUseCaseDTO.swift in Sources */,
 				026938EC2B0912E10023073B /* ResultWordGameModel.swift in Sources */,
 				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
 				02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */,
+				02B1E7EC2B516C18004ECE2C /* HintHelp.swift in Sources */,
 				026938EA2B090CBC0023073B /* WordGallowModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
