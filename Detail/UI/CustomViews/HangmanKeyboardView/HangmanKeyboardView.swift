@@ -113,10 +113,10 @@ class HangmanKeyboardView: ViewBuilder {
 //  MARK: - LAZY MORE TIP
     lazy var moreTipButton: ButtonImageBuilder = {
         let img = ImageViewBuilder()
-            .setImage(systemName: K.Images.tip)
+            .setImage(systemName: K.Images.hint)
             .setContentMode(.center)
         
-        var comp = createButtonDefault(K.String.tips)
+        var comp = createButtonDefault(K.String.hints)
             .setImageButton(img)
             .setImagePlacement(.trailing)
             .setImageSize(12)

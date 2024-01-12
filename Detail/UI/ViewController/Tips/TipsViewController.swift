@@ -95,7 +95,7 @@ public class TipsViewController: UIViewController {
     }
     
     private func setOpenedTipViewCell(_ card: CardTipsViewCell) {
-        card.imageTip.setImage(systemName: K.Images.tip)
+        card.imageTip.setImage(systemName: K.Images.hint)
         
         card.lockedImageTip.setHidden(true)
 
