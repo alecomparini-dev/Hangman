@@ -164,11 +164,11 @@ public class LoadScreenViewController: UIViewController {
     }
     
     private func wavingAnimation() {
-        UIView.transition(with: dollImage.get, duration: 1, options: .curveLinear, animations: { [weak self] in
+        UIView.transition(with: dollImage.get, duration: 0.3, options: .transitionCrossDissolve, animations: { [weak self] in
             guard let self else { return }
             dollImage.get.image = UIImage(named: "doll2")
         }) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2, execute: { [weak self] in
                 guard let self else { return }
                 UIView.transition(with: dollImage.get, duration: 0.5, options: .transitionCrossDissolve, animations: { [weak self] in
                     guard let self else { return }
