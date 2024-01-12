@@ -1,7 +1,3 @@
-//
-//  WordPlayedUseCaseDTOToCodable.swift
-//  Domain
-//
 //  Created by Alessandro Comparini on 20/11/23.
 //
 
@@ -12,10 +8,12 @@ struct WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper {
     
     static func mapper(wordPlayedDTO: WordPlayedUseCaseDTO ) -> SaveWordPlayedCodable {
         return SaveWordPlayedCodable(
-            wordID: wordPlayedDTO.wordID,
+            id: wordPlayedDTO.id,
             success: wordPlayedDTO.success,
-            quantityCorrectLetters: wordPlayedDTO.quantityCorrectLetters,
-            quantityErrorLetters: wordPlayedDTO.quantityErrorLetters,
-            timeConclusion: wordPlayedDTO.timeConclusion)
+            correctLettersCount: wordPlayedDTO.correctLettersCount,
+            wrongLettersCount: wordPlayedDTO.wrongLettersCount,
+            timeConclusion: wordPlayedDTO.timeConclusion,
+            level: wordPlayedDTO.level
+        )
     }
 }

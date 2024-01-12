@@ -138,6 +138,8 @@
 		02DADDD12B51A95D00186CE1 /* DropdownRevelationsViewDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDD02B51A95D00186CE1 /* DropdownRevelationsViewDelegate+Extension.swift */; };
 		02DADDD62B51ABDC00186CE1 /* HangmanKeyboardViewDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDD52B51ABDC00186CE1 /* HangmanKeyboardViewDelegate+Extension.swift */; };
 		02DADDD92B51AD1F00186CE1 /* HomeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDD82B51AD1F00186CE1 /* HomeAnimation.swift */; };
+		02E065C12B51EDA400C074FC /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
+		02E065C22B51EDA400C074FC /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02FCA7032B307BAA00B45892 /* TipsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7022B307BAA00B45892 /* TipsPresenter.swift */; };
 		02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */; };
 		02FCA7072B30B53300B45892 /* CardHintsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7062B30B53300B45892 /* CardHintsViewCell.swift */; };
@@ -221,6 +223,13 @@
 			remoteGlobalIDString = 02C4AB6F2B057B4100991633;
 			remoteInfo = Presenter;
 		};
+		02E065C32B51EDA400C074FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0279268B2B0FD1B200035BCF;
+			remoteInfo = Handler;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -256,6 +265,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				026939262B093AD10023073B /* Domain.framework in Embed Frameworks */,
+				02E065C22B51EDA400C074FC /* Handler.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				026939252B093AD10023073B /* Domain.framework in Frameworks */,
+				02E065C12B51EDA400C074FC /* Handler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,6 +1494,7 @@
 			);
 			dependencies = (
 				026939282B093AD10023073B /* PBXTargetDependency */,
+				02E065C42B51EDA400C074FC /* PBXTargetDependency */,
 			);
 			name = UseCaseGateway;
 			productName = UseCaseGateway;
@@ -1922,6 +1934,11 @@
 			isa = PBXTargetDependency;
 			target = 02C4AB6F2B057B4100991633 /* Presenter */;
 			targetProxy = 0290B63A2B06854F000667E5 /* PBXContainerItemProxy */;
+		};
+		02E065C42B51EDA400C074FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0279268B2B0FD1B200035BCF /* Handler */;
+			targetProxy = 02E065C32B51EDA400C074FC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

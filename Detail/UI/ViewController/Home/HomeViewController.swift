@@ -451,6 +451,7 @@ extension HomeViewController: HomePresenterOutput {
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
         present(alert, animated: true)
+        hideSkeleton()
     }
     
     public func errorFetchNextWords(title: String, message: String) {

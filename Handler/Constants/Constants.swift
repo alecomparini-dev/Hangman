@@ -30,6 +30,7 @@ public struct K {
         public static let hifen = "-"
         public static let life = "Vidas"
         public static let revealLetter = "Revelar Letra"
+        public static let wordsPlayed = "wordsPlayed"
     }
     
     public struct Service {

@@ -242,6 +242,13 @@ public class HomePresenterImpl: HomePresenter {
         if isEndGameSuccess() {
             revealDollEndGameSuccess()
         }
+        
+        if isEndGame {
+            Task {
+                await saveWordPlayed()
+            }
+        }
+        
     }
     
     private func decreaseLife() {
@@ -326,10 +333,10 @@ public class HomePresenterImpl: HomePresenter {
             try await saveWordPlayedUseCase.save(
                 userID: userID,
                 WordPlayedUseCaseDTO(
-                    wordID: getCurrentWord()?.id ?? 0,
+                    id: getCurrentWord()?.id ?? 0,
                     success: true,
-                    quantityCorrectLetters: 10,
-                    quantityErrorLetters: 3,
+                    correctLettersCount: 10,
+                    wrongLettersCount: 3,
                     timeConclusion: nil)
             )
         } catch let error {
@@ -379,6 +386,7 @@ public class HomePresenterImpl: HomePresenter {
     }
 
     private func nextWordIsOver() {
+        _isEndGame = true
         MainThread.exec { [weak self] in
             self?.delegateOutput?.nextWordIsOver(title: "Aviso", message: "Banco de palavras chegou ao fim.\nEstamos trabalhando para incluir novas palavras. Muito obrigado pela compreensão")
         }

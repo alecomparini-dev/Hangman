@@ -4,11 +4,12 @@
 import Foundation
 
 struct SaveWordPlayedCodable: Codable {
-    var wordID: Int
+    var id: Int
     var success: Bool?
-    var quantityCorrectLetters: Int?
-    var quantityErrorLetters: Int?
+    var correctLettersCount: Int?
+    var wrongLettersCount: Int?
     var timeConclusion: Int?
+    var level: Int?
 }
 
 

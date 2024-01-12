@@ -4,6 +4,7 @@
 import Foundation
 
 import Domain
+import Handler
 
 public class SaveWordPlayedUseCaseGatewayImpl: SaveWordPlayedUseCaseGateway {
     
@@ -28,6 +29,6 @@ public class SaveWordPlayedUseCaseGatewayImpl: SaveWordPlayedUseCaseGateway {
     
 //  MARK: - PRIVATE AREA
     private func makeDocument(userID: String, _ wordPlayed: WordPlayedUseCaseDTO) -> String {
-        return userID + "/words/\(wordPlayed.wordID)"
+        return userID + "/\(K.String.wordsPlayed)"
     }
 }
