@@ -9,26 +9,28 @@ import Presenter
 
 public protocol HomeViewControllerCoordinator: AnyObject {
     func gotoHomeNextWord(_ dataTransfer: DataTransferHomeVC)
-    func gotoTips(_ dataTransfer: DataTransferTipsVC?)
+    func gotoHints(_ dataTransfer: DataTransferHintsVC?)
 }
 
 
 public class HomeViewController: UIViewController {
     public weak var coordinator: HomeViewControllerCoordinator?
 
+    let animations: HomeAnimation = HomeAnimation()
     private let tagImage = 10
     
-    private var buttonReveal: UIView?
+    var buttonReveal: UIView?
     private var lettersInWord: [HangmanLetterInWordView?] = []
     private var dataTransfer: DataTransferHomeVC?
     
     
 //  MARK: - INITIALIZERS
     
-    private var homePresenter: HomePresenter
+    var homePresenter: HomePresenter { _homePresenter }
+    private var _homePresenter: HomePresenter
     
     public init(homePresenter: HomePresenter) {
-        self.homePresenter = homePresenter
+        self._homePresenter = homePresenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,8 +38,9 @@ public class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var screen: HomeView = {
-        let comp = HomeView(homePresenter.getLettersKeyboard())
+    var screen: HomeView { _screen }
+    private lazy var _screen: HomeView = {
+        let comp = HomeView(_homePresenter.getLettersKeyboard())
         return comp
     }()
     
@@ -56,12 +59,11 @@ public class HomeViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let dataTransfer {
-            homePresenter.dataTransfer = dataTransfer
+            _homePresenter.dataTransfer = dataTransfer
             updateMarkGameHelp()
-            homePresenter.getNextWord()
+            _homePresenter.getNextWord()
         }
     }
-    
     
     
 //  MARK: - SET DATA TRANSFER
@@ -71,7 +73,7 @@ public class HomeViewController: UIViewController {
             return
         }
         
-        homePresenter.startGame()
+        _homePresenter.startGame()
         
         showSkeletonGameHelp()
     }
@@ -88,7 +90,7 @@ public class HomeViewController: UIViewController {
         screen.gallowsKeyboardView.delegate = self
         screen.dropdownLifeView.delegate = self
         screen.dropdownRevealLetterView.delegate = self
-        homePresenter.delegateOutput = self
+        _homePresenter.delegateOutput = self
     }
     
     private func configNextWord(_ word: WordPresenterDTO?) {
@@ -109,7 +111,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedButtonRevealLetter() {
-        let countReveal = homePresenter.countReveal() + 1
+        let countReveal = _homePresenter.countReveal() + 1
         (countReveal..<6).forEach { index in
             let comp = screen.dropdownRevealLetterView.stackEyes.get.viewWithTag(Int(index))
             markUsedButtonReveal(comp)
@@ -117,7 +119,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedLife() {
-        let countLife = homePresenter.countLives() + 1
+        let countLife = _homePresenter.countLives() + 1
         (countLife..<6).forEach { index in
             if let comp = screen.dropdownLifeView.stackLifeHeart.get.viewWithTag(Int(index)) as? UIImageView {
                 comp.tintColor = Theme.shared.currentTheme.onSurfaceVariant
@@ -310,42 +312,14 @@ public class HomeViewController: UIViewController {
     
     private func hideSkeletonGameHelp() {
         screen.gamePainelView.livesCountView.lifeLabel.skeleton?.hideSkeleton()
-        screen.gamePainelView.tipsCountView.tipsLabel.skeleton?.hideSkeleton()
+        screen.gamePainelView.hintsCountView.hintsLabel.skeleton?.hideSkeleton()
         screen.gamePainelView.revelationsCountView.revealLabel.skeleton?.hideSkeleton()
     }
     
     private func showSkeletonGameHelp() {
         screen.gamePainelView.livesCountView.lifeLabel.skeleton?.showSkeleton()
-        screen.gamePainelView.tipsCountView.tipsLabel.skeleton?.showSkeleton()
+        screen.gamePainelView.hintsCountView.hintsLabel.skeleton?.showSkeleton()
         screen.gamePainelView.revelationsCountView.revealLabel.skeleton?.showSkeleton()
-    }
-    
-    
-    private func makeDataTransferTipVC() -> DataTransferTipsVC {
-        return DataTransferTipsVC(
-            wordPresenterDTO: homePresenter.getCurrentWord(),
-            gameHelp: homePresenter.gameHelp,
-            updateTipCompletion: updateCountTip
-        )
-    }
-    
-    
-//  MARK: - ANIMATION AREA
-    
-    private func setHideDropdownAnimation(dropdown: UIView) {
-        dropdown.alpha = 1
-        UIView.animate(withDuration: 0.3, animations: {
-            dropdown.alpha = 0
-        }, completion: { bool in
-            if bool { dropdown.isHidden = true }
-        })
-    }
-    
-    private func setShowDropdownAnimation(dropdown: UIView) {
-        dropdown.isHidden = false
-        UIView.animate(withDuration: 0.3, animations: {
-            dropdown.alpha = 1
-        })
     }
     
     private func markUsedButtonReveal(_ component: UIView?) {
@@ -362,204 +336,51 @@ public class HomeViewController: UIViewController {
         })
     }
     
-    private func pulseAnimationRevealingImage() {
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            guard let self else {return}
-            screen.revealingImage.get.alpha = 1
-            let pulseAnimation = CABasicAnimation(keyPath: "transform.scale")
-            pulseAnimation.duration = 0.5
-            pulseAnimation.fromValue = NSNumber(value: 1.0)
-            pulseAnimation.toValue = NSNumber(value: 1.2)
-            pulseAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-            pulseAnimation.autoreverses = true
-            pulseAnimation.repeatCount = .greatestFiniteMagnitude
-            screen.revealingImage.get.layer.add(pulseAnimation, forKey: nil)
-        })
-    }
-    
-    private func stopPulseAnimationRevealingImage() {
-        if screen.revealingImage.get.alpha == 0 { return }
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            self?.screen.revealingImage.get.alpha = 0
-        }) { [weak self] bool in
-            if bool {self?.screen.revealingImage.get.layer.removeAllAnimations()}
-        }
-    }
-    
-    private func animateMinusReveal(_ count: String) {
-        let posOri = getPosOriginalMinusOneReveal()
-        let newPos = makeNewPositionMinusOneReveal()
-        
-        UIView.animate(withDuration: 1.5, delay: 0.3, options: .curveEaseInOut , animations: { [weak self] in
-            guard let self else {return}
-            screen.minusOneRevealLabel.get.alpha = 1
-            screen.minusOneRevealLabel.get.layer.frame.origin.y = newPos.y
-            screen.minusOneRevealLabel.get.layer.frame.origin.x = newPos.x
-            screen.minusOneRevealLabel.get.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
-        }) { _ in
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-                guard let self else {return}
-                screen.minusOneRevealLabel.get.transform = .identity
-                screen.minusOneRevealLabel.get.alpha = 0
-            }) { [weak self] _ in
-                guard let self else {return}
-                self.screen.gamePainelView.revelationsCountView.revealLabel.get.text = count
-                screen.minusOneRevealLabel.get.layer.frame.origin.y = posOri.y
-                screen.minusOneRevealLabel.get.layer.frame.origin.x = posOri.x
-            }
-        }
-    }
-    
-    private func getPosOriginalMinusOneReveal() -> CGPoint {
-        return CGPoint(x: screen.minusOneRevealLabel.get.layer.frame.origin.x,
-                       y: screen.minusOneRevealLabel.get.layer.frame.origin.y )
-    }
-    
-    private func makeNewPositionMinusOneReveal() -> CGPoint {
-        return CGPoint(x: screen.minusOneRevealLabel.get.layer.frame.origin.x + 50,
-                       y: screen.minusOneRevealLabel.get.layer.frame.origin.y - 80 )
-    }
-    
-}
-
-
-//  MARK: - EXTENSION - HangmanKeyboardViewDelegate
-
-extension HomeViewController: HangmanViewDelegate {
-    
-    func nextWordButtonTapped() {
-        if let dataTransferDTO = homePresenter.dataTransfer {
-            coordinator?.gotoHomeNextWord(dataTransferDTO)
-        }
-    }
-    
-}
-
-
-//  MARK: - EXTENSION - GamePainelViewDelegate
-
-extension HomeViewController: GameHelpPainelViewDelegate {
-    
-    func livesCountDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        if !screen.dropdownLifeView.get.isHidden {
-            setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
-            return
-        }
-        
-        setShowDropdownAnimation(dropdown: screen.dropdownLifeView.get)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [weak self] in
-            if let dropdown = self?.screen.dropdownRevealLetterView.get {
-                self?.setHideDropdownAnimation(dropdown: dropdown)
-            }
-        })
-    }
-    
-    func tipsCountViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
-        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
-        coordinator?.gotoTips(makeDataTransferTipVC())
-    }
-    
-    func revelationsCountDropdownViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
-        if !screen.dropdownRevealLetterView.get.isHidden {
-            setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
-            return
-        }
-        
-        setShowDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
-            if let dropdown = self?.screen.dropdownLifeView.get {
-                self?.setHideDropdownAnimation(dropdown: dropdown)
-            }
-        })
+    func makeDataTransferTipVC() -> DataTransferHintsVC {
+        return DataTransferHintsVC(
+            wordPresenterDTO: _homePresenter.getCurrentWord(),
+            gameHelp: _homePresenter.gameHelp,
+            updateTipCompletion: updateCountTip
+        )
     }
     
 }
 
 
 
-//  MARK: - EXTENSION - DropdownLifeViewDelegate
-extension HomeViewController: DropdownLifeViewDelegate {
-    
-    func closeDropDown() {
-        setHideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
-    }
-    
-}
-
-
-//  MARK: - EXTENSION - DropdownRevelationsViewDelegate
-extension HomeViewController: DropdownRevelationsViewDelegate {
-    
-    func revealLetterButtonTapped(component: UIView) {
-        buttonReveal = component
-        homePresenter.revealLetterGameRandom(1)
-    }
-    
-    func closeDropDownRevealLetter() {
-        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
-    }
-    
-}
-
-
-//  MARK: - EXTENSION - HangmanKeyboardViewDelegate
-
-extension HomeViewController: HangmanKeyboardViewDelegate {
-    
-    func letterButtonTapped(_ button: UIButton) {
-        homePresenter.verifyMatchInWord(button.titleLabel?.text)
-    }
-    
-    func moreTipTapped() {
-        if homePresenter.isEndGame { return }
-        coordinator?.gotoTips(makeDataTransferTipVC())
-    }
-    
-}
-
-
-//  MARK: - EXTENSION - ProfileSummaryPresenterOutput
+//  MARK: - EXTENSION - HomePresenterOutput
 
 extension HomeViewController: HomePresenterOutput {
     
     public func updateGameHelp(_ gameHelp: GameHelpPresenterDTO) {
         screen.gamePainelView.livesCountView.lifeLabel.get.text = gameHelp.lives.description
-        screen.gamePainelView.tipsCountView.tipsLabel.get.text = gameHelp.tips.description
+        screen.gamePainelView.hintsCountView.hintsLabel.get.text = gameHelp.hints.description
         screen.gamePainelView.revelationsCountView.revealLabel.get.text = gameHelp.revelations.description
         hideSkeletonGameHelp()
     }
     
     public func updateLivesCount(_ count: String) {
         updateMarkUsedLife()
-        UIView.animate(withDuration: 2, delay: 1, options: .curveEaseInOut , animations: { [weak self] in
-            guard let self else {return}
-            screen.gamePainelView.livesCountView.minusHeartImage.get.alpha = 1
-            screen.gamePainelView.livesCountView.minusHeartImage.get.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
-        }) { _ in
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-                guard let self else {return}
-                screen.gamePainelView.livesCountView.minusHeartImage.get.transform = .identity
-                screen.gamePainelView.livesCountView.minusHeartImage.get.alpha = 0
-                screen.gamePainelView.livesCountView.lifeLabel.get.text = count
-            })
-        }
+        animations.minusHeart(count,
+                              minusHeartImage: screen.gamePainelView.livesCountView.minusHeartImage.get,
+                              lifeLabel: screen.gamePainelView.livesCountView.lifeLabel.get)
+        
     }
     
     public func updateCountTip(_ count: String) {
-        screen.gamePainelView.tipsCountView.tipsLabel.get.text = count
+        screen.gamePainelView.hintsCountView.hintsLabel.get.text = count
     }
     
     public func updateCountReveal(_ count: String) {
-        setHideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
+        animations.hideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
 
         markUsedButtonReveal(buttonReveal)
 
-        pulseAnimationRevealingImage()
+        animations.pulseAnimationRevealingImage(screen.revealingImage.get)
 
-        animateMinusReveal(count)
+        animations.minusRevelation(count,
+                                   minusOneRevealLabel: screen.minusOneRevealLabel.get,
+                                   revealLabel: screen.gamePainelView.revelationsCountView.revealLabel.get)
     }
     
     public func revealHeadDoll(_ imageBase64: String) {
@@ -606,7 +427,8 @@ extension HomeViewController: HomePresenterOutput {
         if isCorrect {
             updateKeyboardLetterSuccess(button)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
-                self?.stopPulseAnimationRevealingImage()
+                guard let self else {return}
+                animations.stopPulseAnimationRevealingImage(screen.revealingImage.get)
             })
             return
         }

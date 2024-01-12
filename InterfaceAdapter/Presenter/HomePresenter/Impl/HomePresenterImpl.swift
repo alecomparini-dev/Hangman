@@ -119,7 +119,7 @@ public class HomePresenterImpl: HomePresenter {
                                     category: wordPlaying.category,
                                     initialQuestion: wordPlaying.initialQuestion,
                                     level: convertLevel(wordPlaying.level),
-                                    tips: wordPlaying.tips)
+                                    hints: wordPlaying.hints)
     }
     
     public func getLettersKeyboard() -> [String] {
@@ -161,8 +161,8 @@ public class HomePresenterImpl: HomePresenter {
         (_gameHelp?.lives?.buyLives ?? 0)
     }
     
-    public func countTips() -> Int8 {
-        return (_gameHelp?.tips?.freeTips ?? 0) + (_gameHelp?.tips?.adTips ?? 0)
+    public func countHints() -> Int8 {
+        return (_gameHelp?.hints?.freeHints ?? 0) + (_gameHelp?.hints?.adHints ?? 0)
     }
     
     public func countReveal() -> Int8 {
@@ -315,7 +315,7 @@ public class HomePresenterImpl: HomePresenter {
     
     private func fetchGameHelp() async {
         _gameHelp = GameHelpModel(lives: GameHelpLivesModel(freeLives: 5, buyLives: 0, adLives: 0),
-                                  tips: GameHelpTipsModel(freeTips: 10, adTips: 0),
+                                  hints: GameHelpHintsModel(freeHints: 10, adHints: 0),
                                   revelations: GameHelpRevelationsModel(freeRevelations: 5, buyRevelations: 0, adRevelations: 0))
         updateGameHelp()
     }
@@ -458,8 +458,8 @@ public class HomePresenterImpl: HomePresenter {
         MainThread.exec { [weak self] in
             guard let self else {return}
             let gameHelpPresenterDTO = GameHelpPresenterDTO(lives: countLives(),
-                                                              tips: countTips(),
-                                                             revelations: countReveal())
+                                                            hints: countHints(),
+                                                            revelations: countReveal())
             delegateOutput?.updateGameHelp(gameHelpPresenterDTO)
         }
     }
@@ -474,7 +474,7 @@ public class HomePresenterImpl: HomePresenter {
     private func updateCountTip() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountTip(countTips().description)
+            delegateOutput?.updateCountTip(countHints().description)
         }
     }
     

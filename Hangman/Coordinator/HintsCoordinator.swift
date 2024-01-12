@@ -5,7 +5,7 @@ import UIKit
 import Detail
 import CustomComponentsSDK
 
-class TipsCoordinator: NSObject, Coordinator {
+class HintsCoordinator: NSObject, Coordinator {
     var coordinator: Coordinator?
     unowned var navigationController: NavigationController
     var dataTransfer: Any?
@@ -16,7 +16,7 @@ class TipsCoordinator: NSObject, Coordinator {
     
     func start() {
         coordinator = self
-        let controller = TipsViewController()
+        let controller = HintsViewController()
         controller.setDataTransfer(dataTransfer)
         controller.coordinator = self
         
@@ -29,8 +29,8 @@ class TipsCoordinator: NSObject, Coordinator {
 }
 
 
-//  MARK: - EXTENSIO - TipsViewControllerCoordinator
-extension TipsCoordinator: TipsViewControllerCoordinator {
+//  MARK: - EXTENSIO - HintsViewControllerCoordinator
+extension HintsCoordinator: HintsViewControllerCoordinator {
     func gotoHome(_ vc: UIViewController) {
         vc.dismiss(animated: true)
     }

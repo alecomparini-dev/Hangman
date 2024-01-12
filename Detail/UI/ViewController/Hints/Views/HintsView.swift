@@ -6,14 +6,12 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
-protocol TipsViewDelegate: AnyObject {
+protocol HintsViewDelegate: AnyObject {
     func downButtonTapped()
 }
 
-class TipsView: UIView {
-    weak var delegate: TipsViewDelegate?
-    
-    var cardsTipsHeightAnchor: NSLayoutConstraint?
+class HintsView: UIView {
+    weak var delegate: HintsViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -97,7 +95,7 @@ class TipsView: UIView {
         return comp
     }()
 
-    lazy var cardsTipsDock: DockBuilder = {
+    lazy var cardsHintsDock: DockBuilder = {
         let comp = DockBuilder()
             .setBackgroundColor(.clear)
             .setDisableUserInteraction(true)
@@ -131,7 +129,7 @@ class TipsView: UIView {
         titleTipLabel.add(insideTo: self)
         handImage.add(insideTo: self)
         downButton.add(insideTo: self)
-        cardsTipsDock.add(insideTo: self)
+        cardsHintsDock.add(insideTo: self)
     }
 
     private func configConstraints() {
@@ -139,7 +137,7 @@ class TipsView: UIView {
         titleTipLabel.applyConstraint()
         handImage.applyConstraint()
         downButton.applyConstraint()
-        cardsTipsDock.applyConstraint()
+        cardsHintsDock.applyConstraint()
     }
     
     

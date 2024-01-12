@@ -6,12 +6,12 @@ import CustomComponentsSDK
 import Handler
 import Presenter
 
-protocol CardTipsViewCellDelegate: AnyObject {
-    func openTip(_ cardTipsViewCell: CardTipsViewCell)
+protocol CardHintsViewCellDelegate: AnyObject {
+    func openHints(_ cardTipsViewCell: CardHintsViewCell)
 }
 
-class CardTipsViewCell: UIView {
-    weak var delegate: CardTipsViewCellDelegate?
+class CardHintsViewCell: UIView {
+    weak var delegate: CardHintsViewCellDelegate?
     
     private let word: String
     
@@ -72,7 +72,7 @@ class CardTipsViewCell: UIView {
                 build
                     .setTap ({ [weak self] component, tapGesture in
                         guard let self else {return}
-                        delegate?.openTip(self)
+                        delegate?.openHints(self)
                     })
             }
         return comp
@@ -136,7 +136,7 @@ class CardTipsViewCell: UIView {
                 build
                     .setTap ({ [weak self] component, tapGesture in
                         guard let self else {return}
-                        delegate?.openTip(self)
+                        delegate?.openHints(self)
                     })
             }
         return comp

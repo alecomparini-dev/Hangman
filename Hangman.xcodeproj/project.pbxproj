@@ -57,7 +57,7 @@
 		024154082B4D84490016450C /* GameHelpPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154072B4D84490016450C /* GameHelpPresenterDTO.swift */; };
 		0241540D2B4DB7150016450C /* GameHelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241540C2B4DB7150016450C /* GameHelpModel.swift */; };
 		0241540F2B4DB7580016450C /* GameHelpRevelationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241540E2B4DB7580016450C /* GameHelpRevelationsModel.swift */; };
-		024154112B4DB76D0016450C /* GameHelpTipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154102B4DB76D0016450C /* GameHelpTipsModel.swift */; };
+		024154112B4DB76D0016450C /* GameHelpHintsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154102B4DB76D0016450C /* GameHelpHintsModel.swift */; };
 		024154132B4DB7830016450C /* GameHelpLivesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154122B4DB7830016450C /* GameHelpLivesModel.swift */; };
 		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
 		026800802B0A877A00B30C26 /* FetchByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */; };
@@ -114,27 +114,33 @@
 		02B1E7EC2B516C18004ECE2C /* HintHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7EB2B516C18004ECE2C /* HintHelp.swift */; };
 		02B1E7EE2B516C24004ECE2C /* RevelationHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7ED2B516C24004ECE2C /* RevelationHelp.swift */; };
 		02B1E7F52B517821004ECE2C /* GameHelpUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7F42B517821004ECE2C /* GameHelpUseCaseDTO.swift */; };
-		02C466A22B4F185B00516D5A /* DataTransferTipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferTipsVC.swift */; };
+		02C466A22B4F185B00516D5A /* DataTransferHintsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferHintsVC.swift */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 		02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */; };
 		02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB492B04057600991633 /* HangmanWordView.swift */; };
 		02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB4C2B0407CA00991633 /* HangmanLetterInWordView.swift */; };
 		02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB692B04F33800991633 /* HomePresenterImpl.swift */; };
 		02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB662B04F2A200991633 /* HomePresenter.swift */; };
-		02C500DB2B2A66CE009C546A /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DA2B2A66CE009C546A /* TipsViewController.swift */; };
-		02C500DD2B2A66D9009C546A /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DC2B2A66D9009C546A /* TipsView.swift */; };
-		02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */; };
+		02C500DB2B2A66CE009C546A /* HintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DA2B2A66CE009C546A /* HintsViewController.swift */; };
+		02C500DD2B2A66D9009C546A /* HintsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DC2B2A66D9009C546A /* HintsView.swift */; };
+		02C500DF2B2A7CA5009C546A /* HintsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500DE2B2A7CA5009C546A /* HintsCoordinator.swift */; };
 		02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E02B2A7F46009C546A /* QuantityLettersView.swift */; };
 		02C500E32B2A81F8009C546A /* PainelGallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E22B2A81F8009C546A /* PainelGallowsView.swift */; };
 		02C500E82B2B4575009C546A /* GameHelpPainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500E72B2B4575009C546A /* GameHelpPainelView.swift */; };
 		02C500EB2B2B5561009C546A /* LivesCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EA2B2B5561009C546A /* LivesCountView.swift */; };
-		02C500ED2B2B5CDC009C546A /* TipsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* TipsCountView.swift */; };
+		02C500ED2B2B5CDC009C546A /* HintsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EC2B2B5CDB009C546A /* HintsCountView.swift */; };
 		02C500EF2B2B7A0B009C546A /* RevealLetterCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */; };
 		02C500F12B2C791C009C546A /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C500F02B2C791C009C546A /* StackView.swift */; };
 		02DADDC82B51879900186CE1 /* LoadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDC32B51837200186CE1 /* LoadScreenViewController.swift */; };
+		02DADDCB2B51A6A800186CE1 /* HomeViewDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDCA2B51A6A800186CE1 /* HomeViewDelegate+Extension.swift */; };
+		02DADDCD2B51A7E100186CE1 /* GameHelpPainelViewDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDCC2B51A7E100186CE1 /* GameHelpPainelViewDelegate+Extension.swift */; };
+		02DADDCF2B51A93100186CE1 /* DropdownLifeViewDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDCE2B51A93100186CE1 /* DropdownLifeViewDelegate+Extension.swift */; };
+		02DADDD12B51A95D00186CE1 /* DropdownRevelationsViewDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDD02B51A95D00186CE1 /* DropdownRevelationsViewDelegate+Extension.swift */; };
+		02DADDD62B51ABDC00186CE1 /* HangmanKeyboardViewDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDD52B51ABDC00186CE1 /* HangmanKeyboardViewDelegate+Extension.swift */; };
+		02DADDD92B51AD1F00186CE1 /* HomeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DADDD82B51AD1F00186CE1 /* HomeAnimation.swift */; };
 		02FCA7032B307BAA00B45892 /* TipsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7022B307BAA00B45892 /* TipsPresenter.swift */; };
 		02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */; };
-		02FCA7072B30B53300B45892 /* CardTipsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7062B30B53300B45892 /* CardTipsViewCell.swift */; };
+		02FCA7072B30B53300B45892 /* CardHintsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7062B30B53300B45892 /* CardHintsViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,7 +320,7 @@
 		024154072B4D84490016450C /* GameHelpPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpPresenterDTO.swift; sourceTree = "<group>"; };
 		0241540C2B4DB7150016450C /* GameHelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpModel.swift; sourceTree = "<group>"; };
 		0241540E2B4DB7580016450C /* GameHelpRevelationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpRevelationsModel.swift; sourceTree = "<group>"; };
-		024154102B4DB76D0016450C /* GameHelpTipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpTipsModel.swift; sourceTree = "<group>"; };
+		024154102B4DB76D0016450C /* GameHelpHintsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpHintsModel.swift; sourceTree = "<group>"; };
 		024154122B4DB7830016450C /* GameHelpLivesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpLivesModel.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
 		0268007F2B0A877A00B30C26 /* FetchByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchByDataStorageProvider.swift; sourceTree = "<group>"; };
@@ -359,7 +365,7 @@
 		02B1E7EB2B516C18004ECE2C /* HintHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintHelp.swift; sourceTree = "<group>"; };
 		02B1E7ED2B516C24004ECE2C /* RevelationHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevelationHelp.swift; sourceTree = "<group>"; };
 		02B1E7F42B517821004ECE2C /* GameHelpUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpUseCaseDTO.swift; sourceTree = "<group>"; };
-		02C466A12B4F185B00516D5A /* DataTransferTipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferTipsVC.swift; sourceTree = "<group>"; };
+		02C466A12B4F185B00516D5A /* DataTransferHintsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHintsVC.swift; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
 		02C4AB3A2B03C65800991633 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanKeyboardView.swift; sourceTree = "<group>"; };
@@ -368,20 +374,26 @@
 		02C4AB662B04F2A200991633 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		02C4AB692B04F33800991633 /* HomePresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterImpl.swift; sourceTree = "<group>"; };
 		02C4AB702B057B4100991633 /* Presenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		02C500DA2B2A66CE009C546A /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
-		02C500DC2B2A66D9009C546A /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
-		02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCoordinator.swift; sourceTree = "<group>"; };
+		02C500DA2B2A66CE009C546A /* HintsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsViewController.swift; sourceTree = "<group>"; };
+		02C500DC2B2A66D9009C546A /* HintsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsView.swift; sourceTree = "<group>"; };
+		02C500DE2B2A7CA5009C546A /* HintsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsCoordinator.swift; sourceTree = "<group>"; };
 		02C500E02B2A7F46009C546A /* QuantityLettersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityLettersView.swift; sourceTree = "<group>"; };
 		02C500E22B2A81F8009C546A /* PainelGallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainelGallowsView.swift; sourceTree = "<group>"; };
 		02C500E72B2B4575009C546A /* GameHelpPainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpPainelView.swift; sourceTree = "<group>"; };
 		02C500EA2B2B5561009C546A /* LivesCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivesCountView.swift; sourceTree = "<group>"; };
-		02C500EC2B2B5CDB009C546A /* TipsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCountView.swift; sourceTree = "<group>"; };
+		02C500EC2B2B5CDB009C546A /* HintsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsCountView.swift; sourceTree = "<group>"; };
 		02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealLetterCountView.swift; sourceTree = "<group>"; };
 		02C500F02B2C791C009C546A /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		02DADDC32B51837200186CE1 /* LoadScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreenViewController.swift; sourceTree = "<group>"; };
+		02DADDCA2B51A6A800186CE1 /* HomeViewDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewDelegate+Extension.swift"; sourceTree = "<group>"; };
+		02DADDCC2B51A7E100186CE1 /* GameHelpPainelViewDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameHelpPainelViewDelegate+Extension.swift"; sourceTree = "<group>"; };
+		02DADDCE2B51A93100186CE1 /* DropdownLifeViewDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropdownLifeViewDelegate+Extension.swift"; sourceTree = "<group>"; };
+		02DADDD02B51A95D00186CE1 /* DropdownRevelationsViewDelegate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DropdownRevelationsViewDelegate+Extension.swift"; sourceTree = "<group>"; };
+		02DADDD52B51ABDC00186CE1 /* HangmanKeyboardViewDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HangmanKeyboardViewDelegate+Extension.swift"; sourceTree = "<group>"; };
+		02DADDD82B51AD1F00186CE1 /* HomeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAnimation.swift; sourceTree = "<group>"; };
 		02FCA7022B307BAA00B45892 /* TipsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsPresenter.swift; sourceTree = "<group>"; };
 		02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsPresenterImpl.swift; sourceTree = "<group>"; };
-		02FCA7062B30B53300B45892 /* CardTipsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTipsViewCell.swift; sourceTree = "<group>"; };
+		02FCA7062B30B53300B45892 /* CardHintsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHintsViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -764,7 +776,7 @@
 			children = (
 				0241540C2B4DB7150016450C /* GameHelpModel.swift */,
 				0241540E2B4DB7580016450C /* GameHelpRevelationsModel.swift */,
-				024154102B4DB76D0016450C /* GameHelpTipsModel.swift */,
+				024154102B4DB76D0016450C /* GameHelpHintsModel.swift */,
 				024154122B4DB7830016450C /* GameHelpLivesModel.swift */,
 			);
 			path = GameScore;
@@ -1001,7 +1013,7 @@
 			children = (
 				02DADDC72B51878500186CE1 /* LoadLaunchScreen */,
 				026B64822B038A0F00F6DD99 /* Home */,
-				02C500D82B2A6632009C546A /* Tips */,
+				02C500D82B2A6632009C546A /* Hints */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1011,6 +1023,8 @@
 			children = (
 				02C500E42B2B447C009C546A /* ComponentsView */,
 				026B64A42B03A2A000F6DD99 /* View */,
+				02DADDC92B51A66C00186CE1 /* Extensions+Delegates */,
+				02DADDD72B51AD0D00186CE1 /* Composition */,
 				026B64A02B03A29200F6DD99 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -1054,7 +1068,7 @@
 				026B64A72B03A36D00F6DD99 /* Protocol */,
 				0293A8BE2B486C7900E7730C /* LoadScreenCoordinator.swift */,
 				026B64AD2B03A4CD00F6DD99 /* HomeCoordinator.swift */,
-				02C500DE2B2A7CA5009C546A /* TipsCoordinator.swift */,
+				02C500DE2B2A7CA5009C546A /* HintsCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1199,7 +1213,7 @@
 		02C466A32B4F186F00516D5A /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				02C466A12B4F185B00516D5A /* DataTransferTipsVC.swift */,
+				02C466A12B4F185B00516D5A /* DataTransferHintsVC.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1295,20 +1309,20 @@
 			path = InterfaceAdapter;
 			sourceTree = "<group>";
 		};
-		02C500D82B2A6632009C546A /* Tips */ = {
+		02C500D82B2A6632009C546A /* Hints */ = {
 			isa = PBXGroup;
 			children = (
 				02FCA7002B307B3D00B45892 /* Cells */,
 				02C500D92B2A6661009C546A /* Views */,
-				02C500DA2B2A66CE009C546A /* TipsViewController.swift */,
+				02C500DA2B2A66CE009C546A /* HintsViewController.swift */,
 			);
-			path = Tips;
+			path = Hints;
 			sourceTree = "<group>";
 		};
 		02C500D92B2A6661009C546A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				02C500DC2B2A66D9009C546A /* TipsView.swift */,
+				02C500DC2B2A66D9009C546A /* HintsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1346,7 +1360,7 @@
 			isa = PBXGroup;
 			children = (
 				02C500EA2B2B5561009C546A /* LivesCountView.swift */,
-				02C500EC2B2B5CDB009C546A /* TipsCountView.swift */,
+				02C500EC2B2B5CDB009C546A /* HintsCountView.swift */,
 				02C500EE2B2B7A0B009C546A /* RevealLetterCountView.swift */,
 			);
 			path = ComponentsView;
@@ -1360,10 +1374,30 @@
 			path = LoadLaunchScreen;
 			sourceTree = "<group>";
 		};
+		02DADDC92B51A66C00186CE1 /* Extensions+Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				02DADDCA2B51A6A800186CE1 /* HomeViewDelegate+Extension.swift */,
+				02DADDCC2B51A7E100186CE1 /* GameHelpPainelViewDelegate+Extension.swift */,
+				02DADDCE2B51A93100186CE1 /* DropdownLifeViewDelegate+Extension.swift */,
+				02DADDD02B51A95D00186CE1 /* DropdownRevelationsViewDelegate+Extension.swift */,
+				02DADDD52B51ABDC00186CE1 /* HangmanKeyboardViewDelegate+Extension.swift */,
+			);
+			path = "Extensions+Delegates";
+			sourceTree = "<group>";
+		};
+		02DADDD72B51AD0D00186CE1 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				02DADDD82B51AD1F00186CE1 /* HomeAnimation.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
 		02FCA7002B307B3D00B45892 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				02FCA7062B30B53300B45892 /* CardTipsViewCell.swift */,
+				02FCA7062B30B53300B45892 /* CardHintsViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1696,7 +1730,7 @@
 				0235E5D02B14D3E100829489 /* CountDollsUseCase.swift in Sources */,
 				02B1E7E72B516B81004ECE2C /* TypeHelpStrategy.swift in Sources */,
 				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
-				024154112B4DB76D0016450C /* GameHelpTipsModel.swift in Sources */,
+				024154112B4DB76D0016450C /* GameHelpHintsModel.swift in Sources */,
 				0235E5C22B14CA0900829489 /* Doll.swift in Sources */,
 				0235E5D82B14F51100829489 /* GetDollsUseCaseGateway.swift in Sources */,
 				024154132B4DB7830016450C /* GameHelpLivesModel.swift in Sources */,
@@ -1757,24 +1791,30 @@
 				0222DDA32B49D657009EE10C /* BuyLifePainelView.swift in Sources */,
 				026938CD2B0908610023073B /* HangmanFirebaseDataStorageProvider.swift in Sources */,
 				0293A8C42B4893EF00E7730C /* DropdownLifeView.swift in Sources */,
+				02DADDCD2B51A7E100186CE1 /* GameHelpPainelViewDelegate+Extension.swift in Sources */,
 				026B64A12B03A29200F6DD99 /* HomeViewController.swift in Sources */,
 				02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */,
 				02C4AB4D2B0407CA00991633 /* HangmanLetterInWordView.swift in Sources */,
-				02C500ED2B2B5CDC009C546A /* TipsCountView.swift in Sources */,
+				02C500ED2B2B5CDC009C546A /* HintsCountView.swift in Sources */,
 				0222DDA52B4AF3EA009EE10C /* AdLifePainelView.swift in Sources */,
+				02DADDCF2B51A93100186CE1 /* DropdownLifeViewDelegate+Extension.swift in Sources */,
 				02DADDC82B51879900186CE1 /* LoadScreenViewController.swift in Sources */,
 				02C500F12B2C791C009C546A /* StackView.swift in Sources */,
 				02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */,
+				02DADDD12B51A95D00186CE1 /* DropdownRevelationsViewDelegate+Extension.swift in Sources */,
+				02DADDD62B51ABDC00186CE1 /* HangmanKeyboardViewDelegate+Extension.swift in Sources */,
 				02C500E12B2A7F46009C546A /* QuantityLettersView.swift in Sources */,
-				02C500DD2B2A66D9009C546A /* TipsView.swift in Sources */,
+				02C500DD2B2A66D9009C546A /* HintsView.swift in Sources */,
 				02C4AB4A2B04057600991633 /* HangmanWordView.swift in Sources */,
-				02C500DB2B2A66CE009C546A /* TipsViewController.swift in Sources */,
+				02C500DB2B2A66CE009C546A /* HintsViewController.swift in Sources */,
 				02C500EB2B2B5561009C546A /* LivesCountView.swift in Sources */,
 				0222DDAA2B4B363A009EE10C /* AdRevelationsPainelView.swift in Sources */,
-				02FCA7072B30B53300B45892 /* CardTipsViewCell.swift in Sources */,
+				02FCA7072B30B53300B45892 /* CardHintsViewCell.swift in Sources */,
 				02C500EF2B2B7A0B009C546A /* RevealLetterCountView.swift in Sources */,
+				02DADDD92B51AD1F00186CE1 /* HomeAnimation.swift in Sources */,
 				0222DDA02B48C47F009EE10C /* DropdownRevelationsView.swift in Sources */,
 				026938C52B0900FA0023073B /* HangmanDataStorageSDK.swift in Sources */,
+				02DADDCB2B51A6A800186CE1 /* HomeViewDelegate+Extension.swift in Sources */,
 				026B64A32B03A29A00F6DD99 /* HomeView.swift in Sources */,
 				02C500E82B2B4575009C546A /* GameHelpPainelView.swift in Sources */,
 				0222DDA82B4B360F009EE10C /* BuyRevealLetterPainelView.swift in Sources */,
@@ -1789,7 +1829,7 @@
 			files = (
 				0293A8BF2B486C7900E7730C /* LoadScreenCoordinator.swift in Sources */,
 				026B64AC2B03A3AF00F6DD99 /* Coordinator.swift in Sources */,
-				02C500DF2B2A7CA5009C546A /* TipsCoordinator.swift in Sources */,
+				02C500DF2B2A7CA5009C546A /* HintsCoordinator.swift in Sources */,
 				026B648A2B03A1ED00F6DD99 /* AppDelegate.swift in Sources */,
 				026939322B0954B90023073B /* HomeViewControllerFactory.swift in Sources */,
 				026B64AE2B03A4CD00F6DD99 /* HomeCoordinator.swift in Sources */,
@@ -1816,7 +1856,7 @@
 				0202165B2B0B9D08003E2B07 /* WordPresenterDTO.swift in Sources */,
 				02C4AB772B057B8200991633 /* HomePresenterImpl.swift in Sources */,
 				021B63162B1133E4002498DA /* DataTransferHomeVC.swift in Sources */,
-				02C466A22B4F185B00516D5A /* DataTransferTipsVC.swift in Sources */,
+				02C466A22B4F185B00516D5A /* DataTransferHintsVC.swift in Sources */,
 				02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */,
 				024154082B4D84490016450C /* GameHelpPresenterDTO.swift in Sources */,
 				0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */,

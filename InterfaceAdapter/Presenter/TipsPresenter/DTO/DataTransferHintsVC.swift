@@ -4,7 +4,7 @@
 import Foundation
 import Domain
 
-public struct DataTransferTipsVC {
+public struct DataTransferHintsVC {
     public typealias closureUpdateTipAlias = (_ count: String) -> Void
     
     public var wordPresenterDTO: WordPresenterDTO?
