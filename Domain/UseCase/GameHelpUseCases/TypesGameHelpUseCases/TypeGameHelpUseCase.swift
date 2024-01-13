@@ -3,13 +3,13 @@
 
 import Foundation
 
-public protocol TypeHelpStrategy {
+protocol TypeGameHelpUseCase {
     var isFull: Bool { get }
     
     func use() async throws
-    func add(_ quantity: Int8) async throws
+    func add(_ count: Int8) async throws
     
     func maxHelp() -> Int8
-    func quantityUsed() -> Int8
+    func usedCount() -> Int8
     func remaining() -> Int8
 }

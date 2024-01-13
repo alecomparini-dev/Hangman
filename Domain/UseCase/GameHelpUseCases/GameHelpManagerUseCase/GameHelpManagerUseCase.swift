@@ -6,4 +6,5 @@ import Foundation
 
 public protocol GameHelpManagerUseCase {
     func fetch() async throws
+    func renewFreeHelp() async throws
 }

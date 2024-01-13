@@ -321,9 +321,9 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func fetchGameHelp() async {
-        _gameHelp = GameHelpModel(lives: GameHelpLivesModel(freeLives: 5, buyLives: 0, adLives: 0),
-                                  hints: GameHelpHintsModel(freeHints: 10, adHints: 0),
-                                  revelations: GameHelpRevelationsModel(freeRevelations: 5, buyRevelations: 0, adRevelations: 0))
+        _gameHelp = GameHelpModel(lives: LivesGameHelpModel(freeLives: 5, buyLives: 0, adLives: 0),
+                                  hints: HintsGameHelpModel(freeHints: 10, adHints: 0),
+                                  revelations: RevelationsGameHelpModel(freeRevelations: 5, buyRevelations: 0, adRevelations: 0))
         updateGameHelp()
     }
     

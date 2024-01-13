@@ -3,7 +3,7 @@
 
 import Foundation
 
-public struct GameHelpHintsModel {
+public struct HintsGameHelpModel {
     public var freeHints: Int8
     public var adHints: Int8
  

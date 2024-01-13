@@ -5,11 +5,11 @@ import Foundation
 
 public struct GameHelpModel {
     public var dateRenew: Date?
-    public var lives: GameHelpLivesModel?
-    public var hints: GameHelpHintsModel?
-    public var revelations: GameHelpRevelationsModel?
+    public var lives: LivesGameHelpModel?
+    public var hints: HintsGameHelpModel?
+    public var revelations: RevelationsGameHelpModel?
     
-    public init(dateRenew: Date? = nil, lives: GameHelpLivesModel? = nil, hints: GameHelpHintsModel? = nil, revelations: GameHelpRevelationsModel? = nil) {
+    public init(dateRenew: Date? = nil, lives: LivesGameHelpModel? = nil, hints: HintsGameHelpModel? = nil, revelations: RevelationsGameHelpModel? = nil) {
         self.dateRenew = dateRenew
         self.lives = lives
         self.hints = hints
