@@ -37,7 +37,6 @@
 		0222DDA52B4AF3EA009EE10C /* AdLifePainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DDA42B4AF3EA009EE10C /* AdLifePainelView.swift */; };
 		0222DDA82B4B360F009EE10C /* BuyRevealLetterPainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DDA72B4B360F009EE10C /* BuyRevealLetterPainelView.swift */; };
 		0222DDAA2B4B363A009EE10C /* AdRevelationsPainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222DDA92B4B363A009EE10C /* AdRevelationsPainelView.swift */; };
-		0235E5C22B14CA0900829489 /* Doll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5C12B14CA0900829489 /* Doll.swift */; };
 		0235E5CA2B14CC9800829489 /* GenericCountModelGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5C62B14CBE800829489 /* GenericCountModelGateway.swift */; };
 		0235E5CC2B14CCBB00829489 /* GenericCountModelGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5CB2B14CCBB00829489 /* GenericCountModelGateway.swift */; };
 		0235E5D02B14D3E100829489 /* CountDollsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5CF2B14D3E100829489 /* CountDollsUseCase.swift */; };
@@ -311,7 +310,6 @@
 		0222DDA42B4AF3EA009EE10C /* AdLifePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdLifePainelView.swift; sourceTree = "<group>"; };
 		0222DDA72B4B360F009EE10C /* BuyRevealLetterPainelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyRevealLetterPainelView.swift; sourceTree = "<group>"; };
 		0222DDA92B4B363A009EE10C /* AdRevelationsPainelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRevelationsPainelView.swift; sourceTree = "<group>"; };
-		0235E5C12B14CA0900829489 /* Doll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doll.swift; sourceTree = "<group>"; };
 		0235E5C62B14CBE800829489 /* GenericCountModelGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCountModelGateway.swift; sourceTree = "<group>"; };
 		0235E5CB2B14CCBB00829489 /* GenericCountModelGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCountModelGateway.swift; sourceTree = "<group>"; };
 		0235E5CF2B14D3E100829489 /* CountDollsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDollsUseCase.swift; sourceTree = "<group>"; };
@@ -638,14 +636,6 @@
 			path = WordGallowModel;
 			sourceTree = "<group>";
 		};
-		0235E5C02B14C97B00829489 /* Doll */ = {
-			isa = PBXGroup;
-			children = (
-				0235E5C12B14CA0900829489 /* Doll.swift */,
-			);
-			path = Doll;
-			sourceTree = "<group>";
-		};
 		0235E5C32B14CA9B00829489 /* DollsUseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,7 +774,7 @@
 			path = GameHelpUseCases;
 			sourceTree = "<group>";
 		};
-		0241540B2B4DB6660016450C /* GameScore */ = {
+		0241540B2B4DB6660016450C /* GameHelpModel */ = {
 			isa = PBXGroup;
 			children = (
 				0241540C2B4DB7150016450C /* GameHelpModel.swift */,
@@ -792,7 +782,7 @@
 				024154102B4DB76D0016450C /* HintsGameHelpModel.swift */,
 				024154122B4DB7830016450C /* LivesGameHelpModel.swift */,
 			);
-			path = GameScore;
+			path = GameHelpModel;
 			sourceTree = "<group>";
 		};
 		026800812B0A945A00B30C26 /* AuthenticateUseCases */ = {
@@ -874,8 +864,7 @@
 		026938DB2B090A000023073B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0241540B2B4DB6660016450C /* GameScore */,
-				0235E5C02B14C97B00829489 /* Doll */,
+				0241540B2B4DB6660016450C /* GameHelpModel */,
 				0235E5BF2B14C0CB00829489 /* WordGallowModel */,
 			);
 			path = Model;
@@ -1747,7 +1736,6 @@
 				02B1E7E72B516B81004ECE2C /* TypeGameHelpUseCase.swift in Sources */,
 				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
 				024154112B4DB76D0016450C /* HintsGameHelpModel.swift in Sources */,
-				0235E5C22B14CA0900829489 /* Doll.swift in Sources */,
 				0235E5D82B14F51100829489 /* GetDollsUseCaseGateway.swift in Sources */,
 				024154132B4DB7830016450C /* LivesGameHelpModel.swift in Sources */,
 				026800892B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift in Sources */,
