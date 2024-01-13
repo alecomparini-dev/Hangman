@@ -69,7 +69,6 @@
 		026938E12B090A440023073B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; };
 		026938E22B090A450023073B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */; };
-		026938EA2B090CBC0023073B /* WordGallowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938E92B090CBC0023073B /* WordGallowModel.swift */; };
 		026938EC2B0912E10023073B /* ResultWordGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026938EB2B0912E10023073B /* ResultWordGameModel.swift */; };
 		026938ED2B0914100023073B /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
 		026938EE2B0914100023073B /* Presenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -340,7 +339,6 @@
 		026938CC2B0908610023073B /* HangmanFirebaseDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangmanFirebaseDataStorageProvider.swift; sourceTree = "<group>"; };
 		026938D32B0909E10023073B /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCase.swift; sourceTree = "<group>"; };
-		026938E92B090CBC0023073B /* WordGallowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGallowModel.swift; sourceTree = "<group>"; };
 		026938EB2B0912E10023073B /* ResultWordGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWordGameModel.swift; sourceTree = "<group>"; };
 		026938F32B0935CA0023073B /* NextWordsUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextWordsUseCaseDTO.swift; sourceTree = "<group>"; };
 		026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseGateway.swift; sourceTree = "<group>"; };
@@ -630,7 +628,6 @@
 		0235E5BF2B14C0CB00829489 /* WordGallowModel */ = {
 			isa = PBXGroup;
 			children = (
-				026938E92B090CBC0023073B /* WordGallowModel.swift */,
 				026938EB2B0912E10023073B /* ResultWordGameModel.swift */,
 			);
 			path = WordGallowModel;
@@ -1759,7 +1756,6 @@
 				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
 				02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */,
 				02B1E7EC2B516C18004ECE2C /* HintHelp.swift in Sources */,
-				026938EA2B090CBC0023073B /* WordGallowModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
