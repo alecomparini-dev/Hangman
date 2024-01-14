@@ -144,7 +144,6 @@
 		02E065E32B52DB3D00C074FC /* InsertGameHelpUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065E22B52DB3D00C074FC /* InsertGameHelpUseCaseGateway.swift */; };
 		02E065E52B52DC8A00C074FC /* InsertGameHelpUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065E42B52DC8A00C074FC /* InsertGameHelpUseCaseImpl.swift */; };
 		02E065E92B53290300C074FC /* FetchDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065E72B53288A00C074FC /* FetchDataStorageProvider.swift */; };
-		02E065EC2B532B7200C074FC /* MapperDictGameHelpToGameHelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065EA2B532B4E00C074FC /* MapperDictGameHelpToGameHelpModel.swift */; };
 		02E065F22B53401600C074FC /* FetchLivesGameHelpCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065F02B53400600C074FC /* FetchLivesGameHelpCodable.swift */; };
 		02E065F32B53401900C074FC /* FetchGameHelpCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065EE2B533EF200C074FC /* FetchGameHelpCodable.swift */; };
 		02E065F62B53403800C074FC /* FetchHintsGameHelpCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065F42B53403400C074FC /* FetchHintsGameHelpCodable.swift */; };
@@ -415,7 +414,6 @@
 		02E065E22B52DB3D00C074FC /* InsertGameHelpUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertGameHelpUseCaseGateway.swift; sourceTree = "<group>"; };
 		02E065E42B52DC8A00C074FC /* InsertGameHelpUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertGameHelpUseCaseImpl.swift; sourceTree = "<group>"; };
 		02E065E72B53288A00C074FC /* FetchDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataStorageProvider.swift; sourceTree = "<group>"; };
-		02E065EA2B532B4E00C074FC /* MapperDictGameHelpToGameHelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperDictGameHelpToGameHelpModel.swift; sourceTree = "<group>"; };
 		02E065EE2B533EF200C074FC /* FetchGameHelpCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpCodable.swift; sourceTree = "<group>"; };
 		02E065F02B53400600C074FC /* FetchLivesGameHelpCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLivesGameHelpCodable.swift; sourceTree = "<group>"; };
 		02E065F42B53403400C074FC /* FetchHintsGameHelpCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchHintsGameHelpCodable.swift; sourceTree = "<group>"; };
@@ -777,9 +775,41 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
+		023E7BF82B5455F200FB450F /* ChannesGameHelp */ = {
+			isa = PBXGroup;
+			children = (
+				023E7BF92B54560500FB450F /* Free */,
+				023E7BFA2B54561700FB450F /* Advertising */,
+				023E7BFB2B54562F00FB450F /* Buy */,
+			);
+			path = ChannesGameHelp;
+			sourceTree = "<group>";
+		};
+		023E7BF92B54560500FB450F /* Free */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Free;
+			sourceTree = "<group>";
+		};
+		023E7BFA2B54561700FB450F /* Advertising */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Advertising;
+			sourceTree = "<group>";
+		};
+		023E7BFB2B54562F00FB450F /* Buy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Buy;
+			sourceTree = "<group>";
+		};
 		024154092B4DB55B0016450C /* GameHelpUseCases */ = {
 			isa = PBXGroup;
 			children = (
+				023E7BF82B5455F200FB450F /* ChannesGameHelp */,
 				02B1E7E12B516604004ECE2C /* TypesGameHelp */,
 				02B1E7F32B517734004ECE2C /* GameHelpUseCase */,
 			);
@@ -1417,14 +1447,6 @@
 			path = GameHelpUseCaseGateway;
 			sourceTree = "<group>";
 		};
-		02E065D82B52D27A00C074FC /* Mapper */ = {
-			isa = PBXGroup;
-			children = (
-				02E065EA2B532B4E00C074FC /* MapperDictGameHelpToGameHelpModel.swift */,
-			);
-			path = Mapper;
-			sourceTree = "<group>";
-		};
 		02E065DA2B52D69B00C074FC /* FetchGameHelpUseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1440,7 +1462,6 @@
 			isa = PBXGroup;
 			children = (
 				02E065ED2B533DEC00C074FC /* Codable */,
-				02E065D82B52D27A00C074FC /* Mapper */,
 				02E065D52B52D20000C074FC /* FetchGameHelpUseCaseGatewayImpl.swift */,
 			);
 			path = FetchGameHelpUseCaseGateway;
@@ -1866,7 +1887,6 @@
 				0235E5E22B14FBF700829489 /* FetchInDataStorageProvider.swift in Sources */,
 				020216512B0A9682003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift in Sources */,
 				0235E5E62B14FE6E00829489 /* MapperDictDollsToListDollUseCaseDTO.swift in Sources */,
-				02E065EC2B532B7200C074FC /* MapperDictGameHelpToGameHelpModel.swift in Sources */,
 				02E065F92B53406D00C074FC /* FetchRevelationsGameHelpCodable.swift in Sources */,
 				026800802B0A877A00B30C26 /* FindByDataStorageProvider.swift in Sources */,
 				0202166B2B0BC605003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift in Sources */,
