@@ -3,6 +3,6 @@
 
 import Foundation
 
-public protocol FetchGameHelpManagerUseCaseGateway {
+public protocol FetchGameHelpUseCaseGateway {
     func fetch(_ userID: String) async throws -> GameHelpModel
 }

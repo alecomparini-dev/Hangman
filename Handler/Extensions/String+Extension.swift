@@ -2,3 +2,7 @@
 //
 
 import Foundation
+
+public extension String {
+    var toInt: Int { Int(self) ?? 0 }
+}

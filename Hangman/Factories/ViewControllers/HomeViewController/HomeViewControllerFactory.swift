@@ -30,21 +30,20 @@ class HomeViewControllerFactory: UIViewController {
         let signInAnonymousUseCase = SignInAnonymousUseCaseImpl(signInAnonymousGateway: signInAnonymousGateway)
         
         
-        let firebaseDataProvider = FirebaseDataStorageProvider(collection: "users")
+        let usersFirebaseDataProvider = FirebaseDataStorageProvider(collection: "users")
+        
+        let usersDataStorageSDK = HangmanDataStorageSDK(dataStorage: usersFirebaseDataProvider)
         
         //MARK: - CountWordsPlayedUseCaseImpl
         
-        let fetchCountDataStorage = HangmanDataStorageSDK(dataStorage: firebaseDataProvider)
-        
-        let countWordsPlayedGateway = CountWordsPlayedUseCaseGatewayImpl(fetchCountDataStorage: fetchCountDataStorage)
+        let countWordsPlayedGateway = CountWordsPlayedUseCaseGatewayImpl(fetchCountDataStorage: usersDataStorageSDK)
         
         let countWordsPlayedUseCase = CountWordsPlayedUseCaseImpl(countWordsPlayedGateway: countWordsPlayedGateway)
         
         
         //MARK: - saveWordPlayedUseCase
-        let insertDataStorage = HangmanDataStorageSDK(dataStorage: firebaseDataProvider)
         
-        let saveWordPlayedGateway = SaveWordPlayedUseCaseGatewayImpl(insertDataStorage: insertDataStorage)
+        let saveWordPlayedGateway = SaveWordPlayedUseCaseGatewayImpl(insertDataStorage: usersDataStorageSDK)
         
         let saveWordPlayedUseCase = SaveWordPlayedUseCaseImpl(saveWordPlayedGateway: saveWordPlayedGateway)
         
@@ -69,11 +68,19 @@ class HomeViewControllerFactory: UIViewController {
         let getDollsRandomUseCase = GetDollsRandomUseCaseImpl(countDollsUseCase: countDollsUseCase,
                                                               getDollsGateway: getDollsGateway)
         
+        
+        //MARK: - fetchGameHelpUseCase
+        
+        let fetchGameHelpGateway = FetchGameHelpUseCaseGatewayImpl(fetchDataStorage: usersDataStorageSDK)
+        
+        let fetchGameHelpUseCase = FetchGameHelpUseCaseImpl(fetchGameHelpGateway: fetchGameHelpGateway)
+        
         let homePresenter = HomePresenterImpl(signInAnonymousUseCase: signInAnonymousUseCase,
                                               getNextWordsUseCase: getNextWordsUseCase, 
                                               countWordsPlayedUseCase: countWordsPlayedUseCase, 
                                               saveWordPlayedUseCase: saveWordPlayedUseCase,
-                                              getDollsRandomUseCase: getDollsRandomUseCase)
+                                              getDollsRandomUseCase: getDollsRandomUseCase, 
+                                              fetchGameHelpUseCase: fetchGameHelpUseCase)
         
         return HomeViewController(homePresenter: homePresenter)
         

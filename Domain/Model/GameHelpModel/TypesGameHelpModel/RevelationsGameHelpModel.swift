@@ -4,11 +4,11 @@
 import Foundation
 
 public struct RevelationsGameHelpModel {
-    public var freeRevelations: Int8
-    public var buyRevelations: Int8
-    public var adRevelations: Int8
+    public var freeRevelations: Int
+    public var buyRevelations: Int
+    public var adRevelations: Int
     
-    public init(freeRevelations: Int8, buyRevelations: Int8, adRevelations: Int8) {
+    public init(freeRevelations: Int, buyRevelations: Int, adRevelations: Int) {
         self.freeRevelations = freeRevelations
         self.buyRevelations = buyRevelations
         self.adRevelations = adRevelations

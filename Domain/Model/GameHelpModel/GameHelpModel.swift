@@ -4,13 +4,13 @@
 import Foundation
 
 public struct GameHelpModel {
-    public var dateRenew: Date?
+    public var dateRenewFree: Date?
     public var lives: LivesGameHelpModel?
     public var hints: HintsGameHelpModel?
     public var revelations: RevelationsGameHelpModel?
     
-    public init(dateRenew: Date? = nil, lives: LivesGameHelpModel? = nil, hints: HintsGameHelpModel? = nil, revelations: RevelationsGameHelpModel? = nil) {
-        self.dateRenew = dateRenew
+    public init(dateRenewFree: Date? = nil, lives: LivesGameHelpModel? = nil, hints: HintsGameHelpModel? = nil, revelations: RevelationsGameHelpModel? = nil) {
+        self.dateRenewFree = dateRenewFree
         self.lives = lives
         self.hints = hints
         self.revelations = revelations

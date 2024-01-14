@@ -16,7 +16,7 @@ public class GetDollsUseCaseGatewayImpl: GetDollsUseCaseGateway {
     public func getDolls(id: [Int]) async throws -> [DollUseCaseDTO] {
         let dolls: [Dictionary<String,Any>]? = try await fetchInDataStorage.fetchIn(id: id)
         
-        let dollUseCaseDTO: [DollUseCaseDTO]? = MapperDictDollsToListDollUseCaseDTO().mapper(dolls)
+        let dollUseCaseDTO: [DollUseCaseDTO]? = MapperDictDollsToListDollUseCaseDTO.mapper(dolls)
         
         guard let dollUseCaseDTO else { return [] }
         

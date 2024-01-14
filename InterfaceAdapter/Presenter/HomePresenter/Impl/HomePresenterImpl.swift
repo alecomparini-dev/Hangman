@@ -31,13 +31,15 @@ public class HomePresenterImpl: HomePresenter {
     private let countWordsPlayedUseCase: CountWordsPlayedUseCase
     private let saveWordPlayedUseCase: SaveWordPlayedUseCase
     private let getDollsRandomUseCase: GetDollsRandomUseCase
+    private let fetchGameHelpUseCase: FetchGameHelpUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
         self.getDollsRandomUseCase = getDollsRandomUseCase
+        self.fetchGameHelpUseCase = fetchGameHelpUseCase
     }
     
     
@@ -155,17 +157,17 @@ public class HomePresenterImpl: HomePresenter {
         })   
     }
     
-    public func countLives() -> Int8 {
+    public func countLives() -> Int {
         return (_gameHelp?.lives?.freeLives ?? 0) +
         (_gameHelp?.lives?.adLives ?? 0) +
         (_gameHelp?.lives?.buyLives ?? 0)
     }
     
-    public func countHints() -> Int8 {
+    public func countHints() -> Int {
         return (_gameHelp?.hints?.freeHints ?? 0) + (_gameHelp?.hints?.adHints ?? 0)
     }
     
-    public func countReveal() -> Int8 {
+    public func countReveal() -> Int {
         return (_gameHelp?.revelations?.freeRevelations ?? 0) +
         (_gameHelp?.revelations?.adRevelations ?? 0) +
         (_gameHelp?.revelations?.buyRevelations ?? 0)
@@ -324,6 +326,17 @@ public class HomePresenterImpl: HomePresenter {
         _gameHelp = GameHelpModel(lives: LivesGameHelpModel(freeLives: 5, buyLives: 0, adLives: 0),
                                   hints: HintsGameHelpModel(freeHints: 10, adHints: 0),
                                   revelations: RevelationsGameHelpModel(freeRevelations: 5, buyRevelations: 0, adRevelations: 0))
+        
+        guard let userID else { return }
+        
+        do {
+            let fetchGameDTO = try await fetchGameHelpUseCase.fetch(userID)
+            print(fetchGameDTO ?? "")
+            
+        } catch let error {
+            debugPrint(error.localizedDescription)
+        }
+        
         updateGameHelp()
     }
     

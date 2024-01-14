@@ -4,11 +4,11 @@
 import Foundation
 
 public struct LivesGameHelpModel {
-    public var freeLives: Int8
-    public var buyLives: Int8
-    public var adLives: Int8
+    public var freeLives: Int
+    public var buyLives: Int
+    public var adLives: Int
     
-    public init(freeLives: Int8, buyLives: Int8, adLives: Int8) {
+    public init(freeLives: Int, buyLives: Int, adLives: Int) {
         self.freeLives = freeLives
         self.buyLives = buyLives
         self.adLives = adLives

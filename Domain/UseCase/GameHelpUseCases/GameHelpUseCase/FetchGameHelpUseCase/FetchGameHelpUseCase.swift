@@ -3,6 +3,6 @@
 
 import Foundation
 
-public protocol FetchGameHelpManagerUseCase {
+public protocol FetchGameHelpUseCase {
     func fetch(_ userID: String) async throws -> FetchGameHelpUseCaseDTO?
 }

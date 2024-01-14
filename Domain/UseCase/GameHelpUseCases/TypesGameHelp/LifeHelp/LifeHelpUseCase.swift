@@ -3,8 +3,8 @@
 
 import Foundation
 
-class LifeHelpUseCase: TypeGameHelpUseCase {
-    private let maxLifeHelp: Int8 = 5
+class LifeHelpUseCase: TypeGameHelp {
+    private let maxLifeHelp: Int = 5
 
     var isFull: Bool { true }
     
@@ -12,20 +12,20 @@ class LifeHelpUseCase: TypeGameHelpUseCase {
         
     }
     
-    func add(_ count: Int8) async throws {
+    func add(_ count: Int) async throws {
         
     }
     
-    func usedCount() -> Int8 {
+    func usedCount() -> Int {
         0
     }
     
-    func maxHelp() -> Int8 {
+    func maxHelp() -> Int {
         // TODO: - CHANGE TO FETCH FROM THE DATABASE
         return maxLifeHelp
     }
     
-    func remaining() -> Int8 {
+    func remaining() -> Int {
         return maxHelp() - usedCount()
     }
     

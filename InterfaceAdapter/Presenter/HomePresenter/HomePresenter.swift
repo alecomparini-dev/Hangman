@@ -27,9 +27,9 @@ public protocol HomePresenter {
     
     func revealLetterGameRandom(_ duration: CGFloat)
     
-    func countLives() -> Int8
+    func countLives() -> Int
     
-    func countHints() -> Int8
+    func countHints() -> Int
     
-    func countReveal() -> Int8
+    func countReveal() -> Int
 }

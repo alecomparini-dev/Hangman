@@ -4,7 +4,7 @@
 import Foundation
 
 public struct FetchGameHelpUseCaseDTO {
-    public var livesCount: Int8
-    public var hintsCount: Int8
-    public var revelationsCount: Int8
+    public var livesCount: Int
+    public var hintsCount: Int
+    public var revelationsCount: Int
 }
