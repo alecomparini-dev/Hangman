@@ -12,3 +12,26 @@ public struct HintsGameHelpModel {
         self.adHints = adHints
     }
 }
+
+
+public struct ChannelGameHelp {
+    public var free: Int
+    public var advertising: Int
+    public var buy: Int
+}
+
+
+//public struct HintsGameHelpModel {
+//    public var channel: ChannelGameHelp
+// 
+//    public init(channel: ChannelGameHelp) {
+//        self.channel = channel
+//    }
+//}
+//
+//
+//public struct ChannelGameHelp {
+//    public var free: Int
+//    public var advertising: Int
+//    public var buy: Int
+//}

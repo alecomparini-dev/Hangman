@@ -146,7 +146,6 @@ public class LoadScreenViewController: UIViewController {
         painelView.applyConstraint()
         gallowsView.applyConstraint()
         dollImage.applyConstraint()
-        
         indicatorLoading.applyConstraint()
     }
     
@@ -176,7 +175,7 @@ public class LoadScreenViewController: UIViewController {
                 }) { [weak self] bool in
                     guard let self else { return }
                     if bool {
-                        coordinator?.gotoHome()
+                        self.coordinator?.gotoHome()
                     }
                 }
             })

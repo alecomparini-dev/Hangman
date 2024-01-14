@@ -53,7 +53,7 @@ public class HomeViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        self.configure()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +62,9 @@ public class HomeViewController: UIViewController {
             _homePresenter.dataTransfer = dataTransfer
             updateMarkGameHelp()
             _homePresenter.getNextWord()
+            return
         }
+        showSkeletonGameHelp()
     }
     
     
@@ -74,8 +76,6 @@ public class HomeViewController: UIViewController {
         }
         
         _homePresenter.startGame()
-        
-        showSkeletonGameHelp()
     }
     
     
