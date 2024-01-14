@@ -17,11 +17,29 @@ public class HangmanDataStorageSDK {
 }
 
 
-//  MARK: - EXTENSION - FetchByDataStorageProvider
-extension HangmanDataStorageSDK: FetchByDataStorageProvider {
-    public func fetchBy<T>(id: String) async throws -> T? {
-        return try await dataStorage.fetchById(id)
+//  MARK: - EXTENSION - FindByDataStorageProvider
+
+extension HangmanDataStorageSDK: FindByDataStorageProvider {
+    
+    public func findBy<T>(id: String) async throws -> [T]? {
+        return try await dataStorage.findBy(id)
     }
+    
+    
+}
+
+
+//  MARK: - EXTENSION - FetchDataStorageProvider
+
+extension HangmanDataStorageSDK: FetchDataStorageProvider {
+    public func fetch<T>() async throws -> [T] {
+        return try await dataStorage.fetch()
+    }
+    
+    public func fetch<T>(_ document: String) async throws -> [T] {
+        return try await dataStorage.fetch(document)
+    }
+    
 }
 
 

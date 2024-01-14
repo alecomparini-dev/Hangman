@@ -7,8 +7,9 @@ import Domain
 
 public struct MapperDictDollsToListDollUseCaseDTO {
     
-    public func mapper(_ dictDolls: [Dictionary<String,Any>]? ) -> [DollUseCaseDTO]? {
+    public static func mapper(_ dictDolls: [Dictionary<String,Any>]? ) -> [DollUseCaseDTO]? {
         guard let dictDolls else { return nil }
+        
         return dictDolls.map({ doll in
             return DollUseCaseDTO(
                 head: doll["head"] as? [String],

@@ -6,7 +6,7 @@ import UIKit
 public struct K {
     public static let identifierApp = "hangman"
     public static let cornerRadius: CGFloat = 15
-    public static let errorCountToEndGame: Int8 = 6
+    public static let errorCountToEndGame: Int = 6
     public static let quantityLetterByLine: Int = 12
     public static let quantityWordsToFetch: Int = 20
     public static let angleDollFailure: Double = 75
@@ -31,6 +31,7 @@ public struct K {
         public static let life = "Vidas"
         public static let revealLetter = "Revelar Letra"
         public static let wordsPlayed = "wordsPlayed"
+        public static let gameHelp = "gameHelp"
     }
     
     public struct Service {
@@ -59,12 +60,12 @@ public struct K {
     }
     
     public struct ErrorLetters {
-        public static let firstError: Int8 = 1
-        public static let secondError: Int8 = 2
-        public static let thirdError: Int8 = 3
-        public static let fourthError: Int8 = 4
-        public static let fifthError: Int8 = 5
-        public static let sixthError: Int8 = 6
+        public static let firstError: Int = 1
+        public static let secondError: Int = 2
+        public static let thirdError: Int = 3
+        public static let fourthError: Int = 4
+        public static let fifthError: Int = 5
+        public static let sixthError: Int = 6
     }
     
    
