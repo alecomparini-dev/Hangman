@@ -16,14 +16,21 @@ struct FetchGameHelpCodable: Codable {
     func mapperToGameHelp() -> GameHelpModel {
         return GameHelpModel(
             dateRenewFree: self.dateRenewFree,
-            lives: LivesGameHelpModel(freeLives: self.lives?.freeLives ?? 0,
-                                      buyLives: self.lives?.buyLives ?? 0,
-                                      adLives: self.lives?.adLives ?? 0),
-            hints: HintsGameHelpModel(freeHints: self.hints?.freeHints ?? 0,
-                                      adHints: self.hints?.adHints ?? 0),
-            revelations: RevelationsGameHelpModel(freeRevelations: self.revelations?.freeRevelations ?? 0,
-                                                  buyRevelations: self.revelations?.buyRevelations ?? 0,
-                                                  adRevelations: self.revelations?.adRevelations ?? 0)
+            
+            typeGameHelp: TypeGameHelpModel(
+                lives: LivesGameHelpModel(channel: ChannelGameHelpModel(
+                    free: self.lives?.freeLives,
+                    advertising: self.lives?.adLives,
+                    buy: self.lives?.buyLives)),
+                
+                hints: HintsGameHelpModel(channel: ChannelGameHelpModel(
+                    free: self.hints?.freeHints,
+                    advertising: self.hints?.adHints)),
+                
+                revelations: RevelationsGameHelpModel(channel: ChannelGameHelpModel(
+                    free: self.revelations?.freeRevelations,
+                    advertising: self.revelations?.adRevelations,
+                    buy: self.revelations?.buyRevelations)))
         )
     }
     

@@ -339,7 +339,7 @@ public class HomeViewController: UIViewController {
     func makeDataTransferTipVC() -> DataTransferHintsVC {
         return DataTransferHintsVC(
             wordPresenterDTO: _homePresenter.getCurrentWord(),
-            gameHelp: _homePresenter.gameHelp,
+            gameHelpPresenterDTO: _homePresenter.dataTransfer?.gameHelpPresenterDTO,
             updateTipCompletion: updateCountTip
         )
     }

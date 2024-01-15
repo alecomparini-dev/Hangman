@@ -141,10 +141,6 @@ public class HintsViewController: UIViewController {
             }
         }
         
-        dataTransfer?.gameHelp?.hints?.freeHints -= 1
-        if let completion = dataTransfer?.updateTipCompletion {
-            completion(dataTransfer?.gameHelp?.hints?.freeHints.description ?? "0")
-        }
             
     }
 

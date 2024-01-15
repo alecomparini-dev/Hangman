@@ -12,6 +12,7 @@ public class HomePresenterImpl: HomePresenter {
     private var revealLetterGame: Set<String> = []
         
     private var _gameHelp: GameHelpModel?
+    private var gameHelpPresenterDTO: GameHelpPresenterDTO?
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
     private var _isEndGame = false
@@ -49,23 +50,21 @@ public class HomePresenterImpl: HomePresenter {
         _isEndGame || (countLives() == 0)
     }
     
-    public var gameHelp: GameHelpModel? { _gameHelp }
-    
     public var dataTransfer: DataTransferHomeVC? {
         get {
             guard let userID, let wordPlaying else { return nil }
             return DataTransferHomeVC(userID: userID,
-                                   wordPlaying: wordPlaying,
-                                   nextWords: nextWords,
-                                   dolls: dolls,
-                                   gameHelp: gameHelp)
+                                      wordPlaying: wordPlaying,
+                                      nextWords: nextWords,
+                                      dolls: dolls,
+                                      gameHelpPresenterDTO: gameHelpPresenterDTO)
         }
         set {
             self.userID = newValue?.userID
             self.wordPlaying = newValue?.wordPlaying
             self.nextWords = newValue?.nextWords
             self.dolls = newValue?.dolls
-            self._gameHelp = newValue?.gameHelp
+            self.gameHelpPresenterDTO = newValue?.gameHelpPresenterDTO
         }
     }
     
@@ -146,7 +145,7 @@ public class HomePresenterImpl: HomePresenter {
         
         let wordPlaying: Set<String> = Set( word.map({ String($0) }) )
         
-        _gameHelp?.revelations?.freeRevelations -= 1
+//        _gameHelp?.revelations?.freeRevelations -= 1
         
         updateCountReveal()
         
@@ -157,21 +156,11 @@ public class HomePresenterImpl: HomePresenter {
         })   
     }
     
-    public func countLives() -> Int {
-        return (_gameHelp?.lives?.freeLives ?? 0) +
-        (_gameHelp?.lives?.adLives ?? 0) +
-        (_gameHelp?.lives?.buyLives ?? 0)
-    }
+    public func countLives() -> Int { 5 }
     
-    public func countHints() -> Int {
-        return (_gameHelp?.hints?.freeHints ?? 0) + (_gameHelp?.hints?.adHints ?? 0)
-    }
+    public func countHints() -> Int { 10 }
     
-    public func countReveal() -> Int {
-        return (_gameHelp?.revelations?.freeRevelations ?? 0) +
-        (_gameHelp?.revelations?.adRevelations ?? 0) +
-        (_gameHelp?.revelations?.buyRevelations ?? 0)
-    }
+    public func countReveal() -> Int { 5 }
 
     
     
@@ -254,7 +243,7 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func decreaseLife() {
-        _gameHelp?.lives?.freeLives -= 1
+        _gameHelp?.typeGameHelp?.lives?.channel.free! -= 1
         updateCountLife()
     }
     
@@ -323,16 +312,11 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func fetchGameHelp() async {
-        _gameHelp = GameHelpModel(lives: LivesGameHelpModel(freeLives: 5, buyLives: 0, adLives: 0),
-                                  hints: HintsGameHelpModel(freeHints: 10, adHints: 0),
-                                  revelations: RevelationsGameHelpModel(freeRevelations: 5, buyRevelations: 0, adRevelations: 0))
-        
         guard let userID else { return }
         
         do {
             let fetchGameDTO = try await fetchGameHelpUseCase.fetch(userID)
-            print(fetchGameDTO ?? "")
-            
+            print(fetchGameDTO ?? "" )
         } catch let error {
             debugPrint(error.localizedDescription)
         }
@@ -478,10 +462,12 @@ public class HomePresenterImpl: HomePresenter {
     private func updateGameHelp() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            let gameHelpPresenterDTO = GameHelpPresenterDTO(lives: countLives(),
+            gameHelpPresenterDTO = GameHelpPresenterDTO(lives: countLives(),
                                                             hints: countHints(),
                                                             revelations: countReveal())
-            delegateOutput?.updateGameHelp(gameHelpPresenterDTO)
+            if let gameHelpPresenterDTO {
+                delegateOutput?.updateGameHelp(gameHelpPresenterDTO)
+            }
         }
     }
     
