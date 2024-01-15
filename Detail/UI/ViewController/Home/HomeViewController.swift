@@ -61,7 +61,7 @@ public class HomeViewController: UIViewController {
         if let dataTransfer {
             _homePresenter.dataTransfer = dataTransfer
             updateMarkGameHelp()
-            _homePresenter.getNextWord()
+            homePresenter.getNextWord()
             return
         }
         showSkeletonGameHelp()
@@ -119,7 +119,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedLife() {
-        let countLife = (homePresenter.gameHelpPresenter?.livesCount ?? 0) 
+        let countLife = (homePresenter.gameHelpPresenter?.livesCount ?? 0) + 1
         (countLife..<6).forEach { index in
             if let comp = screen.dropdownLifeView.stackLifeHeart.get.viewWithTag(Int(index)) as? UIImageView {
                 comp.tintColor = Theme.shared.currentTheme.onSurfaceVariant

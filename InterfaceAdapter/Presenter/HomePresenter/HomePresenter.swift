@@ -27,4 +27,6 @@ public protocol HomePresenter {
     
     func revealLetterGameRandom(_ duration: CGFloat)
     
+    
+    
 }

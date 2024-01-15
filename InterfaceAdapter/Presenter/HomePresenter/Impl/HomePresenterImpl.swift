@@ -103,7 +103,6 @@ public class HomePresenterImpl: HomePresenter {
         getRandomDoll()
         
         Task {
-            await fetchGameHelp()
             
             if nextWord() != nil {
                 successFetchNextWord()
@@ -112,6 +111,8 @@ public class HomePresenterImpl: HomePresenter {
             
             await fetchNextWord()
         }
+        
+        updateGameHelp()
     }
     
     public func getCurrentWord() -> WordPresenterDTO? {
@@ -270,7 +271,9 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func decreaseLife() {
-//        _gameHelp?.typeGameHelp?.lives?.channel.free! -= 1
+        if let livesCount = gameHelpPresenterDTO?.livesCount {
+            gameHelpPresenterDTO?.livesCount = livesCount - 1
+        }
         updateCountLife()
     }
     
