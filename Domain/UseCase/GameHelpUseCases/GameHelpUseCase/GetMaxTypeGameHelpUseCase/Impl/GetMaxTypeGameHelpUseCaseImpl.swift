@@ -5,6 +5,8 @@ import Foundation
 
 public class GetMaxTypeGameHelpUseCaseImpl: GetMaxTypeGameHelpUseCase {
     
+    public init() {}
+    
     public func max(typeGameHelp: TypeGameHelp) -> Int {
         return typeGameHelp.maxHelp()
     }

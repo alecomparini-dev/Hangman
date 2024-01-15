@@ -26,6 +26,9 @@
 		020216872B0C0452003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */; };
 		0202C1922B55761E004B5DCC /* GetMaxTypeGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C1912B55761E004B5DCC /* GetMaxTypeGameHelpUseCase.swift */; };
 		0202C1942B557688004B5DCC /* GetMaxTypeGameHelpUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C1932B557688004B5DCC /* GetMaxTypeGameHelpUseCaseImpl.swift */; };
+		0202C19D2B55B83F004B5DCC /* LoadScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C19A2B55B6E9004B5DCC /* LoadScreenPresenter.swift */; };
+		0202C19F2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C19E2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift */; };
+		0202C1A22B55B9F6004B5DCC /* asdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C1A12B55B9F6004B5DCC /* asdf.swift */; };
 		021B63162B1133E4002498DA /* DataTransferHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B63142B11328E002498DA /* DataTransferHomeVC.swift */; };
 		021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */; };
 		022188D92B1685D800440761 /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
@@ -319,6 +322,9 @@
 		020216842B0C03E9003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift; sourceTree = "<group>"; };
 		0202C1912B55761E004B5DCC /* GetMaxTypeGameHelpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMaxTypeGameHelpUseCase.swift; sourceTree = "<group>"; };
 		0202C1932B557688004B5DCC /* GetMaxTypeGameHelpUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMaxTypeGameHelpUseCaseImpl.swift; sourceTree = "<group>"; };
+		0202C19A2B55B6E9004B5DCC /* LoadScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreenPresenter.swift; sourceTree = "<group>"; };
+		0202C19E2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreenViewControllerFactory.swift; sourceTree = "<group>"; };
+		0202C1A12B55B9F6004B5DCC /* asdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asdf.swift; sourceTree = "<group>"; };
 		021B63142B11328E002498DA /* DataTransferHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHomeVC.swift; sourceTree = "<group>"; };
 		0222DD9F2B48C47F009EE10C /* DropdownRevelationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownRevelationsView.swift; sourceTree = "<group>"; };
 		0222DDA22B49D657009EE10C /* BuyLifePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyLifePainelView.swift; sourceTree = "<group>"; };
@@ -652,6 +658,30 @@
 			path = Impl;
 			sourceTree = "<group>";
 		};
+		0202C1982B55B6AF004B5DCC /* LoadScreenPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				0202C19A2B55B6E9004B5DCC /* LoadScreenPresenter.swift */,
+			);
+			path = LoadScreenPresenter;
+			sourceTree = "<group>";
+		};
+		0202C19C2B55B79C004B5DCC /* LoadScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0202C19E2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift */,
+			);
+			path = LoadScreenViewController;
+			sourceTree = "<group>";
+		};
+		0202C1A02B55B9EB004B5DCC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				0202C1A12B55B9F6004B5DCC /* asdf.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		0222DDA12B49D640009EE10C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -973,6 +1003,7 @@
 		0269392D2B09548C0023073B /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				0202C1A02B55B9EB004B5DCC /* UseCases */,
 				0269392E2B0954980023073B /* ViewControllers */,
 			);
 			path = Factories;
@@ -981,6 +1012,7 @@
 		0269392E2B0954980023073B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0202C19C2B55B79C004B5DCC /* LoadScreenViewController */,
 				0269392F2B0954A00023073B /* HomeViewController */,
 			);
 			path = ViewControllers;
@@ -1341,6 +1373,7 @@
 		02C4AB712B057B4100991633 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				0202C1982B55B6AF004B5DCC /* LoadScreenPresenter */,
 				02C466A02B4F15B200516D5A /* DTO */,
 				02C4AB652B04F25C00991633 /* HomePresenter */,
 				02C500E62B2B454C009C546A /* TipsPresenter */,
@@ -1967,8 +2000,10 @@
 				02C500DF2B2A7CA5009C546A /* HintsCoordinator.swift in Sources */,
 				026B648A2B03A1ED00F6DD99 /* AppDelegate.swift in Sources */,
 				026939322B0954B90023073B /* HomeViewControllerFactory.swift in Sources */,
+				0202C1A22B55B9F6004B5DCC /* asdf.swift in Sources */,
 				026B64AE2B03A4CD00F6DD99 /* HomeCoordinator.swift in Sources */,
 				026B64AA2B03A39200F6DD99 /* NavigationController.swift in Sources */,
+				0202C19F2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift in Sources */,
 				026B648C2B03A1ED00F6DD99 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1994,6 +2029,7 @@
 				021B63162B1133E4002498DA /* DataTransferHomeVC.swift in Sources */,
 				02C466A22B4F185B00516D5A /* DataTransferHintsVC.swift in Sources */,
 				02C4AB782B057B8600991633 /* HomePresenter.swift in Sources */,
+				0202C19D2B55B83F004B5DCC /* LoadScreenPresenter.swift in Sources */,
 				024154082B4D84490016450C /* GameHelpPresenterDTO.swift in Sources */,
 				0293A8BB2B3DB0A600E7730C /* HomePresenterOutput.swift in Sources */,
 				021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */,

@@ -7,7 +7,6 @@ import Handler
 
 
 public class HomePresenterImpl: HomePresenter {
-    
     weak public var delegateOutput: HomePresenterOutput?
     
     private var revealLetterGame: Set<String> = []
@@ -33,14 +32,16 @@ public class HomePresenterImpl: HomePresenter {
     private let saveWordPlayedUseCase: SaveWordPlayedUseCase
     private let getDollsRandomUseCase: GetDollsRandomUseCase
     private let fetchGameHelpUseCase: FetchGameHelpUseCase
+    private let getMaxTypeGameHelpUseCase: GetMaxTypeGameHelpUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, getMaxTypeGameHelpUseCase: GetMaxTypeGameHelpUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
         self.getDollsRandomUseCase = getDollsRandomUseCase
         self.fetchGameHelpUseCase = fetchGameHelpUseCase
+        self.getMaxTypeGameHelpUseCase = getMaxTypeGameHelpUseCase
     }
     
     
@@ -127,20 +128,6 @@ public class HomePresenterImpl: HomePresenter {
                                     hints: currentWord.hints)
     }
     
-    public func getLettersKeyboard() -> [String] {
-        return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
-                "Q","R","S","T","U","V","W","X","Y","Z",""]
-    }
-    
-    private func convertSuccessLetterIndexToLetterString() -> Set<String>{
-        guard let joinedWordPlaying else { return [] }
-        return Set( successLetterIndex.map { index in
-           let index = joinedWordPlaying.index(joinedWordPlaying.startIndex, offsetBy: index)
-           let letter = joinedWordPlaying[index]
-           return String(letter)
-       })
-    }
-    
     public func revealLetterGameRandom(_ duration: CGFloat = 1) {
         if isEndGame { return }
         
@@ -165,40 +152,59 @@ public class HomePresenterImpl: HomePresenter {
         })   
     }
     
+    public func getLettersKeyboard() -> [String] {
+        return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
+                "Q","R","S","T","U","V","W","X","Y","Z",""]
+    }
+    
+    public func maxHelp(_ typeGameHelp: TypeGameHelp) -> Int {
+        switch typeGameHelp {
+            case .lives:
+                return getMaxTypeGameHelpUseCase.max(typeGameHelp: LivesTypeGameHelp())
+            case .hints:
+                return getMaxTypeGameHelpUseCase.max(typeGameHelp: HintsTypeGameHelp())
+            case .revelations:
+                return getMaxTypeGameHelpUseCase.max(typeGameHelp: RevelationsTypeGameHelp())
+        }
+    }
+    
+    
     
 //  MARK: - PRIVATE AREA
     
-    private func startGameAsync() {
+    private func startGameAsync(_ reload: Bool = true) {
         Task {
-            await fetchRandomDolls()
-            await signInAnonymously()
+            do {
+                try await signInAnonymously()
+                try await fetchRandomDolls()
+            } catch let error {
+                debugPrint("Reload",error.localizedDescription)
+                if reload {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute:  { [weak self] in
+                        self?.startGameAsync(false)
+                    })
+                }
+                return
+            }
             await fetchNextWord()
             await fetchGameHelp()
         }
     }
     
-    private func fetchRandomDolls() async {
-        do {
-            dolls = try await getDollsRandomUseCase.getDollsRandom(quantity: 5)
-            getRandomDoll()
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
+    private func signInAnonymously() async throws {
+        userID = try await signInAnonymousUseCase.signInAnonymosly()
+    }
+    
+    private func fetchRandomDolls() async throws {
+        dolls = try await getDollsRandomUseCase.getDollsRandom(quantity: 5)
+        getRandomDoll()
     }
     
     private func getRandomDoll() {
         guard let dolls else { return }
         randomDoll = dolls[(0..<dolls.count).randomElement() ?? 0]
     }
-    
-    private func signInAnonymously() async {
-        do {
-            userID = try await signInAnonymousUseCase.signInAnonymosly()
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
+
     private func fetchNextWord() async {
         nextWords = nil
         
@@ -385,6 +391,15 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
+    private func convertSuccessLetterIndexToLetterString() -> Set<String> {
+        guard let joinedWordPlaying else { return [] }
+        return Set( successLetterIndex.map { index in
+           let index = joinedWordPlaying.index(joinedWordPlaying.startIndex, offsetBy: index)
+           let letter = joinedWordPlaying[index]
+           return String(letter)
+       })
+    }
+    
     
 //  MARK: - PRIVATE OUTPUT AREA
     
@@ -503,6 +518,5 @@ public class HomePresenterImpl: HomePresenter {
             delegateOutput?.updateRevelationsCount(gameHelpPresenterDTO?.revelationsCount.description ?? "0")
         }
     }
-    
     
 }

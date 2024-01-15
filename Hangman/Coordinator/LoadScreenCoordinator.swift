@@ -17,7 +17,7 @@ class LoadScreenCoordinator: Coordinator {
     
     func start() {
         coordinator = self
-        var controller = LoadScreenViewController()
+        var controller = LoadScreenViewControllerFactory.make()
         controller = navigationController.pushViewController(controller)
         controller.coordinator = self
     }
