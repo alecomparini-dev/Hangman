@@ -12,7 +12,6 @@ public class HomePresenterImpl: HomePresenter {
     
     private var revealLetterGame: Set<String> = []
         
-    
     private var gameHelpPresenterDTO: GameHelpPresenterDTO?
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
@@ -22,7 +21,7 @@ public class HomePresenterImpl: HomePresenter {
     private var errorLetters: Set<String> = []
     
     private var userID: String?
-    private var wordPlaying: NextWordsUseCaseDTO?
+    private var currentWord: NextWordsUseCaseDTO?
     private var nextWords: [NextWordsUseCaseDTO]?
     
     
@@ -48,21 +47,21 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - GET PROPERTIES
     
     public var isEndGame: Bool {
-        _isEndGame || (gameHelpPresenterDTO?.livesCount == 0)
+        _isEndGame || (gameHelpPresenter?.livesCount == 0)
     }
     
     public var dataTransfer: DataTransferHomeVC? {
         get {
-            guard let userID, let wordPlaying else { return nil }
+            guard let userID, let currentWord else { return nil }
             return DataTransferHomeVC(userID: userID,
-                                      wordPlaying: wordPlaying,
+                                      wordPlaying: currentWord,
                                       nextWords: nextWords,
                                       dolls: dolls,
                                       gameHelpPresenterDTO: gameHelpPresenterDTO)
         }
         set {
             self.userID = newValue?.userID
-            self.wordPlaying = newValue?.wordPlaying
+            self.currentWord = newValue?.wordPlaying
             self.nextWords = newValue?.nextWords
             self.dolls = newValue?.dolls
             self.gameHelpPresenterDTO = newValue?.gameHelpPresenterDTO
@@ -116,15 +115,15 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     public func getCurrentWord() -> WordPresenterDTO? {
-        guard let wordPlaying else { return nil }
+        guard let currentWord else { return nil }
         
-        return WordPresenterDTO(id: wordPlaying.id,
-                                    word: wordPlaying.word,
-                                    syllables: wordPlaying.syllables,
-                                    category: wordPlaying.category,
-                                    initialQuestion: wordPlaying.initialQuestion,
-                                    level: convertLevel(wordPlaying.level),
-                                    hints: wordPlaying.hints)
+        return WordPresenterDTO(id: currentWord.id,
+                                    word: currentWord.word,
+                                    syllables: currentWord.syllables,
+                                    category: currentWord.category,
+                                    initialQuestion: currentWord.initialQuestion,
+                                    level: convertLevel(currentWord.level),
+                                    hints: currentWord.hints)
     }
     
     public func getLettersKeyboard() -> [String] {
@@ -132,28 +131,33 @@ public class HomePresenterImpl: HomePresenter {
                 "Q","R","S","T","U","V","W","X","Y","Z",""]
     }
     
+    private func convertSuccessLetterIndexToLetterString() -> Set<String>{
+        guard let joinedWordPlaying else { return [] }
+        return Set( successLetterIndex.map { index in
+           let index = joinedWordPlaying.index(joinedWordPlaying.startIndex, offsetBy: index)
+           let letter = joinedWordPlaying[index]
+           return String(letter)
+       })
+    }
+    
     public func revealLetterGameRandom(_ duration: CGFloat = 1) {
         if isEndGame { return }
         
         if gameHelpPresenterDTO?.revelationsCount == 0 { return }
         
-        guard let joinedWordPlaying else { return }
-        
-        let letterSuccess: Set<String> = Set( successLetterIndex.map { index in
-            let index = joinedWordPlaying.index(joinedWordPlaying.startIndex, offsetBy: index)
-            let letter = joinedWordPlaying[index]
-            return String(letter)
-        } )
+        let letterSuccess: Set<String> = convertSuccessLetterIndexToLetterString()
 
-        guard let word = wordPlaying?.word else { return }
+        guard let word = currentWord?.word else { return }
         
-        let wordPlaying: Set<String> = Set( word.map({ String($0) }) )
+        let currentWord: Set<String> = Set( word.map({ String($0) }) )
         
-//        _gameHelp?.revelations?.freeRevelations -= 1
+        if let revelationsCount = gameHelpPresenterDTO?.revelationsCount {
+            gameHelpPresenterDTO?.revelationsCount = revelationsCount - 1
+        }
         
         updateRevelationsCount()
         
-        let letterRandom = wordPlaying.subtracting(letterSuccess).randomElement()
+        let letterRandom = currentWord.subtracting(letterSuccess).randomElement()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: {
             self.verifyMatchInWord(letterRandom)
@@ -168,6 +172,7 @@ public class HomePresenterImpl: HomePresenter {
             await fetchRandomDolls()
             await signInAnonymously()
             await fetchNextWord()
+            await fetchGameHelp()
         }
     }
     
@@ -203,7 +208,7 @@ public class HomePresenterImpl: HomePresenter {
 
             if let nextWords {
                 if nextWords.isEmpty { return nextWordIsOver() }
-                wordPlaying = nextWords[0]
+                currentWord = nextWords[0]
                 successFetchNextWord()
             }
             
@@ -299,7 +304,7 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func isEndGameSuccess() -> Bool {
-        guard let word = wordPlaying?.word else { return true}
+        guard let word = currentWord?.word else { return true}
         if successLetterIndex.count == word.count {
             _isEndGame = true
             return true
@@ -349,15 +354,15 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func getIndexLastIDPlayedWord() -> Int? {
-        return nextWords?.firstIndex(where: { $0.id == wordPlaying?.id })
+        return nextWords?.firstIndex(where: { $0.id == currentWord?.id })
     }
         
     private func nextWord() -> NextWordsUseCaseDTO? {
         if let nextWords {
             if let indexLastIDPlayed = getIndexLastIDPlayedWord() {
                 if indexLastIDPlayed < nextWords.endIndex - 1 {
-                    wordPlaying = nextWords[indexLastIDPlayed + 1]
-                    return wordPlaying
+                    currentWord = nextWords[indexLastIDPlayed + 1]
+                    return currentWord
                 }
             }
         }
@@ -381,7 +386,7 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - PRIVATE OUTPUT AREA
     
     private func successFetchNextWord() {
-        joinedWordPlaying = wordPlaying?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
+        joinedWordPlaying = currentWord?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
         
         MainThread.exec { [weak self] in
             guard let self else {return}
@@ -405,7 +410,7 @@ public class HomePresenterImpl: HomePresenter {
     private func updateCountCorrectLetters() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountCorrectLetters("\(successLetterIndex.count)/\(wordPlaying?.word?.count ?? 0)")
+            delegateOutput?.updateCountCorrectLetters("\(successLetterIndex.count)/\(currentWord?.word?.count ?? 0)")
         }
     }
     
@@ -485,14 +490,14 @@ public class HomePresenterImpl: HomePresenter {
     private func updateHintsCount() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateHintsCount("")
+            delegateOutput?.updateHintsCount(gameHelpPresenterDTO?.hintsCount.description ?? "0")
         }
     }
     
     private func updateRevelationsCount() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateRevelationsCount("")
+            delegateOutput?.updateRevelationsCount(gameHelpPresenterDTO?.revelationsCount.description ?? "0")
         }
     }
     

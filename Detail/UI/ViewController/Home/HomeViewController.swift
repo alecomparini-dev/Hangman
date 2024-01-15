@@ -119,7 +119,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedLife() {
-        let countLife = (homePresenter.gameHelpPresenter?.livesCount ?? 0) + 1
+        let countLife = (homePresenter.gameHelpPresenter?.livesCount ?? 0) 
         (countLife..<6).forEach { index in
             if let comp = screen.dropdownLifeView.stackLifeHeart.get.viewWithTag(Int(index)) as? UIImageView {
                 comp.tintColor = Theme.shared.currentTheme.onSurfaceVariant
