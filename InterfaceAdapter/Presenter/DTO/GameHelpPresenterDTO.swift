@@ -4,13 +4,13 @@
 import Foundation
 
 public struct GameHelpPresenterDTO {
-    public var lives: Int
-    public var hints: Int
-    public var revelations: Int
+    public var livesCount: Int
+    public var hintsCount: Int
+    public var revelationsCount: Int
     
-    public init(lives: Int, hints: Int, revelations: Int) {
-        self.lives = lives
-        self.hints = hints
-        self.revelations = revelations
+    public init(livesCount: Int, hintsCount: Int, revelationsCount: Int) {
+        self.livesCount = livesCount
+        self.hintsCount = hintsCount
+        self.revelationsCount = revelationsCount
     }
 }

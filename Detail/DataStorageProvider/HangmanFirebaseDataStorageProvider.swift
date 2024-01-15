@@ -70,7 +70,6 @@ extension HangmanFirebaseDataStorageProvider: FetchInDataStorageProvider {
         return data.map { $0.data() } as? T
     }
     
-    
     public func fetchNotIn<T>(id: [Int]) async throws -> T? {
         let querySnapshot: QuerySnapshot = try await db.collection(collection)
             .whereField("id", notIn: id)
@@ -80,7 +79,6 @@ extension HangmanFirebaseDataStorageProvider: FetchInDataStorageProvider {
         
         return data.map { $0.data() } as? T
     }
-    
     
     public func fetchIn<D,T>(column: String, _ values: [D]) async throws -> T? {
         let querySnapshot: QuerySnapshot = try await db.collection(collection)

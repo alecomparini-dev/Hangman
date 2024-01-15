@@ -1054,10 +1054,9 @@
 		026B64822B038A0F00F6DD99 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				02C500E42B2B447C009C546A /* ComponentsView */,
 				026B64A42B03A2A000F6DD99 /* View */,
-				02DADDC92B51A66C00186CE1 /* Extensions+Delegates */,
 				02DADDD72B51AD0D00186CE1 /* Composition */,
+				02DADDC92B51A66C00186CE1 /* Extensions+Delegates */,
 				026B64A02B03A29200F6DD99 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -1076,6 +1075,7 @@
 		026B64A42B03A2A000F6DD99 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				02C500E42B2B447C009C546A /* ComponentsView */,
 				026B64A22B03A29A00F6DD99 /* HomeView.swift */,
 			);
 			path = View;

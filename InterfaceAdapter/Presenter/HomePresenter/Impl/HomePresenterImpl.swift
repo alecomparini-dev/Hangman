@@ -7,11 +7,12 @@ import Handler
 
 
 public class HomePresenterImpl: HomePresenter {
+    
     weak public var delegateOutput: HomePresenterOutput?
     
     private var revealLetterGame: Set<String> = []
         
-    private var _gameHelp: GameHelpModel?
+    
     private var gameHelpPresenterDTO: GameHelpPresenterDTO?
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
@@ -47,7 +48,7 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - GET PROPERTIES
     
     public var isEndGame: Bool {
-        _isEndGame || (countLives() == 0)
+        _isEndGame || (gameHelpPresenterDTO?.livesCount == 0)
     }
     
     public var dataTransfer: DataTransferHomeVC? {
@@ -67,6 +68,8 @@ public class HomePresenterImpl: HomePresenter {
             self.gameHelpPresenterDTO = newValue?.gameHelpPresenterDTO
         }
     }
+    
+    public var gameHelpPresenter: GameHelpPresenterDTO? { gameHelpPresenterDTO }
     
     
 //  MARK: - PUBLIC AREA
@@ -100,13 +103,14 @@ public class HomePresenterImpl: HomePresenter {
     public func getNextWord() {
         getRandomDoll()
         
-        updateGameHelp()
-        
         Task {
+            await fetchGameHelp()
+            
             if nextWord() != nil {
                 successFetchNextWord()
                 return
             }
+            
             await fetchNextWord()
         }
     }
@@ -131,7 +135,7 @@ public class HomePresenterImpl: HomePresenter {
     public func revealLetterGameRandom(_ duration: CGFloat = 1) {
         if isEndGame { return }
         
-        if countReveal() == 0 { return }
+        if gameHelpPresenterDTO?.revelationsCount == 0 { return }
         
         guard let joinedWordPlaying else { return }
         
@@ -147,7 +151,7 @@ public class HomePresenterImpl: HomePresenter {
         
 //        _gameHelp?.revelations?.freeRevelations -= 1
         
-        updateCountReveal()
+        updateRevelationsCount()
         
         let letterRandom = wordPlaying.subtracting(letterSuccess).randomElement()
         
@@ -155,13 +159,6 @@ public class HomePresenterImpl: HomePresenter {
             self.verifyMatchInWord(letterRandom)
         })   
     }
-    
-    public func countLives() -> Int { 5 }
-    
-    public func countHints() -> Int { 10 }
-    
-    public func countReveal() -> Int { 5 }
-
     
     
 //  MARK: - PRIVATE AREA
@@ -171,7 +168,48 @@ public class HomePresenterImpl: HomePresenter {
             await fetchRandomDolls()
             await signInAnonymously()
             await fetchNextWord()
-            await fetchGameHelp()
+        }
+    }
+    
+    private func fetchRandomDolls() async {
+        do {
+            dolls = try await getDollsRandomUseCase.getDollsRandom(quantity: 5)
+            getRandomDoll()
+        } catch let error {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    private func getRandomDoll() {
+        guard let dolls else { return }
+        randomDoll = dolls[(0..<dolls.count).randomElement() ?? 0]
+    }
+    
+    private func signInAnonymously() async {
+        do {
+            userID = try await signInAnonymousUseCase.signInAnonymosly()
+        } catch let error {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    private func fetchNextWord() async {
+        nextWords = nil
+        
+        let countWordPlayed = await countWordsPlayed()
+        
+        do {
+            nextWords = try await getNextWordsUseCase.nextWords(atID: countWordPlayed + 1, limit: K.quantityWordsToFetch)
+
+            if let nextWords {
+                if nextWords.isEmpty { return nextWordIsOver() }
+                wordPlaying = nextWords[0]
+                successFetchNextWord()
+            }
+            
+        } catch let error {
+            debugPrint(error.localizedDescription)
+            errorFetchNextWords("Aviso", "Não foi possível carregar as próximas palavras. Favor tentar novamente mais tarde")
         }
     }
     
@@ -209,42 +247,38 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func fetchRandomDolls() async {
-        do {
-            dolls = try await getDollsRandomUseCase.getDollsRandom(quantity: 5)
-            getRandomDoll()
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
-    private func getRandomDoll() {
-        guard let dolls else { return }
-        randomDoll = dolls[(0..<dolls.count).randomElement() ?? 0]
-    }
-    
     private func checkEndGame() {
-        if isEndGameFailure() {
-            revealLetterEndGame(indexesEndGameToReveal())
-            revealDollEndGameFailure()
-            decreaseLife()
-        }
-        
-        if isEndGameSuccess() {
-            revealDollEndGameSuccess()
-        }
-        
-        if isEndGame {
-            Task {
-                await saveWordPlayed()
-            }
-        }
-        
+        checkEndGameFailure()
+        checkEndGameSuccess()
+        endGameActions()
+    }
+    
+    private func checkEndGameFailure() {
+        if !isEndGameFailure() { return }
+        configureEndGameFailure()
+    }
+    
+    private func configureEndGameFailure() {
+        revealLetterEndGame(indexesEndGameToReveal())
+        revealDollEndGameFailure()
+        decreaseLife()
     }
     
     private func decreaseLife() {
-        _gameHelp?.typeGameHelp?.lives?.channel.free! -= 1
+//        _gameHelp?.typeGameHelp?.lives?.channel.free! -= 1
         updateCountLife()
+    }
+    
+    private func checkEndGameSuccess() {
+        if !isEndGameSuccess() { return }
+        revealDollEndGameSuccess()
+    }
+    
+    private func endGameActions() {
+        if !isEndGame { return  }
+        Task {
+            await saveWordPlayed()
+        }
     }
     
     private func indexesEndGameToReveal() -> [Int] {
@@ -273,14 +307,6 @@ public class HomePresenterImpl: HomePresenter {
         return false
     }
     
-    private func signInAnonymously() async {
-        do {
-            userID = try await signInAnonymousUseCase.signInAnonymosly()
-        } catch let error {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
     private func countWordsPlayed() async -> Int {
         guard let userID else { return 0}
         do {
@@ -291,37 +317,18 @@ public class HomePresenterImpl: HomePresenter {
         return 0
     }
     
-    private func fetchNextWord() async {
-        nextWords = nil
-        
-        let countWordPlayed = await countWordsPlayed()
-        
-        do {
-            nextWords = try await getNextWordsUseCase.nextWords(atID: countWordPlayed + 1, limit: K.quantityWordsToFetch)
-
-            if let nextWords {
-                if nextWords.isEmpty { return nextWordIsOver() }
-                wordPlaying = nextWords[0]
-                successFetchNextWord()
-            }
-            
-        } catch let error {
-            debugPrint(error.localizedDescription)
-            errorFetchNextWords("Aviso", "Não foi possível carregar as próximas palavras. Favor tentar novamente mais tarde")
-        }
-    }
-    
     private func fetchGameHelp() async {
         guard let userID else { return }
         
         do {
-            let fetchGameDTO = try await fetchGameHelpUseCase.fetch(userID)
-            print(fetchGameDTO ?? "" )
+            let fetchGameHelpDTO = try await fetchGameHelpUseCase.fetch(userID)
+            gameHelpPresenterDTO = GameHelpPresenterDTO(livesCount: fetchGameHelpDTO?.livesCount ?? 0,
+                                                        hintsCount: fetchGameHelpDTO?.hintsCount ?? 0,
+                                                        revelationsCount: fetchGameHelpDTO?.revelationsCount ?? 0)
+            updateGameHelp()
         } catch let error {
             debugPrint(error.localizedDescription)
         }
-        
-        updateGameHelp()
     }
     
     private func saveWordPlayed() async {
@@ -462,9 +469,6 @@ public class HomePresenterImpl: HomePresenter {
     private func updateGameHelp() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            gameHelpPresenterDTO = GameHelpPresenterDTO(lives: countLives(),
-                                                            hints: countHints(),
-                                                            revelations: countReveal())
             if let gameHelpPresenterDTO {
                 delegateOutput?.updateGameHelp(gameHelpPresenterDTO)
             }
@@ -474,21 +478,21 @@ public class HomePresenterImpl: HomePresenter {
     private func updateCountLife() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateLivesCount(countLives().description)
+            delegateOutput?.updateLivesCount(gameHelpPresenterDTO?.livesCount.description ?? "0")
         }
     }
     
-    private func updateCountTip() {
+    private func updateHintsCount() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountTip(countHints().description)
+            delegateOutput?.updateHintsCount("")
         }
     }
     
-    private func updateCountReveal() {
+    private func updateRevelationsCount() {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.updateCountReveal(countReveal().description)
+            delegateOutput?.updateRevelationsCount("")
         }
     }
     

@@ -13,6 +13,8 @@ public protocol HomePresenter {
     
     var isEndGame: Bool { get }
     
+    var gameHelpPresenter: GameHelpPresenterDTO? { get }
+
     func startGame()
 
     func getLettersKeyboard() -> [String]
@@ -20,14 +22,9 @@ public protocol HomePresenter {
     func getNextWord()
         
     func getCurrentWord() -> WordPresenterDTO?
-    
+        
     func verifyMatchInWord(_ letter: String?)
     
     func revealLetterGameRandom(_ duration: CGFloat)
     
-    func countLives() -> Int
-    
-    func countHints() -> Int
-    
-    func countReveal() -> Int
 }

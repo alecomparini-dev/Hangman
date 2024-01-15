@@ -111,7 +111,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedButtonRevealLetter() {
-        let countReveal = _homePresenter.countReveal() + 1
+        let countReveal = (homePresenter.gameHelpPresenter?.revelationsCount ?? 0) + 1
         (countReveal..<6).forEach { index in
             let comp = screen.dropdownRevealLetterView.stackEyes.get.viewWithTag(Int(index))
             markUsedButtonReveal(comp)
@@ -119,7 +119,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedLife() {
-        let countLife = _homePresenter.countLives() + 1
+        let countLife = (homePresenter.gameHelpPresenter?.livesCount ?? 0) + 1
         (countLife..<6).forEach { index in
             if let comp = screen.dropdownLifeView.stackLifeHeart.get.viewWithTag(Int(index)) as? UIImageView {
                 comp.tintColor = Theme.shared.currentTheme.onSurfaceVariant
@@ -340,7 +340,7 @@ public class HomeViewController: UIViewController {
         return DataTransferHintsVC(
             wordPresenterDTO: _homePresenter.getCurrentWord(),
             gameHelpPresenterDTO: _homePresenter.dataTransfer?.gameHelpPresenterDTO,
-            updateTipCompletion: updateCountTip
+            updateTipCompletion: updateHintsCount
         )
     }
     
@@ -351,11 +351,10 @@ public class HomeViewController: UIViewController {
 //  MARK: - EXTENSION - HomePresenterOutput
 
 extension HomeViewController: HomePresenterOutput {
-    
     public func updateGameHelp(_ gameHelp: GameHelpPresenterDTO) {
-        screen.gamePainelView.livesCountView.lifeLabel.get.text = gameHelp.lives.description
-        screen.gamePainelView.hintsCountView.hintsLabel.get.text = gameHelp.hints.description
-        screen.gamePainelView.revelationsCountView.revealLabel.get.text = gameHelp.revelations.description
+        screen.gamePainelView.livesCountView.lifeLabel.get.text = gameHelp.livesCount.description
+        screen.gamePainelView.hintsCountView.hintsLabel.get.text = gameHelp.hintsCount.description
+        screen.gamePainelView.revelationsCountView.revealLabel.get.text = gameHelp.revelationsCount.description
         hideSkeletonGameHelp()
     }
     
@@ -367,11 +366,11 @@ extension HomeViewController: HomePresenterOutput {
         
     }
     
-    public func updateCountTip(_ count: String) {
+    public func updateHintsCount(_ count: String) {
         screen.gamePainelView.hintsCountView.hintsLabel.get.text = count
     }
     
-    public func updateCountReveal(_ count: String) {
+    public func updateRevelationsCount(_ count: String) {
         animations.hideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
 
         markUsedButtonReveal(buttonReveal)
