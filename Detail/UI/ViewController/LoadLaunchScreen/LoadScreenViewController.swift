@@ -1,12 +1,9 @@
-//
-//  File.swift
-//  Hangman
-//
 //  Created by Alessandro Comparini on 12/01/24.
 //
 
 import UIKit
 import CustomComponentsSDK
+import Presenter
 
 public protocol LoadScreenViewControllerCoordinator: AnyObject {
     func gotoHome()
@@ -15,7 +12,10 @@ public protocol LoadScreenViewControllerCoordinator: AnyObject {
 public class LoadScreenViewController: UIViewController {
     public weak var coordinator: LoadScreenViewControllerCoordinator?
     
-    public init() {
+    private let loadScreenPresenter: LoadScreenPresenter
+    
+    public init(loadScreenPresenter: LoadScreenPresenter) {
+        self.loadScreenPresenter = loadScreenPresenter
         super.init(nibName: nil, bundle: nil)
     }
     

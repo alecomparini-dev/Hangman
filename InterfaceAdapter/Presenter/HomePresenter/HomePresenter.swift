@@ -5,6 +5,12 @@ import Foundation
 
 import Domain
 
+public enum TypeGameHelp {
+    case lives
+    case hints
+    case revelations
+}
+
 public protocol HomePresenter {
     typealias UserID = String
     var delegateOutput: HomePresenterOutput? { get set }
@@ -27,6 +33,6 @@ public protocol HomePresenter {
     
     func revealLetterGameRandom(_ duration: CGFloat)
     
-    
+    func maxHelp(_ typeGameHelp: TypeGameHelp) -> Int
     
 }

@@ -21,14 +21,7 @@ class HomeViewControllerFactory: UIViewController {
         
         let getNextWordsUseCase = GetNextWordsUseCaseImpl(nextWordsGateway: nextWordsGateway)
         
-        let authMain = AuthenticationMain()
-        
-        let authAnonymousProvider = HangmanAuthenticationSDK(authenticateMain: authMain)
-        
-        let signInAnonymousGateway = SignInAnonymousUseCaseGatewayImpl(signInAnonymousProvider: authAnonymousProvider)
-        
-        let signInAnonymousUseCase = SignInAnonymousUseCaseImpl(signInAnonymousGateway: signInAnonymousGateway)
-        
+        let signInAnonymousUseCase = SignInAnonymousUseCaseFactory.make()
         
         let usersFirebaseDataProvider = FirebaseDataStorageProvider(collection: "users")
         
@@ -75,12 +68,18 @@ class HomeViewControllerFactory: UIViewController {
         
         let fetchGameHelpUseCase = FetchGameHelpUseCaseImpl(fetchGameHelpGateway: fetchGameHelpGateway)
         
+        
+        //  MARK: - getMaxTypeGameHelpUseCase
+        
+        let getMaxTypeGameHelpUseCase = GetMaxTypeGameHelpUseCaseImpl()
+        
         let homePresenter = HomePresenterImpl(signInAnonymousUseCase: signInAnonymousUseCase,
                                               getNextWordsUseCase: getNextWordsUseCase, 
                                               countWordsPlayedUseCase: countWordsPlayedUseCase, 
                                               saveWordPlayedUseCase: saveWordPlayedUseCase,
                                               getDollsRandomUseCase: getDollsRandomUseCase, 
-                                              fetchGameHelpUseCase: fetchGameHelpUseCase)
+                                              fetchGameHelpUseCase: fetchGameHelpUseCase, 
+                                              getMaxTypeGameHelpUseCase: getMaxTypeGameHelpUseCase)
         
         return HomeViewController(homePresenter: homePresenter)
         

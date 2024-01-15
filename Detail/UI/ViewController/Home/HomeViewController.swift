@@ -60,7 +60,6 @@ public class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         if let dataTransfer {
             _homePresenter.dataTransfer = dataTransfer
-            updateMarkGameHelp()
             homePresenter.getNextWord()
             return
         }
@@ -81,7 +80,7 @@ public class HomeViewController: UIViewController {
     
 //  MARK: - PRIVATE AREA
     private func configure() {
-        configDelegate()        
+        configDelegate()
     }
     
     private func configDelegate() {
@@ -111,16 +110,19 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedButtonRevealLetter() {
-        let countReveal = (homePresenter.gameHelpPresenter?.revelationsCount ?? 0) + 1
-        (countReveal..<6).forEach { index in
+        let countRevelations = (homePresenter.gameHelpPresenter?.revelationsCount ?? 0)
+        let maxRevelations = homePresenter.maxHelp(.revelations)
+        
+        for index in stride(from: countRevelations+1, through: maxRevelations, by: 1) {
             let comp = screen.dropdownRevealLetterView.stackEyes.get.viewWithTag(Int(index))
             markUsedButtonReveal(comp)
         }
     }
     
     private func updateMarkUsedLife() {
-        let countLife = (homePresenter.gameHelpPresenter?.livesCount ?? 0) + 1
-        (countLife..<6).forEach { index in
+        let livesCount = (homePresenter.gameHelpPresenter?.livesCount ?? 0)
+        let maxLives = homePresenter.maxHelp(.lives)
+        for index in stride(from: livesCount+1, through: maxLives, by: 1) {
             if let comp = screen.dropdownLifeView.stackLifeHeart.get.viewWithTag(Int(index)) as? UIImageView {
                 comp.tintColor = Theme.shared.currentTheme.onSurfaceVariant
             }
@@ -355,6 +357,7 @@ extension HomeViewController: HomePresenterOutput {
         screen.gamePainelView.livesCountView.lifeLabel.get.text = gameHelp.livesCount.description
         screen.gamePainelView.hintsCountView.hintsLabel.get.text = gameHelp.hintsCount.description
         screen.gamePainelView.revelationsCountView.revealLabel.get.text = gameHelp.revelationsCount.description
+        updateMarkGameHelp()
         hideSkeletonGameHelp()
     }
     
