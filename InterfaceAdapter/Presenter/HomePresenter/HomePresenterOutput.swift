@@ -4,14 +4,15 @@
 import Foundation
 
 public protocol HomePresenterOutput: AnyObject {
+    
     func successFetchNextWord(word: WordPresenterDTO?)
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
     
     func updateGameHelp(_ gameHelp: GameHelpPresenterDTO)
     func updateLivesCount(_ count: String)
-    func updateCountTip(_ count: String)
-    func updateCountReveal(_ count: String)
+    func updateHintsCount(_ count: String)
+    func updateRevelationsCount(_ count: String)
     
     func updateCountCorrectLetters(_ count: String)
     func revealChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String)

@@ -3,7 +3,7 @@
 
 import Foundation
 
-protocol TypeGameHelp {
+public protocol TypeGameHelp {
     
     func use() async throws
     func add() async throws

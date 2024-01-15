@@ -8,21 +8,21 @@ public struct HintsTypeGameHelp: TypeGameHelp {
     
     public init() {    }
     
-    func use() async throws {}
+    public func use() async throws {}
     
-    func add() async throws {}
+    public func add() async throws {}
     
-    func maxHelp() -> Int { maxHintsHelp }
+    public func maxHelp() -> Int { maxHintsHelp }
     
-    func count(_ channel: ChannelGameHelpModel?) -> Int {
+    public func count(_ channel: ChannelGameHelpModel?) -> Int {
         guard let channel else { return 0}
         return (channel.advertising ?? 0) +
         (channel.free ?? 0) +
         (channel.buy ?? 0)
     }
     
-    func used(_ channel: ChannelGameHelpModel?) -> Int { maxHelp() - count(channel) }
+    public func used(_ channel: ChannelGameHelpModel?) -> Int { maxHelp() - count(channel) }
     
-    func isFull(_ channel: ChannelGameHelpModel?) -> Bool { maxHelp() == count(channel) }
+    public func isFull(_ channel: ChannelGameHelpModel?) -> Bool { maxHelp() == count(channel) }
     
 }
