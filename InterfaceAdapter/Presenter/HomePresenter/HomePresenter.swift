@@ -13,8 +13,6 @@ public protocol HomePresenter {
     
     var isEndGame: Bool { get }
     
-    var gameHelp: GameHelpModel? { get }
-    
     func startGame()
 
     func getLettersKeyboard() -> [String]

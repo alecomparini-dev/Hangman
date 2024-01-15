@@ -8,12 +8,12 @@ public struct DataTransferHintsVC {
     public typealias closureUpdateTipAlias = (_ count: String) -> Void
     
     public var wordPresenterDTO: WordPresenterDTO?
-    public var gameHelp: GameHelpModel?
+    public var gameHelpPresenterDTO: GameHelpPresenterDTO?
     public var updateTipCompletion: closureUpdateTipAlias?
     
-    public init(wordPresenterDTO: WordPresenterDTO? = nil, gameHelp: GameHelpModel? = nil, updateTipCompletion: closureUpdateTipAlias? = nil) {
+    public init(wordPresenterDTO: WordPresenterDTO? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil, updateTipCompletion: closureUpdateTipAlias? = nil) {
         self.wordPresenterDTO = wordPresenterDTO
-        self.gameHelp = gameHelp
+        self.gameHelpPresenterDTO = gameHelpPresenterDTO
         self.updateTipCompletion = updateTipCompletion
     }
     

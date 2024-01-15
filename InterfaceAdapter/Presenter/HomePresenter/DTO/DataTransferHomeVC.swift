@@ -9,14 +9,14 @@ public struct DataTransferHomeVC {
     public var wordPlaying: NextWordsUseCaseDTO
     public var nextWords: [NextWordsUseCaseDTO]?
     public var dolls: [DollUseCaseDTO]?
-    public var gameHelp: GameHelpModel?
+    public var gameHelpPresenterDTO: GameHelpPresenterDTO?
     
-    public init(userID: String, wordPlaying: NextWordsUseCaseDTO, nextWords: [NextWordsUseCaseDTO]? = nil, dolls: [DollUseCaseDTO]? = nil, gameHelp: GameHelpModel? = nil) {
+    public init(userID: String, wordPlaying: NextWordsUseCaseDTO, nextWords: [NextWordsUseCaseDTO]? = nil, dolls: [DollUseCaseDTO]? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil) {
         self.userID = userID
         self.wordPlaying = wordPlaying
         self.nextWords = nextWords
         self.dolls = dolls
-        self.gameHelp = gameHelp
+        self.gameHelpPresenterDTO = gameHelpPresenterDTO
     }
     
 }

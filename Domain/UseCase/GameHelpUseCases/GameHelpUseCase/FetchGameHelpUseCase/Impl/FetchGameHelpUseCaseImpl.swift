@@ -19,11 +19,10 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
     public func fetch(_ userID: String) async throws -> FetchGameHelpUseCaseDTO? {
         let gameHelp: GameHelpModel = try await fetchGameHelpGateway.fetch(userID)
         
-        let countHints = countHintsHelp(gameHelp.hints)
-        let countLives = countLivesHelp(gameHelp.lives)
-        let countRevelations = countRevelationsHelp(gameHelp.revelations)
-        
-        return FetchGameHelpUseCaseDTO(livesCount: countLives, hintsCount: countHints, revelationsCount: countRevelations)
+        return FetchGameHelpUseCaseDTO(
+            livesCount: LivesTypeGameHelp().count(gameHelp.typeGameHelp?.lives?.channel),
+            hintsCount: HintsTypeGameHelp().count(gameHelp.typeGameHelp?.hints?.channel),
+            revelationsCount: RevelationsTypeGameHelp().count(gameHelp.typeGameHelp?.revelations?.channel))
     }
     
     
@@ -31,21 +30,5 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
     private func renewFreeHelp(_ gameHelp: GameHelpModel) async throws {
         
     }
-    
-    private func countHintsHelp(_ hints: HintsGameHelpModel?) -> Int {
-        guard let hints else { return 0 }
-        return hints.adHints + hints.freeHints
-    }
-    
-    private func countLivesHelp(_ lives: LivesGameHelpModel?) -> Int {
-        guard let lives else { return 0 }
-        return lives.adLives + lives.freeLives + lives.buyLives
-    }
-    
-    private func countRevelationsHelp(_ revelations: RevelationsGameHelpModel?) -> Int {
-        guard let revelations else { return 0 }
-        return revelations.adRevelations + revelations.freeRevelations + revelations.buyRevelations
-    }
-    
     
 }

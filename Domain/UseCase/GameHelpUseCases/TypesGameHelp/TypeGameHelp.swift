@@ -4,13 +4,12 @@
 import Foundation
 
 protocol TypeGameHelp {
-    var isFull: Bool { get }
     
     func use() async throws
-    
-    func add(_ count: Int) async throws
+    func add() async throws
     
     func maxHelp() -> Int
-    func count() -> Int
-    func used() -> Int
+    func count(_ channel: ChannelGameHelpModel?) -> Int
+    func used(_ channel: ChannelGameHelpModel?) -> Int
+    func isFull(_ channel: ChannelGameHelpModel?) -> Bool
 }
