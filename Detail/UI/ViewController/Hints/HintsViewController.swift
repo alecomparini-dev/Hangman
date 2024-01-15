@@ -70,7 +70,7 @@ public class HintsViewController: UIViewController {
 //  MARK: - PRIVATE AREA
     private func configure() {
         configDelegate()
-        configCardHintsShow()
+        configCardHintsDockShow()
         configBottomSheet()
     }
     
@@ -79,7 +79,7 @@ public class HintsViewController: UIViewController {
         screen.cardsHintsDock.setDelegate(self)
     }
 
-    private func configCardHintsShow() {
+    private func configCardHintsDockShow() {
         screen.cardsHintsDock.show()
     }
 
