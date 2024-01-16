@@ -5,11 +5,6 @@ import Foundation
 import Handler
 
 public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
-    private struct MaxFreeHelps {
-        static let freeLives: Int = 5
-        static let freeHints: Int = 10
-        static let freeRevelations: Int = 5
-    }
     
     private let fetchGameHelpGateway: FetchGameHelpUseCaseGateway
     private let saveGameHelpGateway: SaveGameHelpUseCaseGateway
@@ -35,9 +30,9 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
         let gameHelp = GameHelpModel(
             dateRenewFree: .now,
             typeGameHelp: TypeGameHelpModel(
-                lives: LivesGameHelpModel(channel: makeChannel(MaxFreeHelps.freeLives)),
-                hints: HintsGameHelpModel(channel: makeChannel(MaxFreeHelps.freeHints)),
-                revelations: RevelationsGameHelpModel(channel: makeChannel( MaxFreeHelps.freeRevelations))
+                lives: LivesGameHelpModel(channel: makeChannel(MaxFreeHelps.lives)),
+                hints: HintsGameHelpModel(channel: makeChannel(MaxFreeHelps.hints)),
+                revelations: RevelationsGameHelpModel(channel: makeChannel(MaxFreeHelps.revelations))
             )
         )
         
