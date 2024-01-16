@@ -7,6 +7,8 @@ import Domain
 import Handler
 
 public class SaveWordPlayedUseCaseGatewayImpl: SaveWordPlayedUseCaseGateway {
+    private let usersCollection: String = K.Collections.users
+    private let wordsPlayedCollection: String = K.Collections.wordsPlayed
     
     private let insertDataStorage: InsertDataStorageProvider
     
@@ -15,7 +17,6 @@ public class SaveWordPlayedUseCaseGatewayImpl: SaveWordPlayedUseCaseGateway {
     }
         
     public func save(userID: String, _ wordPlayed: WordPlayedUseCaseDTO) async throws {
-        let document = makeDocument(userID: userID, wordPlayed)
         
         let saveWordPlayedCodable: SaveWordPlayedCodable = WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.mapper(wordPlayedDTO: wordPlayed)
         
@@ -23,12 +24,12 @@ public class SaveWordPlayedUseCaseGatewayImpl: SaveWordPlayedUseCaseGateway {
         
         let value: [String: Any]? = try JSONSerialization.jsonObject(with: saveWordPlayedJsonData, options: .fragmentsAllowed) as? [String: Any]
         
-        _ = try await insertDataStorage.insert(document, value)
+        _ = try await insertDataStorage.insert(makePath(userID: userID), wordPlayed.id.description, value)
     }
 
     
 //  MARK: - PRIVATE AREA
-    private func makeDocument(userID: String, _ wordPlayed: WordPlayedUseCaseDTO) -> String {
-        return userID + "/\(K.String.wordsPlayed)"
+    private func makePath(userID: String) -> String {
+        return "\(usersCollection)/\(userID)/\(wordsPlayedCollection)"
     }
 }

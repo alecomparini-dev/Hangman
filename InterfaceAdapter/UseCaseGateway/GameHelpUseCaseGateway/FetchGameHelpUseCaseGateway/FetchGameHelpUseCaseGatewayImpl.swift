@@ -7,7 +7,9 @@ import Domain
 import Handler
 
 public class FetchGameHelpUseCaseGatewayImpl: FetchGameHelpUseCaseGateway {
-        
+    private let usersCollection: String = K.Collections.users
+    private let gameHelpCollection: String = K.Collections.gameHelp
+    
     private let fetchDataStorage: FetchDataStorageProvider
     
     public init(fetchDataStorage: FetchDataStorageProvider) {
@@ -15,7 +17,7 @@ public class FetchGameHelpUseCaseGatewayImpl: FetchGameHelpUseCaseGateway {
     }
 
     public func fetch(_ userID: String) async throws -> GameHelpModel {
-        let document = userID + "/\(K.String.gameHelp)"
+        let document = "\(usersCollection)/\(userID)/\(gameHelpCollection)"
         
         let dictResult: [[String: Any]] = try await fetchDataStorage.fetch(document)
         

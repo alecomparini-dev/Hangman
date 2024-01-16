@@ -14,10 +14,6 @@ public class GenericCountModelGatewayImpl: GenericCountModelGateway {
     
     public func count(_ model: String) async throws -> Int {
         return try await fetchCountDataStorage.fetchCount(model)
-    }
-    
-    public func count() async throws -> Int {
-        return try await fetchCountDataStorage.fetchCount()
-    }
+    }    
     
 }

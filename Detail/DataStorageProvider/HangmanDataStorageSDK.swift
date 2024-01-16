@@ -50,20 +50,16 @@ extension HangmanDataStorageSDK: FetchCountDataStorageProvider {
         return try await dataStorage.fetchCount(document)
     }
     
-    public func fetchCount() async throws -> Int {
-        return try await dataStorage.fetchCount()
-    }
 }
 
 
 
 //  MARK: - EXTENSION - InsertDataStorageProvider
 extension HangmanDataStorageSDK: InsertDataStorageProvider {
-
-    public func insert<T>(_ document: String, _ value: T) async throws -> T? {
-        return try await dataStorage.create(document, value)
+    public func insert<T>(_ path: String, _ documentID: String, _ value: T) async throws -> T? {
+        return try await dataStorage.create(path, documentID, value)
     }
-
+    
     public func insert<T>(_ value: T) async throws -> T? {
         return try await dataStorage.create(value)
     }
