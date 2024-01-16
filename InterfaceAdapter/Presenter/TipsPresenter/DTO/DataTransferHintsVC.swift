@@ -5,16 +5,18 @@ import Foundation
 import Domain
 
 public struct DataTransferHintsVC {
-    public typealias closureUpdateTipAlias = (_ count: String) -> Void
+    public typealias closureUpdateHintsAlias = (_ count: String) -> Void
     
     public var wordPresenterDTO: WordPresenterDTO?
     public var gameHelpPresenterDTO: GameHelpPresenterDTO?
-    public var updateTipCompletion: closureUpdateTipAlias?
+    public var updateHintsCompletion: closureUpdateHintsAlias?
     
-    public init(wordPresenterDTO: WordPresenterDTO? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil, updateTipCompletion: closureUpdateTipAlias? = nil) {
+    public init(wordPresenterDTO: WordPresenterDTO? = nil, 
+                gameHelpPresenterDTO: GameHelpPresenterDTO? = nil,
+                updateHintsCompletion: closureUpdateHintsAlias? = nil) {
         self.wordPresenterDTO = wordPresenterDTO
         self.gameHelpPresenterDTO = gameHelpPresenterDTO
-        self.updateTipCompletion = updateTipCompletion
+        self.updateHintsCompletion = updateHintsCompletion
     }
     
 }

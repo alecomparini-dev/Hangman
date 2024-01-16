@@ -70,7 +70,7 @@ public class HintsViewController: UIViewController {
 //  MARK: - PRIVATE AREA
     private func configure() {
         configDelegate()
-        configCardHintsShow()
+        configCardHintsDockShow()
         configBottomSheet()
     }
     
@@ -79,7 +79,7 @@ public class HintsViewController: UIViewController {
         screen.cardsHintsDock.setDelegate(self)
     }
 
-    private func configCardHintsShow() {
+    private func configCardHintsDockShow() {
         screen.cardsHintsDock.show()
     }
 
@@ -98,50 +98,77 @@ public class HintsViewController: UIViewController {
         card.imageTip.setImage(systemName: K.Images.hint)
         
         card.lockedImageTip.setHidden(true)
-
-        card.tipImageView.get.removeNeumorphism()
         
-        card.tipImageView.setBackgroundColor(Theme.shared.currentTheme.secondary)
+        configStyleTipImageView(card.tipImageView)
         
-        card.tipImageView
+        hideBlurAnimation(card.blurHideTip.get)
+        
+        minusOneLabelAnimation(card.minusOneLabel.get)
+        
+        decreaseHintsAndUpdateHome()
+    }
+    
+    private func configStyleTipImageView(_ tipImageView: ViewBuilder) {
+        tipImageView.get.removeNeumorphism()
+        tipImageView.setBackgroundColor(Theme.shared.currentTheme.secondary)
+        configBorderTipImageView(tipImageView)
+        configShadowOnTipImageView(tipImageView)
+    }
+    
+    private func configBorderTipImageView(_ tipImageView: ViewBuilder) {
+        tipImageView
             .setBorder { build in
                 build
                     .setColor(Theme.shared.currentTheme.primary)
                     .setWidth(1)
             }
-        
-        let shadow = ShadowBuilder(card.tipImageView.get)
+    }
+    
+    private func configShadowOnTipImageView(_ tipImageView: ViewBuilder) {
+        let shadow = ShadowBuilder(tipImageView.get)
             .setColor(Theme.shared.currentTheme.primary)
             .setRadius(6)
             .setOffset(width: 0, height: 0)
             .setOpacity(1)
             .apply()
         
-        let interaction = ButtonInteractionBuilder(component: card.tipImageView.get)
+        let interaction = ButtonInteractionBuilder(component: tipImageView.get)
             .setShadowPressed(shadow)
         interaction.pressed
-        
-        let x = card.blurHideTip.get.layer.frame.maxX
-        UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseIn , animations: {
-            card.blurHideTip.get.layer.frame.size.width = 0
-            card.blurHideTip.get.layer.frame.origin.x = x
-        })
-        
-        card.minusOneLabel.setAlpha(1)
-        let minusY = card.minusOneLabel.get.layer.frame.origin.y - 24
-        let minusX = card.minusOneLabel.get.layer.frame.origin.x + 20
-        UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut , animations: {
-            card.minusOneLabel.get.layer.frame.origin.y = minusY
-            card.minusOneLabel.get.layer.frame.origin.x = minusX
-            card.minusOneLabel.get.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
-        }) { _ in
-            UIView.animate(withDuration: 0.5) {
-                card.minusOneLabel.get.transform = .identity
-                card.minusOneLabel.get.alpha = 0
+    }
+    
+    private func decreaseHintsAndUpdateHome() {
+        if var hintsCount = dataTransfer?.gameHelpPresenterDTO?.hintsCount {
+            hintsCount -= 1
+            dataTransfer?.gameHelpPresenterDTO?.hintsCount = hintsCount
+            if let completion = dataTransfer?.updateHintsCompletion {
+                completion(hintsCount.description)
             }
         }
-        
-            
+    }
+    
+    private func hideBlurAnimation(_ blurHideTip: UIView) {
+        let x = blurHideTip.layer.frame.maxX
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseIn , animations: {
+            blurHideTip.layer.frame.size.width = 0
+            blurHideTip.layer.frame.origin.x = x
+        })
+    }
+    
+    private func minusOneLabelAnimation(_ minusOneLabel: UILabel) {
+        minusOneLabel.alpha = 1
+        let minusY = minusOneLabel.layer.frame.origin.y - 24
+        let minusX = minusOneLabel.layer.frame.origin.x + 20
+        UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut , animations: {
+            minusOneLabel.layer.frame.origin.y = minusY
+            minusOneLabel.layer.frame.origin.x = minusX
+            minusOneLabel.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
+        }) { _ in
+            UIView.animate(withDuration: 0.5) {
+                minusOneLabel.transform = .identity
+                minusOneLabel.alpha = 0
+            }
+        }
     }
 
 }
