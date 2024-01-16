@@ -342,7 +342,7 @@ public class HomeViewController: UIViewController {
         return DataTransferHintsVC(
             wordPresenterDTO: _homePresenter.getCurrentWord(),
             gameHelpPresenterDTO: _homePresenter.dataTransfer?.gameHelpPresenterDTO,
-            updateTipCompletion: updateHintsCount
+            updateHintsCompletion: updateHintsCount
         )
     }
     
