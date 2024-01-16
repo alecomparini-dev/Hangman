@@ -20,11 +20,13 @@ public class HangmanDataStorageSDK {
 //  MARK: - EXTENSION - FindByDataStorageProvider
 
 extension HangmanDataStorageSDK: FindByDataStorageProvider {
-    
-    public func findBy<T>(id: String) async throws -> [T]? {
+    public func findBy<T>(id: String) async throws -> T? {
         return try await dataStorage.findBy(id)
     }
     
+    public func findBy<T>(_ path: String, _ documentID: String) async throws -> T? {
+        return try await dataStorage.findBy(path, documentID)
+    }    
     
 }
 

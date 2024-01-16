@@ -7,31 +7,36 @@ import Handler
 
 
 struct FetchGameHelpCodable: Codable {
-    var dateRenewFree: Date?
-    var lives: FetchLivesGameHelpCodable?
-    var hints: FetchHintsGameHelpCodable?
-    var revelations: FetchRevelationsGameHelpCodable?
+    var dateRenewFree: String?
+    var lives: FetchChannelsGameHelpCodable?
+    var hints: FetchChannelsGameHelpCodable?
+    var revelations: FetchChannelsGameHelpCodable?
     
     
     func mapperToGameHelp() -> GameHelpModel {
         return GameHelpModel(
-            dateRenewFree: self.dateRenewFree,
-            
+            dateRenewFree: convertDateRenew(self.dateRenewFree) ,
             typeGameHelp: TypeGameHelpModel(
                 lives: LivesGameHelpModel(channel: ChannelGameHelpModel(
-                    free: self.lives?.freeLives,
-                    advertising: self.lives?.adLives,
-                    buy: self.lives?.buyLives)),
+                    free: self.lives?.free,
+                    advertising: self.lives?.ad,
+                    buy: self.lives?.buy)),
                 
                 hints: HintsGameHelpModel(channel: ChannelGameHelpModel(
-                    free: self.hints?.freeHints,
-                    advertising: self.hints?.adHints)),
+                    free: self.hints?.free,
+                    advertising: self.hints?.ad)),
                 
                 revelations: RevelationsGameHelpModel(channel: ChannelGameHelpModel(
-                    free: self.revelations?.freeRevelations,
-                    advertising: self.revelations?.adRevelations,
-                    buy: self.revelations?.buyRevelations)))
+                    free: self.revelations?.free,
+                    advertising: self.revelations?.ad,
+                    buy: self.revelations?.buy)))
         )
+    }
+    
+    //  MARK: - PRIVATE AREA
+    private func convertDateRenew(_ date: String?) -> Date? {
+        guard let date else {return nil }
+        return DateHandler.convertDate(date)
     }
     
 }

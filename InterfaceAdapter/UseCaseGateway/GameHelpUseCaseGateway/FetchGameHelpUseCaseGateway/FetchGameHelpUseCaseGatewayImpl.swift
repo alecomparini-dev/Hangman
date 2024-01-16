@@ -8,21 +8,21 @@ import Handler
 
 public class FetchGameHelpUseCaseGatewayImpl: FetchGameHelpUseCaseGateway {
     private let usersCollection: String = K.Collections.users
-    private let gamepCollection: String = K.Collections.game
-    private let helpDocument: String = K.Collections.game
+    private let gameCollection: String = K.Collections.game
+    private let helpDocument: String = K.Collections.Documents.help
     
-    private let fetchDataStorage: FetchDataStorageProvider
+    private let fetchDataStorage: FindByDataStorageProvider
     
-    public init(fetchDataStorage: FetchDataStorageProvider) {
+    public init(fetchDataStorage: FindByDataStorageProvider) {
         self.fetchDataStorage = fetchDataStorage
     }
 
     public func fetch(_ userID: String) async throws -> GameHelpModel? {
-        let document = "\(usersCollection)/\(userID)/\(gamepCollection)"
+        let collection = "\(usersCollection)/\(userID)/\(gameCollection)"
         
-        let dictResult: [[String: Any]] = try await fetchDataStorage.fetch(document)
+        let dictResult: [String: Any]? = try await fetchDataStorage.findBy(collection, helpDocument)
         
-        guard let result = dictResult.first else { return nil }
+        guard let result = dictResult else { return nil }
         
         let dictData: Data = try JSONSerialization.data(withJSONObject: result, options: .fragmentsAllowed)
         

@@ -3,16 +3,21 @@
 
 import Foundation
 import Domain
+import Handler
 
 struct SaveGameHelpCodable: Codable {
-    var renewFreeHelps: String?
+    var dateRenewFree: String?
     var hints: ChannelGameHelpCodable?
     var lives: ChannelGameHelpCodable?
     var revelations: ChannelGameHelpCodable?
     
     
     static func mapper(_ gameHelpModel: GameHelpModel) -> Self {
+        let date = DateHandler.separateDate(gameHelpModel.dateRenewFree?.description ?? Date().description)
+        let dateRenewFree = "\(date.year)-\(date.month)-\(date.day)"
+        
         return SaveGameHelpCodable(
+            dateRenewFree: dateRenewFree,
             hints: makeChannel(gameHelpModel.typeGameHelp?.hints?.channel),
             lives: makeChannel(gameHelpModel.typeGameHelp?.lives?.channel),
             revelations: makeChannel(gameHelpModel.typeGameHelp?.revelations?.channel))
