@@ -8,7 +8,8 @@ import Handler
 
 public class FetchGameHelpUseCaseGatewayImpl: FetchGameHelpUseCaseGateway {
     private let usersCollection: String = K.Collections.users
-    private let gameHelpCollection: String = K.Collections.gameHelp
+    private let gamepCollection: String = K.Collections.game
+    private let helpDocument: String = K.Collections.game
     
     private let fetchDataStorage: FetchDataStorageProvider
     
@@ -16,12 +17,12 @@ public class FetchGameHelpUseCaseGatewayImpl: FetchGameHelpUseCaseGateway {
         self.fetchDataStorage = fetchDataStorage
     }
 
-    public func fetch(_ userID: String) async throws -> GameHelpModel {
-        let document = "\(usersCollection)/\(userID)/\(gameHelpCollection)"
+    public func fetch(_ userID: String) async throws -> GameHelpModel? {
+        let document = "\(usersCollection)/\(userID)/\(gamepCollection)"
         
         let dictResult: [[String: Any]] = try await fetchDataStorage.fetch(document)
         
-        guard let result = dictResult.first else { return GameHelpModel() }
+        guard let result = dictResult.first else { return nil }
         
         let dictData: Data = try JSONSerialization.data(withJSONObject: result, options: .fragmentsAllowed)
         

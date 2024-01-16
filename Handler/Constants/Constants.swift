@@ -37,6 +37,11 @@ public struct K {
         public static let users = "users"
         public static let wordsPlayed = "wordsPlayed"
         public static let gameHelp = "gameHelp"
+        public static let game = "game"
+        
+        public struct Documents {
+            public static let help = "help"
+        }
     }
     
     public struct Service {

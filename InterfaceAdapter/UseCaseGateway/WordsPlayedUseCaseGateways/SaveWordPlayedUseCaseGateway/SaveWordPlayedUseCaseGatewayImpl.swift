@@ -24,12 +24,12 @@ public class SaveWordPlayedUseCaseGatewayImpl: SaveWordPlayedUseCaseGateway {
         
         let value: [String: Any]? = try JSONSerialization.jsonObject(with: saveWordPlayedJsonData, options: .fragmentsAllowed) as? [String: Any]
         
-        _ = try await insertDataStorage.insert(makePath(userID: userID), wordPlayed.id.description, value)
+        _ = try await insertDataStorage.insert(makePath(userID), wordPlayed.id.description, value)
     }
 
     
 //  MARK: - PRIVATE AREA
-    private func makePath(userID: String) -> String {
+    private func makePath(_ userID: String) -> String {
         return "\(usersCollection)/\(userID)/\(wordsPlayedCollection)"
     }
 }
