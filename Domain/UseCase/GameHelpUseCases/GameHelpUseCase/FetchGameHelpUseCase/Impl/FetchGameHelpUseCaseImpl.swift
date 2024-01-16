@@ -2,33 +2,63 @@
 //
 
 import Foundation
+import Handler
 
 public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
-    private struct maxFreeHelps {
+    private struct MaxFreeHelps {
         static let freeLives: Int = 5
         static let freeHints: Int = 10
         static let freeRevelations: Int = 5
     }
     
     private let fetchGameHelpGateway: FetchGameHelpUseCaseGateway
+    private let saveGameHelpGateway: SaveGameHelpUseCaseGateway
     
-    public init(fetchGameHelpGateway: FetchGameHelpUseCaseGateway) {
+    public init(fetchGameHelpGateway: FetchGameHelpUseCaseGateway, saveGameHelpGateway: SaveGameHelpUseCaseGateway) {
         self.fetchGameHelpGateway = fetchGameHelpGateway
+        self.saveGameHelpGateway = saveGameHelpGateway
     }
     
     public func fetch(_ userID: String) async throws -> FetchGameHelpUseCaseDTO? {
-        let gameHelp: GameHelpModel = try await fetchGameHelpGateway.fetch(userID)
+        var gameHelp: GameHelpModel? = try await fetchGameHelpGateway.fetch(userID)
         
+        if gameHelp == nil {
+            gameHelp = try await saveInitialGameHelp(userID)
+        }
+        
+        return makeFetchGameHelpUseCaseDTO(gameHelp)
+    }
+    
+    
+//  MARK: - PRIVATE AREA
+    private func saveInitialGameHelp(_ userID: String) async throws -> GameHelpModel {
+        let gameHelp = GameHelpModel(
+            dateRenewFree: .now,
+            typeGameHelp: TypeGameHelpModel(
+                lives: LivesGameHelpModel(channel: makeChannel(MaxFreeHelps.freeLives)),
+                hints: HintsGameHelpModel(channel: makeChannel(MaxFreeHelps.freeHints)),
+                revelations: RevelationsGameHelpModel(channel: makeChannel( MaxFreeHelps.freeRevelations))
+            )
+        )
+        
+        try await saveGameHelpGateway.save(userID, gameHelp: gameHelp)
+        
+        return gameHelp
+    }
+    
+    private func renewFreeHelp(_ gameHelp: GameHelpModel) async throws {
+        
+    }
+    
+    private func makeChannel(_ free: Int) -> ChannelGameHelpModel {
+        return ChannelGameHelpModel(free: free, advertising: 0, buy: 0)
+    }
+    
+    private func makeFetchGameHelpUseCaseDTO(_ gameHelp: GameHelpModel?) -> FetchGameHelpUseCaseDTO? {
+        guard let gameHelp else { return nil }
         return FetchGameHelpUseCaseDTO(
             livesCount: LivesTypeGameHelp().count(gameHelp.typeGameHelp?.lives?.channel),
             hintsCount: HintsTypeGameHelp().count(gameHelp.typeGameHelp?.hints?.channel),
             revelationsCount: RevelationsTypeGameHelp().count(gameHelp.typeGameHelp?.revelations?.channel))
     }
-    
-    
-//  MARK: - PRIVATE AREA
-    private func renewFreeHelp(_ gameHelp: GameHelpModel) async throws {
-        
-    }
-    
 }

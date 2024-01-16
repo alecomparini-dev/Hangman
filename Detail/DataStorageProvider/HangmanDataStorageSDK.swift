@@ -39,7 +39,7 @@ extension HangmanDataStorageSDK: FetchDataStorageProvider {
     public func fetch<T>(_ document: String) async throws -> [T] {
         return try await dataStorage.fetch(document)
     }
-    
+        
 }
 
 

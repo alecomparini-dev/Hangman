@@ -63,7 +63,10 @@ class HomeViewControllerFactory: UIViewController {
         
         let fetchGameHelpGateway = FetchGameHelpUseCaseGatewayImpl(fetchDataStorage: dataStorageSDK)
         
-        let fetchGameHelpUseCase = FetchGameHelpUseCaseImpl(fetchGameHelpGateway: fetchGameHelpGateway)
+        let saveGameHelpGateway = SaveGameHelpUseCaseGatewayImpl(insertDataStorage: dataStorageSDK)
+        
+        let fetchGameHelpUseCase = FetchGameHelpUseCaseImpl(fetchGameHelpGateway: fetchGameHelpGateway,
+                                                            saveGameHelpGateway: saveGameHelpGateway)
         
         
         //  MARK: - getMaxTypeGameHelpUseCase
