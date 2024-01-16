@@ -4,6 +4,5 @@
 import Foundation
 
 public protocol FetchCountDataStorageProvider {
-    func fetchCount() async throws -> Int
     func fetchCount(_ document: String) async throws -> Int
 }

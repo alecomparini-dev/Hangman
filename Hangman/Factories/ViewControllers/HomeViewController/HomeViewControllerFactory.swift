@@ -23,31 +23,28 @@ class HomeViewControllerFactory: UIViewController {
         
         let signInAnonymousUseCase = SignInAnonymousUseCaseFactory.make()
         
-        let usersFirebaseDataProvider = FirebaseDataStorageProvider(collection: "users")
+        let firebaseProvider = FirebaseDataStorageProvider()
         
-        let usersDataStorageSDK = HangmanDataStorageSDK(dataStorage: usersFirebaseDataProvider)
+        let dataStorageSDK = HangmanDataStorageSDK(dataStorage: firebaseProvider)
+        
         
         //MARK: - CountWordsPlayedUseCaseImpl
         
-        let countWordsPlayedGateway = CountWordsPlayedUseCaseGatewayImpl(fetchCountDataStorage: usersDataStorageSDK)
+        let countWordsPlayedGateway = CountWordsPlayedUseCaseGatewayImpl(fetchCountDataStorage: dataStorageSDK)
         
         let countWordsPlayedUseCase = CountWordsPlayedUseCaseImpl(countWordsPlayedGateway: countWordsPlayedGateway)
         
         
         //MARK: - saveWordPlayedUseCase
         
-        let saveWordPlayedGateway = SaveWordPlayedUseCaseGatewayImpl(insertDataStorage: usersDataStorageSDK)
+        let saveWordPlayedGateway = SaveWordPlayedUseCaseGatewayImpl(insertDataStorage: dataStorageSDK)
         
         let saveWordPlayedUseCase = SaveWordPlayedUseCaseImpl(saveWordPlayedGateway: saveWordPlayedGateway)
         
         
         //MARK: - countDollsUseCase
-
-        let dataProviderDolls = FirebaseDataStorageProvider(collection: "dolls")
-                
-        let fetchDataStorageDolls = HangmanDataStorageSDK(dataStorage: dataProviderDolls)
-        
-        let countModelGateway = GenericCountModelGatewayImpl(fetchCountDataStorage: fetchDataStorageDolls)
+                        
+        let countModelGateway = GenericCountModelGatewayImpl(fetchCountDataStorage: dataStorageSDK)
         
         let countDollsUseCase = CountDollsUseCaseImpl(countModelGateway: countModelGateway)
         
@@ -64,7 +61,7 @@ class HomeViewControllerFactory: UIViewController {
         
         //MARK: - fetchGameHelpUseCase
         
-        let fetchGameHelpGateway = FetchGameHelpUseCaseGatewayImpl(fetchDataStorage: usersDataStorageSDK)
+        let fetchGameHelpGateway = FetchGameHelpUseCaseGatewayImpl(fetchDataStorage: dataStorageSDK)
         
         let fetchGameHelpUseCase = FetchGameHelpUseCaseImpl(fetchGameHelpGateway: fetchGameHelpGateway)
         

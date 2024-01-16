@@ -4,7 +4,5 @@
 import Foundation
 
 public protocol GenericCountModelGateway {
-    func count(_ model: String) async throws -> Int
-    
-    func count() async throws -> Int 
+    func count(_ model: String) async throws -> Int 
 }
