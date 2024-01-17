@@ -5,7 +5,7 @@ import Foundation
 import Domain
 import Handler
 
-struct SaveGameHelpCodable: Codable {
+struct GameHelpCodable: Codable {
     var dateRenewFree: String?
     var hints: ChannelGameHelpCodable?
     var lives: ChannelGameHelpCodable?
@@ -16,7 +16,7 @@ struct SaveGameHelpCodable: Codable {
         let date = DateHandler.separateDate(gameHelpModel.dateRenewFree?.description ?? Date().description)
         let dateRenewFree = "\(date.year)-\(date.month)-\(date.day)"
         
-        return SaveGameHelpCodable(
+        return GameHelpCodable(
             dateRenewFree: dateRenewFree,
             hints: makeChannel(gameHelpModel.typeGameHelp?.hints?.channel),
             lives: makeChannel(gameHelpModel.typeGameHelp?.lives?.channel),

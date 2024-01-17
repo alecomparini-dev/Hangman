@@ -23,7 +23,7 @@ public class SaveGameHelpUseCaseGatewayImpl: SaveGameHelpUseCaseGateway {
     public func save(_ userID: String, gameHelp: GameHelpModel) async throws {
         let collection = makeCollection(userID)
                 
-        let saveGameCodable: SaveGameHelpCodable = SaveGameHelpCodable.mapper(gameHelp)
+        let saveGameCodable: GameHelpCodable = GameHelpCodable.mapper(gameHelp)
         
         let saveGameJSONData = try JSONEncoder().encode(saveGameCodable)
         
