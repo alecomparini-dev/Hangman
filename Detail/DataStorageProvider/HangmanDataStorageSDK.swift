@@ -65,4 +65,17 @@ extension HangmanDataStorageSDK: InsertDataStorageProvider {
     public func insert<T>(_ value: T) async throws -> T? {
         return try await dataStorage.create(value)
     }
+        
 }
+
+
+//  MARK: - EXTENSION - UpdateDataStorageProvider
+extension HangmanDataStorageSDK: UpdateDataStorageProvider {
+    
+    public func update<T>(_ collection: String, _ documentID: String, _ value: T) async throws {
+        return try await dataStorage.update(collection, documentID, value)
+    }
+    
+    
+}
+

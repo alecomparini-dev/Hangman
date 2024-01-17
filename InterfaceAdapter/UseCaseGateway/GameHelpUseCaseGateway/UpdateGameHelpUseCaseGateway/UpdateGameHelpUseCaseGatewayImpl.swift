@@ -12,6 +12,7 @@ public class UpdateGameHelpUseCaseGatewayImpl: UpdateGameHelpUseCaseGateway {
     
     
 //  MARK: - INITIALIZERS
+    
     private let updateDataStorage: UpdateDataStorageProvider
     
     public init(updateDataStorage: UpdateDataStorageProvider) {
