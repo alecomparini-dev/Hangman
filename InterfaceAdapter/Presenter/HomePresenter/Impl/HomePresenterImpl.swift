@@ -32,14 +32,16 @@ public class HomePresenterImpl: HomePresenter {
     private let saveWordPlayedUseCase: SaveWordPlayedUseCase
     private let getDollsRandomUseCase: GetDollsRandomUseCase
     private let fetchGameHelpUseCase: FetchGameHelpUseCase
+    private let maxTypeGameHelpUseCase: MaxTypeGameHelpUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxTypeGameHelpUseCase: MaxTypeGameHelpUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
         self.getDollsRandomUseCase = getDollsRandomUseCase
         self.fetchGameHelpUseCase = fetchGameHelpUseCase
+        self.maxTypeGameHelpUseCase = maxTypeGameHelpUseCase
     }
     
     
@@ -158,11 +160,11 @@ public class HomePresenterImpl: HomePresenter {
     public func maxHelp(_ typeGameHelp: TypeGameHelp) -> Int {
         switch typeGameHelp {
             case .lives:
-                return LivesTypeGameHelp.maxHelp
+                return maxTypeGameHelpUseCase.max(typeGameHelp: .lives)
             case .hints:
-                return HintsTypeGameHelp.maxHelp
+                return maxTypeGameHelpUseCase.max(typeGameHelp: .hints)
             case .revelations:
-                return RevelationsTypeGameHelp.maxHelp
+                return maxTypeGameHelpUseCase.max(typeGameHelp: .revelations)
         }
     }
     
