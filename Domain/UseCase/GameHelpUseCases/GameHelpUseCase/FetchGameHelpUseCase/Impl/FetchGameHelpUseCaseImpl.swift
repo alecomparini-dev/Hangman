@@ -8,10 +8,12 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
     
     private let fetchGameHelpGateway: FetchGameHelpUseCaseGateway
     private let saveGameHelpGateway: SaveGameHelpUseCaseGateway
+    private let maxGameHelpUseCase: MaxTypeGameHelpUseCase
     
-    public init(fetchGameHelpGateway: FetchGameHelpUseCaseGateway, saveGameHelpGateway: SaveGameHelpUseCaseGateway) {
+    public init(fetchGameHelpGateway: FetchGameHelpUseCaseGateway, saveGameHelpGateway: SaveGameHelpUseCaseGateway, maxGameHelpUseCase: MaxTypeGameHelpUseCase) {
         self.fetchGameHelpGateway = fetchGameHelpGateway
         self.saveGameHelpGateway = saveGameHelpGateway
+        self.maxGameHelpUseCase = maxGameHelpUseCase
     }
     
     public func fetch(_ userID: String) async throws -> FetchGameHelpUseCaseDTO? {
@@ -32,10 +34,9 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
         let gameHelp = GameHelpModel(
             dateRenewFree: .now,
             typeGameHelp: TypeGameHelpModel(
-                lives: LivesGameHelpModel(channel: makeChannel(MaxFreeHelps.lives)),
-                hints: HintsGameHelpModel(channel: makeChannel(MaxFreeHelps.hints)),
-                revelations: RevelationsGameHelpModel(channel: makeChannel(MaxFreeHelps.revelations))
-            )
+                lives: maxGameHelpUseCase.max(typeGameHelp: .lives),
+                hints: maxGameHelpUseCase.max(typeGameHelp: .hints),
+                revelations: maxGameHelpUseCase.max(typeGameHelp: .revelations))
         )
         
         try await saveGameHelpGateway.save(userID, gameHelp: gameHelp)
@@ -49,45 +50,22 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
         if let currentDate = DateHandler.convertDate("\(date.year)-\(date.month)-\(date.day)") {
             if let dateRenew = renewGameHelp.dateRenewFree, dateRenew < currentDate {
                 renewGameHelp.dateRenewFree = .now
-                renewGameHelp = calculateFreeHelp(renewGameHelp)
+                renewGameHelp.typeGameHelp?.lives = maxGameHelpUseCase.max(typeGameHelp: .lives)
+                renewGameHelp.typeGameHelp?.hints = maxGameHelpUseCase.max(typeGameHelp: .hints)
+                renewGameHelp.typeGameHelp?.revelations = maxGameHelpUseCase.max(typeGameHelp: .revelations)
                 try await saveGameHelpGateway.save(userID, gameHelp: renewGameHelp)
             }
         }
         return renewGameHelp
     }
     
-    private func calculateFreeHelp(_ gameHelp: GameHelpModel) -> GameHelpModel {
-        var calculateFreeGameHelp = gameHelp
-        
-        let livesCount = LivesTypeGameHelp().count(calculateFreeGameHelp.typeGameHelp?.lives?.channel)
-        let hintsCount = HintsTypeGameHelp().count(calculateFreeGameHelp.typeGameHelp?.hints?.channel)
-        let revelationsCount = RevelationsTypeGameHelp().count(calculateFreeGameHelp.typeGameHelp?.revelations?.channel)
-        
-        if let remainingLives = calculateFreeGameHelp.typeGameHelp?.lives?.channel.free {
-            calculateFreeGameHelp.typeGameHelp?.lives?.channel.free = remainingLives + (MaxFreeHelps.lives - livesCount)
-        }
-        
-        if let remainingHints = calculateFreeGameHelp.typeGameHelp?.hints?.channel.free {
-            calculateFreeGameHelp.typeGameHelp?.hints?.channel.free = remainingHints + (MaxFreeHelps.hints - hintsCount)
-        }
-         
-        if let remainingRevelations = calculateFreeGameHelp.typeGameHelp?.revelations?.channel.free {
-            calculateFreeGameHelp.typeGameHelp?.revelations?.channel.free = remainingRevelations + (MaxFreeHelps.revelations - revelationsCount)
-        }
-        
-        return calculateFreeGameHelp
-    }
-    
-    private func makeChannel(_ free: Int) -> ChannelGameHelpModel {
-        return ChannelGameHelpModel(free: free, advertising: 0, buy: 0)
-    }
-    
     private func makeFetchGameHelpUseCaseDTO(_ gameHelp: GameHelpModel?) -> FetchGameHelpUseCaseDTO? {
         guard let gameHelp else { return nil }
         return FetchGameHelpUseCaseDTO(
-            livesCount: LivesTypeGameHelp().count(gameHelp.typeGameHelp?.lives?.channel),
-            hintsCount: HintsTypeGameHelp().count(gameHelp.typeGameHelp?.hints?.channel),
-            revelationsCount: RevelationsTypeGameHelp().count(gameHelp.typeGameHelp?.revelations?.channel))
+            livesCount: gameHelp.typeGameHelp?.lives ?? 0,
+            hintsCount: gameHelp.typeGameHelp?.hints ?? 0,
+            revelationsCount: gameHelp.typeGameHelp?.revelations ?? 0
+        )
     }
     
 }

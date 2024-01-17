@@ -32,16 +32,16 @@ public class HomePresenterImpl: HomePresenter {
     private let saveWordPlayedUseCase: SaveWordPlayedUseCase
     private let getDollsRandomUseCase: GetDollsRandomUseCase
     private let fetchGameHelpUseCase: FetchGameHelpUseCase
-    private let getMaxTypeGameHelpUseCase: GetMaxTypeGameHelpUseCase
+    private let maxTypeGameHelpUseCase: MaxTypeGameHelpUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, getMaxTypeGameHelpUseCase: GetMaxTypeGameHelpUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxTypeGameHelpUseCase: MaxTypeGameHelpUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
         self.getDollsRandomUseCase = getDollsRandomUseCase
         self.fetchGameHelpUseCase = fetchGameHelpUseCase
-        self.getMaxTypeGameHelpUseCase = getMaxTypeGameHelpUseCase
+        self.maxTypeGameHelpUseCase = maxTypeGameHelpUseCase
     }
     
     
@@ -160,11 +160,11 @@ public class HomePresenterImpl: HomePresenter {
     public func maxHelp(_ typeGameHelp: TypeGameHelp) -> Int {
         switch typeGameHelp {
             case .lives:
-                return getMaxTypeGameHelpUseCase.max(typeGameHelp: LivesTypeGameHelp())
+                return maxTypeGameHelpUseCase.max(typeGameHelp: .lives)
             case .hints:
-                return getMaxTypeGameHelpUseCase.max(typeGameHelp: HintsTypeGameHelp())
+                return maxTypeGameHelpUseCase.max(typeGameHelp: .hints)
             case .revelations:
-                return getMaxTypeGameHelpUseCase.max(typeGameHelp: RevelationsTypeGameHelp())
+                return maxTypeGameHelpUseCase.max(typeGameHelp: .revelations)
         }
     }
     

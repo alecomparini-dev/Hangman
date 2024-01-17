@@ -7,9 +7,9 @@ import Handler
 
 struct GameHelpCodable: Codable {
     var dateRenewFree: String?
-    var hints: ChannelGameHelpCodable?
-    var lives: ChannelGameHelpCodable?
-    var revelations: ChannelGameHelpCodable?
+    var hints: Int?
+    var lives: Int?
+    var revelations: Int?
     
     
     static func mapper(_ gameHelpModel: GameHelpModel) -> Self {
@@ -18,15 +18,10 @@ struct GameHelpCodable: Codable {
         
         return GameHelpCodable(
             dateRenewFree: dateRenewFree,
-            hints: makeChannel(gameHelpModel.typeGameHelp?.hints?.channel),
-            lives: makeChannel(gameHelpModel.typeGameHelp?.lives?.channel),
-            revelations: makeChannel(gameHelpModel.typeGameHelp?.revelations?.channel))
+            hints: gameHelpModel.typeGameHelp?.hints,
+            lives: gameHelpModel.typeGameHelp?.lives,
+            revelations: gameHelpModel.typeGameHelp?.revelations)
     }
     
-    static func makeChannel(_ channel: ChannelGameHelpModel?) -> ChannelGameHelpCodable {
-        return ChannelGameHelpCodable(free: channel?.free,
-                                      ad: channel?.advertising,
-                                      buy: channel?.buy)
-    }
     
 }

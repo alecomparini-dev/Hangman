@@ -3,6 +3,6 @@
 
 import Foundation
 
-public protocol GetMaxTypeGameHelpUseCase {
+public protocol MaxTypeGameHelpUseCase {
     func max(typeGameHelp: TypeGameHelp) -> Int
 }

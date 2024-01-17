@@ -4,11 +4,11 @@
 import Foundation
 
 public struct TypeGameHelpModel {
-    public var lives: LivesGameHelpModel?
-    public var hints: HintsGameHelpModel?
-    public var revelations: RevelationsGameHelpModel?
+    public var lives: Int?
+    public var hints: Int?
+    public var revelations: Int?
     
-    public init(lives: LivesGameHelpModel? = nil, hints: HintsGameHelpModel? = nil, revelations: RevelationsGameHelpModel? = nil) {
+    public init(lives: Int? = nil, hints: Int? = nil, revelations: Int? = nil) {
         self.lives = lives
         self.hints = hints
         self.revelations = revelations

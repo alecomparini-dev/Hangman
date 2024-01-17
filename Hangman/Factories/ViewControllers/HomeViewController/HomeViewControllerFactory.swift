@@ -65,13 +65,15 @@ class HomeViewControllerFactory: UIViewController {
         
         let saveGameHelpGateway = SaveGameHelpUseCaseGatewayImpl(insertDataStorage: dataStorageSDK)
         
+        
+        let maxGameHelpUseCase = MaxTypeGameHelpUseCaseImpl()
+        
         let fetchGameHelpUseCase = FetchGameHelpUseCaseImpl(fetchGameHelpGateway: fetchGameHelpGateway,
-                                                            saveGameHelpGateway: saveGameHelpGateway)
+                                                            saveGameHelpGateway: saveGameHelpGateway, 
+                                                            maxGameHelpUseCase: maxGameHelpUseCase)
         
-        
-        //  MARK: - getMaxTypeGameHelpUseCase
-        
-        let getMaxTypeGameHelpUseCase = GetMaxTypeGameHelpUseCaseImpl()
+            
+        let maxTypeGameHelpUseCase = MaxTypeGameHelpUseCaseImpl()
         
         let homePresenter = HomePresenterImpl(signInAnonymousUseCase: signInAnonymousUseCase,
                                               getNextWordsUseCase: getNextWordsUseCase, 
@@ -79,7 +81,7 @@ class HomeViewControllerFactory: UIViewController {
                                               saveWordPlayedUseCase: saveWordPlayedUseCase,
                                               getDollsRandomUseCase: getDollsRandomUseCase, 
                                               fetchGameHelpUseCase: fetchGameHelpUseCase, 
-                                              getMaxTypeGameHelpUseCase: getMaxTypeGameHelpUseCase)
+                                              maxTypeGameHelpUseCase: maxTypeGameHelpUseCase)
         
         return HomeViewController(homePresenter: homePresenter)
         
