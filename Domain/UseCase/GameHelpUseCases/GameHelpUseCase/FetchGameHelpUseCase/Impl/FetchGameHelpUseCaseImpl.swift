@@ -8,9 +8,9 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
     
     private let fetchGameHelpGateway: FetchGameHelpUseCaseGateway
     private let saveGameHelpGateway: SaveGameHelpUseCaseGateway
-    private let maxGameHelpUseCase: MaxTypeGameHelpUseCase
+    private let maxGameHelpUseCase: MaxGameHelpUseCase
     
-    public init(fetchGameHelpGateway: FetchGameHelpUseCaseGateway, saveGameHelpGateway: SaveGameHelpUseCaseGateway, maxGameHelpUseCase: MaxTypeGameHelpUseCase) {
+    public init(fetchGameHelpGateway: FetchGameHelpUseCaseGateway, saveGameHelpGateway: SaveGameHelpUseCaseGateway, maxGameHelpUseCase: MaxGameHelpUseCase) {
         self.fetchGameHelpGateway = fetchGameHelpGateway
         self.saveGameHelpGateway = saveGameHelpGateway
         self.maxGameHelpUseCase = maxGameHelpUseCase

@@ -3,7 +3,7 @@
 
 import Foundation
 
-public class MaxTypeGameHelpUseCaseImpl: MaxTypeGameHelpUseCase {
+public class MaxGameHelpUseCaseImpl: MaxGameHelpUseCase {
     
     public init() {}
     
