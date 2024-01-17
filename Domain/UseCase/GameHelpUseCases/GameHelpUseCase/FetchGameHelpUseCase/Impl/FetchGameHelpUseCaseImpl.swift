@@ -32,9 +32,9 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
         let gameHelp = GameHelpModel(
             dateRenewFree: .now,
             typeGameHelp: TypeGameHelpModel(
-                lives: LivesGameHelpModel(channel: makeChannel(MaxFreeHelps.lives)),
-                hints: HintsGameHelpModel(channel: makeChannel(MaxFreeHelps.hints)),
-                revelations: RevelationsGameHelpModel(channel: makeChannel(MaxFreeHelps.revelations))
+                lives: LivesGameHelpModel(channel: makeChannel(LivesTypeGameHelp.maxHelp)),
+                hints: HintsGameHelpModel(channel: makeChannel(HintsTypeGameHelp.maxHelp)),
+                revelations: RevelationsGameHelpModel(channel: makeChannel(RevelationsTypeGameHelp.maxHelp))
             )
         )
         
@@ -61,18 +61,18 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
         
         let livesCount = LivesTypeGameHelp().count(calculateFreeGameHelp.typeGameHelp?.lives?.channel)
         let hintsCount = HintsTypeGameHelp().count(calculateFreeGameHelp.typeGameHelp?.hints?.channel)
-        let revelationsCount = RevelationsTypeGameHelp().count(calculateFreeGameHelp.typeGameHelp?.revelations?.channel)
+        let revelationsCount = RevelationsTypeGameHelp.count(calculateFreeGameHelp.typeGameHelp?.revelations?.channel)
         
         if let remainingLives = calculateFreeGameHelp.typeGameHelp?.lives?.channel.free {
-            calculateFreeGameHelp.typeGameHelp?.lives?.channel.free = remainingLives + (MaxFreeHelps.lives - livesCount)
+            calculateFreeGameHelp.typeGameHelp?.lives?.channel.free = remainingLives + (LivesTypeGameHelp.maxHelp - livesCount)
         }
         
         if let remainingHints = calculateFreeGameHelp.typeGameHelp?.hints?.channel.free {
-            calculateFreeGameHelp.typeGameHelp?.hints?.channel.free = remainingHints + (MaxFreeHelps.hints - hintsCount)
+            calculateFreeGameHelp.typeGameHelp?.hints?.channel.free = remainingHints + (HintsTypeGameHelp.maxHelp - hintsCount)
         }
          
         if let remainingRevelations = calculateFreeGameHelp.typeGameHelp?.revelations?.channel.free {
-            calculateFreeGameHelp.typeGameHelp?.revelations?.channel.free = remainingRevelations + (MaxFreeHelps.revelations - revelationsCount)
+            calculateFreeGameHelp.typeGameHelp?.revelations?.channel.free = remainingRevelations + (RevelationsTypeGameHelp.maxHelp - revelationsCount)
         }
         
         return calculateFreeGameHelp

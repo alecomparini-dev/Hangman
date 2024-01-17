@@ -68,18 +68,13 @@ class HomeViewControllerFactory: UIViewController {
         let fetchGameHelpUseCase = FetchGameHelpUseCaseImpl(fetchGameHelpGateway: fetchGameHelpGateway,
                                                             saveGameHelpGateway: saveGameHelpGateway)
         
-        
-        //  MARK: - getMaxTypeGameHelpUseCase
-        
-        let getMaxTypeGameHelpUseCase = GetMaxTypeGameHelpUseCaseImpl()
-        
+                
         let homePresenter = HomePresenterImpl(signInAnonymousUseCase: signInAnonymousUseCase,
                                               getNextWordsUseCase: getNextWordsUseCase, 
                                               countWordsPlayedUseCase: countWordsPlayedUseCase, 
                                               saveWordPlayedUseCase: saveWordPlayedUseCase,
                                               getDollsRandomUseCase: getDollsRandomUseCase, 
-                                              fetchGameHelpUseCase: fetchGameHelpUseCase, 
-                                              getMaxTypeGameHelpUseCase: getMaxTypeGameHelpUseCase)
+                                              fetchGameHelpUseCase: fetchGameHelpUseCase)
         
         return HomeViewController(homePresenter: homePresenter)
         

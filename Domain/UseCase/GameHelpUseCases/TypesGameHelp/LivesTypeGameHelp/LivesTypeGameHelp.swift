@@ -3,16 +3,14 @@
 
 import Foundation
 
-public class LivesTypeGameHelp: TypeGameHelp {
-    private let maxLifeHelp: Int = 5
+public struct LivesTypeGameHelp: TypeGameHelp {
+    public static let maxHelp: Int = 5
 
     public init() {    }
     
     public func use() async throws {}
     
     public func add() async throws {}
-    
-    public func maxHelp() -> Int { maxLifeHelp }
     
     public func count(_ channel: ChannelGameHelpModel?) -> Int {
         guard let channel else { return 0}
@@ -21,8 +19,8 @@ public class LivesTypeGameHelp: TypeGameHelp {
         (channel.buy ?? 0)
     }
     
-    public func used(_ channel: ChannelGameHelpModel?) -> Int { maxHelp() - count(channel) }
+    public func used(_ channel: ChannelGameHelpModel?) -> Int { LivesTypeGameHelp.maxHelp - count(channel) }
     
-    public func isFull(_ channel: ChannelGameHelpModel?) -> Bool { maxHelp() == count(channel) }
+    public func isFull(_ channel: ChannelGameHelpModel?) -> Bool { LivesTypeGameHelp.maxHelp == count(channel) }
     
 }

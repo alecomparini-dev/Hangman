@@ -32,16 +32,14 @@ public class HomePresenterImpl: HomePresenter {
     private let saveWordPlayedUseCase: SaveWordPlayedUseCase
     private let getDollsRandomUseCase: GetDollsRandomUseCase
     private let fetchGameHelpUseCase: FetchGameHelpUseCase
-    private let getMaxTypeGameHelpUseCase: GetMaxTypeGameHelpUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, getMaxTypeGameHelpUseCase: GetMaxTypeGameHelpUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
         self.saveWordPlayedUseCase = saveWordPlayedUseCase
         self.getDollsRandomUseCase = getDollsRandomUseCase
         self.fetchGameHelpUseCase = fetchGameHelpUseCase
-        self.getMaxTypeGameHelpUseCase = getMaxTypeGameHelpUseCase
     }
     
     
@@ -160,11 +158,11 @@ public class HomePresenterImpl: HomePresenter {
     public func maxHelp(_ typeGameHelp: TypeGameHelp) -> Int {
         switch typeGameHelp {
             case .lives:
-                return getMaxTypeGameHelpUseCase.max(typeGameHelp: LivesTypeGameHelp())
+                return LivesTypeGameHelp.maxHelp
             case .hints:
-                return getMaxTypeGameHelpUseCase.max(typeGameHelp: HintsTypeGameHelp())
+                return HintsTypeGameHelp.maxHelp
             case .revelations:
-                return getMaxTypeGameHelpUseCase.max(typeGameHelp: RevelationsTypeGameHelp())
+                return RevelationsTypeGameHelp.maxHelp
         }
     }
     
