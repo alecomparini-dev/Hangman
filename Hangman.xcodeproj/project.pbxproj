@@ -61,6 +61,9 @@
 		0241540D2B4DB7150016450C /* GameHelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241540C2B4DB7150016450C /* GameHelpModel.swift */; };
 		0266CF8F2B581204005144DE /* MaxGameHelpUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF8D2B581204005144DE /* MaxGameHelpUseCaseImpl.swift */; };
 		0266CF902B581204005144DE /* MaxGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF8E2B581204005144DE /* MaxGameHelpUseCase.swift */; };
+		0266CF952B582321005144DE /* UseGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF942B582321005144DE /* UseGameHelpUseCase.swift */; };
+		0266CF972B5823C1005144DE /* UseGameHelpUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF962B5823C1005144DE /* UseGameHelpUseCaseImpl.swift */; };
+		0266CF982B5825E6005144DE /* UpdateDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F062A22B5705660015DD8F /* UpdateDataStorageProvider.swift */; };
 		0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */; };
 		026800802B0A877A00B30C26 /* FindByDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268007F2B0A877A00B30C26 /* FindByDataStorageProvider.swift */; };
 		026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */; };
@@ -160,7 +163,6 @@
 		02F0629A2B5704280015DD8F /* UpdateGameHelpUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F062992B5704280015DD8F /* UpdateGameHelpUseCaseGateway.swift */; };
 		02F0629C2B5704B50015DD8F /* UpdateGameHelpUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0629B2B5704B50015DD8F /* UpdateGameHelpUseCaseImpl.swift */; };
 		02F062A02B5705210015DD8F /* UpdateGameHelpUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F0629E2B5705080015DD8F /* UpdateGameHelpUseCaseGatewayImpl.swift */; };
-		02F062A32B5705660015DD8F /* UpdateDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F062A22B5705660015DD8F /* UpdateDataStorageProvider.swift */; };
 		02FCA7032B307BAA00B45892 /* TipsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7022B307BAA00B45892 /* TipsPresenter.swift */; };
 		02FCA7052B307BB100B45892 /* TipsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7042B307BB100B45892 /* TipsPresenterImpl.swift */; };
 		02FCA7072B30B53300B45892 /* CardHintsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7062B30B53300B45892 /* CardHintsViewCell.swift */; };
@@ -373,6 +375,8 @@
 		0241540C2B4DB7150016450C /* GameHelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpModel.swift; sourceTree = "<group>"; };
 		0266CF8D2B581204005144DE /* MaxGameHelpUseCaseImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxGameHelpUseCaseImpl.swift; sourceTree = "<group>"; };
 		0266CF8E2B581204005144DE /* MaxGameHelpUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxGameHelpUseCase.swift; sourceTree = "<group>"; };
+		0266CF942B582321005144DE /* UseGameHelpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGameHelpUseCase.swift; sourceTree = "<group>"; };
+		0266CF962B5823C1005144DE /* UseGameHelpUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGameHelpUseCaseImpl.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
 		0268007F2B0A877A00B30C26 /* FindByDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindByDataStorageProvider.swift; sourceTree = "<group>"; };
 		026800842B0A949F00B30C26 /* SignInAnonymousUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCase.swift; sourceTree = "<group>"; };
@@ -862,6 +866,8 @@
 		0266CF882B5806FE005144DE /* UseGameHelpUseCase */ = {
 			isa = PBXGroup;
 			children = (
+				0266CF932B582318005144DE /* Impl */,
+				0266CF942B582321005144DE /* UseGameHelpUseCase.swift */,
 			);
 			path = UseGameHelpUseCase;
 			sourceTree = "<group>";
@@ -879,6 +885,14 @@
 			isa = PBXGroup;
 			children = (
 				0266CF8D2B581204005144DE /* MaxGameHelpUseCaseImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		0266CF932B582318005144DE /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				0266CF962B5823C1005144DE /* UseGameHelpUseCaseImpl.swift */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -1958,12 +1972,12 @@
 			files = (
 				02B1E7E32B516650004ECE2C /* FetchGameHelpUseCase.swift in Sources */,
 				020216622B0BC537003E2B07 /* CountWordsPlayedUseCase.swift in Sources */,
-				02F062A32B5705660015DD8F /* UpdateDataStorageProvider.swift in Sources */,
 				0202166E2B0BE79B003E2B07 /* WordPlayedUseCaseDTO.swift in Sources */,
 				026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */,
 				020216642B0BC540003E2B07 /* CountWordsPlayedUseCaseGateway.swift in Sources */,
 				02B1E7EA2B516C0B004ECE2C /* LivesTypeGameHelp.swift in Sources */,
 				026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */,
+				0266CF952B582321005144DE /* UseGameHelpUseCase.swift in Sources */,
 				02E065D32B52CB4E00C074FC /* FetchGameHelpUseCaseImpl.swift in Sources */,
 				0235E5D02B14D3E100829489 /* CountDollsUseCase.swift in Sources */,
 				0266CF8F2B581204005144DE /* MaxGameHelpUseCaseImpl.swift in Sources */,
@@ -1985,6 +1999,7 @@
 				020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */,
 				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
 				02F0629A2B5704280015DD8F /* UpdateGameHelpUseCaseGateway.swift in Sources */,
+				0266CF972B5823C1005144DE /* UseGameHelpUseCaseImpl.swift in Sources */,
 				02E065E52B52DC8A00C074FC /* SaveGameHelpUseCaseImpl.swift in Sources */,
 				02B1E7EE2B516C24004ECE2C /* RevelationsTypeGameHelp.swift in Sources */,
 				02F0629C2B5704B50015DD8F /* UpdateGameHelpUseCaseImpl.swift in Sources */,
@@ -2021,6 +2036,7 @@
 				026800802B0A877A00B30C26 /* FindByDataStorageProvider.swift in Sources */,
 				0202166B2B0BC605003E2B07 /* CountWordsPlayedUseCaseGatewayImpl.swift in Sources */,
 				0235E5DF2B14F75800829489 /* GetDollsUseCaseGatewayImpl.swift in Sources */,
+				0266CF982B5825E6005144DE /* UpdateDataStorageProvider.swift in Sources */,
 				0235E5FE2B167FBC00829489 /* HeadCodable.swift in Sources */,
 				02F062882B56BB4C0015DD8F /* SaveGameHelpUseCaseGatewayImpl.swift in Sources */,
 				020216862B0C044C003E2B07 /* SaveWordPlayedCodable.swift in Sources */,

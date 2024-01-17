@@ -33,8 +33,9 @@ public class HomePresenterImpl: HomePresenter {
     private let getDollsRandomUseCase: GetDollsRandomUseCase
     private let fetchGameHelpUseCase: FetchGameHelpUseCase
     private let maxGameHelpUseCase: MaxGameHelpUseCase
+    private let updateGameHelpUseCase: UpdateGameHelpUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxGameHelpUseCase: MaxGameHelpUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxGameHelpUseCase: MaxGameHelpUseCase, updateGameHelpUseCase: UpdateGameHelpUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
@@ -42,6 +43,7 @@ public class HomePresenterImpl: HomePresenter {
         self.getDollsRandomUseCase = getDollsRandomUseCase
         self.fetchGameHelpUseCase = fetchGameHelpUseCase
         self.maxGameHelpUseCase = maxGameHelpUseCase
+        self.updateGameHelpUseCase = updateGameHelpUseCase
     }
     
     
@@ -104,12 +106,10 @@ public class HomePresenterImpl: HomePresenter {
         getRandomDoll()
         
         Task {
-            
             if nextWord() != nil {
                 successFetchNextWord()
                 return
             }
-            
             await fetchNextWord()
         }
         
@@ -139,9 +139,7 @@ public class HomePresenterImpl: HomePresenter {
         
         let currentWord: Set<String> = Set( word.map({ String($0) }) )
         
-        if let revelationsCount = gameHelpPresenterDTO?.revelationsCount {
-            gameHelpPresenterDTO?.revelationsCount = revelationsCount - 1
-        }
+        decreaseRevelation()
         
         updateRevelationsCount()
         
@@ -178,7 +176,7 @@ public class HomePresenterImpl: HomePresenter {
                 try await signInAnonymously()
                 try await fetchRandomDolls()
             } catch let error {
-                debugPrint("Reload",error.localizedDescription)
+                debugPrint(#function, "Reload", error.localizedDescription)
                 if reload {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute:  { [weak self] in
                         self?.startGameAsync(false)
@@ -220,7 +218,7 @@ public class HomePresenterImpl: HomePresenter {
             }
             
         } catch let error {
-            debugPrint(error.localizedDescription)
+            debugPrint(#function, error.localizedDescription)
             errorFetchNextWords("Aviso", "Não foi possível carregar as próximas palavras. Favor tentar novamente mais tarde")
         }
     }
@@ -274,13 +272,26 @@ public class HomePresenterImpl: HomePresenter {
         revealLetterEndGame(indexesEndGameToReveal())
         revealDollEndGameFailure()
         decreaseLife()
+        updateCountLife()
     }
     
     private func decreaseLife() {
         if let livesCount = gameHelpPresenterDTO?.livesCount {
-            gameHelpPresenterDTO?.livesCount = livesCount - 1
+            let count = livesCount - 1
+            gameHelpPresenterDTO?.livesCount = count
+            updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(lives: count)))
         }
-        updateCountLife()
+    }
+    
+    private func updateGameHelp(_ gameHelpModel: GameHelpModel) {
+        guard let userID else { return }
+        Task {
+            do {
+                try await updateGameHelpUseCase.update(userID, gameHelp: gameHelpModel)
+            } catch let error {
+                debugPrint(#function, error.localizedDescription)
+            }
+        }
     }
     
     private func checkEndGameSuccess() {
@@ -326,7 +337,7 @@ public class HomePresenterImpl: HomePresenter {
         do {
             return try await countWordsPlayedUseCase.count(userID: userID)
         } catch let error {
-            debugPrint(error.localizedDescription)
+            debugPrint(#function, error.localizedDescription)
         }
         return 0
     }
@@ -341,7 +352,7 @@ public class HomePresenterImpl: HomePresenter {
                                                         revelationsCount: fetchGameHelpDTO?.revelationsCount ?? 0)
             updateGameHelp()
         } catch let error {
-            debugPrint(error.localizedDescription)
+            debugPrint(#function, error.localizedDescription)
         }
     }
     
@@ -358,7 +369,7 @@ public class HomePresenterImpl: HomePresenter {
                     timeConclusion: nil)
             )
         } catch let error {
-            debugPrint(error.localizedDescription)
+            debugPrint(#function, error.localizedDescription)
         }
     }
     
@@ -398,6 +409,14 @@ public class HomePresenterImpl: HomePresenter {
            let letter = joinedWordPlaying[index]
            return String(letter)
        })
+    }
+    
+    private func decreaseRevelation() {
+        if let revelationsCount = gameHelpPresenterDTO?.revelationsCount {
+            let count = revelationsCount - 1
+            gameHelpPresenterDTO?.revelationsCount = count
+            updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(revelations: count)))
+        }
     }
     
     
