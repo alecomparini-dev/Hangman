@@ -3,7 +3,6 @@
 
 import Foundation
 
-
 protocol SaveGameHelpUseCase {
     func save(_ userID: String, gameHelp: GameHelpModel) async throws
 }
