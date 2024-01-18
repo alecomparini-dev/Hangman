@@ -12,7 +12,7 @@ public protocol HintsPresenter {
     
     func getHint(_ index: Int) -> String
     
-    func revealHints()
+    func revealHint()
     
     func saveHintOpen(_ index: Int )
 }

@@ -98,8 +98,7 @@ public class HintsViewController: UIViewController {
         
         minusOneLabelAnimation(card.minusOneLabel.get)
         
-        hintsPresenter.revealHints()
-        decreaseHintsAndUpdateHome()
+        hintsPresenter.revealHint()
     }
     
     private func configStyleTipImageView(_ tipImageView: ViewBuilder) {
@@ -131,10 +130,6 @@ public class HintsViewController: UIViewController {
         interaction.pressed
     }
     
-    private func decreaseHintsAndUpdateHome() {
-        //TODO: REMOVER E PASSAR PARA O OUTPUT DO PRESENTER
-        
-    }
     
     private func hideBlurAnimation(_ blurHideTip: UIView) {
         let x = blurHideTip.layer.frame.maxX

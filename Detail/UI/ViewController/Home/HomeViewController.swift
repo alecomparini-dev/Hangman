@@ -338,11 +338,15 @@ public class HomeViewController: UIViewController {
         })
     }
     
+    private func updateHintsBottomSheet(_ count: String) {
+//        updateHintsCount()
+    }
+    
     func makeDataTransferTipVC() -> DataTransferHintsVC {
         return DataTransferHintsVC(
             userID: homePresenter.dataTransfer?.userID,
-            wordPresenterDTO: _homePresenter.getCurrentWord(),
-            gameHelpPresenterDTO: _homePresenter.dataTransfer?.gameHelpPresenterDTO,
+            wordPresenterDTO: homePresenter.getCurrentWord(),
+            gameHelpPresenterDTO: homePresenter.dataTransfer?.gameHelpPresenterDTO,
             updateHintsCompletion: updateHintsCount
         )
     }

@@ -22,7 +22,7 @@ public class HintsPresenterImpl: HintsPresenter {
     
 //  MARK: - PUBLIC AREA
     
-    public func revealHints() {
+    public func revealHint() {
         if var count = dataTransfer?.gameHelpPresenterDTO?.hintsCount {
             count -= 1
             dataTransfer?.gameHelpPresenterDTO?.hintsCount = count
