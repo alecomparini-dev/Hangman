@@ -95,7 +95,7 @@ public class HomePresenterImpl: HomePresenter {
         
         revealCorrectLetter(indexMatchInWordFromChosenLetter)
         
-        revealChosenKeyboardLetter(indexMatchInWordFromChosenLetter, letter)
+        markChosenKeyboardLetter(indexMatchInWordFromChosenLetter, letter)
         
         updateCountCorrectLetters()
         
@@ -113,7 +113,7 @@ public class HomePresenterImpl: HomePresenter {
             await fetchNextWord()
         }
         
-        updateGameHelp()
+        fetchGameHelpSuccess()
     }
     
     public func getCurrentWord() -> WordPresenterDTO? {
@@ -272,7 +272,7 @@ public class HomePresenterImpl: HomePresenter {
         revealLetterEndGame(indexesEndGameToReveal())
         revealDollEndGameFailure()
         decreaseLife()
-        updateCountLife()
+        updateLivesCount()
     }
     
     private func decreaseLife() {
@@ -350,7 +350,7 @@ public class HomePresenterImpl: HomePresenter {
             gameHelpPresenterDTO = GameHelpPresenterDTO(livesCount: fetchGameHelpDTO?.livesCount ?? 0,
                                                         hintsCount: fetchGameHelpDTO?.hintsCount ?? 0,
                                                         revelationsCount: fetchGameHelpDTO?.revelationsCount ?? 0)
-            updateGameHelp()
+            fetchGameHelpSuccess()
         } catch let error {
             debugPrint(#function, error.localizedDescription)
         }
@@ -458,10 +458,10 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func revealChosenKeyboardLetter(_ indexCorrect: [Int], _ keyboardLetter: String) {
+    private func markChosenKeyboardLetter(_ indexCorrect: [Int], _ keyboardLetter: String) {
         MainThread.exec { [weak self] in
             guard let self else {return}
-            delegateOutput?.revealChosenKeyboardLetter(isCorrect: !indexCorrect.isEmpty, keyboardLetter)
+            delegateOutput?.markChosenKeyboardLetter(isCorrect: !indexCorrect.isEmpty, keyboardLetter)
         }
     }
     
@@ -508,16 +508,16 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func updateGameHelp() {
+    private func fetchGameHelpSuccess() {
         MainThread.exec { [weak self] in
             guard let self else {return}
             if let gameHelpPresenterDTO {
-                delegateOutput?.updateGameHelp(gameHelpPresenterDTO)
+                delegateOutput?.fetchGameHelpSuccess(gameHelpPresenterDTO)
             }
         }
     }
     
-    private func updateCountLife() {
+    private func updateLivesCount() {
         MainThread.exec { [weak self] in
             guard let self else {return}
             delegateOutput?.updateLivesCount(gameHelpPresenterDTO?.livesCount.description ?? "0")

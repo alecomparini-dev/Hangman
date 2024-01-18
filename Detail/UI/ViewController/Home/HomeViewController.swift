@@ -27,6 +27,7 @@ public class HomeViewController: UIViewController {
 //  MARK: - INITIALIZERS
     
     var homePresenter: HomePresenter { _homePresenter }
+    
     private var _homePresenter: HomePresenter
     
     public init(homePresenter: HomePresenter) {
@@ -40,7 +41,7 @@ public class HomeViewController: UIViewController {
     
     var screen: HomeView { _screen }
     private lazy var _screen: HomeView = {
-        let comp = HomeView(_homePresenter.getLettersKeyboard())
+        let comp = HomeView(homePresenter.getLettersKeyboard())
         return comp
     }()
     
@@ -74,7 +75,7 @@ public class HomeViewController: UIViewController {
             return
         }
         
-        _homePresenter.startGame()
+        homePresenter.startGame()
     }
     
     
@@ -355,13 +356,13 @@ public class HomeViewController: UIViewController {
 
 
 
-//  MARK: - EXTENSION - HomePresenterOutput
 
+//  MARK: - EXTENSION - HomePresenterOutput
 extension HomeViewController: HomePresenterOutput {
-    public func updateGameHelp(_ gameHelp: GameHelpPresenterDTO) {
-        screen.gamePainelView.livesCountView.lifeLabel.get.text = gameHelp.livesCount.description
-        screen.gamePainelView.hintsCountView.hintsLabel.get.text = gameHelp.hintsCount.description
-        screen.gamePainelView.revelationsCountView.revealLabel.get.text = gameHelp.revelationsCount.description
+    public func fetchGameHelpSuccess(_ gameHelpPresenterDTO: GameHelpPresenterDTO) {
+        screen.gamePainelView.livesCountView.lifeLabel.get.text = gameHelpPresenterDTO.livesCount.description
+        screen.gamePainelView.hintsCountView.hintsLabel.get.text = gameHelpPresenterDTO.hintsCount.description
+        screen.gamePainelView.revelationsCountView.revealLabel.get.text = gameHelpPresenterDTO.revelationsCount.description
         updateMarkGameHelp()
         hideSkeletonGameHelp()
     }
@@ -427,7 +428,7 @@ extension HomeViewController: HomePresenterOutput {
         revealLetters(indexes, color: Theme.shared.currentTheme.error.withAlphaComponent(0.8), isCorrectLetters: false)
     }
 
-    public func revealChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String) {
+    public func markChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String) {
         guard let tag = K.Keyboard.letter[keyboardLetter.uppercased()] else { return }
         guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
         button.removeNeumorphism()

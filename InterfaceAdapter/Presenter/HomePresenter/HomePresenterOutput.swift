@@ -9,13 +9,13 @@ public protocol HomePresenterOutput: AnyObject {
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
     
-    func updateGameHelp(_ gameHelp: GameHelpPresenterDTO)
+    func fetchGameHelpSuccess(_ gameHelp: GameHelpPresenterDTO)
     func updateLivesCount(_ count: String)
     func updateHintsCount(_ count: String)
     func updateRevelationsCount(_ count: String)
     
     func updateCountCorrectLetters(_ count: String)
-    func revealChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String)
+    func markChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String)
     func revealCorrectLetters(_ indexes: [Int])
     func revealErrorLetters(_ indexes: [Int])
     
