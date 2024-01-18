@@ -9,7 +9,7 @@ extension HomeViewController: HangmanKeyboardViewDelegate {
         homePresenter.verifyMatchInWord(button.titleLabel?.text)
     }
     
-    func moreTipTapped() {
+    func hintsButtonTapped() {
         if homePresenter.isEndGame { return }
         coordinator?.gotoHints(makeDataTransferTipVC())
     }

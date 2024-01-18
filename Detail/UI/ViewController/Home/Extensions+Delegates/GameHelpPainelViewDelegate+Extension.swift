@@ -22,6 +22,7 @@ extension HomeViewController: GameHelpPainelViewDelegate {
     }
     
     func hintsCountViewTapped(_ tapGesture: TapGestureBuilder, _ view: ViewBuilder) {
+        if homePresenter.isEndGame { return }
         animations.hideDropdownAnimation(dropdown: screen.dropdownLifeView.get)
         animations.hideDropdownAnimation(dropdown: screen.dropdownRevealLetterView.get)
         coordinator?.gotoHints(makeDataTransferTipVC())

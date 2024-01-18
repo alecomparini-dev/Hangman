@@ -15,6 +15,8 @@ public protocol HintsViewControllerCoordinator: AnyObject {
 public class HintsViewController: UIViewController {
     public weak var coordinator: HintsViewControllerCoordinator?
     
+    private var card: CardHintsViewCell?
+    
     
 //  MARK: - INITIALIZERS
     private var hintsPresenter: HintsPresenter
@@ -88,20 +90,20 @@ public class HintsViewController: UIViewController {
     }
     
     private func setOpenedTipViewCell(_ card: CardHintsViewCell) {
-        card.imageTip.setImage(systemName: K.Images.hint)
+        card.imageHint.setImage(systemName: K.Images.hint)
         
-        card.lockedImageTip.setHidden(true)
+        card.lockedImageHint.setHidden(true)
         
-        configStyleTipImageView(card.tipImageView)
+        configStyleHintImageView(card.hintImageView)
         
         hideBlurAnimation(card.blurHideTip.get)
         
         minusOneLabelAnimation(card.minusOneLabel.get)
         
-        hintsPresenter.revealHint()
+//        hintsPresenter.openHint()
     }
     
-    private func configStyleTipImageView(_ tipImageView: ViewBuilder) {
+    private func configStyleHintImageView(_ tipImageView: ViewBuilder) {
         tipImageView.get.removeNeumorphism()
         tipImageView.setBackgroundColor(Theme.shared.currentTheme.secondary)
         configBorderTipImageView(tipImageView)
@@ -184,9 +186,8 @@ extension HintsViewController: UISheetPresentationControllerDelegate {
 extension HintsViewController: HintsPresenterOutput {
 
     public func revealHintsCompleted(_ count: Int) {
-        if let completion = hintsPresenter.dataTransfer?.updateHintsCompletion {
-            completion(count.description)
-        }
+        guard let card else { return }
+        setOpenedTipViewCell(card)
     }
    
 }
@@ -200,7 +201,8 @@ extension HintsViewController: DockDelegate {
     }
     
     public func cellCallback(_ dockBuilder: DockBuilder, _ index: Int) -> UIView {
-        let cardHintsViewCell = CardHintsViewCell(hintsPresenter.getHint(index))
+        let cardHintsViewCell = CardHintsViewCell(hintsPresenter.getHintByIndex(index))
+        cardHintsViewCell.setTag(index)
         cardHintsViewCell.delegate = self
         return cardHintsViewCell
     }
@@ -209,13 +211,16 @@ extension HintsViewController: DockDelegate {
         return nil
     }
     
+    
 }
 
 //  MARK: - EXTENSION - CardHintsViewCellDelegate
 extension HintsViewController: CardHintsViewCellDelegate {
     
-    func openHints(_ cardHitsViewCell: CardHintsViewCell) {
-        setOpenedTipViewCell(cardHitsViewCell)
+    func openHints(_ cardHintsViewCell: CardHintsViewCell) {
+        card = cardHintsViewCell
+        
+        hintsPresenter.openHint(indexHint: card?.tag)
     }
     
     

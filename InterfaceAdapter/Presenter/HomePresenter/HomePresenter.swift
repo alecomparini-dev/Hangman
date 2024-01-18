@@ -31,4 +31,6 @@ public protocol HomePresenter {
     
     func maxHelp(_ typeGameHelp: TypeGameHelp) -> Int
     
+    func setHintsCount(_ count: Int)
+    
 }

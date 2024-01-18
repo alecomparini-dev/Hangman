@@ -43,7 +43,7 @@ extension HomeCoordinator: HomeViewControllerCoordinator {
         coordinator = nil
     }
     
-    func gotoHints(_ dataTransfer: DataTransferHintsVC?) {
+    func gotoHints(_ dataTransfer: DataTransferHints?) {
         let hintsCoordinator = HintsCoordinator(navigationController)
         hintsCoordinator.dataTransfer = dataTransfer
         hintsCoordinator.start()

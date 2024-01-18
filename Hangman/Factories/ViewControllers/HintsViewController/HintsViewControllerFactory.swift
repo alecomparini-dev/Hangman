@@ -10,7 +10,7 @@ import DataStorageSDKMain
 
 class HintsViewControllerFactory: UIViewController {
     
-    static func make(_ dataTransfer: DataTransferHintsVC?) -> HintsViewController {
+    static func make(_ dataTransfer: DataTransferHints?) -> HintsViewController {
         
         let firebaseProvider = FirebaseDataStorageProvider()
         

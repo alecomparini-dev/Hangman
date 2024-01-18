@@ -166,6 +166,10 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
+    public func setHintsCount(_ count: Int) {
+        gameHelpPresenterDTO?.hintsCount = count
+    }
+    
     
     
 //  MARK: - PRIVATE AREA

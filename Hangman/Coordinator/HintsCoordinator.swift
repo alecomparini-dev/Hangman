@@ -10,7 +10,7 @@ class HintsCoordinator: NSObject, Coordinator {
     var coordinator: Coordinator?
     
     unowned var navigationController: NavigationController
-    var dataTransfer: DataTransferHintsVC?
+    var dataTransfer: DataTransferHints?
     
     required init(_ navigationController: NavigationController) {
         self.navigationController = navigationController

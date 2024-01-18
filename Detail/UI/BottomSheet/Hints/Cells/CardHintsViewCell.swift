@@ -7,7 +7,7 @@ import Handler
 import Presenter
 
 protocol CardHintsViewCellDelegate: AnyObject {
-    func openHints(_ cardTipsViewCell: CardHintsViewCell)
+    func openHints(_ cardHintsViewCell: CardHintsViewCell)
 }
 
 class CardHintsViewCell: UIView {
@@ -42,7 +42,7 @@ class CardHintsViewCell: UIView {
         return comp
     }()
     
-    lazy var tipImageView: ViewBuilder = {
+    lazy var hintImageView: ViewBuilder = {
         let comp = ViewBuilder()
             .setBorder({ build in
                 build
@@ -78,35 +78,35 @@ class CardHintsViewCell: UIView {
         return comp
     }()
     
-    lazy var imageTip: ImageViewBuilder = {
+    lazy var imageHint: ImageViewBuilder = {
         let comp = ImageViewBuilder()
             .setImage(systemName: K.Images.hintClose)
             .setTintColor(Theme.shared.currentTheme.onSecondary.withAlphaComponent(0.8))
             .setContentMode(.scaleAspectFit)
             .setConstraints { build in
                 build
-                    .setVerticalAlignmentY.equalTo(tipImageView.get, 2)
-                    .setHorizontalAlignmentX.equalTo(tipImageView.get, -1)
+                    .setVerticalAlignmentY.equalTo(hintImageView.get, 2)
+                    .setHorizontalAlignmentX.equalTo(hintImageView.get, -1)
                     .setSize.equalToConstant(26)
             }
         return comp
     }()
     
-    lazy var lockedImageTip: ImageViewBuilder = {
+    lazy var lockedImageHint: ImageViewBuilder = {
         let comp = ImageViewBuilder()
             .setImage(systemName: K.Images.hintLocked)
             .setTintColor(Theme.shared.currentTheme.onSecondary)
             .setContentMode(.scaleAspectFit)
             .setConstraints { build in
                 build
-                    .setTrailing.equalTo(imageTip.get, .trailing, 2)
-                    .setBottom.equalTo(imageTip.get, .bottom)
+                    .setTrailing.equalTo(imageHint.get, .trailing, 2)
+                    .setBottom.equalTo(imageHint.get, .bottom)
                     .setSize.equalToConstant(16)
             }
         return comp
     }()
     
-    lazy var tipLabel: LabelBuilder = {
+    lazy var hintLabel: LabelBuilder = {
         let comp = LabelBuilder(word)
             .setColor(.white)
             .setWeight(.bold)
@@ -115,7 +115,7 @@ class CardHintsViewCell: UIView {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSafeArea
-                    .setLeading.equalTo(tipImageView.get, .trailing, 12)
+                    .setLeading.equalTo(hintImageView.get, .trailing, 12)
                     .setTrailing.equalToSafeArea(-16)
             }
         return comp
@@ -130,7 +130,7 @@ class CardHintsViewCell: UIView {
             .setConstraints { build in
                 build
                     .setTop.setTrailing.setBottom.equalTo(backgroundView.get, 16)
-                    .setLeading.equalTo(tipLabel.get, .leading)
+                    .setLeading.equalTo(hintLabel.get, .leading)
             }
             .setActions { build in
                 build
@@ -150,7 +150,7 @@ class CardHintsViewCell: UIView {
             .setSize(18)
             .setConstraints { build in
                 build
-                    .setTop.setTrailing.equalTo(tipImageView.get)
+                    .setTop.setTrailing.equalTo(hintImageView.get)
             }
         return comp
     }()
@@ -164,20 +164,20 @@ class CardHintsViewCell: UIView {
     
     private func addElements() {
         backgroundView.add(insideTo: self)
-        tipImageView.add(insideTo: self)
-        imageTip.add(insideTo: tipImageView.get)
-        lockedImageTip.add(insideTo: tipImageView.get)
-        tipLabel.add(insideTo: self)
+        hintImageView.add(insideTo: self)
+        imageHint.add(insideTo: hintImageView.get)
+        lockedImageHint.add(insideTo: hintImageView.get)
+        hintLabel.add(insideTo: self)
         blurHideTip.add(insideTo: self)
         minusOneLabel.add(insideTo: self)
     }
     
     private func configConstraints() {
         backgroundView.applyConstraint()
-        tipImageView.applyConstraint()
-        imageTip.applyConstraint()
-        lockedImageTip.applyConstraint()
-        tipLabel.applyConstraint()
+        hintImageView.applyConstraint()
+        imageHint.applyConstraint()
+        lockedImageHint.applyConstraint()
+        hintLabel.applyConstraint()
         blurHideTip.applyConstraint()
         minusOneLabel.applyConstraint()
     }
