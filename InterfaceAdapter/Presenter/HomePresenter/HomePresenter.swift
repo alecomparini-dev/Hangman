@@ -5,11 +5,6 @@ import Foundation
 
 import Domain
 
-public enum TypeGameHelp {
-    case lives
-    case hints
-    case revelations
-}
 
 public protocol HomePresenter {
     typealias UserID = String

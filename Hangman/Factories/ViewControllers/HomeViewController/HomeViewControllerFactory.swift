@@ -89,6 +89,7 @@ class HomeViewControllerFactory: UIViewController {
                                               maxGameHelpUseCase: maxGameHelpUseCase, 
                                               updateGameHelpUseCase: updateGameHelpUseCase)
         
+        
         return HomeViewController(homePresenter: homePresenter)
         
     }
