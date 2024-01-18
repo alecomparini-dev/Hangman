@@ -33,15 +33,20 @@ public class HintsPresenterImpl: HintsPresenter {
 //  MARK: - PUBLIC AREA
     
     public func openHint(indexHint: Int?) {
-        if var count = dataTransfer?.gameHelpPresenterDTO?.hintsCount {
-            count -= 1
-            dataTransfer?.gameHelpPresenterDTO?.hintsCount = count
-            updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(hints: count)))
-            revealHintsCompleted(count)
-            if let indexHint {
-                saveHintOpen(indexHint)
-            }
-            
+        guard var count = dataTransfer?.gameHelpPresenterDTO?.hintsCount else { return }
+        
+        if count == 0 { return hintIsOver() }
+        
+        count -= 1
+        
+        dataTransfer?.gameHelpPresenterDTO?.hintsCount = count
+        
+        updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(hints: count)))
+        
+        revealHintsCompleted(count)
+        
+        if let indexHint {
+            saveHintOpen(indexHint)
         }
     }
     
@@ -54,8 +59,20 @@ public class HintsPresenterImpl: HintsPresenter {
     
     public func getHintByIndex(_ index: Int) -> String { dataTransfer?.wordPresenterDTO?.hints?[index] ?? "" }
     
+    public func verifyHintIsOver() {
+        guard let count = dataTransfer?.gameHelpPresenterDTO?.hintsCount else { return }
+        
+        if count > 0 { return }
+        
+        hintIsOver()
+    }
+    
     
 //  MARK: - PRIVATE AREA
+    private func configure() {
+        configDelegate()
+    }
+    
     private func configDelegate() {
         delegateOutput = dataTransfer?.delegate
     }
@@ -78,7 +95,18 @@ public class HintsPresenterImpl: HintsPresenter {
         MainThread.exec { [weak self] in
             guard let self else {return}
             _delegateOutput?.forEach({
+                print($0)
                 $0.revealHintsCompleted(count)
+            })
+        }
+    }
+    
+    private func hintIsOver() {
+        MainThread.exec { [weak self] in
+            guard let self else {return}
+            _delegateOutput?.forEach({
+                print($0)
+                $0.hintIsOver()
             })
         }
     }

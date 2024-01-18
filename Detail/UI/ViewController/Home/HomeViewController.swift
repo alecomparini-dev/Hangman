@@ -354,8 +354,6 @@ public class HomeViewController: UIViewController {
 }
 
 
-
-
 //  MARK: - EXTENSION - HintsPresenterOutput
 extension HomeViewController: HintsPresenterOutput {
     
@@ -364,6 +362,7 @@ extension HomeViewController: HintsPresenterOutput {
         updateHintsCount(count.description)
     }
     
+    public func hintIsOver() { }
     
 }
 
@@ -404,6 +403,7 @@ extension HomeViewController: HomePresenterOutput {
     
     public func revealHeadDoll(_ imageBase64: String) {
         screen.gallowsView.ropeCircleGallows.setHidden(true)
+        
         if let imgData = Data(base64Encoded: imageBase64) {
             let currentImage = screen.gallowsView.headImage.get
             AnimationHandler.transitionImage(currentImage, UIImage(data: imgData))
@@ -427,7 +427,9 @@ extension HomeViewController: HomePresenterOutput {
     
     public func revealDollEndGameFailure(_ imageBase64: String) {
         revealDollFailure(imageBase64)
+        
         changeGallowsColorEndGameFailure()
+        
         animateDollFailureToGround()
     }
     
@@ -440,9 +442,11 @@ extension HomeViewController: HomePresenterOutput {
     }
 
     public func markChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String) {
-        guard let tag = K.Keyboard.letter[keyboardLetter.uppercased()] else { return }
-        guard let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
+        guard let tag = K.Keyboard.letter[keyboardLetter.uppercased()],
+                let button = screen.gallowsKeyboardView.get.viewWithTag(tag) as? UIButton else { return }
+                
         button.removeNeumorphism()
+        
         if isCorrect {
             updateKeyboardLetterSuccess(button)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
