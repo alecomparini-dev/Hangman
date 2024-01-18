@@ -18,19 +18,21 @@ public class HintsPresenterImpl: HintsPresenter {
     }
     
     
-//  MARK: - INITIALIZERS
+    //  MARK: - INITIALIZERS
     
     public var dataTransfer: DataTransferHints?
     private let updateGameHelpUseCase: UpdateGameHelpUseCase
     
+    
     public init(updateGameHelpUseCase: UpdateGameHelpUseCase, dataTransfer: DataTransferHints?) {
         self.updateGameHelpUseCase = updateGameHelpUseCase
         self.dataTransfer = dataTransfer
-        configDelegate()
+        
+        configure()
     }
     
     
-//  MARK: - PUBLIC AREA
+    //  MARK: - PUBLIC AREA
     
     public func openHint(indexHint: Int?) {
         guard var count = dataTransfer?.gameHelpPresenterDTO?.hintsCount else { return }
@@ -43,17 +45,19 @@ public class HintsPresenterImpl: HintsPresenter {
         
         updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(hints: count)))
         
-        revealHintsCompleted(count)
+        revealHintsCompleted(count, indexHint ?? 0)
         
         if let indexHint {
             saveHintOpen(indexHint)
         }
     }
     
+    public func getLastHintsOpen() -> [Int] { dataTransfer?.lastHintsOpen ?? []}
+    
+    
     private func saveHintOpen(_ index: Int) {
         print("BOOOORAAAA GRAVAR", index)
     }
-    
     
     public func numberOfItemsCallback() -> Int { dataTransfer?.wordPresenterDTO?.hints?.count ?? 0  }
     
@@ -68,7 +72,8 @@ public class HintsPresenterImpl: HintsPresenter {
     }
     
     
-//  MARK: - PRIVATE AREA
+    
+    //  MARK: - PRIVATE AREA
     private func configure() {
         configDelegate()
     }
@@ -89,14 +94,13 @@ public class HintsPresenterImpl: HintsPresenter {
     }
     
     
-//  MARK: - PRIVATE OUTPUT AREA
+    //  MARK: - PRIVATE OUTPUT AREA
     
-    private func revealHintsCompleted(_ count: Int) {
+    private func revealHintsCompleted(_ count: Int, _ index: Int) {
         MainThread.exec { [weak self] in
             guard let self else {return}
             _delegateOutput?.forEach({
-                print($0)
-                $0.revealHintsCompleted(count)
+                $0.revealHintsCompleted(count, index)
             })
         }
     }
@@ -105,11 +109,11 @@ public class HintsPresenterImpl: HintsPresenter {
         MainThread.exec { [weak self] in
             guard let self else {return}
             _delegateOutput?.forEach({
-                print($0)
                 $0.hintIsOver()
             })
         }
     }
+    
 
     
 }

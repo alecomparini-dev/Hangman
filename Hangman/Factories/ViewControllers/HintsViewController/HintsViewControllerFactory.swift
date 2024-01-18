@@ -16,6 +16,9 @@ class HintsViewControllerFactory: UIViewController {
         
         let dataStorageSDK = HangmanDataStorageSDK(dataStorage: firebaseProvider)
         
+        
+        //MARK: - updateGameHelpUseCase
+        
         let updateGameGateway =  UpdateGameHelpUseCaseGatewayImpl(updateDataStorage: dataStorageSDK)
         
         let updateGameHelpUseCase = UpdateGameHelpUseCaseImpl(updateGameGateway: updateGameGateway)

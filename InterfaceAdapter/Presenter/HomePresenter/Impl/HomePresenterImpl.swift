@@ -9,9 +9,9 @@ import Handler
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: HomePresenterOutput?
     
-    private var revealLetterGame: Set<String> = []
-        
+    private var _lastHintsOpen: [Int]?
     private var gameHelpPresenterDTO: GameHelpPresenterDTO?
+    private var revealLetterGame: Set<String> = []
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
     private var _isEndGame = false
@@ -34,8 +34,10 @@ public class HomePresenterImpl: HomePresenter {
     private let fetchGameHelpUseCase: FetchGameHelpUseCase
     private let maxGameHelpUseCase: MaxGameHelpUseCase
     private let updateGameHelpUseCase: UpdateGameHelpUseCase
+    private let getLastOpenHintsUseCase: GetLastOpenHintsUseCase
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxGameHelpUseCase: MaxGameHelpUseCase, updateGameHelpUseCase: UpdateGameHelpUseCase) {
+    
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxGameHelpUseCase: MaxGameHelpUseCase, updateGameHelpUseCase: UpdateGameHelpUseCase,getLastOpenHintsUseCase: GetLastOpenHintsUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
@@ -44,6 +46,7 @@ public class HomePresenterImpl: HomePresenter {
         self.fetchGameHelpUseCase = fetchGameHelpUseCase
         self.maxGameHelpUseCase = maxGameHelpUseCase
         self.updateGameHelpUseCase = updateGameHelpUseCase
+        self.getLastOpenHintsUseCase = getLastOpenHintsUseCase
     }
     
     
@@ -72,6 +75,12 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     public var gameHelpPresenter: GameHelpPresenterDTO? { gameHelpPresenterDTO }
+    
+    public var lastHintsOpen: [Int] { _lastHintsOpen ?? []}
+    
+    public func setLastHintsOpen(_ index: Int) {
+        _lastHintsOpen?.append(index)
+    }
     
     
 //  MARK: - PUBLIC AREA
@@ -106,10 +115,13 @@ public class HomePresenterImpl: HomePresenter {
         getRandomDoll()
         
         Task {
+            await fetchLastHintsOpen()
+            
             if nextWord() != nil {
                 successFetchNextWord()
                 return
             }
+            
             await fetchNextWord()
         }
         
@@ -190,6 +202,17 @@ public class HomePresenterImpl: HomePresenter {
             }
             await fetchNextWord()
             await fetchGameHelp()
+            await fetchLastHintsOpen()
+        }
+    }
+    
+    private func fetchLastHintsOpen() async {
+        if let userID = dataTransfer?.userID {
+            do {
+                _lastHintsOpen = try await getLastOpenHintsUseCase.get(userID)
+            } catch let error {
+                debugPrint(#function, error.localizedDescription)
+            }
         }
     }
     
@@ -221,10 +244,17 @@ public class HomePresenterImpl: HomePresenter {
                 successFetchNextWord()
             }
             
+            try await setLastHintsOpen()
+            
+            
         } catch let error {
             debugPrint(#function, error.localizedDescription)
             errorFetchNextWords("Aviso", "Não foi possível carregar as próximas palavras. Favor tentar novamente mais tarde")
         }
+    }
+    
+    private func setLastHintsOpen() async throws {
+        
     }
     
     private func checkMatchInWordFromChosenLetter(_ letter: String) -> [Int] {

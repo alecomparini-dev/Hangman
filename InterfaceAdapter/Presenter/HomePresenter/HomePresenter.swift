@@ -33,4 +33,8 @@ public protocol HomePresenter {
     
     func setHintsCount(_ count: Int)
     
+    var lastHintsOpen: [Int] { get }
+    
+    func setLastHintsOpen(_ index: Int)
+    
 }

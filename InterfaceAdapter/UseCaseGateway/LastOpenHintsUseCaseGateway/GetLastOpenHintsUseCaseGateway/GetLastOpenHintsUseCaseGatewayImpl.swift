@@ -22,7 +22,7 @@ public class GetLastOpenHintsUseCaseGatewayImpl: GetLastOpenHintsUseCaseGateway 
         
         let dictResult: [Dictionary<String,Any>]? = try await fetchDataStorage.fetch(collection)
         
-        guard let result = dictResult else { return [] }
+        guard let result = dictResult?.first else { return [] }
         
         let dictData: Data = try JSONSerialization.data(withJSONObject: result, options: .fragmentsAllowed)
         
