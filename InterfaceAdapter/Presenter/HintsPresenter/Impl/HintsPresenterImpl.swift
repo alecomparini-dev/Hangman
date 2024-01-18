@@ -8,8 +8,6 @@ import Handler
 public class HintsPresenterImpl: HintsPresenter {
     private var _delegateOutput: [HintsPresenterOutput]? = []
     
-    private var lastHintsOpen: [Int]?
-    
     public var delegateOutput: HintsPresenterOutput? {
         get { nil }
         set { if let newValue { _delegateOutput?.append(newValue) } }
@@ -24,12 +22,12 @@ public class HintsPresenterImpl: HintsPresenter {
     
     public var dataTransfer: DataTransferHints?
     private let updateGameHelpUseCase: UpdateGameHelpUseCase
-    private let getLastOpenHintsUseCase: GetLastOpenHintsUseCase
     
-    public init(updateGameHelpUseCase: UpdateGameHelpUseCase, getLastOpenHintsUseCase: GetLastOpenHintsUseCase, dataTransfer: DataTransferHints?) {
+    
+    public init(updateGameHelpUseCase: UpdateGameHelpUseCase, dataTransfer: DataTransferHints?) {
         self.updateGameHelpUseCase = updateGameHelpUseCase
         self.dataTransfer = dataTransfer
-        self.getLastOpenHintsUseCase = getLastOpenHintsUseCase
+        
         configure()
     }
     
@@ -47,27 +45,15 @@ public class HintsPresenterImpl: HintsPresenter {
         
         updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(hints: count)))
         
-        revealHintsCompleted(count)
+        revealHintsCompleted(count, indexHint ?? 0)
         
         if let indexHint {
             saveHintOpen(indexHint)
         }
     }
     
-    public func getLastHintsOpen() -> [Int] { lastHintsOpen ?? []}
+    public func getLastHintsOpen() -> [Int] { dataTransfer?.lastHintsOpen ?? []}
     
-    private func fetchLastHintsOpen() {
-        if let userID = dataTransfer?.userID {
-            Task {
-                do {
-                    lastHintsOpen = try await getLastOpenHintsUseCase.get(userID)
-                } catch let error {
-                    debugPrint(#function, error.localizedDescription)
-                }
-                getLastHintsOpenSuccess()
-            }
-        }
-    }
     
     private func saveHintOpen(_ index: Int) {
         print("BOOOORAAAA GRAVAR", index)
@@ -89,7 +75,6 @@ public class HintsPresenterImpl: HintsPresenter {
     
     //  MARK: - PRIVATE AREA
     private func configure() {
-        fetchLastHintsOpen()
         configDelegate()
     }
     
@@ -111,11 +96,11 @@ public class HintsPresenterImpl: HintsPresenter {
     
     //  MARK: - PRIVATE OUTPUT AREA
     
-    private func revealHintsCompleted(_ count: Int) {
+    private func revealHintsCompleted(_ count: Int, _ index: Int) {
         MainThread.exec { [weak self] in
             guard let self else {return}
             _delegateOutput?.forEach({
-                $0.revealHintsCompleted(count)
+                $0.revealHintsCompleted(count, index)
             })
         }
     }
@@ -129,16 +114,6 @@ public class HintsPresenterImpl: HintsPresenter {
         }
     }
     
-    private func getLastHintsOpenSuccess() {
-        MainThread.exec { [weak self] in
-            guard let self else {return}
-            _delegateOutput?.forEach({
-                $0.getLastHintsOpen()
-            })
-        }
-        
-    }
-
 
     
 }

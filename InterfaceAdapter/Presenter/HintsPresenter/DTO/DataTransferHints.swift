@@ -8,15 +8,16 @@ public struct DataTransferHints {
     public typealias closureUpdateHintsAlias = (_ count: Int) -> Void
     
     public var userID: String?
+    public var lastHintsOpen: [Int]?
     public var wordPresenterDTO: WordPresenterDTO?
     public var gameHelpPresenterDTO: GameHelpPresenterDTO?
     public var delegate: HintsPresenterOutput
     
-    public init(userID: String? = nil, wordPresenterDTO: WordPresenterDTO? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil, delegate: HintsPresenterOutput) {
+    public init(userID: String? = nil, lastHintsOpen: [Int]? = nil, wordPresenterDTO: WordPresenterDTO? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil, delegate: HintsPresenterOutput) {
         self.userID = userID
+        self.lastHintsOpen = lastHintsOpen
         self.wordPresenterDTO = wordPresenterDTO
         self.gameHelpPresenterDTO = gameHelpPresenterDTO
         self.delegate = delegate
     }
-    
 }

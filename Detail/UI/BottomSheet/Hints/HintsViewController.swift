@@ -177,16 +177,13 @@ extension HintsViewController: UISheetPresentationControllerDelegate {
 
 //  MARK: - EXTENSION - UISheetPresentationControllerDelegate
 extension HintsViewController: HintsPresenterOutput {
-    public func getLastHintsOpen() {
-        screen.cardsHintsDock.reload()
-    }
     
     public func hintIsOver() {
         print("criar tela para quando terminar as dicas ")
     }
     
 
-    public func revealHintsCompleted(_ count: Int) {
+    public func revealHintsCompleted(_ count: Int, _ index: Int) {
         guard let card else { return }
         setOpenedTipViewCell(card)
     }

@@ -87,6 +87,7 @@ public class HomeViewController: UIViewController {
     func makeDataTransferTipVC() -> DataTransferHints {
         return DataTransferHints(
             userID: homePresenter.dataTransfer?.userID,
+            lastHintsOpen: homePresenter.lastHintsOpen,
             wordPresenterDTO: homePresenter.getCurrentWord(),
             gameHelpPresenterDTO: homePresenter.dataTransfer?.gameHelpPresenterDTO,
             delegate: self
@@ -360,8 +361,9 @@ public class HomeViewController: UIViewController {
 
 //  MARK: - EXTENSION - HintsPresenterOutput
 extension HomeViewController: HintsPresenterOutput {
-    public func revealHintsCompleted(_ count: Int) {
+    public func revealHintsCompleted(_ count: Int, _ index: Int) {
         homePresenter.setHintsCount(count)
+        homePresenter.setLastHintsOpen(index)
         updateHintsCount(count.description)
     }
     
