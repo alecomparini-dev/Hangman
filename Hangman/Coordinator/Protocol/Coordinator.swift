@@ -8,8 +8,6 @@ protocol Coordinator: AnyObject {
     
     var navigationController: NavigationController { get }
     
-    var dataTransfer: Any? { get set }
-    
     init(_ navigationController: NavigationController)
     
     func start()

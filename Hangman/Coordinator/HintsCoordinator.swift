@@ -4,11 +4,13 @@
 import UIKit
 import Detail
 import CustomComponentsSDK
+import Presenter
 
 class HintsCoordinator: NSObject, Coordinator {
     var coordinator: Coordinator?
+    
     unowned var navigationController: NavigationController
-    var dataTransfer: Any?
+    var dataTransfer: DataTransferHintsVC?
     
     required init(_ navigationController: NavigationController) {
         self.navigationController = navigationController
@@ -16,8 +18,7 @@ class HintsCoordinator: NSObject, Coordinator {
     
     func start() {
         coordinator = self
-        let controller = HintsViewController()
-        controller.setDataTransfer(dataTransfer)
+        let controller = HintsViewControllerFactory.make(dataTransfer)
         controller.coordinator = self
         
         guard let currentScene = CurrentWindow.get else { return }

@@ -33,12 +33,12 @@ public struct K {
     }
     
     public struct Collections {
+        public static let hangmanWords = "hangmanWords"
         public static let dolls = "dolls"
         public static let users = "users"
         public static let wordsPlayed = "wordsPlayed"
-        public static let gameHelp = "gameHelp"
         public static let game = "game"
-        
+                
         public struct Documents {
             public static let help = "help"
         }
