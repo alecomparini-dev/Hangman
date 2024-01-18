@@ -6,13 +6,12 @@ import Foundation
 public protocol HintsPresenter {
     var delegateOutput: HintsPresenterOutput? { get set }
     
-    var dataTransfer: DataTransferHintsVC? { get set }
+    var dataTransfer: DataTransferHints? { get set }
     
     func numberOfItemsCallback() -> Int
     
-    func getHint(_ index: Int) -> String
+    func getHintByIndex(_ index: Int) -> String
     
-    func revealHint()
+    func openHint(indexHint: Int?)
     
-    func saveHintOpen(_ index: Int )
 }

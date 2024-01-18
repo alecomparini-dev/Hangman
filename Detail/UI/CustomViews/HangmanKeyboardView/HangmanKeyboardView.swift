@@ -8,7 +8,7 @@ import Handler
 
 protocol HangmanKeyboardViewDelegate: AnyObject {
     func letterButtonTapped(_ button: UIButton)
-    func moreTipTapped()
+    func hintsButtonTapped()
 }
 
 class HangmanKeyboardView: ViewBuilder {
@@ -110,8 +110,10 @@ class HangmanKeyboardView: ViewBuilder {
     }()
     
 
-//  MARK: - LAZY MORE TIP
-    lazy var moreTipButton: ButtonImageBuilder = {
+    
+//  MARK: - LAZY MORE HINT
+    
+    lazy var moreHintButton: ButtonImageBuilder = {
         let img = ImageViewBuilder()
             .setImage(systemName: K.Images.hint)
             .setContentMode(.center)
@@ -121,9 +123,12 @@ class HangmanKeyboardView: ViewBuilder {
             .setImagePlacement(.trailing)
             .setImageSize(12)
         addNeumorphismDefault(comp, color: Theme.shared.currentTheme.secondary)
-        comp.get.addTarget(self, action: #selector(moreTipTapped), for: .touchUpInside)
+        comp.get.addTarget(self, action: #selector(hintsButtonTapped), for: .touchUpInside)
         return comp
     }()
+    @objc private func hintsButtonTapped() {
+        delegate?.hintsButtonTapped()
+    }
     
 
 //  MARK: - PRIVATE AREA
@@ -155,7 +160,7 @@ class HangmanKeyboardView: ViewBuilder {
     }
 
     private func addHintToRightHorizontalStack1() {
-        moreTipButton.add(insideTo: rightHorizontalStack1.get)
+        moreHintButton.add(insideTo: rightHorizontalStack1.get)
     }
     
     private func configConstraints() {
@@ -198,6 +203,9 @@ class HangmanKeyboardView: ViewBuilder {
         buttonDefault.get.addTarget(self, action: #selector(letterButtonTapped), for: .touchUpInside)
         return buttonDefault
     }
+    @objc private func letterButtonTapped(_ button: UIButton) {
+        delegate?.letterButtonTapped(button)
+    }
     
     private func createButtonDefault(_ title: String) -> ButtonImageBuilder {
         return ButtonImageBuilder()
@@ -227,16 +235,7 @@ class HangmanKeyboardView: ViewBuilder {
             .apply()
     }
     
-
-
-//  MARK: - OBJEC FUNCTIONS AREA
-    @objc private func moreTipTapped() {
-        delegate?.moreTipTapped()
-    }
-    
-    @objc private func letterButtonTapped(_ button: UIButton) {
-        delegate?.letterButtonTapped(button)
-    }
+   
     
 }
 

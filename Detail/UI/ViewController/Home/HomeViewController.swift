@@ -9,7 +9,7 @@ import Presenter
 
 public protocol HomeViewControllerCoordinator: AnyObject {
     func gotoHomeNextWord(_ dataTransfer: DataTransferHomeVC)
-    func gotoHints(_ dataTransfer: DataTransferHintsVC?)
+    func gotoHints(_ dataTransfer: DataTransferHints?)
 }
 
 
@@ -76,6 +76,17 @@ public class HomeViewController: UIViewController {
         }
         
         homePresenter.startGame()
+    }
+    
+    
+//  MARK: - PUBLIC AREA
+    func makeDataTransferTipVC() -> DataTransferHints {
+        return DataTransferHints(
+            userID: homePresenter.dataTransfer?.userID,
+            wordPresenterDTO: homePresenter.getCurrentWord(),
+            gameHelpPresenterDTO: homePresenter.dataTransfer?.gameHelpPresenterDTO,
+            delegate: self
+        )
     }
     
     
@@ -339,22 +350,22 @@ public class HomeViewController: UIViewController {
         })
     }
     
-    private func updateHintsBottomSheet(_ count: String) {
-//        updateHintsCount()
-    }
-    
-    func makeDataTransferTipVC() -> DataTransferHintsVC {
-        return DataTransferHintsVC(
-            userID: homePresenter.dataTransfer?.userID,
-            wordPresenterDTO: homePresenter.getCurrentWord(),
-            gameHelpPresenterDTO: homePresenter.dataTransfer?.gameHelpPresenterDTO,
-            updateHintsCompletion: updateHintsCount
-        )
-    }
     
 }
 
 
+
+
+//  MARK: - EXTENSION - HintsPresenterOutput
+extension HomeViewController: HintsPresenterOutput {
+    
+    public func revealHintsCompleted(_ count: Int) {
+        homePresenter.setHintsCount(count)
+        updateHintsCount(count.description)
+    }
+    
+    
+}
 
 
 //  MARK: - EXTENSION - HomePresenterOutput

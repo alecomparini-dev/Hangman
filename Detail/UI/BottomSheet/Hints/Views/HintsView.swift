@@ -48,14 +48,14 @@ class HintsView: UIView {
             .setSize(16)
             .setConstraints { build in
                 build
-                    .setVerticalAlignmentY.equalTo(titleTipLabel.get)
-                    .setLeading.equalTo(titleTipLabel.get, .leading, 79)
+                    .setVerticalAlignmentY.equalTo(titleHintLabel.get)
+                    .setLeading.equalTo(titleHintLabel.get, .leading, 79)
             }
         return comp
     }()
     
     
-    lazy var titleTipLabel: LabelBuilder = {
+    lazy var titleHintLabel: LabelBuilder = {
         let comp = LabelBuilder()
             .setTextAttributed({ build in
                 build
@@ -82,7 +82,7 @@ class HintsView: UIView {
             .setContentMode(.center)
             .setConstraints { build in
                 build
-                    .setVerticalAlignmentY.equalTo(titleTipLabel.get, -2)
+                    .setVerticalAlignmentY.equalTo(titleHintLabel.get, -2)
                     .setTrailing.equalToSafeArea(-16)
                     .setSize.equalToConstant(40)
             }
@@ -110,7 +110,7 @@ class HintsView: UIView {
             })
             .setConstraints { build in
                 build
-                    .setTop.equalTo(titleTipLabel.get, .bottom, 16)
+                    .setTop.equalTo(titleHintLabel.get, .bottom, 16)
                     .setLeading.setTrailing.equalToSafeArea(16)
                     .setBottom.equalToSuperView
             }
@@ -126,7 +126,7 @@ class HintsView: UIView {
 
     private func addElements() {
         backgroundView.add(insideTo: self)
-        titleTipLabel.add(insideTo: self)
+        titleHintLabel.add(insideTo: self)
         handImage.add(insideTo: self)
         downButton.add(insideTo: self)
         cardsHintsDock.add(insideTo: self)
@@ -134,7 +134,7 @@ class HintsView: UIView {
 
     private func configConstraints() {
         backgroundView.applyConstraint()
-        titleTipLabel.applyConstraint()
+        titleHintLabel.applyConstraint()
         handImage.applyConstraint()
         downButton.applyConstraint()
         cardsHintsDock.applyConstraint()
