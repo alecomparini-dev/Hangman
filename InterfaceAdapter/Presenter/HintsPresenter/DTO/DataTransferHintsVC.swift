@@ -7,13 +7,13 @@ import Domain
 public struct DataTransferHintsVC {
     public typealias closureUpdateHintsAlias = (_ count: String) -> Void
     
+    public var userID: String?
     public var wordPresenterDTO: WordPresenterDTO?
     public var gameHelpPresenterDTO: GameHelpPresenterDTO?
     public var updateHintsCompletion: closureUpdateHintsAlias?
     
-    public init(wordPresenterDTO: WordPresenterDTO? = nil, 
-                gameHelpPresenterDTO: GameHelpPresenterDTO? = nil,
-                updateHintsCompletion: closureUpdateHintsAlias? = nil) {
+    public init(userID: String?, wordPresenterDTO: WordPresenterDTO? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil, updateHintsCompletion: closureUpdateHintsAlias? = nil) {
+        self.userID = userID
         self.wordPresenterDTO = wordPresenterDTO
         self.gameHelpPresenterDTO = gameHelpPresenterDTO
         self.updateHintsCompletion = updateHintsCompletion

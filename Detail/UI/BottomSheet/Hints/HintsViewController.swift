@@ -15,10 +15,12 @@ public protocol HintsViewControllerCoordinator: AnyObject {
 public class HintsViewController: UIViewController {
     public weak var coordinator: HintsViewControllerCoordinator?
     
-    private var dataTransfer: DataTransferHintsVC?
-    private var word: WordPresenterDTO?
     
-    public init() {
+//  MARK: - INITIALIZERS
+    private var hintsPresenter: HintsPresenter
+    
+    public init(hintsPresenter: HintsPresenter) {
+        self.hintsPresenter = hintsPresenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -55,17 +57,7 @@ public class HintsViewController: UIViewController {
         super.viewDidDisappear(animated)
         coordinator?.freeMemoryCoordinator()
     }
-    
-    
-//  MARK: - DATA TRANSFER
-    public func setDataTransfer(_ data: Any?) {
-        if let data = data as? DataTransferHintsVC {
-            dataTransfer = data
-            word = data.wordPresenterDTO
-            screen.cardsHintsDock.reload()
-        }
-    }
-    
+        
     
 //  MARK: - PRIVATE AREA
     private func configure() {
@@ -76,6 +68,7 @@ public class HintsViewController: UIViewController {
     
     private func configDelegate() {
         screen.delegate = self
+        hintsPresenter.delegateOutput = self
         screen.cardsHintsDock.setDelegate(self)
     }
 
@@ -105,6 +98,7 @@ public class HintsViewController: UIViewController {
         
         minusOneLabelAnimation(card.minusOneLabel.get)
         
+        hintsPresenter.revealHints()
         decreaseHintsAndUpdateHome()
     }
     
@@ -138,13 +132,8 @@ public class HintsViewController: UIViewController {
     }
     
     private func decreaseHintsAndUpdateHome() {
-        if var hintsCount = dataTransfer?.gameHelpPresenterDTO?.hintsCount {
-            hintsCount -= 1
-            dataTransfer?.gameHelpPresenterDTO?.hintsCount = hintsCount
-            if let completion = dataTransfer?.updateHintsCompletion {
-                completion(hintsCount.description)
-            }
-        }
+        //TODO: REMOVER E PASSAR PARA O OUTPUT DO PRESENTER
+        
     }
     
     private func hideBlurAnimation(_ blurHideTip: UIView) {
@@ -181,7 +170,6 @@ extension HintsViewController: HintsViewDelegate {
         coordinator?.gotoHome(self)
     }
     
-    
 }
 
 
@@ -197,15 +185,27 @@ extension HintsViewController: UISheetPresentationControllerDelegate {
     
 }
 
+//  MARK: - EXTENSION - UISheetPresentationControllerDelegate
+extension HintsViewController: HintsPresenterOutput {
+
+    public func revealHintsCompleted(_ count: Int) {
+        if let completion = hintsPresenter.dataTransfer?.updateHintsCompletion {
+            completion(count.description)
+        }
+    }
+   
+}
+
 
 //  MARK: - EXTENSION - DockDelegate
 extension HintsViewController: DockDelegate {
+    
     public func numberOfItemsCallback(_ dockBuilder: DockBuilder) -> Int {
-        return word?.hints?.count ?? 0
+        return hintsPresenter.numberOfItemsCallback()
     }
     
     public func cellCallback(_ dockBuilder: DockBuilder, _ index: Int) -> UIView {
-        let cardHintsViewCell = CardHintsViewCell(word?.hints?[index] ?? "")
+        let cardHintsViewCell = CardHintsViewCell(hintsPresenter.getHint(index))
         cardHintsViewCell.delegate = self
         return cardHintsViewCell
     }

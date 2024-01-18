@@ -4,18 +4,19 @@
 import UIKit
 
 import AuthenticationSDKMain
+import DataStorageSDKMain
 import Detail
 import Domain
+import Handler
 import Presenter
 import UseCaseGateway
-import DataStorageSDKMain
 
 
 class HomeViewControllerFactory: UIViewController {
     
     static func make() -> HomeViewController {
         
-        let fetchAtIDDataStorage = HangmanFirebaseDataStorageProvider(collection: "hangmanWords")
+        let fetchAtIDDataStorage = HangmanFirebaseDataStorageProvider(collection: K.Collections.hangmanWords)
         
         let nextWordsGateway = DataStorageFetchAtIDNexWordsUseCaseGatewayImpl(fetchAtIDDataStorage: fetchAtIDDataStorage)
         
@@ -51,7 +52,7 @@ class HomeViewControllerFactory: UIViewController {
         
         //MARK: - getDollsRandomUseCase
 
-        let fetchInDataStorage = HangmanFirebaseDataStorageProvider(collection: "dolls")
+        let fetchInDataStorage = HangmanFirebaseDataStorageProvider(collection: K.Collections.dolls)
           
         let getDollsGateway = GetDollsUseCaseGatewayImpl(fetchInDataStorage: fetchInDataStorage)
         

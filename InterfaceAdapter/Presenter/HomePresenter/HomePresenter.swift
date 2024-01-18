@@ -13,6 +13,7 @@ public enum TypeGameHelp {
 
 public protocol HomePresenter {
     typealias UserID = String
+    
     var delegateOutput: HomePresenterOutput? { get set }
     
     var dataTransfer: DataTransferHomeVC? { get set }
