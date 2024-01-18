@@ -22,6 +22,9 @@ class HangmanLetterInWordView: ViewBuilder {
         configUnderlineGradient()
     }
     
+    deinit {
+        _gradient = nil
+    }
     
 //  MARK: - GET PROPERTIES
     var gradient: GradientBuilder? { _gradient }

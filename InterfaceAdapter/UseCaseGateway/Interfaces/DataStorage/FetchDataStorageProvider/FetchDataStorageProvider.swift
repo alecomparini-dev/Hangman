@@ -5,5 +5,5 @@ import Foundation
 
 public protocol FetchDataStorageProvider {
     func fetch<T>() async throws -> [T]
-    func fetch<T>(_ document: String) async throws -> [T]
+    func fetch<T>(_ collection: String) async throws -> [T]
 }
