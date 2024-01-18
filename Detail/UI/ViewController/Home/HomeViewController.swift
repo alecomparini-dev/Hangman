@@ -45,6 +45,10 @@ public class HomeViewController: UIViewController {
         return comp
     }()
     
+    deinit {
+        lettersInWord = []
+        dataTransfer = nil
+    }
     
 //  MARK: - LIFE CICLE
     

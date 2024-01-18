@@ -29,6 +29,11 @@
 		0202C1A22B55B9F6004B5DCC /* SignInAnonymousUseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C1A12B55B9F6004B5DCC /* SignInAnonymousUseCaseFactory.swift */; };
 		021B63162B1133E4002498DA /* DataTransferHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B63142B11328E002498DA /* DataTransferHomeVC.swift */; };
 		021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */; };
+		021EA76A2B59A06F006B80C0 /* GetLastOpenHintsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EA7692B59A06F006B80C0 /* GetLastOpenHintsUseCase.swift */; };
+		021EA76C2B59A08A006B80C0 /* GetLastOpenHintsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EA76B2B59A08A006B80C0 /* GetLastOpenHintsUseCaseGateway.swift */; };
+		021EA76E2B59A19F006B80C0 /* GetLastOpenHintsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EA76D2B59A19F006B80C0 /* GetLastOpenHintsUseCaseImpl.swift */; };
+		021EA7732B59A2AC006B80C0 /* GetLastOpenHintsUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EA7712B59A2A6006B80C0 /* GetLastOpenHintsUseCaseGatewayImpl.swift */; };
+		021EA7772B59A68B006B80C0 /* LastOpenHintsCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EA7752B59A5D4006B80C0 /* LastOpenHintsCodable.swift */; };
 		022188D92B1685D800440761 /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
 		022188DA2B16860700440761 /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
 		022188DB2B16860700440761 /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -351,6 +356,11 @@
 		0202C19E2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreenViewControllerFactory.swift; sourceTree = "<group>"; };
 		0202C1A12B55B9F6004B5DCC /* SignInAnonymousUseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseFactory.swift; sourceTree = "<group>"; };
 		021B63142B11328E002498DA /* DataTransferHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHomeVC.swift; sourceTree = "<group>"; };
+		021EA7692B59A06F006B80C0 /* GetLastOpenHintsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLastOpenHintsUseCase.swift; sourceTree = "<group>"; };
+		021EA76B2B59A08A006B80C0 /* GetLastOpenHintsUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLastOpenHintsUseCaseGateway.swift; sourceTree = "<group>"; };
+		021EA76D2B59A19F006B80C0 /* GetLastOpenHintsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLastOpenHintsUseCaseImpl.swift; sourceTree = "<group>"; };
+		021EA7712B59A2A6006B80C0 /* GetLastOpenHintsUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLastOpenHintsUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
+		021EA7752B59A5D4006B80C0 /* LastOpenHintsCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastOpenHintsCodable.swift; sourceTree = "<group>"; };
 		0222DD9F2B48C47F009EE10C /* DropdownRevelationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownRevelationsView.swift; sourceTree = "<group>"; };
 		0222DDA22B49D657009EE10C /* BuyLifePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyLifePainelView.swift; sourceTree = "<group>"; };
 		0222DDA42B4AF3EA009EE10C /* AdLifePainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdLifePainelView.swift; sourceTree = "<group>"; };
@@ -700,6 +710,73 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		021EA7642B599F04006B80C0 /* LastOpenHintsUseCases */ = {
+			isa = PBXGroup;
+			children = (
+				021EA7652B599F28006B80C0 /* GetLastOpenHintsUseCase */,
+				021EA7672B599F48006B80C0 /* SaveLastOpenHintsUseCase */,
+				021EA7662B599F39006B80C0 /* DeleteLastOpenHintsUseCase */,
+			);
+			path = LastOpenHintsUseCases;
+			sourceTree = "<group>";
+		};
+		021EA7652B599F28006B80C0 /* GetLastOpenHintsUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				021EA7682B59A064006B80C0 /* Impl */,
+				021EA7692B59A06F006B80C0 /* GetLastOpenHintsUseCase.swift */,
+				021EA76B2B59A08A006B80C0 /* GetLastOpenHintsUseCaseGateway.swift */,
+			);
+			path = GetLastOpenHintsUseCase;
+			sourceTree = "<group>";
+		};
+		021EA7662B599F39006B80C0 /* DeleteLastOpenHintsUseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DeleteLastOpenHintsUseCase;
+			sourceTree = "<group>";
+		};
+		021EA7672B599F48006B80C0 /* SaveLastOpenHintsUseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SaveLastOpenHintsUseCase;
+			sourceTree = "<group>";
+		};
+		021EA7682B59A064006B80C0 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				021EA76D2B59A19F006B80C0 /* GetLastOpenHintsUseCaseImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		021EA76F2B59A1EC006B80C0 /* GetLastOpenHintsUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				021EA7712B59A2A6006B80C0 /* GetLastOpenHintsUseCaseGatewayImpl.swift */,
+			);
+			path = GetLastOpenHintsUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		021EA7702B59A1FB006B80C0 /* LastOpenHintsUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				021EA7742B59A5A5006B80C0 /* Codable */,
+				021EA76F2B59A1EC006B80C0 /* GetLastOpenHintsUseCaseGateway */,
+			);
+			path = LastOpenHintsUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		021EA7742B59A5A5006B80C0 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				021EA7752B59A5D4006B80C0 /* LastOpenHintsCodable.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
 		0222DDA12B49D640009EE10C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1067,7 @@
 				0235E5C32B14CA9B00829489 /* DollsUseCases */,
 				026938E52B090C3B0023073B /* GetNextWordsUseCase */,
 				0202165E2B0BC36F003E2B07 /* WordsPlayedUseCases */,
+				021EA7642B599F04006B80C0 /* LastOpenHintsUseCases */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1041,6 +1119,7 @@
 			isa = PBXGroup;
 			children = (
 				026938C72B0903D00023073B /* Interfaces */,
+				021EA7702B59A1FB006B80C0 /* LastOpenHintsUseCaseGateway */,
 				02E065D42B52D1D400C074FC /* GameHelpUseCaseGateway */,
 				0202164C2B0A960C003E2B07 /* AuthenticationUseCaseGateway */,
 				0235E5DC2B14F72C00829489 /* GetDollsUseCaseGateway */,
@@ -1998,6 +2077,7 @@
 				026938F62B0936000023073B /* GetNextWordsUseCaseGateway.swift in Sources */,
 				020216642B0BC540003E2B07 /* CountWordsPlayedUseCaseGateway.swift in Sources */,
 				02B1E7EA2B516C0B004ECE2C /* LivesTypeGameHelp.swift in Sources */,
+				021EA76C2B59A08A006B80C0 /* GetLastOpenHintsUseCaseGateway.swift in Sources */,
 				026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */,
 				0266CF952B582321005144DE /* UseGameHelpUseCase.swift in Sources */,
 				02E065D32B52CB4E00C074FC /* FetchGameHelpUseCaseImpl.swift in Sources */,
@@ -2011,6 +2091,7 @@
 				020216762B0BE894003E2B07 /* SaveWordPlayedUseCaseImpl.swift in Sources */,
 				0235E5DB2B14F56D00829489 /* DollUseCaseDTO.swift in Sources */,
 				020216662B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift in Sources */,
+				021EA76E2B59A19F006B80C0 /* GetLastOpenHintsUseCaseImpl.swift in Sources */,
 				02E065E02B52DB1100C074FC /* SaveGameHelpUseCase.swift in Sources */,
 				0235E5E82B1500A800829489 /* GetDollsRandomUseCaseImpl.swift in Sources */,
 				026938F42B0935CA0023073B /* NextWordsUseCaseDTO.swift in Sources */,
@@ -2028,6 +2109,7 @@
 				02E065E32B52DB3D00C074FC /* SaveGameHelpUseCaseGateway.swift in Sources */,
 				0235E5CC2B14CCBB00829489 /* GenericCountModelGateway.swift in Sources */,
 				0241540D2B4DB7150016450C /* GameHelpModel.swift in Sources */,
+				021EA76A2B59A06F006B80C0 /* GetLastOpenHintsUseCase.swift in Sources */,
 				02F062942B56F38C0015DD8F /* MaxFreeHelps.swift in Sources */,
 				02B1E7F52B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift in Sources */,
 				026800872B0A94B200B30C26 /* SignInAnonymousUseCaseImpl.swift in Sources */,
@@ -2063,6 +2145,8 @@
 				0202167E2B0BE9E4003E2B07 /* InsertDataStorageProvider.swift in Sources */,
 				02F062A02B5705210015DD8F /* UpdateGameHelpUseCaseGatewayImpl.swift in Sources */,
 				020216872B0C0452003E2B07 /* WordPlayedUseCaseDTOToSaveWordPlayedCodableMapper.swift in Sources */,
+				021EA7732B59A2AC006B80C0 /* GetLastOpenHintsUseCaseGatewayImpl.swift in Sources */,
+				021EA7772B59A68B006B80C0 /* LastOpenHintsCodable.swift in Sources */,
 				02E065F32B53401900C074FC /* FetchGameHelpCodable.swift in Sources */,
 				02E065E92B53290300C074FC /* FetchDataStorageProvider.swift in Sources */,
 				0268007E2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift in Sources */,
