@@ -14,4 +14,6 @@ public protocol HintsPresenter {
     
     func openHint(indexHint: Int?)
     
+    func verifyHintIsOver()
+    
 }

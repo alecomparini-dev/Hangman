@@ -49,10 +49,7 @@ public class HintsViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        hintsPresenter.verifyHintIsOver()
     }
     
     public override func viewDidDisappear(_ animated: Bool) {
@@ -100,7 +97,6 @@ public class HintsViewController: UIViewController {
         
         minusOneLabelAnimation(card.minusOneLabel.get)
         
-//        hintsPresenter.openHint()
     }
     
     private func configStyleHintImageView(_ tipImageView: ViewBuilder) {
@@ -182,8 +178,14 @@ extension HintsViewController: UISheetPresentationControllerDelegate {
     
 }
 
+
 //  MARK: - EXTENSION - UISheetPresentationControllerDelegate
 extension HintsViewController: HintsPresenterOutput {
+    
+    public func hintIsOver() {
+        print("criar tela para quando terminar as dicas ")
+    }
+    
 
     public func revealHintsCompleted(_ count: Int) {
         guard let card else { return }
