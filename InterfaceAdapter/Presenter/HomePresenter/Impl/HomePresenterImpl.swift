@@ -9,9 +9,8 @@ import Handler
 public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: HomePresenterOutput?
     
-    private var revealLetterGame: Set<String> = []
-        
     private var gameHelpPresenterDTO: GameHelpPresenterDTO?
+    private var revealLetterGame: Set<String> = []
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
     private var _isEndGame = false
@@ -35,6 +34,7 @@ public class HomePresenterImpl: HomePresenter {
     private let maxGameHelpUseCase: MaxGameHelpUseCase
     private let updateGameHelpUseCase: UpdateGameHelpUseCase
     
+    
     public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxGameHelpUseCase: MaxGameHelpUseCase, updateGameHelpUseCase: UpdateGameHelpUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
@@ -44,6 +44,7 @@ public class HomePresenterImpl: HomePresenter {
         self.fetchGameHelpUseCase = fetchGameHelpUseCase
         self.maxGameHelpUseCase = maxGameHelpUseCase
         self.updateGameHelpUseCase = updateGameHelpUseCase
+        
     }
     
     
@@ -72,6 +73,7 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     public var gameHelpPresenter: GameHelpPresenterDTO? { gameHelpPresenterDTO }
+    
     
     
 //  MARK: - PUBLIC AREA
@@ -111,6 +113,7 @@ public class HomePresenterImpl: HomePresenter {
                 return
             }
             await fetchNextWord()
+            
         }
         
         fetchGameHelpSuccess()
@@ -221,10 +224,17 @@ public class HomePresenterImpl: HomePresenter {
                 successFetchNextWord()
             }
             
+            try await setLastHintsOpen()
+            
+            
         } catch let error {
             debugPrint(#function, error.localizedDescription)
             errorFetchNextWords("Aviso", "Não foi possível carregar as próximas palavras. Favor tentar novamente mais tarde")
         }
+    }
+    
+    private func setLastHintsOpen() async throws {
+        
     }
     
     private func checkMatchInWordFromChosenLetter(_ letter: String) -> [Int] {

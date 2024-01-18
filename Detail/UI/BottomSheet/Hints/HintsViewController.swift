@@ -15,6 +15,7 @@ public protocol HintsViewControllerCoordinator: AnyObject {
 public class HintsViewController: UIViewController {
     public weak var coordinator: HintsViewControllerCoordinator?
     
+    private var lastHintsOpen: [Int] = []
     private var card: CardHintsViewCell?
     
     
@@ -61,18 +62,14 @@ public class HintsViewController: UIViewController {
 //  MARK: - PRIVATE AREA
     private func configure() {
         configDelegate()
-        configCardHintsDockShow()
         configBottomSheet()
+        screen.cardsHintsDock.show()
     }
     
     private func configDelegate() {
         screen.delegate = self
-        hintsPresenter.delegateOutput = self
         screen.cardsHintsDock.setDelegate(self)
-    }
-
-    private func configCardHintsDockShow() {
-        screen.cardsHintsDock.show()
+        hintsPresenter.delegateOutput = self
     }
 
     private func configBottomSheet() {
@@ -87,16 +84,15 @@ public class HintsViewController: UIViewController {
     }
     
     private func setOpenedTipViewCell(_ card: CardHintsViewCell) {
-        card.imageHint.setImage(systemName: K.Images.hint)
-        
-        card.lockedImageHint.setHidden(true)
-        
-        configStyleHintImageView(card.hintImageView)
-        
-        hideBlurAnimation(card.blurHideTip.get)
-        
+        markCardHintsViewCellAsOpen(card)
         minusOneLabelAnimation(card.minusOneLabel.get)
-        
+        hideBlurAnimation(card.blurHideTip.get)
+    }
+    
+    private func markCardHintsViewCellAsOpen(_ card: CardHintsViewCell) {
+        card.imageHint.setImage(systemName: K.Images.hint)
+        card.lockedImageHint.setHidden(true)
+        configStyleHintImageView(card.hintImageView)
     }
     
     private func configStyleHintImageView(_ tipImageView: ViewBuilder) {
@@ -181,6 +177,9 @@ extension HintsViewController: UISheetPresentationControllerDelegate {
 
 //  MARK: - EXTENSION - UISheetPresentationControllerDelegate
 extension HintsViewController: HintsPresenterOutput {
+    public func getLastHintsOpen() {
+        screen.cardsHintsDock.reload()
+    }
     
     public func hintIsOver() {
         print("criar tela para quando terminar as dicas ")
@@ -206,6 +205,14 @@ extension HintsViewController: DockDelegate {
         let cardHintsViewCell = CardHintsViewCell(hintsPresenter.getHintByIndex(index))
         cardHintsViewCell.setTag(index)
         cardHintsViewCell.delegate = self
+        
+        if hintsPresenter.getLastHintsOpen().contains(index) {
+            cardHintsViewCell.blurHideTip.setHidden(true)
+            DispatchQueue.main.async { [weak self] in
+                self?.markCardHintsViewCellAsOpen(cardHintsViewCell)
+            }
+        }
+        
         return cardHintsViewCell
     }
     
@@ -221,7 +228,6 @@ extension HintsViewController: CardHintsViewCellDelegate {
     
     func openHints(_ cardHintsViewCell: CardHintsViewCell) {
         card = cardHintsViewCell
-        
         hintsPresenter.openHint(indexHint: card?.tag)
     }
     

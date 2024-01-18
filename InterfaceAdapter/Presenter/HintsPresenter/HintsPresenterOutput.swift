@@ -8,4 +8,6 @@ public protocol HintsPresenterOutput {
     func revealHintsCompleted(_ count: Int)
     
     func hintIsOver()
+    
+    func getLastHintsOpen()
 }

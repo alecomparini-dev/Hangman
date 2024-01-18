@@ -16,4 +16,6 @@ public protocol HintsPresenter {
     
     func verifyHintIsOver()
     
+    func getLastHintsOpen() -> [Int]
+    
 }

@@ -360,12 +360,13 @@ public class HomeViewController: UIViewController {
 
 //  MARK: - EXTENSION - HintsPresenterOutput
 extension HomeViewController: HintsPresenterOutput {
-    
     public func revealHintsCompleted(_ count: Int) {
         homePresenter.setHintsCount(count)
         updateHintsCount(count.description)
     }
     
+    //TODO: CRIAR UM PROTOCOLO ESPECÍFICO PARA A HOME
+    public func getLastHintsOpen() {}
     public func hintIsOver() { }
     
 }
