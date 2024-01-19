@@ -91,7 +91,7 @@ class HomeView: UIView {
     lazy var nextWordButton: ButtonImageBuilder = {
         let img = ImageViewBuilder(UIImage(systemName: K.Images.nextWordButton))
         let comp = ButtonImageBuilder(img)
-            .setHidden(false)
+            .setAlpha(0)
             .setImageColor(Theme.shared.currentTheme.onSurface)
             .setImageSize(22)
             .setConstraints { build in
@@ -104,6 +104,9 @@ class HomeView: UIView {
         comp.get.addTarget(self, action: #selector(nextWordButtonTapped), for: .touchUpInside)
         return comp
     }()
+    @objc private func nextWordButtonTapped() {
+        delegate?.nextWordButtonTapped()
+    }
     
     lazy var gallowsView: GallowsView = {
         let comp = GallowsView()
@@ -240,12 +243,6 @@ class HomeView: UIView {
             }
         return comp
     }()
-    
-    
-//  MARK: - @OBJC Area
-    @objc private func nextWordButtonTapped() {
-        delegate?.nextWordButtonTapped()
-    }
     
     
 //  MARK: - PRIVATE AREA
