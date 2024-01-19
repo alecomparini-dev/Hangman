@@ -338,6 +338,7 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     private func deleteLastHintsOpen() async {
+        if lastHintsOpen.isEmpty { return }
         guard let userID else { return }
         do {
             try await delLastOpenHintsUseCase.delete(userID)
