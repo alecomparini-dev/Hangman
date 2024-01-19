@@ -23,7 +23,15 @@ class HintsViewControllerFactory: UIViewController {
         
         let updateGameHelpUseCase = UpdateGameHelpUseCaseImpl(updateGameGateway: updateGameGateway)
         
-        let hintsPresenter = HintsPresenterImpl(updateGameHelpUseCase: updateGameHelpUseCase, 
+        
+        //MARK: - saveLastOpenHintsUseCase
+        
+        let saveLastOpenHintsUseCaseGateway = SaveLastOpenHintsUseCaseGatewayImpl(insertDataStorage: dataStorageSDK)
+        
+        let saveLastOpenHintsUseCase = SaveLastOpenHintsUseCaseImpl(saveLastOpenHintsUseCaseGateway: saveLastOpenHintsUseCaseGateway)
+               
+        let hintsPresenter = HintsPresenterImpl(updateGameHelpUseCase: updateGameHelpUseCase,
+                                                saveLastOpenHintsUseCase: saveLastOpenHintsUseCase,
                                                 dataTransfer: dataTransfer)
         
         return HintsViewController(hintsPresenter: hintsPresenter )

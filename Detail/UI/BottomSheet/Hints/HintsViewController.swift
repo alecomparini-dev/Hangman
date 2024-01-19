@@ -15,7 +15,6 @@ public protocol HintsViewControllerCoordinator: AnyObject {
 public class HintsViewController: UIViewController {
     public weak var coordinator: HintsViewControllerCoordinator?
     
-    private var lastHintsOpen: [Int] = []
     private var card: CardHintsViewCell?
     
     
@@ -177,17 +176,17 @@ extension HintsViewController: UISheetPresentationControllerDelegate {
 
 //  MARK: - EXTENSION - UISheetPresentationControllerDelegate
 extension HintsViewController: HintsPresenterOutput {
-    
-    public func hintIsOver() {
+    public func hintsIsOver() {
         print("criar tela para quando terminar as dicas ")
     }
     
 
-    public func revealHintsCompleted(_ count: Int, _ index: Int) {
+    public func revealHintsCompleted(_ count: Int) {
         guard let card else { return }
         setOpenedTipViewCell(card)
     }
    
+    public func saveLastHintsOpen(_ indexes: [Int]) {}
 }
 
 

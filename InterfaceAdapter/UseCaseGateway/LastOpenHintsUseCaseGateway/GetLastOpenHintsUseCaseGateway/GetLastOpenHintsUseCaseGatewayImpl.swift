@@ -8,23 +8,22 @@ import Handler
 public class GetLastOpenHintsUseCaseGatewayImpl: GetLastOpenHintsUseCaseGateway {
     private let usersCollection: String = K.Collections.users
     private let openHintsCollection: String = K.Collections.openHints
+    private let openHintsDocument: String = K.Collections.Documents.openHints
     
     private let indexesField = K.String.indexes
     
-    private let fetchDataStorage: FetchDataStorageProvider
+    private let findByDataStorage: FindByDataStorageProvider
     
-    public init(fetchDataStorage: FetchDataStorageProvider) {
-        self.fetchDataStorage = fetchDataStorage
+    public init(findByDataStorage: FindByDataStorageProvider) {
+        self.findByDataStorage = findByDataStorage
     }
     
     public func get(_ userID: String) async throws -> [Int] {
         let collection = "\(usersCollection)/\(userID)/\(openHintsCollection)"
         
-        let dictResult: [Dictionary<String,Any>]? = try await fetchDataStorage.fetch(collection)
+        guard let dictResult: Dictionary<String,Any> = try await findByDataStorage.findBy(collection, openHintsDocument) else { return [] }
         
-        guard let result = dictResult?.first else { return [] }
-        
-        let dictData: Data = try JSONSerialization.data(withJSONObject: result, options: .fragmentsAllowed)
+        let dictData: Data = try JSONSerialization.data(withJSONObject: dictResult, options: .fragmentsAllowed)
         
         let lastOpenHintsCodable: LastOpenHintsCodable = try JSONDecoder().decode(LastOpenHintsCodable.self, from: dictData)
         

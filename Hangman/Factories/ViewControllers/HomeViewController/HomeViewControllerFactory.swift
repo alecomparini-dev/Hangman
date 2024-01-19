@@ -83,9 +83,16 @@ class HomeViewControllerFactory: UIViewController {
         
         //MARK: - getLastOpenHintsUseCase
         
-        let getLastOpenHintsGateway = GetLastOpenHintsUseCaseGatewayImpl(fetchDataStorage: dataStorageSDK)
+        let getLastOpenHintsGateway = GetLastOpenHintsUseCaseGatewayImpl(findByDataStorage: dataStorageSDK)
         
         let getLastOpenHintsUseCase = GetLastOpenHintsUseCaseImpl(getLastOpenHintsGateway: getLastOpenHintsGateway)
+        
+        
+        //MARK: - delLastOpenHintsUseCase
+        
+        let updateLastOpenHintsGateway = UpdateLastOpenHintsUseCaseGatewayImpl(updateDataStorage: dataStorageSDK)
+                
+        let delLastOpenHintsUseCase = DeleteLastOpenHintsUseCaseImpl(updateLastOpenHintsGateway: updateLastOpenHintsGateway)
         
         let homePresenter = HomePresenterImpl(signInAnonymousUseCase: signInAnonymousUseCase,
                                               getNextWordsUseCase: getNextWordsUseCase, 
@@ -95,7 +102,8 @@ class HomeViewControllerFactory: UIViewController {
                                               fetchGameHelpUseCase: fetchGameHelpUseCase, 
                                               maxGameHelpUseCase: maxGameHelpUseCase, 
                                               updateGameHelpUseCase: updateGameHelpUseCase,
-                                              getLastOpenHintsUseCase: getLastOpenHintsUseCase)
+                                              getLastOpenHintsUseCase: getLastOpenHintsUseCase,
+                                              delLastOpenHintsUseCase: delLastOpenHintsUseCase)
         
         
         return HomeViewController(homePresenter: homePresenter)
