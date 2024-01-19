@@ -74,8 +74,6 @@
 		0266C9932B5ABF4400986B74 /* SaveLastOpenHintsUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266C9912B5ABF2400986B74 /* SaveLastOpenHintsUseCaseGatewayImpl.swift */; };
 		0266CF8F2B581204005144DE /* MaxGameHelpUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF8D2B581204005144DE /* MaxGameHelpUseCaseImpl.swift */; };
 		0266CF902B581204005144DE /* MaxGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF8E2B581204005144DE /* MaxGameHelpUseCase.swift */; };
-		0266CF952B582321005144DE /* UseGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF942B582321005144DE /* UseGameHelpUseCase.swift */; };
-		0266CF972B5823C1005144DE /* UseGameHelpUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF962B5823C1005144DE /* UseGameHelpUseCaseImpl.swift */; };
 		0266CF982B5825E6005144DE /* UpdateDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F062A22B5705660015DD8F /* UpdateDataStorageProvider.swift */; };
 		0266CF9D2B5866A7005144DE /* HintsViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266CF9C2B5866A7005144DE /* HintsViewControllerFactory.swift */; };
 		0266CFA12B586754005144DE /* HintsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCA7042B307BB100B45892 /* HintsPresenterImpl.swift */; };
@@ -403,8 +401,6 @@
 		0266C9912B5ABF2400986B74 /* SaveLastOpenHintsUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLastOpenHintsUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		0266CF8D2B581204005144DE /* MaxGameHelpUseCaseImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxGameHelpUseCaseImpl.swift; sourceTree = "<group>"; };
 		0266CF8E2B581204005144DE /* MaxGameHelpUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxGameHelpUseCase.swift; sourceTree = "<group>"; };
-		0266CF942B582321005144DE /* UseGameHelpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGameHelpUseCase.swift; sourceTree = "<group>"; };
-		0266CF962B5823C1005144DE /* UseGameHelpUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGameHelpUseCaseImpl.swift; sourceTree = "<group>"; };
 		0266CF992B585414005144DE /* HintsPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsPresenterOutput.swift; sourceTree = "<group>"; };
 		0266CF9C2B5866A7005144DE /* HintsViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsViewControllerFactory.swift; sourceTree = "<group>"; };
 		0268007D2B0A872F00B30C26 /* FetchCountDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCountDataStorageProvider.swift; sourceTree = "<group>"; };
@@ -1008,15 +1004,6 @@
 			path = SaveLastOpenHintsUseCaseGateway;
 			sourceTree = "<group>";
 		};
-		0266CF882B5806FE005144DE /* UseGameHelpUseCase */ = {
-			isa = PBXGroup;
-			children = (
-				0266CF932B582318005144DE /* Impl */,
-				0266CF942B582321005144DE /* UseGameHelpUseCase.swift */,
-			);
-			path = UseGameHelpUseCase;
-			sourceTree = "<group>";
-		};
 		0266CF8B2B581204005144DE /* MaxTypeGameHelpUseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1030,14 +1017,6 @@
 			isa = PBXGroup;
 			children = (
 				0266CF8D2B581204005144DE /* MaxGameHelpUseCaseImpl.swift */,
-			);
-			path = Impl;
-			sourceTree = "<group>";
-		};
-		0266CF932B582318005144DE /* Impl */ = {
-			isa = PBXGroup;
-			children = (
-				0266CF962B5823C1005144DE /* UseGameHelpUseCaseImpl.swift */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -1470,7 +1449,6 @@
 		02B1E7F32B517734004ECE2C /* GameHelpUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				0266CF882B5806FE005144DE /* UseGameHelpUseCase */,
 				0266CF8B2B581204005144DE /* MaxTypeGameHelpUseCase */,
 				02E065DA2B52D69B00C074FC /* FetchGameHelpUseCase */,
 				02E065DD2B52DADC00C074FC /* SaveGameHelpUseCase */,
@@ -2144,7 +2122,6 @@
 				021EA76C2B59A08A006B80C0 /* GetLastOpenHintsUseCaseGateway.swift in Sources */,
 				0205E7DD2B59F37100F788A2 /* UpdateLastOpenHintsUseCaseGateway.swift in Sources */,
 				026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */,
-				0266CF952B582321005144DE /* UseGameHelpUseCase.swift in Sources */,
 				02E065D32B52CB4E00C074FC /* FetchGameHelpUseCaseImpl.swift in Sources */,
 				0235E5D02B14D3E100829489 /* CountDollsUseCase.swift in Sources */,
 				0266CF8F2B581204005144DE /* MaxGameHelpUseCaseImpl.swift in Sources */,
@@ -2170,7 +2147,6 @@
 				020216742B0BE88B003E2B07 /* SaveWordPlayedUseCaseGateway.swift in Sources */,
 				0269392C2B09528E0023073B /* GetNextWordsUseCaseImpl.swift in Sources */,
 				02F0629A2B5704280015DD8F /* UpdateGameHelpUseCaseGateway.swift in Sources */,
-				0266CF972B5823C1005144DE /* UseGameHelpUseCaseImpl.swift in Sources */,
 				02E065E52B52DC8A00C074FC /* SaveGameHelpUseCaseImpl.swift in Sources */,
 				02B1E7EE2B516C24004ECE2C /* RevelationsTypeGameHelp.swift in Sources */,
 				02F0629C2B5704B50015DD8F /* UpdateGameHelpUseCaseImpl.swift in Sources */,

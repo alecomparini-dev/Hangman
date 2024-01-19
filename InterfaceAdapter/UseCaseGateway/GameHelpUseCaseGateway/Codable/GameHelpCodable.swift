@@ -13,8 +13,11 @@ struct GameHelpCodable: Codable {
     
     
     static func mapper(_ gameHelpModel: GameHelpModel) -> Self {
-        let date = DateHandler.separateDate(gameHelpModel.dateRenewFree?.description ?? Date().description)
-        let dateRenewFree = "\(date.year)-\(date.month)-\(date.day)"
+        var dateRenewFree: String?
+        if let dateDescription = gameHelpModel.dateRenewFree?.description {
+            let date = DateHandler.separateDate(dateDescription)
+            dateRenewFree = "\(date.year)-\(date.month)-\(date.day)"
+        }
         
         return GameHelpCodable(
             dateRenewFree: dateRenewFree,
