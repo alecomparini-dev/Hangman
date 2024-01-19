@@ -27,6 +27,12 @@
 		0202C19D2B55B83F004B5DCC /* LoadScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C19A2B55B6E9004B5DCC /* LoadScreenPresenter.swift */; };
 		0202C19F2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C19E2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift */; };
 		0202C1A22B55B9F6004B5DCC /* SignInAnonymousUseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202C1A12B55B9F6004B5DCC /* SignInAnonymousUseCaseFactory.swift */; };
+		0205E7DB2B59F36600F788A2 /* SaveLastOpenHintsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205E7DA2B59F36600F788A2 /* SaveLastOpenHintsUseCaseImpl.swift */; };
+		0205E7DD2B59F37100F788A2 /* UpdateLastOpenHintsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205E7DC2B59F37100F788A2 /* UpdateLastOpenHintsUseCaseGateway.swift */; };
+		0205E7DF2B59F38300F788A2 /* SaveLastOpenHintsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205E7DE2B59F38300F788A2 /* SaveLastOpenHintsUseCase.swift */; };
+		0205E7E32B59F46300F788A2 /* UpdateLastOpenHintsUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205E7E12B59F43B00F788A2 /* UpdateLastOpenHintsUseCaseGatewayImpl.swift */; };
+		0205E7E72B59F93500F788A2 /* DeleteLastOpenHintsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205E7E62B59F93500F788A2 /* DeleteLastOpenHintsUseCase.swift */; };
+		0205E7E92B59F96300F788A2 /* DeleteLastOpenHintsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205E7E82B59F96300F788A2 /* DeleteLastOpenHintsUseCaseImpl.swift */; };
 		021B63162B1133E4002498DA /* DataTransferHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B63142B11328E002498DA /* DataTransferHomeVC.swift */; };
 		021B63182B1133FD002498DA /* WordPlayedPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202166F2B0BE855003E2B07 /* WordPlayedPresenterDTO.swift */; };
 		021EA76A2B59A06F006B80C0 /* GetLastOpenHintsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EA7692B59A06F006B80C0 /* GetLastOpenHintsUseCase.swift */; };
@@ -355,6 +361,12 @@
 		0202C19A2B55B6E9004B5DCC /* LoadScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreenPresenter.swift; sourceTree = "<group>"; };
 		0202C19E2B55B8DA004B5DCC /* LoadScreenViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreenViewControllerFactory.swift; sourceTree = "<group>"; };
 		0202C1A12B55B9F6004B5DCC /* SignInAnonymousUseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseFactory.swift; sourceTree = "<group>"; };
+		0205E7DA2B59F36600F788A2 /* SaveLastOpenHintsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLastOpenHintsUseCaseImpl.swift; sourceTree = "<group>"; };
+		0205E7DC2B59F37100F788A2 /* UpdateLastOpenHintsUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLastOpenHintsUseCaseGateway.swift; sourceTree = "<group>"; };
+		0205E7DE2B59F38300F788A2 /* SaveLastOpenHintsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLastOpenHintsUseCase.swift; sourceTree = "<group>"; };
+		0205E7E12B59F43B00F788A2 /* UpdateLastOpenHintsUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLastOpenHintsUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
+		0205E7E62B59F93500F788A2 /* DeleteLastOpenHintsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLastOpenHintsUseCase.swift; sourceTree = "<group>"; };
+		0205E7E82B59F96300F788A2 /* DeleteLastOpenHintsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLastOpenHintsUseCaseImpl.swift; sourceTree = "<group>"; };
 		021B63142B11328E002498DA /* DataTransferHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHomeVC.swift; sourceTree = "<group>"; };
 		021EA7692B59A06F006B80C0 /* GetLastOpenHintsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLastOpenHintsUseCase.swift; sourceTree = "<group>"; };
 		021EA76B2B59A08A006B80C0 /* GetLastOpenHintsUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLastOpenHintsUseCaseGateway.swift; sourceTree = "<group>"; };
@@ -710,9 +722,42 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		0205E7D92B59F35400F788A2 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				0205E7DA2B59F36600F788A2 /* SaveLastOpenHintsUseCaseImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		0205E7E02B59F42400F788A2 /* UpdateLastOpenHintsUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+				0205E7E12B59F43B00F788A2 /* UpdateLastOpenHintsUseCaseGatewayImpl.swift */,
+			);
+			path = UpdateLastOpenHintsUseCaseGateway;
+			sourceTree = "<group>";
+		};
+		0205E7E42B59F8F200F788A2 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				0205E7DC2B59F37100F788A2 /* UpdateLastOpenHintsUseCaseGateway.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		0205E7E52B59F91C00F788A2 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				0205E7E82B59F96300F788A2 /* DeleteLastOpenHintsUseCaseImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
 		021EA7642B599F04006B80C0 /* LastOpenHintsUseCases */ = {
 			isa = PBXGroup;
 			children = (
+				0205E7E42B59F8F200F788A2 /* Interface */,
 				021EA7652B599F28006B80C0 /* GetLastOpenHintsUseCase */,
 				021EA7672B599F48006B80C0 /* SaveLastOpenHintsUseCase */,
 				021EA7662B599F39006B80C0 /* DeleteLastOpenHintsUseCase */,
@@ -733,6 +778,8 @@
 		021EA7662B599F39006B80C0 /* DeleteLastOpenHintsUseCase */ = {
 			isa = PBXGroup;
 			children = (
+				0205E7E52B59F91C00F788A2 /* Impl */,
+				0205E7E62B59F93500F788A2 /* DeleteLastOpenHintsUseCase.swift */,
 			);
 			path = DeleteLastOpenHintsUseCase;
 			sourceTree = "<group>";
@@ -740,6 +787,8 @@
 		021EA7672B599F48006B80C0 /* SaveLastOpenHintsUseCase */ = {
 			isa = PBXGroup;
 			children = (
+				0205E7D92B59F35400F788A2 /* Impl */,
+				0205E7DE2B59F38300F788A2 /* SaveLastOpenHintsUseCase.swift */,
 			);
 			path = SaveLastOpenHintsUseCase;
 			sourceTree = "<group>";
@@ -765,6 +814,7 @@
 			children = (
 				021EA7742B59A5A5006B80C0 /* Codable */,
 				021EA76F2B59A1EC006B80C0 /* GetLastOpenHintsUseCaseGateway */,
+				0205E7E02B59F42400F788A2 /* UpdateLastOpenHintsUseCaseGateway */,
 			);
 			path = LastOpenHintsUseCaseGateway;
 			sourceTree = "<group>";
@@ -2078,13 +2128,17 @@
 				020216642B0BC540003E2B07 /* CountWordsPlayedUseCaseGateway.swift in Sources */,
 				02B1E7EA2B516C0B004ECE2C /* LivesTypeGameHelp.swift in Sources */,
 				021EA76C2B59A08A006B80C0 /* GetLastOpenHintsUseCaseGateway.swift in Sources */,
+				0205E7DD2B59F37100F788A2 /* UpdateLastOpenHintsUseCaseGateway.swift in Sources */,
 				026800852B0A949F00B30C26 /* SignInAnonymousUseCase.swift in Sources */,
 				0266CF952B582321005144DE /* UseGameHelpUseCase.swift in Sources */,
 				02E065D32B52CB4E00C074FC /* FetchGameHelpUseCaseImpl.swift in Sources */,
 				0235E5D02B14D3E100829489 /* CountDollsUseCase.swift in Sources */,
 				0266CF8F2B581204005144DE /* MaxGameHelpUseCaseImpl.swift in Sources */,
+				0205E7DF2B59F38300F788A2 /* SaveLastOpenHintsUseCase.swift in Sources */,
 				02B1E7E72B516B81004ECE2C /* TypeGameHelp.swift in Sources */,
+				0205E7DB2B59F36600F788A2 /* SaveLastOpenHintsUseCaseImpl.swift in Sources */,
 				026938E82B090C5B0023073B /* GetNextWordsUseCase.swift in Sources */,
+				0205E7E92B59F96300F788A2 /* DeleteLastOpenHintsUseCaseImpl.swift in Sources */,
 				023E7BFD2B54596600FB450F /* TypeGameHelpModel.swift in Sources */,
 				0235E5D82B14F51100829489 /* GetDollsUseCaseGateway.swift in Sources */,
 				026800892B0A94C000B30C26 /* SignInAnonymousUseCaseGateway.swift in Sources */,
@@ -2092,6 +2146,7 @@
 				0235E5DB2B14F56D00829489 /* DollUseCaseDTO.swift in Sources */,
 				020216662B0BC54A003E2B07 /* CountWordsPlayedUseCaseImpl.swift in Sources */,
 				021EA76E2B59A19F006B80C0 /* GetLastOpenHintsUseCaseImpl.swift in Sources */,
+				0205E7E72B59F93500F788A2 /* DeleteLastOpenHintsUseCase.swift in Sources */,
 				02E065E02B52DB1100C074FC /* SaveGameHelpUseCase.swift in Sources */,
 				0235E5E82B1500A800829489 /* GetDollsRandomUseCaseImpl.swift in Sources */,
 				026938F42B0935CA0023073B /* NextWordsUseCaseDTO.swift in Sources */,
@@ -2123,6 +2178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0205E7E32B59F46300F788A2 /* UpdateLastOpenHintsUseCaseGatewayImpl.swift in Sources */,
 				02E065D72B52D23C00C074FC /* FetchGameHelpUseCaseGatewayImpl.swift in Sources */,
 				0202167A2B0BE906003E2B07 /* SaveWordPlayedUseCaseGatewayImpl.swift in Sources */,
 				0235E5FF2B167FC200829489 /* DollCodable.swift in Sources */,

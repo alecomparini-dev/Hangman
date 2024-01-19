@@ -43,6 +43,7 @@ public struct K {
                 
         public struct Documents {
             public static let help = "help"
+            public static let openHints = "openHints"
         }
     }
     

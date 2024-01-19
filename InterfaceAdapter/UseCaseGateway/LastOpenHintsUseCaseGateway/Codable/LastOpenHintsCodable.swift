@@ -3,6 +3,10 @@
 
 import Foundation
 
-class LastOpenHintsCodable: Codable {
+struct LastOpenHintsCodable: Codable {
     var indexes: [Int]?
+    
+    static func mapper(_ indexes: [Int]) -> Self {
+        return LastOpenHintsCodable(indexes: indexes)
+    }
 }
