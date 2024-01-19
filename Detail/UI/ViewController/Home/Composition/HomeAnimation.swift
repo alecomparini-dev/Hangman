@@ -80,6 +80,18 @@ struct HomeAnimation {
         }
     }
     
+    func showNextWord(_ nextWordButton: UIView) {
+        UIView.animate(withDuration: 2, delay: 1, options: .curveEaseInOut , animations: {
+            nextWordButton.alpha = 1
+            nextWordButton.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
+        }) { bool in
+            if bool {
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                    nextWordButton.transform = .identity
+                })
+            }
+        }
+    }
     
 //  MARK: - PRIVATE AREA
     

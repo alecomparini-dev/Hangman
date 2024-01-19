@@ -379,6 +379,7 @@ extension HomeViewController: HintsPresenterOutput {
 
 //  MARK: - EXTENSION - HomePresenterOutput
 extension HomeViewController: HomePresenterOutput {
+    
     public func fetchGameHelpSuccess(_ gameHelpPresenterDTO: GameHelpPresenterDTO) {
         screen.gamePainelView.livesCountView.lifeLabel.get.text = gameHelpPresenterDTO.livesCount.description
         screen.gamePainelView.hintsCountView.hintsLabel.get.text = gameHelpPresenterDTO.hintsCount.description
@@ -433,14 +434,18 @@ extension HomeViewController: HomePresenterOutput {
             screen.gallowsView.headImage.setImage(image: UIImage(data: imgData))
             AnimationHandler.moveVertical(component: screen.gallowsView.headImage.get, position: 35, delay: 0.5)
         }
+        animateShowNextWordButton()
     }
     
     public func revealDollEndGameFailure(_ imageBase64: String) {
         revealDollFailure(imageBase64)
-        
         changeGallowsColorEndGameFailure()
-        
         animateDollFailureToGround()
+        animateShowNextWordButton()
+    }
+    
+    private func animateShowNextWordButton() {
+        animations.showNextWord(screen.nextWordButton.get)
     }
     
     public func revealCorrectLetters(_ indexes: [Int]) {
