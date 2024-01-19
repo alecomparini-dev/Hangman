@@ -35,9 +35,10 @@ public class HomePresenterImpl: HomePresenter {
     private let maxGameHelpUseCase: MaxGameHelpUseCase
     private let updateGameHelpUseCase: UpdateGameHelpUseCase
     private let getLastOpenHintsUseCase: GetLastOpenHintsUseCase
+    private let delLastOpenHintsUseCase: DeleteLastOpenHintsUseCase
     
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxGameHelpUseCase: MaxGameHelpUseCase, updateGameHelpUseCase: UpdateGameHelpUseCase,getLastOpenHintsUseCase: GetLastOpenHintsUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxGameHelpUseCase: MaxGameHelpUseCase, updateGameHelpUseCase: UpdateGameHelpUseCase,getLastOpenHintsUseCase: GetLastOpenHintsUseCase, delLastOpenHintsUseCase: DeleteLastOpenHintsUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase
@@ -47,6 +48,7 @@ public class HomePresenterImpl: HomePresenter {
         self.maxGameHelpUseCase = maxGameHelpUseCase
         self.updateGameHelpUseCase = updateGameHelpUseCase
         self.getLastOpenHintsUseCase = getLastOpenHintsUseCase
+        self.delLastOpenHintsUseCase = delLastOpenHintsUseCase
     }
     
     
@@ -78,8 +80,8 @@ public class HomePresenterImpl: HomePresenter {
     
     public var lastHintsOpen: [Int] { _lastHintsOpen ?? []}
     
-    public func setLastHintsOpen(_ index: Int) {
-        _lastHintsOpen?.append(index)
+    public func setLastHintsOpen(_ indexes: [Int]) {
+        _lastHintsOpen = indexes
     }
     
     
@@ -243,19 +245,13 @@ public class HomePresenterImpl: HomePresenter {
                 currentWord = nextWords[0]
                 successFetchNextWord()
             }
-            
-            try await setLastHintsOpen()
-            
-            
+                        
         } catch let error {
             debugPrint(#function, error.localizedDescription)
             errorFetchNextWords("Aviso", "Não foi possível carregar as próximas palavras. Favor tentar novamente mais tarde")
         }
     }
     
-    private func setLastHintsOpen() async throws {
-        
-    }
     
     private func checkMatchInWordFromChosenLetter(_ letter: String) -> [Int] {
         guard let joinedWordPlaying else { return [] }
@@ -337,6 +333,16 @@ public class HomePresenterImpl: HomePresenter {
         if !isEndGame { return  }
         Task {
             await saveWordPlayed()
+            await deleteLastHintsOpen()
+        }
+    }
+    
+    private func deleteLastHintsOpen() async {
+        guard let userID else { return }
+        do {
+            try await delLastOpenHintsUseCase.delete(userID)
+        } catch let error {
+            debugPrint(#function, error.localizedDescription)
         }
     }
     

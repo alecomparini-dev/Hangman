@@ -5,8 +5,10 @@ import Foundation
 
 public protocol HintsPresenterOutput {
     
-    func revealHintsCompleted(_ count: Int, _ index: Int)
+    func revealHintsCompleted(_ count: Int)
     
-    func hintIsOver()
+    func hintsIsOver()
+    
+    func saveLastHintsOpen(_ indexes: [Int])
     
 }
