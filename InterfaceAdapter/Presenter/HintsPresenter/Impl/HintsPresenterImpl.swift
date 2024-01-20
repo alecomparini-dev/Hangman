@@ -49,6 +49,8 @@ public class HintsPresenterImpl: HintsPresenter {
         revealHintsCompleted(count)
         
         saveHintsOpen(indexHint)
+        
+        verifyHintIsOver()
     }
     
     public func getLastHintsOpen() -> [Int] { dataTransfer?.lastHintsOpen ?? []}
