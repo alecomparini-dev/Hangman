@@ -50,13 +50,29 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
         if let currentDate = DateHandler.convertDate("\(date.year)-\(date.month)-\(date.day)") {
             if let dateRenew = renewGameHelp.dateRenewFree, dateRenew < currentDate {
                 renewGameHelp.dateRenewFree = .now
-                renewGameHelp.typeGameHelp?.lives = maxGameHelpUseCase.max(typeGameHelp: .lives)
-                renewGameHelp.typeGameHelp?.hints = maxGameHelpUseCase.max(typeGameHelp: .hints)
-                renewGameHelp.typeGameHelp?.revelations = maxGameHelpUseCase.max(typeGameHelp: .revelations)
+                renewGameHelp = calculateRenew(renewGameHelp)
                 try await saveGameHelpGateway.save(userID, gameHelp: renewGameHelp)
             }
         }
         return renewGameHelp
+    }
+    
+    private func calculateRenew(_ renewGameHelp: GameHelpModel) -> GameHelpModel {
+        var gameHelp = renewGameHelp
+        
+        if (gameHelp.typeGameHelp?.lives ?? 0) < maxGameHelpUseCase.max(typeGameHelp: .lives) {
+            gameHelp.typeGameHelp?.lives = maxGameHelpUseCase.max(typeGameHelp: .lives)
+        }
+        
+        if (gameHelp.typeGameHelp?.hints ?? 0) < maxGameHelpUseCase.max(typeGameHelp: .hints) {
+            gameHelp.typeGameHelp?.hints = maxGameHelpUseCase.max(typeGameHelp: .hints)
+        }
+        
+        if (gameHelp.typeGameHelp?.revelations ?? 0) < maxGameHelpUseCase.max(typeGameHelp: .revelations) {
+            gameHelp.typeGameHelp?.revelations = maxGameHelpUseCase.max(typeGameHelp: .revelations)
+        }
+        
+        return gameHelp
     }
     
     private func makeFetchGameHelpUseCaseDTO(_ gameHelp: GameHelpModel?) -> FetchGameHelpUseCaseDTO? {

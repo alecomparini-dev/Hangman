@@ -1004,6 +1004,17 @@
 			path = SaveLastOpenHintsUseCaseGateway;
 			sourceTree = "<group>";
 		};
+		0266C9942B5C33A900986B74 /* GetNextWordsUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				026938F22B0935C00023073B /* DTO */,
+				026938E62B090C500023073B /* Impl */,
+				026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */,
+				026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */,
+			);
+			path = GetNextWordsUseCase;
+			sourceTree = "<group>";
+		};
 		0266CF8B2B581204005144DE /* MaxTypeGameHelpUseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1109,7 +1120,7 @@
 				024154092B4DB55B0016450C /* GameHelpUseCases */,
 				026800812B0A945A00B30C26 /* AuthenticateUseCases */,
 				0235E5C32B14CA9B00829489 /* DollsUseCases */,
-				026938E52B090C3B0023073B /* GetNextWordsUseCase */,
+				026938E52B090C3B0023073B /* NextWordsUseCases */,
 				0202165E2B0BC36F003E2B07 /* WordsPlayedUseCases */,
 			);
 			path = UseCase;
@@ -1123,15 +1134,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		026938E52B090C3B0023073B /* GetNextWordsUseCase */ = {
+		026938E52B090C3B0023073B /* NextWordsUseCases */ = {
 			isa = PBXGroup;
 			children = (
-				026938F22B0935C00023073B /* DTO */,
-				026938E62B090C500023073B /* Impl */,
-				026938E72B090C5B0023073B /* GetNextWordsUseCase.swift */,
-				026938F52B0936000023073B /* GetNextWordsUseCaseGateway.swift */,
+				0266C9942B5C33A900986B74 /* GetNextWordsUseCase */,
 			);
-			path = GetNextWordsUseCase;
+			path = NextWordsUseCases;
 			sourceTree = "<group>";
 		};
 		026938E62B090C500023073B /* Impl */ = {

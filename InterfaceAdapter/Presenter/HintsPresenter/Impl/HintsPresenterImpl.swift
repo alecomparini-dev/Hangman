@@ -40,37 +40,22 @@ public class HintsPresenterImpl: HintsPresenter {
         
         if count == 0 { return hintIsOver() }
         
-        count -= 1
-        
-        dataTransfer?.gameHelpPresenterDTO?.hintsCount = count
+        do {
+            try saveHintsOpen(indexHint)
+            count -= 1
+            dataTransfer?.gameHelpPresenterDTO?.hintsCount = count
+        } catch  let error {
+            debugPrint(#function, error.localizedDescription)
+        }
         
         updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(hints: count)))
         
         revealHintsCompleted(count)
         
-        saveHintsOpen(indexHint)
-        
         verifyHintIsOver()
     }
     
     public func getLastHintsOpen() -> [Int] { dataTransfer?.lastHintsOpen ?? []}
-    
-    
-    private func saveHintsOpen(_ index: Int?) {
-        guard let index, let userID = dataTransfer?.userID else { return }
-        dataTransfer?.lastHintsOpen?.append(index)
-        if let indexes = dataTransfer?.lastHintsOpen {
-            Task {
-                do {
-                    try await saveLastOpenHintsUseCase.save(userID, indexes)
-                    saveLastHintsOpen(indexes)
-                } catch let error {
-                    debugPrint(#function, error.localizedDescription)
-                }
-            }
-        }
-        
-    }
     
     public func numberOfItemsCallback() -> Int { dataTransfer?.wordPresenterDTO?.hints?.count ?? 0  }
     
@@ -106,6 +91,18 @@ public class HintsPresenterImpl: HintsPresenter {
         }
     }
     
+    private func saveHintsOpen(_ index: Int?) throws {
+        guard let index, let userID = dataTransfer?.userID else { return }
+        dataTransfer?.lastHintsOpen?.append(index)
+        if let indexes = dataTransfer?.lastHintsOpen {
+            Task {
+                try await saveLastOpenHintsUseCase.save(userID, indexes)
+                saveLastHintsOpen(indexes)
+            }
+        }
+        
+    }
+    
     
     //  MARK: - PRIVATE OUTPUT AREA
     
@@ -127,7 +124,6 @@ public class HintsPresenterImpl: HintsPresenter {
         }
     }
     
-
     private func saveLastHintsOpen(_ indexes: [Int]) {
         MainThread.exec { [weak self] in
             guard let self else {return}
