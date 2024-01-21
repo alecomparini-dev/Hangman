@@ -3,6 +3,7 @@
 
 import UIKit
 import CustomComponentsSDK
+import Handler
 
 class BuyLifePainelView: ViewBuilder {
     
@@ -15,7 +16,7 @@ class BuyLifePainelView: ViewBuilder {
 //  MARK: - LAZY AREA
     
     lazy var heartImage: ImageViewBuilder = {
-        let comp = ImageViewBuilder(systemName: "arrow.clockwise.heart")
+        let comp = ImageViewBuilder(systemName: K.Images.arrowClockwiseHeart)
             .setTintColor(.white)
             .setWeight(.thin)
             .setContentMode(.center)
@@ -134,7 +135,7 @@ class BuyLifePainelView: ViewBuilder {
             .setColor(Theme.shared.currentTheme.onPrimaryContainer)
             .setTextAttributed({ build in
                 build
-                    .setText(text: "4,")
+                    .setText(text: "3,")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 22, weight: .bold))
                     .setText(text: "99")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 16))
@@ -149,7 +150,7 @@ class BuyLifePainelView: ViewBuilder {
     }()
     
     lazy var chevronRightImage: ImageViewBuilder = {
-        let comp = ImageViewBuilder(systemName: "chevron.compact.right")
+        let comp = ImageViewBuilder(systemName: K.Images.chevronCompactRight)
             .setTintColor(.white)
             .setWeight(.bold)
             .setSize(24)

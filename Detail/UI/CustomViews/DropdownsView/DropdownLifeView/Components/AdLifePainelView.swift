@@ -85,7 +85,7 @@ class AdLifePainelView: ViewBuilder {
     }()
     
     lazy var adPlayImage: ImageViewBuilder = {
-        let comp = ImageViewBuilder(systemName: "play.circle.fill")
+        let comp = ImageViewBuilder(systemName: K.Images.playCircleFill)
             .setTintColor(Theme.shared.currentTheme.onPrimaryContainer)
             .setWeight(.bold)
             .setContentMode(.center)
@@ -152,11 +152,5 @@ class AdLifePainelView: ViewBuilder {
             }
     }
     
-//    private func sendHeartToBack() {
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self else {return}
-//            self.get.sendSubviewToBack(heartImage.get)
-//        }
-//    }
     
 }

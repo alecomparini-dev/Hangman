@@ -40,26 +40,15 @@ class HintsView: UIView {
         return comp
     }()
 
-    lazy var handImage: ImageViewBuilder = {
-        let img = UIImage(systemName: K.Images.handTapFill)
-        let comp = ImageViewBuilder(img)
-            .setTintColor(Theme.shared.currentTheme.onSecondary)
-            .setContentMode(.center)
-            .setSize(16)
-            .setConstraints { build in
-                build
-                    .setVerticalAlignmentY.equalTo(titleHintLabel.get)
-                    .setLeading.equalTo(titleHintLabel.get, .leading, 79)
-            }
-        return comp
-    }()
-    
-    
     lazy var titleHintLabel: LabelBuilder = {
+        let img = UIImage(systemName: K.Images.handTapFill) ?? UIImage()
         let comp = LabelBuilder()
             .setTextAttributed({ build in
                 build
-                    .setText(text: "Selecione      uma")
+                    .setText(text: "Selecione ")
+                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+                    .setImage(image: img, color: Theme.shared.currentTheme.onSecondary)
+                    .setText(text: " uma")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
                     .setText(text: " dica")
                     .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 20, weight: .bold))
@@ -127,7 +116,6 @@ class HintsView: UIView {
     private func addElements() {
         backgroundView.add(insideTo: self)
         titleHintLabel.add(insideTo: self)
-        handImage.add(insideTo: self)
         downButton.add(insideTo: self)
         cardsHintsDock.add(insideTo: self)
     }
@@ -135,7 +123,6 @@ class HintsView: UIView {
     private func configConstraints() {
         backgroundView.applyConstraint()
         titleHintLabel.applyConstraint()
-        handImage.applyConstraint()
         downButton.applyConstraint()
         cardsHintsDock.applyConstraint()
     }

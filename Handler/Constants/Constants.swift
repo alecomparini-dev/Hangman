@@ -64,6 +64,9 @@ public struct K {
         public static let eyeSlashFill = "eye.slash.fill"
         public static let triangleFill = "eject.fill"
         public static let handTapFill = "hand.tap.fill"
+        public static let playCircleFill = "play.circle.fill"
+        public static let chevronCompactRight = "chevron.compact.right"
+        public static let arrowClockwiseHeart = "arrow.clockwise.heart"
     }
     
     public struct ExtraColor {
