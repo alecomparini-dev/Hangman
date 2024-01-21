@@ -1015,6 +1015,22 @@
 			path = GetNextWordsUseCase;
 			sourceTree = "<group>";
 		};
+		0266C9962B5D449700986B74 /* AdHintsView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AdHintsView;
+			sourceTree = "<group>";
+		};
+		0266C9982B5D44DB00986B74 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				026939332B0A41920023073B /* Authentication */,
+				026938C32B08FFC60023073B /* DataStorageProvider */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
 		0266CF8B2B581204005144DE /* MaxTypeGameHelpUseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1254,8 +1270,7 @@
 			isa = PBXGroup;
 			children = (
 				026B64802B0389F000F6DD99 /* UI */,
-				026939332B0A41920023073B /* Authentication */,
-				026938C32B08FFC60023073B /* DataStorageProvider */,
+				0266C9982B5D44DB00986B74 /* Infrastructure */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1586,6 +1601,7 @@
 		02C500D92B2A6661009C546A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0266C9962B5D449700986B74 /* AdHintsView */,
 				02C500DC2B2A66D9009C546A /* HintsView.swift */,
 			);
 			path = Views;

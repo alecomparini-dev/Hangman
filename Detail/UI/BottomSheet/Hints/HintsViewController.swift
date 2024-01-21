@@ -177,7 +177,7 @@ extension HintsViewController: UISheetPresentationControllerDelegate {
 //  MARK: - EXTENSION - UISheetPresentationControllerDelegate
 extension HintsViewController: HintsPresenterOutput {
     public func hintsIsOver() {
-        print("criar tela para quando terminar as dicas ")
+//        print("criar tela para quando terminar as dicas ")
     }
     
 
