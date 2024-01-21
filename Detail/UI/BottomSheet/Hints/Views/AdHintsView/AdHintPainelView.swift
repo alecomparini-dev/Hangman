@@ -14,17 +14,17 @@ class AdHintPainelView: ViewBuilder {
     
     
     //  MARK: - LAZY AREA
-    
+
     lazy var adImage: ImageViewBuilder = {
         let comp = ImageViewBuilder()
             .setImage(systemName: K.Images.hint)
             .setTintColor(Theme.shared.currentTheme.onSurface)
             .setWeight(.thin)
             .setContentMode(.center)
-            .setSize(36)
+            .setSize(32)
             .setConstraints { build in
                 build
-                    .setTop.setLeading.equalToSuperView(-15)
+                    .setTop.setLeading.equalToSuperView(-12)
             }
         return comp
     }()
@@ -69,7 +69,7 @@ class AdHintPainelView: ViewBuilder {
     }()
     
     lazy var adPlayImage: ImageViewBuilder = {
-        let comp = ImageViewBuilder(systemName: "play.fill")
+        let comp = ImageViewBuilder(systemName: K.Images.playFill)
             .setTintColor(Theme.shared.currentTheme.onPrimaryContainer)
             .setWeight(.bold)
             .setContentMode(.center)
@@ -77,7 +77,7 @@ class AdHintPainelView: ViewBuilder {
             .setConstraints { build in
                 build
                     .setVerticalAlignmentY.equalToSuperView
-                    .setTrailing.equalToSuperView(-30)
+                    .setTrailing.equalToSuperView(-36)
             }
         return comp
     }()
@@ -87,7 +87,6 @@ class AdHintPainelView: ViewBuilder {
     private func configure() {
         addElements()
         configConstraints()
-//        configStyle()
     }
     
     private func addElements() {
@@ -113,7 +112,7 @@ class AdHintPainelView: ViewBuilder {
         self
             .setBorder({ build in
                 build
-                    .setCornerRadius(4)
+                    .setCornerRadius(8)
             })
     }
     
@@ -122,16 +121,13 @@ class AdHintPainelView: ViewBuilder {
             guard let self else { return }
             self.setNeumorphism { build in
                 build
-                    .setReferenceColor(Theme.shared.currentTheme.secondary.adjustBrightness(100))
-//                    .setReferenceColor(UIColor.HEX("#5796e4"))
+                    .setReferenceColor(Theme.shared.currentTheme.secondary.adjustBrightness(80))
                     .setShape(.concave)
-                    .setLightPosition(.leftTop)
-                    .setIntensity(to: .light, percent: 80)
-                    .setIntensity(to: .dark, percent: 100)
-                    .setBlur(to: .light, percent: 3)
-                    .setBlur(to: .dark, percent: 8)
-                    .setDistance(to: .light, percent: 3)
-                    .setDistance(to: .dark, percent: 10)
+                    .setLightPosition(.leftBottom)
+                    .setShadowColor(Theme.shared.currentTheme.surfaceContainerLow)
+                    .setIntensity(percent: 40)
+                    .setBlur(percent: 8)
+                    .setDistance(percent: 10)
                     .apply()
             }
         }

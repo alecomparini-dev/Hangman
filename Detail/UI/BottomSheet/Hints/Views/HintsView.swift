@@ -41,20 +41,7 @@ class HintsView: UIView {
     }()
 
     lazy var titleHintLabel: LabelBuilder = {
-        let img = UIImage(systemName: K.Images.handTapFill) ?? UIImage()
         let comp = LabelBuilder()
-            .setTextAttributed({ build in
-                build
-                    .setText(text: "Selecione ")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
-                    .setImage(image: img, color: Theme.shared.currentTheme.onSecondary)
-                    .setText(text: " uma")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
-                    .setText(text: " dica")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 20, weight: .bold))
-                    .setText(text: " para abrir")
-                    .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
-            })
             .setColor(Theme.shared.currentTheme.onSecondary)
             .setConstraints { build in
                 build
@@ -108,6 +95,7 @@ class HintsView: UIView {
     
     lazy var adHintPainelView: AdHintPainelView = {
         let comp = AdHintPainelView()
+            .setAlpha(0)
             .setConstraints { build in
                 build
                     .setLeading.setTrailing.equalToSafeArea(16)
@@ -118,10 +106,40 @@ class HintsView: UIView {
     }()
     
     
+//  MARK: - PUBLIC AREA
+    public func setSelectTextAttributed () {
+        let img = UIImage(systemName: K.Images.handTapFill) ?? UIImage()
+        titleHintLabel.setTextAttributed({ build in
+            build
+                .setText(text: "Selecione ")
+                .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+                .setImage(image: img, color: Theme.shared.currentTheme.onSecondary)
+                .setText(text: " uma")
+                .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+                .setText(text: " dica")
+                .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 20, weight: .bold))
+                .setText(text: " para abrir")
+                .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+        })
+    }
+    
+    public func setAdTextAttributed() {
+        titleHintLabel.setTextAttributed({ build in
+            build
+                .setText(text: "Suas ")
+                .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+                .setText(text: " dicas ")
+                .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 20, weight: .bold))
+                .setText(text: " acabaram!")
+                .setAttributed(key: .font, value: UIFont.systemFont(ofSize: 18, weight: .thin))
+        })
+    }
+    
 //  MARK: - PRIVATE AREA
     private func configure() {
         addElements()
         configConstraints()
+        setSelectTextAttributed()
     }
 
     private func addElements() {

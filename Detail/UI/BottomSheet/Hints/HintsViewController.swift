@@ -177,8 +177,11 @@ extension HintsViewController: UISheetPresentationControllerDelegate {
 
 //  MARK: - EXTENSION - UISheetPresentationControllerDelegate
 extension HintsViewController: HintsPresenterOutput {
+    
     public func hintsIsOver() {
-//        print("criar tela para quando terminar as dicas ")
+        if screen.adHintPainelView.get.alpha > 0 { return }
+        screen.setAdTextAttributed()
+        AnimationHandler.fadeIn(components: [screen.adHintPainelView.get], delay: 0.3, duration: 1)
     }
     
 
