@@ -50,6 +50,7 @@ public class HintsViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hintsPresenter.verifyHintIsOver()
+        screen.adHintPainelView.configStyle()
     }
     
     public override func viewDidDisappear(_ animated: Bool) {
