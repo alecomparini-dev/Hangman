@@ -92,7 +92,7 @@ class HintsView: UIView {
             .setScrollDirection(.vertical)
             .setShowsVerticalScrollIndicator(false)
             .setMinimumLineSpacing(8)
-            .setContentInset(top: 0, left: 0, bottom: 48, rigth: 0)
+            .setContentInset(top: 0, left: 0, bottom: 58, rigth: 0)
             .setBorder({ build in
                 build
                     .setCornerRadius(8)
@@ -102,6 +102,17 @@ class HintsView: UIView {
                     .setTop.equalTo(titleHintLabel.get, .bottom, 16)
                     .setLeading.setTrailing.equalToSafeArea(16)
                     .setBottom.equalToSuperView
+            }
+        return comp
+    }()
+    
+    lazy var adHintPainelView: AdHintPainelView = {
+        let comp = AdHintPainelView()
+            .setConstraints { build in
+                build
+                    .setLeading.setTrailing.equalToSafeArea(16)
+                    .setBottom.equalToSafeArea(-6)
+                    .setHeight.equalToConstant(68)
             }
         return comp
     }()
@@ -118,6 +129,7 @@ class HintsView: UIView {
         titleHintLabel.add(insideTo: self)
         downButton.add(insideTo: self)
         cardsHintsDock.add(insideTo: self)
+        adHintPainelView.add(insideTo: self)
     }
 
     private func configConstraints() {
@@ -125,7 +137,9 @@ class HintsView: UIView {
         titleHintLabel.applyConstraint()
         downButton.applyConstraint()
         cardsHintsDock.applyConstraint()
+        adHintPainelView.applyConstraint()
     }
     
+
     
 }
