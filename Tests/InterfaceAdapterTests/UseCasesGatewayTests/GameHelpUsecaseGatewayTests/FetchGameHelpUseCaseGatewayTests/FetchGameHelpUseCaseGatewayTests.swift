@@ -43,16 +43,17 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         let userID = "123"
         let (sut, findByDataStorageSpy) = makeSut()
         
-        findByDataStorageSpy.findByResult = .failure(FindByDataStorageProviderSpy.MockError.throwError)
+        findByDataStorageSpy.findByResult = .failure(MockError.throwError)
         
         do {
             let result = try await sut.fetch(userID)
             XCTFail("Unexpected success: \(String(describing: result) )")
         } catch let error {
-            XCTAssertTrue(error is FindByDataStorageProviderSpy.MockError)
+            XCTAssertTrue(error is MockError)
         }
         
     }
+    
 
     func test_fetchGameHelp_codable_wrong_throw() async {
         let userID = "123"
@@ -68,7 +69,33 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
+    }
+    
+    func test_fetchGameHelp_helpDocument_success() async {
+        let userID = "123"
+        let (sut, findByDataStorageSpy) = makeSut()
         
+        findByDataStorageSpy.findByResult = .success([:])
+        do {
+            _ = try await sut.fetch(userID)
+        } catch let error {
+            XCTAssertNotNil(error)
+        }
+        XCTAssertEqual(findByDataStorageSpy.helpDocument, K.Collections.Documents.help)
+    }
+    
+    func test_fetchGameHelp_path_success() async {
+        let userID = "123"
+        let (sut, findByDataStorageSpy) = makeSut()
+        
+        findByDataStorageSpy.findByResult = .failure(MockError.throwError)
+        
+        do {
+            _ = try await sut.fetch(userID)
+        } catch let error {
+            XCTAssertNotNil(error)
+        }
+        XCTAssertEqual(findByDataStorageSpy.path, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
     }
 
 }
@@ -76,6 +103,10 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
 
 //  MARK: - EXTENSION SUT
 extension FetchGameHelpUseCaseGatewayTests {
+    
+    enum MockError: Error {
+        case throwError
+    }
     
     func makeSut() -> (sut: FetchGameHelpUseCaseGatewayImpl, fetchDataStorageProviderSpy: FindByDataStorageProviderSpy) {
         let fetchDataStorageSpy = FindByDataStorageProviderSpy()
@@ -116,14 +147,13 @@ extension FetchGameHelpUseCaseGatewayTests {
 //  MARK: - MockFetchDataStorage
 
 class FindByDataStorageProviderSpy: FindByDataStorageProvider {
-    
+    var path: String!
+    var helpDocument: String!
     var findByResult: Result<[String: Any]?, Error> = .success([:])
     
-    enum MockError: Error {
-        case throwError
-    }
-    
     func findBy<T>(_ path: String, _ documentID: String) async throws -> T? {
+        self.path = path
+        self.helpDocument = documentID
         switch findByResult {
         case .success(let data):
             return data as? T
