@@ -8,12 +8,25 @@ import UseCaseGateway
 
 final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
     
-    func testFetchGameHelpSuccess() async {
-        let userID = "123"
-        let expectedResult = makeGameHelpModel()
-        let (sut, findByDataStorageSpy) = makeSut()
+    let userID = "123"
+    var sut: FetchGameHelpUseCaseGatewayImpl!
+    var findByDataStorageSpy: FindByDataStorageProviderSpy!
+    
+    override func setUp() {
+        (self.sut, self.findByDataStorageSpy) = makeSut()
+    }
+
+    override func tearDown() {
+        sut = nil
+        findByDataStorageSpy = nil
+    }
+    
+    
+//  MARK: - TESTE AREA
+    func test_fetch_gameHelp_success() async {
+        let expectedResult = GameHelpModelFactory.make()
         
-        findByDataStorageSpy.findByResult = .success(makeFindBySuccessJson())
+        findByDataStorageSpy.findByResult = .success(GameHelpModelFactory.makeJSON())
         
         do {
             let result = try await sut.fetch(userID)
@@ -21,13 +34,9 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
     }
     
     func test_fetchGameHelp_return_nil_success() async {
-        let userID = "123"
-        let (sut, findByDataStorageSpy) = makeSut()
-        
         findByDataStorageSpy.findByResult = .success(nil)
         
         do {
@@ -36,28 +45,21 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
     }
     
     func test_fetchGameHelp_throw() async {
-        let userID = "123"
-        let (sut, findByDataStorageSpy) = makeSut()
-        
-        findByDataStorageSpy.findByResult = .failure(FindByDataStorageProviderSpy.MockError.throwError)
+        findByDataStorageSpy.findByResult = .failure(MockError.throwError)
         
         do {
             let result = try await sut.fetch(userID)
             XCTFail("Unexpected success: \(String(describing: result) )")
         } catch let error {
-            XCTAssertTrue(error is FindByDataStorageProviderSpy.MockError)
+            XCTAssertTrue(error is MockError)
         }
-        
     }
+    
 
     func test_fetchGameHelp_codable_wrong_throw() async {
-        let userID = "123"
-        let (sut, findByDataStorageSpy) = makeSut()
-        
         let expectedResult = GameHelpModel(typeGameHelp: TypeGameHelpModel(revelations: 3))
         
         findByDataStorageSpy.findByResult = .success(makeFindByWrongJson())
@@ -68,7 +70,28 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
+    }
+    
+    func test_fetchGameHelp_helpDocument_success() async {
+        findByDataStorageSpy.findByResult = .success([:])
         
+        do {
+            _ = try await sut.fetch(userID)
+        } catch let error {
+            XCTAssertNotNil(error)
+        }
+        XCTAssertEqual(findByDataStorageSpy.helpDocument, K.Collections.Documents.help)
+    }
+    
+    func test_fetchGameHelp_path_success() async {
+        findByDataStorageSpy.findByResult = .failure(MockError.throwError)
+        
+        do {
+            _ = try await sut.fetch(userID)
+        } catch let error {
+            XCTAssertNotNil(error)
+        }
+        XCTAssertEqual(findByDataStorageSpy.path, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
     }
 
 }
@@ -76,28 +99,11 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
 
 //  MARK: - EXTENSION SUT
 extension FetchGameHelpUseCaseGatewayTests {
-    
+        
     func makeSut() -> (sut: FetchGameHelpUseCaseGatewayImpl, fetchDataStorageProviderSpy: FindByDataStorageProviderSpy) {
         let fetchDataStorageSpy = FindByDataStorageProviderSpy()
         let sut = FetchGameHelpUseCaseGatewayImpl(fetchDataStorage: fetchDataStorageSpy)
         return (sut, fetchDataStorageSpy)
-    }
-    
-    func makeGameHelpModel() -> GameHelpModel {
-        return GameHelpModel(dateRenewFree: DateHandler.convertDate("2024-01-12"),
-                             typeGameHelp: TypeGameHelpModel(lives: 1,
-                                                             hints: 2,
-                                                             revelations: 3)
-        )
-    }
-    
-    func makeFindBySuccessJson() -> [String: Any] {
-        return [
-            "dateRenewFree": "2024-01-12",
-            "lives": 1,
-            "hints": 2,
-            "revelations": 3
-        ]
     }
     
     func makeFindByWrongJson() -> [String: Any] {
@@ -113,17 +119,17 @@ extension FetchGameHelpUseCaseGatewayTests {
 
 
 
-//  MARK: - MockFetchDataStorage
+//  MARK: - FindByDataStorageProviderSpy
 
 class FindByDataStorageProviderSpy: FindByDataStorageProvider {
-    
+    var path: String!
+    var helpDocument: String!
     var findByResult: Result<[String: Any]?, Error> = .success([:])
     
-    enum MockError: Error {
-        case throwError
-    }
-    
     func findBy<T>(_ path: String, _ documentID: String) async throws -> T? {
+        self.path = path
+        self.helpDocument = documentID
+        
         switch findByResult {
         case .success(let data):
             return data as? T
