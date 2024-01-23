@@ -3,7 +3,7 @@
 
 import XCTest
 
-class FetchGameHelpUseCaseGatewayTests: XCTestCase {
+final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
 
     func test_() {
         XCTAssertTrue(true)
