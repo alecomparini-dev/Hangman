@@ -69,9 +69,10 @@
 		023E7BFD2B54596600FB450F /* TypeGameHelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023E7BFC2B54596600FB450F /* TypeGameHelpModel.swift */; };
 		024154082B4D84490016450C /* GameHelpPresenterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024154072B4D84490016450C /* GameHelpPresenterDTO.swift */; };
 		0241540D2B4DB7150016450C /* GameHelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241540C2B4DB7150016450C /* GameHelpModel.swift */; };
-		025657AB2B5FF29A00AB5BAD /* UseCaseGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025657AA2B5FF29A00AB5BAD /* UseCaseGatewayTest.swift */; };
-		025657B12B5FF2DF00AB5BAD /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
 		025657B42B5FF6C200AB5BAD /* AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0235E5F92B157B6600829489 /* AnimationHandler.swift */; };
+		025657C52B5FF8D100AB5BAD /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
+		025657CB2B5FFA1400AB5BAD /* FetchGameHelpUseCaseGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025657CA2B5FFA1400AB5BAD /* FetchGameHelpUseCaseGatewayTests.swift */; };
+		025657CD2B5FFA3500AB5BAD /* SaveGameHelpUseCaseGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025657CC2B5FFA3500AB5BAD /* SaveGameHelpUseCaseGatewayTests.swift */; };
 		0266C98F2B5ABEBF00986B74 /* SaveLastOpenHintsUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266C98E2B5ABEBF00986B74 /* SaveLastOpenHintsUseCaseGateway.swift */; };
 		0266C9932B5ABF4400986B74 /* SaveLastOpenHintsUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266C9912B5ABF2400986B74 /* SaveLastOpenHintsUseCaseGatewayImpl.swift */; };
 		0266C99A2B5D471D00986B74 /* AdHintPainelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266C9992B5D471D00986B74 /* AdHintPainelView.swift */; };
@@ -199,7 +200,7 @@
 			remoteGlobalIDString = 0279268B2B0FD1B200035BCF;
 			remoteInfo = Handler;
 		};
-		025657AF2B5FF2C600AB5BAD /* PBXContainerItemProxy */ = {
+		025657C32B5FF8BB00AB5BAD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 026B645D2B03893400F6DD99 /* Project object */;
 			proxyType = 1;
@@ -407,9 +408,10 @@
 		023E7BFC2B54596600FB450F /* TypeGameHelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeGameHelpModel.swift; sourceTree = "<group>"; };
 		024154072B4D84490016450C /* GameHelpPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpPresenterDTO.swift; sourceTree = "<group>"; };
 		0241540C2B4DB7150016450C /* GameHelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpModel.swift; sourceTree = "<group>"; };
-		025657A82B5FF29A00AB5BAD /* UseCaseGatewayTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCaseGatewayTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		025657AA2B5FF29A00AB5BAD /* UseCaseGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseGatewayTest.swift; sourceTree = "<group>"; };
-		025657B22B5FF41400AB5BAD /* UseCaseGateway.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseGateway.xctestplan; sourceTree = "<group>"; };
+		025657B92B5FF81000AB5BAD /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		025657CA2B5FFA1400AB5BAD /* FetchGameHelpUseCaseGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseGatewayTests.swift; sourceTree = "<group>"; };
+		025657CC2B5FFA3500AB5BAD /* SaveGameHelpUseCaseGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveGameHelpUseCaseGatewayTests.swift; sourceTree = "<group>"; };
+		025657D12B5FFDBD00AB5BAD /* ConfigurationsTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ConfigurationsTests.xctestplan; sourceTree = "<group>"; };
 		0266C98E2B5ABEBF00986B74 /* SaveLastOpenHintsUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLastOpenHintsUseCaseGateway.swift; sourceTree = "<group>"; };
 		0266C9912B5ABF2400986B74 /* SaveLastOpenHintsUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLastOpenHintsUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		0266C9992B5D471D00986B74 /* AdHintPainelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdHintPainelView.swift; sourceTree = "<group>"; };
@@ -509,11 +511,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		025657A52B5FF29A00AB5BAD /* Frameworks */ = {
+		025657B62B5FF81000AB5BAD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025657B12B5FF2DF00AB5BAD /* UseCaseGateway.framework in Frameworks */,
+				025657C52B5FF8D100AB5BAD /* UseCaseGateway.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,21 +1019,70 @@
 			path = GameHelpModel;
 			sourceTree = "<group>";
 		};
-		025657A92B5FF29A00AB5BAD /* UseCaseGatewayTest */ = {
-			isa = PBXGroup;
-			children = (
-				025657AA2B5FF29A00AB5BAD /* UseCaseGatewayTest.swift */,
-				025657B22B5FF41400AB5BAD /* UseCaseGateway.xctestplan */,
-			);
-			path = UseCaseGatewayTest;
-			sourceTree = "<group>";
-		};
 		025657B32B5FF66D00AB5BAD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				0235E5F92B157B6600829489 /* AnimationHandler.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		025657BA2B5FF81000AB5BAD /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				025657CF2B5FFBEF00AB5BAD /* ConfigurationsTests */,
+				025657C12B5FF84E00AB5BAD /* InterfaceAdapterTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		025657C02B5FF83300AB5BAD /* UseCasesGatewayTests */ = {
+			isa = PBXGroup;
+			children = (
+				025657C72B5FF9B000AB5BAD /* FetchGameHelpUseCaseGatewayTests */,
+				025657C82B5FF9BB00AB5BAD /* SaveGameHelpUseCaseGatewayTests */,
+				025657C92B5FF9C600AB5BAD /* UpdateGameHelpUseCaseGatewayTests */,
+			);
+			path = UseCasesGatewayTests;
+			sourceTree = "<group>";
+		};
+		025657C12B5FF84E00AB5BAD /* InterfaceAdapterTests */ = {
+			isa = PBXGroup;
+			children = (
+				025657C02B5FF83300AB5BAD /* UseCasesGatewayTests */,
+			);
+			path = InterfaceAdapterTests;
+			sourceTree = "<group>";
+		};
+		025657C72B5FF9B000AB5BAD /* FetchGameHelpUseCaseGatewayTests */ = {
+			isa = PBXGroup;
+			children = (
+				025657CA2B5FFA1400AB5BAD /* FetchGameHelpUseCaseGatewayTests.swift */,
+			);
+			path = FetchGameHelpUseCaseGatewayTests;
+			sourceTree = "<group>";
+		};
+		025657C82B5FF9BB00AB5BAD /* SaveGameHelpUseCaseGatewayTests */ = {
+			isa = PBXGroup;
+			children = (
+				025657CC2B5FFA3500AB5BAD /* SaveGameHelpUseCaseGatewayTests.swift */,
+			);
+			path = SaveGameHelpUseCaseGatewayTests;
+			sourceTree = "<group>";
+		};
+		025657C92B5FF9C600AB5BAD /* UpdateGameHelpUseCaseGatewayTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UpdateGameHelpUseCaseGatewayTests;
+			sourceTree = "<group>";
+		};
+		025657CF2B5FFBEF00AB5BAD /* ConfigurationsTests */ = {
+			isa = PBXGroup;
+			children = (
+				025657D12B5FFDBD00AB5BAD /* ConfigurationsTests.xctestplan */,
+			);
+			path = ConfigurationsTests;
 			sourceTree = "<group>";
 		};
 		0266C9902B5ABF0500986B74 /* SaveLastOpenHintsUseCaseGateway */ = {
@@ -1287,7 +1338,7 @@
 				02C4AB802B057C2900991633 /* InterfaceAdapter */,
 				026B64772B0389C900F6DD99 /* Detail */,
 				026B64882B03A1ED00F6DD99 /* Hangman */,
-				025657A92B5FF29A00AB5BAD /* UseCaseGatewayTest */,
+				025657BA2B5FF81000AB5BAD /* Tests */,
 				026B64672B03893400F6DD99 /* Products */,
 				026B647D2B0389E000F6DD99 /* Frameworks */,
 			);
@@ -1302,7 +1353,7 @@
 				026938D32B0909E10023073B /* Domain.framework */,
 				026939002B09371C0023073B /* UseCaseGateway.framework */,
 				0279268C2B0FD1B200035BCF /* Handler.framework */,
-				025657A82B5FF29A00AB5BAD /* UseCaseGatewayTest.xctest */,
+				025657B92B5FF81000AB5BAD /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1907,22 +1958,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		025657A72B5FF29A00AB5BAD /* UseCaseGatewayTest */ = {
+		025657B82B5FF81000AB5BAD /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 025657AC2B5FF29A00AB5BAD /* Build configuration list for PBXNativeTarget "UseCaseGatewayTest" */;
+			buildConfigurationList = 025657BD2B5FF81000AB5BAD /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
-				025657A42B5FF29A00AB5BAD /* Sources */,
-				025657A52B5FF29A00AB5BAD /* Frameworks */,
-				025657A62B5FF29A00AB5BAD /* Resources */,
+				025657B52B5FF81000AB5BAD /* Sources */,
+				025657B62B5FF81000AB5BAD /* Frameworks */,
+				025657B72B5FF81000AB5BAD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				025657B02B5FF2C600AB5BAD /* PBXTargetDependency */,
+				025657C42B5FF8BB00AB5BAD /* PBXTargetDependency */,
 			);
-			name = UseCaseGatewayTest;
-			productName = UseCaseGatewayTest;
-			productReference = 025657A82B5FF29A00AB5BAD /* UseCaseGatewayTest.xctest */;
+			name = Tests;
+			productName = Tests;
+			productReference = 025657B92B5FF81000AB5BAD /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		026938D22B0909E10023073B /* Domain */ = {
@@ -2070,8 +2121,9 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					025657A72B5FF29A00AB5BAD = {
+					025657B82B5FF81000AB5BAD = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					026938D22B0909E10023073B = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -2120,13 +2172,13 @@
 				026938FF2B09371C0023073B /* UseCaseGateway */,
 				026B64752B0389C900F6DD99 /* Detail */,
 				026B64862B03A1ED00F6DD99 /* Hangman */,
-				025657A72B5FF29A00AB5BAD /* UseCaseGatewayTest */,
+				025657B82B5FF81000AB5BAD /* Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		025657A62B5FF29A00AB5BAD /* Resources */ = {
+		025657B72B5FF81000AB5BAD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2204,11 +2256,12 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		025657A42B5FF29A00AB5BAD /* Sources */ = {
+		025657B52B5FF81000AB5BAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025657AB2B5FF29A00AB5BAD /* UseCaseGatewayTest.swift in Sources */,
+				025657CD2B5FFA3500AB5BAD /* SaveGameHelpUseCaseGatewayTests.swift in Sources */,
+				025657CB2B5FFA1400AB5BAD /* FetchGameHelpUseCaseGatewayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2408,10 +2461,10 @@
 			target = 0279268B2B0FD1B200035BCF /* Handler */;
 			targetProxy = 022188DC2B16860700440761 /* PBXContainerItemProxy */;
 		};
-		025657B02B5FF2C600AB5BAD /* PBXTargetDependency */ = {
+		025657C42B5FF8BB00AB5BAD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 026938FF2B09371C0023073B /* UseCaseGateway */;
-			targetProxy = 025657AF2B5FF2C600AB5BAD /* PBXContainerItemProxy */;
+			targetProxy = 025657C32B5FF8BB00AB5BAD /* PBXContainerItemProxy */;
 		};
 		026938DF2B090A310023073B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2482,9 +2535,10 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		025657AD2B5FF29A00AB5BAD /* Debug */ = {
+		025657BE2B5FF81000AB5BAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2493,17 +2547,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.UseCaseGatewayTest;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		025657AE2B5FF29A00AB5BAD /* Release */ = {
+		025657BF2B5FF81000AB5BAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2HCBZJR5K3;
@@ -2511,7 +2567,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.UseCaseGatewayTest;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alecomparini.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -3118,11 +3174,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		025657AC2B5FF29A00AB5BAD /* Build configuration list for PBXNativeTarget "UseCaseGatewayTest" */ = {
+		025657BD2B5FF81000AB5BAD /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				025657AD2B5FF29A00AB5BAD /* Debug */,
-				025657AE2B5FF29A00AB5BAD /* Release */,
+				025657BE2B5FF81000AB5BAD /* Debug */,
+				025657BF2B5FF81000AB5BAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

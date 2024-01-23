@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "278C8C4E-71EF-4BD5-8DC9-8422CE85561B",
+      "id" : "719A96E7-D9AD-4787-9232-3C2A3467948E",
       "name" : "Configuration 1",
       "options" : {
 
@@ -14,10 +14,11 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Hangman.xcodeproj",
-        "identifier" : "025657A72B5FF29A00AB5BAD",
-        "name" : "UseCaseGatewayTest"
+        "identifier" : "025657B82B5FF81000AB5BAD",
+        "name" : "Tests"
       }
     }
   ],
