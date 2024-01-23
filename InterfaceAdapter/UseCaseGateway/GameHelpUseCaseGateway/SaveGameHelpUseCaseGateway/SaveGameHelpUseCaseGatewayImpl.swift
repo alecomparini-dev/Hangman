@@ -27,9 +27,7 @@ public class SaveGameHelpUseCaseGatewayImpl: SaveGameHelpUseCaseGateway {
         
         let saveGameJSONData = try JSONEncoder().encode(saveGameCodable)
         
-        let saveGameJSON = try JSONSerialization.jsonObject(with: saveGameJSONData, options: .fragmentsAllowed) as? [String: Any]
-        
-        if let saveGameJSON {
+        if let saveGameJSON = try JSONSerialization.jsonObject(with: saveGameJSONData, options: .fragmentsAllowed) as? [String: Any] {
             _ = try await insertDataStorage.insert(collection, helpDocumentID, saveGameJSON)
         }
         
