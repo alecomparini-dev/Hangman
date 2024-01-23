@@ -1036,7 +1036,7 @@
 		025657BA2B5FF81000AB5BAD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				025657EA2B602DC900AB5BAD /* Utils */,
+				025657EA2B602DC900AB5BAD /* Helpers */,
 				025657CF2B5FFBEF00AB5BAD /* ConfigurationsTests */,
 				025657C12B5FF84E00AB5BAD /* InterfaceAdapterTests */,
 			);
@@ -1062,6 +1062,7 @@
 		025657DF2B5FFFB000AB5BAD /* UseCasesGatewayTests */ = {
 			isa = PBXGroup;
 			children = (
+				0273391A2B60641E00C9A03B /* LastOpenHintsUseCaseGateway */,
 				025657E92B5FFFB700AB5BAD /* GameHelpUsecaseGatewayTests */,
 			);
 			path = UseCasesGatewayTests;
@@ -1102,12 +1103,12 @@
 			path = GameHelpUsecaseGatewayTests;
 			sourceTree = "<group>";
 		};
-		025657EA2B602DC900AB5BAD /* Utils */ = {
+		025657EA2B602DC900AB5BAD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				025657EB2B602DD200AB5BAD /* Enum */,
 			);
-			path = Utils;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		025657EB2B602DD200AB5BAD /* Enum */ = {
@@ -1512,6 +1513,13 @@
 				026B64A92B03A39200F6DD99 /* NavigationController.swift */,
 			);
 			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		0273391A2B60641E00C9A03B /* LastOpenHintsUseCaseGateway */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LastOpenHintsUseCaseGateway;
 			sourceTree = "<group>";
 		};
 		0274EB0C2B16966400C40EFA /* Extensions */ = {

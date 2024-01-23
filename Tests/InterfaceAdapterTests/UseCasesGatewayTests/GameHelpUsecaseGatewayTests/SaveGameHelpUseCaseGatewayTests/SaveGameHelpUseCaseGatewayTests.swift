@@ -94,11 +94,10 @@ extension SaveGameHelpUseCaseGatewayTests {
         return (sut, insertDataStorageSpy)
     }
     
-    
 }
 
 
-//  MARK: - MockFetchDataStorage
+//  MARK: - InsertDataStorageProviderSpy
 
 class InsertDataStorageProviderSpy: InsertDataStorageProvider {
     var collection: String!
