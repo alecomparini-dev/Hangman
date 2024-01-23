@@ -19,7 +19,6 @@ public class UpdateGameHelpUseCaseGatewayImpl: UpdateGameHelpUseCaseGateway {
         self.updateDataStorage = updateDataStorage
     }
     
-    
     public func update(_ userID: String, gameHelp: GameHelpModel) async throws {
         let collection = "\(usersCollection)/\(userID)/\(gameCollection)"
         
