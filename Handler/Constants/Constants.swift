@@ -1,7 +1,7 @@
 //  Created by Alessandro Comparini on 14/11/23.
 //
 
-import UIKit
+import Foundation
 
 public struct K {
     public static let identifierApp = "hangman"

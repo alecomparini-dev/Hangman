@@ -13,3 +13,16 @@ public struct GameHelpModel {
     }
     
 }
+
+
+
+//  MARK: - EQUATABLE
+
+extension GameHelpModel: Equatable {
+    public static func == (lhs: GameHelpModel, rhs: GameHelpModel) -> Bool {
+        return lhs.dateRenewFree == rhs.dateRenewFree &&
+        lhs.typeGameHelp?.hints == rhs.typeGameHelp?.hints &&
+        lhs.typeGameHelp?.lives == rhs.typeGameHelp?.lives &&
+        lhs.typeGameHelp?.revelations == rhs.typeGameHelp?.revelations
+    }
+}
