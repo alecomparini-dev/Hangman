@@ -5,6 +5,7 @@ import UIKit
 import CustomComponentsSDK
 import Handler
 
+
 class BuyLifePainelView: ViewBuilder {
     
     override init() {
