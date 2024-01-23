@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "278C8C4E-71EF-4BD5-8DC9-8422CE85561B",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testExecutionOrdering" : "random",
+    "threadSanitizerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Hangman.xcodeproj",
+        "identifier" : "025657A72B5FF29A00AB5BAD",
+        "name" : "UseCaseGatewayTest"
+      }
+    }
+  ],
+  "version" : 1
+}
