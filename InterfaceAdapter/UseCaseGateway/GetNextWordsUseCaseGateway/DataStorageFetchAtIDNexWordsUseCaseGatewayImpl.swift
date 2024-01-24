@@ -27,13 +27,19 @@ public class DataStorageFetchAtIDNexWordsUseCaseGatewayImpl: GetNextWordsUseCase
         guard let fetchWords else {return []}
         
         return fetchWords.map {
+            var levelInsert: Level?
+            
+            if let level = $0["level"] as? Int {
+                levelInsert = Level.init(rawValue: level)
+            }
+            
             return NextWordsUseCaseDTO(
-                id: $0["id"] as? Int ?? 0,
+                id: $0["id"] as? Int,
                 word: $0["word"] as? String,
                 syllables: $0["syllables"] as? [String],
                 category: $0["category"] as? String,
                 initialQuestion: $0["initialQuestion"] as? String,
-                level: $0["level"] as? Level,
+                level: levelInsert,
                 hints: $0["tips"] as? [String]
             )
         }

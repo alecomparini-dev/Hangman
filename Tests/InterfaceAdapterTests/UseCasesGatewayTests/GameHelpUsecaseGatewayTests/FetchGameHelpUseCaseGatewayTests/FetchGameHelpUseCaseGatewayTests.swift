@@ -36,7 +36,7 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         }
     }
     
-    func test_fetchGameHelp_return_nil_success() async {
+    func test_fetch_return_nil_success() async {
         findByDataStorageSpy.findByResult = .success(nil)
         
         do {
@@ -47,7 +47,7 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         }
     }
     
-    func test_fetchGameHelp_throw() async {
+    func test_fetch_throw() async {
         findByDataStorageSpy.findByResult = .failure(MockError.throwError)
         
         do {
@@ -59,7 +59,7 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
     }
     
 
-    func test_fetchGameHelp_codable_wrong_throw() async {
+    func test_fetch_codable_wrong_throw() async {
         let expectedResult = GameHelpModel(typeGameHelp: TypeGameHelpModel(revelations: 3))
         
         findByDataStorageSpy.findByResult = .success(makeFindByWrongJson())
@@ -72,7 +72,7 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         }
     }
     
-    func test_fetchGameHelp_helpDocument_success() async {
+    func test_fetch_helpDocument_success() async {
         findByDataStorageSpy.findByResult = .success([:])
         
         do {
@@ -83,7 +83,7 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         XCTAssertEqual(findByDataStorageSpy.helpDocument, K.Collections.Documents.help)
     }
     
-    func test_fetchGameHelp_path_success() async {
+    func test_fetch_path_success() async {
         findByDataStorageSpy.findByResult = .failure(MockError.throwError)
         
         do {

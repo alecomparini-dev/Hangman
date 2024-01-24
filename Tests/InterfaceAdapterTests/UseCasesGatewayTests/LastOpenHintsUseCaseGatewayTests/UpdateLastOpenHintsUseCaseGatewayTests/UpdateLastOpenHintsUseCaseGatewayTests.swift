@@ -25,7 +25,7 @@ final class UpdateLastOpenHintsUseCaseGatewayTests: XCTestCase {
     
     
     //  MARK: - TESTE AREA
-    func test_save_success() async {
+    func test_update_success() async {
         updateDataStorageSpy.updateResult = .success([:])
         
         var expectedResult = false
@@ -40,7 +40,7 @@ final class UpdateLastOpenHintsUseCaseGatewayTests: XCTestCase {
         XCTAssertTrue(expectedResult)
     }
     
-    func test_save_failure() async {
+    func test_update_failure() async {
         updateDataStorageSpy.updateResult = .failure(MockError.throwError)
         do {
             _ = try await sut.update(userID, [1,2,3])
