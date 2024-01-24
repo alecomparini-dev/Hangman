@@ -51,7 +51,7 @@ final class CountWordsPlayedUseCaseGatewayTests: XCTestCase {
         fetchCountDataStorage.result = .success(1)
         
         do {
-            let _ = try await sut.count(userID: userID)
+            _ = try await sut.count(userID: userID)
         } catch let error {
             XCTAssertNotNil(error)
         }
