@@ -57,10 +57,11 @@ final class SaveGameHelpUseCaseGatewayTests: XCTestCase {
         }
 
         let value = insertDataStorageSpy.value as! [String: Any]
-        XCTAssertEqual(value["dateRenewFree"] as! String, "2024-1-12")
-        XCTAssertEqual(value["lives"] as! Int, 1)
-        XCTAssertEqual(value["hints"] as! Int, 2)
-        XCTAssertEqual(value["revelations"] as! Int, 3)
+        let expected = GameHelpModelFactory.toJSON()
+        XCTAssertEqual(value["dateRenewFree"] as! String, expected["dateRenewFree"] as! String)
+        XCTAssertEqual(value["lives"] as! Int, expected["lives"] as! Int)
+        XCTAssertEqual(value["hints"] as! Int, expected["hints"] as! Int)
+        XCTAssertEqual(value["revelations"] as! Int, expected["revelations"] as! Int)
     }
     
     func test_save_correct_collection() async {

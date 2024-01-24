@@ -8,19 +8,19 @@ import Handler
 struct GameHelpModelFactory {
     
     static func make() -> GameHelpModel {
-        return GameHelpModel(dateRenewFree: DateHandler.convertDate("2024-01-12"),
-                             typeGameHelp: TypeGameHelpModel(lives: 1,
-                                                             hints: 2,
-                                                             revelations: 3)
+        return GameHelpModel(dateRenewFree: DateHandler.convertDate("2024-1-12"),
+                             typeGameHelp: TypeGameHelpModel(lives: 5,
+                                                             hints: 10,
+                                                             revelations: 5)
         )
     }
     
-    static func makeJSON() -> [String: Any] {
+    static func toJSON() -> [String: Any] {
         return [
-            "dateRenewFree": "2024-01-12",
-            "lives": 1,
-            "hints": 2,
-            "revelations": 3
+            "dateRenewFree": "2024-1-12",
+            "lives": 5,
+            "hints": 10,
+            "revelations": 5
         ]
     }
 }

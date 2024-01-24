@@ -17,6 +17,12 @@
 		0201CE762B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE752B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift */; };
 		0201CE792B61A33C00C2B6F0 /* TypeGameHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE782B61A33C00C2B6F0 /* TypeGameHelp.swift */; };
 		0201CE7D2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE7C2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift */; };
+		0201CE802B61A77500C2B6F0 /* FetchGameHelpUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE7F2B61A77500C2B6F0 /* FetchGameHelpUseCaseTests.swift */; };
+		0201CE832B61AA7500C2B6F0 /* FetchGameHelpUseCaseGatewaySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE822B61AA7500C2B6F0 /* FetchGameHelpUseCaseGatewaySpy.swift */; };
+		0201CE852B61AC4900C2B6F0 /* SaveGameHelpUseCaseGatewaySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE842B61AC4900C2B6F0 /* SaveGameHelpUseCaseGatewaySpy.swift */; };
+		0201CE872B61AC6300C2B6F0 /* MaxGameHelpUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE862B61AC6300C2B6F0 /* MaxGameHelpUseCaseSpy.swift */; };
+		0201CE8A2B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE892B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift */; };
+		0201CE8B2B61AECB00C2B6F0 /* GameHelpModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025657EF2B60302800AB5BAD /* GameHelpModelFactory.swift */; };
 		020216512B0A9682003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202164E2B0A963F003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift */; };
 		020216532B0A9699003E2B07 /* AuthenticateAnonymous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */; };
 		020216542B0AA367003E2B07 /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
@@ -394,6 +400,11 @@
 		0201CE752B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLastOpenHintsUseCaseGatewaySpy.swift; sourceTree = "<group>"; };
 		0201CE782B61A33C00C2B6F0 /* TypeGameHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeGameHelp.swift; sourceTree = "<group>"; };
 		0201CE7C2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxTypeGameHelpUseCaseTests.swift; sourceTree = "<group>"; };
+		0201CE7F2B61A77500C2B6F0 /* FetchGameHelpUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseTests.swift; sourceTree = "<group>"; };
+		0201CE822B61AA7500C2B6F0 /* FetchGameHelpUseCaseGatewaySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseGatewaySpy.swift; sourceTree = "<group>"; };
+		0201CE842B61AC4900C2B6F0 /* SaveGameHelpUseCaseGatewaySpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveGameHelpUseCaseGatewaySpy.swift; sourceTree = "<group>"; };
+		0201CE862B61AC6300C2B6F0 /* MaxGameHelpUseCaseSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxGameHelpUseCaseSpy.swift; sourceTree = "<group>"; };
+		0201CE892B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseDTOFactory.swift; sourceTree = "<group>"; };
 		020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateAnonymous.swift; sourceTree = "<group>"; };
 		0202164E2B0A963F003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		020216592B0B9C59003E2B07 /* WordPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPresenterDTO.swift; sourceTree = "<group>"; };
@@ -699,6 +710,7 @@
 		0201CE642B6182C600C2B6F0 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				0201CE882B61ADDE00C2B6F0 /* Model+DTO */,
 				0201CE692B61857500C2B6F0 /* SpyFactories */,
 			);
 			path = Factories;
@@ -707,7 +719,8 @@
 		0201CE692B61857500C2B6F0 /* SpyFactories */ = {
 			isa = PBXGroup;
 			children = (
-				0201CE6F2B618A2F00C2B6F0 /* LastOpenHintsUseCaseGatewaySpys */,
+				0201CE812B61AA4B00C2B6F0 /* GameHelpUseCasesSpy */,
+				0201CE6F2B618A2F00C2B6F0 /* LastOpenHintsUseCaseGatewaySpy */,
 			);
 			path = SpyFactories;
 			sourceTree = "<group>";
@@ -720,14 +733,14 @@
 			path = SaveLastOpenHintsUseCaseTests;
 			sourceTree = "<group>";
 		};
-		0201CE6F2B618A2F00C2B6F0 /* LastOpenHintsUseCaseGatewaySpys */ = {
+		0201CE6F2B618A2F00C2B6F0 /* LastOpenHintsUseCaseGatewaySpy */ = {
 			isa = PBXGroup;
 			children = (
 				0201CE6A2B61858A00C2B6F0 /* GetLastOpenHintsUseCaseGatewaySpy.swift */,
 				0201CE702B618A5500C2B6F0 /* SaveLastOpenHintsUseCaseGatewaySpy.swift */,
 				0201CE752B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift */,
 			);
-			path = LastOpenHintsUseCaseGatewaySpys;
+			path = LastOpenHintsUseCaseGatewaySpy;
 			sourceTree = "<group>";
 		};
 		0201CE722B618C9600C2B6F0 /* DeleteLastOpenHintsUseCaseTests */ = {
@@ -749,6 +762,7 @@
 		0201CE7A2B61A4BD00C2B6F0 /* GameHelpUseCasesTests */ = {
 			isa = PBXGroup;
 			children = (
+				0201CE7E2B61A76600C2B6F0 /* FetchGameHelpUseCaseTests */,
 				0201CE7B2B61A4CD00C2B6F0 /* MaxTypeGameHelpUseCaseTests */,
 			);
 			path = GameHelpUseCasesTests;
@@ -760,6 +774,32 @@
 				0201CE7C2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift */,
 			);
 			path = MaxTypeGameHelpUseCaseTests;
+			sourceTree = "<group>";
+		};
+		0201CE7E2B61A76600C2B6F0 /* FetchGameHelpUseCaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				0201CE7F2B61A77500C2B6F0 /* FetchGameHelpUseCaseTests.swift */,
+			);
+			path = FetchGameHelpUseCaseTests;
+			sourceTree = "<group>";
+		};
+		0201CE812B61AA4B00C2B6F0 /* GameHelpUseCasesSpy */ = {
+			isa = PBXGroup;
+			children = (
+				0201CE822B61AA7500C2B6F0 /* FetchGameHelpUseCaseGatewaySpy.swift */,
+				0201CE862B61AC6300C2B6F0 /* MaxGameHelpUseCaseSpy.swift */,
+				0201CE842B61AC4900C2B6F0 /* SaveGameHelpUseCaseGatewaySpy.swift */,
+			);
+			path = GameHelpUseCasesSpy;
+			sourceTree = "<group>";
+		};
+		0201CE882B61ADDE00C2B6F0 /* Model+DTO */ = {
+			isa = PBXGroup;
+			children = (
+				0201CE892B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift */,
+			);
+			path = "Model+DTO";
 			sourceTree = "<group>";
 		};
 		0202164B2B0A95EA003E2B07 /* FetchDataStorageProvider */ = {
@@ -2600,14 +2640,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0201CE872B61AC6300C2B6F0 /* MaxGameHelpUseCaseSpy.swift in Sources */,
 				0201CE712B618A5500C2B6F0 /* SaveLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
 				0201CE7D2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift in Sources */,
+				0201CE8B2B61AECB00C2B6F0 /* GameHelpModelFactory.swift in Sources */,
 				0201CE682B6184D900C2B6F0 /* MockError.swift in Sources */,
 				0201CE6E2B61899A00C2B6F0 /* SaveLastOpenHintsUseCaseTests.swift in Sources */,
 				0201CE742B618CA300C2B6F0 /* DeleteLastOpenHintsUseCaseTests.swift in Sources */,
+				0201CE8A2B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift in Sources */,
 				0201CE762B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
 				0201CE6B2B61858A00C2B6F0 /* GetLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
 				0201CE602B617E8D00C2B6F0 /* GetLastOpenHintsUseCaseTests.swift in Sources */,
+				0201CE852B61AC4900C2B6F0 /* SaveGameHelpUseCaseGatewaySpy.swift in Sources */,
+				0201CE802B61A77500C2B6F0 /* FetchGameHelpUseCaseTests.swift in Sources */,
+				0201CE832B61AA7500C2B6F0 /* FetchGameHelpUseCaseGatewaySpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
