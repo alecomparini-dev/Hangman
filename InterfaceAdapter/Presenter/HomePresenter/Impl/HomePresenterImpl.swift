@@ -133,13 +133,13 @@ public class HomePresenterImpl: HomePresenter {
     public func getCurrentWord() -> WordPresenterDTO? {
         guard let currentWord else { return nil }
         
-        return WordPresenterDTO(id: currentWord.id,
-                                    word: currentWord.word,
-                                    syllables: currentWord.syllables,
-                                    category: currentWord.category,
-                                    initialQuestion: currentWord.initialQuestion,
-                                    level: convertLevel(currentWord.level),
-                                    hints: currentWord.hints)
+        return WordPresenterDTO(id: currentWord.id ?? 0,
+                                word: currentWord.word,
+                                syllables: currentWord.syllables,
+                                category: currentWord.category,
+                                initialQuestion: currentWord.initialQuestion,
+                                level: convertLevel(currentWord.level),
+                                hints: currentWord.hints)
     }
     
     public func revealLetterGameRandom(_ duration: CGFloat = 1) {
