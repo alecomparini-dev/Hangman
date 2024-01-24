@@ -1,0 +1,26 @@
+{
+  "configurations" : [
+    {
+      "id" : "967BA75E-286F-4A26-87A5-EFCC1608A27D",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testExecutionOrdering" : "random",
+    "threadSanitizerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Hangman.xcodeproj",
+        "identifier" : "0201CE552B617E6000C2B6F0",
+        "name" : "TestsDomain"
+      }
+    }
+  ],
+  "version" : 1
+}
