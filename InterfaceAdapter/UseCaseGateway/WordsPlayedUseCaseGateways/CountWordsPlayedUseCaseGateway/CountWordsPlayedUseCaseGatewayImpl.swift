@@ -21,6 +21,7 @@ public class CountWordsPlayedUseCaseGatewayImpl: CountWordsPlayedUseCaseGateway 
         return try await fetchCountDataStorage.fetchCount(document)
     }
     
+    
 //  MARK: - PRIVATE AREA
     private func makeDocument(userID: String) -> String {
         return "\(usersCollection)/\(userID)/\(wordsPlayedCollection)"

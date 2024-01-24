@@ -3,7 +3,7 @@
 
 import Foundation
 
-public struct DollUseCaseDTO {
+public struct DollUseCaseDTO: Equatable {
     public var head: [String]?
     public var body: [String]?
     public var success: [String]?
