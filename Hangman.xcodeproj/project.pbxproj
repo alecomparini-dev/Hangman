@@ -181,7 +181,6 @@
 		02E065E92B53290300C074FC /* FetchDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065E72B53288A00C074FC /* FetchDataStorageProvider.swift */; };
 		02E065F22B53401600C074FC /* FetchChannelsGameHelpCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065F02B53400600C074FC /* FetchChannelsGameHelpCodable.swift */; };
 		02E065F32B53401900C074FC /* FetchGameHelpCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065EE2B533EF200C074FC /* FetchGameHelpCodable.swift */; };
-		02E065FB2B5342F900C074FC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065FA2B5342F900C074FC /* String+Extension.swift */; };
 		02F062802B56B0CD0015DD8F /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
 		02F062812B56B0CD0015DD8F /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02F062882B56BB4C0015DD8F /* SaveGameHelpUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F062862B56BB410015DD8F /* SaveGameHelpUseCaseGatewayImpl.swift */; };
@@ -515,7 +514,6 @@
 		02E065E72B53288A00C074FC /* FetchDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataStorageProvider.swift; sourceTree = "<group>"; };
 		02E065EE2B533EF200C074FC /* FetchGameHelpCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpCodable.swift; sourceTree = "<group>"; };
 		02E065F02B53400600C074FC /* FetchChannelsGameHelpCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChannelsGameHelpCodable.swift; sourceTree = "<group>"; };
-		02E065FA2B5342F900C074FC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		02F062862B56BB410015DD8F /* SaveGameHelpUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveGameHelpUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		02F0628A2B56BE050015DD8F /* GameHelpCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpCodable.swift; sourceTree = "<group>"; };
 		02F062902B56CB650015DD8F /* DateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
@@ -1611,7 +1609,6 @@
 			isa = PBXGroup;
 			children = (
 				0274EB0E2B16967C00C40EFA /* Double+Extension.swift */,
-				02E065FA2B5342F900C074FC /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2576,7 +2573,6 @@
 				0274EB0F2B16967C00C40EFA /* Double+Extension.swift in Sources */,
 				02F062912B56CB650015DD8F /* DateHandler.swift in Sources */,
 				0235E5F02B152CF100829489 /* MainThread.swift in Sources */,
-				02E065FB2B5342F900C074FC /* String+Extension.swift in Sources */,
 				0279269F2B0FD28900035BCF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
