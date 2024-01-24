@@ -2,9 +2,7 @@
 //
 
 import Foundation
-
 import Domain
-
 
 public class SignInAnonymousUseCaseGatewayImpl: SignInAnonymousUseCaseGateway {
     
