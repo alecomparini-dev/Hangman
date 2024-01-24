@@ -50,6 +50,45 @@ final class SaveLastOpenHintsUseCaseGatewayTests: XCTestCase {
         }
     }
     
+    
+    func test_save_correct_values() async {
+        let expectedValues = [1,2,3]
+        do {
+            _ = try await sut.save(userID, expectedValues)
+        } catch let error {
+            XCTFail("Unexpected error: \(error)")
+        }
+
+        let value = insertDataStorageSpy.value as! [String: Any]
+        
+        XCTAssertEqual(value["indexes"] as! [Int], expectedValues)
+    }
+    
+    
+    func test_save_helpDocument_success() async {
+        insertDataStorageSpy.insertResult = .success([:])
+        
+        do {
+            _ = try await sut.save(userID, [1,2,3])
+        } catch let error {
+            XCTAssertNotNil(error)
+        }
+        
+        XCTAssertEqual(insertDataStorageSpy.documentID, K.Collections.Documents.openHints)
+    }
+    
+    func test_save_collection_success() async {
+        insertDataStorageSpy.insertResult = .failure(MockError.throwError)
+        
+        do {
+            _ = try await sut.save(userID, [1,2,3])
+        } catch let error {
+            XCTAssertNotNil(error)
+        }
+        
+        XCTAssertEqual(insertDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.openHints)")
+    }
+    
 }
 
 

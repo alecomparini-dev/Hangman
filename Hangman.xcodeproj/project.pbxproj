@@ -125,6 +125,8 @@
 		027339202B60669A00C9A03B /* FindByDataStorageProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273391F2B60669A00C9A03B /* FindByDataStorageProviderSpy.swift */; };
 		027339272B60702400C9A03B /* SaveLastOpenHintsUseCaseGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027339262B60702400C9A03B /* SaveLastOpenHintsUseCaseGatewayTests.swift */; };
 		027339292B60706D00C9A03B /* InsertDataStorageProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027339282B60706D00C9A03B /* InsertDataStorageProviderSpy.swift */; };
+		0273392C2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273392B2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift */; };
+		0273392E2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273392D2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift */; };
 		0274EB042B1689EC00C40EFA /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; };
 		0274EB052B1689EC00C40EFA /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0274EB062B1689ED00C40EFA /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
@@ -462,6 +464,8 @@
 		0273391F2B60669A00C9A03B /* FindByDataStorageProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindByDataStorageProviderSpy.swift; sourceTree = "<group>"; };
 		027339262B60702400C9A03B /* SaveLastOpenHintsUseCaseGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLastOpenHintsUseCaseGatewayTests.swift; sourceTree = "<group>"; };
 		027339282B60706D00C9A03B /* InsertDataStorageProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertDataStorageProviderSpy.swift; sourceTree = "<group>"; };
+		0273392B2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLastOpenHintsUseCaseGatewayTests.swift; sourceTree = "<group>"; };
+		0273392D2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDataStorageProviderSpy.swift; sourceTree = "<group>"; };
 		0274EB0E2B16967C00C40EFA /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		0279268C2B0FD1B200035BCF /* Handler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Handler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1512,6 +1516,7 @@
 			children = (
 				0273391B2B6065C600C9A03B /* GetLastOpenHintsUseCaseGatewayTests */,
 				027339252B60701200C9A03B /* SaveLastOpenHintsUseCaseGatewayTests */,
+				0273392A2B60745100C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests */,
 			);
 			path = LastOpenHintsUseCaseGatewayTests;
 			sourceTree = "<group>";
@@ -1538,6 +1543,7 @@
 			children = (
 				0273391F2B60669A00C9A03B /* FindByDataStorageProviderSpy.swift */,
 				027339282B60706D00C9A03B /* InsertDataStorageProviderSpy.swift */,
+				0273392D2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift */,
 			);
 			path = Spy;
 			sourceTree = "<group>";
@@ -1556,6 +1562,14 @@
 				027339262B60702400C9A03B /* SaveLastOpenHintsUseCaseGatewayTests.swift */,
 			);
 			path = SaveLastOpenHintsUseCaseGatewayTests;
+			sourceTree = "<group>";
+		};
+		0273392A2B60745100C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests */ = {
+			isa = PBXGroup;
+			children = (
+				0273392B2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift */,
+			);
+			path = UpdateLastOpenHintsUseCaseGatewayTests;
 			sourceTree = "<group>";
 		};
 		0274EB0C2B16966400C40EFA /* Extensions */ = {
@@ -2359,8 +2373,10 @@
 				0273391D2B6065E700C9A03B /* GetLastOpenHintsUseCaseGatewayTests.swift in Sources */,
 				025657ED2B602DE500AB5BAD /* MockError.swift in Sources */,
 				025657F02B60302800AB5BAD /* GameHelpModelFactory.swift in Sources */,
+				0273392C2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift in Sources */,
 				027339272B60702400C9A03B /* SaveLastOpenHintsUseCaseGatewayTests.swift in Sources */,
 				027339292B60706D00C9A03B /* InsertDataStorageProviderSpy.swift in Sources */,
+				0273392E2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift in Sources */,
 				025657E62B5FFFB000AB5BAD /* UpdateGameHelpUseCaseGatewayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

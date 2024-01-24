@@ -86,7 +86,7 @@ final class GetLastOpenHintsUseCaseGatewayTests: XCTestCase {
         XCTAssertEqual(findByDataStorageSpy.helpDocument, K.Collections.Documents.openHints)
     }
     
-    func test_fetchGameHelp_path_success() async {
+    func test_get_path_success() async {
         findByDataStorageSpy.findByResult = .failure(MockError.throwError)
         
         do {
