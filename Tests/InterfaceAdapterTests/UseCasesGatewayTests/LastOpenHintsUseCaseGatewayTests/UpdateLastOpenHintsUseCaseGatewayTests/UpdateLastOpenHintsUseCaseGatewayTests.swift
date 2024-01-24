@@ -1,36 +1,37 @@
 //  Created by Alessandro Comparini on 23/01/24.
 //
 
+import Foundation
+
 import XCTest
 import Handler
 import Domain
 import UseCaseGateway
 
-final class UpdateGameHelpUseCaseGatewayTests: XCTestCase {
-
+final class UpdateLastOpenHintsUseCaseGatewayTests: XCTestCase {
+    
     let userID = "123"
-    var sut: UpdateGameHelpUseCaseGatewayImpl!
+    var sut: UpdateLastOpenHintsUseCaseGatewayImpl!
     var updateDataStorageSpy: UpdateDataStorageProviderSpy!
     
     override func setUp() {
         (self.sut, self.updateDataStorageSpy) = makeSut()
     }
-
+    
     override func tearDown() {
         sut = nil
         updateDataStorageSpy = nil
     }
     
     
-//  MARK: - TEST AREA
-    
-    func test_update_gameHelp_success() async {
+    //  MARK: - TESTE AREA
+    func test_save_success() async {
         updateDataStorageSpy.updateResult = .success([:])
         
         var expectedResult = false
         
         do {
-            _ = try await sut.update(userID, gameHelp: GameHelpModelFactory.make())
+            _ = try await sut.update(userID, [1,2,3])
             expectedResult = true
         } catch let error {
             XCTFail("Unexpected error: \(error)")
@@ -39,61 +40,57 @@ final class UpdateGameHelpUseCaseGatewayTests: XCTestCase {
         XCTAssertTrue(expectedResult)
     }
     
-    func test_update_gameHelp_failure() async {
+    func test_save_failure() async {
         updateDataStorageSpy.updateResult = .failure(MockError.throwError)
-        
         do {
-            _ = try await sut.update(userID, gameHelp: GameHelpModelFactory.make())
+            _ = try await sut.update(userID, [1,2,3])
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
         }
     }
-
+    
     func test_update_correct_values() async {
-        let expectedValue = 5
+        let expectedValue = [1,2,3]
         do {
-            _ = try await sut.update(userID, gameHelp: GameHelpModel(typeGameHelp: TypeGameHelpModel(hints: expectedValue)))
+            _ = try await sut.update(userID, expectedValue)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
 
         let value = updateDataStorageSpy.value as! [String: Any]
         
-        XCTAssertEqual(value["hints"] as! Int, expectedValue)
+        XCTAssertEqual(value["indexes"] as! [Int], expectedValue)
     }
     
     func test_update_correct_collection() async {
         do {
-            _ = try await sut.update(userID, gameHelp: GameHelpModelFactory.make())
+            _ = try await sut.update(userID, [1,2,3])
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        XCTAssertEqual(updateDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
+        XCTAssertEqual(updateDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.openHints)")
     }
 
     func test_update_correct_documentID() async {
         do {
-            _ = try await sut.update(userID, gameHelp: GameHelpModelFactory.make())
+            _ = try await sut.update(userID, [1,2,3])
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        XCTAssertEqual(updateDataStorageSpy.documentID, K.Collections.Documents.help)
+        XCTAssertEqual(updateDataStorageSpy.documentID, K.Collections.Documents.openHints)
     }
-
+    
 }
 
 
 //  MARK: - EXTENSION SUT
-extension UpdateGameHelpUseCaseGatewayTests {
-    
-    func makeSut() -> (sut: UpdateGameHelpUseCaseGatewayImpl, updateDataStorageSpy: UpdateDataStorageProviderSpy) {
+extension UpdateLastOpenHintsUseCaseGatewayTests {
+        
+    func makeSut() -> (sut: UpdateLastOpenHintsUseCaseGatewayImpl, updateDataStorageSpy: UpdateDataStorageProviderSpy) {
         let updateDataStorageSpy = UpdateDataStorageProviderSpy()
-        let sut = UpdateGameHelpUseCaseGatewayImpl(updateDataStorage: updateDataStorageSpy)
+        let sut = UpdateLastOpenHintsUseCaseGatewayImpl(updateDataStorage: updateDataStorageSpy)
         return (sut, updateDataStorageSpy)
     }
-    
+        
 }
-
-
-
