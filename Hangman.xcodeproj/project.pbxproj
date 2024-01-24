@@ -127,6 +127,7 @@
 		027339292B60706D00C9A03B /* InsertDataStorageProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027339282B60706D00C9A03B /* InsertDataStorageProviderSpy.swift */; };
 		0273392C2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273392B2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift */; };
 		0273392E2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273392D2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift */; };
+		027339332B6130AE00C9A03B /* SignInAnonymousUseCaseGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027339322B6130AE00C9A03B /* SignInAnonymousUseCaseGatewayTests.swift */; };
 		0274EB042B1689EC00C40EFA /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; };
 		0274EB052B1689EC00C40EFA /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 026938D32B0909E10023073B /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0274EB062B1689ED00C40EFA /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
@@ -466,6 +467,7 @@
 		027339282B60706D00C9A03B /* InsertDataStorageProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertDataStorageProviderSpy.swift; sourceTree = "<group>"; };
 		0273392B2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLastOpenHintsUseCaseGatewayTests.swift; sourceTree = "<group>"; };
 		0273392D2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDataStorageProviderSpy.swift; sourceTree = "<group>"; };
+		027339322B6130AE00C9A03B /* SignInAnonymousUseCaseGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseGatewayTests.swift; sourceTree = "<group>"; };
 		0274EB0E2B16967C00C40EFA /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		0279268C2B0FD1B200035BCF /* Handler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Handler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0290B64B2B06AC28000667E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1058,6 +1060,7 @@
 		025657C12B5FF84E00AB5BAD /* InterfaceAdapterTests */ = {
 			isa = PBXGroup;
 			children = (
+				027339302B61309500C9A03B /* AuthenticationUseCaseGatewayTests */,
 				025657DF2B5FFFB000AB5BAD /* UseCasesGatewayTests */,
 			);
 			path = InterfaceAdapterTests;
@@ -1541,9 +1544,8 @@
 		027339212B606D8900C9A03B /* Spy */ = {
 			isa = PBXGroup;
 			children = (
-				0273391F2B60669A00C9A03B /* FindByDataStorageProviderSpy.swift */,
-				027339282B60706D00C9A03B /* InsertDataStorageProviderSpy.swift */,
-				0273392D2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift */,
+				027339342B6131C200C9A03B /* AuthenticationProviderSpy */,
+				0273392F2B612FEF00C9A03B /* DataStorageProviderSpy */,
 			);
 			path = Spy;
 			sourceTree = "<group>";
@@ -1570,6 +1572,39 @@
 				0273392B2B60890000C9A03B /* UpdateLastOpenHintsUseCaseGatewayTests.swift */,
 			);
 			path = UpdateLastOpenHintsUseCaseGatewayTests;
+			sourceTree = "<group>";
+		};
+		0273392F2B612FEF00C9A03B /* DataStorageProviderSpy */ = {
+			isa = PBXGroup;
+			children = (
+				0273391F2B60669A00C9A03B /* FindByDataStorageProviderSpy.swift */,
+				027339282B60706D00C9A03B /* InsertDataStorageProviderSpy.swift */,
+				0273392D2B60895400C9A03B /* UpdateDataStorageProviderSpy.swift */,
+			);
+			path = DataStorageProviderSpy;
+			sourceTree = "<group>";
+		};
+		027339302B61309500C9A03B /* AuthenticationUseCaseGatewayTests */ = {
+			isa = PBXGroup;
+			children = (
+				027339312B6130A100C9A03B /* SignInAnonymousUseCaseGatewayTests */,
+			);
+			path = AuthenticationUseCaseGatewayTests;
+			sourceTree = "<group>";
+		};
+		027339312B6130A100C9A03B /* SignInAnonymousUseCaseGatewayTests */ = {
+			isa = PBXGroup;
+			children = (
+				027339322B6130AE00C9A03B /* SignInAnonymousUseCaseGatewayTests.swift */,
+			);
+			path = SignInAnonymousUseCaseGatewayTests;
+			sourceTree = "<group>";
+		};
+		027339342B6131C200C9A03B /* AuthenticationProviderSpy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AuthenticationProviderSpy;
 			sourceTree = "<group>";
 		};
 		0274EB0C2B16966400C40EFA /* Extensions */ = {
@@ -2369,6 +2404,7 @@
 			files = (
 				025657E82B5FFFB000AB5BAD /* FetchGameHelpUseCaseGatewayTests.swift in Sources */,
 				025657E72B5FFFB000AB5BAD /* SaveGameHelpUseCaseGatewayTests.swift in Sources */,
+				027339332B6130AE00C9A03B /* SignInAnonymousUseCaseGatewayTests.swift in Sources */,
 				027339202B60669A00C9A03B /* FindByDataStorageProviderSpy.swift in Sources */,
 				0273391D2B6065E700C9A03B /* GetLastOpenHintsUseCaseGatewayTests.swift in Sources */,
 				025657ED2B602DE500AB5BAD /* MockError.swift in Sources */,
