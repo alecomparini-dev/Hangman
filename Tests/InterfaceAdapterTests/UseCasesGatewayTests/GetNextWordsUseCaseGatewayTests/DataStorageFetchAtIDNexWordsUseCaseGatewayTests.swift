@@ -85,7 +85,7 @@ final class DataStorageFetchAtIDNexWordsUseCaseGatewayTests: XCTestCase {
     
     func test_update_correct_values() async {
         do {
-            let result = try await sut.nextWords(atID: 1, limit: 10)
+            _ = try await sut.nextWords(atID: 1, limit: 10)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
