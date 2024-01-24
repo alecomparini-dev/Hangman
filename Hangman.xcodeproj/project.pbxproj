@@ -16,6 +16,7 @@
 		0201CE742B618CA300C2B6F0 /* DeleteLastOpenHintsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE732B618CA300C2B6F0 /* DeleteLastOpenHintsUseCaseTests.swift */; };
 		0201CE762B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE752B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift */; };
 		0201CE792B61A33C00C2B6F0 /* TypeGameHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE782B61A33C00C2B6F0 /* TypeGameHelp.swift */; };
+		0201CE7D2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE7C2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift */; };
 		020216512B0A9682003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202164E2B0A963F003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift */; };
 		020216532B0A9699003E2B07 /* AuthenticateAnonymous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */; };
 		020216542B0AA367003E2B07 /* UseCaseGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026939002B09371C0023073B /* UseCaseGateway.framework */; };
@@ -392,6 +393,7 @@
 		0201CE732B618CA300C2B6F0 /* DeleteLastOpenHintsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLastOpenHintsUseCaseTests.swift; sourceTree = "<group>"; };
 		0201CE752B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLastOpenHintsUseCaseGatewaySpy.swift; sourceTree = "<group>"; };
 		0201CE782B61A33C00C2B6F0 /* TypeGameHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeGameHelp.swift; sourceTree = "<group>"; };
+		0201CE7C2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxTypeGameHelpUseCaseTests.swift; sourceTree = "<group>"; };
 		020216492B0A95B5003E2B07 /* AuthenticateAnonymous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateAnonymous.swift; sourceTree = "<group>"; };
 		0202164E2B0A963F003E2B07 /* SignInAnonymousUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
 		020216592B0B9C59003E2B07 /* WordPresenterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPresenterDTO.swift; sourceTree = "<group>"; };
@@ -644,6 +646,7 @@
 		0201CE4C2B617D0B00C2B6F0 /* UseCaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				0201CE7A2B61A4BD00C2B6F0 /* GameHelpUseCasesTests */,
 				0201CE4E2B617D2800C2B6F0 /* LastOpenHintsUseCasesTests */,
 			);
 			path = UseCaseTests;
@@ -741,6 +744,22 @@
 				0201CE782B61A33C00C2B6F0 /* TypeGameHelp.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		0201CE7A2B61A4BD00C2B6F0 /* GameHelpUseCasesTests */ = {
+			isa = PBXGroup;
+			children = (
+				0201CE7B2B61A4CD00C2B6F0 /* MaxTypeGameHelpUseCaseTests */,
+			);
+			path = GameHelpUseCasesTests;
+			sourceTree = "<group>";
+		};
+		0201CE7B2B61A4CD00C2B6F0 /* MaxTypeGameHelpUseCaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				0201CE7C2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift */,
+			);
+			path = MaxTypeGameHelpUseCaseTests;
 			sourceTree = "<group>";
 		};
 		0202164B2B0A95EA003E2B07 /* FetchDataStorageProvider */ = {
@@ -2582,6 +2601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0201CE712B618A5500C2B6F0 /* SaveLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
+				0201CE7D2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift in Sources */,
 				0201CE682B6184D900C2B6F0 /* MockError.swift in Sources */,
 				0201CE6E2B61899A00C2B6F0 /* SaveLastOpenHintsUseCaseTests.swift in Sources */,
 				0201CE742B618CA300C2B6F0 /* DeleteLastOpenHintsUseCaseTests.swift in Sources */,
