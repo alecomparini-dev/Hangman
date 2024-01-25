@@ -80,10 +80,10 @@ final class GetLastOpenHintsUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.get(userID)
+            XCTAssertEqual(findByDataStorageSpy.helpDocument, K.Collections.Documents.openHints)
         } catch let error {
             XCTAssertNotNil(error)
         }
-        XCTAssertEqual(findByDataStorageSpy.helpDocument, K.Collections.Documents.openHints)
     }
     
     func test_get_path_success() async {
@@ -91,11 +91,10 @@ final class GetLastOpenHintsUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.get(userID)
+            XCTAssertEqual(findByDataStorageSpy.path, "\(K.Collections.users)/\(userID)/\(K.Collections.openHints)")
         } catch let error {
             XCTAssertNotNil(error)
         }
-        
-        XCTAssertEqual(findByDataStorageSpy.path, "\(K.Collections.users)/\(userID)/\(K.Collections.openHints)")
     }
     
 }

@@ -3,7 +3,7 @@
 
 import Foundation
 
-public struct WordPlayedUseCaseDTO {
+public struct WordPlayedUseCaseDTO: Equatable {
     public var id: Int
     public var success: Bool?
     public var correctLettersCount: Int?

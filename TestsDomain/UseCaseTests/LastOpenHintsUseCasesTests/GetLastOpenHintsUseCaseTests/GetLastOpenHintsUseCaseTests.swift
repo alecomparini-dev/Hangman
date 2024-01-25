@@ -28,6 +28,7 @@ final class GetLastOpenHintsUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.get(userID)
+            
             XCTAssertEqual(result, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
@@ -39,6 +40,7 @@ final class GetLastOpenHintsUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.get(userID)
+            
             XCTFail("Unexpected success: \(result)")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -50,11 +52,11 @@ final class GetLastOpenHintsUseCaseTests: XCTestCase {
         
         do {
             _ = try await sut.get(userID)
+            
+            XCTAssertEqual(getLastOpenHintsGateway.userID, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-
-        XCTAssertEqual(getLastOpenHintsGateway.userID, expectedResult)
     }
     
     

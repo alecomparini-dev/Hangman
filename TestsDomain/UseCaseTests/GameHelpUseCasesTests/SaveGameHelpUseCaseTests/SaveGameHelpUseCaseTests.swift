@@ -34,11 +34,11 @@ final class SaveGameHelpUseCaseTests: XCTestCase {
         do {
             _ = try await sut.save(userID, gameHelp: GameHelpModelFactory.make())
             expectedResult = true
+            
+            XCTAssertTrue(expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertTrue(expectedResult)
     }
     
     func test_save_failure() async {
@@ -46,6 +46,7 @@ final class SaveGameHelpUseCaseTests: XCTestCase {
         
         do {
             _ = try await sut.save(userID, gameHelp: GameHelpModelFactory.make())
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -55,12 +56,12 @@ final class SaveGameHelpUseCaseTests: XCTestCase {
     func test_save_correct_values() async {
         do {
             _ = try await sut.save(userID, gameHelp: GameHelpModelFactory.make())
+            
+            XCTAssertEqual(saveGameHelpGatewaySpy.userID, userID)
+            XCTAssertEqual(saveGameHelpGatewaySpy.gameHelp, GameHelpModelFactory.make())
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-
-        XCTAssertEqual(saveGameHelpGatewaySpy.userID, userID)
-        XCTAssertEqual(saveGameHelpGatewaySpy.gameHelp, GameHelpModelFactory.make())
     }
     
 }

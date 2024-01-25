@@ -32,11 +32,11 @@ final class UpdateGameHelpUseCaseGatewayTests: XCTestCase {
         do {
             _ = try await sut.update(userID, gameHelp: GameHelpModelFactory.make())
             expectedResult = true
+            
+            XCTAssertTrue(expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertTrue(expectedResult)
     }
     
     func test_update_gameHelp_failure() async {
@@ -44,6 +44,7 @@ final class UpdateGameHelpUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.update(userID, gameHelp: GameHelpModelFactory.make())
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -54,31 +55,32 @@ final class UpdateGameHelpUseCaseGatewayTests: XCTestCase {
         let expectedValue = 5
         do {
             _ = try await sut.update(userID, gameHelp: GameHelpModel(typeGameHelp: TypeGameHelpModel(hints: expectedValue)))
+            
+            let value = updateDataStorageSpy.value as! [String: Any]
+            XCTAssertEqual(value["hints"] as! Int, expectedValue)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-
-        let value = updateDataStorageSpy.value as! [String: Any]
-        
-        XCTAssertEqual(value["hints"] as! Int, expectedValue)
     }
     
     func test_update_correct_collection() async {
         do {
             _ = try await sut.update(userID, gameHelp: GameHelpModelFactory.make())
+            
+            XCTAssertEqual(updateDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        XCTAssertEqual(updateDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
     }
 
     func test_update_correct_documentID() async {
         do {
             _ = try await sut.update(userID, gameHelp: GameHelpModelFactory.make())
+            
+            XCTAssertEqual(updateDataStorageSpy.documentID, K.Collections.Documents.help)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        XCTAssertEqual(updateDataStorageSpy.documentID, K.Collections.Documents.help)
     }
 
 }

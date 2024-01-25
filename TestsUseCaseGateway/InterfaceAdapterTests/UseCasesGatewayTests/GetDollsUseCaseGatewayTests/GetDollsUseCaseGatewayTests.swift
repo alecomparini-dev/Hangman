@@ -64,12 +64,11 @@ final class GetDollsUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.getDolls(id: [1])
+            let value = fetchInDataStorage.value as! [Int]
+            XCTAssertEqual(value, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-
-        let value = fetchInDataStorage.value as! [Int]
-        XCTAssertEqual(value, expectedResult)
     }
     
 }

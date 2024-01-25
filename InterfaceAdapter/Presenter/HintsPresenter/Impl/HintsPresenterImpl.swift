@@ -25,7 +25,9 @@ public class HintsPresenterImpl: HintsPresenter {
     public var dataTransfer: DataTransferHints?
     
     
-    public init(updateGameHelpUseCase: UpdateGameHelpUseCase, saveLastOpenHintsUseCase: SaveLastOpenHintsUseCase, dataTransfer: DataTransferHints? = nil) {
+    public init(updateGameHelpUseCase: UpdateGameHelpUseCase, 
+                saveLastOpenHintsUseCase: SaveLastOpenHintsUseCase,
+                dataTransfer: DataTransferHints? = nil) {
         self.updateGameHelpUseCase = updateGameHelpUseCase
         self.saveLastOpenHintsUseCase = saveLastOpenHintsUseCase
         self.dataTransfer = dataTransfer
