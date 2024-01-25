@@ -29,11 +29,11 @@ final class SaveLastOpenHintsUseCaseTests: XCTestCase {
         do {
             _ = try await sut.save(userID, [1,2,3])
             expectedResult = true
+            
+            XCTAssertTrue(expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertTrue(expectedResult)
     }
     
     
@@ -42,6 +42,7 @@ final class SaveLastOpenHintsUseCaseTests: XCTestCase {
         
         do {
             _ = try await sut.save(userID, [1,2,3])
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -51,12 +52,12 @@ final class SaveLastOpenHintsUseCaseTests: XCTestCase {
     func test_get_correct_values() async {
         do {
             _ = try await sut.save(userID, [1,2,3])
+            
+            XCTAssertEqual(saveLastOpenHintsGatewaySpy.userID, userID)
+            XCTAssertEqual(saveLastOpenHintsGatewaySpy.indexes, [1,2,3])
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-
-        XCTAssertEqual(saveLastOpenHintsGatewaySpy.userID, userID)
-        XCTAssertEqual(saveLastOpenHintsGatewaySpy.indexes, [1,2,3])
     }
     
 }

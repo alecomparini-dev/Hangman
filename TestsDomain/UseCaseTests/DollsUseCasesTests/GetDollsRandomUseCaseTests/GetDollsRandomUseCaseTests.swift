@@ -37,6 +37,7 @@ final class GetDollsRandomUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.getDollsRandom(quantity: 2)
+            
             XCTAssertEqual(result, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
@@ -49,6 +50,7 @@ final class GetDollsRandomUseCaseTests: XCTestCase {
         
         do {
             _ = try await sut.getDollsRandom(quantity: 2)
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -61,6 +63,7 @@ final class GetDollsRandomUseCaseTests: XCTestCase {
         
         do {
             _ = try await sut.getDollsRandom(quantity: 2)
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -76,6 +79,7 @@ final class GetDollsRandomUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.getDollsRandom(quantity: quantity)
+            
             XCTAssertEqual(result, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
@@ -91,6 +95,7 @@ final class GetDollsRandomUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.getDollsRandom(quantity: expectedQuantity)
+            
             XCTAssertEqual(result, expectedResult)
             XCTAssertEqual(result.count, expectedQuantity)
             XCTAssertEqual(getDollsGatewaySpy.id.count, expectedQuantity)

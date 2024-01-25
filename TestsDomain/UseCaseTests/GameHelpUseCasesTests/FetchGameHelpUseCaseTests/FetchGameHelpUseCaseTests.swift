@@ -44,6 +44,7 @@ final class FetchGameHelpUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.fetch(userID)
+            
             XCTAssertEqual(result, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
@@ -54,6 +55,7 @@ final class FetchGameHelpUseCaseTests: XCTestCase {
         fetchGameHelpGatewaySpy.result = .failure(MockError.throwError)
         do {
             _ = try await sut.fetch(userID)
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -67,6 +69,7 @@ final class FetchGameHelpUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.fetch(userID)
+            
             XCTAssertEqual(result, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
@@ -81,6 +84,7 @@ final class FetchGameHelpUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.fetch(userID)
+            
             XCTAssertEqual(result, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
@@ -98,6 +102,7 @@ final class FetchGameHelpUseCaseTests: XCTestCase {
         
         do {
             let result = try await sut.fetch(userID)
+            
             XCTAssertEqual(result, expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
@@ -112,6 +117,7 @@ final class FetchGameHelpUseCaseTests: XCTestCase {
         
         do {
             _ = try await sut.fetch(userID)
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)

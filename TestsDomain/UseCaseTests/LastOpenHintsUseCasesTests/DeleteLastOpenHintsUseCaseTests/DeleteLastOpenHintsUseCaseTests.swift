@@ -29,11 +29,11 @@ final class DeleteLastOpenHintsUseCaseTests: XCTestCase {
         do {
             _ = try await sut.delete(userID)
             expectedResult = true
+            
+            XCTAssertTrue(expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertTrue(expectedResult)
     }
     
     
@@ -42,6 +42,7 @@ final class DeleteLastOpenHintsUseCaseTests: XCTestCase {
         
         do {
             _ = try await sut.delete(userID)
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -51,12 +52,12 @@ final class DeleteLastOpenHintsUseCaseTests: XCTestCase {
     func test_get_correct_values() async {
         do {
             _ = try await sut.delete(userID)
+            
+            XCTAssertEqual(updateLastOpenHintsGateway.userID, userID)
+            XCTAssertEqual(updateLastOpenHintsGateway.indexes, [])
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertEqual(updateLastOpenHintsGateway.userID, userID)
-        XCTAssertEqual(updateLastOpenHintsGateway.indexes, [])
     }
     
     

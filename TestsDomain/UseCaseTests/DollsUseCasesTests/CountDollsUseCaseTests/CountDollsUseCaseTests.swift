@@ -54,11 +54,11 @@ final class CountDollsUseCaseTests: XCTestCase {
         
         do {
             _ = try await sut.count()
+            
+            XCTAssertEqual(countModelGateway.model, K.Collections.dolls)
         } catch let error {
             XCTAssertNotNil(error)
         }
-        
-        XCTAssertEqual(countModelGateway.model, K.Collections.dolls)
     }
     
     
