@@ -174,6 +174,16 @@
 		029A96562B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A96552B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift */; };
 		029F30A62B628E4F00D05D11 /* CountDollsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30A52B628E4F00D05D11 /* CountDollsUseCaseTests.swift */; };
 		029F30A92B628F6800D05D11 /* GenericCountModelGatewaySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30A82B628F6800D05D11 /* GenericCountModelGatewaySpy.swift */; };
+		029F30AD2B6295F100D05D11 /* GetNextWordsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30AC2B6295F100D05D11 /* GetNextWordsUseCaseTests.swift */; };
+		029F30B02B62964500D05D11 /* GetNextWordsUseCaseGatewaySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30AF2B62964500D05D11 /* GetNextWordsUseCaseGatewaySpy.swift */; };
+		029F30B12B62974A00D05D11 /* NextWordsUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A96472B614958002565BC /* NextWordsUseCaseDTOFactory.swift */; };
+		029F30B52B62987B00D05D11 /* CountWordsPlayedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30B42B62987B00D05D11 /* CountWordsPlayedUseCaseTests.swift */; };
+		029F30B82B62990900D05D11 /* CountWordsPlayedUseCaseGatewaySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30B72B62990900D05D11 /* CountWordsPlayedUseCaseGatewaySpy.swift */; };
+		029F30BB2B629A4B00D05D11 /* SaveWordPlayedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30BA2B629A4B00D05D11 /* SaveWordPlayedUseCaseTests.swift */; };
+		029F30BD2B629A6200D05D11 /* SaveWordPlayedUseCaseGatewaySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30BC2B629A6200D05D11 /* SaveWordPlayedUseCaseGatewaySpy.swift */; };
+		029F30BE2B629B4100D05D11 /* WordPlayedUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A96552B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift */; };
+		029F30C22B629EA500D05D11 /* SignInAnonymousUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30C12B629EA500D05D11 /* SignInAnonymousUseCaseTests.swift */; };
+		029F30C52B629EF600D05D11 /* SignInAnonymousUseCaseGatewayMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30C42B629EF600D05D11 /* SignInAnonymousUseCaseGatewayMock.swift */; };
 		02B1E7E32B516650004ECE2C /* FetchGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */; };
 		02B1E7F52B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */; };
 		02C466A22B4F185B00516D5A /* DataTransferHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferHints.swift */; };
@@ -542,6 +552,14 @@
 		029A96552B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlayedUseCaseDTOFactory.swift; sourceTree = "<group>"; };
 		029F30A52B628E4F00D05D11 /* CountDollsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDollsUseCaseTests.swift; sourceTree = "<group>"; };
 		029F30A82B628F6800D05D11 /* GenericCountModelGatewaySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCountModelGatewaySpy.swift; sourceTree = "<group>"; };
+		029F30AC2B6295F100D05D11 /* GetNextWordsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseTests.swift; sourceTree = "<group>"; };
+		029F30AF2B62964500D05D11 /* GetNextWordsUseCaseGatewaySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseGatewaySpy.swift; sourceTree = "<group>"; };
+		029F30B42B62987B00D05D11 /* CountWordsPlayedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWordsPlayedUseCaseTests.swift; sourceTree = "<group>"; };
+		029F30B72B62990900D05D11 /* CountWordsPlayedUseCaseGatewaySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWordsPlayedUseCaseGatewaySpy.swift; sourceTree = "<group>"; };
+		029F30BA2B629A4B00D05D11 /* SaveWordPlayedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedUseCaseTests.swift; sourceTree = "<group>"; };
+		029F30BC2B629A6200D05D11 /* SaveWordPlayedUseCaseGatewaySpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveWordPlayedUseCaseGatewaySpy.swift; sourceTree = "<group>"; };
+		029F30C12B629EA500D05D11 /* SignInAnonymousUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseTests.swift; sourceTree = "<group>"; };
+		029F30C42B629EF600D05D11 /* SignInAnonymousUseCaseGatewayMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseGatewayMock.swift; sourceTree = "<group>"; };
 		02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCase.swift; sourceTree = "<group>"; };
 		02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseDTO.swift; sourceTree = "<group>"; };
 		02C466A12B4F185B00516D5A /* DataTransferHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHints.swift; sourceTree = "<group>"; };
@@ -674,6 +692,9 @@
 		0201CE4C2B617D0B00C2B6F0 /* UseCaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				029F30BF2B629E8400D05D11 /* AuthenticateUseCasesTests */,
+				029F30B22B62986100D05D11 /* WordsPlayedUseCasesTests */,
+				029F30AA2B6295DA00D05D11 /* NextWordsUseCasesTests */,
 				0201CE942B627EB300C2B6F0 /* DollsUseCasesTests */,
 				0201CE7A2B61A4BD00C2B6F0 /* GameHelpUseCasesTests */,
 				0201CE4E2B617D2800C2B6F0 /* LastOpenHintsUseCasesTests */,
@@ -737,8 +758,11 @@
 		0201CE692B61857500C2B6F0 /* Mock+SpyFactories */ = {
 			isa = PBXGroup;
 			children = (
+				029F30C32B629ECE00D05D11 /* AuthenticateUseCasesGatewayMock */,
+				029F30B62B6298EA00D05D11 /* WordsPlayedUseCaseGatewaySpy */,
+				029F30AE2B62963200D05D11 /* NextWordsUseCasesGatewayTestsSpy */,
 				029F30A72B628F5B00D05D11 /* GenericCountModelGatewaySpy */,
-				0201CE992B6280AA00C2B6F0 /* DollsUseCasesMock */,
+				0201CE992B6280AA00C2B6F0 /* DollsUseCases */,
 				0201CE812B61AA4B00C2B6F0 /* GameHelpUseCasesSpy */,
 				0201CE6F2B618A2F00C2B6F0 /* LastOpenHintsUseCaseGatewaySpy */,
 			);
@@ -858,13 +882,13 @@
 			path = GetDollsRandomUseCaseTests;
 			sourceTree = "<group>";
 		};
-		0201CE992B6280AA00C2B6F0 /* DollsUseCasesMock */ = {
+		0201CE992B6280AA00C2B6F0 /* DollsUseCases */ = {
 			isa = PBXGroup;
 			children = (
 				0201CE9A2B6280BD00C2B6F0 /* CountDollsUseCaseMock.swift */,
 				0201CE9C2B6281D400C2B6F0 /* GetDollsUseCaseGatewaySpy.swift */,
 			);
-			path = DollsUseCasesMock;
+			path = DollsUseCases;
 			sourceTree = "<group>";
 		};
 		0202164B2B0A95EA003E2B07 /* FetchDataStorageProvider */ = {
@@ -1973,6 +1997,88 @@
 			path = GenericCountModelGatewaySpy;
 			sourceTree = "<group>";
 		};
+		029F30AA2B6295DA00D05D11 /* NextWordsUseCasesTests */ = {
+			isa = PBXGroup;
+			children = (
+				029F30AB2B6295E500D05D11 /* GetNextWordsUseCaseTests */,
+			);
+			path = NextWordsUseCasesTests;
+			sourceTree = "<group>";
+		};
+		029F30AB2B6295E500D05D11 /* GetNextWordsUseCaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				029F30AC2B6295F100D05D11 /* GetNextWordsUseCaseTests.swift */,
+			);
+			path = GetNextWordsUseCaseTests;
+			sourceTree = "<group>";
+		};
+		029F30AE2B62963200D05D11 /* NextWordsUseCasesGatewayTestsSpy */ = {
+			isa = PBXGroup;
+			children = (
+				029F30AF2B62964500D05D11 /* GetNextWordsUseCaseGatewaySpy.swift */,
+			);
+			path = NextWordsUseCasesGatewayTestsSpy;
+			sourceTree = "<group>";
+		};
+		029F30B22B62986100D05D11 /* WordsPlayedUseCasesTests */ = {
+			isa = PBXGroup;
+			children = (
+				029F30B92B629A3E00D05D11 /* SaveWordPlayedUseCaseTests */,
+				029F30B32B62986D00D05D11 /* CountWordsPlayedUseCaseTests */,
+			);
+			path = WordsPlayedUseCasesTests;
+			sourceTree = "<group>";
+		};
+		029F30B32B62986D00D05D11 /* CountWordsPlayedUseCaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				029F30B42B62987B00D05D11 /* CountWordsPlayedUseCaseTests.swift */,
+			);
+			path = CountWordsPlayedUseCaseTests;
+			sourceTree = "<group>";
+		};
+		029F30B62B6298EA00D05D11 /* WordsPlayedUseCaseGatewaySpy */ = {
+			isa = PBXGroup;
+			children = (
+				029F30B72B62990900D05D11 /* CountWordsPlayedUseCaseGatewaySpy.swift */,
+				029F30BC2B629A6200D05D11 /* SaveWordPlayedUseCaseGatewaySpy.swift */,
+			);
+			path = WordsPlayedUseCaseGatewaySpy;
+			sourceTree = "<group>";
+		};
+		029F30B92B629A3E00D05D11 /* SaveWordPlayedUseCaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				029F30BA2B629A4B00D05D11 /* SaveWordPlayedUseCaseTests.swift */,
+			);
+			path = SaveWordPlayedUseCaseTests;
+			sourceTree = "<group>";
+		};
+		029F30BF2B629E8400D05D11 /* AuthenticateUseCasesTests */ = {
+			isa = PBXGroup;
+			children = (
+				029F30C02B629E9300D05D11 /* SignInAnonymousUseCaseTests */,
+			);
+			path = AuthenticateUseCasesTests;
+			sourceTree = "<group>";
+		};
+		029F30C02B629E9300D05D11 /* SignInAnonymousUseCaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				029F30C12B629EA500D05D11 /* SignInAnonymousUseCaseTests.swift */,
+			);
+			path = SignInAnonymousUseCaseTests;
+			sourceTree = "<group>";
+		};
+		029F30C32B629ECE00D05D11 /* AuthenticateUseCasesGatewayMock */ = {
+			isa = PBXGroup;
+			children = (
+				029F30C42B629EF600D05D11 /* SignInAnonymousUseCaseGatewayMock.swift */,
+			);
+			path = AuthenticateUseCasesGatewayMock;
+			sourceTree = "<group>";
+		};
 		02B1E7E42B51678D004ECE2C /* Impl */ = {
 			isa = PBXGroup;
 			children = (
@@ -2705,12 +2811,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029F30B82B62990900D05D11 /* CountWordsPlayedUseCaseGatewaySpy.swift in Sources */,
 				0201CE872B61AC6300C2B6F0 /* MaxGameHelpUseCaseSpy.swift in Sources */,
 				0201CE712B618A5500C2B6F0 /* SaveLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
 				0201CE7D2B61A4E600C2B6F0 /* MaxTypeGameHelpUseCaseTests.swift in Sources */,
+				029F30B52B62987B00D05D11 /* CountWordsPlayedUseCaseTests.swift in Sources */,
+				029F30AD2B6295F100D05D11 /* GetNextWordsUseCaseTests.swift in Sources */,
+				029F30B02B62964500D05D11 /* GetNextWordsUseCaseGatewaySpy.swift in Sources */,
+				029F30BB2B629A4B00D05D11 /* SaveWordPlayedUseCaseTests.swift in Sources */,
 				0201CE9D2B6281D400C2B6F0 /* GetDollsUseCaseGatewaySpy.swift in Sources */,
 				029F30A62B628E4F00D05D11 /* CountDollsUseCaseTests.swift in Sources */,
 				0201CEA02B6282E500C2B6F0 /* DollUseCaseDTOFactory.swift in Sources */,
+				029F30BD2B629A6200D05D11 /* SaveWordPlayedUseCaseGatewaySpy.swift in Sources */,
 				0201CE8B2B61AECB00C2B6F0 /* GameHelpModelFactory.swift in Sources */,
 				0201CE682B6184D900C2B6F0 /* MockError.swift in Sources */,
 				0201CE6E2B61899A00C2B6F0 /* SaveLastOpenHintsUseCaseTests.swift in Sources */,
@@ -2721,9 +2833,13 @@
 				0201CE932B61DE6B00C2B6F0 /* UpdateGameHelpUseCaseGatewaySpy.swift in Sources */,
 				0201CE762B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
 				0201CE9B2B6280BD00C2B6F0 /* CountDollsUseCaseMock.swift in Sources */,
+				029F30C52B629EF600D05D11 /* SignInAnonymousUseCaseGatewayMock.swift in Sources */,
+				029F30B12B62974A00D05D11 /* NextWordsUseCaseDTOFactory.swift in Sources */,
 				0201CE6B2B61858A00C2B6F0 /* GetLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
 				0201CE912B61DDED00C2B6F0 /* UpdateGameHelpUseCaseTests.swift in Sources */,
 				0201CE602B617E8D00C2B6F0 /* GetLastOpenHintsUseCaseTests.swift in Sources */,
+				029F30BE2B629B4100D05D11 /* WordPlayedUseCaseDTOFactory.swift in Sources */,
+				029F30C22B629EA500D05D11 /* SignInAnonymousUseCaseTests.swift in Sources */,
 				0201CE852B61AC4900C2B6F0 /* SaveGameHelpUseCaseGatewaySpy.swift in Sources */,
 				0201CE802B61A77500C2B6F0 /* FetchGameHelpUseCaseTests.swift in Sources */,
 				0201CE832B61AA7500C2B6F0 /* FetchGameHelpUseCaseGatewaySpy.swift in Sources */,

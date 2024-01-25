@@ -96,9 +96,9 @@ final class GetDollsRandomUseCaseTests: XCTestCase {
         do {
             let result = try await sut.getDollsRandom(quantity: expectedQuantity)
             
+            XCTAssertEqual(getDollsGatewaySpy.id.count, expectedQuantity)
             XCTAssertEqual(result, expectedResult)
             XCTAssertEqual(result.count, expectedQuantity)
-            XCTAssertEqual(getDollsGatewaySpy.id.count, expectedQuantity)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }

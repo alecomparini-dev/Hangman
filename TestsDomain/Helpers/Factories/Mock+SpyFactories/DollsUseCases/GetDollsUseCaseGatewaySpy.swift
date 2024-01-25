@@ -14,6 +14,7 @@ class GetDollsUseCaseGatewaySpy: GetDollsUseCaseGateway {
     
     func getDolls(id: [Int]) async throws -> [DollUseCaseDTO] {
         self.id = id
+        
         switch result {
             case .success(let data):
                 return data

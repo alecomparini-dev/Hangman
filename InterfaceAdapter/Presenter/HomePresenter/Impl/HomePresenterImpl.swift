@@ -38,7 +38,16 @@ public class HomePresenterImpl: HomePresenter {
     private let delLastOpenHintsUseCase: DeleteLastOpenHintsUseCase
     
     
-    public init(signInAnonymousUseCase: SignInAnonymousUseCase, getNextWordsUseCase: GetNextWordsUseCase, countWordsPlayedUseCase: CountWordsPlayedUseCase, saveWordPlayedUseCase: SaveWordPlayedUseCase, getDollsRandomUseCase: GetDollsRandomUseCase, fetchGameHelpUseCase: FetchGameHelpUseCase, maxGameHelpUseCase: MaxGameHelpUseCase, updateGameHelpUseCase: UpdateGameHelpUseCase,getLastOpenHintsUseCase: GetLastOpenHintsUseCase, delLastOpenHintsUseCase: DeleteLastOpenHintsUseCase) {
+    public init(signInAnonymousUseCase: SignInAnonymousUseCase, 
+                getNextWordsUseCase: GetNextWordsUseCase,
+                countWordsPlayedUseCase: CountWordsPlayedUseCase,
+                saveWordPlayedUseCase: SaveWordPlayedUseCase,
+                getDollsRandomUseCase: GetDollsRandomUseCase,
+                fetchGameHelpUseCase: FetchGameHelpUseCase,
+                maxGameHelpUseCase: MaxGameHelpUseCase,
+                updateGameHelpUseCase: UpdateGameHelpUseCase,
+                getLastOpenHintsUseCase: GetLastOpenHintsUseCase,
+                delLastOpenHintsUseCase: DeleteLastOpenHintsUseCase) {
         self.signInAnonymousUseCase = signInAnonymousUseCase
         self.getNextWordsUseCase = getNextWordsUseCase
         self.countWordsPlayedUseCase = countWordsPlayedUseCase

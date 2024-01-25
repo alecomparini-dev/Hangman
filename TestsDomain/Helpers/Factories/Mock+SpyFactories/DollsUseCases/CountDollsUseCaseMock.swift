@@ -1,7 +1,3 @@
-//
-//  CountDollsUseCaseSpy.swift
-//  TestsDomain
-//
 //  Created by Alessandro Comparini on 25/01/24.
 //
 
