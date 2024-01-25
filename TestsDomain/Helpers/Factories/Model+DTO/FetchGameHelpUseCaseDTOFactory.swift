@@ -6,11 +6,11 @@ import Domain
 
 struct FetchGameHelpUseCaseDTOFactory {
     
-    static func make() -> FetchGameHelpUseCaseDTO {
+    static func make(lives: Int = 5, hints: Int = 10, revelations: Int = 5) -> FetchGameHelpUseCaseDTO {
         return FetchGameHelpUseCaseDTO(
-            livesCount: 5,
-            hintsCount: 10,
-            revelationsCount: 5)
+            livesCount: lives,
+            hintsCount: hints,
+            revelationsCount: revelations)
     }
     
 }

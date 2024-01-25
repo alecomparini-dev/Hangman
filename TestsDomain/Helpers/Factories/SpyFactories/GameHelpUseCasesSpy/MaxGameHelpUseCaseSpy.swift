@@ -7,11 +7,11 @@ import Domain
 
 class MaxGameHelpUseCaseSpy: MaxGameHelpUseCase {
     var typeGameHelp:TypeGameHelp = .hints
-    var result: Int!
     
     func max(typeGameHelp: TypeGameHelp) -> Int {
         self.typeGameHelp = typeGameHelp
-        return result
+        let result:[TypeGameHelp: Int] = [.lives:5, .hints: 10, .revelations: 5]
+        return result[typeGameHelp] ?? 0
     }
     
 }

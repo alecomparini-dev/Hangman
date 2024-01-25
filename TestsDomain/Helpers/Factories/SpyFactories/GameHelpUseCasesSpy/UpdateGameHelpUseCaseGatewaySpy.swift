@@ -4,23 +4,24 @@
 import Foundation
 import Domain
 
-class SaveGameHelpUseCaseGatewaySpy: SaveGameHelpUseCaseGateway {
+class UpdateGameHelpUseCaseGatewaySpy: UpdateGameHelpUseCaseGateway {
     var userID = ""
     var gameHelp: GameHelpModel!
     
     var result: Result<Bool?, Error> = .success(nil)
 
-    func save(_ userID: String, gameHelp: GameHelpModel) async throws {
+    func update(_ userID: String, gameHelp: Domain.GameHelpModel) async throws {
         self.userID = userID
         self.gameHelp = gameHelp
         
         switch result {
             case .success:
-                return 
+                return
             case .failure(let error):
                 throw error
         }
     }
+    
     
 }
 

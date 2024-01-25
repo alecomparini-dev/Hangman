@@ -11,7 +11,7 @@ public class SaveGameHelpUseCaseImpl: SaveGameHelpUseCase {
         self.saveGameHelpGateway = saveGameHelpGateway
     }
     
-    func save(_ userID: String, gameHelp: GameHelpModel) async throws {
+    public func save(_ userID: String, gameHelp: GameHelpModel) async throws {
         try await saveGameHelpGateway.save(userID, gameHelp: gameHelp)
     }
     

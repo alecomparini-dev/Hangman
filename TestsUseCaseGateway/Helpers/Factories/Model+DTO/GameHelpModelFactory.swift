@@ -7,11 +7,11 @@ import Handler
 
 struct GameHelpModelFactory {
     
-    static func make() -> GameHelpModel {
+    static func make(lives: Int = 5, hints: Int = 10, revelations: Int = 5) -> GameHelpModel {
         return GameHelpModel(dateRenewFree: DateHandler.convertDate("2024-1-12"),
-                             typeGameHelp: TypeGameHelpModel(lives: 5,
-                                                             hints: 10,
-                                                             revelations: 5)
+                             typeGameHelp: TypeGameHelpModel(lives: lives,
+                                                             hints: hints,
+                                                             revelations: revelations)
         )
     }
     

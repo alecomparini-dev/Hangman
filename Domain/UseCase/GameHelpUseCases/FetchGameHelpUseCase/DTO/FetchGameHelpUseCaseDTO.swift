@@ -3,12 +3,12 @@
 
 import Foundation
 
-public struct FetchGameHelpUseCaseDTO {
-    public var livesCount: Int
-    public var hintsCount: Int
-    public var revelationsCount: Int
+public struct FetchGameHelpUseCaseDTO: Equatable {
+    public var livesCount: Int?
+    public var hintsCount: Int?
+    public var revelationsCount: Int?
     
-    public init(livesCount: Int, hintsCount: Int, revelationsCount: Int) {
+    public init(livesCount: Int? = nil, hintsCount: Int? = nil, revelationsCount: Int? = nil) {
         self.livesCount = livesCount
         self.hintsCount = hintsCount
         self.revelationsCount = revelationsCount
