@@ -740,14 +740,14 @@
 			path = GetLastOpenHintsUseCaseTests;
 			sourceTree = "<group>";
 		};
-		0201CE572B617E6100C2B6F0 /* TestsDomain */ = {
+		0201CE572B617E6100C2B6F0 /* DomainTests */ = {
 			isa = PBXGroup;
 			children = (
 				0201CE612B617EDA00C2B6F0 /* ConfigurationsTest */,
 				0201CE632B6182C100C2B6F0 /* Helpers */,
 				0201CE4C2B617D0B00C2B6F0 /* UseCaseTests */,
 			);
-			path = TestsDomain;
+			path = DomainTests;
 			sourceTree = "<group>";
 		};
 		0201CE612B617EDA00C2B6F0 /* ConfigurationsTest */ = {
@@ -1334,14 +1334,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		025657BA2B5FF81000AB5BAD /* TestsUseCaseGateway */ = {
+		025657BA2B5FF81000AB5BAD /* UseCaseGatewayTests */ = {
 			isa = PBXGroup;
 			children = (
 				025657CF2B5FFBEF00AB5BAD /* ConfigurationsTest */,
 				025657EA2B602DC900AB5BAD /* Helpers */,
 				025657C12B5FF84E00AB5BAD /* InterfaceAdapterTests */,
 			);
-			path = TestsUseCaseGateway;
+			path = UseCaseGatewayTests;
 			sourceTree = "<group>";
 		};
 		025657C12B5FF84E00AB5BAD /* InterfaceAdapterTests */ = {
@@ -2102,28 +2102,20 @@
 		029F30C62B62C28500D05D11 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				0201CE572B617E6100C2B6F0 /* TestsDomain */,
-				029F30C72B62C2AE00D05D11 /* TestInterfaceAdapter */,
+				0201CE572B617E6100C2B6F0 /* DomainTests */,
+				025657BA2B5FF81000AB5BAD /* UseCaseGatewayTests */,
+				029F30CD2B62C2E600D05D11 /* PresenterTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		029F30C72B62C2AE00D05D11 /* TestInterfaceAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				029F30CD2B62C2E600D05D11 /* TestsPresenter */,
-				025657BA2B5FF81000AB5BAD /* TestsUseCaseGateway */,
-			);
-			path = TestInterfaceAdapter;
-			sourceTree = "<group>";
-		};
-		029F30CD2B62C2E600D05D11 /* TestsPresenter */ = {
+		029F30CD2B62C2E600D05D11 /* PresenterTests */ = {
 			isa = PBXGroup;
 			children = (
 				029F30D62B62C2FF00D05D11 /* ConfigurationsTest */,
 				029F30CE2B62C2E600D05D11 /* TestsPresenter.swift */,
 			);
-			path = TestsPresenter;
+			path = PresenterTests;
 			sourceTree = "<group>";
 		};
 		029F30D62B62C2FF00D05D11 /* ConfigurationsTest */ = {

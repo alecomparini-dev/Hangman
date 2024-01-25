@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:TestsUseCaseGateway/ConfigurationsTests/ConfigurationsTests.xctestplan"
+            reference = "container:Tests/TestInterfaceAdapter/TestsUseCaseGateway/ConfigurationsTest/ConfigurationsTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
