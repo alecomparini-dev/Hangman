@@ -7,20 +7,20 @@ import Handler
 
 struct GameHelpModelFactory {
     
-    static func make() -> GameHelpModel {
-        return GameHelpModel(dateRenewFree: DateHandler.convertDate("2024-01-12"),
-                             typeGameHelp: TypeGameHelpModel(lives: 1,
-                                                             hints: 2,
-                                                             revelations: 3)
+    static func make(lives: Int = 5, hints: Int = 10, revelations: Int = 5) -> GameHelpModel {
+        return GameHelpModel(dateRenewFree: DateHandler.convertDate("2024-1-12"),
+                             typeGameHelp: TypeGameHelpModel(lives: lives,
+                                                             hints: hints,
+                                                             revelations: revelations)
         )
     }
     
-    static func makeJSON() -> [String: Any] {
+    static func toJSON() -> [String: Any] {
         return [
-            "dateRenewFree": "2024-01-12",
-            "lives": 1,
-            "hints": 2,
-            "revelations": 3
+            "dateRenewFree": "2024-1-12",
+            "lives": 5,
+            "hints": 10,
+            "revelations": 5
         ]
     }
 }

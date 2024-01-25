@@ -24,7 +24,7 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
         if gameHelp == nil {
             gameHelp = try await saveInitialGameHelp(userID)
         }
-        
+                
         return makeFetchGameHelpUseCaseDTO(gameHelp)
     }
     
@@ -46,7 +46,9 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
     
     private func renewFreeHelp(_ userID: String, _ gameHelp: GameHelpModel?) async throws -> GameHelpModel? {
         guard var renewGameHelp = gameHelp else { return nil }
+        
         let date = DateHandler.getCurrentDate()
+        
         if let currentDate = DateHandler.convertDate("\(date.year)-\(date.month)-\(date.day)") {
             if let dateRenew = renewGameHelp.dateRenewFree, dateRenew < currentDate {
                 renewGameHelp.dateRenewFree = .now
@@ -76,11 +78,10 @@ public class FetchGameHelpUseCaseImpl: FetchGameHelpUseCase {
     }
     
     private func makeFetchGameHelpUseCaseDTO(_ gameHelp: GameHelpModel?) -> FetchGameHelpUseCaseDTO? {
-        guard let gameHelp else { return nil }
         return FetchGameHelpUseCaseDTO(
-            livesCount: gameHelp.typeGameHelp?.lives ?? 0,
-            hintsCount: gameHelp.typeGameHelp?.hints ?? 0,
-            revelationsCount: gameHelp.typeGameHelp?.revelations ?? 0
+            livesCount: gameHelp?.typeGameHelp?.lives,
+            hintsCount: gameHelp?.typeGameHelp?.hints,
+            revelationsCount: gameHelp?.typeGameHelp?.revelations
         )
     }
     

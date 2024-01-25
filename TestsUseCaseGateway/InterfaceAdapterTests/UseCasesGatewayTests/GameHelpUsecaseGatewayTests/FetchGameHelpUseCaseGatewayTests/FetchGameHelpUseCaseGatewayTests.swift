@@ -26,7 +26,7 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
     func test_fetch_gameHelp_success() async {
         let expectedResult = GameHelpModelFactory.make()
         
-        findByDataStorageSpy.findByResult = .success(GameHelpModelFactory.makeJSON())
+        findByDataStorageSpy.findByResult = .success(GameHelpModelFactory.toJSON())
         
         do {
             let result = try await sut.fetch(userID)
