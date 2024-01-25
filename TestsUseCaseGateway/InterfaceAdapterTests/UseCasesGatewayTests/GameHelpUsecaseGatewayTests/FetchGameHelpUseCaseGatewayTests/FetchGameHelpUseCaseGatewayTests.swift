@@ -77,10 +77,10 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.fetch(userID)
+            XCTAssertEqual(findByDataStorageSpy.helpDocument, K.Collections.Documents.help)
         } catch let error {
             XCTAssertNotNil(error)
         }
-        XCTAssertEqual(findByDataStorageSpy.helpDocument, K.Collections.Documents.help)
     }
     
     func test_fetch_path_success() async {
@@ -88,10 +88,10 @@ final class FetchGameHelpUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.fetch(userID)
+            XCTAssertEqual(findByDataStorageSpy.path, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
         } catch let error {
             XCTAssertNotNil(error)
         }
-        XCTAssertEqual(findByDataStorageSpy.path, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
     }
 
 }

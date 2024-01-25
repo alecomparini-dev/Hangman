@@ -53,11 +53,11 @@ final class GenericCountModelGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.count("any_document")
+            
+            XCTAssertEqual(fetchCountDataStorage.document, expectedResult)
         } catch let error {
             XCTAssertNotNil(error)
         }
-        
-        XCTAssertEqual(fetchCountDataStorage.document, expectedResult)
     }
     
 }

@@ -34,17 +34,18 @@ final class SaveWordPlayedUseCaseGatewayTests: XCTestCase {
         do {
             _ = try await sut.save(userID: userID, WordPlayedUseCaseDTOFactory.make() )
             expectedResult = true
+            
+            XCTAssertTrue(expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertTrue(expectedResult)
     }
     
     func test_save_failure() async {
         insertDataStorageSpy.insertResult = .failure(MockError.throwError)
         do {
             _ = try await sut.save(userID: userID, WordPlayedUseCaseDTOFactory.make() )
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -54,17 +55,18 @@ final class SaveWordPlayedUseCaseGatewayTests: XCTestCase {
     func test_save_correct_values() async {
         do {
             _ = try await sut.save(userID: userID, WordPlayedUseCaseDTOFactory.make() )
+            
+            let expectedValue = WordPlayedUseCaseDTOFactory.toJSON()
+            let value = insertDataStorageSpy.value as! [String: Any]
+            XCTAssertEqual(value["id"] as! Int, expectedValue["id"] as! Int)
+            XCTAssertEqual(value["success"] as? Bool, expectedValue["success"] as? Bool)
+            XCTAssertEqual(value["correctLettersCount"] as? Int, expectedValue["correctLettersCount"] as? Int)
+            XCTAssertEqual(value["wrongLettersCount"] as? Int, expectedValue["wrongLettersCount"] as? Int)
+            XCTAssertEqual(value["timeConclusion"] as? Int, expectedValue["timeConclusion"] as? Int)
+            XCTAssertEqual(value["level"] as? Int, expectedValue["level"] as? Int)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        let expectedValue = WordPlayedUseCaseDTOFactory.toJSON()
-        let value = insertDataStorageSpy.value as! [String: Any]
-        XCTAssertEqual(value["id"] as! Int, expectedValue["id"] as! Int)
-        XCTAssertEqual(value["success"] as? Bool, expectedValue["success"] as? Bool)
-        XCTAssertEqual(value["correctLettersCount"] as? Int, expectedValue["correctLettersCount"] as? Int)
-        XCTAssertEqual(value["wrongLettersCount"] as? Int, expectedValue["wrongLettersCount"] as? Int)
-        XCTAssertEqual(value["timeConclusion"] as? Int, expectedValue["timeConclusion"] as? Int)
-        XCTAssertEqual(value["level"] as? Int, expectedValue["level"] as? Int)
     }
     
 }

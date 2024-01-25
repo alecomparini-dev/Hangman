@@ -52,11 +52,11 @@ final class CountWordsPlayedUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.count(userID: userID)
+            
+            XCTAssertEqual(fetchCountDataStorage.document, "\(K.Collections.users)/\(userID)/\(K.Collections.wordsPlayed)")
         } catch let error {
             XCTAssertNotNil(error)
         }
-        
-        XCTAssertEqual(fetchCountDataStorage.document, "\(K.Collections.users)/\(userID)/\(K.Collections.wordsPlayed)")
     }
     
 }

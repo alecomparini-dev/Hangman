@@ -32,17 +32,18 @@ final class SaveGameHelpUseCaseGatewayTests: XCTestCase {
         do {
             _ = try await sut.save(userID, gameHelp: GameHelpModelFactory.make())
             expectedResult = true
+            
+            XCTAssertTrue(expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertTrue(expectedResult)
     }
     
     func test_save_gameHelp_failure() async {
         insertDataStorageSpy.insertResult = .failure(MockError.throwError)
         do {
             _ = try await sut.save(userID, gameHelp: GameHelpModelFactory.make())
+            
             XCTFail("Unexpected success")
         } catch let error {
             XCTAssertTrue(error is MockError)
@@ -52,34 +53,37 @@ final class SaveGameHelpUseCaseGatewayTests: XCTestCase {
     func test_save_correct_values() async {
         do {
             _ = try await sut.save(userID, gameHelp: GameHelpModelFactory.make())
+            
+            let value = insertDataStorageSpy.value as! [String: Any]
+            let expected = GameHelpModelFactory.toJSON()
+            XCTAssertEqual(value["dateRenewFree"] as! String, expected["dateRenewFree"] as! String)
+            XCTAssertEqual(value["lives"] as! Int, expected["lives"] as! Int)
+            XCTAssertEqual(value["hints"] as! Int, expected["hints"] as! Int)
+            XCTAssertEqual(value["revelations"] as! Int, expected["revelations"] as! Int)
+            
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-
-        let value = insertDataStorageSpy.value as! [String: Any]
-        let expected = GameHelpModelFactory.toJSON()
-        XCTAssertEqual(value["dateRenewFree"] as! String, expected["dateRenewFree"] as! String)
-        XCTAssertEqual(value["lives"] as! Int, expected["lives"] as! Int)
-        XCTAssertEqual(value["hints"] as! Int, expected["hints"] as! Int)
-        XCTAssertEqual(value["revelations"] as! Int, expected["revelations"] as! Int)
     }
     
     func test_save_correct_collection() async {
         do {
             _ = try await sut.save(userID, gameHelp: GameHelpModelFactory.make())
+            
+            XCTAssertEqual(insertDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        XCTAssertEqual(insertDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.game)")
     }
 
     func test_save_correct_documentID() async {
         do {
             _ = try await sut.save(userID, gameHelp: GameHelpModelFactory.make())
+            
+            XCTAssertEqual(insertDataStorageSpy.documentID, K.Collections.Documents.help)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        XCTAssertEqual(insertDataStorageSpy.documentID, K.Collections.Documents.help)
     }
 
 

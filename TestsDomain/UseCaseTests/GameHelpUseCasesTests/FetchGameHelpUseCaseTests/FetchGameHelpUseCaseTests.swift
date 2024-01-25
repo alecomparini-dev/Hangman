@@ -106,8 +106,7 @@ final class FetchGameHelpUseCaseTests: XCTestCase {
     }
     
     func test_fetch_and_save_initialGameHelp_failure() async {
-        let expectedResult = FetchGameHelpUseCaseDTOFactory.make()
-        
+
         saveGameHelpGatewaySpy.result = .failure(MockError.throwError)
         fetchGameHelpGatewaySpy.result = .success(nil)
         

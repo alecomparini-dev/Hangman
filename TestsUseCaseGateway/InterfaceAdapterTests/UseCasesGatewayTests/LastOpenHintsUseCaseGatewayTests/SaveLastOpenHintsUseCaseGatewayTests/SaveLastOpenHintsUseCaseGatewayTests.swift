@@ -33,11 +33,10 @@ final class SaveLastOpenHintsUseCaseGatewayTests: XCTestCase {
         do {
             _ = try await sut.save(userID, [1,2,3])
             expectedResult = true
+            XCTAssertTrue(expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertTrue(expectedResult)
     }
     
     func test_save_failure() async {
@@ -55,13 +54,12 @@ final class SaveLastOpenHintsUseCaseGatewayTests: XCTestCase {
         let expectedValues = [1,2,3]
         do {
             _ = try await sut.save(userID, expectedValues)
+            let value = insertDataStorageSpy.value as! [String: Any]
+            XCTAssertEqual(value["indexes"] as! [Int], expectedValues)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
 
-        let value = insertDataStorageSpy.value as! [String: Any]
-        
-        XCTAssertEqual(value["indexes"] as! [Int], expectedValues)
     }
     
     
@@ -70,11 +68,10 @@ final class SaveLastOpenHintsUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.save(userID, [1,2,3])
+            XCTAssertEqual(insertDataStorageSpy.documentID, K.Collections.Documents.openHints)
         } catch let error {
             XCTAssertNotNil(error)
         }
-        
-        XCTAssertEqual(insertDataStorageSpy.documentID, K.Collections.Documents.openHints)
     }
     
     func test_save_collection_success() async {
@@ -82,11 +79,12 @@ final class SaveLastOpenHintsUseCaseGatewayTests: XCTestCase {
         
         do {
             _ = try await sut.save(userID, [1,2,3])
+            XCTAssertEqual(insertDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.openHints)")
         } catch let error {
             XCTAssertNotNil(error)
         }
         
-        XCTAssertEqual(insertDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.openHints)")
+        
     }
     
 }

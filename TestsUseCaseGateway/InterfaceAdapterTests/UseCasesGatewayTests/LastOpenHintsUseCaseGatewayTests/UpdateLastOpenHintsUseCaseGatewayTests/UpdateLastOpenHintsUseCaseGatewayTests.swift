@@ -33,11 +33,11 @@ final class UpdateLastOpenHintsUseCaseGatewayTests: XCTestCase {
         do {
             _ = try await sut.update(userID, [1,2,3])
             expectedResult = true
+            XCTAssertTrue(expectedResult)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
         
-        XCTAssertTrue(expectedResult)
     }
     
     func test_update_failure() async {
@@ -54,31 +54,31 @@ final class UpdateLastOpenHintsUseCaseGatewayTests: XCTestCase {
         let expectedValue = [1,2,3]
         do {
             _ = try await sut.update(userID, expectedValue)
+            
+            let value = updateDataStorageSpy.value as! [String: Any]
+            XCTAssertEqual(value["indexes"] as! [Int], expectedValue)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
 
-        let value = updateDataStorageSpy.value as! [String: Any]
-        
-        XCTAssertEqual(value["indexes"] as! [Int], expectedValue)
     }
     
     func test_update_correct_collection() async {
         do {
             _ = try await sut.update(userID, [1,2,3])
+            XCTAssertEqual(updateDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.openHints)")
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        XCTAssertEqual(updateDataStorageSpy.collection, "\(K.Collections.users)/\(userID)/\(K.Collections.openHints)")
     }
 
     func test_update_correct_documentID() async {
         do {
             _ = try await sut.update(userID, [1,2,3])
+            XCTAssertEqual(updateDataStorageSpy.documentID, K.Collections.Documents.openHints)
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-        XCTAssertEqual(updateDataStorageSpy.documentID, K.Collections.Documents.openHints)
     }
     
 }
