@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "1D83BAAF-7FAE-4143-B433-23E1352823FB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Hangman.xcodeproj",
+        "identifier" : "029F30CB2B62C2E600D05D11",
+        "name" : "TestsPresenter"
+      }
+    }
+  ],
+  "version" : 1
+}
