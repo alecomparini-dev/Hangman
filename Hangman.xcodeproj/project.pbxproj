@@ -186,6 +186,7 @@
 		029F30C52B629EF600D05D11 /* SignInAnonymousUseCaseGatewayMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F30C42B629EF600D05D11 /* SignInAnonymousUseCaseGatewayMock.swift */; };
 		029F30D02B62C2E600D05D11 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
 		029F30D82B62C35100D05D11 /* ConfigurationDomainTests.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 029F30D72B62C35100D05D11 /* ConfigurationDomainTests.xctestplan */; };
+		02A8A5C52B645773003C4CAB /* GameHelpModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025657EF2B60302800AB5BAD /* GameHelpModelFactory.swift */; };
 		02B1E7E32B516650004ECE2C /* FetchGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */; };
 		02B1E7F52B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */; };
 		02C466A22B4F185B00516D5A /* DataTransferHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferHints.swift */; };
@@ -3192,6 +3193,7 @@
 				02DF3E752B62D53B00114663 /* SignInAnonymousUseCaseMock.swift in Sources */,
 				02DF3E812B62FAAC00114663 /* HintsPresenterTests.swift in Sources */,
 				02DF3E8C2B63019E00114663 /* UpdateGameHelpUseCaseSpy.swift in Sources */,
+				02A8A5C52B645773003C4CAB /* GameHelpModelFactory.swift in Sources */,
 				02DF3E7D2B62DF3000114663 /* MockError.swift in Sources */,
 				02DF3E902B63022100114663 /* SaveLastOpenHintsUseCaseSpy.swift in Sources */,
 				02DF3E922B63E99500114663 /* DataTransferHintsFactory.swift in Sources */,
