@@ -37,6 +37,20 @@ public class HintsPresenterImpl: HintsPresenter {
     
     //  MARK: - PUBLIC AREA
     
+    public func getLastHintsOpen() -> [Int] { dataTransfer?.lastHintsOpen ?? []}
+    
+    public func numberOfItemsCallback() -> Int { dataTransfer?.wordPresenterDTO?.hints?.count ?? 0  }
+    
+    public func getHintByIndex(_ index: Int) -> String { dataTransfer?.wordPresenterDTO?.hints?[index] ?? "" }
+
+    public func verifyHintIsOver() {
+        guard let count = dataTransfer?.gameHelpPresenterDTO?.hintsCount else { return }
+        
+        if count > 0 { return }
+        
+        hintIsOver()
+    }
+
     public func openHint(indexHint: Int?) {
         guard var count = dataTransfer?.gameHelpPresenterDTO?.hintsCount else { return }
         
@@ -56,21 +70,6 @@ public class HintsPresenterImpl: HintsPresenter {
         
         verifyHintIsOver()
     }
-    
-    public func getLastHintsOpen() -> [Int] { dataTransfer?.lastHintsOpen ?? []}
-    
-    public func numberOfItemsCallback() -> Int { dataTransfer?.wordPresenterDTO?.hints?.count ?? 0  }
-    
-    public func getHintByIndex(_ index: Int) -> String { dataTransfer?.wordPresenterDTO?.hints?[index] ?? "" }
-    
-    public func verifyHintIsOver() {
-        guard let count = dataTransfer?.gameHelpPresenterDTO?.hintsCount else { return }
-        
-        if count > 0 { return }
-        
-        hintIsOver()
-    }
-    
     
     
     //  MARK: - PRIVATE AREA
