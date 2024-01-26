@@ -17,7 +17,7 @@ class GetDollsUseCaseGatewaySpy: GetDollsUseCaseGateway {
         
         switch result {
             case .success(let data):
-                return data
+            return data
             case .failure(let error):
                 throw error
         }

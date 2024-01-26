@@ -28,8 +28,12 @@ public class GetDollsRandomUseCaseImpl: GetDollsRandomUseCase {
             return Array(1...countDolls)
         }
         
+        var randomSample = Array(1...countDolls)
         _ = (1...quantity).map({ _ in
-            setIds.insert(Int.random(in: 1...countDolls))
+            if let randomInt = randomSample.randomElement() {
+                randomSample.removeAll(where: { $0 == randomInt })
+                setIds.insert(randomInt)
+            }
         })
         
         return Array(setIds)

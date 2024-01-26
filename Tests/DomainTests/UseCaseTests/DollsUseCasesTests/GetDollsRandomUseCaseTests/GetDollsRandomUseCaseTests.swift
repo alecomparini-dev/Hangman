@@ -99,10 +99,12 @@ final class GetDollsRandomUseCaseTests: XCTestCase {
             XCTAssertEqual(getDollsGatewaySpy.id.count, expectedQuantity)
             XCTAssertEqual(result, expectedResult)
             XCTAssertEqual(result.count, expectedQuantity)
+            
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
-
         
     }
 }
+
+
