@@ -221,6 +221,7 @@
 		02DF3E892B63013000114663 /* GameHelpPresenterDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E862B6300AC00114663 /* GameHelpPresenterDTOFactory.swift */; };
 		02DF3E8C2B63019E00114663 /* UpdateGameHelpUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E8A2B63018C00114663 /* UpdateGameHelpUseCaseSpy.swift */; };
 		02DF3E902B63022100114663 /* SaveLastOpenHintsUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E8E2B63020E00114663 /* SaveLastOpenHintsUseCaseSpy.swift */; };
+		02DF3E922B63E99500114663 /* DataTransferHintsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E912B63E99500114663 /* DataTransferHintsFactory.swift */; };
 		02E065C12B51EDA400C074FC /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
 		02E065C22B51EDA400C074FC /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02E065D12B52CB2200C074FC /* FetchGameHelpUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065D02B52CB2200C074FC /* FetchGameHelpUseCaseGateway.swift */; };
@@ -615,6 +616,7 @@
 		02DF3E862B6300AC00114663 /* GameHelpPresenterDTOFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpPresenterDTOFactory.swift; sourceTree = "<group>"; };
 		02DF3E8A2B63018C00114663 /* UpdateGameHelpUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGameHelpUseCaseSpy.swift; sourceTree = "<group>"; };
 		02DF3E8E2B63020E00114663 /* SaveLastOpenHintsUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLastOpenHintsUseCaseSpy.swift; sourceTree = "<group>"; };
+		02DF3E912B63E99500114663 /* DataTransferHintsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHintsFactory.swift; sourceTree = "<group>"; };
 		02E065D02B52CB2200C074FC /* FetchGameHelpUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseGateway.swift; sourceTree = "<group>"; };
 		02E065D22B52CB4E00C074FC /* FetchGameHelpUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseImpl.swift; sourceTree = "<group>"; };
 		02E065D52B52D20000C074FC /* FetchGameHelpUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
@@ -2382,6 +2384,7 @@
 			children = (
 				02DF3E842B63008600114663 /* WordPresenterDTOFactory.swift */,
 				02DF3E862B6300AC00114663 /* GameHelpPresenterDTOFactory.swift */,
+				02DF3E912B63E99500114663 /* DataTransferHintsFactory.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -3191,6 +3194,7 @@
 				02DF3E8C2B63019E00114663 /* UpdateGameHelpUseCaseSpy.swift in Sources */,
 				02DF3E7D2B62DF3000114663 /* MockError.swift in Sources */,
 				02DF3E902B63022100114663 /* SaveLastOpenHintsUseCaseSpy.swift in Sources */,
+				02DF3E922B63E99500114663 /* DataTransferHintsFactory.swift in Sources */,
 				02DF3E882B63012300114663 /* WordPresenterDTOFactory.swift in Sources */,
 				02DF3E892B63013000114663 /* GameHelpPresenterDTOFactory.swift in Sources */,
 				02DF3E6E2B62D3E700114663 /* LoadScreenPresenterTests.swift in Sources */,

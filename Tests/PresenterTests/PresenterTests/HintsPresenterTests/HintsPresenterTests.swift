@@ -1,7 +1,3 @@
-//
-//  HintsPresenterTests.swift
-//  Handler
-//
 //  Created by Alessandro Comparini on 25/01/24.
 //
 
@@ -23,9 +19,6 @@ final class HintsPresenterTests: XCTestCase {
         self.updateGameHelpUseCaseSpy = UpdateGameHelpUseCaseSpy()
         self.saveLastOpenHintsUseCaseSpy = SaveLastOpenHintsUseCaseSpy()
         
-        self.sut = HintsPresenterImpl(updateGameHelpUseCase: updateGameHelpUseCaseSpy,
-                                      saveLastOpenHintsUseCase: saveLastOpenHintsUseCaseSpy,
-                                      dataTransfer: nil)
     }
     
     override func tearDown() {
@@ -37,29 +30,38 @@ final class HintsPresenterTests: XCTestCase {
     
 //  MARK: - TEST AREA
     
-    
-    
-}
-
-
-
-
-struct DataTransferHintsFactory {
-    
-    func make(userID: String? = "123", lastHintsOpen: [Int]?,
-              wordPresenterDTO: WordPresenterDTO? = WordPresenterDTOFactory.make(),
-              gameHelpPresenterDTO: GameHelpPresenterDTO? = GameHelpPresenterDTOFactory.make(),
-              delegate: HintsPresenterOutput? = nil) -> DataTransferHints? {
+    func test_getLastHintsOpen_with_values() async {
+        let expectResult = [1,2,3]
+        let dataTransferLastHintsOpen = DataTransferHintsFactory().make(lastHintsOpen: expectResult)
         
-        return DataTransferHints(userID: userID,
-                                 lastHintsOpen: lastHintsOpen,
-                                 wordPresenterDTO: wordPresenterDTO,
-                                 gameHelpPresenterDTO: gameHelpPresenterDTO,
-                                 delegate: delegate)
+        makeSut(dataTransfer: dataTransferLastHintsOpen)
+        
+        let result = sut.getLastHintsOpen()
+        
+        XCTAssertEqual(expectResult, result)
     }
     
+    func test_getLastHintsOpen_withOut_values() async {
+        let expectResult = [Int]()
+        let dataTransferNil = DataTransferHintsFactory().make()
+        
+        makeSut(dataTransfer: dataTransferNil)
+        
+        let result = sut.getLastHintsOpen()
+        
+        XCTAssertEqual(expectResult, result)
+    }
+    
+    
+    
 }
 
 
-
-
+//  MARK: - EXTENSION MAKE SUT
+extension HintsPresenterTests {
+    func makeSut(dataTransfer: DataTransferHints? = nil) {
+        self.sut = HintsPresenterImpl(updateGameHelpUseCase: updateGameHelpUseCaseSpy,
+                                      saveLastOpenHintsUseCase: saveLastOpenHintsUseCaseSpy,
+                                      dataTransfer: dataTransfer)
+    }
+}
