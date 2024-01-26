@@ -11,9 +11,13 @@ public struct DataTransferHints {
     public var lastHintsOpen: [Int]?
     public var wordPresenterDTO: WordPresenterDTO?
     public var gameHelpPresenterDTO: GameHelpPresenterDTO?
-    public var delegate: HintsPresenterOutput
+    public var delegate: HintsPresenterOutput?
     
-    public init(userID: String? = nil, lastHintsOpen: [Int]? = nil, wordPresenterDTO: WordPresenterDTO? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil, delegate: HintsPresenterOutput) {
+    public init(userID: String? = nil, 
+                lastHintsOpen: [Int]? = nil,
+                wordPresenterDTO: WordPresenterDTO? = nil,
+                gameHelpPresenterDTO: GameHelpPresenterDTO? = nil,
+                delegate: HintsPresenterOutput? = nil) {
         self.userID = userID
         self.lastHintsOpen = lastHintsOpen
         self.wordPresenterDTO = wordPresenterDTO

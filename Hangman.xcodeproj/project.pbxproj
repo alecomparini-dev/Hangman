@@ -215,6 +215,12 @@
 		02DF3E6E2B62D3E700114663 /* LoadScreenPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E6C2B62D3AA00114663 /* LoadScreenPresenterTests.swift */; };
 		02DF3E752B62D53B00114663 /* SignInAnonymousUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E722B62D4D300114663 /* SignInAnonymousUseCaseMock.swift */; };
 		02DF3E782B62D78B00114663 /* FetchGameHelpUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE892B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift */; };
+		02DF3E7D2B62DF3000114663 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025657EC2B602DE500AB5BAD /* MockError.swift */; };
+		02DF3E812B62FAAC00114663 /* HintsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E7F2B62E0EE00114663 /* HintsPresenterTests.swift */; };
+		02DF3E882B63012300114663 /* WordPresenterDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E842B63008600114663 /* WordPresenterDTOFactory.swift */; };
+		02DF3E892B63013000114663 /* GameHelpPresenterDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E862B6300AC00114663 /* GameHelpPresenterDTOFactory.swift */; };
+		02DF3E8C2B63019E00114663 /* UpdateGameHelpUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E8A2B63018C00114663 /* UpdateGameHelpUseCaseSpy.swift */; };
+		02DF3E902B63022100114663 /* SaveLastOpenHintsUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF3E8E2B63020E00114663 /* SaveLastOpenHintsUseCaseSpy.swift */; };
 		02E065C12B51EDA400C074FC /* Handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; };
 		02E065C22B51EDA400C074FC /* Handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0279268C2B0FD1B200035BCF /* Handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		02E065D12B52CB2200C074FC /* FetchGameHelpUseCaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E065D02B52CB2200C074FC /* FetchGameHelpUseCaseGateway.swift */; };
@@ -604,6 +610,11 @@
 		02DF3E692B62D30600114663 /* ConfigurationPresenterTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ConfigurationPresenterTests.xctestplan; sourceTree = "<group>"; };
 		02DF3E6C2B62D3AA00114663 /* LoadScreenPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreenPresenterTests.swift; sourceTree = "<group>"; };
 		02DF3E722B62D4D300114663 /* SignInAnonymousUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAnonymousUseCaseMock.swift; sourceTree = "<group>"; };
+		02DF3E7F2B62E0EE00114663 /* HintsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsPresenterTests.swift; sourceTree = "<group>"; };
+		02DF3E842B63008600114663 /* WordPresenterDTOFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPresenterDTOFactory.swift; sourceTree = "<group>"; };
+		02DF3E862B6300AC00114663 /* GameHelpPresenterDTOFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelpPresenterDTOFactory.swift; sourceTree = "<group>"; };
+		02DF3E8A2B63018C00114663 /* UpdateGameHelpUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGameHelpUseCaseSpy.swift; sourceTree = "<group>"; };
+		02DF3E8E2B63020E00114663 /* SaveLastOpenHintsUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLastOpenHintsUseCaseSpy.swift; sourceTree = "<group>"; };
 		02E065D02B52CB2200C074FC /* FetchGameHelpUseCaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseGateway.swift; sourceTree = "<group>"; };
 		02E065D22B52CB4E00C074FC /* FetchGameHelpUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseImpl.swift; sourceTree = "<group>"; };
 		02E065D52B52D20000C074FC /* FetchGameHelpUseCaseGatewayImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseGatewayImpl.swift; sourceTree = "<group>"; };
@@ -837,6 +848,7 @@
 			isa = PBXGroup;
 			children = (
 				0201CE862B61AC6300C2B6F0 /* MaxGameHelpUseCaseSpy.swift */,
+				02DF3E8A2B63018C00114663 /* UpdateGameHelpUseCaseSpy.swift */,
 			);
 			path = GameHelpUseCasesSpy;
 			sourceTree = "<group>";
@@ -1781,11 +1793,8 @@
 		027339222B606D9A00C9A03B /* Model+DTO */ = {
 			isa = PBXGroup;
 			children = (
-				025657EF2B60302800AB5BAD /* GameHelpModelFactory.swift */,
-				029A963E2B6146F5002565BC /* DollUseCaseDTOFactory.swift */,
-				029A96472B614958002565BC /* NextWordsUseCaseDTOFactory.swift */,
-				029A96552B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift */,
-				0201CE892B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift */,
+				02DF3E832B63005500114663 /* Domain */,
+				02DF3E822B63001C00114663 /* Presenter */,
 			);
 			path = "Model+DTO";
 			sourceTree = "<group>";
@@ -2277,6 +2286,7 @@
 		02DF3E6A2B62D34500114663 /* PresenterTests */ = {
 			isa = PBXGroup;
 			children = (
+				02DF3E7E2B62E0DB00114663 /* HintsPresenterTests */,
 				02DF3E6B2B62D39500114663 /* LoadScreenPresenterTests */,
 			);
 			path = PresenterTests;
@@ -2351,11 +2361,49 @@
 		02DF3E7C2B62D80000114663 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				02DF3E8D2B6301F900114663 /* LastOpenHintsUseCases */,
+				0201CE812B61AA4B00C2B6F0 /* GameHelpUseCasesSpy */,
 				02DF3E742B62D4FB00114663 /* AuthenticateUseCasesMock */,
 				0201CE992B6280AA00C2B6F0 /* DollsUseCases */,
-				0201CE812B61AA4B00C2B6F0 /* GameHelpUseCasesSpy */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		02DF3E7E2B62E0DB00114663 /* HintsPresenterTests */ = {
+			isa = PBXGroup;
+			children = (
+				02DF3E7F2B62E0EE00114663 /* HintsPresenterTests.swift */,
+			);
+			path = HintsPresenterTests;
+			sourceTree = "<group>";
+		};
+		02DF3E822B63001C00114663 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				02DF3E842B63008600114663 /* WordPresenterDTOFactory.swift */,
+				02DF3E862B6300AC00114663 /* GameHelpPresenterDTOFactory.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		02DF3E832B63005500114663 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				025657EF2B60302800AB5BAD /* GameHelpModelFactory.swift */,
+				029A963E2B6146F5002565BC /* DollUseCaseDTOFactory.swift */,
+				029A96472B614958002565BC /* NextWordsUseCaseDTOFactory.swift */,
+				029A96552B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift */,
+				0201CE892B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		02DF3E8D2B6301F900114663 /* LastOpenHintsUseCases */ = {
+			isa = PBXGroup;
+			children = (
+				02DF3E8E2B63020E00114663 /* SaveLastOpenHintsUseCaseSpy.swift */,
+			);
+			path = LastOpenHintsUseCases;
 			sourceTree = "<group>";
 		};
 		02E065CF2B52C91600C074FC /* TypesGameHelpModel */ = {
@@ -3139,6 +3187,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				02DF3E752B62D53B00114663 /* SignInAnonymousUseCaseMock.swift in Sources */,
+				02DF3E812B62FAAC00114663 /* HintsPresenterTests.swift in Sources */,
+				02DF3E8C2B63019E00114663 /* UpdateGameHelpUseCaseSpy.swift in Sources */,
+				02DF3E7D2B62DF3000114663 /* MockError.swift in Sources */,
+				02DF3E902B63022100114663 /* SaveLastOpenHintsUseCaseSpy.swift in Sources */,
+				02DF3E882B63012300114663 /* WordPresenterDTOFactory.swift in Sources */,
+				02DF3E892B63013000114663 /* GameHelpPresenterDTOFactory.swift in Sources */,
 				02DF3E6E2B62D3E700114663 /* LoadScreenPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
