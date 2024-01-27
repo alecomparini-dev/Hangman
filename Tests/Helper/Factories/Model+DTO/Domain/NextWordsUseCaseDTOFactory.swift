@@ -12,7 +12,7 @@ struct NextWordsUseCaseDTOFactory {
                                    syllables: ["a","b","c"],
                                    category: "any_category",
                                    initialQuestion: "any_initialQuestion",
-                                   level: .easy,
+                                   level: level,
                                    hints: ["any_hints1", "any_hints2"])
         
     }

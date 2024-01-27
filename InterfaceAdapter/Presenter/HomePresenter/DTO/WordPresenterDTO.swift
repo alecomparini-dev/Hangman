@@ -9,7 +9,7 @@ public enum LevelPresenter: String {
     case hard = "Difícil"
 }
 
-public struct WordPresenterDTO {
+public struct WordPresenterDTO: Equatable {
     public var id: Int
     public var word: String?
     public var syllables: [String]?

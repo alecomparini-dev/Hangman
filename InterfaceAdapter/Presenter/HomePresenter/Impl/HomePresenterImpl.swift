@@ -441,14 +441,14 @@ public class HomePresenterImpl: HomePresenter {
     
     private func convertLevel(_ level: Level?) -> LevelPresenter? {
         switch level {
-        case .easy:
-            return .easy
-        case .normal:
-            return .normal
-        case .hard:
-            return .hard
-        case .none:
-            return .easy
+            case .easy:
+                return .easy
+            case .normal:
+                return .normal
+            case .hard:
+                return .hard
+            case .none:
+                return .easy
         }
     }
     
