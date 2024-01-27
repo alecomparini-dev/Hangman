@@ -8,10 +8,19 @@ class UpdateGameHelpUseCaseSpy: UpdateGameHelpUseCase {
     var userID: String = ""
     var gameHelp: GameHelpModel!
     
+    var result: Result<Bool?, Error> = .success(true)
+    
     func update(_ userID: String, gameHelp: Domain.GameHelpModel) async throws {
         self.userID = userID
         self.gameHelp = gameHelp
-        return
+        
+        switch result {
+            case .success:
+                return
+            case .failure(let error):
+                throw error
+        }
+        
     }
     
 }
