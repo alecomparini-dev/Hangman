@@ -198,6 +198,10 @@
 		02A8A5E12B653200003C4CAB /* FetchGameHelpUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5DF2B6531ED003C4CAB /* FetchGameHelpUseCaseSpy.swift */; };
 		02A8A5E42B65325B003C4CAB /* GetLastOpenHintsUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5E22B65324B003C4CAB /* GetLastOpenHintsUseCaseSpy.swift */; };
 		02A8A5E72B6532B2003C4CAB /* DeleteLastOpenHintsUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5E52B65329E003C4CAB /* DeleteLastOpenHintsUseCaseSpy.swift */; };
+		02A8A5EA2B6538DE003C4CAB /* NextWordsUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A96472B614958002565BC /* NextWordsUseCaseDTOFactory.swift */; };
+		02A8A5EB2B6538E5003C4CAB /* WordPlayedUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A96552B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift */; };
+		02A8A5EC2B6538F2003C4CAB /* DollUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A963E2B6146F5002565BC /* DollUseCaseDTOFactory.swift */; };
+		02A8A5ED2B6539F7003C4CAB /* DataTransferHomeVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5E82B653889003C4CAB /* DataTransferHomeVCFactory.swift */; };
 		02B1E7E32B516650004ECE2C /* FetchGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */; };
 		02B1E7F52B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */; };
 		02C466A22B4F185B00516D5A /* DataTransferHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferHints.swift */; };
@@ -602,6 +606,7 @@
 		02A8A5DF2B6531ED003C4CAB /* FetchGameHelpUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseSpy.swift; sourceTree = "<group>"; };
 		02A8A5E22B65324B003C4CAB /* GetLastOpenHintsUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLastOpenHintsUseCaseSpy.swift; sourceTree = "<group>"; };
 		02A8A5E52B65329E003C4CAB /* DeleteLastOpenHintsUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLastOpenHintsUseCaseSpy.swift; sourceTree = "<group>"; };
+		02A8A5E82B653889003C4CAB /* DataTransferHomeVCFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransferHomeVCFactory.swift; sourceTree = "<group>"; };
 		02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCase.swift; sourceTree = "<group>"; };
 		02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseDTO.swift; sourceTree = "<group>"; };
 		02C466A12B4F185B00516D5A /* DataTransferHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHints.swift; sourceTree = "<group>"; };
@@ -2439,6 +2444,7 @@
 				02DF3E842B63008600114663 /* WordPresenterDTOFactory.swift */,
 				02DF3E862B6300AC00114663 /* GameHelpPresenterDTOFactory.swift */,
 				02DF3E912B63E99500114663 /* DataTransferHintsFactory.swift */,
+				02A8A5E82B653889003C4CAB /* DataTransferHomeVCFactory.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -3246,9 +3252,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				02A8A5D42B652F93003C4CAB /* GetNextWordsUseCaseSpy.swift in Sources */,
+				02A8A5EC2B6538F2003C4CAB /* DollUseCaseDTOFactory.swift in Sources */,
 				02A8A5DB2B6530D4003C4CAB /* SaveWordPlayedUseCaseSpy.swift in Sources */,
 				02A8A5CF2B652CDC003C4CAB /* HomePresenterTests.swift in Sources */,
+				02A8A5EB2B6538E5003C4CAB /* WordPlayedUseCaseDTOFactory.swift in Sources */,
 				02A8A5CE2B652CC0003C4CAB /* HomePresenterOutputMock.swift in Sources */,
+				02A8A5EA2B6538DE003C4CAB /* NextWordsUseCaseDTOFactory.swift in Sources */,
 				02DF3E752B62D53B00114663 /* SignInAnonymousUseCaseMock.swift in Sources */,
 				02A8A5DE2B65318A003C4CAB /* GetDollsRandomUseCaseSpy.swift in Sources */,
 				02DF3E812B62FAAC00114663 /* HintsPresenterTests.swift in Sources */,
@@ -3265,6 +3274,7 @@
 				02A8A5D02B652EB2003C4CAB /* MaxGameHelpUseCaseSpy.swift in Sources */,
 				02A8A5E12B653200003C4CAB /* FetchGameHelpUseCaseSpy.swift in Sources */,
 				02A8A5D82B653051003C4CAB /* CountWordsPlayedUseCaseSpy.swift in Sources */,
+				02A8A5ED2B6539F7003C4CAB /* DataTransferHomeVCFactory.swift in Sources */,
 				02DF3E6E2B62D3E700114663 /* LoadScreenPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

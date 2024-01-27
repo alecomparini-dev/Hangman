@@ -250,18 +250,23 @@ final class HintsPresenterTests: XCTestCase {
         
         let test = makeSut(dataTransfer: dataTransfer)
         
-        let exp = expectation(description: "waiting")
+        let exp = expectation(description: "completionRevealHintsCompleted")
+        let expUpdate = expectation(description: "updateGameHelpUseCaseSpy")
         
         let expectedCount = 3
         hintsPresenterOutputMock.completionRevealHintsCompleted { receivedCount in
             XCTAssertEqual(expectedCount, receivedCount)
-            XCTAssertEqual(test.updateGameHelpUseCaseSpy.gameHelp, GameHelpModelFactory.make(dateRenewFree: nil, lives: nil, hints: receivedCount, revelations: nil))
             exp.fulfill()
         }
-
+        
+        test.updateGameHelpUseCaseSpy.observer {
+            XCTAssertEqual(test.updateGameHelpUseCaseSpy.gameHelp, GameHelpModelFactory.make(dateRenewFree: nil, lives: nil, hints: expectedCount, revelations: nil))
+            expUpdate.fulfill()
+        }
+        
         test.sut.openHint(indexHint: 2)
         
-        wait(for: [exp], timeout: 1)
+        wait(for: [exp,expUpdate], timeout: 1)
         
     }
     

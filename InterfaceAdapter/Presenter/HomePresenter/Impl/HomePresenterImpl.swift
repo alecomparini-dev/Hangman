@@ -10,7 +10,7 @@ public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: HomePresenterOutput?
     
     private var _lastHintsOpen: [Int]?
-    private var gameHelpPresenterDTO: GameHelpPresenterDTO?
+    private var _gameHelpPresenterDTO: GameHelpPresenterDTO?
     private var revealLetterGame: Set<String> = []
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
@@ -64,7 +64,7 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - GET PROPERTIES
     
     public var isEndGame: Bool {
-        _isEndGame || (gameHelpPresenter?.livesCount == 0)
+        _isEndGame || (gameHelpPresenterDTO?.livesCount == 0)
     }
     
     public var dataTransfer: DataTransferHomeVC? {
@@ -81,11 +81,11 @@ public class HomePresenterImpl: HomePresenter {
             self.currentWord = newValue?.wordPlaying
             self.nextWords = newValue?.nextWords
             self.dolls = newValue?.dolls
-            self.gameHelpPresenterDTO = newValue?.gameHelpPresenterDTO
+            self._gameHelpPresenterDTO = newValue?.gameHelpPresenterDTO
         }
     }
     
-    public var gameHelpPresenter: GameHelpPresenterDTO? { gameHelpPresenterDTO }
+    public var gameHelpPresenterDTO: GameHelpPresenterDTO? { _gameHelpPresenterDTO }
     
     public var lastHintsOpen: [Int] { _lastHintsOpen ?? []}
     
@@ -190,7 +190,7 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     public func setHintsCount(_ count: Int) {
-        gameHelpPresenterDTO?.hintsCount = count
+        _gameHelpPresenterDTO?.hintsCount = count
     }
     
     
@@ -317,7 +317,7 @@ public class HomePresenterImpl: HomePresenter {
     private func decreaseLife() {
         if let livesCount = gameHelpPresenterDTO?.livesCount {
             let count = livesCount - 1
-            gameHelpPresenterDTO?.livesCount = count
+            _gameHelpPresenterDTO?.livesCount = count
             updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(lives: count)))
         }
     }
@@ -397,7 +397,7 @@ public class HomePresenterImpl: HomePresenter {
         
         do {
             let fetchGameHelpDTO = try await fetchGameHelpUseCase.fetch(userID)
-            gameHelpPresenterDTO = GameHelpPresenterDTO(livesCount: fetchGameHelpDTO?.livesCount ?? 0,
+            _gameHelpPresenterDTO = GameHelpPresenterDTO(livesCount: fetchGameHelpDTO?.livesCount ?? 0,
                                                         hintsCount: fetchGameHelpDTO?.hintsCount ?? 0,
                                                         revelationsCount: fetchGameHelpDTO?.revelationsCount ?? 0)
             fetchGameHelpSuccess()
@@ -464,7 +464,7 @@ public class HomePresenterImpl: HomePresenter {
     private func decreaseRevelation() {
         if let revelationsCount = gameHelpPresenterDTO?.revelationsCount {
             let count = revelationsCount - 1
-            gameHelpPresenterDTO?.revelationsCount = count
+            _gameHelpPresenterDTO?.revelationsCount = count
             updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(revelations: count)))
         }
     }

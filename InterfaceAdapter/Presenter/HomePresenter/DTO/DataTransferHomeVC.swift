@@ -6,12 +6,12 @@ import Domain
 
 public struct DataTransferHomeVC {
     public var userID: String
-    public var wordPlaying: NextWordsUseCaseDTO
+    public var wordPlaying: NextWordsUseCaseDTO?
     public var nextWords: [NextWordsUseCaseDTO]?
     public var dolls: [DollUseCaseDTO]?
     public var gameHelpPresenterDTO: GameHelpPresenterDTO?
     
-    public init(userID: String, wordPlaying: NextWordsUseCaseDTO, nextWords: [NextWordsUseCaseDTO]? = nil, dolls: [DollUseCaseDTO]? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil) {
+    public init(userID: String, wordPlaying: NextWordsUseCaseDTO? = nil, nextWords: [NextWordsUseCaseDTO]? = nil, dolls: [DollUseCaseDTO]? = nil, gameHelpPresenterDTO: GameHelpPresenterDTO? = nil) {
         self.userID = userID
         self.wordPlaying = wordPlaying
         self.nextWords = nextWords

@@ -127,7 +127,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedButtonRevealLetter() {
-        let countRevelations = (homePresenter.gameHelpPresenter?.revelationsCount ?? 0)
+        let countRevelations = (homePresenter.gameHelpPresenterDTO?.revelationsCount ?? 0)
         let maxRevelations = homePresenter.maxHelp(.revelations)
         
         for index in stride(from: countRevelations+1, through: maxRevelations, by: 1) {
@@ -137,7 +137,7 @@ public class HomeViewController: UIViewController {
     }
     
     private func updateMarkUsedLife() {
-        let livesCount = (homePresenter.gameHelpPresenter?.livesCount ?? 0)
+        let livesCount = (homePresenter.gameHelpPresenterDTO?.livesCount ?? 0)
         let maxLives = homePresenter.maxHelp(.lives)
         for index in stride(from: livesCount+1, through: maxLives, by: 1) {
             if let comp = screen.dropdownLifeView.stackLifeHeart.get.viewWithTag(Int(index)) as? UIImageView {

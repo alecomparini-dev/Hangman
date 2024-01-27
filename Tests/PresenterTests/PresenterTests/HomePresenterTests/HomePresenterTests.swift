@@ -11,27 +11,25 @@ import Presenter
 final class HomePresenterTests: XCTestCase {
     
     
-    //  MARK: - GETLASTHINTSOPEN
-    func test_getLastHintsOpen_with_values() async {
-        let expectResult = [1,2,3]
-        let dataTransferLastHintsOpen = DataTransferHintsFactory().make(lastHintsOpen: expectResult)
+    //  MARK: - ISENDGAME
+    func test_isEndGame_true() async {
         
-//        let test = makeSut(dataTransfer: dataTransferLastHintsOpen)
+        let sut = makeSut()
+        setDataTransfer(sut: sut, dataTransfer: DataTransferHomeVCFactory().make(gameHelpPresenterDTO: GameHelpPresenterDTOFactory.make(livesCount: 0)))
         
-//        let result = test.sut.getLastHintsOpen()
-//        
-//        XCTAssertEqual(expectResult, result)
+        let result = sut.isEndGame
+        
+        XCTAssertTrue(result)
     }
     
-    func test_getLastHintsOpen_without_values() async {
-        let expectResult = [Int]()
-        let dataTransferNil = DataTransferHintsFactory().make()
+    func test_isEndGame_false() async {
         
-//        let test = makeSut(dataTransfer: dataTransferNil)
+        let sut = makeSut()
+        setDataTransfer(sut: sut, dataTransfer: DataTransferHomeVCFactory().make(gameHelpPresenterDTO: GameHelpPresenterDTOFactory.make(livesCount: 5)))
         
-//        let result = test.sut.getLastHintsOpen()
+        let result = sut.isEndGame
         
-//        XCTAssertEqual(expectResult, result)
+        XCTAssertFalse(result)
     }
     
     
@@ -68,3 +66,13 @@ extension HomePresenterTests {
     }
 }
 
+
+//  MARK: - SET DATATRANSFER
+
+extension HomePresenterTests {
+    
+    func setDataTransfer(sut: HomePresenterImpl, dataTransfer: DataTransferHomeVC?) {
+        sut.dataTransfer = dataTransfer
+    }
+    
+}
