@@ -202,6 +202,9 @@
 		02A8A5EB2B6538E5003C4CAB /* WordPlayedUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A96552B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift */; };
 		02A8A5EC2B6538F2003C4CAB /* DollUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A963E2B6146F5002565BC /* DollUseCaseDTOFactory.swift */; };
 		02A8A5ED2B6539F7003C4CAB /* DataTransferHomeVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5E82B653889003C4CAB /* DataTransferHomeVCFactory.swift */; };
+		02A8A5F12B657730003C4CAB /* ObservableResultSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5EF2B6576F5003C4CAB /* ObservableResultSpy.swift */; };
+		02A8A5F22B657730003C4CAB /* ObservableResultSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5EF2B6576F5003C4CAB /* ObservableResultSpy.swift */; };
+		02A8A5F32B657730003C4CAB /* ObservableResultSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5EF2B6576F5003C4CAB /* ObservableResultSpy.swift */; };
 		02B1E7E32B516650004ECE2C /* FetchGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */; };
 		02B1E7F52B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */; };
 		02C466A22B4F185B00516D5A /* DataTransferHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferHints.swift */; };
@@ -607,6 +610,7 @@
 		02A8A5E22B65324B003C4CAB /* GetLastOpenHintsUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLastOpenHintsUseCaseSpy.swift; sourceTree = "<group>"; };
 		02A8A5E52B65329E003C4CAB /* DeleteLastOpenHintsUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLastOpenHintsUseCaseSpy.swift; sourceTree = "<group>"; };
 		02A8A5E82B653889003C4CAB /* DataTransferHomeVCFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransferHomeVCFactory.swift; sourceTree = "<group>"; };
+		02A8A5EF2B6576F5003C4CAB /* ObservableResultSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableResultSpy.swift; sourceTree = "<group>"; };
 		02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCase.swift; sourceTree = "<group>"; };
 		02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseDTO.swift; sourceTree = "<group>"; };
 		02C466A12B4F185B00516D5A /* DataTransferHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHints.swift; sourceTree = "<group>"; };
@@ -2129,6 +2133,14 @@
 			path = WordsPlayedUseCasesSpy;
 			sourceTree = "<group>";
 		};
+		02A8A5EE2B6576DD003C4CAB /* ObservableResult */ = {
+			isa = PBXGroup;
+			children = (
+				02A8A5EF2B6576F5003C4CAB /* ObservableResultSpy.swift */,
+			);
+			path = ObservableResult;
+			sourceTree = "<group>";
+		};
 		02B1E7E42B51678D004ECE2C /* Impl */ = {
 			isa = PBXGroup;
 			children = (
@@ -2370,6 +2382,7 @@
 			isa = PBXGroup;
 			children = (
 				025657EB2B602DD200AB5BAD /* Enum */,
+				02A8A5EE2B6576DD003C4CAB /* ObservableResult */,
 				02DF3E772B62D73900114663 /* Factories */,
 			);
 			path = Helper;
@@ -2419,12 +2432,12 @@
 		02DF3E7C2B62D80000114663 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				02A8A5D52B65302C003C4CAB /* WordsPlayedUseCasesSpy */,
-				02A8A5D12B652F5A003C4CAB /* NextWordsUseCasesSpy */,
 				02DF3E742B62D4FB00114663 /* AuthenticateUseCasesMock */,
-				02DF3E8D2B6301F900114663 /* LastOpenHintsUseCases */,
-				0201CE812B61AA4B00C2B6F0 /* GameHelpUseCasesSpy */,
 				0201CE992B6280AA00C2B6F0 /* DollsUseCases */,
+				0201CE812B61AA4B00C2B6F0 /* GameHelpUseCasesSpy */,
+				02DF3E8D2B6301F900114663 /* LastOpenHintsUseCases */,
+				02A8A5D12B652F5A003C4CAB /* NextWordsUseCasesSpy */,
+				02A8A5D52B65302C003C4CAB /* WordsPlayedUseCasesSpy */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -3044,6 +3057,7 @@
 				0201CE932B61DE6B00C2B6F0 /* UpdateGameHelpUseCaseGatewaySpy.swift in Sources */,
 				0201CE762B618CE000C2B6F0 /* UpdateLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
 				0201CE9B2B6280BD00C2B6F0 /* CountDollsUseCaseMock.swift in Sources */,
+				02A8A5F22B657730003C4CAB /* ObservableResultSpy.swift in Sources */,
 				029F30C52B629EF600D05D11 /* SignInAnonymousUseCaseGatewayMock.swift in Sources */,
 				029F30B12B62974A00D05D11 /* NextWordsUseCaseDTOFactory.swift in Sources */,
 				0201CE6B2B61858A00C2B6F0 /* GetLastOpenHintsUseCaseGatewaySpy.swift in Sources */,
@@ -3066,6 +3080,7 @@
 				025657E72B5FFFB000AB5BAD /* SaveGameHelpUseCaseGatewayTests.swift in Sources */,
 				029A964C2B6157EB002565BC /* SaveWordPlayedUseCaseGatewayTests.swift in Sources */,
 				029A96442B6147CC002565BC /* DataStorageFetchAtIDNexWordsUseCaseGatewayTests.swift in Sources */,
+				02A8A5F12B657730003C4CAB /* ObservableResultSpy.swift in Sources */,
 				029A96462B6147EF002565BC /* FetchAtDataStorageProviderSpy.swift in Sources */,
 				029A96562B6161EE002565BC /* WordPlayedUseCaseDTOFactory.swift in Sources */,
 				029A96542B615C93002565BC /* GenericCountModelGatewayTests.swift in Sources */,
@@ -3255,6 +3270,7 @@
 				02A8A5EC2B6538F2003C4CAB /* DollUseCaseDTOFactory.swift in Sources */,
 				02A8A5DB2B6530D4003C4CAB /* SaveWordPlayedUseCaseSpy.swift in Sources */,
 				02A8A5CF2B652CDC003C4CAB /* HomePresenterTests.swift in Sources */,
+				02A8A5F32B657730003C4CAB /* ObservableResultSpy.swift in Sources */,
 				02A8A5EB2B6538E5003C4CAB /* WordPlayedUseCaseDTOFactory.swift in Sources */,
 				02A8A5CE2B652CC0003C4CAB /* HomePresenterOutputMock.swift in Sources */,
 				02A8A5EA2B6538DE003C4CAB /* NextWordsUseCaseDTOFactory.swift in Sources */,

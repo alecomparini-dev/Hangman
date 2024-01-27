@@ -89,10 +89,6 @@ public class HomePresenterImpl: HomePresenter {
     
     public var lastHintsOpen: [Int] { _lastHintsOpen ?? []}
     
-    public func setLastHintsOpen(_ indexes: [Int]) {
-        _lastHintsOpen = indexes
-    }
-    
     
 //  MARK: - PUBLIC AREA
     
@@ -193,6 +189,9 @@ public class HomePresenterImpl: HomePresenter {
         _gameHelpPresenterDTO?.hintsCount = count
     }
     
+    public func setLastHintsOpen(_ indexes: [Int]) {
+        _lastHintsOpen = indexes
+    }
     
     
 //  MARK: - PRIVATE AREA
