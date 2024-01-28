@@ -813,10 +813,11 @@
 		0201CE692B61857500C2B6F0 /* Mock+Spy */ = {
 			isa = PBXGroup;
 			children = (
+				02B59B292B669F71000AA8E5 /* Presenters */,
 				02DF3E7C2B62D80000114663 /* UseCases */,
 				02DF3E792B62D7AB00114663 /* UseCaseGateways */,
-				027339342B6131C200C9A03B /* AuthenticationProviderSpy */,
-				0273392F2B612FEF00C9A03B /* DataStorageProviderSpy */,
+				027339342B6131C200C9A03B /* AuthenticationProvider */,
+				0273392F2B612FEF00C9A03B /* DataStorageProvider */,
 			);
 			path = "Mock+Spy";
 			sourceTree = "<group>";
@@ -1855,7 +1856,7 @@
 			path = UpdateLastOpenHintsUseCaseGatewayTests;
 			sourceTree = "<group>";
 		};
-		0273392F2B612FEF00C9A03B /* DataStorageProviderSpy */ = {
+		0273392F2B612FEF00C9A03B /* DataStorageProvider */ = {
 			isa = PBXGroup;
 			children = (
 				0273391F2B60669A00C9A03B /* FindByDataStorageProviderSpy.swift */,
@@ -1865,7 +1866,7 @@
 				029A96452B6147EF002565BC /* FetchAtDataStorageProviderSpy.swift */,
 				029A96502B6158E0002565BC /* FetchCountDataStorageProviderSpy.swift */,
 			);
-			path = DataStorageProviderSpy;
+			path = DataStorageProvider;
 			sourceTree = "<group>";
 		};
 		027339302B61309500C9A03B /* AuthenticationUseCaseGatewayTests */ = {
@@ -1884,12 +1885,12 @@
 			path = SignInAnonymousUseCaseGatewayTests;
 			sourceTree = "<group>";
 		};
-		027339342B6131C200C9A03B /* AuthenticationProviderSpy */ = {
+		027339342B6131C200C9A03B /* AuthenticationProvider */ = {
 			isa = PBXGroup;
 			children = (
 				027339382B61388D00C9A03B /* AuthenticateAnonymousSpy.swift */,
 			);
-			path = AuthenticationProviderSpy;
+			path = AuthenticationProvider;
 			sourceTree = "<group>";
 		};
 		027339352B6136BC00C9A03B /* GetDollsUseCaseGatewayTests */ = {
@@ -2115,7 +2116,6 @@
 		02A8A5C62B652C09003C4CAB /* HomePresenterTests */ = {
 			isa = PBXGroup;
 			children = (
-				02A8A5C92B652C4C003C4CAB /* HomePresenterOutputMock.swift */,
 				02A8A5C72B652C18003C4CAB /* HomePresenterTests.swift */,
 				02B59B252B669D16000AA8E5 /* Extension+GetNextWordTests.swift */,
 				02B59B272B669E20000AA8E5 /* Extension+StartGameTests.swift */,
@@ -2162,6 +2162,15 @@
 				02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		02B59B292B669F71000AA8E5 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				02A8A5C92B652C4C003C4CAB /* HomePresenterOutputMock.swift */,
+				02A8A5CB2B652C5B003C4CAB /* HintsPresenterOutputMock.swift */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 		02C466A02B4F15B200516D5A /* DTO */ = {
@@ -2389,8 +2398,9 @@
 			isa = PBXGroup;
 			children = (
 				025657EB2B602DD200AB5BAD /* Enum */,
-				02A8A5EE2B6576DD003C4CAB /* ObservableResult */,
 				02DF3E772B62D73900114663 /* Factories */,
+				02A8A5EE2B6576DD003C4CAB /* ObservableResult */,
+				0201CE692B61857500C2B6F0 /* Mock+Spy */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -2399,7 +2409,6 @@
 			isa = PBXGroup;
 			children = (
 				027339222B606D9A00C9A03B /* Model+DTO */,
-				0201CE692B61857500C2B6F0 /* Mock+Spy */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -2452,7 +2461,6 @@
 		02DF3E7E2B62E0DB00114663 /* HintsPresenterTests */ = {
 			isa = PBXGroup;
 			children = (
-				02A8A5CB2B652C5B003C4CAB /* HintsPresenterOutputMock.swift */,
 				02DF3E7F2B62E0EE00114663 /* HintsPresenterTests.swift */,
 			);
 			path = HintsPresenterTests;
