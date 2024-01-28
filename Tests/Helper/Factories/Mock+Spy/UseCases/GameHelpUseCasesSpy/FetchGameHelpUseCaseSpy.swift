@@ -5,20 +5,12 @@ import Foundation
 
 import Domain
 
-class FetchGameHelpUseCaseSpy: FetchGameHelpUseCase {
+class FetchGameHelpUseCaseSpy: ObservableResultSpy, FetchGameHelpUseCase {
     var userID = ""
-    
-    var result: Result<FetchGameHelpUseCaseDTO?, Error> = .success(nil)
-    
+        
     func fetch(_ userID: String) async throws -> FetchGameHelpUseCaseDTO? {
         self.userID = userID
-        
-        switch result {
-            case .success(let data):
-                return data
-            case .failure(let error):
-                throw error
-        }
+        return try await result()
     }
     
 }

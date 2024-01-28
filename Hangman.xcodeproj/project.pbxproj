@@ -207,6 +207,9 @@
 		02A8A5F32B657730003C4CAB /* ObservableResultSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5EF2B6576F5003C4CAB /* ObservableResultSpy.swift */; };
 		02B1E7E32B516650004ECE2C /* FetchGameHelpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */; };
 		02B1E7F52B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */; };
+		02B59B262B669D16000AA8E5 /* Extension+GetNextWordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B59B252B669D16000AA8E5 /* Extension+GetNextWordTests.swift */; };
+		02B59B282B669E20000AA8E5 /* Extension+StartGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B59B272B669E20000AA8E5 /* Extension+StartGameTests.swift */; };
+		02C0EA582B65945500004264 /* FetchGameHelpUseCaseDTOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE892B61ADEC00C2B6F0 /* FetchGameHelpUseCaseDTOFactory.swift */; };
 		02C466A22B4F185B00516D5A /* DataTransferHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C466A12B4F185B00516D5A /* DataTransferHints.swift */; };
 		02C4AB372B03B5CE00991633 /* GallowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB362B03B5CE00991633 /* GallowsView.swift */; };
 		02C4AB3E2B03D96200991633 /* HangmanKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C4AB3D2B03D96200991633 /* HangmanKeyboardView.swift */; };
@@ -613,6 +616,8 @@
 		02A8A5EF2B6576F5003C4CAB /* ObservableResultSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableResultSpy.swift; sourceTree = "<group>"; };
 		02B1E7E22B516650004ECE2C /* FetchGameHelpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCase.swift; sourceTree = "<group>"; };
 		02B1E7F42B517821004ECE2C /* FetchGameHelpUseCaseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGameHelpUseCaseDTO.swift; sourceTree = "<group>"; };
+		02B59B252B669D16000AA8E5 /* Extension+GetNextWordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+GetNextWordTests.swift"; sourceTree = "<group>"; };
+		02B59B272B669E20000AA8E5 /* Extension+StartGameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+StartGameTests.swift"; sourceTree = "<group>"; };
 		02C466A12B4F185B00516D5A /* DataTransferHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferHints.swift; sourceTree = "<group>"; };
 		02C4AB362B03B5CE00991633 /* GallowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallowsView.swift; sourceTree = "<group>"; };
 		02C4AB3A2B03C65800991633 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -2112,6 +2117,8 @@
 			children = (
 				02A8A5C92B652C4C003C4CAB /* HomePresenterOutputMock.swift */,
 				02A8A5C72B652C18003C4CAB /* HomePresenterTests.swift */,
+				02B59B252B669D16000AA8E5 /* Extension+GetNextWordTests.swift */,
+				02B59B272B669E20000AA8E5 /* Extension+StartGameTests.swift */,
 			);
 			path = HomePresenterTests;
 			sourceTree = "<group>";
@@ -3282,8 +3289,11 @@
 				02DF3E7D2B62DF3000114663 /* MockError.swift in Sources */,
 				02DF3E902B63022100114663 /* SaveLastOpenHintsUseCaseSpy.swift in Sources */,
 				02DF3E922B63E99500114663 /* DataTransferHintsFactory.swift in Sources */,
+				02B59B282B669E20000AA8E5 /* Extension+StartGameTests.swift in Sources */,
 				02A8A5E42B65325B003C4CAB /* GetLastOpenHintsUseCaseSpy.swift in Sources */,
 				02A8A5CD2B652C9F003C4CAB /* HintsPresenterOutputMock.swift in Sources */,
+				02C0EA582B65945500004264 /* FetchGameHelpUseCaseDTOFactory.swift in Sources */,
+				02B59B262B669D16000AA8E5 /* Extension+GetNextWordTests.swift in Sources */,
 				02DF3E882B63012300114663 /* WordPresenterDTOFactory.swift in Sources */,
 				02DF3E892B63013000114663 /* GameHelpPresenterDTOFactory.swift in Sources */,
 				02A8A5E72B6532B2003C4CAB /* DeleteLastOpenHintsUseCaseSpy.swift in Sources */,

@@ -5,7 +5,7 @@ import Foundation
 
 public protocol HomePresenterOutput: AnyObject {
     
-    func successFetchNextWord(word: WordPresenterDTO?)
+    func fetchNextWordSuccess(word: WordPresenterDTO?)
     func nextWordIsOver(title: String, message: String)
     func errorFetchNextWords(title: String, message: String)
     

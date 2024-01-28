@@ -5,14 +5,14 @@ import Foundation
 
 import Domain
 
-class GetNextWordsUseCaseSpy<T>: ObservableResultSpy<T>, GetNextWordsUseCase {
+class GetNextWordsUseCaseSpy: ObservableResultSpy, GetNextWordsUseCase {
     var atID = 0
     var limit: Int?
     
     func nextWords(atID: Int, limit: Int?) async throws -> [NextWordsUseCaseDTO] {
         self.atID = atID
         self.limit = limit
-        return try await result() as? [NextWordsUseCaseDTO] ?? []
+        return try await result() ?? []
     }
         
     

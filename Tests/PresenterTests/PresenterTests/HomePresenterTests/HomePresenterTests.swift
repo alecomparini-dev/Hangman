@@ -10,7 +10,6 @@ import Presenter
 
 final class HomePresenterTests: XCTestCase {
     
-    
 //  MARK: - ISENDGAME
     
     func test_isEndGame_true() {
@@ -165,145 +164,70 @@ final class HomePresenterTests: XCTestCase {
     
 
 
-//  MARK: - STARTGAME
     
-    func test_startGame_signInAnonymously_and_fetchRandomDolls_success() {
-        let signInAnonymousUseCaseMock = SignInAnonymousUseCaseMock<String>()
-        let getDollsRandomUseCaseSpy = GetDollsRandomUseCaseSpy<[DollUseCaseDTO]>()
-        let sut = makeSut(signInAnonymousUseCase: signInAnonymousUseCaseMock,
-                          getDollsRandomUseCase: getDollsRandomUseCaseSpy)
-        
-        setDataTransfer(sut: sut, dataTransfer: DataTransferHomeVCFactory().make())
-        
-        let expectedUser = "123"
-        getDollsRandomUseCaseSpy.setResult = .success([DollUseCaseDTOFactory.make()])
-        signInAnonymousUseCaseMock.setResult = .success(expectedUser)
-        
-        let exp = expectation(description: "waiting")
-        signInAnonymousUseCaseMock.observer { receivedUser in
-            XCTAssertEqual(receivedUser, expectedUser)
-            exp.fulfill()
-        }
-        
-        sut.startGame()
-        
-        wait(for: [exp], timeout: 1)
-
-    }
     
-    func test_startGame_signInAnonymously_failure() {
-        let signInAnonymousUseCaseMock = SignInAnonymousUseCaseMock<String>()
-        let getDollsRandomUseCaseSpy = GetDollsRandomUseCaseSpy<[DollUseCaseDTO]>()
-        let sut = makeSut(signInAnonymousUseCase: signInAnonymousUseCaseMock,
-                          getDollsRandomUseCase: getDollsRandomUseCaseSpy)
-        setDataTransfer(sut: sut, dataTransfer: DataTransferHomeVCFactory().make())
-        
-        getDollsRandomUseCaseSpy.setResult = .success([DollUseCaseDTOFactory.make()])
-        signInAnonymousUseCaseMock.setResult = .failure(MockError.throwError)
-        
-        let exp = expectation(description: "waiting")
-        signInAnonymousUseCaseMock.observer { receivedUser in
-            XCTAssertNil(receivedUser)
-            exp.fulfill()
-        }
-        sut.startGame()
-        
-        wait(for: [exp], timeout: 1)
-    }
     
-    func test_startGame_fetchRandomDolls_failure() {
-        let signInAnonymousUseCaseMock = SignInAnonymousUseCaseMock<String>()
-        let getDollsRandomUseCaseSpy = GetDollsRandomUseCaseSpy<[DollUseCaseDTO]>()
-        let sut = makeSut(signInAnonymousUseCase: signInAnonymousUseCaseMock,
-                          getDollsRandomUseCase: getDollsRandomUseCaseSpy)
-        setDataTransfer(sut: sut, dataTransfer: DataTransferHomeVCFactory().make())
-        
-        signInAnonymousUseCaseMock.setResult = .success("123")
-        getDollsRandomUseCaseSpy.setResult = .failure(MockError.throwError)
-        
-        let exp = expectation(description: "waiting")
-        getDollsRandomUseCaseSpy.observer { dolls in
-            XCTAssertNil(dolls)
-            exp.fulfill()
-        }
-        sut.startGame()
-        
-        wait(for: [exp], timeout: 1)
-    }
-
-
-    //  MARK: - STARTGAME_FETCHNEXTWORD
-    func test_startGame_fetchNextWord_success() {
-        let signInAnonymousUseCaseMock = SignInAnonymousUseCaseMock<String>()
-        let getDollsRandomUseCaseSpy = GetDollsRandomUseCaseSpy<[DollUseCaseDTO]>()
-        let getNextWordsUseCaseSpy = GetNextWordsUseCaseSpy<[NextWordsUseCaseDTO]>()
-        let sut = makeSut(signInAnonymousUseCase: signInAnonymousUseCaseMock,
-                          getNextWordsUseCase: getNextWordsUseCaseSpy, 
-                          getDollsRandomUseCase: getDollsRandomUseCaseSpy )
-        
-        setDataTransfer(sut: sut, dataTransfer: DataTransferHomeVCFactory().make())
-        
-        getDollsRandomUseCaseSpy.setResult = .success([DollUseCaseDTOFactory.make()])
-        signInAnonymousUseCaseMock.setResult = .success("123")
-        
-        let expectedResult = [NextWordsUseCaseDTOFactory.make(), NextWordsUseCaseDTOFactory.make(), NextWordsUseCaseDTOFactory.make()]
-        getNextWordsUseCaseSpy.setResult = .success(expectedResult)
-        
-        let exp = expectation(description: "waiting")
-        getNextWordsUseCaseSpy.observer { receivedResult in
-            XCTAssertEqual(expectedResult, receivedResult)
-            XCTAssertEqual(getNextWordsUseCaseSpy.atID, 1)
-            XCTAssertEqual(getNextWordsUseCaseSpy.limit, K.quantityWordsToFetch)
-            exp.fulfill()
-        }
-        
-        sut.startGame()
-        
-        wait(for: [exp], timeout: 1)
-    }
+//  MARK: - REVEALLETTERGAMERANDOM
     
-    func test_startGame_fetchNextWord_failure() {
-        let signInAnonymousUseCaseMock = SignInAnonymousUseCaseMock<String>()
-        let getDollsRandomUseCaseSpy = GetDollsRandomUseCaseSpy<[DollUseCaseDTO]>()
-        let getNextWordsUseCaseSpy = GetNextWordsUseCaseSpy<[NextWordsUseCaseDTO]>()
+    func test_revealLetterGameRandom() {
+        let signInAnonymousUseCaseMock = SignInAnonymousUseCaseMock()
+        let getDollsRandomUseCaseSpy = GetDollsRandomUseCaseSpy()
+        let getNextWordsUseCaseSpy = GetNextWordsUseCaseSpy()
+        let fetchGameHelpUseCaseSpy = FetchGameHelpUseCaseSpy()
+        let getLastOpenHintsUseCaseSpy = GetLastOpenHintsUseCaseSpy()
+        let homePresenterOutputMock = HomePresenterOutputMock()
         let sut = makeSut(signInAnonymousUseCase: signInAnonymousUseCaseMock,
                           getNextWordsUseCase: getNextWordsUseCaseSpy,
-                          getDollsRandomUseCase: getDollsRandomUseCaseSpy )
+                          getDollsRandomUseCase: getDollsRandomUseCaseSpy,
+                          fetchGameHelpUseCase: fetchGameHelpUseCaseSpy,
+                          getLastOpenHintsUseCase: getLastOpenHintsUseCaseSpy )
         
-        setDataTransfer(sut: sut, dataTransfer: DataTransferHomeVCFactory().make())
+        sut.delegateOutput = homePresenterOutputMock
+        
+        let expectedFetchGameHelpSuccess = GameHelpPresenterDTOFactory.make()
+        setDataTransfer(sut: sut, dataTransfer: DataTransferHomeVCFactory().make(
+            gameHelpPresenterDTO: expectedFetchGameHelpSuccess
+        ))
         
         getDollsRandomUseCaseSpy.setResult = .success([DollUseCaseDTOFactory.make()])
         signInAnonymousUseCaseMock.setResult = .success("123")
-        getNextWordsUseCaseSpy.setResult = .failure(MockError.throwError)
+        getNextWordsUseCaseSpy.setResult = .success([NextWordsUseCaseDTOFactory.make()])
+        fetchGameHelpUseCaseSpy.setResult = .success(FetchGameHelpUseCaseDTOFactory.make())
+        getLastOpenHintsUseCaseSpy.setResult = .success([])
         
         let exp = expectation(description: "waiting")
-        getNextWordsUseCaseSpy.observer { receivedResult in
-            XCTAssertNil(receivedResult)
-            exp.fulfill()
+        homePresenterOutputMock.observer { receivedOutput in
+            if let receivedFetchGameHelpSuccess = receivedOutput as? GameHelpPresenterDTO {
+                XCTAssertEqual(receivedFetchGameHelpSuccess, expectedFetchGameHelpSuccess)
+                XCTAssertTrue(homePresenterOutputMock.isMainThread)
+            }
+            
+            if let receivedFetchNextWordSuccess = receivedOutput as? WordPresenterDTO {
+                XCTAssertEqual(receivedFetchNextWordSuccess, sut.getCurrentWord())
+                XCTAssertTrue(homePresenterOutputMock.isMainThread)
+                exp.fulfill()
+            }
         }
         
-        sut.startGame()
+        DispatchQueue.global().async {
+            sut.getNextWord()
+        }
         
         wait(for: [exp], timeout: 1)
+        
     }
-    
-    
-    
-    //  MARK: - STARTGAME_FETCHGAMEHELP
-    
-    
-    
+        
     
 }
 
 
 //  MARK: - EXTENSION MAKE SUT
 extension HomePresenterTests {
-    func makeSut(signInAnonymousUseCase: SignInAnonymousUseCaseMock<String> = SignInAnonymousUseCaseMock(),
-                 getNextWordsUseCase: GetNextWordsUseCaseSpy<[NextWordsUseCaseDTO]> = GetNextWordsUseCaseSpy(),
+    func makeSut(signInAnonymousUseCase: SignInAnonymousUseCaseMock = SignInAnonymousUseCaseMock(),
+                 getNextWordsUseCase: GetNextWordsUseCaseSpy = GetNextWordsUseCaseSpy(),
                  countWordsPlayedUseCase: CountWordsPlayedUseCaseSpy = CountWordsPlayedUseCaseSpy(),
                  saveWordPlayedUseCase: SaveWordPlayedUseCaseSpy = SaveWordPlayedUseCaseSpy(),
-                 getDollsRandomUseCase: GetDollsRandomUseCaseSpy<[DollUseCaseDTO]> = GetDollsRandomUseCaseSpy(),
+                 getDollsRandomUseCase: GetDollsRandomUseCaseSpy = GetDollsRandomUseCaseSpy(),
                  fetchGameHelpUseCase: FetchGameHelpUseCaseSpy = FetchGameHelpUseCaseSpy(),
                  maxGameHelpUseCase: MaxGameHelpUseCaseSpy = MaxGameHelpUseCaseSpy(),
                  updateGameHelpUseCase: UpdateGameHelpUseCaseSpy = UpdateGameHelpUseCaseSpy(),
@@ -337,3 +261,4 @@ extension HomePresenterTests {
     }
     
 }
+

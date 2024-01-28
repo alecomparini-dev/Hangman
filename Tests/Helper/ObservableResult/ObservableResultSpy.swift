@@ -3,24 +3,28 @@
 
 import Foundation
 
-class ObservableResultSpy<T> {
-    private(set) var emit: ((T?) -> Void)?
+class ObservableResultSpy {
+    private(set) var emit: ((Any?) -> Void)?
     
-    var setResult: Result<T?, Error> = .success(nil)
+    var setResult: Result<Any?, Error> = .success(nil)
     
-    func observer(_ completion: @escaping (T?) -> Void ) {
+    func observer(_ completion: @escaping (Any?) -> Void ) {
         emit = completion
     }
     
-    func result() async throws -> T? {
+    func result<T>() async throws -> T? {
         switch setResult {
             case .success(let data):
                 emit?(data)
-                return data
+                return data as? T
             case .failure(let error):
-                emit?(nil)
+                emit?(error)
                 throw error
         }
+    }
+    
+    func sendOutput(_ output: Any) {
+        emit?(output)
     }
     
 }

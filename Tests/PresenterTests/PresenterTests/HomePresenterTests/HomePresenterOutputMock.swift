@@ -4,16 +4,26 @@
 import Foundation
 import Presenter
 
-class HomePresenterOutputMock: HomePresenterOutput {
+class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
+    
+    
+    override init() {
+        super.init()
+    }
     
     var isMainThread = false
     
-    func successFetchNextWord(word: WordPresenterDTO?) {
+    func fetchNextWordSuccess(word: WordPresenterDTO?) {
         verifyMainThread()
+        if let word {
+            sendOutput(word)
+        }
+        
     }
     
     func nextWordIsOver(title: String, message: String) {
         verifyMainThread()
+        sendOutput([title, message])
     }
     
     func errorFetchNextWords(title: String, message: String) {
@@ -22,6 +32,7 @@ class HomePresenterOutputMock: HomePresenterOutput {
     
     func fetchGameHelpSuccess(_ gameHelp: GameHelpPresenterDTO) {
         verifyMainThread()
+        sendOutput(gameHelp)
     }
     
     func updateLivesCount(_ count: String) {
@@ -70,6 +81,7 @@ class HomePresenterOutputMock: HomePresenterOutput {
     
     
     private func verifyMainThread() {
+        isMainThread = false
         if Thread.isMainThread {
             isMainThread = true
         }

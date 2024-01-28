@@ -96,6 +96,23 @@ public class HomePresenterImpl: HomePresenter {
         startGameAsync()
     }
     
+    public func getNextWord() {
+        getRandomDoll()
+        
+        Task {
+            await fetchLastHintsOpen()
+            
+            if nextWord() != nil {
+                fetchNextWordSuccess()
+                return
+            }
+            
+            await fetchNextWord()
+        }
+        
+        fetchGameHelpSuccess()
+    }
+    
     public func verifyMatchInWord(_ letter: String?) {
         if isEndGame { return }
         
@@ -116,23 +133,6 @@ public class HomePresenterImpl: HomePresenter {
         updateCountCorrectLetters()
         
         checkEndGame()
-    }
-    
-    public func getNextWord() {
-        getRandomDoll()
-        
-        Task {
-            await fetchLastHintsOpen()
-            
-            if nextWord() != nil {
-                successFetchNextWord()
-                return
-            }
-            
-            await fetchNextWord()
-        }
-        
-        fetchGameHelpSuccess()
     }
     
     public func getCurrentWord() -> WordPresenterDTO? {
@@ -251,7 +251,7 @@ public class HomePresenterImpl: HomePresenter {
             if let nextWords {
                 if nextWords.isEmpty { return nextWordIsOver() }
                 currentWord = nextWords[0]
-                successFetchNextWord()
+                fetchNextWordSuccess()
             }
                         
         } catch let error {
@@ -396,6 +396,7 @@ public class HomePresenterImpl: HomePresenter {
         
         do {
             let fetchGameHelpDTO = try await fetchGameHelpUseCase.fetch(userID)
+            
             _gameHelpPresenterDTO = GameHelpPresenterDTO(livesCount: fetchGameHelpDTO?.livesCount ?? 0,
                                                         hintsCount: fetchGameHelpDTO?.hintsCount ?? 0,
                                                         revelationsCount: fetchGameHelpDTO?.revelationsCount ?? 0)
@@ -471,12 +472,11 @@ public class HomePresenterImpl: HomePresenter {
     
 //  MARK: - PRIVATE OUTPUT AREA
     
-    private func successFetchNextWord() {
+    private func fetchNextWordSuccess() {
         joinedWordPlaying = currentWord?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
         
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.successFetchNextWord(word: getCurrentWord())
+            self?.delegateOutput?.fetchNextWordSuccess(word: self?.getCurrentWord())
         }
     }
 
@@ -484,7 +484,7 @@ public class HomePresenterImpl: HomePresenter {
         _isEndGame = true
         MainThread.exec { [weak self] in
             self?.delegateOutput?.nextWordIsOver(title: "Aviso", message: "Banco de palavras chegou ao fim.\nEstamos trabalhando para incluir novas palavras. Muito obrigado pela compreensão")
-        }
+        }        
     }
     
     private func errorFetchNextWords(_ title: String, _ message: String) {

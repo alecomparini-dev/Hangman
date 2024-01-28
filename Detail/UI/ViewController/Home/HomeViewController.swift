@@ -477,7 +477,7 @@ extension HomeViewController: HomePresenterOutput {
         screen.quantityLettersView.countCorrectLetterLabel.setText(count)
     }
     
-    public func successFetchNextWord(word: WordPresenterDTO?) {
+    public func fetchNextWordSuccess(word: WordPresenterDTO?) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
             self?.hideSkeleton()
         })

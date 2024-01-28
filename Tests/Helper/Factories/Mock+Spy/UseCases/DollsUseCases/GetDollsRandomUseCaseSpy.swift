@@ -5,12 +5,12 @@ import Foundation
 
 import Domain
 
-class GetDollsRandomUseCaseSpy<T>: ObservableResultSpy<T>, GetDollsRandomUseCase {
+class GetDollsRandomUseCaseSpy: ObservableResultSpy, GetDollsRandomUseCase {
     var quantity = 0
     
     func getDollsRandom(quantity: Int) async throws -> [DollUseCaseDTO] {
         self.quantity = quantity
-        return try await result() as? [DollUseCaseDTO] ?? []
+        return try await result()!
     }
         
 }

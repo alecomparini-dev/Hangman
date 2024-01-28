@@ -15,7 +15,7 @@ import Presenter
 // TESTE INÚTIL NESTE PRESENTER SÓ PARA COMPLETAR O COVERAGE
 final class LoadScreenPresenterTests: XCTestCase {
     
-    var signInAnonymousUseCaseMock: SignInAnonymousUseCaseMock<String>!
+    var signInAnonymousUseCaseMock: SignInAnonymousUseCaseMock!
     var sut: LoadScreenPresenter!
     
     override func setUp() {

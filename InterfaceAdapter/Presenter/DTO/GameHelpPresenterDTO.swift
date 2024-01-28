@@ -3,7 +3,7 @@
 
 import Foundation
 
-public struct GameHelpPresenterDTO {
+public struct GameHelpPresenterDTO: Equatable {
     public var livesCount: Int
     public var hintsCount: Int
     public var revelationsCount: Int

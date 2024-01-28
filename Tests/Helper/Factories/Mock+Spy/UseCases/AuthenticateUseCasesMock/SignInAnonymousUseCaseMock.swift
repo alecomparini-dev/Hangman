@@ -4,10 +4,10 @@
 import Foundation
 import Domain
 
-class SignInAnonymousUseCaseMock<T>: ObservableResultSpy<T>, SignInAnonymousUseCase {
+class SignInAnonymousUseCaseMock: ObservableResultSpy, SignInAnonymousUseCase {
     
     func signInAnonymosly() async throws -> String? {
-        return try await result() as? String
+        return try await result()
     }
     
 }

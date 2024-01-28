@@ -5,20 +5,12 @@ import Foundation
 
 import Domain
 
-class GetLastOpenHintsUseCaseSpy: GetLastOpenHintsUseCase {
+class GetLastOpenHintsUseCaseSpy: ObservableResultSpy, GetLastOpenHintsUseCase {
     var userID = ""
-    
-    var result: Result<[Int], Error> = .success([])
     
     func get(_ userID: String) async throws -> [Int] {
         self.userID = userID
-        
-        switch result {
-            case .success(let data):
-                return data
-            case .failure(let error):
-                throw error
-        }
+        return try await result() ?? []
     }
     
 }
