@@ -31,7 +31,7 @@ final class LoadScreenPresenterTests: XCTestCase {
     //  MARK: - TEST AREA
     
     func test_success() async {
-        signInAnonymousUseCaseMock.result = .success("123")
+        signInAnonymousUseCaseMock.setResult = .success("123")
         
         self.sut = LoadScreenPresenter(signInAnonymousUseCase: signInAnonymousUseCaseMock)
         
@@ -39,7 +39,7 @@ final class LoadScreenPresenterTests: XCTestCase {
     }
     
     func test_failure() async {
-        signInAnonymousUseCaseMock.result = .failure(MockError.throwError)
+        signInAnonymousUseCaseMock.setResult = .failure(MockError.throwError)
         
         self.sut = LoadScreenPresenter(signInAnonymousUseCase: signInAnonymousUseCaseMock)
         

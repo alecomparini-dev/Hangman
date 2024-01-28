@@ -4,17 +4,10 @@
 import Foundation
 import Domain
 
-
-class SignInAnonymousUseCaseMock: SignInAnonymousUseCase {
-    var result: Result<String?, Error> = .success("userID")
+class SignInAnonymousUseCaseMock: ObservableResultSpy, SignInAnonymousUseCase {
     
     func signInAnonymosly() async throws -> String? {
-        switch result {
-            case .success(let data):
-                return data
-            case .failure(let error):
-                throw error
-        }
+        return try await result()
     }
-            
+    
 }

@@ -10,7 +10,7 @@ public class HomePresenterImpl: HomePresenter {
     weak public var delegateOutput: HomePresenterOutput?
     
     private var _lastHintsOpen: [Int]?
-    private var gameHelpPresenterDTO: GameHelpPresenterDTO?
+    private var _gameHelpPresenterDTO: GameHelpPresenterDTO?
     private var revealLetterGame: Set<String> = []
     private var randomDoll: DollUseCaseDTO?
     private var dolls: [DollUseCaseDTO]?
@@ -64,7 +64,7 @@ public class HomePresenterImpl: HomePresenter {
 //  MARK: - GET PROPERTIES
     
     public var isEndGame: Bool {
-        _isEndGame || (gameHelpPresenter?.livesCount == 0)
+        _isEndGame || (gameHelpPresenterDTO?.livesCount == 0)
     }
     
     public var dataTransfer: DataTransferHomeVC? {
@@ -81,23 +81,36 @@ public class HomePresenterImpl: HomePresenter {
             self.currentWord = newValue?.wordPlaying
             self.nextWords = newValue?.nextWords
             self.dolls = newValue?.dolls
-            self.gameHelpPresenterDTO = newValue?.gameHelpPresenterDTO
+            self._gameHelpPresenterDTO = newValue?.gameHelpPresenterDTO
         }
     }
     
-    public var gameHelpPresenter: GameHelpPresenterDTO? { gameHelpPresenterDTO }
+    public var gameHelpPresenterDTO: GameHelpPresenterDTO? { _gameHelpPresenterDTO }
     
     public var lastHintsOpen: [Int] { _lastHintsOpen ?? []}
-    
-    public func setLastHintsOpen(_ indexes: [Int]) {
-        _lastHintsOpen = indexes
-    }
     
     
 //  MARK: - PUBLIC AREA
     
     public func startGame() {
         startGameAsync()
+    }
+    
+    public func getNextWord() {
+        getRandomDoll()
+        
+        Task {
+            await fetchLastHintsOpen()
+            
+            if nextWord() != nil {
+                fetchNextWordSuccess()
+                return
+            }
+            
+            await fetchNextWord()
+        }
+        
+        fetchGameHelpSuccess()
     }
     
     public func verifyMatchInWord(_ letter: String?) {
@@ -120,23 +133,6 @@ public class HomePresenterImpl: HomePresenter {
         updateCountCorrectLetters()
         
         checkEndGame()
-    }
-    
-    public func getNextWord() {
-        getRandomDoll()
-        
-        Task {
-            await fetchLastHintsOpen()
-            
-            if nextWord() != nil {
-                successFetchNextWord()
-                return
-            }
-            
-            await fetchNextWord()
-        }
-        
-        fetchGameHelpSuccess()
     }
     
     public func getCurrentWord() -> WordPresenterDTO? {
@@ -190,9 +186,12 @@ public class HomePresenterImpl: HomePresenter {
     }
     
     public func setHintsCount(_ count: Int) {
-        gameHelpPresenterDTO?.hintsCount = count
+        _gameHelpPresenterDTO?.hintsCount = count
     }
     
+    public func setLastHintsOpen(_ indexes: [Int]) {
+        _lastHintsOpen = indexes
+    }
     
     
 //  MARK: - PRIVATE AREA
@@ -252,7 +251,7 @@ public class HomePresenterImpl: HomePresenter {
             if let nextWords {
                 if nextWords.isEmpty { return nextWordIsOver() }
                 currentWord = nextWords[0]
-                successFetchNextWord()
+                fetchNextWordSuccess()
             }
                         
         } catch let error {
@@ -317,7 +316,7 @@ public class HomePresenterImpl: HomePresenter {
     private func decreaseLife() {
         if let livesCount = gameHelpPresenterDTO?.livesCount {
             let count = livesCount - 1
-            gameHelpPresenterDTO?.livesCount = count
+            _gameHelpPresenterDTO?.livesCount = count
             updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(lives: count)))
         }
     }
@@ -397,7 +396,8 @@ public class HomePresenterImpl: HomePresenter {
         
         do {
             let fetchGameHelpDTO = try await fetchGameHelpUseCase.fetch(userID)
-            gameHelpPresenterDTO = GameHelpPresenterDTO(livesCount: fetchGameHelpDTO?.livesCount ?? 0,
+            
+            _gameHelpPresenterDTO = GameHelpPresenterDTO(livesCount: fetchGameHelpDTO?.livesCount ?? 0,
                                                         hintsCount: fetchGameHelpDTO?.hintsCount ?? 0,
                                                         revelationsCount: fetchGameHelpDTO?.revelationsCount ?? 0)
             fetchGameHelpSuccess()
@@ -441,14 +441,14 @@ public class HomePresenterImpl: HomePresenter {
     
     private func convertLevel(_ level: Level?) -> LevelPresenter? {
         switch level {
-        case .easy:
-            return .easy
-        case .normal:
-            return .normal
-        case .hard:
-            return .hard
-        case .none:
-            return .easy
+            case .easy:
+                return .easy
+            case .normal:
+                return .normal
+            case .hard:
+                return .hard
+            case .none:
+                return .easy
         }
     }
     
@@ -464,7 +464,7 @@ public class HomePresenterImpl: HomePresenter {
     private func decreaseRevelation() {
         if let revelationsCount = gameHelpPresenterDTO?.revelationsCount {
             let count = revelationsCount - 1
-            gameHelpPresenterDTO?.revelationsCount = count
+            _gameHelpPresenterDTO?.revelationsCount = count
             updateGameHelp(GameHelpModel(typeGameHelp: TypeGameHelpModel(revelations: count)))
         }
     }
@@ -472,12 +472,11 @@ public class HomePresenterImpl: HomePresenter {
     
 //  MARK: - PRIVATE OUTPUT AREA
     
-    private func successFetchNextWord() {
+    private func fetchNextWordSuccess() {
         joinedWordPlaying = currentWord?.syllables?.joined().lowercased().folding(options: .diacriticInsensitive, locale: nil)
         
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.successFetchNextWord(word: getCurrentWord())
+            self?.delegateOutput?.fetchNextWordSuccess(word: self?.getCurrentWord())
         }
     }
 
@@ -485,7 +484,7 @@ public class HomePresenterImpl: HomePresenter {
         _isEndGame = true
         MainThread.exec { [weak self] in
             self?.delegateOutput?.nextWordIsOver(title: "Aviso", message: "Banco de palavras chegou ao fim.\nEstamos trabalhando para incluir novas palavras. Muito obrigado pela compreensão")
-        }
+        }        
     }
     
     private func errorFetchNextWords(_ title: String, _ message: String) {

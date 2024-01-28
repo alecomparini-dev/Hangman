@@ -15,7 +15,7 @@ public protocol HomePresenter {
     
     var isEndGame: Bool { get }
     
-    var gameHelpPresenter: GameHelpPresenterDTO? { get }
+    var gameHelpPresenterDTO: GameHelpPresenterDTO? { get }
 
     func startGame()
 

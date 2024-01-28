@@ -6,13 +6,13 @@ import Domain
 
 struct NextWordsUseCaseDTOFactory {
     
-    static func make(_ level: Level? = .easy) -> NextWordsUseCaseDTO {
-        return NextWordsUseCaseDTO(id: 1,
+    static func make(id: Int = 1, _ level: Level? = .easy) -> NextWordsUseCaseDTO {
+        return NextWordsUseCaseDTO(id: id,
                                    word: "any_word",
                                    syllables: ["a","b","c"],
                                    category: "any_category",
                                    initialQuestion: "any_initialQuestion",
-                                   level: .easy,
+                                   level: level,
                                    hints: ["any_hints1", "any_hints2"])
         
     }
