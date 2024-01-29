@@ -573,12 +573,6 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func updateHintsCount() {
-        MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.updateHintsCount(gameHelpPresenterDTO?.hintsCount.description ?? "0")
-        }
-    }
     
     private func updateRevelationsCount() {
         MainThread.exec { [weak self] in

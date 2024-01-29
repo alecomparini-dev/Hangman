@@ -6,7 +6,6 @@ import Presenter
 
 class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
     
-    
     override init() {
         super.init()
     }
@@ -36,10 +35,7 @@ class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
     
     func updateLivesCount(_ count: String) {
         verifyMainThread()
-    }
-    
-    func updateHintsCount(_ count: String) {
-        verifyMainThread()
+        sendOutput(["updateLivesCount": count])
     }
     
     func updateRevelationsCount(_ count: String) {
@@ -63,14 +59,17 @@ class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
     
     func revealErrorLetters(_ indexes: [Int]) {
         verifyMainThread()
+        sendOutput(["revealErrorLetters": indexes])
     }
     
     func revealHeadDoll(_ imageBase64: String) {
         verifyMainThread()
+        sendOutput(["revealHeadDoll": imageBase64])
     }
     
     func revealBodyDoll(_ imageBase64: String) {
         verifyMainThread()
+        sendOutput(["revealBodyDoll": imageBase64])
     }
     
     func revealDollEndGameSuccess(_ imageBase64: String) {
@@ -79,6 +78,7 @@ class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
     
     func revealDollEndGameFailure(_ imageBase64: String) {
         verifyMainThread()
+        sendOutput(["revealDollEndGameFailure": imageBase64])
     }
     
     

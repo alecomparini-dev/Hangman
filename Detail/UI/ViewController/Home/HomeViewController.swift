@@ -355,6 +355,9 @@ public class HomeViewController: UIViewController {
         })
     }
     
+    private func updateHintsCount(_ count: String) {
+        screen.gamePainelView.hintsCountView.hintsLabel.get.text = count
+    }
     
 }
 
@@ -394,10 +397,6 @@ extension HomeViewController: HomePresenterOutput {
                               minusHeartImage: screen.gamePainelView.livesCountView.minusHeartImage.get,
                               lifeLabel: screen.gamePainelView.livesCountView.lifeLabel.get)
         
-    }
-    
-    public func updateHintsCount(_ count: String) {
-        screen.gamePainelView.hintsCountView.hintsLabel.get.text = count
     }
     
     public func updateRevelationsCount(_ count: String) {

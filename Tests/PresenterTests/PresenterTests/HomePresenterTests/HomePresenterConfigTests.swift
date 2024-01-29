@@ -8,7 +8,7 @@ import Handler
 import Domain
 import Presenter
 
-final class HomePresenterTests: XCTestCase {
+class HomePresenterTests: XCTestCase {
     
     func makeSut(signInAnonymousUseCase: SignInAnonymousUseCaseMock = SignInAnonymousUseCaseMock(),
                  getNextWordsUseCase: GetNextWordsUseCaseSpy = GetNextWordsUseCaseSpy(),

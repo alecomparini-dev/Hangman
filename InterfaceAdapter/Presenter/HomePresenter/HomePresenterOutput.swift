@@ -11,7 +11,6 @@ public protocol HomePresenterOutput: AnyObject {
     
     func fetchGameHelpSuccess(_ gameHelp: GameHelpPresenterDTO)
     func updateLivesCount(_ count: String)
-    func updateHintsCount(_ count: String)
     func updateRevelationsCount(_ count: String)
     
     func updateCountCorrectLetters(_ count: String)
