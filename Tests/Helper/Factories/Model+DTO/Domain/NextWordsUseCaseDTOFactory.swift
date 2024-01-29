@@ -9,7 +9,7 @@ struct NextWordsUseCaseDTOFactory {
     static func make(id: Int = 1, _ level: Level? = .easy) -> NextWordsUseCaseDTO {
         return NextWordsUseCaseDTO(id: id,
                                    word: "anyword",
-                                   syllables: ["a","b","c"],
+                                   syllables: ["any","word"],
                                    category: "anycategory",
                                    initialQuestion: "anyinitialQuestion",
                                    level: level,
@@ -21,7 +21,7 @@ struct NextWordsUseCaseDTOFactory {
         return [
             "id": 1,
             "word": "anyword",
-            "syllables": ["a","b","c"],
+            "syllables": ["any","word"],
             "category": "anycategory",
             "initialQuestion": "anyinitialQuestion",
             "level": 0,
