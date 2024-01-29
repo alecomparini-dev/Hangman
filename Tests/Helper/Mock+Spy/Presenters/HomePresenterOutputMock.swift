@@ -18,7 +18,6 @@ class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
         if let word {
             sendOutput(word)
         }
-        
     }
     
     func nextWordIsOver(title: String, message: String) {
@@ -49,14 +48,17 @@ class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
     
     func updateCountCorrectLetters(_ count: String) {
         verifyMainThread()
+        sendOutput(["updateCountCorrectLetters": count])
     }
     
     func markChosenKeyboardLetter(isCorrect: Bool, _ keyboardLetter: String) {
         verifyMainThread()
+        sendOutput(["markChosenKeyboardLetter": [isCorrect, keyboardLetter]])
     }
     
     func revealCorrectLetters(_ indexes: [Int]) {
         verifyMainThread()
+        sendOutput(["revealCorrectLetters": indexes])
     }
     
     func revealErrorLetters(_ indexes: [Int]) {
