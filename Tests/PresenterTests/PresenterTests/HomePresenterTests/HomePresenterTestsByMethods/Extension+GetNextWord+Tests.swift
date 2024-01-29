@@ -16,7 +16,7 @@ extension HomePresenterTests {
         let getNextWordsUseCaseSpy = GetNextWordsUseCaseSpy()
         let fetchGameHelpUseCaseSpy = FetchGameHelpUseCaseSpy()
         let getLastOpenHintsUseCaseSpy = GetLastOpenHintsUseCaseSpy()
-        let homePresenterOutputMock = HomePresenterOutputMock()
+        let homePresenterOutputMock = HomePresenterOutputSpy()
         let sut = makeSut(signInAnonymousUseCase: signInAnonymousUseCaseMock,
                           getNextWordsUseCase: getNextWordsUseCaseSpy,
                           getDollsRandomUseCase: getDollsRandomUseCaseSpy,
@@ -65,7 +65,7 @@ extension HomePresenterTests {
         let getNextWordsUseCaseSpy = GetNextWordsUseCaseSpy()
         let fetchGameHelpUseCaseSpy = FetchGameHelpUseCaseSpy()
         let getLastOpenHintsUseCaseSpy = GetLastOpenHintsUseCaseSpy()
-        let homePresenterOutputMock = HomePresenterOutputMock()
+        let homePresenterOutputMock = HomePresenterOutputSpy()
         let sut = makeSut(signInAnonymousUseCase: signInAnonymousUseCaseMock,
                           getNextWordsUseCase: getNextWordsUseCaseSpy,
                           getDollsRandomUseCase: getDollsRandomUseCaseSpy,
@@ -109,7 +109,7 @@ extension HomePresenterTests {
         let getNextWordsUseCaseSpy = GetNextWordsUseCaseSpy()
         let fetchGameHelpUseCaseSpy = FetchGameHelpUseCaseSpy()
         let getLastOpenHintsUseCaseSpy = GetLastOpenHintsUseCaseSpy()
-        let homePresenterOutputMock = HomePresenterOutputMock()
+        let homePresenterOutputMock = HomePresenterOutputSpy()
         let sut = makeSut(signInAnonymousUseCase: signInAnonymousUseCaseMock,
                           getNextWordsUseCase: getNextWordsUseCaseSpy,
                           getDollsRandomUseCase: getDollsRandomUseCaseSpy,

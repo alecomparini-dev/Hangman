@@ -12,7 +12,7 @@ extension HomePresenterTests {
     
     func test_verifyMatchInWord_isNotEndGame() {
         let (sut, getLastOpenHintsUseCaseSpy) = configInitial()
-        let homePresenterOutputMock = HomePresenterOutputMock()
+        let homePresenterOutputMock = HomePresenterOutputSpy()
         
         let expectedLetter = "A"
         
@@ -60,7 +60,7 @@ extension HomePresenterTests {
     //  MARK: - verifyMatchInWord_letter_error
     func test_verifyMatchInWord_one_letter_error() {
         let (sut, getLastOpenHintsUseCaseSpy) = configInitial()
-        let homePresenterOutputMock = HomePresenterOutputMock()
+        let homePresenterOutputMock = HomePresenterOutputSpy()
         
         let expectedLetter = "X"
         
@@ -98,7 +98,7 @@ extension HomePresenterTests {
     
     func test_verifyMatchInWord_two_or_more_letter_error() {
         let (sut, getLastOpenHintsUseCaseSpy) = configInitial()
-        let homePresenterOutputMock = HomePresenterOutputMock()
+        let homePresenterOutputMock = HomePresenterOutputSpy()
         
         
         let expectedLetter = "X"
@@ -144,7 +144,7 @@ extension HomePresenterTests {
     
     func test_verifyMatchInWord_endGame_failure() {
         let (sut, getLastOpenHintsUseCaseSpy) = configInitial()
-        let homePresenterOutputMock = HomePresenterOutputMock()
+        let homePresenterOutputMock = HomePresenterOutputSpy()
         
         let expectedLetter = "X"
         startGame(sut,getLastOpenHintsUseCaseSpy, completion: ({ [weak self] in
@@ -200,7 +200,8 @@ extension HomePresenterTests {
     
     func test_verifyMatchInWord_endGame_success() {
         let (sut, getLastOpenHintsUseCaseSpy) = configInitial()
-        let homePresenterOutputMock = HomePresenterOutputMock()
+        let homePresenterOutputMock = HomePresenterOutputSpy()
+        getLastOpenHintsUseCaseSpy.setResult = .success([1])
         
         let expectedLetter = "D"
         
@@ -221,7 +222,6 @@ extension HomePresenterTests {
                 
             }
             
-            sut.setLastHintsOpen([1,3])
             sut.verifyMatchInWord("A")
             sut.verifyMatchInWord("N")
             sut.verifyMatchInWord("Y")
@@ -269,7 +269,6 @@ extension HomePresenterTests {
         signInAnonymousUseCaseMock.setResult = .success("123")
         getNextWordsUseCaseSpy.setResult = .success([NextWordsUseCaseDTOFactory.make()])
         fetchGameHelpUseCaseSpy.setResult = .success(FetchGameHelpUseCaseDTOFactory.make())
-        getLastOpenHintsUseCaseSpy.setResult = .success([])
         
         return (sut, getLastOpenHintsUseCaseSpy)
     }

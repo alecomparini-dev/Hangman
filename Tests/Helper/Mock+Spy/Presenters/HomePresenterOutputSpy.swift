@@ -4,7 +4,7 @@
 import Foundation
 import Presenter
 
-class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
+class HomePresenterOutputSpy: ObservableResultSpy, HomePresenterOutput {
     var called =  Called()
     struct Called {
         var fetchNextWordSuccess = false
@@ -63,6 +63,7 @@ class HomePresenterOutputMock: ObservableResultSpy, HomePresenterOutput {
     func updateRevelationsCount(_ count: String) {
         called.updateRevelationsCount = true
         verifyMainThread()
+        sendOutput(["updateRevelationsCount": count])
     }
     
     func updateCountCorrectLetters(_ count: String) {

@@ -502,82 +502,76 @@ public class HomePresenterImpl: HomePresenter {
     
     private func revealCorrectLetters(_ indexes: [Int]) {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.revealCorrectLetters(indexes)
+            self?.delegateOutput?.revealCorrectLetters(indexes)
         }
     }
     
     private func markChosenKeyboardLetter(_ indexCorrect: [Int], _ keyboardLetter: String) {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.markChosenKeyboardLetter(isCorrect: !indexCorrect.isEmpty, keyboardLetter)
+            self?.delegateOutput?.markChosenKeyboardLetter(isCorrect: !indexCorrect.isEmpty, keyboardLetter)
         }
     }
     
     private func revealLetterEndGame(_ indexes: [Int]) {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.revealErrorLetters(indexes)
+            self?.delegateOutput?.revealErrorLetters(indexes)
         }
     }
     
     private func revealHeadDoll() {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            if let imgBase64 = randomDoll?.head?.randomElement() {
-                delegateOutput?.revealHeadDoll(imgBase64)
+            if let imgBase64 = self?.randomDoll?.head?.randomElement() {
+                self?.delegateOutput?.revealHeadDoll(imgBase64)
             }
         }
     }
     
     private func revealBodyDoll() {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            if let imgBase64 = randomDoll?.body?[errorLetters.count - 2] {
-                delegateOutput?.revealBodyDoll(imgBase64)
+            if let imgBase64 = self?.randomDoll?.body?[(self?.errorLetters.count ?? 0) - 2] {
+                self?.delegateOutput?.revealBodyDoll(imgBase64)
             }
         }
     }
     
     private func revealDollEndGameFailure() {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            if let imgBase64 = randomDoll?.fail?.randomElement() {
-                delegateOutput?.revealDollEndGameFailure(imgBase64)
+            if let imgBase64 = self?.randomDoll?.fail?.randomElement() {
+                self?.delegateOutput?.revealDollEndGameFailure(imgBase64)
             }
         }
     }
     
     private func revealDollEndGameSuccess() {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            if let imgBase64 = randomDoll?.success?.randomElement() {
-                delegateOutput?.revealDollEndGameSuccess(imgBase64)
+            if let imgBase64 = self?.randomDoll?.success?.randomElement() {
+                self?.delegateOutput?.revealDollEndGameSuccess(imgBase64)
             }
         }
     }
     
     private func fetchGameHelpSuccess() {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            if let gameHelpPresenterDTO {
-                delegateOutput?.fetchGameHelpSuccess(gameHelpPresenterDTO)
+            if let gameHelpPresenterDTO = self?.gameHelpPresenterDTO {
+                self?.delegateOutput?.fetchGameHelpSuccess(gameHelpPresenterDTO)
             }
         }
     }
     
     private func updateLivesCount() {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.updateLivesCount(gameHelpPresenterDTO?.livesCount.description ?? "0")
+            if let livesCount = self?.gameHelpPresenterDTO?.livesCount {
+                self?.delegateOutput?.updateLivesCount(livesCount.description)
+            }
         }
     }
     
     
     private func updateRevelationsCount() {
         MainThread.exec { [weak self] in
-            guard let self else {return}
-            delegateOutput?.updateRevelationsCount(gameHelpPresenterDTO?.revelationsCount.description ?? "0")
+            if let revelationsCount = self?.gameHelpPresenterDTO?.revelationsCount {
+                self?.delegateOutput?.updateRevelationsCount(revelationsCount.description)
+            }
         }
     }
     

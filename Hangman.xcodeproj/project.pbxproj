@@ -187,9 +187,10 @@
 		029F30D02B62C2E600D05D11 /* Presenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C4AB702B057B4100991633 /* Presenter.framework */; };
 		029F30D82B62C35100D05D11 /* ConfigurationDomainTests.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 029F30D72B62C35100D05D11 /* ConfigurationDomainTests.xctestplan */; };
 		02A15B8A2B66A34900882D66 /* Extension+VerifyMatchInWord+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A15B892B66A34900882D66 /* Extension+VerifyMatchInWord+Tests.swift */; };
+		02A15B8C2B680A7600882D66 /* Extension+RevealLetterGameRandom+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A15B8B2B680A7600882D66 /* Extension+RevealLetterGameRandom+Tests.swift */; };
 		02A8A5C52B645773003C4CAB /* GameHelpModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025657EF2B60302800AB5BAD /* GameHelpModelFactory.swift */; };
 		02A8A5CD2B652C9F003C4CAB /* HintsPresenterOutputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5CB2B652C5B003C4CAB /* HintsPresenterOutputMock.swift */; };
-		02A8A5CE2B652CC0003C4CAB /* HomePresenterOutputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5C92B652C4C003C4CAB /* HomePresenterOutputMock.swift */; };
+		02A8A5CE2B652CC0003C4CAB /* HomePresenterOutputSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5C92B652C4C003C4CAB /* HomePresenterOutputSpy.swift */; };
 		02A8A5CF2B652CDC003C4CAB /* HomePresenterConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5C72B652C18003C4CAB /* HomePresenterConfigTests.swift */; };
 		02A8A5D02B652EB2003C4CAB /* MaxGameHelpUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201CE862B61AC6300C2B6F0 /* MaxGameHelpUseCaseSpy.swift */; };
 		02A8A5D42B652F93003C4CAB /* GetNextWordsUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A8A5D22B652F6E003C4CAB /* GetNextWordsUseCaseSpy.swift */; };
@@ -610,8 +611,9 @@
 		029F30CC2B62C2E600D05D11 /* TestsPresenter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestsPresenter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		029F30D72B62C35100D05D11 /* ConfigurationDomainTests.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ConfigurationDomainTests.xctestplan; sourceTree = "<group>"; };
 		02A15B892B66A34900882D66 /* Extension+VerifyMatchInWord+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+VerifyMatchInWord+Tests.swift"; sourceTree = "<group>"; };
+		02A15B8B2B680A7600882D66 /* Extension+RevealLetterGameRandom+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+RevealLetterGameRandom+Tests.swift"; sourceTree = "<group>"; };
 		02A8A5C72B652C18003C4CAB /* HomePresenterConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterConfigTests.swift; sourceTree = "<group>"; };
-		02A8A5C92B652C4C003C4CAB /* HomePresenterOutputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterOutputMock.swift; sourceTree = "<group>"; };
+		02A8A5C92B652C4C003C4CAB /* HomePresenterOutputSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterOutputSpy.swift; sourceTree = "<group>"; };
 		02A8A5CB2B652C5B003C4CAB /* HintsPresenterOutputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsPresenterOutputMock.swift; sourceTree = "<group>"; };
 		02A8A5D22B652F6E003C4CAB /* GetNextWordsUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNextWordsUseCaseSpy.swift; sourceTree = "<group>"; };
 		02A8A5D62B653040003C4CAB /* CountWordsPlayedUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWordsPlayedUseCaseSpy.swift; sourceTree = "<group>"; };
@@ -2180,7 +2182,7 @@
 		02B59B292B669F71000AA8E5 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				02A8A5C92B652C4C003C4CAB /* HomePresenterOutputMock.swift */,
+				02A8A5C92B652C4C003C4CAB /* HomePresenterOutputSpy.swift */,
 				02A8A5CB2B652C5B003C4CAB /* HintsPresenterOutputMock.swift */,
 			);
 			path = Presenters;
@@ -2192,6 +2194,7 @@
 				02B59B272B669E20000AA8E5 /* Extension+StartGame+Tests.swift */,
 				02B59B252B669D16000AA8E5 /* Extension+GetNextWord+Tests.swift */,
 				02A15B892B66A34900882D66 /* Extension+VerifyMatchInWord+Tests.swift */,
+				02A15B8B2B680A7600882D66 /* Extension+RevealLetterGameRandom+Tests.swift */,
 				02B59B352B66A20B000AA8E5 /* Extension+GetCurrentWord+Tests.swift */,
 				02B59B312B66A1A2000AA8E5 /* Extension+GetLettersKeyboard+Tests.swift */,
 				02B59B332B66A1C3000AA8E5 /* Extension+MaxHelp+Tests.swift */,
@@ -3318,7 +3321,7 @@
 				02B59B322B66A1A2000AA8E5 /* Extension+GetLettersKeyboard+Tests.swift in Sources */,
 				02A8A5EB2B6538E5003C4CAB /* WordPlayedUseCaseDTOFactory.swift in Sources */,
 				02B59B2E2B66A10B000AA8E5 /* Extension+SetLastHintsOpen+Tests.swift in Sources */,
-				02A8A5CE2B652CC0003C4CAB /* HomePresenterOutputMock.swift in Sources */,
+				02A8A5CE2B652CC0003C4CAB /* HomePresenterOutputSpy.swift in Sources */,
 				02A8A5EA2B6538DE003C4CAB /* NextWordsUseCaseDTOFactory.swift in Sources */,
 				02DF3E752B62D53B00114663 /* SignInAnonymousUseCaseMock.swift in Sources */,
 				02B59B362B66A20B000AA8E5 /* Extension+GetCurrentWord+Tests.swift in Sources */,
@@ -3337,6 +3340,7 @@
 				02C0EA582B65945500004264 /* FetchGameHelpUseCaseDTOFactory.swift in Sources */,
 				02B59B262B669D16000AA8E5 /* Extension+GetNextWord+Tests.swift in Sources */,
 				02DF3E882B63012300114663 /* WordPresenterDTOFactory.swift in Sources */,
+				02A15B8C2B680A7600882D66 /* Extension+RevealLetterGameRandom+Tests.swift in Sources */,
 				02DF3E892B63013000114663 /* GameHelpPresenterDTOFactory.swift in Sources */,
 				02A8A5E72B6532B2003C4CAB /* DeleteLastOpenHintsUseCaseSpy.swift in Sources */,
 				02A15B8A2B66A34900882D66 /* Extension+VerifyMatchInWord+Tests.swift in Sources */,
