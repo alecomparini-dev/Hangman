@@ -131,7 +131,7 @@ extension HomePresenterTests {
             
             sut.verifyMatchInWord(expectedLetter)
 
-        }), testCalled: {
+        }), calledOutputTest: {
             XCTAssertTrue(homePresenterOutputMock.called.markChosenKeyboardLetter)
             XCTAssertTrue(homePresenterOutputMock.called.revealBodyDoll)
         })
@@ -184,7 +184,7 @@ extension HomePresenterTests {
             ))
             sut.verifyMatchInWord(expectedLetter)
                         
-        }), testCalled: {
+        }), calledOutputTest: {
             XCTAssertTrue(homePresenterOutputMock.called.markChosenKeyboardLetter)
             XCTAssertTrue(homePresenterOutputMock.called.updateLivesCount)
             XCTAssertTrue(homePresenterOutputMock.called.updateLivesCount)
@@ -239,7 +239,7 @@ extension HomePresenterTests {
             
             sut.verifyMatchInWord(expectedLetter)
             
-        }), testCalled: {
+        }), calledOutputTest: {
             XCTAssertTrue(homePresenterOutputMock.called.markChosenKeyboardLetter)
             XCTAssertTrue(homePresenterOutputMock.called.updateCountCorrectLetters)
             XCTAssertTrue(homePresenterOutputMock.called.revealCorrectLetters)
@@ -274,13 +274,13 @@ extension HomePresenterTests {
         return (sut, getLastOpenHintsUseCaseSpy)
     }
     
-    private func startGame(_ sut: HomePresenterImpl, _ getLastOpenHintsUseCaseSpy: GetLastOpenHintsUseCaseSpy, completion: @escaping () -> Void, testCalled: (() -> Void)? = nil) {
+    private func startGame(_ sut: HomePresenterImpl, _ getLastOpenHintsUseCaseSpy: GetLastOpenHintsUseCaseSpy, completion: @escaping () -> Void, calledOutputTest: (() -> Void)? = nil) {
         
         let expStartGame = expectation(description: "StartGame")
         getLastOpenHintsUseCaseSpy.observer { _ in
             completion()
             expStartGame.fulfill()
-            testCalled?()
+            calledOutputTest?()
         }
         
         sut.startGame()
