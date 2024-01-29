@@ -126,7 +126,7 @@ public class HomePresenterImpl: HomePresenter {
         
         addErrorLetter(indexMatchInWordFromChosenLetter, letter)
         
-        revealCorrectLetter(indexMatchInWordFromChosenLetter)
+        revealCorrectLetters(indexMatchInWordFromChosenLetter)
         
         markChosenKeyboardLetter(indexMatchInWordFromChosenLetter, letter)
         
@@ -500,7 +500,7 @@ public class HomePresenterImpl: HomePresenter {
         }
     }
     
-    private func revealCorrectLetter(_ indexes: [Int]) {
+    private func revealCorrectLetters(_ indexes: [Int]) {
         MainThread.exec { [weak self] in
             guard let self else {return}
             delegateOutput?.revealCorrectLetters(indexes)

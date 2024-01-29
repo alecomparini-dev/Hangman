@@ -102,7 +102,7 @@ extension HomePresenterTests {
         
         
         let expectedLetter = "X"
-        startGame(sut,getLastOpenHintsUseCaseSpy) { [weak self] in
+        startGame(sut,getLastOpenHintsUseCaseSpy, completion: ({ [weak self] in
             
             homePresenterOutputMock.observer { receivedOutput in
                 
@@ -131,7 +131,10 @@ extension HomePresenterTests {
             
             sut.verifyMatchInWord(expectedLetter)
 
-        }
+        }), testCalled: {
+            XCTAssertTrue(homePresenterOutputMock.called.markChosenKeyboardLetter)
+            XCTAssertTrue(homePresenterOutputMock.called.revealBodyDoll)
+        })
         
     }
     
@@ -144,7 +147,7 @@ extension HomePresenterTests {
         let homePresenterOutputMock = HomePresenterOutputMock()
         
         let expectedLetter = "X"
-        startGame(sut,getLastOpenHintsUseCaseSpy) { [weak self] in
+        startGame(sut,getLastOpenHintsUseCaseSpy, completion: ({ [weak self] in
             guard let self else {return}
             
             homePresenterOutputMock.observer { receivedOutput in
@@ -154,10 +157,6 @@ extension HomePresenterTests {
                 if let markChosenOutput = receivedOutput["markChosenKeyboardLetter"] as? [Any] {
                     XCTAssertEqual(markChosenOutput[0] as! Bool, false)
                     XCTAssertEqual(markChosenOutput[1] as! String, expectedLetter)
-                }
-                
-                if let revealBodyDoll = receivedOutput["revealBodyDoll"] as? String {
-                    XCTAssertNotNil(revealBodyDoll)
                 }
                 
                 if let updateLivesCount = receivedOutput["updateLivesCount"] as? String {
@@ -185,7 +184,14 @@ extension HomePresenterTests {
             ))
             sut.verifyMatchInWord(expectedLetter)
                         
-        }
+        }), testCalled: {
+            XCTAssertTrue(homePresenterOutputMock.called.markChosenKeyboardLetter)
+            XCTAssertTrue(homePresenterOutputMock.called.updateLivesCount)
+            XCTAssertTrue(homePresenterOutputMock.called.updateLivesCount)
+            XCTAssertTrue(homePresenterOutputMock.called.revealDollEndGameFailure)
+            XCTAssertFalse(homePresenterOutputMock.called.revealBodyDoll)
+            XCTAssertFalse(homePresenterOutputMock.called.revealDollEndGameSuccess)
+        })
                 
     }
 
@@ -198,7 +204,7 @@ extension HomePresenterTests {
         
         let expectedLetter = "D"
         
-        startGame(sut,getLastOpenHintsUseCaseSpy) { [weak self] in
+        startGame(sut,getLastOpenHintsUseCaseSpy, completion: ({ [weak self] in
             guard let self else {return}
             
             homePresenterOutputMock.observer { receivedOutput in
@@ -209,8 +215,8 @@ extension HomePresenterTests {
                     XCTAssertEqual(markChosenOutput[1] as! String, expectedLetter)
                 }
                 
-                if let revealBodyDoll = receivedOutput["revealBodyDoll"] as? String {
-                    XCTAssertNotNil(revealBodyDoll)
+                if let revealDollEndGameSuccess = receivedOutput["revealDollEndGameSuccess"] as? String {
+                    XCTAssertNotNil(revealDollEndGameSuccess)
                 }
                 
             }
@@ -233,7 +239,12 @@ extension HomePresenterTests {
             
             sut.verifyMatchInWord(expectedLetter)
             
-        }
+        }), testCalled: {
+            XCTAssertTrue(homePresenterOutputMock.called.markChosenKeyboardLetter)
+            XCTAssertTrue(homePresenterOutputMock.called.updateCountCorrectLetters)
+            XCTAssertTrue(homePresenterOutputMock.called.revealCorrectLetters)
+            XCTAssertTrue(homePresenterOutputMock.called.revealDollEndGameSuccess)
+        })
           
     }
     
@@ -263,12 +274,13 @@ extension HomePresenterTests {
         return (sut, getLastOpenHintsUseCaseSpy)
     }
     
-    private func startGame(_ sut: HomePresenterImpl, _ getLastOpenHintsUseCaseSpy: GetLastOpenHintsUseCaseSpy, completion: @escaping () -> Void) {
+    private func startGame(_ sut: HomePresenterImpl, _ getLastOpenHintsUseCaseSpy: GetLastOpenHintsUseCaseSpy, completion: @escaping () -> Void, testCalled: (() -> Void)? = nil) {
         
         let expStartGame = expectation(description: "StartGame")
         getLastOpenHintsUseCaseSpy.observer { _ in
             completion()
             expStartGame.fulfill()
+            testCalled?()
         }
         
         sut.startGame()
