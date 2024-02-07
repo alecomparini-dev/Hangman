@@ -34,8 +34,8 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - Modularização usando Targets e SPM para os SDKs próprios
 
 #### SDKs 
-- [CustomComponentsSDK](https://github.com/alecomparini-dev/CustomComponentsSDK)
-- - Responsável por todos meus componentes utilizados nas views dos meus Projetos.
+- CustomComponentsSDK[clique aqui](https://github.com/alecomparini-dev/CustomComponentsSDK)
+  - Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
 - DataStorageSDK
 - AuthenticationSDK
 
