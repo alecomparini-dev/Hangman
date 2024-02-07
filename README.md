@@ -29,20 +29,26 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 <br>
 
 ## DESENVOLVIMENTO
-- Firebase Auth para o login anônomio
-- FirebaseFirestore para database
+- Firebase Auth para o login anônimo
+- FirebaseFirestore para Database
+- 
 
 ### Arquitetura
 - Clean Architecture
 - MVVM-C
+
 
 ### Outros
 - Depedency Injection
 - Princípios do SOLID
 - Modularização
 
+### Gerenciador de Dependência
+- SPM (Swift Package Manager)
+
 ### SDKs Próprios
-- CustomComponentsSDK 
+- CustomComponentsSDK
+- 
 
 
 
