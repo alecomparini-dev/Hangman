@@ -1,6 +1,6 @@
 <h2 align="center">
   <br>
-  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/8e48cbff-5d0e-4830-8576-a36aa99f4c2e" width="100">
+  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/8e48cbff-5d0e-4830-8576-a36aa99f4c2e" width="200">
   <br>
   JOGO DA FORCA
   <br>
