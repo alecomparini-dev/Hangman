@@ -36,7 +36,10 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 #### SDKs 
 - CustomComponentsSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
   - Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
-- DataStorageSDK
+  - ![Static Badge](https://img.shields.io/badge/status-em_desenvolvimento-green)
+    
+- DataStorageSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
+  - Responsável pela camada de persistências dos meus Projetos. 
 - AuthenticationSDK
 
 #### Arquitetura
