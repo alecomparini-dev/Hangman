@@ -1,15 +1,12 @@
-# Hangman
-<h3 align="center">
+<h2 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/82e20cba-b998-44c5-965b-a3793e2e8b16" ></a>
+  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/6d8ba1fc-be5c-4214-afea-82ffeabe9dd7" >
   <br>
   JOGO DA FORCA
   <br>
-</h3>
+</h2>
 
-
-
-## Feature
+# Feature
 ### Login
 - [x] Login Anônimo Firebase
 - [ ] Converter para Login Personificado (necessário para compras no app)
@@ -23,7 +20,7 @@
 - [ ] Assistir Anúncios para ganhar Vidas, Dicas e Revelações
 
 
-## APP
+## PREVIEW APP 
 
 https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9e49-3e5426e62e37
 
