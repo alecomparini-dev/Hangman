@@ -24,7 +24,21 @@
 
 https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9e49-3e5426e62e37
 
-## Ferramentas Utilizadas
+## Desenvolvimento
+- Firebase Auth para o login anônomio
+- FirebaseFirestore para database
+
+### Arquitetura
+- Clean Architecture
+- MVVM-C
+
+### Outros
+- Depedency Injection
+- Princípios do SOLID
+- Modularização
+
+### SDKs Próprios
+- CustomComponentsSDK 
 
 
 ## Dependências
