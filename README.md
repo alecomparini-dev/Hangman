@@ -1,14 +1,16 @@
-<h2 align="center">
+<h3 align="center">
   <br>
   <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/8e48cbff-5d0e-4830-8576-a36aa99f4c2e" width="200">
   <br>
   JOGO DA FORCA
   <br>
-</h2>
+</h3>
 
 <br>
 
-# Feature
+---
+## Feature
+
 ### Login
 - [x] Login Anônimo Firebase
 - [ ] Converter para Login Personificado (necessário para compras no app)
@@ -23,11 +25,16 @@
 
 <br>
 
-## PREVIEW APP 
+---
+## PREVIEW APP
+
+<br>
+
 https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9e49-3e5426e62e37
 
 <br>
 
+---
 ## DESENVOLVIMENTO
 - Firebase Auth para o login anônimo
 - FirebaseFirestore para Database
@@ -84,11 +91,10 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 
 
 
-
-
-## LICENÇA
-
-MIT
+<br>
 
 ---
+## LICENÇA
+MIT
+
 
