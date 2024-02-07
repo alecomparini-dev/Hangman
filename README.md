@@ -1,3 +1,4 @@
+
 <h3 align="center">
   <br>
   <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/8e48cbff-5d0e-4830-8576-a36aa99f4c2e" width="200">
@@ -42,12 +43,12 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 
 ### SDKs 
 - CustomComponentsSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
-  - Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
+  > Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
   - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
     
 - DataStorageSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
-  - Responsável pela camada de persistências dos meus Projetos.
-  - Adaptado para trabalhar com diversos provedores de Database.
+  > Responsável pela camada de persistências dos meus Projetos. <br>
+    Adaptado para trabalhar com diversos provedores de Database.
   - Já Utilizados em Projetos:
     - ![Static Badge](https://img.shields.io/badge/CoreData-green?style=for-the-badge)
     - ![Static Badge](https://img.shields.io/badge/FirestoreDatabase-green?style=for-the-badge)
@@ -59,8 +60,8 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 
     
 - AuthenticationSDK
-  - Responsável pela camada de Authenticação do meu Projeto
-  - Adaptado para trabalhar com diversos provedores de authenticação
+  > Responsável pela camada de Authenticação do meu Projeto <br>
+    Adaptado para trabalhar com diversos provedores de authenticação
   - Já Utilizados em Projetos:
     - ![Static Badge](https://img.shields.io/badge/FirestoreAuth_Anônimo-green?style=for-the-badge)
     - ![Static Badge](https://img.shields.io/badge/FirestoreAuth_Email/Senha-green?style=for-the-badge)
