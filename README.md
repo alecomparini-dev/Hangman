@@ -7,6 +7,7 @@
 </h2>
 
 <br>
+
 # Feature
 ### Login
 - [x] Login Anônimo Firebase
@@ -21,10 +22,12 @@
 - [ ] Assistir Anúncios para ganhar Vidas, Dicas e Revelações
 
 <br>
+
 ## PREVIEW APP 
 https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9e49-3e5426e62e37
 
 <br>
+
 ## DESENVOLVIMENTO
 - Firebase Auth para o login anônomio
 - FirebaseFirestore para database
