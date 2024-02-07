@@ -16,6 +16,10 @@ Jogo da Forca
 
 
 ## DEMO
+https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9e49-3e5426e62e37?width=20&height=20
+
+
+
 
 
 
