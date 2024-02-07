@@ -20,11 +20,12 @@ public final class NavigationController: UINavigationController {
     
     @discardableResult
     public func pushViewController<T>(_ viewController: UIViewController) -> T {
-        if let controller = self.viewControllers.first(where: { $0.isKind(of: type(of: viewController))  }) {
-            popToViewController(controller, animated: true)
-            return controller as! T
-        }
-        pushViewController(viewController, animated: true)
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = CATransitionType.fade
+        view.layer.add(transition, forKey: kCATransition)
+        
+        pushViewController(viewController, animated: false)
         return viewController as! T
     }
     

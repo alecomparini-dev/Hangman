@@ -4,7 +4,7 @@
 import UIKit
 
 protocol Coordinator: AnyObject {
-    var childCoordinator: Coordinator? { get set }
+    var coordinator: Coordinator? { get set }
     
     var navigationController: NavigationController { get }
     

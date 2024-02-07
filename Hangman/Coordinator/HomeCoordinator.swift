@@ -4,9 +4,11 @@
 import Foundation
 
 import Detail
+import Presenter
+
 
 class HomeCoordinator: Coordinator {
-    var childCoordinator: Coordinator?
+    var coordinator: Coordinator?
     unowned let navigationController: NavigationController
     var dataTransfer: Any?
     
@@ -15,11 +17,35 @@ class HomeCoordinator: Coordinator {
     }
     
     func start() {
-        childCoordinator = self
-        var controller = HomeViewController()
+        coordinator = self
+        var controller = HomeViewControllerFactory.make()
+        controller.setDataTransfer(dataTransfer)
         controller = navigationController.pushViewController(controller)
+        controller.coordinator = self
+        removeLastViewController()
+    }
+ 
+    private func removeLastViewController() {
+        navigationController.viewControllers = Array(navigationController.viewControllers.dropFirst(1))
     }
     
- 
+}
+
+
+//  MARK: - EXTENSION - HomeViewControllerCoordinator
+
+extension HomeCoordinator: HomeViewControllerCoordinator {
     
+    func gotoHomeNextWord(_ dataTransfer: DataTransferHomeVC) {
+        let homeCoordinator = HomeCoordinator(navigationController)
+        homeCoordinator.dataTransfer = dataTransfer
+        homeCoordinator.start()
+        coordinator = nil
+    }
+    
+    func gotoHints(_ dataTransfer: DataTransferHints?) {
+        let hintsCoordinator = HintsCoordinator(navigationController)
+        hintsCoordinator.dataTransfer = dataTransfer
+        hintsCoordinator.start()
+    }
 }
