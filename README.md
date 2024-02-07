@@ -2,7 +2,7 @@
 Jogo da Forca
 
 ## Feature
-Login
+### Login
 - [x] Login Anônimo Firebase
 - [ ] Converter para Login Personificado  
 
