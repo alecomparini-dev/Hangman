@@ -42,9 +42,12 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   - Responsável pela camada de persistências dos meus Projetos.
   - Adaptado para quaisquer provedores
   - Alguns já iniciados
-  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_usados-CoreData-green)
-  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_usados-FirestoreDatabase-green)
+  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_utilizados-CoreData-green)
+  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_utilizados-FirestoreDatabase-green)
+  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_utilizados-KeyChain-green)
+  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_utilizados-UserDefaults-green)
   - ![Static Badge](https://img.shields.io/badge/iniciando-Realm-blue)
+  - ![Static Badge](https://img.shields.io/badge/próximos-SQLite-yellow)
 
 
     
