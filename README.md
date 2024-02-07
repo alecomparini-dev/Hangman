@@ -33,28 +33,30 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - FirebaseFirestore para Database
 - Modularização usando os Target e SPM para os SDKs próprios
 
-### SDKs 
+#### SDKs 
 - CustomComponentsSDK
 - 
 
-
-### Arquitetura
+#### Arquitetura
 - Clean Architecture
 - MVVM-C
 
-### Outros
-- Depedency Injection
-- Princípios do SOLID
-- Clean Code (em estudo)
-
-### Patterns (em estudo)
+#### Patterns (em estudo)
 - Strategy
 - Builder
 - Factory
 - Singleton
   
-### Gerenciador de Dependência
+#### Gerenciador de Dependência
 - SPM (Swift Package Manager)
+
+#### Testes Unitários
+- XCTest
+
+### Outros
+- Depedency Injection
+- Princípios do SOLID
+- Clean Code (em estudo)
 
 
 
