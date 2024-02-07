@@ -41,14 +41,14 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - DataStorageSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
   - Responsável pela camada de persistências dos meus Projetos.
   - Adaptado para quaisquer provedores
-  - Alguns já iniciados
-  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_utilizados-CoreData-green)
-  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_utilizados-FirestoreDatabase-green)
-  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_utilizados-KeyChain-green)
-  - ![Static Badge](https://img.shields.io/badge/j%C3%A1_utilizados-UserDefaults-green)
-  - ![Static Badge](https://img.shields.io/badge/iniciando-Realm-blue)
-  - ![Static Badge](https://img.shields.io/badge/próximos-SQLite-yellow)
-
+  - Já Utilizados em Projetos:
+    - ![Static Badge](https://img.shields.io/badge/CoreData-green)
+    - ![Static Badge](https://img.shields.io/badge/FirestoreDatabase-green)
+    - ![Static Badge](https://img.shields.io/badge/KeyChain-green)
+    - ![Static Badge](https://img.shields.io/badge/UserDefaults-green)
+    - ![Static Badge](https://img.shields.io/badge/Realm)
+  - Próximos a serem criados:
+    - ![Static Badge](https://img.shields.io/badge/SQLite-red)
 
     
 - AuthenticationSDK
