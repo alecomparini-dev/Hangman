@@ -42,13 +42,13 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   - Responsável pela camada de persistências dos meus Projetos.
   - Adaptado para quaisquer provedores
   - Já Utilizados em Projetos:
-    - ![Static Badge](https://img.shields.io/badge/CoreData-green)
-    - ![Static Badge](https://img.shields.io/badge/FirestoreDatabase-green)
-    - ![Static Badge](https://img.shields.io/badge/KeyChain-green)
-    - ![Static Badge](https://img.shields.io/badge/UserDefaults-green)
-    - ![Static Badge](https://img.shields.io/badge/Realm)
+    - ![Static Badge](https://img.shields.io/badge/CoreData-green?style=for-the-badge)
+    - ![Static Badge](https://img.shields.io/badge/FirestoreDatabase-green?style=for-the-badge)
+    - ![Static Badge](https://img.shields.io/badge/KeyChain-green?style=for-the-badge)
+    - ![Static Badge](https://img.shields.io/badge/UserDefaults-green?style=for-the-badge)
+    - ![Static Badge](https://img.shields.io/badge/Realm-green?style=for-the-badge)
   - Próximos a serem criados:
-    - ![Static Badge](https://img.shields.io/badge/SQLite-red)
+    - ![Static Badge](https://img.shields.io/badge/SQLite-red?style=for-the-badge)
 
     
 - AuthenticationSDK
