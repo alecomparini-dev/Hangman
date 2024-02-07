@@ -11,9 +11,12 @@ Jogo da Forca
 - [x] 10 Dicas Diárias
 - [x] 5 Revelações de letras Diárias
 - [x] Renovação Automática das Ajudas todos os dias 00:00
-- [ ] Comprar Vidas, Dicas e Revelações
-- [ ] Assistir Vídeos para ganhar Vidas, Dicas e Revelações
-- [ ] 
+- [ ] Compra de Vidas, Dicas e Revelações
+- [ ] Assistir Anúncios para ganhar Vidas, Dicas e Revelações
+
+
+## DEMO
+
 
 
 
