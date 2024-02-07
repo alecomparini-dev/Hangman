@@ -1,5 +1,13 @@
 # Hangman
-Jogo da Forca
+<h3 align="center">
+  <br>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/82e20cba-b998-44c5-965b-a3793e2e8b16" ></a>
+  <br>
+  JOGO DA FORCA
+  <br>
+</h3>
+
+
 
 ## Feature
 ### Login
@@ -25,4 +33,9 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 ## Dependências
 
 
+## License
+
+MIT
+
+---
 
