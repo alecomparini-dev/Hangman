@@ -15,13 +15,14 @@ Jogo da Forca
 - [ ] Assistir Anúncios para ganhar Vidas, Dicas e Revelações
 
 
-## DEMO
-https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9e49-3e5426e62e37?height=60
+## APP
 
-| Video 1                                      | Video 2                                      |
-| -------------------------------------------- | -------------------------------------------- |
-| [![Video 1](https://www.youtube.com/embed/SEtq9QShf8E)](https://www.youtube.com/watch?v=SEtq9QShf8E) | [![Video 2](https://www.youtube.com/embed/dQw4w9WgXcQ)](https://www.youtube.com/watch?v=dQw4w9WgXcQ) |
+https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9e49-3e5426e62e37
 
+## Ferramentas Utilizadas
+
+
+## Dependências
 
 
 
