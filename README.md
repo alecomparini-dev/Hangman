@@ -51,7 +51,7 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - Foi utilizado o Firebase Auth para a realização do login anônimo
 - Para banco de dados cloud foi utilizado o Firebase Firestore
 
-### DEPENDÊNCIAS: 
+#### DEPENDÊNCIAS: 
 - #### SDKs PRÓPRIOS:
   - **CustomComponentsSDK** ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
     > Responsável por todos os componentes visuais utilizados na camada de UI dos meus Projetos.
@@ -64,21 +64,21 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - #### Gerenciados de Depêndencia:
   - SPM(Swift Package Manager)
 
-### ARQUITETURA
+#### ARQUITETURA
 - MVVM-C
 - Clean Architecture
 
-### PATTERNS (em estudo)
+#### PATTERNS (em estudo)
 - Strategy
 - Builder
 - Factory
 - Adapter
 - Singleton
 
-### TESTE UNITÁRIOS
+#### TESTE UNITÁRIOS
 - XCTest
 
-### OUTROS
+#### OUTROS
 - Depedency Injection
 - Princípios do SOLID
 - Clean Code (em estudo)
