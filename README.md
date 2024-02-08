@@ -52,7 +52,7 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - Para banco de dados cloud foi utilizado o Firebase Firestore
 
 #### DEPENDÊNCIAS: 
-<a href="https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components" target="blank" rel="noopener"><span>veja aqui</span> </a>
+<a href="https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components" target="_blank" ><span>veja aqui</span> </a>
 - SDKs PRÓPRIOS:
   - **CustomComponentsSDK** ( [veja aqui]() )
     > Responsável por todos os componentes visuais utilizados na camada de UI dos meus Projetos.
