@@ -1,8 +1,9 @@
 
 <h3 align="center">
   <br>
-  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/7a7b9d00-1a23-4329-812e-8d6171e9958f" width="500">
+  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/27b83dce-169a-47f8-9d56-7a98cb3cbffb" width="500">
   <br>
+
 </h3>
 
 ## FEATURES
