@@ -56,7 +56,7 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   - **CustomComponentsSDK** [![](https://img.shields.io/badge/veja_aqui-blue?style=plastic)](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components)
     > Responsável por todos os componentes visuais utilizados na camada de UI dos meus Projetos.
   - **DataStorageSDK**  [![](https://img.shields.io/badge/veja_aqui-blue?style=plastic)](https://github.com/alecomparini-dev/DataStorageSDK)
-  - **AuthenticationSDK** [![](https://img.shields.io/badge/veja_aqui-blue?style=plastic)](https://github.com/alecomparini-dev/AuthenticationSDK)
+  - **AuthenticationSDK** ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
   
 - #### SDKs TERCEIROS:
   - Firebase
