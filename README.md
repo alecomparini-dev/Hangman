@@ -34,21 +34,27 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 
 ---
 ## DESENVOLVIMENTO
-- Firebase Auth para o login anônimo
-- FirebaseFirestore para Database
-- Modularização usando Targets e SPM para os SDKs próprios
+- Foi utilizado o Firebase Auth para o login anônimo
+- Para banco de dados cloud foi utilizado o FirebaseFirestore
+- O app foi modularizado nos seguintes targets:
+  - ***Handler:*** compartilhado com todos os targets
+  - ***Domain:*** camada dos UseCases e models do projeto
+  - ***UseCaseGateway:*** camada de interface adapter para a base de dados e authenticação
+  - ***Presenter:*** camada de interface adapter para a parte visual (VM da arquitetura MVVM-C)
+  - ***Detail:*** camada de detalhe, onde ficam a UI, a manipulação da base de dados(utilizando um SDK próprio) e a autenticação (também através de um SDK Próprio)
+  - ***Hangman(main):** camada main, nela estão os Coordinators, factories e os resources do app(Info.plist, Assets, App/SceneDelegate.. etc)
+  - ***Tests:*** cadadas de testes
 
 ### DEPENDÊNCIAS: 
-#### SDKs PRÓPRIOS:
-- CustomComponentsSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
-  - Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
-  - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
+- #### SDKs PRÓPRIOS:
+  - **<h3>CustomComponentsSDK** ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) ) </h3>
+    - Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
     
-- DataStorageSDK ( [veja aqui](https://github.com/alecomparini-dev/DataStorageSDK) )
-  - Responsável pela camada de persistências dos meus Projetos. <br>
+  - ***DataStorageSDK*** ( [veja aqui](https://github.com/alecomparini-dev/DataStorageSDK) )
+    - Responsável pela camada de persistências dos meus Projetos.   
     
-- AuthenticationSDK ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
-  - Responsável pela camada de Authenticação dos meus Projetos <br>
+  - AuthenticationSDK ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
+    - Responsável pela camada de Authenticação dos meus Projetos   
   
 
 #### SDKs TERCEIROS:
