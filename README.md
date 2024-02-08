@@ -38,7 +38,8 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - FirebaseFirestore para Database
 - Modularização usando Targets e SPM para os SDKs próprios
 
-### SDKs 
+### DEPENDÊNCIAS: 
+#### SDKs PRÓPRIOS:
 - CustomComponentsSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
   - Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
   - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
@@ -54,6 +55,9 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
     - ![Static Badge](https://img.shields.io/badge/FirestoreAuth_Email/Senha-green?style=for-the-badge)
     - ![Static Badge](https://img.shields.io/badge/Biometria-green?style=for-the-badge)
   - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
+
+#### SDKs TERCEIROS:
+- Firebase
 
 ### Arquitetura
 - MVVM-C
@@ -76,7 +80,6 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - Depedency Injection
 - Princípios do SOLID
 - Clean Code (em estudo)
-
 
 
 <br>
