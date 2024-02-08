@@ -5,8 +5,6 @@
   <br>
 </h3>
 
-
-
 ## FEATURES
 
 #### # Login
@@ -34,59 +32,49 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 
 ---
 ## DESENVOLVIMENTO
-- Firebase Auth para o login anônimo
-- FirebaseFirestore para Database
-- Modularização usando Targets e SPM para os SDKs próprios
+- O app foi modularizado nos seguintes targets:
+  - ***Handler:*** compartilhado com todos os targets
+  - ***Domain:*** camada dos UseCases e models do projeto
+  - ***UseCaseGateway:*** camada de interface adapter para a base de dados e authenticação (adaptanto os uses cases com sdks de banco e auth da camada Details)
+  - ***Presenter:*** camada de interface adapter para a parte visual (VM da arquitetura MVVM-C)
+  - ***Detail:*** camada de detalhe, onde ficam a UI, a manipulação da base de dados(utilizando um SDK próprio) e a autenticação (também através de um SDK Próprio)
+  - ***Hangman(main):** camada main, nela estão os Coordinators, factories e os resources do app(Info.plist, Assets, App/SceneDelegate.. etc)
+  - ***Tests:*** cadadas de testes
+- Foi utilizado o Firebase Auth para a realização do login anônimo
+- Para banco de dados cloud foi utilizado o Firebase Firestore
 
-### SDKs 
-- CustomComponentsSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
-  > Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
-  - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
+### DEPENDÊNCIAS: 
+- #### SDKs PRÓPRIOS:
+  - ***CustomComponentsSDK*** ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
+    > Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
     
-- DataStorageSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
-  > Responsável pela camada de persistências dos meus Projetos. <br>
-    Adaptado para trabalhar com diversos provedores de Database.
-  - Já Utilizados em Projetos:
-    - ![Static Badge](https://img.shields.io/badge/CoreData-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/FirestoreDatabase-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/KeyChain-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/UserDefaults-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/Realm-green?style=for-the-badge)
-  - Próximos a serem criados:
-    - ![Static Badge](https://img.shields.io/badge/SQLite-red?style=for-the-badge)
+  - ***DataStorageSDK*** ( [veja aqui](https://github.com/alecomparini-dev/DataStorageSDK) )
+  - ***AuthenticationSDK*** ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
+  
+- #### SDKs TERCEIROS:
+  - Firebase
+ 
+- #### Gerenciados de Depêndencia:
+  - SPM(Swift Package Manager)
 
-    
-- AuthenticationSDK
-  > Responsável pela camada de Authenticação do meu Projeto <br>
-    Adaptado para trabalhar com diversos provedores de authenticação
-  - Já Utilizados em Projetos:
-    - ![Static Badge](https://img.shields.io/badge/FirestoreAuth_Anônimo-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/FirestoreAuth_Email/Senha-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/Biometria-green?style=for-the-badge)
-  - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
-
-### Arquitetura
-- Clean Architecture
+### ARQUITETURA
 - MVVM-C
+- Clean Architecture
 
-### Patterns (em estudo)
+### PATTERNS (em estudo)
 - Strategy
 - Builder
 - Factory
 - Adapter
 - Singleton
 
-### Gerenciador de Dependência
-- SPM (Swift Package Manager)
-
-### Testes Unitários
+### TESTE UNITÁRIOS
 - XCTest
 
-### Outros
+### OUTROS
 - Depedency Injection
 - Princípios do SOLID
 - Clean Code (em estudo)
-
 
 
 <br>
