@@ -47,37 +47,33 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 
 ### DEPENDÊNCIAS: 
 - #### SDKs PRÓPRIOS:
-  - **<h3>CustomComponentsSDK** ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) ) </h3>
-    - Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
+  - ***CustomComponentsSDK*** ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
+    > Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
     
   - ***DataStorageSDK*** ( [veja aqui](https://github.com/alecomparini-dev/DataStorageSDK) )
-    - Responsável pela camada de persistências dos meus Projetos.   
-    
-  - AuthenticationSDK ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
-    - Responsável pela camada de Authenticação dos meus Projetos   
+  - ***AuthenticationSDK*** ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
   
+- #### SDKs TERCEIROS:
+  - Firebase
 
-#### SDKs TERCEIROS:
-- Firebase
-
-### Arquitetura
+### ARQUITETURA
 - MVVM-C
 - Clean Architecture
 
-### Patterns (em estudo)
+### PATTERNS (em estudo)
 - Strategy
 - Builder
 - Factory
 - Adapter
 - Singleton
 
-### Gerenciador de Dependência
+### GERENCIADOS DE DEPÊNDENCIA
 - SPM (Swift Package Manager)
 
-### Testes Unitários
+### TESTE UNITÁRIOS
 - XCTest
 
-### Outros
+### OUTROS
 - Depedency Injection
 - Princípios do SOLID
 - Clean Code (em estudo)
