@@ -48,8 +48,7 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   - **Tests:**
     > Camada de testes. <br>
     > Não foram realizados testes de UI
-- Foi utilizado o Firebase Auth para a realização do login anônimo
-- Para banco de dados cloud foi utilizado o Firebase Firestore
+- Foi utilizado o Firebase para Banco de Dados, Autenticação Anônima e Crashlink
 
 #### DEPENDÊNCIAS: 
 - SDKs PRÓPRIOS:
