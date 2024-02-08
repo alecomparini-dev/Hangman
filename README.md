@@ -43,7 +43,7 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   > Responsável por todos componentes visuais utilizados nas Views dos meus Projetos.
   - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
     
-- DataStorageSDK ( [veja aqui](https://github.com/alecomparini-dev/CustomComponentsSDK/tree/develop/Sources/CustomComponents/Components) )
+- DataStorageSDK ( [veja aqui](https://github.com/alecomparini-dev/DataStorageSDK) )
   > Responsável pela camada de persistências dos meus Projetos. <br>
     Adaptado para trabalhar com diversos provedores de Database.
   - Já Utilizados em Projetos:
@@ -56,7 +56,7 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
     - ![Static Badge](https://img.shields.io/badge/SQLite-red?style=for-the-badge)
 
     
-- AuthenticationSDK
+- AuthenticationSDK ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
   > Responsável pela camada de Authenticação do meu Projeto <br>
     Adaptado para trabalhar com diversos provedores de authenticação
   - Já Utilizados em Projetos:
