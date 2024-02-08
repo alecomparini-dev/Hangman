@@ -55,6 +55,9 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   
 - #### SDKs TERCEIROS:
   - Firebase
+ 
+- #### Gerenciados de Depêndencia:
+  - SPM(Swift Package Manager)
 
 ### ARQUITETURA
 - MVVM-C
@@ -67,8 +70,6 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - Adapter
 - Singleton
 
-### GERENCIADOS DE DEPÊNDENCIA
-- SPM (Swift Package Manager)
 
 ### TESTE UNITÁRIOS
 - XCTest
