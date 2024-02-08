@@ -34,11 +34,11 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 ## DESENVOLVIMENTO
 - O app foi modularizado nos seguintes targets:
   - **Handler:**
-    > Camada compartilhado com todos os targets
+    > Camada compartilhada com todos os targets
   - **Domain:**
-    > Camada dos UseCases e models do projeto
+    > Camada dos UseCases e Models do projeto
   - **UseCaseGateway:**
-    > Camada de Interface Adapter para a base de dados e authenticação (adaptanto os uses cases com sdks de banco e auth da camada Details)
+    > Camada de Interface Adapter da base de dados e autenticação (adaptanto os UsesCases com SDKs de banco e auth da camada Detail)
   - **Presenter:**
     > Camada de Interface Adapter para a parte visual (VM da arquitetura MVVM-C)
   - **Detail:**
