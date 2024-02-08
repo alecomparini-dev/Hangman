@@ -66,8 +66,8 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
 
 ### Arquitetura
-- Clean Architecture
 - MVVM-C
+- Clean Architecture
 
 ### Patterns (em estudo)
 - Strategy
