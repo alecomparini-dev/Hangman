@@ -39,7 +39,7 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
 - O app foi modularizado nos seguintes targets:
   - ***Handler:*** compartilhado com todos os targets
   - ***Domain:*** camada dos UseCases e models do projeto
-  - ***UseCaseGateway:*** camada de interface adapter para a base de dados e authenticação
+  - ***UseCaseGateway:*** camada de interface adapter para a base de dados e authenticação (adaptanto os uses cases com sdks de banco e auth da camada Details)
   - ***Presenter:*** camada de interface adapter para a parte visual (VM da arquitetura MVVM-C)
   - ***Detail:*** camada de detalhe, onde ficam a UI, a manipulação da base de dados(utilizando um SDK próprio) e a autenticação (também através de um SDK Próprio)
   - ***Hangman(main):** camada main, nela estão os Coordinators, factories e os resources do app(Info.plist, Assets, App/SceneDelegate.. etc)
