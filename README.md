@@ -48,13 +48,8 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   - Responsável pela camada de persistências dos meus Projetos. <br>
     
 - AuthenticationSDK ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
-  > Responsável pela camada de Authenticação dos meus Projetos <br>
-    Adaptado para trabalhar com diversos provedores de authenticação
-  - Já Utilizados em Projetos:
-    - ![Static Badge](https://img.shields.io/badge/FirestoreAuth_Anônimo-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/FirestoreAuth_Email/Senha-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/Biometria-green?style=for-the-badge)
-  - ![Static Badge](https://img.shields.io/badge/status-em_evolu%C3%A7%C3%A3o-green)
+  - Responsável pela camada de Authenticação dos meus Projetos <br>
+  
 
 #### SDKs TERCEIROS:
 - Firebase
