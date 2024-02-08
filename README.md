@@ -7,7 +7,7 @@
 
 
 
-## Feature
+## FEATURES
 
 #### # Login
 - [x] Login Anônimo Firebase
