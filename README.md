@@ -45,19 +45,9 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
     
 - DataStorageSDK ( [veja aqui](https://github.com/alecomparini-dev/DataStorageSDK) )
   > Responsável pela camada de persistências dos meus Projetos. <br>
-    Adaptado para trabalhar com diversos provedores de Database.
-  - Já Utilizados em Projetos:
-    - ![Static Badge](https://img.shields.io/badge/CoreData-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/FirestoreDatabase-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/KeyChain-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/UserDefaults-green?style=for-the-badge)
-    - ![Static Badge](https://img.shields.io/badge/Realm-green?style=for-the-badge)
-  - Próximos a serem criados:
-    - ![Static Badge](https://img.shields.io/badge/SQLite-red?style=for-the-badge)
-
     
 - AuthenticationSDK ( [veja aqui](https://github.com/alecomparini-dev/AuthenticationSDK) )
-  > Responsável pela camada de Authenticação do meu Projeto <br>
+  > Responsável pela camada de Authenticação dos meus Projetos <br>
     Adaptado para trabalhar com diversos provedores de authenticação
   - Já Utilizados em Projetos:
     - ![Static Badge](https://img.shields.io/badge/FirestoreAuth_Anônimo-green?style=for-the-badge)
