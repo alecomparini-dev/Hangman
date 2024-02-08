@@ -1,7 +1,7 @@
 
 <h3 align="center">
   <br>
-  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/27b83dce-169a-47f8-9d56-7a98cb3cbffb" width="500">
+  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/27b83dce-169a-47f8-9d56-7a98cb3cbffb" >
   <br>
 
 </h3>
