@@ -1,11 +1,10 @@
 
 <h3 align="center">
   <br>
-  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/8e48cbff-5d0e-4830-8576-a36aa99f4c2e" width="200">
-  <br>
-  JOGO DA FORCA
+  <img src="https://github.com/alecomparini-dev/Hangman/assets/76792477/7a7b9d00-1a23-4329-812e-8d6171e9958f" width="400">
   <br>
 </h3>
+
 
 <br>
 
