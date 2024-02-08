@@ -2963,7 +2963,6 @@
 			mainGroup = 026B645C2B03893400F6DD99;
 			packageReferences = (
 				026B64702B03899C00F6DD99 /* XCRemoteSwiftPackageReference "CustomComponentsSDK" */,
-				02507B972B07EEAC0098B708 /* XCRemoteSwiftPackageReference "NetworkSDK" */,
 				02507B9A2B07EEF00098B708 /* XCRemoteSwiftPackageReference "AuthenticationSDK" */,
 				026938C02B08FFB90023073B /* XCRemoteSwiftPackageReference "DataStorageSDK" */,
 			);
@@ -4283,14 +4282,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		02507B972B07EEAC0098B708 /* XCRemoteSwiftPackageReference "NetworkSDK" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alecomparini-dev/NetworkSDK.git";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
 		02507B9A2B07EEF00098B708 /* XCRemoteSwiftPackageReference "AuthenticationSDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/alecomparini-dev/AuthenticationSDK.git";
