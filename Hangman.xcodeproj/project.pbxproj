@@ -4302,7 +4302,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/alecomparini-dev/CustomComponentsSDK.git";
 			requirement = {
-				branch = develop;
+				branch = v0.0.1;
 				kind = branch;
 			};
 		};
