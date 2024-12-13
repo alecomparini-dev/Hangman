@@ -40,13 +40,13 @@ https://github.com/alecomparini-dev/Hangman/assets/76792477/cf6675d0-fc9b-4da0-9
   - **Domain:**
     > Camada dos UseCases e Models do projeto
   - **UseCaseGateway:**
-    > Camada de Interface Adapter da base de dados e autenticação (adaptanto os UsesCases com SDKs de banco e auth da camada Detail)
+    > Camada de Interface Adapter
   - **Presenter:**
-    > Camada de Interface Adapter para a parte visual (VM da arquitetura MVVM-C)
+    > Camada de Interface Adapter
   - **Detail:**
-    > Camada de detalhe, onde ficam a UI, a manipulação da base de dados(utilizando um SDK próprio) e a autenticação (também através de um SDK Próprio)
+    > Camada de detalhe
   - **Hangman(main):**
-    > Camada main, nela estão os Coordinators, Factories e os Resources do App(Info.plist, Assets, App/SceneDelegate.. etc)
+    > Camada main: Coordinators, Factories e os Resources do App(Info.plist, Assets, App/SceneDelegate.. etc)
   - **Tests:**
     > Camada de testes. <br>
     > Não foram realizados testes de UI
